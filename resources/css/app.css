@@ -1,0 +1,222 @@
+
+
+#sidebar-app .nav-link {
+  position: relative;
+}
+
+#sidebar-app .nav-link::after {
+  content: attr(title);
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(5px, -50%);
+  padding: 4px 8px;
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 4px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+#sidebar-app .nav-link:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #640080 #0a0a0b;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #0a0a0b;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #640080;
+    border-radius: 10px;
+    border: 3px solid #0d1c19;
+  }
+
+
+.sidebar-sticky {
+  position: sticky;
+  z-index: 1000;  /* A high z-index to make the sidebar appear on top of other elements */
+  top: 50%;
+}
+.custom-link {  
+  color: black;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.custom-link:hover {  
+  color: white; /* Cambia el color del texto al pasar el mouse */
+  font-weight: bold;  
+}
+
+.floating-menu {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  position: fixed;
+  top: 40%;
+  right: 40px;
+  width: 200px; /* Ajusta este valor según sea necesario */
+  z-index: 9999; /* Asegúrate de que el menú esté por encima de otros elementos */
+}
+
+.floating-button {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 9999; /* Asegúrate de que el botón esté por encima de otros elementos */
+  transform: translateY(-50%); /* Centra verticalmente el botón */
+  margin-right: 2px;
+}
+
+
+.navbar a {
+  cursor: pointer;
+}
+
+.language-icon {
+  width: 22px;
+  height: 22px;
+  margin-right: 5px;
+}
+
+.dropdown-item.text-decoration-none {
+  text-decoration: none;
+}
+.toggle2 {
+    margin-top: 2.8px;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0.14em;
+}
+
+.toggle2-switch {
+    display: inline-block;
+    background: #300202;
+    border-radius: 11.2px;
+    width: 40.6px;
+    height: 22.4px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+}
+
+.toggle2-switch:before,
+.toggle2-switch:after {
+    content: "";
+}
+
+.toggle2-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 16.8px;
+    height: 16.8px;
+    position: absolute;
+    top: 2.8px;
+    left: 1.8px;
+    transition: left 0.25s;
+}
+
+.toggle2:hover .toggle2-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+.toggle2-checkbox:checked + .toggle2-switch {
+    background: #f7fcf9;
+}
+
+.toggle2-checkbox:checked + .toggle2-switch:before {
+    left: 20px;
+}
+
+.toggle2-checkbox {
+    position: absolute;
+    visibility: hidden;
+}
+
+.toggle2-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+}
+
+
+.toggle {
+    margin-top: 4px;
+    cursor: pointer;
+    display: inline-block;
+  }
+  
+  .toggle-switch {
+    display: inline-block;
+    background: #ccc;
+    border-radius: 16px;
+    width: 58px;
+    height: 32px;
+    position: relative;
+    vertical-align: middle;
+    transition: background 0.25s;
+  }
+  .toggle-switch:before, .toggle-switch:after {
+    content: "";
+  }
+  .toggle-switch:before {
+    display: block;
+    background: linear-gradient(to bottom, #fff 0%, #eee 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.25);
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    transition: left 0.25s;
+  }
+  .toggle:hover .toggle-switch:before {
+    background: linear-gradient(to bottom, #fff 0%, #fff 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
+  }
+  .toggle-checkbox:checked + .toggle-switch {
+    background: #56c080;
+  }
+  .toggle-checkbox:checked + .toggle-switch:before {
+    left: 30px;
+  }
+  
+  .toggle-checkbox {
+    position: absolute;
+    visibility: hidden;
+  }
+  
+  .toggle-label {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+  }
+
+  body.dark {
+    background-color:#333;
+    color: #f5f5f5;
+}
+
+body.dark * {
+    background-color: #333;
+    color: #f5f5f5;
+}
+
