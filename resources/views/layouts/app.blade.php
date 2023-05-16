@@ -26,7 +26,7 @@
 <body>
 
     <div id="app">
-
+<h3>App v1.0</h3>
         <nav class="navbar navbar-expand-md  shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
