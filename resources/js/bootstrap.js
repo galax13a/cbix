@@ -15,7 +15,9 @@ import Notiflix from 'notiflix';
 
 window.Notiflix = Notiflix;
   // Cambiar el color de fondo en Notiflix.Block
+  /*
   Notiflix.Block.init({
-    backgroundColor: 'rgba(0, 0, 0, 0.8)', // Color de fondo rojo con 80% de opacidad
+    backgroundColor: 'rgba(0, 0, 0, 0.2)', // Color de fondo rojo con 80% de opacidad
     svgSize: '34px', // Cambiar el tamaño del SVG a 24px
 });
+*/

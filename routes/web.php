@@ -18,9 +18,30 @@ use App\Http\Middleware\LanguageSwitcher;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
+Route::middleware(['auth'])->group(function () { // url auth admin
+
+
+    Route::get('/admin/cb', function () {
+        return view('admin.chaturbate');
+    });    
+      // Ruta /api
+      Route::get('/admin/api', function () {
+        return view('api.index');
+    });   
+
+});
+
+Route::get('/test-speed', function () { // test speed
+    return view('testspeed');
+});
+
+Route::get('/home', function () { // test speed
     return view('home');
 });
+Route::get('/cbhrs', function () { // test speed
+    return view('cbhrs');
+});
+
 
 Auth::routes();
 
@@ -35,5 +56,7 @@ Route::get('/en', function () {
 })->name('language.switch.en');
 
 
-//Route Hooks - Do1 not delete//
+//Route Hooks - Do not delete//
+	Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
 	Route::view('admin/pages', 'livewire.pages.index')->middleware('auth');
+    Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');

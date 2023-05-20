@@ -5,13 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    <!-- CSRF Token  VUE JS-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>
+        {{ config('app.name', 'AppX') }} | 
         @hasSection('title')
-            @yield('title') |
-        @endif {{ config('app.name', 'Laravel') }}
+            @yield('title') 
+        @endif 
     </title>
 
     <!-- Fonts -->
@@ -26,11 +27,11 @@
 <body>
 
     <div id="app">
-<h3>App v1.0</h3>
+
         <nav class="navbar navbar-expand-md  shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    🦖 {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -43,6 +44,10 @@
                     @auth()
                         <ul class="navbar-nav mr-auto">
                             <!--Nav Bar Hooks - Do not delete!!-->
+						<li class="nav-item">
+                            <a href="{{ url('/apichaturs') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Apichaturs</a> 
+                        </li>
+						
                             <li class="nav-item">
 
                                 <a href="{{ url('/admin/pages') }}" class="nav-link">🟣 {{ __('messages.pages') }}</a>
@@ -50,51 +55,22 @@
                             </li>
                         </ul>
                     @endauth()
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
+                    <!-- Right Side Of Navbar -->                
+                    <x-com-login-nav /> 
+                                     
+                    <div id="btncomlenguaje" class="position-absolute top-0 end-0">                        
                         <x-ComLengue></x-ComLengue>
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
+                      
+                    </div>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    👻 <span class="text-capitalize">{{ Auth::user()->name }}</span>
-                                </a>
-
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
                 </div>
+                
             </div>
+            
         </nav>
 
         {{-- <x-comnav1></x-comnav1> --}}
-        <x-comnav1></x-comnav1> {{-- two nav bar --}}
+         {{-- two nav bar --}}
         <main class="py-1">
             <livewire:sider-bar-app /> {{-- siderbar  app menu --}}
             <livewire:sidebar-wire /> {{-- sidebar rigth flo --}}
@@ -106,22 +82,16 @@
     <x-com-footer-app></x-com-footer-app>
 
     @livewireScripts
-
-    <script>
-
-
-    </script>
-
-
+ 
     <script type="module">
-        if (window.location.href.indexOf('/admin/') !== -1) {
-            const addModal = new bootstrap.Modal('#createDataModal');
-            const editModal = new bootstrap.Modal('#updateDataModal');
+        //if (window.location.href.indexOf('/admin/') !== -1) {
+           const addModal = new bootstrap.Modal('#createDataModal');
+           const editModal = new bootstrap.Modal('#updateDataModal');
             window.addEventListener('closeModal', () => {
                addModal.hide();
                editModal.hide();
             })
-        }
+       // }
     </script>
     <script>
         function turnOnDarkMode() {

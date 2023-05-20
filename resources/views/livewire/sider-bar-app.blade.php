@@ -4,34 +4,34 @@
    <div class="container-fluid">
        <div class="row">
            <div id="sidebar-app" x-show="sidebarOpenApp" :class="{'col-sm-auto': sidebarOpenApp, 'sticky-top': sidebarOpenApp, 'fade': !sidebarOpenApp, 'show': !sidebarOpenApp}">
-               <!-- Contenido del sidebar app -->                  <!-- Contenido del sidebar app -->                                    
+               <!-- Conten sidebar app -->                                   
                     <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center">
-                        <a href="/" class="p-2 link-dark nav-link" title="BotChatur"  data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <a href="/" class="p-2 link-dark nav-link" tooltips="App"  data-bs-placement="right" data-bs-original-title="Icon-only">
                             <i class="bi-bootstrap fs-1"></i>
                         </a>
                         <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
                             <li class="nav-item">
-                                <a href="#" class="nav-link link-dark py-2 px-2" title="Home App"  data-bs-placement="right" data-bs-original-title="Home">
+                                <a href="{{ url('/home') }}" class="nav-link link-dark py-2 px-2" tooltips="Home App"  data-bs-placement="right" data-bs-original-title="Home">
                                     <i class="bi-house fs-1"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link link-dark py-2 px-2" title="Dashboard"  data-bs-placement="right" data-bs-original-title="Dashboard">
+                                <a href="{{ url('/test-speed') }}"  class="nav-link link-dark py-2 px-2" tooltips="Test Speed"  data-bs-placement="right" data-bs-original-title="Dashboard">
                                     <i class="bi-speedometer2 fs-1"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link link-dark py-2 px-2" title="Stats"  data-bs-placement="right" data-bs-original-title="Orders">
+                                <a href="{{ url('/cbhrs') }}" class="nav-link link-dark py-2 px-2" tooltips="Stats"  data-bs-placement="right" data-bs-original-title="Orders">
                                     <i class="bi-table fs-1"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link link-dark py-2 px-2" title="Favorites"  data-bs-placement="right" data-bs-original-title="Products">
+                                <a href="#" class="nav-link link-dark py-2 px-2" tooltips="Favorites"  data-bs-placement="right" data-bs-original-title="Products">
                                     <i class="bi-heart fs-1"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link link-dark py-2 px-2" title="Chat App"  data-bs-placement="right" >
+                                <a href="#" class="nav-link link-dark py-2 px-2" tooltips="Chat App"  data-bs-placement="right" >
                                     <i class="bi-chat fs-1"></i>
                                 </a>                            
                             </li>
@@ -48,6 +48,7 @@
                                 
                             </ul>
                         </div>
+                        <a href="#videos" class="navbar-brand mb-0 h3"> <livewire:com-dark-wire /> </a> 
                     </div>
                 </div>
                 <div class="col-sm p-0 min-vh-100 ">

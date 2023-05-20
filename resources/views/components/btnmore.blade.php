@@ -3,7 +3,7 @@
         <div class="text-left">
             <input wire:model='keyWord' type="text" class="form-control form-control-lg" name="search" id="search" placeholder="Search Keyworks">
         </div>
-        <button  type="button" class="btn btn-icon shadow-sm m-2" data-bs-toggle="modal" data-bs-target="#createDataModal">
+        <button id="btn-new" type="button" class="btn btn-icon shadow-lg m-2" data-bs-toggle="modal" data-bs-target="#createDataModal">
             ➕ <strong>New</strong>            
         </button>       
         @if (session()->has('message'))
