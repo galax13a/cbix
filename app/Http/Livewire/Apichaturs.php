@@ -22,12 +22,13 @@ class Apichaturs extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
         return view('livewire.apichaturs.view', [
-            'apichaturs' => Apichatur::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('api', 'LIKE', $keyWord)
-						->orWhere('active', 'LIKE', $keyWord)
-						->orWhere('page_id', 'LIKE', $keyWord)
-						->paginate(10),
+            'apichaturs' => Apichatur::with('user')->latest()
+            ->where('user_id', auth()->id())
+            ->where(function ($query) use ($keyWord) {
+                $query->where('name', 'LIKE', $keyWord)
+                      ->orWhere('api', 'LIKE', $keyWord);
+            })
+            ->paginate(10)
         ]);
     }
 	

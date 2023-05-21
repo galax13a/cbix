@@ -522,7 +522,7 @@ body.dark #btn-new:hover {
   border: 2px solid transparent;
 }
 
-#btn-store:hover, #btn-update:hover {
+#btn-store:hover, #btn-update:hover,#btn-close:hover,#btn-new:hover   {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border: 2px solid #635994;

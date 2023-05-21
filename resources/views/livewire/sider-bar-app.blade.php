@@ -6,7 +6,7 @@
            <div id="sidebar-app" x-show="sidebarOpenApp" :class="{'col-sm-auto': sidebarOpenApp, 'sticky-top': sidebarOpenApp, 'fade': !sidebarOpenApp, 'show': !sidebarOpenApp}">
                <!-- Conten sidebar app -->                                   
                     <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center">
-                        <a href="/" class="p-2 link-dark nav-link" tooltips="App"  data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <a href="/" class="p-2 link-dark nav-link" tooltips="App Download"  data-bs-placement="right" data-bs-original-title="Icon-only">
                             <i class="bi-bootstrap fs-1"></i>
                         </a>
                         <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
@@ -48,7 +48,7 @@
                                 
                             </ul>
                         </div>
-                        <a href="#videos" class="navbar-brand mb-0 h3"> <livewire:com-dark-wire /> </a> 
+                     
                     </div>
                 </div>
                 <div class="col-sm p-0 min-vh-100 ">

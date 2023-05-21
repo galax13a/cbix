@@ -10,7 +10,22 @@
 
                         <h5>
                             @guest
-                                {{ __('App v1.0') }} {{ config('app.name', 'Laravel') }}
+                            <h1>¡Descarga ahora el programa de Botchatur para PC en Mac, Windows y Linux y adéntrate en un mundo de streaming sin límites!</h1>
+
+                            <p>Como periodista de alta talla, he sido testigo de la evolución de la industria del dating y el entretenimiento en línea. Y déjame decirte, Botchatur está llevando esta experiencia a un nivel completamente nuevo.</p>
+                            
+                            <p>En nuestro sitio, hemos creado una plataforma donde puedes conocer personas agradables y conectarte con ellas a través de nuestras diversas categorías de streaming. Ya sea que te interesen mujeres, hombres o parejas, todas están incluidas para que puedas disfrutar de conversaciones estimulantes y encontrar conexiones reales.</p>
+                            
+                            <p>Descargar el programa de Botchatur es tu boleto de entrada a una comunidad emocionante y llena de posibilidades. Imagina poder explorar diferentes ventanas de streaming simultáneamente, sumergiéndote en la fascinante diversidad de experiencias y personalidades que ofrece nuestro sitio. ¡Las opciones son infinitas!</p>
+                            
+                            <p>Al instalar el programa, tendrás acceso exclusivo a nuestras funciones avanzadas, que te permiten encontrar matches con personas afines a tus intereses y gustos. Descubre perfiles cautivadores, inicia conversaciones intrigantes y conoce a personas que comparten tus pasiones y valores.</p>
+                            
+                            <p>Ya sea que estés buscando una amistad sincera, una conexión romántica o simplemente alguien con quien compartir momentos especiales, Botchatur es el lugar perfecto para ti. Nuestro programa ha sido cuidadosamente diseñado para brindarte una experiencia de usuario fluida y segura, para que puedas navegar sin preocupaciones mientras te sumerges en esta emocionante comunidad.</p>
+                            
+                            <p>Así que no esperes más, <a href="enlace-de-descarga-del-programa">descarga ahora el programa de Botchatur para PC en Mac, Windows y Linux</a> y únete a nosotros en esta aventura de descubrimiento y conexión. Permítenos presentarte a personas maravillosas que podrían convertirse en amigos, compañeros de vida o, quien sabe, ¡en tu match perfecto!</p>
+                            
+                            <p>Instala el programa hoy mismo y déjate llevar por la emoción de conocer personas extraordinarias en Botchatur. ¡Te esperamos con los brazos abiertos!</p>
+                            
                             @else
                                 ❤️‍🔥 Hi {{ Auth::user()->name }}, We are waiting for you soon..
                                 @endif

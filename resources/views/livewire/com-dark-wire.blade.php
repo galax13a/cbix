@@ -23,7 +23,7 @@
             x-on:click="darkMode = !darkMode; localStorage.setItem('darkMode', darkMode); darkMode ? turnOnDarkMode() : turnOffDarkMode()"
             class="toggle2-checkbox">
         <div class="toggle2-switch"></div>
-        <span class="toggle2-label" x-text="darkMode ? '🤍' : '🖤'"></span>
+        <span class="toggle2-label" x-text="darkMode ? '💛 White' : '🖤 Theme'"></span>
     </label>
 </div>
 <!-- ... -->

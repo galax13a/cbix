@@ -29,7 +29,7 @@ public function render()
                         $query->where('name', 'LIKE', $keyWord)
                               ->orWhere('url', 'LIKE', $keyWord);
                     })
-                    ->paginate(10),
+                    ->paginate(10)
     ]);
 }
 
@@ -98,7 +98,6 @@ public function render()
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-			//session()->flash('message', 'Page Successfully updated.');
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
                 'message' => '¡ Page Successfully updated.!',
