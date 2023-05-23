@@ -12,8 +12,9 @@ class CategorFactory extends Factory
 
     public function definition()
     {
+        $names = ['chaturbate', 'stripchat', 'livestream','Bongacams', 'onlyfans','webcam','youtube','twitch','vimeo','instagram-hot','pornhub','tiktok-hot'];        
         return [
-			'name' => $this->faker->name,
+			'name' => $this->faker->randomElement($names),
 			'active' => 1,
         ];
     }

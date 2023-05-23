@@ -13,7 +13,7 @@ class TypemodeloFactory extends Factory
     public function definition()
     {
         return [
-			'name' =>$this->faker->randomElement(["independent","Studio","Webmaster", "Other"]),
+			'name' =>$this->faker->randomElement(["independent","Studio","Webmaster", "Onlyfans","FaceXCam"]),
 			'active' => 1
         ];
     }

@@ -4,7 +4,7 @@ return [
     'welcome' => 'Home Wolcome',
     'login' => 'Login',
     'register' => 'Register',
-    'pages' => 'Hosts Pages',
+    'pages' => 'Pages',
     'language' => 'English',
     // etc...
 ];

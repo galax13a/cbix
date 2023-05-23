@@ -13,9 +13,10 @@ class EstudioFactory extends Factory
     public function definition()
     {
         return [
-			'name' => $this->faker->name,
+			'name' => $this->faker->randomElement(['Estudio 1', 'Estudio 2', 'Estudio 3']),
 			'city' => $this->faker->name,
-			'dir' => $this->faker->name,
+			'dir' => null,
+            'user_id' => $this->faker->randomElement(\App\Models\User::pluck('id')->toArray())
         ];
     }
 }

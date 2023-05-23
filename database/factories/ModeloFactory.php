@@ -15,14 +15,15 @@ class ModeloFactory extends Factory
         return [
 			'name' => $this->faker->name,
 			'nick' => $this->faker->name,
-			'nick2' => $this->faker->name,
-			'email' => $this->faker->name,
-			'dni' => $this->faker->name,
-			'wsp' => $this->faker->name,
-			'porce' => $this->faker->name,
-			'typemodelo_id' => $this->faker->name,
-			'img' => $this->faker->name,
-			'active' => $this->faker->name,
+			'nick2' => null,
+			'email' => $this->faker->email,
+			'dni' => $this->faker->randomNumber(8),
+			'wsp' => $this->faker->randomNumber(8),
+			'porce' => 60,
+			'typemodelo_id' =>  $this->faker->randomElement(\App\Models\Typemodelo::pluck('id')->toArray()),
+			'img' => null,
+			'active' => 1,
+			'user_id' => $this->faker->randomElement(\App\Models\User::pluck('id')->toArray())
         ];
     }
 }

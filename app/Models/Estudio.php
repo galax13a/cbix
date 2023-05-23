@@ -13,7 +13,7 @@ class Estudio extends Model
 
     protected $table = 'estudios';
 
-    protected $fillable = ['name','city','dir']; // fillable2
+    protected $fillable = ['user_id','name','city','dir']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

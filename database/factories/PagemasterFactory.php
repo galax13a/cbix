@@ -12,14 +12,15 @@ class PagemasterFactory extends Factory
 
     public function definition()
     {
+		$names = ['chaturbate.com', 'stripchat.com', 'cam4.com','Bongacams.com', 'onlyfans','amateur.tv'];        
         return [
-			'name' => $this->faker->name,
-			'url' => $this->faker->name,
+			'name' => $this->faker->randomElement($names),
+			'url' => $this->faker->url,
 			'afiliate' => $this->faker->name,
-			'logo' => $this->faker->name,
-			'api' => $this->faker->name,
-			'api2' => $this->faker->name,
-			'active' => $this->faker->name,
+			'logo' => "logos/webmaster/logo.png",
+			'api' => "api.site.com",
+			'api2' => null,
+			'active' => 1
         ];
     }
 }

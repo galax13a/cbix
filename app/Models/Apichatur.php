@@ -13,7 +13,7 @@ class Apichatur extends Model
 
     protected $table = 'apichaturs';
 
-    protected $fillable = ['name','api','active','pagemaster_id']; // fillable2
+    protected $fillable = ['user_id','name','api','active','pagemaster_id']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

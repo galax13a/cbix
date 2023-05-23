@@ -14,9 +14,10 @@ class ApichaturFactory extends Factory
     {
         return [
 			'name' => $this->faker->name,
-			'api' => $this->faker->name,
-			'active' => $this->faker->name,
-			'pagemaster_id' => $this->faker->name,
+			'api' => "http://api.site.com",
+			'active' => 1,
+			'pagemaster_id' => $this->faker->randomElement(\App\Models\Pagemaster::pluck('id')->toArray()),
+            'user_id' => $this->faker->randomElement(\App\Models\User::pluck('id')->toArray())
         ];
     }
 }

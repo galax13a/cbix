@@ -13,7 +13,7 @@ class Modelo extends Model
 
     protected $table = 'modelos';
 
-    protected $fillable = ['name','nick','nick2','email','dni','wsp','porce','typemodelo_id','img','active']; // fillable2
+    protected $fillable = ['user_id','name','nick','nick2','email','dni','wsp','porce','typemodelo_id','img','active']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

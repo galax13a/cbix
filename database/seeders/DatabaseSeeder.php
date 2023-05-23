@@ -12,16 +12,17 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {
+    {      
+        User::factory(3)->create();
 
-        //\App\Models\User::factory(3)->create(); 
-        User::factory(1)->create();
-        \App\Models\Categor::factory(3)->create();             
-        Page::factory()->count(10)->create();      
-        $user = User::factory()->create(); // create a user
-        Page::factory()->for($user)->count(5)->create(); // create 10 pages for that user
-        \App\Models\Typemodelo::factory(3)->create();   
-       // \App\Models\User::factory(1)->create(); 
+        \App\Models\Categor::factory(3)->create();    // create category         
+        Page::factory()->count(15)->create();        // create page      
+        \App\Models\Typemodelo::factory(4)->create(); // create  Typemodelo    
+        \App\Models\Pagemaster::factory(3)->create(); // create Pagemaster  
+        \App\Models\Modelo::factory(3)->create(); //create Modelo
+        \App\Models\Apichatur::factory(3)->create(); // create Modelo
+        \App\Models\Estudio::factory(3)->create(); //crate studio
+       
 
     }
 }
