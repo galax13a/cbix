@@ -5,24 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Apichatur extends Model
+class Estudio extends Model
 {
 	use HasFactory;
 	
     public $timestamps = true;
 
-    protected $table = 'apichaturs';
+    protected $table = 'estudios';
 
-    protected $fillable = ['name','api','active','pagemaster_id']; // fillable2
+    protected $fillable = ['name','city','dir']; // fillable2
 	
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function pagemaster()
-    {
-        return $this->hasOne('App\Models\Pagemaster', 'id', 'pagemaster_id');
-    }
-    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */

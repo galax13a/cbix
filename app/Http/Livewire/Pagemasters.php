@@ -4,14 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Apichatur;
+use App\Models\Pagemaster;
 
-class Apichaturs extends Component
+class Pagemasters extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $api, $active, $pagemaster_id;
+    public $selected_id, $keyWord, $name, $url, $afiliate, $logo, $api, $api2, $active;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -22,14 +22,15 @@ class Apichaturs extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.apichaturs.view', [
-            'apichaturs' => Apichatur::with('user')->latest()
-
-                ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {     
-                    $query->where('name', 'LIKE', $keyWord)        
-                    ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(10)
+        return view('livewire.pagemasters.view', [
+            'pagemasters' => Pagemaster::latest()
+						->orWhere('name', 'LIKE', $keyWord)
+						->orWhere('url', 'LIKE', $keyWord)
+						->orWhere('afiliate', 'LIKE', $keyWord)
+						->orWhere('logo', 'LIKE', $keyWord)
+						->orWhere('api', 'LIKE', $keyWord)
+						->orWhere('api2', 'LIKE', $keyWord)
+						->orWhere('active', 'LIKE', $keyWord)->paginate(10)
         ]);
     }
 	
@@ -41,61 +42,71 @@ class Apichaturs extends Component
     private function resetInput()
     {		
 		$this->name = null;
+		$this->url = null;
+		$this->afiliate = null;
+		$this->logo = null;
 		$this->api = null;
+		$this->api2 = null;
 		$this->active = null;
-		$this->pagemaster_id = null;
     }
 
     public function store()
     {
         $this->validate([
 		'name' => 'required',
-		'api' => 'required|url',
+		'url' => 'required|url',
 		'active' => 'required',
-		'pagemaster_id' => 'required',
         ]);
 
-        Apichatur::create([ 
+        Pagemaster::create([ 
 			'name' => $this-> name,
+			'url' => $this-> url,
+			'afiliate' => $this-> afiliate,
+			'logo' => $this-> logo,
 			'api' => $this-> api,
-			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'api2' => $this-> api2,
+			'active' => $this-> active
         ]);
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');		
         $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Apichatur Successfully created!',
+                'message' => '¡ Pagemaster Successfully created!',
             ]);
     }
 
     public function edit($id)
     {
-        $record = Apichatur::findOrFail($id);
+        $record = Pagemaster::findOrFail($id);
         $this->selected_id = $id; 
 		$this->name = $record-> name;
+		$this->url = $record-> url;
+		$this->afiliate = $record-> afiliate;
+		$this->logo = $record-> logo;
 		$this->api = $record-> api;
+		$this->api2 = $record-> api2;
 		$this->active = $record-> active;
-		$this->pagemaster_id = $record-> pagemaster_id;
     }
 
     public function update()
     {
         $this->validate([
 		'name' => 'required',
-		'api' => 'required|url',
+		'url' => 'required|url',
 		'active' => 'required',
-		'pagemaster_id' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Apichatur::find($this->selected_id);
+			$record = Pagemaster::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
+			'url' => $this-> url,
+			'afiliate' => $this-> afiliate,
+			'logo' => $this-> logo,
 			'api' => $this-> api,
-			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'api2' => $this-> api2,
+			'active' => $this-> active
             ]);
 
             $this->resetInput();
@@ -103,7 +114,7 @@ class Apichaturs extends Component
 	
              $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Apichatur Successfully updated.!',
+                'message' => '¡ Pagemaster Successfully updated.!',
             ]);
         }
     }
@@ -111,7 +122,7 @@ class Apichaturs extends Component
     public function destroy($id)
     {
         if ($id) {
-            Apichatur::where('id', $id)->delete();
+            Pagemaster::where('id', $id)->delete();
         }
     }
 }

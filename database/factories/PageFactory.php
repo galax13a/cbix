@@ -13,10 +13,16 @@ class PageFactory extends Factory
     public function definition()
     {
         return [
-			'user_id' => $this->faker->name,
 			'name' => $this->faker->name,
-			'url' => $this->faker->name,
-			'active' => $this->faker->name,
+			'title' => $this->faker->name,
+			'slug' => $this->faker->name,
+			'content' => $this->faker->name,
+			'meta_title' => $this->faker->name,
+			'meta_keywords' => $this->faker->name,
+			'meta_description' => $this->faker->name,
+			'featured_image' => $this->faker->name,
+			'active' => 1,
+			'user_id' => 1
         ];
     }
 }

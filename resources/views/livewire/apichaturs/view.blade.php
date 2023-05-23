@@ -1,10 +1,11 @@
 @section('title', __('Apichaturs'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
+
 			<div class="col-md-12 my-2" id="view-js-live-pages">
 			<div class="card">			
-
-				<div class="card-header" >				
+					
+				<div class="card-header bg-transparent" >					
 					<x-btnmore/>					
 				</div>
 				
@@ -18,7 +19,7 @@
 								<th>Name</th>
 								<th>Api</th>
 								<th>Active</th>
-								<th>Page Id</th>
+								<th>Pagemaster Id</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
@@ -29,7 +30,7 @@
 								<td>{{ $row->name }}</td>
 								<td>{{ $row->api }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
-								<td>{{ $row->page->name }}</td>
+								<td>{{ $row->pagemaster->name }}</td>
 								<td width="90">
 											<x-btncrud> 
 											<x-slot name="id_editar">{{$row->id}}</x-slot>

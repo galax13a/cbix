@@ -1,4 +1,4 @@
-@section('title', __('Pages'))
+@section('title', __('Pagemasters'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 
@@ -10,36 +10,32 @@
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.pages.modals')
+						@include('livewire.pagemasters.modals')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Title</th>
-								<th>Slug</th>
-								<th>Content</th>
-								<th>Meta Title</th>
-								<th>Meta Keywords</th>
-								<th>Meta Description</th>
-								<th>Featured Image</th>
+								<th>Url</th>
+								<th>Afiliate</th>
+								<th>Logo</th>
+								<th>Api</th>
+								<th>Api2</th>
 								<th>Active</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>
-							@forelse($pages as $row)
+							@forelse($pagemasters as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->title }}</td>
-								<td>{{ $row->slug }}</td>
-								<td>{{ $row->content }}</td>
-								<td>{{ $row->meta_title }}</td>
-								<td>{{ $row->meta_keywords }}</td>
-								<td>{{ $row->meta_description }}</td>
-								<td>{{ $row->featured_image }}</td>
+								<td>{{ $row->url }}</td>
+								<td>{{ $row->afiliate }}</td>
+								<td>{{ $row->logo }}</td>
+								<td>{{ $row->api }}</td>
+								<td>{{ $row->api2 }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td width="90">
 											<x-btncrud> 
@@ -54,7 +50,7 @@
 							@endforelse
 						</tbody>
 					</table>						
-					<div class="float-end">{{ $pages->links() }}</div>
+					<div class="float-end">{{ $pagemasters->links() }}</div>
 					</div>
 				</div>
 			</div>

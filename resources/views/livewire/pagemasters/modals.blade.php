@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel"> New Apichatur</h5>
+                <h5 class="modal-title" id="createDataModalLabel"> New Pagemaster</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
@@ -13,18 +13,29 @@
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="url"></label>
+                        <input wire:model.defer="url" type="text" class="form-control" id="url" placeholder="Url">@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="afiliate"></label>
+                        <input wire:model.defer="afiliate" type="text" class="form-control" id="afiliate" placeholder="Afiliate">@error('afiliate') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="logo"></label>
+                        <input wire:model.defer="logo" type="text" class="form-control" id="logo" placeholder="Logo">@error('logo') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="api"></label>
                         <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="api2"></label>
+                        <input wire:model.defer="api2" type="text" class="form-control" id="api2" placeholder="Api2">@error('api2') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                   <label for="active"></label>
                     <div class="form-group">
                           <x-com-check :active="$active" />
                     </div>
-                  
-                  <label for="table"></label>
-                            <div class="form-group">
-                              <x-com-select-table table-name="pagemasters" id="pagemaster_id" display-name="name" />@error('pagemaster_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
 
                 </form>
             </div>
@@ -41,7 +52,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Apichatur</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Pagemaster</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -52,18 +63,29 @@
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="url"></label>
+                        <input wire:model.defer="url" type="text" class="form-control" id="url" placeholder="Url">@error('url') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="afiliate"></label>
+                        <input wire:model.defer="afiliate" type="text" class="form-control" id="afiliate" placeholder="Afiliate">@error('afiliate') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="logo"></label>
+                        <input wire:model.defer="logo" type="text" class="form-control" id="logo" placeholder="Logo">@error('logo') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="api"></label>
                         <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="api2"></label>
+                        <input wire:model.defer="api2" type="text" class="form-control" id="api2" placeholder="Api2">@error('api2') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                   <label for="active"></label>
                     <div class="form-group">
                           <x-com-check :active="$active" />
                     </div>
-                  
-                  <label for="table"></label>
-                            <div class="form-group">
-                              <x-com-select-table table-name="pagemasters" id="pagemaster_id" display-name="name" />@error('pagemaster_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
 
                 </form>
             </div>

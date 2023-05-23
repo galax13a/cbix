@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel"> New Apichatur</h5>
+                <h5 class="modal-title" id="createDataModalLabel"> New Typemodelo</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
@@ -12,19 +12,10 @@
                         <label for="name"></label>
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="api"></label>
-                        <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
                   <label for="active"></label>
                     <div class="form-group">
                           <x-com-check :active="$active" />
                     </div>
-                  
-                  <label for="table"></label>
-                            <div class="form-group">
-                              <x-com-select-table table-name="pagemasters" id="pagemaster_id" display-name="name" />@error('pagemaster_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
 
                 </form>
             </div>
@@ -41,7 +32,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update Apichatur</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Typemodelo</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -51,19 +42,10 @@
                         <label for="name"></label>
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="api"></label>
-                        <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
                   <label for="active"></label>
                     <div class="form-group">
                           <x-com-check :active="$active" />
                     </div>
-                  
-                  <label for="table"></label>
-                            <div class="form-group">
-                              <x-com-select-table table-name="pagemasters" id="pagemaster_id" display-name="name" />@error('pagemaster_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
 
                 </form>
             </div>

@@ -4,14 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Apichatur;
+use App\Models\Modelo;
 
-class Apichaturs extends Component
+class Modelos extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $api, $active, $pagemaster_id;
+    public $selected_id, $keyWord, $name, $nick, $nick2, $email, $dni, $wsp, $porce, $typemodelo_id, $img, $active;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -22,8 +22,8 @@ class Apichaturs extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.apichaturs.view', [
-            'apichaturs' => Apichatur::with('user')->latest()
+        return view('livewire.modelos.view', [
+            'modelos' => Modelo::with('user')->latest()
 
                 ->where('user_id', auth()->id())
                 ->where(function ($query) use ($keyWord) {     
@@ -41,61 +41,85 @@ class Apichaturs extends Component
     private function resetInput()
     {		
 		$this->name = null;
-		$this->api = null;
+		$this->nick = null;
+		$this->nick2 = null;
+		$this->email = null;
+		$this->dni = null;
+		$this->wsp = null;
+		$this->porce = null;
+		$this->typemodelo_id = null;
+		$this->img = null;
 		$this->active = null;
-		$this->pagemaster_id = null;
     }
 
     public function store()
     {
         $this->validate([
 		'name' => 'required',
-		'api' => 'required|url',
+		'porce' => 'required',
+		'typemodelo_id' => 'required',
 		'active' => 'required',
-		'pagemaster_id' => 'required',
         ]);
 
-        Apichatur::create([ 
+        Modelo::create([ 
 			'name' => $this-> name,
-			'api' => $this-> api,
-			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'nick' => $this-> nick,
+			'nick2' => $this-> nick2,
+			'email' => $this-> email,
+			'dni' => $this-> dni,
+			'wsp' => $this-> wsp,
+			'porce' => $this-> porce,
+			'typemodelo_id' => $this-> typemodelo_id,
+			'img' => $this-> img,
+			'active' => $this-> active
         ]);
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');		
         $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Apichatur Successfully created!',
+                'message' => '¡ Modelo Successfully created!',
             ]);
     }
 
     public function edit($id)
     {
-        $record = Apichatur::findOrFail($id);
+        $record = Modelo::findOrFail($id);
         $this->selected_id = $id; 
 		$this->name = $record-> name;
-		$this->api = $record-> api;
+		$this->nick = $record-> nick;
+		$this->nick2 = $record-> nick2;
+		$this->email = $record-> email;
+		$this->dni = $record-> dni;
+		$this->wsp = $record-> wsp;
+		$this->porce = $record-> porce;
+		$this->typemodelo_id = $record-> typemodelo_id;
+		$this->img = $record-> img;
 		$this->active = $record-> active;
-		$this->pagemaster_id = $record-> pagemaster_id;
     }
 
     public function update()
     {
         $this->validate([
 		'name' => 'required',
-		'api' => 'required|url',
+		'porce' => 'required',
+		'typemodelo_id' => 'required',
 		'active' => 'required',
-		'pagemaster_id' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Apichatur::find($this->selected_id);
+			$record = Modelo::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
-			'api' => $this-> api,
-			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'nick' => $this-> nick,
+			'nick2' => $this-> nick2,
+			'email' => $this-> email,
+			'dni' => $this-> dni,
+			'wsp' => $this-> wsp,
+			'porce' => $this-> porce,
+			'typemodelo_id' => $this-> typemodelo_id,
+			'img' => $this-> img,
+			'active' => $this-> active
             ]);
 
             $this->resetInput();
@@ -103,7 +127,7 @@ class Apichaturs extends Component
 	
              $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Apichatur Successfully updated.!',
+                'message' => '¡ Modelo Successfully updated.!',
             ]);
         }
     }
@@ -111,7 +135,7 @@ class Apichaturs extends Component
     public function destroy($id)
     {
         if ($id) {
-            Apichatur::where('id', $id)->delete();
+            Modelo::where('id', $id)->delete();
         }
     }
 }

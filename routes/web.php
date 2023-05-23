@@ -57,6 +57,11 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');
 	Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
-	Route::view('admin/pages', 'livewire.pages.index')->middleware('auth');
-    Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
+	Route::view('modelos', 'livewire.modelos.index')->middleware('auth');
+	Route::view('estudios', 'livewire.estudios.index')->middleware('auth');
+	Route::view('pagemasters', 'livewire.pagemasters.index')->middleware('auth');
+	Route::view('categors', 'livewire.categors.index')->middleware('auth');
+
+	Route::view('pages', 'livewire.pages.index')->middleware('auth');

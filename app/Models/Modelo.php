@@ -5,22 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Apichatur extends Model
+class Modelo extends Model
 {
 	use HasFactory;
 	
     public $timestamps = true;
 
-    protected $table = 'apichaturs';
+    protected $table = 'modelos';
 
-    protected $fillable = ['name','api','active','pagemaster_id']; // fillable2
+    protected $fillable = ['name','nick','nick2','email','dni','wsp','porce','typemodelo_id','img','active']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function pagemaster()
+    public function typemodelo()
     {
-        return $this->hasOne('App\Models\Pagemaster', 'id', 'pagemaster_id');
+        return $this->hasOne('App\Models\Typemodelo', 'id', 'typemodelo_id');
     }
     
     /**

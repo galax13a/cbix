@@ -4,14 +4,14 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Apichatur;
+use App\Models\Typemodelo;
 
-class Apichaturs extends Component
+class Typemodelos extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $api, $active, $pagemaster_id;
+    public $selected_id, $keyWord, $name, $active;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -22,14 +22,10 @@ class Apichaturs extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.apichaturs.view', [
-            'apichaturs' => Apichatur::with('user')->latest()
-
-                ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {     
-                    $query->where('name', 'LIKE', $keyWord)        
-                    ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(10)
+        return view('livewire.typemodelos.view', [
+            'typemodelos' => Typemodelo::latest()
+						->orWhere('name', 'LIKE', $keyWord)
+						->orWhere('active', 'LIKE', $keyWord)->paginate(10)
         ]);
     }
 	
@@ -41,61 +37,49 @@ class Apichaturs extends Component
     private function resetInput()
     {		
 		$this->name = null;
-		$this->api = null;
 		$this->active = null;
-		$this->pagemaster_id = null;
     }
 
     public function store()
     {
         $this->validate([
 		'name' => 'required',
-		'api' => 'required|url',
 		'active' => 'required',
-		'pagemaster_id' => 'required',
         ]);
 
-        Apichatur::create([ 
+        Typemodelo::create([ 
 			'name' => $this-> name,
-			'api' => $this-> api,
-			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'active' => $this-> active
         ]);
         
         $this->resetInput();
 		$this->dispatchBrowserEvent('closeModal');		
         $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Apichatur Successfully created!',
+                'message' => '¡ Typemodelo Successfully created!',
             ]);
     }
 
     public function edit($id)
     {
-        $record = Apichatur::findOrFail($id);
+        $record = Typemodelo::findOrFail($id);
         $this->selected_id = $id; 
 		$this->name = $record-> name;
-		$this->api = $record-> api;
 		$this->active = $record-> active;
-		$this->pagemaster_id = $record-> pagemaster_id;
     }
 
     public function update()
     {
         $this->validate([
 		'name' => 'required',
-		'api' => 'required|url',
 		'active' => 'required',
-		'pagemaster_id' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Apichatur::find($this->selected_id);
+			$record = Typemodelo::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
-			'api' => $this-> api,
-			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'active' => $this-> active
             ]);
 
             $this->resetInput();
@@ -103,7 +87,7 @@ class Apichaturs extends Component
 	
              $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Apichatur Successfully updated.!',
+                'message' => '¡ Typemodelo Successfully updated.!',
             ]);
         }
     }
@@ -111,7 +95,7 @@ class Apichaturs extends Component
     public function destroy($id)
     {
         if ($id) {
-            Apichatur::where('id', $id)->delete();
+            Typemodelo::where('id', $id)->delete();
         }
     }
 }

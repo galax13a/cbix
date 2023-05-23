@@ -2,21 +2,20 @@
 
 namespace Database\Factories;
 
-use App\Models\Apichatur;
+use App\Models\Estudio;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
-class ApichaturFactory extends Factory
+class EstudioFactory extends Factory
 {
-    protected $model = Apichatur::class;
+    protected $model = Estudio::class;
 
     public function definition()
     {
         return [
 			'name' => $this->faker->name,
-			'api' => $this->faker->name,
-			'active' => $this->faker->name,
-			'pagemaster_id' => $this->faker->name,
+			'city' => $this->faker->name,
+			'dir' => $this->faker->name,
         ];
     }
 }

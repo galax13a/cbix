@@ -1,4 +1,4 @@
-@section('title', __('Pages'))
+@section('title', __('Estudios'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 
@@ -10,37 +10,25 @@
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.pages.modals')
+						@include('livewire.estudios.modals')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Title</th>
-								<th>Slug</th>
-								<th>Content</th>
-								<th>Meta Title</th>
-								<th>Meta Keywords</th>
-								<th>Meta Description</th>
-								<th>Featured Image</th>
-								<th>Active</th>
+								<th>City</th>
+								<th>Dir</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>
-							@forelse($pages as $row)
+							@forelse($estudios as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->title }}</td>
-								<td>{{ $row->slug }}</td>
-								<td>{{ $row->content }}</td>
-								<td>{{ $row->meta_title }}</td>
-								<td>{{ $row->meta_keywords }}</td>
-								<td>{{ $row->meta_description }}</td>
-								<td>{{ $row->featured_image }}</td>
-								<td class="text-center"><x-com-active :active="$row->active" /></td>
+								<td>{{ $row->city }}</td>
+								<td>{{ $row->dir }}</td>
 								<td width="90">
 											<x-btncrud> 
 											<x-slot name="id_editar">{{$row->id}}</x-slot>
@@ -54,7 +42,7 @@
 							@endforelse
 						</tbody>
 					</table>						
-					<div class="float-end">{{ $pages->links() }}</div>
+					<div class="float-end">{{ $estudios->links() }}</div>
 					</div>
 				</div>
 			</div>

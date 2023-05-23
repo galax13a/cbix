@@ -16,12 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('api');
             $table->boolean('active')->default(false);
-            $table->timestamps();    
-            $table->unsignedBigInteger('user_id');        
-            $table->unsignedBigInteger('page_id');   
-            $table->foreign('page_id')
-            ->references('id')
-            ->on('pages');
+            $table->timestamps();                     
+            $table->unsignedBigInteger('pagemaster_id');   
+            $table->foreign('pagemaster_id')->references('id')->on('pagemasters');
+            $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }

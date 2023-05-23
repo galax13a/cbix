@@ -31,7 +31,7 @@
         <nav class="navbar navbar-expand-md  shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    🦖 {{ config('app.name', 'Laravel') }}
+                    🦖 <strong> {{ config('app.name', 'Laravel') }} </strong>
                 </a>
                 <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -45,14 +45,29 @@
                         <ul class="navbar-nav mr-auto">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/apichaturs') }}" class="nav-link"><i class="fab fa-laravel text-info"></i> Apichaturs</a> 
+                            <a href="{{ url('/typemodelos') }}" class="nav-link">🟣 Typemodelos</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/apichaturs') }}" class="nav-link">🟣 Apichaturs</a> 
                         </li>
 						
-                            <li class="nav-item">
-
-                                <a href="{{ url('/admin/pages') }}" class="nav-link">🟣 {{ __('messages.pages') }}</a>
-
-                            </li>
+						<li class="nav-item">
+                            <a href="{{ url('/modelos') }}" class="nav-link">🟣 Modelos</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/estudios') }}" class="nav-link">🟣 Estudios</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/pagemasters') }}" class="nav-link">🟣 Pagemasters</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/categors') }}" class="nav-link">🟣 Categors</a> 
+                        </li>
+											
+						<li class="nav-item">
+                            <a href="{{ url('/pages') }}" class="nav-link">🟣 {{ __('messages.pages') }}</a> 
+                        </li>
+					
                         </ul>
                     @endauth()
                     <!-- Right Side Of Navbar -->                

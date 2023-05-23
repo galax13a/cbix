@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categors', function (Blueprint $table) {
+        Schema::create('typemodelos', function (Blueprint $table) {
             $table->id();
-            $table->string('name');            
-            $table->boolean('active')->default(false);
+            $table->string('name');
+            $table->boolean('active');          
             $table->timestamps();
         });
     }
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categors');
+        Schema::dropIfExists('typemodelos');
     }
 };

@@ -13,12 +13,18 @@ return new class extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->nullable();            
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('content');
+            $table->string('meta_title')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->string('featured_image')->nullable();
+            $table->boolean('active')->default(true);
             $table->unsignedBigInteger('user_id');
-            $table->string('name')->index();
-            $table->string('url');
-            $table->boolean('active')->default(false);
-            $table->timestamps();    
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
     
