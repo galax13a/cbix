@@ -11,7 +11,7 @@ class Apichaturs extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $api, $active, $pagemaster_id;
+    public $selected_id, $keyWord, $name, $api, $active, $pagemaster_id, $modelo_id;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -21,16 +21,16 @@ class Apichaturs extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-
         return view('livewire.apichaturs.view', [
-            'apichaturs' => Apichatur::with('user')->latest()
-
+            'apichaturs' => Apichatur::with(['user', 'modelo'])
                 ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {     
-                    $query->where('name', 'LIKE', $keyWord)        
-                    ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(10)
+                ->where(function ($query) use ($keyWord) {
+                    $query->where('name', 'LIKE', $keyWord);
+                })
+                ->latest()
+                ->paginate(10)
         ]);
+        
     }
 	
     public function cancel()
@@ -44,6 +44,7 @@ class Apichaturs extends Component
 		$this->api = null;
 		$this->active = null;
 		$this->pagemaster_id = null;
+        $this->modelo_id = null;
     }
 
     public function store()
@@ -53,13 +54,15 @@ class Apichaturs extends Component
 		'api' => 'required|url',
 		'active' => 'required',
 		'pagemaster_id' => 'required',
+        'modelo_id' => 'required'
         ]);
 
         Apichatur::create([ 
 			'name' => $this-> name,
 			'api' => $this-> api,
 			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'pagemaster_id' => $this-> pagemaster_id,
+            'modelo_id' => $this-> modelo_id
         ]);
         
         $this->resetInput();
@@ -78,6 +81,7 @@ class Apichaturs extends Component
 		$this->api = $record-> api;
 		$this->active = $record-> active;
 		$this->pagemaster_id = $record-> pagemaster_id;
+        $this->modelo_id = $record-> modelo_id;
     }
 
     public function update()
@@ -87,6 +91,7 @@ class Apichaturs extends Component
 		'api' => 'required|url',
 		'active' => 'required',
 		'pagemaster_id' => 'required',
+        'modelo_id' => 'required'
         ]);
 
         if ($this->selected_id) {
@@ -95,7 +100,8 @@ class Apichaturs extends Component
 			'name' => $this-> name,
 			'api' => $this-> api,
 			'active' => $this-> active,
-			'pagemaster_id' => $this-> pagemaster_id
+			'pagemaster_id' => $this-> pagemaster_id,
+            'modelo_id' => $this-> modelo_id
             ]);
 
             $this->resetInput();

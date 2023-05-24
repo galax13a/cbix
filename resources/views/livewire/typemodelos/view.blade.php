@@ -12,7 +12,7 @@
 				<div class="card-body">
 						@include('livewire.typemodelos.modals')
 				<div class="table-responsive">
-					<table class="table table-bordered table-sm">
+					<table class="table table-sm">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 

@@ -19,8 +19,9 @@
 								<th>Name</th>
 								<th>Api</th>
 								<th>Active</th>
-								<th>Pagemaster Id</th>
-									<th class="text-center thead">Command</th>
+								<th>Master</th>
+								<th>Models</th>
+								<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,6 +32,7 @@
 								<td>{{ $row->api }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td>{{ $row->pagemaster->name }}</td>
+								<td>{{ $row->modelo->name }}</td>
 								<td width="90">
 											<x-btncrud> 
 											<x-slot name="id_editar">{{$row->id}}</x-slot>

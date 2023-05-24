@@ -13,7 +13,7 @@ class Apichatur extends Model
 
     protected $table = 'apichaturs';
 
-    protected $fillable = ['user_id','name','api','active','pagemaster_id']; // fillable2
+    protected $fillable = ['modelo_id','user_id','name','api','active','pagemaster_id']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
@@ -21,6 +21,11 @@ class Apichatur extends Model
     public function pagemaster()
     {
         return $this->hasOne('App\Models\Pagemaster', 'id', 'pagemaster_id');
+    }
+
+    public function modelo()
+    {
+        return $this->belongsTo(Modelo::class);
     }
     
     /**

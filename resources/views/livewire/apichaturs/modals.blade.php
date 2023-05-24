@@ -16,6 +16,10 @@
                         <label for="api"></label>
                         <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                    <label for="table"></label>
+                    <div class="form-group">
+                      <x-com-select-table table-name="modelos" id="modelo_id" display-name="name" />@error('modelo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
                   <label for="active"></label>
                     <div class="form-group">
                           <x-com-check :active="$active" />
@@ -59,7 +63,11 @@
                     <div class="form-group">
                           <x-com-check :active="$active" />
                     </div>
-                  
+                    <label for="table"></label>
+                    <div class="form-group">
+                      <x-com-select-table table-name="modelos" id="modelo_id" display-name="name" />@error('modelo_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+
                   <label for="table"></label>
                             <div class="form-group">
                               <x-com-select-table table-name="pagemasters" id="pagemaster_id" display-name="name" />@error('pagemaster_id') <span class="error text-danger">{{ $message }}</span> @enderror
