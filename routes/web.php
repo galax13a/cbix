@@ -57,6 +57,8 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
+	Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
 	Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');
 	Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
 	Route::view('modelos', 'livewire.modelos.index')->middleware('auth');

@@ -45,6 +45,10 @@
                         <ul class="navbar-nav mr-auto">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/estudiomodelos') }}" class="nav-link">🟣 Estudiomodelos</a> 
+                        </li>
+					
+						<li class="nav-item">
                             <a href="{{ url('/typemodelos') }}" class="nav-link">🟣 Typemodelos</a> 
                         </li>
 						<li class="nav-item">
