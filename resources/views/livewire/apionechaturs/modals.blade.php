@@ -14,7 +14,7 @@
                     </div>
                     <div class="form-group">
                         <label for="api"></label>
-                        <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api url chaturbate">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                   <label for="active"></label>
                     <div class="form-group">
