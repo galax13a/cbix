@@ -5,32 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Estudiomodelo extends Model
+class Apionechatur extends Model
 {
 	use HasFactory;
 	
     public $timestamps = true;
 
-    protected $table = 'estudiomodelos';
+    protected $table = 'apionechaturs';
 
-    protected $fillable = ['estudio_id','modelo_id']; // fillable2
+    protected $fillable = ['name','api','active']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function estudio()
-    {
-        return $this->belongsTo(Estudio::class, 'estudio_id');
-    }
-
-    public function modelo()
-    {
-        return $this->belongsTo(Modelo::class, 'modelo_id');
-    }
-
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
      
        protected static function booted() {

@@ -45,6 +45,9 @@
                         <ul class="navbar-nav mr-auto">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/apionechaturs') }}" class="nav-link">🟣 Apionechaturs</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/estudiomodelos') }}" class="nav-link">🟣 Estudiomodelos</a> 
                         </li>
 					
@@ -101,7 +104,14 @@
     <x-com-footer-app></x-com-footer-app>
 
     @livewireScripts
- 
+ <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('closeModal2', () => {
+            document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
+        });
+    });
+</script>
+
     <script type="module">
         //if (window.location.href.indexOf('/admin/') !== -1) {
            const addModal = new bootstrap.Modal('#createDataModal');

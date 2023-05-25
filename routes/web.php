@@ -42,6 +42,7 @@ Route::get('/cbhrs', function () { // test speed
     return view('cbhrs');
 });
 
+Route::get('/chaturbate/{username}', [ChaturbateController::class, 'profile'])->name('chaturbate');
 
 Auth::routes();
 
@@ -57,6 +58,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
 	Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
 	Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
 	Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');

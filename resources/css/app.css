@@ -490,7 +490,6 @@ body.dark .icon-50 {
   background-color: rgb(59, 102, 95);  
 }
 
-
 body.dark .dropdown-menu li:hover {
   background-color: red;
 }
@@ -513,6 +512,26 @@ body.dark #btn-new:hover {
 }
 
 #btn-new {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+body.dark #btn-new2 { 
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+body.dark #btn-new2:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #00ff00; /* Reemplaza #00ff00 con el color que desees para el borde */
+}
+#btn-new2:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  border: 2px solid #0bf0e4; /* Reemplaza #00ff00 con el color que desees para el borde */
+}
+#btn-new2 {
   transition: all 0.3s ease;
   border: 2px solid transparent;
 }
@@ -553,7 +572,6 @@ body.dark .nx-message-icon {
   opacity: 0.9 !important;
 
 }
-
 
 .modern-table {
   width: 100%;

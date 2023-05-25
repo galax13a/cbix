@@ -28,13 +28,21 @@ class ComSelectTable extends Component
      */
     public function items()
     {
-        if (Schema::hasColumn($this->tableName, 'active')) {
-            return DB::table($this->tableName)->where('active', true)->get();
+        $query = DB::table($this->tableName);
+    
+        $columns = Schema::getColumnListing($this->tableName);
+    
+        if (in_array('active', $columns)) {
+            $query->where('active', true);
         }
     
-        // si la columna 'active' no existe, simplemente devuelve todos los elementos
-        return DB::table($this->tableName)->get();
+        if (in_array('user_id', $columns)) {
+            $query->where('user_id', auth()->id());
+        }
+    
+        return $query->get();
     }
+
     
     /**
      * Get the view / contents that represent the component.

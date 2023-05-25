@@ -22,6 +22,11 @@ class Modelo extends Model
     {
         return $this->hasOne('App\Models\Typemodelo', 'id', 'typemodelo_id');
     }
+
+    public function estudios()
+    {
+        return $this->belongsToMany(Estudio::class, 'estudiomodelos', 'modelo_id', 'estudio_id');
+    }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
