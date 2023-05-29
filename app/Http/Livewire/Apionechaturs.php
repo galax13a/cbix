@@ -23,7 +23,6 @@ class Apionechaturs extends Component
         $this->active = true;
     }
 
-
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
@@ -35,7 +34,7 @@ class Apionechaturs extends Component
                 ->where(function ($query) use ($keyWord) {
                     $query->where('name', 'LIKE', $keyWord)
                         ->orWhere('api', 'LIKE', $keyWord);
-                })->paginate(10)
+                })->paginate(50)
         ]);
     }
 

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\LanguageSwitcher;
-
+use App\Http\Livewire\ChaturbateController; // Agregar esta línea
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,16 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::middleware(['auth'])->group(function () { // url auth admin
+Route::get('chaturbate/{chaturbateId}/{username}', 'App\Http\Controllers\ChaturbateController@profile')->name('chaturbate');
 
 
     Route::get('/admin/cb', function () {
         return view('admin.chaturbate');
-    });    
-      // Ruta /api
-      Route::get('/admin/api', function () {
+    });
+    // Ruta /api
+    Route::get('/admin/api', function () {
         return view('api.index');
-    });   
-
+    });
 });
 
 Route::get('/test-speed', function () { // test speed
@@ -42,7 +42,7 @@ Route::get('/cbhrs', function () { // test speed
     return view('cbhrs');
 });
 
-Route::get('/chaturbate/{username}', [ChaturbateController::class, 'profile'])->name('chaturbate');
+
 
 Auth::routes();
 
@@ -58,14 +58,14 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
-	Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
-	Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
-	Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');
-	Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
-	Route::view('modelos', 'livewire.modelos.index')->middleware('auth');
-	Route::view('estudios', 'livewire.estudios.index')->middleware('auth');
-	Route::view('pagemasters', 'livewire.pagemasters.index')->middleware('auth');
-	Route::view('categors', 'livewire.categors.index')->middleware('auth');
+Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
+Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
+Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
+Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');
+Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
+Route::view('modelos', 'livewire.modelos.index')->middleware('auth');
+Route::view('estudios', 'livewire.estudios.index')->middleware('auth');
+Route::view('pagemasters', 'livewire.pagemasters.index')->middleware('auth');
+Route::view('categors', 'livewire.categors.index')->middleware('auth');
 
-	Route::view('pages', 'livewire.pages.index')->middleware('auth');
+Route::view('pages', 'livewire.pages.index')->middleware('auth');
