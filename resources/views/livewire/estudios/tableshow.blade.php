@@ -26,16 +26,17 @@
                     <div style="max-height: 310px; overflow-y: auto;">
                         <table  class="table table-bordered table-sm my-1 shadow-sm rounded-3">
                             <thead>
-                                <tr>
+                                <tr class="text-center">
                                     <th>ID</th>
                                     <th>Study</th>
-                                    <th id="tdname">Name</th>
+                                    <th>Name</th>
                                     <th>Nick</th>
+                                    <th>Control</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($tableLookRecord as $record)
-                                    <tr>
+                                    <tr class="text-center">
                                         <td  class="text-center" x-data="{ hover: false, id: {{ $record->id }} }" @mouseenter="hover = true"
                                             @mouseleave="hover = false" @click="window.confirmDelete({{ $record->id }})"
                                             style="cursor: pointer;" class="delete-icon">
@@ -48,6 +49,9 @@
                                         <td>{{ $record->estudio_name }}</td>
                                         <td data-record="{{ $record->id }}">{{ $record->modelo_name }}</td>
                                         <td>{{ $record->modelo_nick }}</td>
+
+                                    <td>ctr</td>
+                                        
                                     </tr>
                                 @endforeach
                             </tbody>

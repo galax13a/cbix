@@ -6,9 +6,16 @@ import '../sass/app.scss'
 
 // import alpine js
 //import 'alpinejs';
-window.addEventListener('notify', event => { // notificaciones
-    const { type, message } = event.detail;
+window.addEventListener('notify', event => { // notificaciones y modals
+    const { type, message, OpenWin36 } = event.detail;
     Notiflix.Notify[type](message);
+    if (OpenWin36) {// abrir ventana modal         
+        openModal(OpenWin36);
+    }
+    function openModal(Wincr36) {
+        var myModal = new bootstrap.Modal(document.getElementById(Wincr36), {})
+        myModal.show();
+    }
 });
 
 
@@ -27,7 +34,7 @@ document.addEventListener('keydown', function (event) {
         if (confirmNoButton && document.getElementById('NXConfirmButtonCancel').style.display !== 'none') {
             event.preventDefault();
             confirmNoButton.click();
-           // alert('Escape key pressed');
+            // alert('Escape key pressed');
         }
     }
 });
@@ -38,7 +45,7 @@ window.confirmDelete = function (recordId) {
 
         Notiflix.Confirm.show(
             'Confirmation Delete',
-            `¿Are you sure you want to delete this record " ? ${tdText}`,
+            `¿Are you sure you want to delete this record :  ${tdText} ?`,
             'YES',
             'No',
             function () {
@@ -94,7 +101,6 @@ window.addEventListener('loading', event => {
             Notiflix.Loading.remove();            
         }, seg);
         */
-
         Notiflix.Loading.remove(seg);
     } else {
         console.error(`Loading type "${type_loading}" does not exist.`);

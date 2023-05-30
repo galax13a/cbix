@@ -6,23 +6,24 @@
             <div class="card">
 
                 <div class="card-header bg-transparent">
-					<div class="container text-center">
-						<div class="row">
-						  <div class="col">
-							<x-btnmore />
-						  </div>
-						  <div class="col">
-						
-						  </div>
-						  <div class="col">
-							<button id="btn-new2" title="Add Models for Studios" type="button" class="btn btn-icon btn-sm"
-							data-bs-toggle="modal" data-bs-target="#create2DataModal">
-							<strong>☝️ Add Model Studio</strong>
-						</button>
-	
-						  </div>
-						</div>
-					  </div>
+                    <div class="container text-center">
+                        <div class="row">
+                            <div class="col">
+                                <x-btnmore />
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <button id="btn-new2" title="Add Models for Studios" type="button"
+                                    class="btn btn-icon btn-sm" data-bs-toggle="modal"
+                                    data-bs-target="#create2DataModal">
+                                    <strong>☝️ Add Model Studio</strong>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -52,9 +53,10 @@
                                         <td>{{ $row->city }}</td>
                                         <td>{{ $row->dir }}</td>
                                         <td class="text-center">
-                                            
-                                            <button wire:click="look_table({{$row->id}})" type="button" class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#TableShowDataModal">
-                                                <strong >👉 Models [ {{ $row->modelos_count }} ]</strong>            
+                                            <button id="list_table1" wire:click="look_table({{ $row->id }})" type="button"
+                                                class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal"
+                                                data-bs-target="#TableShowDataModal">
+                                                <strong>👉 Models [ {{ $row->modelos_count }} ]</strong>
                                             </button>
                                         </td>
                                         <td width="90">

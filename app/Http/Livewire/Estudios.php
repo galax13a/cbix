@@ -68,6 +68,8 @@ class Estudios extends Component
 
         //$this->dispatchBrowserEvent('closeModalWin', 'NewModelDataModal');
         // Emitir el evento 'closeModalWin' con los parámetros 'modalName' y 'btnSelector'
+    
+
         $this->dispatchBrowserEvent('closeModalWin', [
             'modalNameClose' => 'NewModelDataModal', // close win del modl
             'btnSelector' => '#btn-new2', // select new modal si no se envia no abre no ejecuta el nuevo modal o el primero que lo llamo 
@@ -223,7 +225,7 @@ class Estudios extends Component
            // sleep(2); // Pausa de 1 segundo
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => 'Record successfully deleted 📛 ' . $name_tem,
+                'message' => 'Record successfully deleted ⛔️ ' . $name_tem,
             ]);
         } else {
             $this->dispatchBrowserEvent('notify', [
@@ -284,6 +286,7 @@ class Estudios extends Component
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
                 'message' => '¡Study model successfully created!',
+                'OpenWin36' => 'TableShowDataModal'
             ]);
         }
     }
