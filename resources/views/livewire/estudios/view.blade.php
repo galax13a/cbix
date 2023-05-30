@@ -29,6 +29,8 @@
                 <div class="card-body">
                     @include('livewire.estudios.modals')
                     @include('livewire.estudios.momodels')
+                    @include('livewire.estudios.tableshow')
+                    @include('livewire.estudios.newmodels')
 
                     <div class="table-responsive">
                         <table class="table table-bordered table-sm">
@@ -51,6 +53,9 @@
                                         <td>{{ $row->dir }}</td>
                                         <td class="text-center">
                                             <strong> 👉 Models [ {{ $row->modelos_count }} ]</strong>
+                                            <button type="button" class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#TableShowDataModal">
+                                                <strong wire:click="look_table({{ $row->id }})">...</strong>            
+                                            </button>
                                         </td>
                                         <td width="90">
                                             <x-btncrud>
