@@ -5,9 +5,9 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Estudio;
-use App\Models\Estudiomodelo;
 use Illuminate\Support\Facades\DB;
 use App\Models\Modelo;
+use App\Models\EstudioModelo;
 
 class Estudios extends Component
 {
@@ -63,7 +63,6 @@ class Estudios extends Component
             'nick' => $this->nick,
             'typemodelo_id' => $this->typemodelo_id,
         ]);
-
 
         //$this->dispatchBrowserEvent('closeModalWin', 'NewModelDataModal');
         // Emitir el evento 'closeModalWin' con los parámetros 'modalName' y 'btnSelector'
@@ -132,7 +131,6 @@ class Estudios extends Component
         $id = trim($id); // Eliminar espacios en blanco al inicio y al final
         $this->estudio_id = intval($id); // Convertir a número entero
     }
-
 
     private function resetInput()
     {
@@ -204,6 +202,25 @@ class Estudios extends Component
             ]);
         }
     }
+
+
+    public function destroy_model($id)
+    {
+        $record = Estudiomodelo::find($id);
+    
+        if ($record && $record->delete()) {
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'success',
+                'message' => 'Record successfully deleted.',
+            ]);
+        } else {
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => 'Unauthorized error, the record was not deleted.',
+            ]);
+        }
+    }
+    
 
     public function destroy($id)
     {
