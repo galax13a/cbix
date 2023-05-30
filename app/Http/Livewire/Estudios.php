@@ -217,17 +217,18 @@ class Estudios extends Component
             'seg' => 3000,  // Duración de la animación de carga en milisegundos.
         ]);    
         */
+        $name_tem = $record->name ?? '';
 
         if ($record && $record->delete()) {
            // sleep(2); // Pausa de 1 segundo
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => 'Record successfully deleted. ',
+                'message' => 'Record successfully deleted 📛 ' . $name_tem,
             ]);
         } else {
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'failure',
-                'message' => 'Unauthorized error, the record was not deleted. : '  .$id,
+                'message' => '📛 Unauthorized error, the record was not deleted. : '  .$name_tem,
             ]);
         }
     }

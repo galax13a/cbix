@@ -11,41 +11,70 @@ window.addEventListener('notify', event => { // notificaciones
     Notiflix.Notify[type](message);
 });
 
-window.confirmDelete = function (recordId) {
-    Notiflix.Confirm.show(
-        'Confirmation Delete',
-        '¿Are you sure you want to delete this record? ',
-        'YES',
-        'No',
-        function () {
-            // Crear evento personalizado
-            var loadingEvent = new CustomEvent('loading', {
-                detail: {
-                    type_loading: 'hourglass',
-                    seg: 2600,
-                }
-            });
 
-            // Emitir evento personalizado
-            window.dispatchEvent(loadingEvent);
 
-            window.livewire.emit('confirm-delete', recordId);
-        },
-        function () {
-            // close cancel user function
-        },
-        {
-            backOverlayColor: 'rgba(0,0,10,0.5)', // Cambia este color a lo que desees
-            cssAnimationStyle: 'zoom',
-            textColor: '#fff',
-            //className: 'bg-dark',
-            backgroundColor: '#520281',
-            cssAnimation: true,
-            messageColor: '#56c080',
-            okButtonBackground: '#f7086b'
+// keywords confirm bnt
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+        var confirmYesButton = document.querySelector('#NXConfirmButtonOk');
+        if (confirmYesButton && document.getElementById('NXConfirmButtonOk').style.display !== 'none') {
+            event.preventDefault();
+            confirmYesButton.click();
+            //alert('Enter key pressed');
         }
-    );
-}
+    } else if (event.key === 'Escape') {
+        var confirmNoButton = document.querySelector('#NXConfirmButtonCancel');
+        if (confirmNoButton && document.getElementById('NXConfirmButtonCancel').style.display !== 'none') {
+            event.preventDefault();
+            confirmNoButton.click();
+           // alert('Escape key pressed');
+        }
+    }
+});
+window.confirmDelete = function (recordId) {
+    var tdElement = document.querySelector(`td[data-record="${recordId}"]`);
+    if (tdElement) {
+        var tdText = tdElement.innerText;
+
+        Notiflix.Confirm.show(
+            'Confirmation Delete',
+            `¿Are you sure you want to delete this record " ? ${tdText}`,
+            'YES',
+            'No',
+            function () {
+                var loadingEvent = new CustomEvent('loading', {
+                    detail: {
+                        type_loading: 'hourglass',
+                        seg: 2600,
+                    }
+                });
+                window.dispatchEvent(loadingEvent);
+
+                window.livewire.emit('confirm-delete', recordId);
+            },
+            function () {
+                // close cancel user function
+            },
+            {
+                backOverlayColor: 'rgba(0,0,10,0.5)',
+                cssAnimationStyle: 'zoom',
+                textColor: '#fff',
+                backgroundColor: '#520281',
+                cssAnimation: true,
+                messageColor: '#56c080',
+                okButtonBackground: '#f7086b',
+                onReady: function () {
+                    var confirmYesButton = document.querySelector('#NXConfirmButtonOk');
+
+                    if (confirmYesButton) {
+                        confirmYesButton.tabIndex = 0;
+                        confirmYesButton.focus();
+                    }
+                }
+            }
+        );
+    }
+};
 
 
 window.addEventListener('loading', event => {

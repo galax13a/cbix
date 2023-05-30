@@ -29,24 +29,24 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Study</th>
-                                    <th>Name</th>
+                                    <th id="tdname">Name</th>
                                     <th>Nick</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($tableLookRecord as $record)
                                     <tr>
-                                        <td class="text-center" x-data="{ hover: false, id: {{ $record->id }} }" @mouseenter="hover = true"
+                                        <td  class="text-center" x-data="{ hover: false, id: {{ $record->id }} }" @mouseenter="hover = true"
                                             @mouseleave="hover = false" @click="window.confirmDelete({{ $record->id }})"
                                             style="cursor: pointer;" class="delete-icon">
                                             <span class="font-weight-bold shadow p-1"
                                                 style="border-radius: 26%; background: transparent;"
-                                                x-text="hover ? '📛' : '{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}'">
+                                                x-text="hover ? '⛔️' : '{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}'">
                                             </span>
                                       
                                         </td>
                                         <td>{{ $record->estudio_name }}</td>
-                                        <td>{{ $record->modelo_name }}</td>
+                                        <td data-record="{{ $record->id }}">{{ $record->modelo_name }}</td>
                                         <td>{{ $record->modelo_nick }}</td>
                                     </tr>
                                 @endforeach
