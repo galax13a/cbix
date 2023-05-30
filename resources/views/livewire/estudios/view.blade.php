@@ -46,15 +46,15 @@
                             </thead>
                             <tbody>
                                 @forelse($estudios as $row)
-                                    <tr>
+                                    <tr class="text-center">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->name }}</td>
                                         <td>{{ $row->city }}</td>
                                         <td>{{ $row->dir }}</td>
                                         <td class="text-center">
-                                            <strong> 👉 Models [ {{ $row->modelos_count }} ]</strong>
-                                            <button type="button" class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#TableShowDataModal">
-                                                <strong wire:click="look_table({{ $row->id }})">...</strong>            
+                                            
+                                            <button wire:click="look_table({{$row->id}})" type="button" class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal" data-bs-target="#TableShowDataModal">
+                                                <strong >👉 Models [ {{ $row->modelos_count }} ]</strong>            
                                             </button>
                                         </td>
                                         <td width="90">

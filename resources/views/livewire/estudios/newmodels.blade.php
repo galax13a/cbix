@@ -5,7 +5,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="NewModelDataModalLabel"> New Model/Study</h5>
+                <h5 class="modal-title" id="NewModelDataModalLabel">💜 Create New Model / Study</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
@@ -16,7 +16,7 @@
                         @csrf
 
                         <div class="form-group">
-                            <label for="model_name">Name Model</label>
+                            <label for="model_name">Full Name Model</label>
                             <input wire:model.defer="model_name" type="text" class="form-control" id="model_name"
                                 placeholder="Names Models">
                             @error('model_name')
@@ -32,7 +32,7 @@
                             @enderror
                         </div>
                         <div class="form-group">
-                            <label for="porce">% Model</label>
+                            <label for="porce">% model percentage</label>
                             <input wire:model.defer="porce" type="number" class="form-control" id="porce"
                                 placeholder="Porce">
                             @error('porce')

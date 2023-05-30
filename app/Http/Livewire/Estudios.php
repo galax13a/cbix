@@ -13,6 +13,8 @@ class Estudios extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['confirm-delete' => 'destroy_model'];
+
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $city, $dir;
     public $estudio_id, $modelo_id;
@@ -102,7 +104,7 @@ class Estudios extends Component
                     }
                 });
 
-            $tableLookRecord = $query->paginate(10);
+            $tableLookRecord = $query->paginate(25);
         } else {
             $tableLookRecord = collect([]);
         }
@@ -128,8 +130,10 @@ class Estudios extends Component
 
     public function look_table($id)
     {
-        $id = trim($id); // Eliminar espacios en blanco al inicio y al final
-        $this->estudio_id = intval($id); // Convertir a número entero
+        //$id = trim($id); // Eliminar espacios en blanco al inicio y al final
+        $this->estudio_id = trim($id);
+        //$this->estudio_id = intval($id); // Convertir a número entero
+        
     }
 
     private function resetInput()
@@ -207,16 +211,23 @@ class Estudios extends Component
     public function destroy_model($id)
     {
         $record = Estudiomodelo::find($id);
-    
+        /*
+        $this->dispatchBrowserEvent('loading', [
+            'type_loading' => 'hourglass', // o cualquier otro tipo de carga que desees, como 'Hourglass', 'Circle', etc.
+            'seg' => 3000,  // Duración de la animación de carga en milisegundos.
+        ]);    
+        */
+
         if ($record && $record->delete()) {
+           // sleep(2); // Pausa de 1 segundo
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => 'Record successfully deleted.',
+                'message' => 'Record successfully deleted. ',
             ]);
         } else {
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'failure',
-                'message' => 'Unauthorized error, the record was not deleted.',
+                'message' => 'Unauthorized error, the record was not deleted. : '  .$id,
             ]);
         }
     }

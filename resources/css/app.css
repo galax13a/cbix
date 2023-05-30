@@ -15,9 +15,7 @@ background-image: linear-gradient(0deg, #db7bf3 0%, #B5FFFC 73%, #ffffff 100%);
       font-weight: bold;
       font: size 18px;
       color: #0f0f0f;
-      background-color: #ff9b05;
-
-      
+      background-color: #ff9b05;      
 }
 
 .profile-card-1 {
@@ -374,6 +372,7 @@ box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.1);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s, visibility 0.3s;
+
 }
 
 #sidebar-app .nav-link:hover::after {
@@ -672,38 +671,8 @@ body.dark .nx-message-icon {
 
 }
 
-.modern-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
-  font-size: 14px;
-}
-
-.modern-table thead {
-  background-color: #f2f2f2;
-}
-
-.modern-table th, .modern-table td {
-  padding: 10px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.modern-table tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
-.modern-table tbody td {
-  vertical-align: middle;
-  word-wrap: break-word;
-}
-
-.modern-table th {
-  font-weight: bold;
-  color: #333;
+body.dark .notiflix-confirm-content {  
+  background-color: #01be60;  
 }
 
 @media (max-width: 768px) {

@@ -4,7 +4,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="create2DataModalLabel">💚 New Study/Model</h5>
+                <h5 class="modal-title" id="create2DataModalLabel">💚 Add Study/Model</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
@@ -31,12 +31,13 @@
                 </form>
 
                 <label for="table">
-<br>
+                    <br>
 
-                    <a class="my-2 custom-link rounded-4 shadow-sm p-2" href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#NewModelDataModal">👉 Add Model </a>
-                
+                    <a class="my-2 custom-link rounded-4 shadow-sm p-2" href="javascript:void(0)" data-bs-toggle="modal"
+                        data-bs-target="#NewModelDataModal">👉 if the model does not exist.. Create New</a>
+
                 </label>
-           
+
 
                 </form>
 
@@ -87,8 +88,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="btn-close" type="button" wire:click.prevent="cancel()"
-                    class="btn btn-icon shadow-lg m-2" data-bs-dismiss="modal">❌ Close</button>
+                <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2"
+                    data-bs-dismiss="modal">❌ Close</button>
                 <button id="btn-update" type="button" wire:click.prevent="update_estudiomodel()"
                     class="btn btn-icon shadow-lg m-2">Save ✅</button>
             </div>

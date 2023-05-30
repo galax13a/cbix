@@ -23,7 +23,8 @@
                         <br>
                         <h5>No records found. Models</h5>
                     @else
-                        <table class="table table-bordered table-sm my-3 shadow-sm rounded-3">
+                    <div style="max-height: 310px; overflow-y: auto;">
+                        <table  class="table table-bordered table-sm my-1 shadow-sm rounded-3">
                             <thead>
                                 <tr>
                                     <th>ID</th>
@@ -35,19 +36,15 @@
                             <tbody>
                                 @foreach ($tableLookRecord as $record)
                                     <tr>
-                                        <td class="text-center" x-data="{ hover: false }" 
-                                        @mouseenter="hover = true" 
-                                        @mouseleave="hover = false" 
-                                        style="cursor: pointer;" 
-                                        class="delete-icon">                                      
-                                        <span class="font-weight-bold shadow p-1"
-                                        style="border-radius: 26%; background: transparent;"
-                                        x-text="hover ? '📛' : {{$loop->iteration}}"
-                                        wire:click="destroy_model({{$record->id}})"></span>
-
-                                    </td>
-                                    
-
+                                        <td class="text-center" x-data="{ hover: false, id: {{ $record->id }} }" @mouseenter="hover = true"
+                                            @mouseleave="hover = false" @click="window.confirmDelete({{ $record->id }})"
+                                            style="cursor: pointer;" class="delete-icon">
+                                            <span class="font-weight-bold shadow p-1"
+                                                style="border-radius: 26%; background: transparent;"
+                                                x-text="hover ? '📛' : '{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}'">
+                                            </span>
+                                      
+                                        </td>
                                         <td>{{ $record->estudio_name }}</td>
                                         <td>{{ $record->modelo_name }}</td>
                                         <td>{{ $record->modelo_nick }}</td>
@@ -55,12 +52,18 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                    </div>
                         <div class="float-end">{{ $tableLookRecord->links() }}</div>
                     @endif
                 </div>
 
             </div>
             <div class="modal-footer">
+                <button id="btn-new2" title="Add Models for Studios" type="button" class="btn btn-icon btn-sm"
+                    data-bs-toggle="modal" data-bs-target="#create2DataModal">
+                    <strong>☝️ Add Model Studio</strong>
+                </button>
                 <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2"
                     data-bs-dismiss="modal">❌ Close</button>
             </div>
