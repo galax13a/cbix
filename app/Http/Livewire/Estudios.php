@@ -124,6 +124,7 @@ class Estudios extends Component
     public function cancel()
     {
         $this->resetInput();
+        $this->resetPage(); // se resetea la pagina para el keyword y paginado
     }
 
     public function look_table($id)
