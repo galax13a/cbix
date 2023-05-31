@@ -1,10 +1,10 @@
-<!-- Add Modal -->
-<div wire:ignore.self class="modal fade" id="create2DataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
-    aria-labelledby="create2DataModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<!-- Add Modal create2DataModal -->
+<div style="z-index: 1200;" id="create2DataModal" wire:ignore.self class="modal fade" id="create2DataModal" data-bs-backdrop="static"
+    tabindex="-300" role="dialog" aria-labelledby="create2DataModalLabel" aria-hidden="true">
+    <div class="modal-dialog shadow-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="create2DataModalLabel">💚 Add Study/Model</h5>
+                <h5 class="modal-title" id="create2DataModalLabel">💚 Add Study/ Models</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
@@ -26,9 +26,7 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
-
-                </form>
+              
 
                 <label for="table">
                     <br>
@@ -38,12 +36,7 @@
 
                 </label>
 
-
                 </form>
-
-
-
-
             </div>
             <div class="modal-footer">
                 <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2"
@@ -55,8 +48,8 @@
     </div>
 </div>
 
-<!-- Edit Modal -->
-<div wire:ignore.self class="modal fade" id="update2DataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
+<!-- Edit Modal create2DataModal -->
+<div wire:ignore.self class="modal fade" id="update2DataModal" data-bs-backdrop="static" tabindex="-101" role="dialog"
     aria-labelledby="update2ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

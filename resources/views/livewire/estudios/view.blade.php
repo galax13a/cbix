@@ -30,6 +30,7 @@
                 <div class="card-body">
                     @include('livewire.estudios.modals')
                     @include('livewire.estudios.momodels')
+                    <!--  table  Modal xxxxxx -->
                     @include('livewire.estudios.tableshow')
                     @include('livewire.estudios.newmodels')
 

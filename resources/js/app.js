@@ -5,7 +5,11 @@ import './bootstrap';
 import '../sass/app.scss'
 
 // import alpine js
-//import 'alpinejs';
+
+
+
+
+
 window.addEventListener('notify', event => { // notificaciones y modals
     const { type, message, OpenWin36 } = event.detail;
     Notiflix.Notify[type](message);
