@@ -17,7 +17,7 @@ class Estudios extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $city, $dir;
-    public $estudio_id, $modelo_id;
+    public $estudio_id, $modelo_id, $estudio_id_change;
     public $model_name, $porce, $typemodelo_id, $nick;
 
 
@@ -28,10 +28,10 @@ class Estudios extends Component
 
     public function mount()
     {
-
         $this->estudio_id = "";
         $this->porce = 100;
         $this->typemodelo_id = 1;
+        $this->estudio_id_change = 0;
     }
 
     public function openPopup()
@@ -68,7 +68,7 @@ class Estudios extends Component
 
         //$this->dispatchBrowserEvent('closeModalWin', 'NewModelDataModal');
         // Emitir el evento 'closeModalWin' con los parámetros 'modalName' y 'btnSelector'
-    
+
 
         $this->dispatchBrowserEvent('closeModalWin', [
             'modalNameClose' => 'NewModelDataModal', // close win del modl
@@ -98,7 +98,7 @@ class Estudios extends Component
             $query = DB::table('estudiomodelos')
                 ->join('estudios', 'estudiomodelos.estudio_id', '=', 'estudios.id')
                 ->join('modelos', 'estudiomodelos.modelo_id', '=', 'modelos.id')
-                ->select('estudios.id as estudio_id' ,'estudiomodelos.id', 'estudios.name as estudio_name', 'modelos.id as modelo_id','modelos.name as modelo_name', 'modelos.nick as modelo_nick')
+                ->select('estudios.id as estudio_id', 'estudiomodelos.id', 'estudios.name as estudio_name', 'modelos.id as modelo_id', 'modelos.name as modelo_name', 'modelos.nick as modelo_nick')
                 ->where('estudiomodelos.user_id', auth()->id())
                 ->where(function ($query) use ($estudioId) {
                     if ($estudioId > 0) {
@@ -135,7 +135,7 @@ class Estudios extends Component
         //$id = trim($id); // Eliminar espacios en blanco al inicio y al final
         $this->estudio_id = trim($id);
         //$this->estudio_id = intval($id); // Convertir a número entero
-        
+
     }
 
     private function resetInput()
@@ -222,7 +222,7 @@ class Estudios extends Component
         $name_tem = $record->name ?? '';
 
         if ($record && $record->delete()) {
-           // sleep(2); // Pausa de 1 segundo
+            // sleep(2); // Pausa de 1 segundo
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
                 'message' => 'Record successfully deleted ⛔️ ' . $name_tem,
@@ -230,11 +230,11 @@ class Estudios extends Component
         } else {
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'failure',
-                'message' => '📛 Unauthorized error, the record was not deleted. : '  .$name_tem,
+                'message' => '📛 Unauthorized error, the record was not deleted. : '  . $name_tem,
             ]);
         }
     }
-    
+
 
     public function destroy($id)
     {
@@ -251,6 +251,53 @@ class Estudios extends Component
                 $this->dispatchBrowserEvent('notify', [
                     'type' => 'failure',
                     'message' => '¡Unauthorized error, the record was not deleted.!',
+                ]);
+            }
+        }
+    }
+
+    public function edit_estudiomodel($id) // row tabla estudiomodelo llave
+    {
+        $record = Estudiomodelo::findOrFail($id);
+        $this->estudio_id_change = $id;
+        $this->estudio_id = $record->estudio_id;
+        $this->modelo_id = $record->modelo_id;
+    }
+
+    public function update_estudiomodel()
+    { // cambio de la llave  $this->estudio_id_change
+
+        $this->validate([
+            'estudio_id' => 'required',
+            'modelo_id' => 'required',
+        ]);
+
+        // Consulta si la combinación de estudio_id y modelo_id ya existe
+        $existingEntry = Estudiomodelo::where('estudio_id', $this->estudio_id)
+            ->where('modelo_id', $this->modelo_id)
+            ->exists();
+
+        if ($existingEntry) {
+            // Si ya existe, muestra una notificación de duplicado
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'warning',
+                'message' => '🟠 The model is already registered in the studio.',
+            ]);
+        } else {
+
+            if ($this->estudio_id_change > 0) { // modelo cambia de studio
+                $record = Estudiomodelo::find($this->estudio_id_change);
+                $record->update([
+                    'estudio_id' => $this->estudio_id,
+                    'modelo_id' => $this->modelo_id
+                ]);
+
+                $this->estudio_id_change = '';
+                $this->dispatchBrowserEvent('closeModalUpdate');
+                $this->dispatchBrowserEvent('notify', [
+                    'type' => 'success',
+                    'message' => '¡The model has changed studio,  Successfully updated.!'
+                    // 'OpenWin36' => 'update_estudiomodelDataModal'
                 ]);
             }
         }

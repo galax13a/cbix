@@ -47,7 +47,7 @@
 
                                             </td>
                                             <td>{{ $this->estudio_id }} / {{ $record->estudio_name }}</td>
-                                            <td data-record="{{ $record->id }}">{{ $record->modelo_name }}</td>
+                                            <td data-record="{{ $record->id }}">{{ $record->modelo_id }} / {{ $record->modelo_name }}</td>
                                             <td>{{ $record->modelo_nick }}</td>
 
                                             <td>
@@ -65,9 +65,10 @@
                                                     </button>
                                                 </a>
                                                 <a href="javascript:void(0)" class="text-decoration-none"
-                                                @click="openwin36('create2DataModal')"
+                                                @click="openwin36('update_estudiomodelDataModal')"
+                                                wire:click="edit_estudiomodel({{$record->id}})"
                                             >
-                                                <button title="Edit Record : {{ $record->id }}" tooltips="Edit record"
+                                                <button title="Switch from model to studio" tooltips="Edit record"
                                                     @click="activeButton = 'edit'"
                                                     :class="{ 'active-menu-td': activeButton === 'edit' }"
                                                     class="menu-item rounded-button"

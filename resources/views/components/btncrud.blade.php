@@ -1,9 +1,9 @@
 <div>
     <div class="btn-group" role="group" aria-label="Basic example">
-        <p  class="punter buton69 shadow-md" data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$id_editar}})">
-            ✅
+        <p  title="{{ __('messages.btn-crud-edit') }}" class="punter buton69 shadow-md" data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$id_editar}})">
+            ✅               
         </p>        
-        <p class="punter buton69 shadow-md" onclick='window.confirmDelete({{$id_editar}}, "confirm-delete-model")'>
+        <p title="{{ __('messages.btn-crud-delete') }} " class="punter buton69 shadow-md" onclick='window.confirmDelete({{$id_editar}}, "confirm-delete-model")'>
             ⛔️
         </p>
         

@@ -18,7 +18,19 @@
                                 <button id="btn-new2" title="Add Models for Studios" type="button"
                                     class="btn btn-icon btn-sm" data-bs-toggle="modal"
                                     data-bs-target="#create2DataModal">
-                                    <strong>☝️ Add Model Studio</strong>
+                                    <strong>
+                                        ☝️
+                                        {{ __('messages.studio-view-btn-addmodelstudio') }}                                     
+                                    </strong>
+                                </button>
+
+                                <button id="btn-new2" title="Add Models for Studios" type="button" class="btn btn-icon btn-sm"
+                                @click="openwin36('howmodelDataModal')"
+                                >
+                                    <strong>
+                                        {{ session('locale') == 'es' ? '📗Ayuda Studio' : '📗 Help Studio' }}                                        
+
+                                    </strong>
                                 </button>
 
                             </div>

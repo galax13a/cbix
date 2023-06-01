@@ -127,7 +127,16 @@
         document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('closeModal2', () => {
                 document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
+
             });
+                      
+            window.addEventListener('closeModalUpdate', () => {
+               // document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
+               document.querySelector("#btn-close-update").click();
+
+            });
+
+            
 
             window.addEventListener('closeModalWin', (event) => {
                 const parameters = event.detail; // record params

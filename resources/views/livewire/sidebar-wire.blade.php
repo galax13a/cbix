@@ -1,7 +1,7 @@
 <div>
-    <div x-data="{ open: false }">
+    <div x-data="{ open_sidebar_wire: false }">
         <!-- Sidebar -->
-        <div :class="{ 'd-none': !open, '': open }" class="border-right sidebar-sticky floating-menu" id="sidebar-wrapper">
+        <div :class="{ 'd-none': !open_sidebar_wire, '': open_sidebar_wire }" class="border-right sidebar-sticky floating-menu" id="sidebar-wrapper">
             <div class="list-group list-group-flush rounded-2">
                 <a href="{{ url('/home') }}"  class="list-group-item list-group-item-action custom-link"> 🎯 Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action custom-link ">😺 My Bio*s</a>                
@@ -15,9 +15,9 @@
         <!-- Page Content -->
         <div class="container-fluid">
             <!-- Botón flotante en la parte superior derecha -->
-            <button @click="open = !open" class="btn btn-dark floating-button">
-                <i x-show="!open" class="fas fa-bars"></i>
-                <i x-show="open" class="fas fa-times"></i>
+            <button @click="open_sidebar_wire = !open_sidebar_wire" class="btn btn-dark floating-button">
+                <i x-show="!open_sidebar_wire" class="fas fa-bars"></i>
+                <i x-show="open_sidebar_wire" class="fas fa-times"></i>
             </button>
             <!-- Page Content goes here -->
         </div>    

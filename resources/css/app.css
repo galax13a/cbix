@@ -211,14 +211,22 @@ background-image: linear-gradient(0deg, #db7bf3 0%, #B5FFFC 73%, #ffffff 100%);
 .custom-link {
   text-decoration: none; /* Quitar el subrayado */
  color: #000000;
-  transition: color 0.3s; /* Animación de transición */
+  transition: color 1.3s; /* Animación de transición */
   padding: 1px;
+  border-radius: 11px;
+ 
 }
 .custom-link:hover {
       font-weight: bold;
       font: size 18px;
       color: #0f0f0f;
-      background-color: #ff9b05;      
+      background-color:#8a00ca;  
+      border-radius: 8px; /* Bordes redondeados */
+      color: #000000;
+      border-bottom:2px ;
+      box-shadow: 0 4px 26px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Efecto de sombra */  
+     
+   
 }
 
 
