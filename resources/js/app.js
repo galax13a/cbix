@@ -6,10 +6,6 @@ import '../sass/app.scss'
 
 // import alpine js
 
-
-
-
-
 window.addEventListener('notify', event => { // notificaciones y modals
     const { type, message, OpenWin36 } = event.detail;
     Notiflix.Notify[type](message);
@@ -22,9 +18,8 @@ window.addEventListener('notify', event => { // notificaciones y modals
     }
 });
 
-
-
 // keywords confirm bnt
+
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         var confirmYesButton = document.querySelector('#NXConfirmButtonOk');
@@ -42,8 +37,18 @@ document.addEventListener('keydown', function (event) {
         }
     }
 });
-window.confirmDelete = function (recordId) {
+window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
+
     var tdElement = document.querySelector(`td[data-record="${recordId}"]`);
+    var secondTdValue;
+    
+    if (tdElement) {
+        secondTdValue = tdElement.nextElementSibling.textContent;
+    } else {
+        tdElement = "No found TD TABLE  data-record={{ $row->id }}"
+       
+    }
+    //    var tdElement = document.querySelector(`td[data-record="${recordId}"]`);
     if (tdElement) {
         var tdText = tdElement.innerText;
 
@@ -61,7 +66,7 @@ window.confirmDelete = function (recordId) {
                 });
                 window.dispatchEvent(loadingEvent);
 
-                window.livewire.emit('confirm-delete', recordId);
+                window.livewire.emit(deletemodel, recordId);
             },
             function () {
                 // close cancel user function

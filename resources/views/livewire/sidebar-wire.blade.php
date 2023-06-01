@@ -2,7 +2,7 @@
     <div x-data="{ open: false }">
         <!-- Sidebar -->
         <div :class="{ 'd-none': !open, '': open }" class="border-right sidebar-sticky floating-menu" id="sidebar-wrapper">
-            <div class="list-group list-group-flush shadow-sm rounded-2">
+            <div class="list-group list-group-flush rounded-2">
                 <a href="{{ url('/home') }}"  class="list-group-item list-group-item-action custom-link"> 🎯 Dashboard</a>
                 <a href="#" class="list-group-item list-group-item-action custom-link ">😺 My Bio*s</a>                
                 <a href="/api-chaturbate/" class="list-group-item list-group-item-action custom-link ">🎨 Api Chaturbate</a>                

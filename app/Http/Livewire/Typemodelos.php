@@ -10,8 +10,12 @@ class Typemodelos extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['confirm-delete-td' => 'destroy_model', 'confirm-delete-model' => 'destroy'];
+
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $active;
+
+    
 
     public function updatingKeyWord() // reset pages keywork
     {

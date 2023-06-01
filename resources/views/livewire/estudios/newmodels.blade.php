@@ -1,7 +1,7 @@
 <!-- select table  Modal -->
-<div wire:ignore.self class="modal fade" id="NewModelDataModal" data-bs-backdrop="static" tabindex="-4" role="dialog"
+<div style="z-index: 1300;" wire:ignore.self class="modal fade" id="NewModelDataModal" data-bs-backdrop="static" tabindex="-4" role="dialog"
     aria-labelledby="NewModelDataModalLabel" aria-hidden="true">
-
+    
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -46,8 +46,6 @@
                                 <span class="error text-danger">{{ $message }}</span>
                             @enderror
                         </div>
-
-
                         <br>
                     </form>
                 </div>
@@ -61,7 +59,7 @@
             <div class="modal-footer">
                 <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-sm m-2"
                     data-bs-dismiss="modal">❌ Close</button>
-                <button  wire:click="storage_models()" class="btn btn-icon shadow-sm m-2"id="btn-new"
+                <button wire:click="storage_models()" class="btn btn-icon shadow-sm m-2"id="btn-new"
                     type="submit">Save
                     Model</button>
             </div>

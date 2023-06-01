@@ -5,7 +5,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="TableShowDataModalLabel"> Models / Study</h5>
+                <h5 class="modal-title" id="TableShowDataModalLabel">🧡 Study/Models</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
@@ -15,7 +15,6 @@
                 <div class="form-group">
                     <x-com-select-table table-name="estudios" id="estudio_id" display-name="name" />
                 </div>
-
 
                 <div>
 
@@ -31,7 +30,7 @@
                                         <th>Study</th>
                                         <th>Name</th>
                                         <th>Nick</th>
-                                        <th>Control</th>
+                                        <th>🔘</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -41,49 +40,66 @@
                                                 @mouseleave="hover = false"
                                                 @click="window.confirmDelete({{ $record->id }})"
                                                 style="cursor: pointer;" class="delete-icon">
-                                                <span class="font-weight-bold shadow p-1"
+                                                <span class="font-weight-bold shadow"
                                                     style="border-radius: 26%; background: transparent;"
                                                     x-text="hover ? '⛔️' : '{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}'">
                                                 </span>
 
                                             </td>
-                                            <td>{{ $record->estudio_name }}</td>
+                                            <td>{{ $this->estudio_id }} / {{ $record->estudio_name }}</td>
                                             <td data-record="{{ $record->id }}">{{ $record->modelo_name }}</td>
                                             <td>{{ $record->modelo_nick }}</td>
 
                                             <td>
-                                                <div x-data="{ open: false, activeButton: null }" @click.away="open = false" class="wrapper">
-                                                    <button @click="open = !open"
-                                                        class="rounded-3 shadow-sm main-button">💢</button>
+                                          
+                                                <x-com-btn-play>
 
-                                                    <div x-show="open" class="menu-table">
-                                                        <button title="Edit Record" tooltips="Edit record"
-                                                            @click="activeButton = 'edit'"
-                                                            :class="{ 'active-menu-td': activeButton === 'edit' }"
-                                                            title="{{ $record->id }}"
-                                                            class="menu-item rounded-button">
-                                                            <h5 class="my-2">✔️</h5>
-                                                        </button>
+                                                    <a href="javascript:void(0)" class="text-decoration-none"
+                                                    @click="openwin36('create2DataModal')"
+                                                >
+                                                    <button title="New Model : {{ $record->id }}" tooltips="New Model"
+                                                        @click="activeButton = 'new'"
+                                                        :class="{ 'active-menu-td': activeButton === 'new' }"
+                                                        class="menu-item rounded-button">
+                                                        <h6 class="my-2">➕</h6>
+                                                    </button>
+                                                </a>
+                                                <a href="javascript:void(0)" class="text-decoration-none"
+                                                @click="openwin36('create2DataModal')"
+                                            >
+                                                <button title="Edit Record : {{ $record->id }}" tooltips="Edit record"
+                                                    @click="activeButton = 'edit'"
+                                                    :class="{ 'active-menu-td': activeButton === 'edit' }"
+                                                    class="menu-item rounded-button"
+                                                >
+                                                    <h6 class="my-2">☑️</h6>
+                                                </button>
+                                            </a>
+                                                    <a href="/admin/api/chaturbate/studio/models/create/{{$record->modelo_id}}/{{$record->modelo_nick}}" class="text-decoration-none" target="_blank">
                                                         <button title="Api Chaturbate" tooltips="Api Chaturbate"
                                                             @click="activeButton = 'api'"
                                                             :class="{ 'active-menu-td': activeButton === 'api' }"
                                                             class="menu-item rounded-button">
-                                                            <h3 class="my-2">⚡️</h3>
+                                                            <h5 class="my-2">⚡️</h5>
                                                         </button>
+                                                    </a>
+                                                    <a href="/admin/bios/chaturbate/studio/create/new/{{$record->modelo_id}}/{{$record->modelo_nick}}" class="text-decoration-none" target="_blank">
                                                         <button title="Create Bios" @click="activeButton = 'create'"
                                                             :class="{ 'active-menu-td': activeButton === 'create' }"
                                                             class="menu-item rounded-button">
                                                             <h5 class="my-2"> 💛</h5>
                                                         </button>
+                                                    </a>
+                                                    <a href="javascript:void(0)" class="text-decoration-none" 
+                                                    onclick="window.confirmDelete({{ $record->id }})">
                                                         <button title="Delete Record" @click="activeButton = 'delete'"
                                                             :class="{ 'active-menu-td': activeButton === 'delete' }"
                                                             class="menu-item rounded-button">
-                                                            <h3 class="my-2"> ⛔️</h3>
+                                                            <h5 class="my-2"> ⛔️</h5>
                                                         </button>
-                                                    </div>
-                                                </div>
-
-
+                                                    </a>
+                                                </x-com-btn-play>
+                                                
                                             </td>
 
                                         </tr>
@@ -99,15 +115,17 @@
             </div>
             <div class="modal-footer">
                 <button id="btn-new2" title="Add Models for Studios" type="button" class="btn btn-icon btn-sm"
-                    data-bs-toggle="modal" data-bs-target="#create2DataModal">
-                    <strong>☝️ Add Model Studio</strong>
+                @click="openwin36('create2DataModal')"
+                >
+                    <strong>☝️ Add Study Model</strong>
                 </button>
-                <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2"
+                <button id="btn-close-table" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2"
                     data-bs-dismiss="modal">❌ Close</button>
             </div>
         </div>
     </div>
 
+    @push('scripts')
    
-
+@endpush
 </div>

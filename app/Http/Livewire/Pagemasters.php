@@ -9,6 +9,8 @@ use App\Models\Pagemaster;
 class Pagemasters extends Component
 {
     use WithPagination;
+    
+    protected $listeners = ['confirm-delete-td' => 'destroy_model', 'confirm-delete-model' => 'destroy'];
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $url, $afiliate, $logo, $api, $api2, $active;

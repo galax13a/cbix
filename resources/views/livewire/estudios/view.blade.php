@@ -50,7 +50,7 @@
                                 @forelse($estudios as $row)
                                     <tr class="text-center">
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $row->name }}</td>
+                                        <td data-record="{{ $row->id }}">{{ $row->name }}</td>
                                         <td>{{ $row->city }}</td>
                                         <td>{{ $row->dir }}</td>
                                         <td class="text-center">

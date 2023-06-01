@@ -13,7 +13,7 @@ class Estudios extends Component
 {
     use WithPagination;
 
-    protected $listeners = ['confirm-delete' => 'destroy_model'];
+    protected $listeners = ['confirm-delete-td' => 'destroy_model', 'confirm-delete-model' => 'destroy'];
 
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $city, $dir;
@@ -98,7 +98,7 @@ class Estudios extends Component
             $query = DB::table('estudiomodelos')
                 ->join('estudios', 'estudiomodelos.estudio_id', '=', 'estudios.id')
                 ->join('modelos', 'estudiomodelos.modelo_id', '=', 'modelos.id')
-                ->select('estudiomodelos.id', 'estudios.name as estudio_name', 'modelos.name as modelo_name', 'modelos.nick as modelo_nick')
+                ->select('estudios.id as estudio_id' ,'estudiomodelos.id', 'estudios.name as estudio_name', 'modelos.id as modelo_id','modelos.name as modelo_name', 'modelos.nick as modelo_nick')
                 ->where('estudiomodelos.user_id', auth()->id())
                 ->where(function ($query) use ($estudioId) {
                     if ($estudioId > 0) {

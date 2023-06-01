@@ -105,6 +105,25 @@
 
     @livewireScripts
     <script>
+
+        function openwin36(modalName) { // open close all modals
+            var myModalwin32 = new bootstrap.Modal(document.getElementById(modalName));
+            myModalwin32.show();
+
+            var closeButton = document.querySelector("#btn-close-table") || document.querySelector(
+                "#TableShowDataModal > div > div > div.modal-header > button");
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    myModalwin32.hide();
+                    var elements = document.querySelectorAll('.modal-backdrop.fade.show');
+                    
+                    elements.forEach(function(element) {
+                        element.remove();
+                    });
+                });
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             window.addEventListener('closeModal2', () => {
                 document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
@@ -112,9 +131,10 @@
 
             window.addEventListener('closeModalWin', (event) => {
                 const parameters = event.detail; // record params
-             
+
                 if (parameters.modalNameClose) { // xlose  modal                     
-                    const selector = `#${parameters.modalNameClose} > div > div > div.modal-header > button`;
+                    const selector =
+                    `#${parameters.modalNameClose} > div > div > div.modal-header > button`;
                     document.querySelector(selector).click();
                 }
 

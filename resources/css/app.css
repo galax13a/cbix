@@ -1,53 +1,112 @@
-.modal-perseo {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgb(0,0,0);
-  background-color: rgba(0,0,0,0.4);
-}
-
-.modal-perseo-content {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  max-width: 460px;
-  max-height: 360px;
-  overflow: auto;
-}
-
-.modal-perseo-close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.modal-perseo-close:hover,
-.modal-perseo-close:focus {
-  color: #000;
+.buton69{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
   text-decoration: none;
-  cursor: pointer;
-}
-
-
-
-
-.wrapper {
-  position: relative;
-}
+  color: #000000;
+  font-size: 18px;
+  border-radius: 5px;
+  margin-left: 2px;
+  height: 30px;
+  font-weight: bold;
+  border: 2px dashed #000000;
+  transition: 0.3s;
+  background-color: #304549;
+ }
+ .buton69:hover{
+  background: linear-gradient(to right,#7e31e2 ,#0c380c);
+  background-color: #16f397;
+ }
+.buton69:active{
+  transform: scale(0.95);
+ }
 
 .main-button {
   position: relative;
+  transform: translateY(-3px);  
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+ 
 }
+
+body.dark {
+  background-color:#333;
+  color: #f5f5f5;
+}
+
+body.dark * {
+  background-color: #333;
+  color: #f5f5f5;
+}
+body.dark a {  
+color: #11e279;
+}
+
+body.dark a:hover {
+color: rgb(230, 203, 50);
+
+font-weight: bold;
+}
+
+body.dark .icon-50 {
+background-color: rgb(59, 102, 95);  
+}
+
+body.dark .dropdown-menu li:hover {
+background-color: red;
+}
+
+body.dark .dropdown-menu a:hover {
+background-color: #520281;
+color: rgb(200, 255, 0);
+font-weight: bold;
+}
+
+body.dark #btn-new {
+transition: all 0.3s ease;
+border: 2px solid transparent;
+}
+
+body.dark #btn-new:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+border: 2px solid #00ff00; /* Reemplaza #00ff00 con el color que desees para el borde */
+}
+
+
+body.dark .main-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+  border: 2px solid #53f0bb; /* Reemplaza #00ff00 con el color que desees para el borde */
+}
+
+.main-button:hover {
+  transform: translateY(-3px);  
+  border: 2px solid #02f0a1; /* Reemplaza #00ff00 con el color que desees para el borde */
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+body.dark .bi-bootstrap {
+  color: #11e279;
+}
+body.dark #siderbarappbuton span i {
+  
+  color: #01be60;
+}
+
+body.dark .shadow-sm{  /*  Bodyy Dark Neo */
+
+  text-shadow: 0 0 10px #01be60, 0 0 20px #01be60, 0 0 30px #01be60, 0 0 40px #01be60, 0 0 50px #01be60, 0 0 60px #01be60, 0 0 70px #01be60;
+
+}
+
+.wrapper {
+  position: relative;
+  
+}
+
 
 @keyframes spin {
   0% { transform: rotate(0deg); }
@@ -63,6 +122,7 @@
   color: #000102;
   text-align: center;
   line-height: 60px;
+  
 }
 .active-menu-td:after {
   content: "";
@@ -83,17 +143,22 @@
 .menu-table {
   position: absolute;
   top: 50%;
-  left: -180%;
+  left: -490%;
   transform: translate(0, -50%);
-  width: 60px;
-  height: 60px;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
   z-index: 1000; 
+  background-color: transparent;
+ 
 }
 
-
+body.dark  .menu-table{
+  border-radius: 70%;  
+  box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
+  
+}
 .menu-item {
   width: 30px;
   height: 32px;
@@ -106,6 +171,7 @@
   border: none;
   font-size: 0.8em;
   text-align: center;
+  margin-right: 1px;
 }
 
 .menu-item:hover {
@@ -167,14 +233,6 @@ background-image: linear-gradient(0deg, #db7bf3 0%, #B5FFFC 73%, #ffffff 100%);
 .bi-bootstrap {
   transition: color 0.5s ease; /* Esto hará que el cambio de color sea suave */
   color: #1698c7;
-}
-
-body.dark .bi-bootstrap {
-  color: #11e279;
-}
-body.dark #siderbarappbuton span i {
-  
-  color: #01be60;
 }
 
 #sidebar-app li {
@@ -647,50 +705,7 @@ box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.1);
     top: 2px;
   }
 
-  body.dark {
-    background-color:#333;
-    color: #f5f5f5;
-}
-
-body.dark * {
-    background-color: #333;
-    color: #f5f5f5;
-}
-body.dark a {  
-  color: #11e279;
-}
-
-body.dark a:hover {
-  color: rgb(230, 203, 50);
-  
-  font-weight: bold;
-}
-
-body.dark .icon-50 {
-  background-color: rgb(59, 102, 95);  
-}
-
-body.dark .dropdown-menu li:hover {
-  background-color: red;
-}
-
-body.dark .dropdown-menu a:hover {
-  background-color: #520281;
-  color: rgb(200, 255, 0);
-  font-weight: bold;
-}
-
-body.dark #btn-new {
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
-}
-
-body.dark #btn-new:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  border: 2px solid #00ff00; /* Reemplaza #00ff00 con el color que desees para el borde */
-}
-
+ 
 #btn-new {
   transition: all 0.3s ease;
   border: 2px solid transparent;

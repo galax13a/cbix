@@ -25,7 +25,7 @@
 							@forelse($typemodelos as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->name }}</td>
+								<td  data-record="{{ $row->id }}">{{ $row->name }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td width="90">
 											<x-btncrud> 

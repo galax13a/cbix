@@ -30,7 +30,7 @@
 							@forelse($pagemasters as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->name }}</td>
+								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
 								<td>{{ $row->url }}</td>
 								<td>{{ $row->afiliate }}</td>
 								<td>{{ $row->logo }}</td>

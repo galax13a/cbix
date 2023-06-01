@@ -28,13 +28,19 @@
                     </div>
               
 
-                <label for="table">
+           
                     <br>
-
                     <a class="my-2 custom-link rounded-4 shadow-sm p-2" href="javascript:void(0)" data-bs-toggle="modal"
                         data-bs-target="#NewModelDataModal">👉 if the model does not exist.. Create New</a>
+         <br>
 
-                </label>
+
+          
+                    <br>
+                    <a class="my-2 custom-link rounded-4 shadow-sm p-2" href="javascript:void(0)" data-bs-toggle="modal"
+                        data-bs-target="#NewModelDataModal">👉 change model to another study, click 💢.</a>
+        
+
 
                 </form>
             </div>
