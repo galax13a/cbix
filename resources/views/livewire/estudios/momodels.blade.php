@@ -11,14 +11,14 @@
             <div class="modal-body">
                 <form>
 
-                    <label for="table">Study</label>
+                    <label for="table">Studio</label>
                     <div class="form-group">
                         <x-com-select-table table-name="estudios" id="estudio_id" display-name="name" />
                         @error('estudio_id')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-
+                    Select the model to add to this studio
                     <label for="table">Models</label>
                     <div class="form-group">
                         <x-com-select-table table-name="modelos" id="modelo_id" display-name="name" />

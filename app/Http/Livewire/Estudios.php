@@ -34,6 +34,7 @@ class Estudios extends Component
         $this->porce = 100;
         $this->typemodelo_id = 1;
         $this->estudio_id_change = 0;
+        $this->city="None";
 
         $this->name_modelo = null;
 		$this->nick = null;
@@ -71,21 +72,40 @@ class Estudios extends Component
     public function edit_modelo($id) // edit modleo select id modelos 
     {
         $record = Modelo::findOrFail($id);
-        $this->selected_id_modelo = $id; 
-		$this->name_modelo = $record-> name;
-		$this->nick = $record-> nick;
-		$this->nick2 = $record-> nick2;
-		$this->email = $record-> email;
-		$this->dni = $record-> dni;
-		$this->wsp = $record-> wsp;
-		$this->porce = $record-> porce;
-		$this->typemodelo_id = $record-> typemodelo_id;
-		$this->img = $record-> img;
-		$this->active = $record-> active;
+        // Verificar si el usuario puede modificar el registro
+        if ($record->userCanModify()) {
+            $this->selected_id_modelo = $id; 
+            $this->name_modelo = $record-> name;
+            $this->nick = $record-> nick;
+            $this->nick2 = $record-> nick2;
+            $this->email = $record-> email;
+            $this->dni = $record-> dni;
+            $this->wsp = $record-> wsp;
+            $this->porce = $record-> porce;
+            $this->typemodelo_id = $record-> typemodelo_id;
+            $this->img = $record-> img;
+            $this->active = $record-> active;
+        } else {
+            $this->resetForm();
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡ Unauthorized error, Registry not recovered.!',
+            ]);
+        }     
+     
     }
 
     public function update_modelos()
     {
+
+        if(!$this->selected_id_modelo){
+        $this->dispatchBrowserEvent('notify', [
+            'type' => 'failure',
+            'message' => '¡Unauthorized Record Null !',
+        ]);
+        return false;
+    }
+
         $this->validate([
 		'name_modelo' => 'required',
 		'porce' => 'required',
@@ -93,7 +113,7 @@ class Estudios extends Component
 		'active' => 'required',
         ]);
 
-        if ($this->selected_id) {
+        if ($this->selected_id_modelo) {
 			$record = Modelo::find($this->selected_id_modelo);
             $record->update([ 
 			'name' => $this-> name_modelo,
@@ -107,18 +127,15 @@ class Estudios extends Component
 			'img' => $this-> img,
 			'active' => $this-> active
             ]);
-
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'success',
+                'message' => '¡ Model Successfully Update !',
+            ]);
             $this->resetInput();
-            //$this->dispatchBrowserEvent('closeModal');
-
             $this->dispatchBrowserEvent('closeModalWin', [
                 'modalNameClose' => 'updateModeloDataModal',
              ]);
 	
-             $this->dispatchBrowserEvent('notify', [
-                'type' => 'success',
-                'message' => '¡ Modelo Successfully updated.!',
-            ]);
         }
     }
 
@@ -132,20 +149,13 @@ class Estudios extends Component
             'porce' => 'required',
             'typemodelo_id' => 'required',
         ]);
-
-        // Crear un nuevo modelo
-
         Modelo::create([
             'name' => $this->model_name,
             'porce' => $this->porce,
             'nick' => $this->nick,
             'typemodelo_id' => $this->typemodelo_id,
         ]);
-
-        //$this->dispatchBrowserEvent('closeModalWin', 'NewModelDataModal');
-        // Emitir el evento 'closeModalWin' con los parámetros 'modalName' y 'btnSelector'
-
-
+     
         $this->dispatchBrowserEvent('closeModalWin', [
             'modalNameClose' => 'NewModelDataModal', // close win del modl
             'btnSelector' => '#btn-new2', // select new modal si no se envia no abre no ejecuta el nuevo modal o el primero que lo llamo 
@@ -156,10 +166,6 @@ class Estudios extends Component
             'message' => '¡ Model Successfully created!',
         ]);
 
-        // Realizar las acciones necesarias después de guardar el modelo
-        // ...
-
-        // Cerrar el popup y actualizar los registros
         $this->dispatchBrowserEvent('closePopup');
         $this->resetForm();
     }
@@ -203,6 +209,7 @@ class Estudios extends Component
     public function cancel()
     {
         $this->resetInput();
+        
         $this->resetPage(); // se resetea la pagina para el keyword y paginado
     }
 
@@ -216,6 +223,7 @@ class Estudios extends Component
 
     private function resetInput()
     {
+        $this->selected_id = null;
         $this->name = null;
         $this->city = null;
         $this->dir = null;
@@ -245,8 +253,6 @@ class Estudios extends Component
     public function edit($id)
     {
         $record = Estudio::findOrFail($id);
-
-        // Verificar si el usuario puede modificar el registro
         if ($record->userCanModify()) {
             $this->selected_id = $id;
             $this->name = $record->name;
@@ -257,11 +263,25 @@ class Estudios extends Component
                 'type' => 'failure',
                 'message' => '¡ Unauthorized error, Registry not recovered.!',
             ]);
+           $this->resetInput();
+           $this->dispatchBrowserEvent('closeModalWin', [
+            'modalNameClose' => 'updateDataModal',
+         ]);
+       
         }
     }
 
     public function update()
     {
+        
+        if(!$this->selected_id){
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡Unauthorized Record Null !',
+            ]);
+            return false;
+        }
+
         $this->validate([
             'name' => 'required',
             'city' => 'required',
@@ -282,19 +302,19 @@ class Estudios extends Component
                 'type' => 'success',
                 'message' => '¡ Estudio Successfully updated.!',
             ]);
+        }else{
+            $this->resetForm();
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡ Studio Unauthorized error, Registry not recovered.!',
+            ]);
         }
     }
 
 
     public function destroy_model($id) // destroy estudiomodelo la relacion 
     {
-        $record = Estudiomodelo::find($id);
-        /*
-        $this->dispatchBrowserEvent('loading', [
-            'type_loading' => 'hourglass', // o cualquier otro tipo de carga que desees, como 'Hourglass', 'Circle', etc.
-            'seg' => 3000,  // Duración de la animación de carga en milisegundos.
-        ]);    
-        */
+        $record = Estudiomodelo::find($id);   
         $name_tem = $record->name ?? '';
 
         if ($record && $record->delete()) {

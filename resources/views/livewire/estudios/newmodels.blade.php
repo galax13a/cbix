@@ -80,7 +80,7 @@
 					<input type="hidden" wire:model="selected_id_modelo">
                     <div class="form-group">
                         <label for="name"></label>
-                        <input wire:model.defer="name_modelo" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model.defer="name_modelo" type="text" class="form-control" id="name" placeholder="Name">@error('name_modelo') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="nick"></label>

@@ -5,7 +5,6 @@ import './bootstrap';
 import '../sass/app.scss'
 
 // import alpine js
-
 window.addEventListener('notify', event => { // notificaciones y modals
     const { type, message, OpenWin36 } = event.detail;
     Notiflix.Notify[type](message);
@@ -19,21 +18,20 @@ window.addEventListener('notify', event => { // notificaciones y modals
 });
 
 // keywords confirm bnt
-
 document.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {
         var confirmYesButton = document.querySelector('#NXConfirmButtonOk');
         if (confirmYesButton && document.getElementById('NXConfirmButtonOk').style.display !== 'none') {
             event.preventDefault();
             confirmYesButton.click();
-            //alert('Enter key pressed');
+     
         }
     } else if (event.key === 'Escape') {
         var confirmNoButton = document.querySelector('#NXConfirmButtonCancel');
         if (confirmNoButton && document.getElementById('NXConfirmButtonCancel').style.display !== 'none') {
             event.preventDefault();
             confirmNoButton.click();
-            // alert('Escape key pressed');
+        
         }
     }
 });
@@ -41,14 +39,14 @@ window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
 
     var tdElement = document.querySelector(`td[data-record="${recordId}"]`);
     var secondTdValue;
-    
+
     if (tdElement) {
         secondTdValue = tdElement.nextElementSibling.textContent;
     } else {
         tdElement = "No found TD TABLE  data-record={{ $row->id }}"
-       
+
     }
-    //    var tdElement = document.querySelector(`td[data-record="${recordId}"]`);
+
     if (tdElement) {
         var tdText = tdElement.innerText;
 
@@ -92,27 +90,28 @@ window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
     }
 };
 
-
 window.addEventListener('loading', event => {
     const { type_loading, seg } = event.detail;
-    /*    
-        Loading.standard();
-        Loading.hourglass();
-        Loading.circle();
-        Loading.arrows();
-        Loading.dots();
-        Loading.pulse();
+    /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
     */
     if (Notiflix.Loading[type_loading]) {
-        Notiflix.Loading[type_loading]('Loading...');
-        /*
-        setTimeout(() => {
-            Notiflix.Loading.remove();            
-        }, seg);
-        */
+        Notiflix.Loading[type_loading]('Loading...');        
         Notiflix.Loading.remove(seg);
     } else {
         console.error(`Loading type "${type_loading}" does not exist.`);
     }
 });
+
+let  btn_upt = document.getElementById("btn-update");
+let  btn_str = document.getElementById("btn-store");
+
+
+if (btn_upt || btn_str) {
+    btn_upt.addEventListener("click", function () {      
+        dispatchLoadingEvent('dots', 1600);
+    });
+    btn_str.addEventListener("click", function () {      
+        dispatchLoadingEvent('dots', 1600);
+    });
+}
 

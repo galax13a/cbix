@@ -12,7 +12,8 @@
                                 <x-btnmore />
                             </div>
                             <div class="col">
-
+                                <strong>.::Studios::.</strong>
+                                       
                             </div>
                             <div class="col">
                                 <button id="btn-new2" title="Add Models for Studios" type="button"
@@ -47,7 +48,7 @@
                     @include('livewire.estudios.newmodels')
 
                     <div class="table-responsive">
-                   
+
                         <table class="table table-bordered table-sm">
                             <thead class="thead">
                                 <tr class="text-center shadow-sm text-bold text-primary">

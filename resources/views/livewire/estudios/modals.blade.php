@@ -16,10 +16,7 @@
                         <label for="city"></label>
                         <input wire:model.defer="city" type="text" class="form-control" id="city" placeholder="City">@error('city') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="dir"></label>
-                        <input wire:model.defer="dir" type="text" class="form-control" id="dir" placeholder="Dir">@error('dir') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+               
 
                 </form>
             </div>
@@ -59,7 +56,7 @@
             </div>
             <div class="modal-footer">
                 <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2" data-bs-dismiss="modal">❌ Close</button>
-                <button id="btn-update" type="button" wire:click.prevent="update()" class="btn btn-icon shadow-lg m-2">Save ✅</button>
+                <button id="btn-update" type="button" wire:click.prevent="update()" class="btn btn-icon shadow-lg m-2">Update ✅</button>
             </div>
        </div>
     </div>

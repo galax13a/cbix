@@ -105,7 +105,6 @@
 
     @livewireScripts
     <script>
-
         function openwin36(modalName) { // open close all modals
             var myModalwin32 = new bootstrap.Modal(document.getElementById(modalName));
             myModalwin32.show();
@@ -116,7 +115,7 @@
                 closeButton.addEventListener('click', function() {
                     myModalwin32.hide();
                     var elements = document.querySelectorAll('.modal-backdrop.fade.show');
-                    
+
                     elements.forEach(function(element) {
                         element.remove();
                     });
@@ -129,21 +128,19 @@
                 document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
 
             });
-                      
+
             window.addEventListener('closeModalUpdate', () => {
-               // document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
-               document.querySelector("#btn-close-update").click();
+                // document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
+                document.querySelector("#btn-close-update").click();
 
             });
-
-            
 
             window.addEventListener('closeModalWin', (event) => {
                 const parameters = event.detail; // record params
 
                 if (parameters.modalNameClose) { // xlose  modal                     
                     const selector =
-                    `#${parameters.modalNameClose} > div > div > div.modal-header > button`;
+                        `#${parameters.modalNameClose} > div > div > div.modal-header > button`;
                     document.querySelector(selector).click();
                 }
 
@@ -157,14 +154,18 @@
     </script>
 
     <script type="module">
-        //if (window.location.href.indexOf('/admin/') !== -1) {
-           const addModal = new bootstrap.Modal('#createDataModal');
-           const editModal = new bootstrap.Modal('#updateDataModal');
+        //if (window.location.href.indexOf('/admin/') !== -1) {     
+        let addModal0 = document.querySelector('#createDataModal');
+         if (addModal0) {
+            const addModal = new bootstrap.Modal('#createDataModal');
+            const editModal = new bootstrap.Modal('#updateDataModal');
             window.addEventListener('closeModal', () => {
                addModal.hide();
                editModal.hide();
             })
+        }
        // }
+
     </script>
     <script>
         function turnOnDarkMode() {
@@ -181,6 +182,16 @@
                 el.classList.remove('bg-dark');
                 //el.classList.add('bg-white');
             });
+        }
+
+        function dispatchLoadingEvent(type_loading, seg) {
+            const event = new CustomEvent('loading', {
+                detail: {
+                    type_loading,
+                    seg
+                }
+            });
+            window.dispatchEvent(event);
         }
     </script>
     <script src="/js/alpinejs.js" defer></script>
