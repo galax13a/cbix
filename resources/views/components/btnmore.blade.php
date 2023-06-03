@@ -1,5 +1,5 @@
 <div>					
-    <div  style="display: flex;  align-items: left;">            
+    <div  style="display: flex;  align-items: left;">                    
         <div class="text-left">
             <input wire:model='keyWord' type="text" class="form-control form-control-lg w-full" name="search" id="search"
              placeholder="{{ __('messages.keyword-new') }}">

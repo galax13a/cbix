@@ -6,7 +6,7 @@
             <div class="card">
 
                 <div class="card-header bg-transparent">
-                    <div class="container text-center">
+                    <div class="text-center">
                         <div class="row">
                             <div class="col">
                                 <x-btnmore />
@@ -24,7 +24,7 @@
                                     </strong>
                                 </button>
 
-                                <button id="btn-new2" title="Add Models for Studios" type="button" class="btn btn-icon btn-sm"
+                                <button id="btn-new2" title="Help Studio" type="button" class="btn btn-icon btn-sm"
                                 @click="openwin36('howmodelDataModal')"
                                 >
                                     <strong>
@@ -47,24 +47,25 @@
                     @include('livewire.estudios.newmodels')
 
                     <div class="table-responsive">
+                   
                         <table class="table table-bordered table-sm">
                             <thead class="thead">
-                                <tr>
-                                    <td>#</td>
+                                <tr class="text-center shadow-sm text-bold text-primary">
+                                    <td>🎹</td>
                                     <th>Name</th>
                                     <th>City</th>
-                                    <th>Dir</th>
+                                   
                                     <th class="text-center thead-danger">My Models 💟</th>
-                                    <th class="text-center thead">Command</th>
+                                    <th class="text-center thead">⭕️</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @forelse($estudios as $row)
                                     <tr class="text-center">
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td class="shadow-sm">{{ $loop->iteration }}</td>
                                         <td data-record="{{ $row->id }}">{{ $row->name }}</td>
                                         <td>{{ $row->city }}</td>
-                                        <td>{{ $row->dir }}</td>
+                                    
                                         <td class="text-center">
                                             <button id="list_table1" wire:click="look_table({{ $row->id }})" type="button"
                                                 class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal"

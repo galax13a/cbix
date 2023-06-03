@@ -65,6 +65,19 @@
                                                     </button>
                                                 </a>
                                                 <a href="javascript:void(0)" class="text-decoration-none"
+                                                @click="openwin36('updateModeloDataModal')"
+                                                wire:click="edit_modelo({{$record->modelo_id}})"
+                                            >
+                                                <button title="Edit Modelo" tooltips="Edit record"
+                                                    @click="activeButton = 'edit_modelo'"
+                                                    :class="{ 'active-menu-td': activeButton === 'edit_modelo' }"
+                                                    class="menu-item rounded-button"
+                                                >
+                                                    <h6 class="my-2">✅</h6>
+                                                </button>
+                                            </a>
+
+                                                <a href="javascript:void(0)" class="text-decoration-none"
                                                 @click="openwin36('update_estudiomodelDataModal')"
                                                 wire:click="edit_estudiomodel({{$record->id}})"
                                             >

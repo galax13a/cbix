@@ -112,6 +112,15 @@
                                         community
                                         and discover how this app can transform your approach to studying and research.
                                     </p>
+                                    <p>
+                                        "This tool is not intended to be the ultimate solution for webcam studios
+                                        dedicated solely to this activity. In that case, we recommend cam4studio.com in
+                                        Spanish. It offers a better application experience that is tailored to meet your
+                                        specific needs. Here, you will find an easy and fast way to manage your models
+                                        and your team. Whether you are an independent monitor, manager, or a model,
+                                        cam4studio.com provides a comprehensive administration platform for webcam
+                                        studios."
+                                    </p>
                                 @else
                                     {{-- Mostrar contenido en español --}}
                                     <p> <strong>Botchatur</strong> es una aplicación innovadora diseñada para
@@ -120,6 +129,7 @@
                                         modelos de estudio, Botchatur está aquí para ayudarte en cada paso del camino.
                                         Comienza por
                                         <x-com-link-new-studio />
+
                                     </p>
 
                                     <p>Luego, agrega modelos para tener un mejor control de tu sistema</p>
@@ -146,6 +156,18 @@
                                     <p>Con Botchatur, la gestión de estudios nunca ha sido tan fácil. Únete a nuestra
                                         comunidad de aprendizaje y descubre cómo esta aplicación puede transformar tu
                                         enfoque hacia el estudio e investigación.</p>
+
+                                    <p>
+                                        "Esta herramienta no pretende ser la solución definitiva para estudios de
+                                        webcams especializados en esta actividad. En ese caso, recomendamos
+                                        cam4studio.com en español. Esta plataforma ofrece una experiencia de aplicación
+                                        más completa y personalizada, diseñada específicamente para satisfacer las
+                                        necesidades de estudios de webcams. En cam4studio.com encontrarás una forma
+                                        fácil y rápida de gestionar tus modelos y equipo de trabajo. Ya sea que seas un
+                                        monitor, un manager independiente o un modelo individual, este sitio proporciona
+                                        una plataforma de administración integral para los estudios de webcams."
+
+                                    </p>
                                 @endif
 
                             </div>
@@ -775,7 +797,7 @@
                                             más. Todo esto contribuirá a construir una imagen sólida y atractiva para
                                             tus modelos en Chaturbate.</p>
 
-                                        <p>Regala membresías Pro:</p>
+                                        <p>Regala 🏅 Membresías Pro:</p>
 
                                         <p>Y como si fuera poco, tienes la posibilidad de regalar membresías Pro a tus
                                             modelos favoritas. Estas membresías les otorgan beneficios exclusivos, como

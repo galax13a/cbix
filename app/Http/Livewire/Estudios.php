@@ -18,7 +18,9 @@ class Estudios extends Component
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $city, $dir;
     public $estudio_id, $modelo_id, $estudio_id_change;
-    public $model_name, $porce, $typemodelo_id, $nick;
+    public $model_name, $porce, $typemodelo_id, $nick; // modelo
+
+    public $selected_id_modelo, $name_modelo, $nick2, $email, $dni, $wsp, $img, $active; //extramodelo
 
 
     public function updatingKeyWord() // reset pages keywork
@@ -32,6 +34,16 @@ class Estudios extends Component
         $this->porce = 100;
         $this->typemodelo_id = 1;
         $this->estudio_id_change = 0;
+
+        $this->name_modelo = null;
+		$this->nick = null;
+		$this->nick2 = null;
+		$this->email = null;
+		$this->dni = null;
+		$this->wsp = null;
+		$this->porce = null;
+		$this->typemodelo_id = null;
+		$this->img = null;
     }
 
     public function openPopup()
@@ -41,13 +53,77 @@ class Estudios extends Component
     }
     private function resetForm()
     {
-        $this->model_name = '';
-        //        $this->porce = '';
-        $this->nick = '';
-        // $this->typemodelo_id = '';
+        $this->selected_id_modelo = null;
+        $this->name_modelo = '';       
+        $this->nick = '';       
+        $this->name = null;
+		$this->nick = null;
+		$this->nick2 = null;
+		$this->email = null;
+		$this->dni = null;
+		$this->wsp = null;
+		$this->porce = null;
+		$this->typemodelo_id = '';
+		$this->img = null;
+		$this->active = null;
+    }
+    
+    public function edit_modelo($id) // edit modleo select id modelos 
+    {
+        $record = Modelo::findOrFail($id);
+        $this->selected_id_modelo = $id; 
+		$this->name_modelo = $record-> name;
+		$this->nick = $record-> nick;
+		$this->nick2 = $record-> nick2;
+		$this->email = $record-> email;
+		$this->dni = $record-> dni;
+		$this->wsp = $record-> wsp;
+		$this->porce = $record-> porce;
+		$this->typemodelo_id = $record-> typemodelo_id;
+		$this->img = $record-> img;
+		$this->active = $record-> active;
     }
 
-    public function storage_models()
+    public function update_modelos()
+    {
+        $this->validate([
+		'name_modelo' => 'required',
+		'porce' => 'required',
+		'typemodelo_id' => 'required',
+		'active' => 'required',
+        ]);
+
+        if ($this->selected_id) {
+			$record = Modelo::find($this->selected_id_modelo);
+            $record->update([ 
+			'name' => $this-> name_modelo,
+			'nick' => $this-> nick,
+			'nick2' => $this-> nick2,
+			'email' => $this-> email,
+			'dni' => $this-> dni,
+			'wsp' => $this-> wsp,
+			'porce' => $this-> porce,
+			'typemodelo_id' => $this-> typemodelo_id,
+			'img' => $this-> img,
+			'active' => $this-> active
+            ]);
+
+            $this->resetInput();
+            //$this->dispatchBrowserEvent('closeModal');
+
+            $this->dispatchBrowserEvent('closeModalWin', [
+                'modalNameClose' => 'updateModeloDataModal',
+             ]);
+	
+             $this->dispatchBrowserEvent('notify', [
+                'type' => 'success',
+                'message' => '¡ Modelo Successfully updated.!',
+            ]);
+        }
+    }
+
+
+    public function storage_models() // save modelos 
     {
         // Validar los campos requeridos del formulario
         $this->validate([
@@ -210,7 +286,7 @@ class Estudios extends Component
     }
 
 
-    public function destroy_model($id)
+    public function destroy_model($id) // destroy estudiomodelo la relacion 
     {
         $record = Estudiomodelo::find($id);
         /*
@@ -256,6 +332,7 @@ class Estudios extends Component
         }
     }
 
+
     public function edit_estudiomodel($id) // row tabla estudiomodelo llave
     {
         $record = Estudiomodelo::findOrFail($id);
@@ -264,7 +341,7 @@ class Estudios extends Component
         $this->modelo_id = $record->modelo_id;
     }
 
-    public function update_estudiomodel()
+    public function update_estudiomodel() //update estudio-modelo
     { // cambio de la llave  $this->estudio_id_change
 
         $this->validate([
