@@ -9,6 +9,6 @@ return [
     'btn-crud-edit' => 'Editar Registro',
     'btn-crud-delete' => 'Eliminar Registro',
     'keyword-new' => 'Buscar por palabras',    
-    'studio-view-btn-addmodelstudio' => 'Agregar Modelo Studio'
+    'studio-view-btn-addmodelstudio' => 'Agregar Modelo'
     // etc...
 ];

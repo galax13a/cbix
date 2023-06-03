@@ -12,28 +12,38 @@
                                 <x-btnmore />
                             </div>
                             <div class="col">
-                                <strong>.::Studios::.</strong>
+                                <strong class="punter tagneon text-center">Studio Manager</strong>
                                        
                             </div>
                             <div class="col">
+                                <div class="btn-group btn-group-sm mt-0 shadow-sm rounded-4" role="group" aria-label="control">
+                            
                                 <button id="btn-new2" title="Add Models for Studios" type="button"
                                     class="btn btn-icon btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#create2DataModal">
+                                    data-bs-target="#NewModelDataModal">
                                     <strong>
                                         ☝️
                                         {{ __('messages.studio-view-btn-addmodelstudio') }}                                     
                                     </strong>
                                 </button>
+                            
+                                <button id="btn-new2" title="Models Studio" type="button" class="btn btn-icon btn-sm"
+                                @click="openwin36('create2DataModal')"
+                                >
+                                    <strong>
+                                        {{ session('locale') == 'es' ? '😺Modelos Studio' : '😺 Models Studio' }}                                        
+
+                                    </strong>
 
                                 <button id="btn-new2" title="Help Studio" type="button" class="btn btn-icon btn-sm"
                                 @click="openwin36('howmodelDataModal')"
                                 >
                                     <strong>
-                                        {{ session('locale') == 'es' ? '📗Ayuda Studio' : '📗 Help Studio' }}                                        
+                                        {{ session('locale') == 'es' ? '📗Studio Ayuda ' : '📗Studio Help' }}                                        
 
                                     </strong>
                                 </button>
-
+                            </div>
                             </div>
                         </div>
                     </div>
@@ -68,11 +78,11 @@
                                         <td>{{ $row->city }}</td>
                                     
                                         <td class="text-center">
-                                            <button id="list_table1" wire:click="look_table({{ $row->id }})" type="button"
-                                                class="btn btn-icon shadow-md m-2 shadow-sm" data-bs-toggle="modal"
+                                            <strong id="list_table1" wire:click="look_table({{ $row->id }})" type="button"
+                                                class="p-1 custom-link shadow-sm" data-bs-toggle="modal"
                                                 data-bs-target="#TableShowDataModal">
-                                                <strong>👉 Models [ {{ $row->modelos_count }} ]</strong>
-                                            </button>
+                                              👉 Models [ {{ $row->modelos_count }} ]
+                                            </strong>
                                         </td>
                                         <td width="90">
                                             <x-btncrud>

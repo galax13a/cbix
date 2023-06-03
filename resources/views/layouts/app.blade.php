@@ -28,7 +28,7 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md  shadow-sm">
+        <nav class="navbar navbar-expand-md  shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     🦖 <strong> {{ config('app.name', 'Laravel') }} </strong>

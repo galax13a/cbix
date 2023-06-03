@@ -1,14 +1,16 @@
 <div>
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <p  title="{{ __('messages.btn-crud-edit') }}" class="punter buton69 shadow-md" data-bs-toggle="modal" data-bs-target="#updateDataModal" class="dropdown-item" wire:click="edit({{$id_editar}})">
-            ✅               
-        </p>        
-        <p title="{{ __('messages.btn-crud-delete') }} " class="punter buton69 shadow-md" onclick='window.confirmDelete({{$id_editar}}, "confirm-delete-model")'>
+    <div class="btn-group btn-group-sm mt-0 shadow-sm" role="group" aria-label="CRUD Button">
+        <button 
+        title="{{ __('messages.btn-crud-edit') }}" 
+        type="button" class="btn btn-light"
+            data-bs-toggle="modal" data-bs-target="#updateDataModal" wire:click="edit({{ $id_editar }})">
+            ✅
+        </button>
+        <button 
+        type="button" class="btn btn-light"
+             onclick='window.confirmDelete({{ $id_editar }}, "confirm-delete-model")'
+            title="{{ __('messages.btn-crud-delete') }} " type="button" class="btn btn-primary">
             ⛔️
-        </p>
-        
-        <p   class="punter buton69 shadow-md d-none " onclick="confirm('Confirm Delete Row ? \nDeleted Row cannot be recovered!')||event.stopImmediatePropagation()" wire:click="destroy({{$id_editar}})" >
-            ❌
-        </p>
-      </div>
+        </button>
+    </div>
 </div>
