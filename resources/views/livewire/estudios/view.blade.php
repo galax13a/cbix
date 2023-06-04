@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
 
         <div class="col-md-12 my-2" id="view-js-live-pages">
-            <div class="card">
+            <div class="card bg-transparent border-0">
 
                 <div class="card-header bg-transparent">
                     <div class="text-center">
@@ -13,37 +13,36 @@
                             </div>
                             <div class="col">
                                 <strong class="punter tagneon text-center">Studio Manager</strong>
-                                       
+
                             </div>
                             <div class="col">
-                                <div class="btn-group btn-group-sm mt-0 shadow-sm rounded-4" role="group" aria-label="control">
-                            
-                                <button id="btn-new2" title="Add Models for Studios" type="button"
-                                    class="btn btn-icon btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#NewModelDataModal">
-                                    <strong>
-                                        ☝️
-                                        {{ __('messages.studio-view-btn-addmodelstudio') }}                                     
-                                    </strong>
-                                </button>
-                            
-                                <button id="btn-new2" title="Models Studio" type="button" class="btn btn-icon btn-sm"
-                                @click="openwin36('create2DataModal')"
-                                >
-                                    <strong>
-                                        {{ session('locale') == 'es' ? '😺Modelos Studio' : '😺 Models Studio' }}                                        
+                                <div class="btn-group btn-group-sm mt-0 shadow-sm rounded-4 text-center" role="group"
+                                    aria-label="control">
 
-                                    </strong>
+                                    <button id="btn-new2" title="Add Models for Studios" type="button"
+                                        class="btn btn-icon btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#NewModelDataModal">
+                                        <strong>
+                                            ☝️
+                                            {{ __('messages.studio-view-btn-addmodelstudio') }}
+                                        </strong>
+                                    </button>
 
-                                <button id="btn-new2" title="Help Studio" type="button" class="btn btn-icon btn-sm"
-                                @click="openwin36('howmodelDataModal')"
-                                >
-                                    <strong>
-                                        {{ session('locale') == 'es' ? '📗Studio Ayuda ' : '📗Studio Help' }}                                        
+                                    <button id="btn-new2" title="Models Studio" type="button"
+                                        class="btn btn-icon btn-sm" @click="openwin36('create2DataModal')">
+                                        <strong>
+                                            {{ session('locale') == 'es' ? '😺Modelos Studio' : '😺 Models Studio' }}
 
-                                    </strong>
-                                </button>
-                            </div>
+                                        </strong>
+
+                                        <button id="btn-new2" title="Help Studio" type="button"
+                                            class="btn btn-icon btn-sm" @click="openwin36('howmodelDataModal')">
+                                            <strong>
+                                                {{ session('locale') == 'es' ? '📗Studio Ayuda ' : '📗Studio Help' }}
+
+                                            </strong>
+                                        </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -65,7 +64,7 @@
                                     <td>🎹</td>
                                     <th>Name</th>
                                     <th>City</th>
-                                   
+
                                     <th class="text-center thead-danger">My Models 💟</th>
                                     <th class="text-center thead">⭕️</th>
                                 </tr>
@@ -76,12 +75,12 @@
                                         <td class="shadow-sm">{{ $loop->iteration }}</td>
                                         <td data-record="{{ $row->id }}">{{ $row->name }}</td>
                                         <td>{{ $row->city }}</td>
-                                    
+
                                         <td class="text-center">
-                                            <strong id="list_table1" wire:click="look_table({{ $row->id }})" type="button"
-                                                class="p-1 custom-link shadow-sm" data-bs-toggle="modal"
+                                            <strong id="list_table1" wire:click="look_table({{ $row->id }})"
+                                                type="button" class="p-1 custom-link shadow-sm" data-bs-toggle="modal"
                                                 data-bs-target="#TableShowDataModal">
-                                              👉 Models [ {{ $row->modelos_count }} ]
+                                                👉 Models [ {{ $row->modelos_count }} ]
                                             </strong>
                                         </td>
                                         <td width="90">

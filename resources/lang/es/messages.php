@@ -2,8 +2,9 @@
 
 return [
     'welcome' => 'Bienvenido',
-    'login' => 'Iniciar sesión',
-    'pages' => 'paginas',
+    'Login' => 'Iniciar sesión',
+    'pages' => 'paginas',    
+    'Register' => 'Registro',
     'language' => 'Spanish',
     'new' => 'Agregar',
     'btn-crud-edit' => 'Editar Registro',

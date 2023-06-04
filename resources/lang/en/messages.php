@@ -10,6 +10,5 @@ return [
     'btn-crud-delete' => 'Delete Record',
     'keyword-new' => 'Search Keyword', 
     'language' => 'English',
-    'studio-view-btn-addmodelstudio' => 'Add Model'
-    // etc...
+    'studio-view-btn-addmodelstudio' => 'Models Add'
 ];

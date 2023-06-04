@@ -1,3 +1,47 @@
+.card-gb {
+  background-color: rgba(255, 255, 255, 0.3); /* Fondo con transparencia */
+  backdrop-filter: blur(10px); /* Desenfoque */
+  -webkit-backdrop-filter: blur(10px); /* Desenfoque para navegadores basados en WebKit */
+  padding: 10px;
+  margin: 4px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+
+
+}
+
+
+.navapp {
+  display: flex;
+  justify-content: center;
+  background-color:transparent;
+  padding: 0;
+  margin: 0;
+  
+}
+
+.navapp ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.navapp li {
+  margin: 0 10px;
+}
+
+.navapp a {
+  text-decoration: none;
+  color: #000;
+}
+
+.navapp a:hover {
+  color: #ff00ff;
+}
+
 .buton69 {
   display: flex;
   align-items: center;
@@ -179,6 +223,7 @@ body.dark .tagneon:hover {
 body.dark .tagneon:active {
   border: 2.5px solid yellow; /* Cambia el color del borde a amarillo */
 }
+
 body.dark .tagneon {
   z-index: 100;
   padding: 4px;
@@ -549,7 +594,7 @@ body {
 }
 
 .box-shadow-only-hover:hover {
-  box-shadow: 0 1.5rem 4rem rgba(22, 28, 45, 0.1);
+  box-shadow: 0 1.5rem 4rem rgba(179, 0, 149, 0.1);
 }
 
 .border-color-gray {

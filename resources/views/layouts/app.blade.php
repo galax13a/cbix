@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
     <!-- CSRF Token  VUE JS-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -28,10 +29,11 @@
 
     <div id="app">
 
-        <nav class="navbar navbar-expand-md  shadow-lg">
+        <nav class="navbar navbar-expand-md shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    🦖 <strong> {{ config('app.name', 'Laravel') }} </strong>
+                    <img src="/dino24.png" alt="botcham logo">
+                    <strong> {{ config('app.name', 'Laravel') }} </strong>
                 </a>
                 <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -39,50 +41,27 @@
                     <span class="navbar-toggler-icon bg-primary"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     @auth()
-                        <ul class="navbar-nav mr-auto">
+                        <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
                             <li class="nav-item">
-                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🟣 Apionechaturs</a>
-                            </li>
+                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🎁 Apps</a>
+                            </li>                     
                             <li class="nav-item">
-                                <a href="{{ url('/estudiomodelos') }}" class="nav-link">🟣 Estudiomodelos</a>
-                            </li>
-
+                                <a href="{{ url('/estudios') }}" class="nav-link">📂 Estudios</a>
+                            </li>                       
                             <li class="nav-item">
-                                <a href="{{ url('/typemodelos') }}" class="nav-link">🟣 Typemodelos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/apichaturs') }}" class="nav-link">🟣 Apichaturs</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{ url('/modelos') }}" class="nav-link">🟣 Modelos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/estudios') }}" class="nav-link">🟣 Estudios</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/pagemasters') }}" class="nav-link">🟣 Pagemasters</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/categors') }}" class="nav-link">🟣 Categors</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a href="{{ url('/pages') }}" class="nav-link">🟣 {{ __('messages.pages') }}</a>
-                            </li>
-
+                                <a href="{{ url('/categors') }}" class="nav-link">🟠 Admin</a>
+                            </li>     
                         </ul>
                     @endauth()
                     <!-- Right Side Of Navbar -->
                     <x-com-login-nav />
 
-                    <div id="btncomlenguaje" class="position-absolute top-0 end-0">
-                        <x-ComLengue></x-ComLengue>
-
+                    <div id="btncomlenguaje" class="position-absolute top-0 end-0 d-none">                    
+                         <!--     <x-ComLengue></x-ComLengue>-->
                     </div>
 
                 </div>
@@ -91,6 +70,7 @@
 
         </nav>
 
+     
         {{-- <x-comnav1></x-comnav1> --}}
         {{-- two nav bar --}}
         <main class="py-1">
