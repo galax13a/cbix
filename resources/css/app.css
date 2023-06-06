@@ -136,10 +136,55 @@ body.dark tr:hover {
 }
 */
 
+.select2-results__option:hover {
+  text-align: center;
+  background-color: rgb(0, 255, 106);
+  color: #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 5px #ff00ff, 0 0 6px #ff00ff;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-left: 6px;
+  margin-right: 6px;
+  
+}
+
+body.dark .select2-results__option:hover {
+  text-align: center;
+  background-color: rgb(0, 255, 234);
+  color: #000000;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 5px #ff00ff, 0 0 6px #ff00ff;
+  margin-bottom: 10px;
+  font-weight: bold;
+  margin-left: 6px;
+  margin-right: 6px;
+  
+}
+/* start component */
+.select2-container--open .select2-dropdown--below {
+  border: 2px dashed rgb(123, 255, 0);
+  border-radius: 11px;
+  cursor: pointer;
+  max-width: 230px;
+}
+
+.select2-container--default .select2-selection--single {
+  width: 230px;
+}
+.select2-search--dropdown .select2-search__field {
+  padding: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
 body.dark .select2-search__field {
   text-align: center;
   width: 460px;
-  height: 60px;
+  height: 40px;
   background-color: #2b123a;
   font-weight: bold;
   text-transform: uppercase;
@@ -152,7 +197,7 @@ body.dark .select2-search__field {
 }
 body.dark .select2-container--open .select2-dropdown--below {
   border: 2px solid yellow;
-  border-radius: 160px;
+  border-radius: 120px;
 }
 body.dark .select2-selection--single .select2-selection__rendered {
   width: 360px;
@@ -187,10 +232,21 @@ body.dark .select2-selection__rendered{
 }
 .select2-search__field {
   text-align: center;
-  width: 360px;
-  background-color: #dc9fff;
+  width: 260px;
+  background-color: #8eff93;
   font-weight: bold;
   text-transform: uppercase;
+  border-radius: 10px;
+}
+
+.select2-container{
+  max-width: 230px;
+}
+
+.select2-container--open .select2-dropdown--below {
+  border: 2px dashed rgb(123, 255, 0);
+  border-radius: 11px;
+  cursor: pointer;
 }
 
 .select2-results__option{
