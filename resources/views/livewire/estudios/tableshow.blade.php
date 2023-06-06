@@ -1,6 +1,6 @@
 <!-- select table  Modal -->
 <div style="z-index: 1100;" wire:ignore.self class="modal fade" id="TableShowDataModal" data-bs-backdrop="static"
-    tabindex="-3" role="dialog" aria-labelledby="TableShowDataModalLabel" aria-hidden="true">
+     role="dialog" aria-labelledby="TableShowDataModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

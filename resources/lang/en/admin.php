@@ -1,9 +1,9 @@
 <?php
 
 return [
-    'home' => 'Home',
-    'login' => 'Login',
-    'register' => 'Register',
+    'admin' => 'Admin',
+    'studio' => 'AAtudios',
+    'models' => 'Artists',
     'download' => 'Downloads',
     'bios' => 'Bios',
     'apps' => 'Apps',

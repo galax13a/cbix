@@ -24,14 +24,14 @@ document.addEventListener('keydown', function (event) {
         if (confirmYesButton && document.getElementById('NXConfirmButtonOk').style.display !== 'none') {
             event.preventDefault();
             confirmYesButton.click();
-     
+
         }
     } else if (event.key === 'Escape') {
         var confirmNoButton = document.querySelector('#NXConfirmButtonCancel');
         if (confirmNoButton && document.getElementById('NXConfirmButtonCancel').style.display !== 'none') {
             event.preventDefault();
             confirmNoButton.click();
-        
+
         }
     }
 });
@@ -95,23 +95,35 @@ window.addEventListener('loading', event => {
     /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
     */
     if (Notiflix.Loading[type_loading]) {
-        Notiflix.Loading[type_loading]('Loading...');        
+        Notiflix.Loading[type_loading]('Loading...');
         Notiflix.Loading.remove(seg);
     } else {
         console.error(`Loading type "${type_loading}" does not exist.`);
     }
 });
 
-let  btn_upt = document.getElementById("btn-update");
-let  btn_str = document.getElementById("btn-store");
+let btn_upt = document.getElementById("btn-update");
+let btn_str = document.getElementById("btn-store");
 
 
 if (btn_upt || btn_str) {
-    btn_upt.addEventListener("click", function () {      
+    btn_upt.addEventListener("click", function () {
         dispatchLoadingEvent('dots', 1600);
     });
-    btn_str.addEventListener("click", function () {      
+    btn_str.addEventListener("click", function () {
         dispatchLoadingEvent('dots', 1600);
     });
 }
+
+$(document).ready(() => {
+
+    $('.select2-selection__rendered').on('click', function() {
+        alert('Se hizo clic en el span de selección');
+    });
+
+    $('tr').click(function () {
+        $(this).addClass('active').siblings().removeClass('active');
+    });
+});
+
 

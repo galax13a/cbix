@@ -13,6 +13,13 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 import Notiflix from 'notiflix';
 
+import $ from 'jquery';
+import jQuery from 'jquery';
+
+window.$ = $;
+window.jQuery = jQuery;
+
+
 window.Notiflix = Notiflix;
   // Cambiar el color de fondo en Notiflix.Block
   /*

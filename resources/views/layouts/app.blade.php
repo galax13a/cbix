@@ -20,6 +20,8 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
 
+    <link href="{{ asset('cs/select2.min.css') }}" rel="stylesheet" />
+
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
     @livewireStyles
@@ -47,21 +49,24 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
                             <li class="nav-item">
+                                <a href="{{ url('/roles') }}" class="nav-link">🟣 Roles</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="{{ url('/apionechaturs') }}" class="nav-link">🎁 Apps</a>
-                            </li>                     
+                            </li>
                             <li class="nav-item">
                                 <a href="{{ url('/estudios') }}" class="nav-link">📂 Estudios</a>
-                            </li>                       
+                            </li>
                             <li class="nav-item">
                                 <a href="{{ url('/categors') }}" class="nav-link">🟠 Admin</a>
-                            </li>     
+                            </li>
                         </ul>
                     @endauth()
                     <!-- Right Side Of Navbar -->
                     <x-com-login-nav />
 
-                    <div id="btncomlenguaje" class="position-absolute top-0 end-0 d-none">                    
-                         <!--     <x-ComLengue></x-ComLengue>-->
+                    <div id="btncomlenguaje" class="position-absolute top-0 end-0 d-none">
+                        <!--     <x-ComLengue></x-ComLengue>-->
                     </div>
 
                 </div>
@@ -70,7 +75,7 @@
 
         </nav>
 
-     
+
         {{-- <x-comnav1></x-comnav1> --}}
         {{-- two nav bar --}}
         <main class="py-1">
@@ -84,54 +89,13 @@
     <x-com-footer-app></x-com-footer-app>
 
     @livewireScripts
-    <script>
-        function openwin36(modalName) { // open close all modals
-            var myModalwin32 = new bootstrap.Modal(document.getElementById(modalName));
-            myModalwin32.show();
 
-            var closeButton = document.querySelector("#btn-close-table") || document.querySelector(
-                "#TableShowDataModal > div > div > div.modal-header > button");
-            if (closeButton) {
-                closeButton.addEventListener('click', function() {
-                    myModalwin32.hide();
-                    var elements = document.querySelectorAll('.modal-backdrop.fade.show');
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('js/select2.min.js') }}" defer></script>
 
-                    elements.forEach(function(element) {
-                        element.remove();
-                    });
-                });
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            window.addEventListener('closeModal2', () => {
-                document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
-
-            });
-
-            window.addEventListener('closeModalUpdate', () => {
-                // document.querySelector("#create2DataModal > div > div > div.modal-header > button").click();
-                document.querySelector("#btn-close-update").click();
-
-            });
-
-            window.addEventListener('closeModalWin', (event) => {
-                const parameters = event.detail; // record params
-
-                if (parameters.modalNameClose) { // xlose  modal                     
-                    const selector =
-                        `#${parameters.modalNameClose} > div > div > div.modal-header > button`;
-                    document.querySelector(selector).click();
-                }
-
-                if (parameters.btnSelector) { //   new modal win btn
-                    document.querySelector(parameters.btnSelector).click();
-                }
-            });
-
-
-        });
-    </script>
+    <link type="text/css" rel="stylesheet" href="{{ asset('cs/jquery-ui.css') }}">
+    <script src="/js/util.js"></script>
 
     <script type="module">
         //if (window.location.href.indexOf('/admin/') !== -1) {     
@@ -144,36 +108,8 @@
                editModal.hide();
             })
         }
-       // }
 
-    </script>
-    <script>
-        function turnOnDarkMode() {
-            document.querySelector('body').classList.add('dark');
-            document.querySelectorAll('.bg-white').forEach(el => {
-                //el.classList.remove('bg-white');
-                el.classList.add('bg-dark');
-            });
-        }
-
-        function turnOffDarkMode() {
-            document.querySelector('body').classList.remove('dark');
-            document.querySelectorAll('.bg-dark').forEach(el => {
-                el.classList.remove('bg-dark');
-                //el.classList.add('bg-white');
-            });
-        }
-
-        function dispatchLoadingEvent(type_loading, seg) {
-            const event = new CustomEvent('loading', {
-                detail: {
-                    type_loading,
-                    seg
-                }
-            });
-            window.dispatchEvent(event);
-        }
-    </script>
+        </script>
     <script src="/js/alpinejs.js" defer></script>
 </body>
 

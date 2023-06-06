@@ -1,5 +1,5 @@
 <!-- select table  Modal -->
-<div style="z-index: 1300;" wire:ignore.self class="modal fade" id="NewModelDataModal" data-bs-backdrop="static" tabindex="-4" role="dialog"
+<div style="z-index: 1300;" wire:ignore.self class="modal fade" id="NewModelDataModal" data-bs-backdrop="static" role="dialog"
     aria-labelledby="NewModelDataModalLabel" aria-hidden="true">
     
     <div class="modal-dialog" role="document">
@@ -68,7 +68,7 @@
 </div>
 
 <!-- Edit Modal Models -->
-<div style="z-index: 1301;" wire:ignore.self class="modal fade" id="updateModeloDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="updateModeloModalLabel" aria-hidden="true">
+<div style="z-index: 1301;" wire:ignore.self class="modal fade" id="updateModeloDataModal" data-bs-backdrop="static" role="dialog" aria-labelledby="updateModeloModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">

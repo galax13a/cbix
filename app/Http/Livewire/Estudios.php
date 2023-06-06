@@ -19,6 +19,7 @@ class Estudios extends Component
     public $selected_id, $keyWord, $name, $city, $dir;
     public $estudio_id, $modelo_id, $estudio_id_change;
     public $model_name, $porce, $typemodelo_id, $nick; // modelo
+    public $mymodels;
 
     public $selected_id_modelo, $name_modelo, $nick2, $email, $dni, $wsp, $img, $active; //extramodelo
 
@@ -176,6 +177,10 @@ class Estudios extends Component
 
         $estudioId = $this->estudio_id;
 
+        $this->mymodels  = Modelo::where('user_id', auth()->id())
+        ->where('active',1)
+        ->get();
+
         if ($estudioId > 0 || is_null($estudioId)) {
             $query = DB::table('estudiomodelos')
                 ->join('estudios', 'estudiomodelos.estudio_id', '=', 'estudios.id')
@@ -200,10 +205,15 @@ class Estudios extends Component
                     ->orWhere('dir', 'LIKE', $keyWord);
             })->paginate(10);
 
+        $this->emit('combos');
+
         return view('livewire.estudios.view', [
             'estudios' => $estudios,
             'tableLookRecord' => $tableLookRecord
         ]);
+
+        
+
     }
 
     public function cancel()

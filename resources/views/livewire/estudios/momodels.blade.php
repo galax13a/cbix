@@ -1,6 +1,6 @@
 <!-- Add Modal study models  -->
-<div style="z-index: 1200;" id="create2DataModal" wire:ignore.self class="modal fade" id="create2DataModal"
-    data-bs-backdrop="static" tabindex="-300" role="dialog" aria-labelledby="create2DataModalLabel" aria-hidden="true">
+<div style="z-index: 1200;"  id="create2DataModal" wire:ignore.self class="modal fade" id="create2DataModal"
+    data-bs-backdrop="static"  role="dialog" aria-labelledby="create2DataModalLabel" aria-hidden="true">
     <div class="modal-dialog shadow-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -18,22 +18,33 @@
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
                     </div>
-                    Select the model to add to this studio
-                    <label for="table">Models</label>
-                    <div class="form-group">
-                        <x-com-select-table table-name="modelos" id="modelo_id" display-name="name" />
-                        @error('modelo_id')
+                    Select the model to add to this Studio
+                    <div class="col">
+                        <div class="form-group">                          
+                            <select class="select2" id="models-select" wire:model="modelo_id">
+                                <option value=""> Select-ADD-Modelo-X </option>
+                                @foreach ($mymodels as $modelox)
+                                    <option value="{{ $modelox->id }}"> {{ Str::upper($modelox->name) }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('modelo_id')
                             <span class="error text-danger">{{ $message }}</span>
                         @enderror
+                        </div>
+                        <br>
                     </div>
+                
 
+           
+       
                     <br>
-                    <a class="my-2 custom-link rounded-4 shadow-sm p-2" href="javascript:void(0)" data-bs-toggle="modal"
+                    <a class="my-2 custom-link rounded-4 p-2" href="javascript:void(0)" data-bs-toggle="modal"
                         data-bs-target="#NewModelDataModal">👉 if the model does not exist.. Create New</a>
                     <br>
 
                     <br>
-                    <a class="my-2 custom-link rounded-4 shadow-sm p-2" href="javascript:void(0)"
+                    <a class="my-2 custom-link rounded-4 p-2" href="javascript:void(0)"
                         @click="openwin36('howmodelDataModal')">
                         👉 How does this work, click 💢.</a>
 
@@ -51,7 +62,7 @@
 
 <!-- ayuda Modal studio/models -->
 <div style="z-index: 1200;" wire:ignore.self class="modal fade" id="howmodelDataModal" data-bs-backdrop="static"
-    tabindex="1201" role="dialog" aria-labelledby="howmodelDataModalLabel" aria-hidden="true">
+     role="dialog" aria-labelledby="howmodelDataModalLabel" aria-hidden="true">
     <div class="modal-dialog shadow-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -829,7 +840,7 @@
 
 <!-- Edit Modal studio/models -->
 <div style="z-index: 1201;" wire:ignore.self class="modal fade" id="update_estudiomodelDataModal"
-    data-bs-backdrop="static" tabindex="1201" role="dialog" aria-labelledby="update_estudiomodelModalLabel"
+    data-bs-backdrop="static" role="dialog" aria-labelledby="update_estudiomodelModalLabel"
     aria-hidden="true">
     <div class="modal-dialog shadow-lg" role="document">
         <div class="modal-content">
