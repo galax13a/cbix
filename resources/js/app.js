@@ -7,7 +7,11 @@ import '../sass/app.scss'
 // import alpine js
 window.addEventListener('notify', event => { // notificaciones y modals
     const { type, message, OpenWin36 } = event.detail;
-    Notiflix.Notify[type](message);
+    //Notiflix.Notify[type](message);
+    Notiflix.Notify[type](message, {
+        timeout: 1600,
+        showOnlyTheLastOne: true
+      });
     if (OpenWin36) {// abrir ventana modal         
         openModal(OpenWin36);
     }
@@ -59,7 +63,7 @@ window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
                 var loadingEvent = new CustomEvent('loading', {
                     detail: {
                         type_loading: 'hourglass',
-                        seg: 2600,
+                        seg: 1600,
                     }
                 });
                 window.dispatchEvent(loadingEvent);
@@ -107,6 +111,7 @@ let btn_str = document.getElementById("btn-store");
 
 
 if (btn_upt || btn_str) {
+
     btn_upt.addEventListener("click", function () {
         dispatchLoadingEvent('dots', 1600);
     });
@@ -116,10 +121,6 @@ if (btn_upt || btn_str) {
 }
 
 $(document).ready(() => {
-
-    $('.select2-selection__rendered').on('click', function() {
-        alert('Se hizo clic en el span de selección');
-    });
 
     $('tr').click(function () {
         $(this).addClass('active').siblings().removeClass('active');

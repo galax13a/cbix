@@ -20,7 +20,7 @@
                     </div>
                     Select the model to add to this Studio
                     <div class="col">
-                        <div class="form-group">                          
+                        <div class="form-group mt-2">                          
                             <select class="select2" id="models-select" wire:ignore.self wire:model="modelo_id">
                                 <option value=""> Select-ADD-Modelo-X </option>
                                 @foreach ($mymodels as $modelox)
@@ -28,6 +28,7 @@
                                     </option>
                                 @endforeach
                             </select>
+                            <br>
                             @error('modelo_id')
                             <span class="error text-danger m-3">{{ $message }}</span>
                         @enderror

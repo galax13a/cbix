@@ -92,7 +92,9 @@
                                             <td>{{ $row->city }}</td>
 
                                             <td class="text-center">
-                                                <strong id="list_table1" wire:click="look_table({{ $row->id }})"
+                                                <strong id="list_table1"
+                                                onclick="dispatchLoadingEvent('dots', 1200)"
+                                                wire:click="look_table({{ $row->id }})"
                                                     type="button" class="p-1 custom-link shadow-sm"
                                                     data-bs-toggle="modal" data-bs-target="#TableShowDataModal">
                                                     👉 Models [ {{ $row->modelos_count }} ]
