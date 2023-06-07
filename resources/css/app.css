@@ -249,7 +249,7 @@ body.dark [id^=NotiflixNotifyWrap]>div>span.nx-with-icon {
   margin: 0 0 0 40px;
   padding: 0 0 0 10px;
   box-sizing: border-box;
-  background-color: #1f1d1d;
+  background-color: #1b0101;
   border-radius: 10px;
   padding: 2px;
   align-items: center;
@@ -1173,7 +1173,7 @@ body.dark .nx-message-icon {
   /* Cambia '50px' con el tamaño que desees para el icono */
   height: 36px !important;
   z-index: 999;
-  background-color: #56ff9a;
+  background-color: transparent;
   opacity: 0.9 !important;
 
 }

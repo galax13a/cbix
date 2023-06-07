@@ -9,7 +9,7 @@ window.addEventListener('notify', event => { // notificaciones y modals
     const { type, message, OpenWin36 } = event.detail;
     //Notiflix.Notify[type](message);
     Notiflix.Notify[type](message, {
-        timeout: 1600,
+        timeout: 3300,
         showOnlyTheLastOne: true
       });
     if (OpenWin36) {// abrir ventana modal         
