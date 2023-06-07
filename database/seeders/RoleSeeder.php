@@ -19,8 +19,9 @@ class DatabaseSeeder extends Seeder
        $rol2 = Role::create(['name'=>'admin']);       
        $rol3 = Role::create(['name'=>'host']);
        
-       $rol4 = Role::create(['name'=>'buyer']);       
+       $rol4 = Role::create(['name'=>'tiper']);       
        $rol5 = Role::create(['name'=>'artist']);
+       $rol0 = Role::create(['name'=>'guest']);
       
        $rol7 = Role::create(['name'=>'moderator']);
        $rol8 = Role::create(['name'=>'colaborator']);
@@ -71,6 +72,7 @@ class DatabaseSeeder extends Seeder
        
        Permission::create(['name' =>'host.admin.apps']);       
        Permission::create(['name' =>'host.admin.app.albums']);
+       Permission::create(['name' =>'host.admin.app.albums.documents']);
        Permission::create(['name' =>'host.admin.app.studios']);       
        Permission::create(['name' =>'host.admin.app.links']);
        Permission::create(['name' =>'host.admin.app.traffic']);   
@@ -92,13 +94,13 @@ class DatabaseSeeder extends Seeder
        Permission::create(['name' =>'host.admin.app.awards']); 
        Permission::create(['name' =>'host.admin.app.awards.topics']);      
        Permission::create(['name' =>'host.admin.app.awards.prizes']);
-       Permission::create(['name' =>'host.admin.app.awards.ideas-show']);
-       
+       Permission::create(['name' =>'host.admin.app.awards.ideas-show']);       
 
        Permission::create(['name' =>'host.admin.app.crm']);            
        Permission::create(['name' =>'host.admin.app.crm.taks']);
        Permission::create(['name' =>'host.admin.app.crm.teams']);
        Permission::create(['name' =>'host.admin.app.crm.support']);
+       Permission::create(['name' =>'host.admin.app.crm.paymentsinvoice']);
        Permission::create(['name' =>'host.admin.app.crm.calendar']); 
        Permission::create(['name' =>'host.admin.app.crm.contacs']);
        Permission::create(['name' =>'host.admin.app.crm.dm']);
