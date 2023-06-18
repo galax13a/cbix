@@ -50,11 +50,11 @@
 
 
                 <div class="card-body">
-                    @include('livewire.estudios.modals')
-                    @include('livewire.estudios.momodels')
+                    @include('livewire.admin.apps.estudios.modals')
+                    @include('livewire.admin.apps.estudios.momodels')
                     <!--  table  Modal xxxxxx -->
-                    @include('livewire.estudios.tableshow')
-                    @include('livewire.estudios.newmodels')
+                    @include('livewire.admin.apps.estudios.tableshow')
+                    @include('livewire.admin.apps.estudios.newmodels')
 
                     <div class="container">
                         <div class="row">

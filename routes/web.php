@@ -58,15 +58,23 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('roles', 'livewire.roles.index')->middleware('auth');
-Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
-Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
-Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
-Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');
-Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
-Route::view('modelos', 'livewire.modelos.index')->middleware('auth');
-Route::view('estudios', 'livewire.estudios.index')->middleware('auth');
-Route::view('pagemasters', 'livewire.pagemasters.index')->middleware('auth');
-Route::view('categors', 'livewire.categors.index')->middleware('auth');
+	Route::view('apps', 'livewire.apps.index')->middleware('auth');
+	Route::view('admin/apps', 'livewire.apps.index')->middleware('auth')->name('admin.apps');
 
-Route::view('pages', 'livewire.pages.index')->middleware('auth');
+	Route::view('admin/supports', 'livewire.supports.index')->middleware('auth')->name('admin.supports');
+	Route::view('admin/tasks', 'livewire.tasks.index')->middleware('auth')->name('admin.tasks');
+	Route::view('admin/stats', 'livewire.stats.index')->middleware('auth')->name('admin.stats');
+    Route::view('admin/users', 'livewire.usuarios.index')->middleware('auth')->name('usuarios');
+    Route::view('admin/roles', 'livewire.roles.index')->middleware('auth')->name('admin.roles');
+    Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
+    Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
+    Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
+    Route::view('typemodelos', 'livewire.typemodelos.index')->middleware('auth');
+    Route::view('apichaturs', 'livewire.apichaturs.index')->middleware('auth');
+    Route::view('modelos', 'livewire.modelos.index')->middleware('auth');
+    Route::view('admin/apps/estudios', 'livewire.admin.apps.estudios.index')->middleware('auth');
+    Route::view('pagemasters', 'livewire.pagemasters.index')->middleware('auth');
+    Route::view('categors', 'livewire.categors.index')->middleware('auth');
+
+    Route::view('pages', 'livewire.pages.index')->middleware('auth');
+    Route::view('root/dashboard', 'livewire.admin.dashboard.index')->middleware('auth');

@@ -7,8 +7,7 @@ use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-
-class DatabaseSeeder extends Seeder
+class RoleSeeder extends Seeder
 {
     /**
      * Seed the application's database.
@@ -16,9 +15,10 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {      
        $rol1 = Role::create(['name'=>'root']);
-       $rol2 = Role::create(['name'=>'admin']);       
+       $rol2 = Role::create(['name'=>'admin']);    
+       $rol22 = Role::create(['name'=>'support']);
+
        $rol3 = Role::create(['name'=>'host']);
-       
        $rol4 = Role::create(['name'=>'tiper']);       
        $rol5 = Role::create(['name'=>'artist']);
        $rol0 = Role::create(['name'=>'guest']);
@@ -33,113 +33,121 @@ class DatabaseSeeder extends Seeder
        $rol15 = Role::create(['name'=>'customer']);
        $rol16 = Role::create(['name'=>'webmaster']);
        $rol17 = Role::create(['name'=>'blogger']);
-       $rol18 = Role::create(['name'=>'studio webcam']);
-       $rol6 = Role::create(['name'=>'studio model']);
-       $rol19 = Role::create(['name'=>'independent model']);
-       $rol20 = Role::create(['name'=>'other']);
+       $rol18 = Role::create(['name'=>'studio-webcam']);
+       $rol6 = Role::create(['name'=>'studio-model']);
+       $rol19 = Role::create(['name'=>'independent-model']);
+       $rol20 = Role::create(['name'=>'buyer']);
+       $rol21 = Role::create(['name'=>'other']);
 
-       Permission::create(['name' =>'root.dashboard']);              
-       Permission::create(['name' =>'root.users']);
-       Permission::create(['name' =>'root.apps']);    
-       Permission::create(['name' =>'root.roles']);
+       Permission::create(['name' =>'root.dashboard'])->syncRoles([$rol1]);
+       Permission::create(['name' =>'root.dashboard.users'])->syncRoles([$rol1]);
+       Permission::create(['name' =>'root.dashboard.apps'])->syncRoles([$rol1]);    
+       Permission::create(['name' =>'root.dashboard.roles'])->syncRoles([$rol1]);
+       Permission::create(['name' =>'root.dashboard.config'])->syncRoles([$rol1]);
 
-       Permission::create(['name' =>'admin.dashboards']); 
-       Permission::create(['name' =>'admin.themes']);
-       Permission::create(['name' =>'admin.verify-accounts']);       
-       Permission::create(['name' =>'admin.paymentbanks']);
-       Permission::create(['name' =>'admin.payments']);
-       Permission::create(['name' =>'admin.credits']);
-       Permission::create(['name' =>'admin.categors']);    
+       Permission::create(['name' =>'admin.dashboard'])->syncRoles([$rol2],[$rol1]); 
+       Permission::create(['name' =>'admin.users'])->syncRoles([$rol2],[$rol1]); 
+       Permission::create(['name' =>'admin.roles'])->syncRoles([$rol2],[$rol1]); 
+       Permission::create(['name' =>'admin.themes'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.verify-accounts'])->syncRoles([$rol2]);      
+       Permission::create(['name' =>'admin.paymentbanks'])->syncRoles([$rol2]);      
+       Permission::create(['name' =>'admin.payments'])->syncRoles([$rol2]);      
+       Permission::create(['name' =>'admin.credits'])->syncRoles([$rol2]);      
+       Permission::create(['name' =>'admin.stats'])->syncRoles([$rol2]);          
+       Permission::create(['name' =>'admin.config'])->syncRoles([$rol2]);       
+       Permission::create(['name' =>'admin.tasks'])->syncRoles([$rol1]); 
        
-       Permission::create(['name' =>'admin.cms']);       
-       Permission::create(['name' =>'admin.cms.pages']);
-       Permission::create(['name' =>'admin.cms.blog']);
-       Permission::create(['name' =>'admin.cms.categorys']);
-       Permission::create(['name' =>'admin.cms.config-site']);       
+       Permission::create(['name' =>'admin.cms'])->syncRoles([$rol2]);       
+       Permission::create(['name' =>'admin.cms.pages'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.cms.blog'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.cms.tags'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.cms.categorys'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.cms.config-site'])->syncRoles([$rol2]);       
 
-       Permission::create(['name' =>'admin.apps']);       
-       Permission::create(['name' =>'admin.app.awards']);
-       Permission::create(['name' =>'admin.app.forum']);
+       Permission::create(['name' =>'admin.apps'])->syncRoles([$rol2]);       
+       Permission::create(['name' =>'admin.app.awards'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.app.forum'])->syncRoles([$rol2]);
+       Permission::create(['name' =>'admin.app.tools'])->syncRoles([$rol2]);
  
-       /* permison hosts */ 
+       /* permison hosts */        
+       Permission::create(['name' =>'host.admin'])->syncRoles([$rol3], [$rol2]);       
+       Permission::create(['name' =>'host.admin.api'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.profile'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.affiliates'])->syncRoles([$rol3], [$rol2]);
+  
        
-       Permission::create(['name' =>'host.admin']);       
-       Permission::create(['name' =>'host.admin.api']);
-       Permission::create(['name' =>'host.admin.profile']);       
-       Permission::create(['name' =>'host.admin.affiliates']);
-       Permission::create(['name' =>'host.admin.roles']);
-
-       
-       Permission::create(['name' =>'host.admin.apps']);       
-       Permission::create(['name' =>'host.admin.apps.api']);
-       Permission::create(['name' =>'host.admin.app.albums']);
-       Permission::create(['name' =>'host.admin.app.albums.pics']);
-       Permission::create(['name' =>'host.admin.app.albums.videos']);
-       Permission::create(['name' =>'host.admin.app.albums.documents']);       
-       Permission::create(['name' =>'host.admin.app.links']);
-       Permission::create(['name' =>'host.admin.app.traffic']);   
-       Permission::create(['name' =>'host.admin.app.notes']);       
-       Permission::create(['name' =>'host.admin.app.dm']);
-       Permission::create(['name' =>'host.admin.app.favorite-cams']);
-       Permission::create(['name' =>'host.admin.app.love-letters']);
-       Permission::create(['name' =>'host.admin.app.whishlist']);   
-       Permission::create(['name' =>'host.admin.app.campaigns']); 
-       
-       Permission::create(['name' =>'host.admin.app.chaturbate']); 
-       Permission::create(['name' =>'host.admin.app.studios']);
-       Permission::create(['name' =>'host.admin.app.servercams']);
-       Permission::create(['name' =>'host.admin.app.hostone']);
-       Permission::create(['name' =>'host.admin.app.faceXcam']);
-       Permission::create(['name' =>'host.admin.app.onlyFans']);
-       Permission::create(['name' =>'host.admin.app.lives']);
-
-       Permission::create(['name' =>'host.admin.app.socialmedia']); 
-       Permission::create(['name' =>'host.admin.app.socialmedia.whatapp']);
-       Permission::create(['name' =>'host.admin.app.socialmedia.telegram']);
-       Permission::create(['name' =>'host.admin.app.socialmedia.instagram']);
-       Permission::create(['name' =>'host.admin.app.socialmedia.tiktok']);
+       Permission::create(['name' =>'host.admin.apps'])->syncRoles([$rol3], [$rol2]);              
+       Permission::create(['name' =>'host.admin.apps.api'])->syncRoles([$rol3], [$rol2]);       
+       Permission::create(['name' =>'host.admin.app.albums'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.albums.pics'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.albums.videos'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.albums.documents'])->syncRoles([$rol3], [$rol2]);       
+       Permission::create(['name' =>'host.admin.app.links'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.traffic'])->syncRoles([$rol3], [$rol2]);   
+       Permission::create(['name' =>'host.admin.app.notes'])->syncRoles([$rol3], [$rol2]);       
+       Permission::create(['name' =>'host.admin.app.dm'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.favorite-cams'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.love-letters'])->syncRoles([$rol3], [$rol2]);    
+       Permission::create(['name' =>'host.admin.app.whishlist'])->syncRoles([$rol3], [$rol2]);   
+       Permission::create(['name' =>'host.admin.app.campaigns'])->syncRoles([$rol3], [$rol2]);
        
 
-       Permission::create(['name' =>'host.admin.app.bots']);
-       Permission::create(['name' =>'host.admin.app.bots.advertising-campaigns']);
-       Permission::create(['name' =>'host.admin.app.bots.whatsapp']);       
-       Permission::create(['name' =>'host.admin.app.bots.telegram']);             
-       
-       Permission::create(['name' =>'host.admin.app.chaturbate']);
-       Permission::create(['name' =>'host.admin.app.chaturbate.api']);
-       Permission::create(['name' =>'host.admin.app.chaturbate.bios']);
-       Permission::create(['name' =>'host.admin.app.chaturbate.affiliates']);   
-       Permission::create(['name' =>'host.admin.app.chaturbate.share']);   
-       
-       Permission::create(['name' =>'host.admin.app.awards']); 
-       Permission::create(['name' =>'host.admin.app.awards.topics']);      
-       Permission::create(['name' =>'host.admin.app.awards.prizes']);
-       Permission::create(['name' =>'host.admin.app.awards.ideas-show']);       
+       Permission::create(['name' =>'host.admin.app.studios'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.servercams'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.hostone'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.faceXcam'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.onlyFans'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.lives'])->syncRoles([$rol3], [$rol2]);
 
-       Permission::create(['name' =>'host.admin.app.crm']);            
-       Permission::create(['name' =>'host.admin.app.crm.taks']);
-       Permission::create(['name' =>'host.admin.app.crm.teams']);
-       Permission::create(['name' =>'host.admin.app.crm.support']);
-       Permission::create(['name' =>'host.admin.app.crm.paymentsinvoice']);
-       Permission::create(['name' =>'host.admin.app.crm.calendar']); 
-       Permission::create(['name' =>'host.admin.app.crm.contacs']);
-       Permission::create(['name' =>'host.admin.app.crm.typecontac']);  
-       Permission::create(['name' =>'host.admin.app.crm.dm']);          
+       Permission::create(['name' =>'host.admin.app.socialmedia'])->syncRoles([$rol3], [$rol2]); 
+       Permission::create(['name' =>'host.admin.app.socialmedia.phone'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.socialmedia.sms'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.socialmedia.whatapp'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.socialmedia.telegram'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.socialmedia.instagram'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.socialmedia.tiktok'])->syncRoles([$rol3], [$rol2]);
+
+       Permission::create(['name' =>'host.admin.app.bots'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.bots.advertising-campaigns'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.bots.whatsapp'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.bots.telegram'])->syncRoles([$rol3], [$rol2]);
+       
+       Permission::create(['name' =>'host.admin.app.chaturbate'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.chaturbate.api'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.chaturbate.bios'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.chaturbate.affiliates'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.chaturbate.share'])->syncRoles([$rol3], [$rol2]);
+       
+       Permission::create(['name' =>'host.admin.app.awards'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.awards.tip-menu'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.awards.topics'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.awards.prizes'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.awards.ideas-show'])->syncRoles([$rol3], [$rol2]);    
+
+       Permission::create(['name' =>'host.admin.app.crm'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.taks'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.teams'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.support'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.paymentsinvoice'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.calendar'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.contacs'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.typecontac'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.crm.dm'])->syncRoles([$rol3], [$rol2]);
     
-       Permission::create(['name' =>'host.admin.app.tools']);
-       Permission::create(['name' =>'host.admin.app.tools.dolar-colombia']);
-       Permission::create(['name' =>'host.admin.app.tools.test']);
-       Permission::create(['name' =>'host.admin.app.tools.canva']);
-       Permission::create(['name' =>'host.admin.app.tools.redux-imagens']);
-       Permission::create(['name' =>'host.admin.app.tools.imgurl']);      
-       Permission::create(['name' =>'host.admin.app.tools.dolar']);   
-       Permission::create(['name' =>'host.admin.app.tools.cbhorus']);   
-       Permission::create(['name' =>'host.admin.app.tools.traductor']);   
-       Permission::create(['name' =>'host.admin.app.tools.bg-img-transparent']); 
-       Permission::create(['name' =>'host.admin.app.tools.blog-chatur-es']); 
-       Permission::create(['name' =>'host.admin.app.tools.blog-chatur-en']); 
-       Permission::create(['name' =>'host.admin.app.tools.contracts']); 
-
+       Permission::create(['name' =>'host.admin.app.tools'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.dolar-colombia'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.test'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.canva'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.redux-imagens'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.imgurl'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.dolar'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.cbhorus'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.traductor'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.bg-img-transparent'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.blog-chatur-es'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.blog-chatur-en'])->syncRoles([$rol3], [$rol2]);
+       Permission::create(['name' =>'host.admin.app.tools.contracts'])->syncRoles([$rol3], [$rol2]);  
+  
     }
 }
 

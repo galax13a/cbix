@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 
     <!-- CSRF Token  VUE JS-->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -30,7 +30,7 @@
 <body>
 
     <div id="app">
-
+       
         <nav class="navbar navbar-expand-md shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -48,14 +48,15 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
+				
                             <li class="nav-item">
-                                <a href="{{ url('/roles') }}" class="nav-link">🟣 Roles</a>
+                                <a href="{{ url('/root/dashboard') }}" class="nav-link ">🦖 Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🎁 Apps</a>
+                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🎁 Gifts</a>                                
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/estudios') }}" class="nav-link">📂 Estudios</a>
+                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🔱 Api</a>                                
                             </li>
                             <li class="nav-item">
                                 <a href="{{ url('/categors') }}" class="nav-link">🟠 Admin</a>
@@ -74,7 +75,6 @@
             </div>
 
         </nav>
-
 
         {{-- <x-comnav1></x-comnav1> --}}
         {{-- two nav bar --}}
@@ -95,7 +95,7 @@
     <script src="{{ asset('js/select2.min.js') }}" defer></script>
 
     <link type="text/css" rel="stylesheet" href="{{ asset('cs/jquery-ui.css') }}">
-    <script src="/js/util.js"></script>
+    <script src="{{ asset('js/util.js') }} "></script>
 
     <script type="module">
         //if (window.location.href.indexOf('/admin/') !== -1) {     
@@ -110,7 +110,7 @@
         }
 
         </script>
-    <script src="/js/alpinejs.js" defer></script>
+    <script src= {{ asset('js/alpinejs.js') }} defer></script>
 </body>
 
 </html>

@@ -40,7 +40,7 @@
                   
                     <a href="{{ url('/en') }}" title="English" class="custom-link  btn rounded-4  {{ session('locale') == 'en' ? 'btn-dark' : '' }} ">En</a>
                     <a href="{{ url('/es') }}" title="Spanish" class=" custom-link btn  rounded-4  {{ session('locale') == 'es' ? 'btn-dark' : '' }}">Es</a>
-                    <a href="javascript:void(0)">
+                    <a href="javascript:void(0)" style="background: transparent;">
                         @if (App::getLocale() === 'es')
                             <img src="/icons/es.png" alt="Spanish" class="language-icon">
                         @elseif(App::getLocale() === 'en')
@@ -75,9 +75,9 @@
                     </form>
 
                     <div class="btn-group btn-group-sm">
-                        <a href="{{ url('/en') }}" title="English" class="custom-link  btn" aria-current="page">En</a>
-                        <a href="{{ url('/es') }}" title="Spanish" class=" custom-link btn ">Es</a>
-                        <a href="javascript:void(0)">
+                        <a href="{{ url('/en') }}" title="English" class="custom-link  btn border-3" aria-current="page">En</a>
+                        <a href="{{ url('/es') }}" title="Spanish" class=" custom-link border-3 btn ">Es</a>
+                        <a href="javascript:void(0)"  style="background: transparent;">
                             @if (App::getLocale() === 'es')
                                 <img src="/icons/es.png" alt="Spanish" class="language-icon">
                             @elseif(App::getLocale() === 'en')

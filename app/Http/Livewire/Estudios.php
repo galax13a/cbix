@@ -46,6 +46,7 @@ class Estudios extends Component
 		$this->porce = null;
 		$this->typemodelo_id = null;
 		$this->img = null;
+        
     }
 
     public function openPopup()
@@ -207,13 +208,10 @@ class Estudios extends Component
 
         $this->emit('combos');
 
-        return view('livewire.estudios.view', [
+        return view('livewire.admin.apps.estudios.view', [
             'estudios' => $estudios,
             'tableLookRecord' => $tableLookRecord
         ]);
-
-        
-
     }
 
     public function cancel()
