@@ -25,9 +25,10 @@
                                 @forelse($usuarios as $row)
                                     <tr class="text-left">
                                         <td class="text-bold text-center">
-																	
-                                            <i title="Roles Users"
-                                                class="shadow-sm rounded-3 p-2 text-dark m-1 fab fa-get-pocket fs-5"></i>
+                                            <a href="#" @click.prevent="openwin36('updateDataModal')" wire:click="edit({{$row->id}})">
+                                                <i title="Roles Users" class="shadow-sm rounded-3 p-2 text-dark m-1 fab fa-get-pocket fs-5"></i>
+                                            </a>
+                                            
                                             <i title="Users Segurity"
                                                 class="shadow-sm rounded-3 p-2 text-dark m-1 fas fa-user-shield fs-5"></i>
                                             <i title="Bans! Users"

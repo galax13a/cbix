@@ -3,7 +3,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel"> New App</h5>
+                <h5 class="modal-title" id="createDataModalLabel"> New Gift</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
@@ -17,25 +17,8 @@
                         <input wire:model.defer="description" type="text" class="form-control" id="description" placeholder="Description">@error('description') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="is_approved"></label>
-                        <input wire:model.defer="is_approved" type="text" class="form-control" id="is_approved" placeholder="Is Approved">@error('is_approved') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                  
-                  <label for="table"></label>
-                            <div class="form-group">
-                              <x-com-select-table table-name="apps0categors" id="apps0categors_id" display-name="name" />@error('apps_categors_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
-                    <div class="form-group">
-                        <label for="meta_title"></label>
-                        <input wire:model.defer="meta_title" type="text" class="form-control" id="meta_title" placeholder="Meta Title">@error('meta_title') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="meta_description"></label>
-                        <input wire:model.defer="meta_description" type="text" class="form-control" id="meta_description" placeholder="Meta Description">@error('meta_description') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="meta_keywords"></label>
-                        <input wire:model.defer="meta_keywords" type="text" class="form-control" id="meta_keywords" placeholder="Meta Keywords">@error('meta_keywords') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="cost"></label>
+                        <input wire:model.defer="cost" type="text" class="form-control" id="cost" placeholder="Cost">@error('cost') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                   <label for="active"></label>
                     <div class="form-group">
@@ -57,7 +40,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="updateModalLabel">Update App</h5>
+                <h5 class="modal-title" id="updateModalLabel">Update Gift</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -72,25 +55,8 @@
                         <input wire:model.defer="description" type="text" class="form-control" id="description" placeholder="Description">@error('description') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="is_approved"></label>
-                        <input wire:model.defer="is_approved" type="text" class="form-control" id="is_approved" placeholder="Is Approved">@error('is_approved') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                  
-                  <label for="table"></label>
-                            <div class="form-group">
-                              <x-com-select-table table-name="apps0categors" id="apps0categors_id" display-name="name" />@error('apps_categors_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
-                    <div class="form-group">
-                        <label for="meta_title"></label>
-                        <input wire:model.defer="meta_title" type="text" class="form-control" id="meta_title" placeholder="Meta Title">@error('meta_title') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="meta_description"></label>
-                        <input wire:model.defer="meta_description" type="text" class="form-control" id="meta_description" placeholder="Meta Description">@error('meta_description') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="meta_keywords"></label>
-                        <input wire:model.defer="meta_keywords" type="text" class="form-control" id="meta_keywords" placeholder="Meta Keywords">@error('meta_keywords') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="cost"></label>
+                        <input wire:model.defer="cost" type="text" class="form-control" id="cost" placeholder="Cost">@error('cost') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                   <label for="active"></label>
                     <div class="form-group">

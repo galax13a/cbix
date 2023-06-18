@@ -34,7 +34,7 @@
         <nav class="navbar navbar-expand-md shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img src="/dino24.png" alt="botcham logo">
+                    <img class="d-none" src="/dino24.png" alt="botcham logo">
                     <strong> {{ config('app.name', 'Laravel') }} </strong>
                 </a>
                 <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
@@ -48,19 +48,17 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
-				
+						
                             <li class="nav-item">
                                 <a href="{{ url('/root/dashboard') }}" class="nav-link ">🦖 Dashboard</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🎁 Gifts</a>                                
+                                <a href="{{ route('admin.gifts') }}" class="nav-link">🎁 Gifts</a>                                
                             </li>
                             <li class="nav-item">
-                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🔱 Api</a>                                
+                                <a href="{{ url('/apionechaturs') }}" class="nav-link">🔱 Chatur</a>                                
                             </li>
-                            <li class="nav-item">
-                                <a href="{{ url('/categors') }}" class="nav-link">🟠 Admin</a>
-                            </li>
+                           
                         </ul>
                     @endauth()
                     <!-- Right Side Of Navbar -->

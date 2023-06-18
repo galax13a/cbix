@@ -58,14 +58,16 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('apps', 'livewire.apps.index')->middleware('auth');
+	Route::view('admin/gifts', 'livewire.gifts.index')->middleware('auth')->name('admin.gifts');
+	Route::view('apps0tags', 'livewire.apps0tags.index')->middleware('auth');
+	Route::view('admin/credits-goals', 'livewire.credits_goals.index')->middleware('auth')->name('admin.credits_goals');
 	Route::view('admin/apps', 'livewire.apps.index')->middleware('auth')->name('admin.apps');
-
 	Route::view('admin/supports', 'livewire.supports.index')->middleware('auth')->name('admin.supports');
 	Route::view('admin/tasks', 'livewire.tasks.index')->middleware('auth')->name('admin.tasks');
 	Route::view('admin/stats', 'livewire.stats.index')->middleware('auth')->name('admin.stats');
     Route::view('admin/users', 'livewire.usuarios.index')->middleware('auth')->name('usuarios');
     Route::view('admin/roles', 'livewire.roles.index')->middleware('auth')->name('admin.roles');
+    
     Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
     Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
     Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');

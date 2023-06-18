@@ -19,7 +19,7 @@ class CreateSupportsAndReplySupportsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
 
-        Schema::create('reply_supports', function (Blueprint $table) {
+        Schema::create('reply0supports', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('support_id');
             $table->unsignedBigInteger('user_id');
@@ -33,7 +33,7 @@ class CreateSupportsAndReplySupportsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('reply_supports');
+        Schema::dropIfExists('reply0supports');
         Schema::dropIfExists('supports');
     }
 }

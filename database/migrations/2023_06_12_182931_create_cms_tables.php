@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('crm_categors', function (Blueprint $table) {
+        Schema::create('crm0categors', function (Blueprint $table) {
             $table->id();
             $table->string('name');            
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
 
-        Schema::create('crm_pages', function (Blueprint $table) {
+        Schema::create('crm0pages', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug')->nullable()->unique();
@@ -34,7 +34,7 @@ return new class extends Migration
             $table->timestamps();
         });
     
-        Schema::create('crm_blogs', function (Blueprint $table) {
+        Schema::create('crm0blogs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('slug')->nullable()->unique();
@@ -47,16 +47,16 @@ return new class extends Migration
             $table->timestamps();
         });
     
-        Schema::create('crm_tags', function (Blueprint $table) {
+        Schema::create('crm0tags', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
             $table->timestamps();
         });
     
-        Schema::create('crm_page_tag', function (Blueprint $table) {
+        Schema::create('crm0page0tag', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('page_id')->constrained('crm_pages')->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained('crm_tags')->onDelete('cascade');
+            $table->foreignId('page_id')->constrained('crm0pages')->onDelete('cascade');
+            $table->foreignId('tag_id')->constrained('crm0tags')->onDelete('cascade');
             $table->timestamps();
         });
     }    
@@ -65,10 +65,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('crm_page_tag');
-        Schema::dropIfExists('crm_tags');
-        Schema::dropIfExists('crm_categors');
-        Schema::dropIfExists('crm_blogs');
-        Schema::dropIfExists('crm_pages');
+        Schema::dropIfExists('crm0page0tag');
+        Schema::dropIfExists('crm0tags');
+        Schema::dropIfExists('crm0categors');
+        Schema::dropIfExists('crm0blogs');
+        Schema::dropIfExists('crm0pages');
     }
 };
