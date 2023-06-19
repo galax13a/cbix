@@ -13,23 +13,42 @@ class Usuarios extends Component
 
     protected $listeners = ['confirm-delete-td' => 'destroy_model', 'delete-model' => 'destroy'];
 
-	protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $email;
     public $password;
 
-    public $users; 
+    public $users;
     public $roles;
     public $selectedUser;
     public $selectedRoles = [];
     public $userRoles = [];
-    public $user_ban, $ban_reason, $ban;
+    public $user_ban, $ban_reason, $ban, $all_bans, $ban_expiry;
+
+    public $banOptions = [
+        '5 minutes' => '+5 minutes',
+        '1 hour' => '+1 hour',
+        '3 hours' => '+3 hours',
+        '6 hours' => '+6 hours',
+        '1 day' => '+1 day',
+        '3 days' => '+3 days',
+        '1 week' => '+1 week',
+        '1 month' => '+1 month',
+        '2 months' => '+2 months',
+        '3 months' => '+3 months',
+        '6 months' => '+6 months',
+        'Permanently' => null,
+    ];
+    
+    public $selectedBanOption;
+    
 
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
 
-    public function mount(){        
+    public function mount()
+    {
         $this->user_ban = false;
         $this->ban_reason = null;
         $this->ban = false;
@@ -37,74 +56,79 @@ class Usuarios extends Component
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '%' . $this->keyWord . '%';
 
-        $this->roles = Role::all();       
+        $this->roles = Role::all();
+        $this->all_bans = User::onlyBanned()->count();
 
         return view('livewire.usuarios.view', [
             'usuarios' => User::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('email', 'LIKE', $keyWord)->paginate(10)
+                ->orWhere('name', 'LIKE', $keyWord)
+                ->orWhere('email', 'LIKE', $keyWord)->paginate(10)
         ]);
     }
-	
+
     public function cancel()
     {
         $this->resetInput();
     }
-	
+
     private function resetInput()
-    {		
-		$this->name = null;
-		$this->email = null;
+    {
+        $this->name = null;
+        $this->email = null;
     }
 
     public function store()
     {
         $this->validate([
-		'name' => 'required',
-		'email' => 'required|email',
-        'password' => bcrypt('password')
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => bcrypt('password')
         ]);
 
-        User::create([ 
-			'name' => $this-> name,
-			'email' => $this-> email
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email
         ]);
-        
+
         $this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');		
+        $this->dispatchBrowserEvent('closeModal');
         $this->dispatchBrowserEvent('notify', [
-                'type' => 'success',
-                'message' => '¡ Usuario Successfully created!',
-            ]);
+            'type' => 'success',
+            'message' => '¡ Usuario Successfully created!',
+        ]);
     }
 
     public function edit($id)
     {
         $record = User::findOrFail($id);
         $this->selectedUser = $id;
-        $this->selected_id = $id; 
-		$this->name = $record-> name;
-		$this->email = $record-> email;
-        $this->ban = $record->isBanned(); // Añadido     
+        $this->selected_id = $id;
+        $this->name = $record->name;
+        $this->email = $record->email;
+        $this->ban = $record->isBanned(); // Añadido    
+        $this->ban_expiry = $record->bans->last() ? $record->bans->last()->expired_at : null;
+
+
+        $this->ban_reason =  $record->bans->last() ? $record->bans->last()->comment : null;
+
 
         $this->updatedSelectedUser();
-
     }
 
     public function updatedSelectedUser()
     {
         $user = User::find($this->selectedUser);
-    $this->selectedRoles = $user ? $user->roles->pluck('id')->toArray() : [];
-    $this->userRoles = $user ? $user->getRoleNames()->toArray() : [];
+        $this->selectedRoles = $user ? $user->roles->pluck('id')->toArray() : [];
+        $this->userRoles = $user ? $user->getRoleNames()->toArray() : [];
     }
 
 
     public function updateUserRoles()
     {
         $user = User::find($this->selectedUser);
-        $roles = Role::whereIn('id', $this->selectedRoles)->get();  
+        $roles = Role::whereIn('id', $this->selectedRoles)->get();
 
         if ($user && $roles) {
             $user->syncRoles($roles); // Asigna los roles al usuario
@@ -119,32 +143,33 @@ class Usuarios extends Component
     public function update()
     {
         $this->validate([
-		'name' => 'required',
-		'email' => 'required|email',
-        'ban' => 'required'
+            'name' => 'required',
+            'email' => 'required|email',
+            'ban' => 'required'
         ]);
 
         if ($this->selected_id) {
-           
+
             $user = User::find($this->selectedUser);
             if ($this->ban) {
-                $user->ban();
+                $user->ban([
+                    'comment' => $this->ban_reason,
+                    'expired_at' => $this->selectedBanOption,
+                ]);
             } else {
                 $user->unban();
             }
 
-			$record = User::find($this->selected_id);
-            $record->update([ 
-			'name' => $this-> name,
-			'email' => $this-> email
+            $record = User::find($this->selected_id);
+            $record->update([
+                'name' => $this->name,
+                'email' => $this->email
             ]);
-
-           
 
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
-	
-             $this->dispatchBrowserEvent('notify', [
+
+            $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
                 'message' => '¡ User Successfully updated.!',
             ]);

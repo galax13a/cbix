@@ -8,7 +8,7 @@
                 <div class="card-header bg-transparent">
                     <x-btnmore>
                         <a href=" {{ route('admin.roles') }} " target="_blank" title="New Roles">
-                            <button class="btn btn-icon shadow-sm text-warning">
+                            <button class="btn btn-icon shadow-sm text-warning" title="Roles">
                                 <i class="fab fa-get-pocket fs-5"></i>
 
                             </button>
@@ -16,7 +16,10 @@
 
                         <a href=" {{ url('admin/bans') }} " target="_blank" title="Users bans">
                             <button class="btn btn-icon shadow-sm text-danger">
-                                <i class="fas fa-user-secret fs-5"></i>
+                                <i class="fas fa-user-secret fs-5">
+                                    {{$this->all_bans}}
+
+                                </i>
 
                             </button>
                         </a>
@@ -59,6 +62,7 @@
                                               @else
                                               <i title="Bans! Users"
                                               class="shadow-sm rounded-3 p-2 text-dark m-1 fas fa-user-secret fs-5">
+                                              
                                           </i>
                                         @endif
                                         
