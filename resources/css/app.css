@@ -4,7 +4,36 @@
   padding: 6px;
   font-weight: bold;
 } 
-
+body.dark .ban-dark:hover{
+  background-color:#e95c80;
+}
+select option:checked {
+  background: rgb(0, 211, 211);
+  border-radius: 6px;
+  margin-top: 2px;
+  padding-left: 4px;
+  border: 1px dashed rgb(27, 36, 9);
+  font-weight: bold;
+  margin-right: 4px;
+  margin-left: 4px;
+  color: #000;
+}
+.d
+body.dark select option:checked {
+  color: #000;
+  background: rgb(100, 21, 96);
+  border-radius: 6px;
+  margin-top: 2px;
+  padding-left: 4px;
+  border: 1px dashed yellowgreen;
+}
+.dash-card:hover{
+  background-color: rgba(30, 28, 31, 0.3);
+  cursor: pointer;
+  background: linear-gradient(to right, #cfcd49, #92fd92);
+  border-radius: 10px;
+  
+}
 .dash-card:hover{
   background-color: rgba(30, 28, 31, 0.3);
   cursor: pointer;

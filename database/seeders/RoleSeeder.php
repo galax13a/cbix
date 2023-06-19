@@ -36,6 +36,8 @@ class RoleSeeder extends Seeder
        $rol18 = Role::create(['name'=>'studio-webcam']);
        $rol6 = Role::create(['name'=>'studio-model']);
        $rol19 = Role::create(['name'=>'independent-model']);
+       $rol23 = Role::create(['name'=>'photographer']);
+       $rol24 = Role::create(['name'=>'community manager']);
        $rol20 = Role::create(['name'=>'buyer']);
        $rol21 = Role::create(['name'=>'other']);
 

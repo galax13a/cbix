@@ -73,29 +73,8 @@
 
                         <div class="container">
                             <div class="row">
-                                <div class="col text-center">
-
-                                    <button id="btn-close"
-                                        class="bg-primary shadow rounded-3 text-bold font-bold mx-4 mb-2"type="button"
-                                        wire:click.prevent="updateUserRoles">
-                                        <strong>Assign-Rol🔒</strong>
-                                    </button>
-                                    <strong>Crt + click select + row roles.</strong>
-
-                                    <div class="form-check mt-4">
-                                        <label title="After checking, update" class="mx-4 punter shadow rounded-3" title="Banned User">
-                                            <input class="form-check-input" type="checkbox" wire:model="ban"
-                                                id="ban" name="ban" wire:model="user_ban">
-                                            <span class="badge text-danger bg-dark p-2 fs-5"><strong>Ban ! 
-                                                {{ $this->ban ? '💥' : '🚫' }}
-                                                </strong></span>
-                                   
-
-                                        </label>
-                                    </div>
 
 
-                                </div>
                                 <div class="col">
                                     <select wire:model="selectedRoles" multiple style="height: 260px;">
                                         @foreach ($roles as $role)
@@ -107,23 +86,60 @@
 
                                     @if (!empty($userRoles))
                                         <span class="badge bg-primary">
-                                            <strong>Current Roles: </strong>
+                                            <strong class=" shadow rounded-2 p-2 mb-4">Current Roles </strong>
 
                                         </span>
-                                        <div class="listar"
+                                        <div class="listar my-2"
                                             style="height: 210px; overflow-y: auto; overflow-x: hidden;">
                                             <ul>
                                                 @foreach ($userRoles as $role)
                                                     <li><span
-                                                            class="badge bg-light text-dark">{{ $role }}</span>
+                                                            class="badge bg-light text-dark punter shadow-sm">
+                                                            🔑 {{ $role }}</span>
                                                     </li>
                                                 @endforeach
                                             </ul>
                                         </div>
                                     @else
-                                        <strong>Roles Nulls</strong>
+                                        <strong>
+                                            This User !, Has no role within the site.
+                                                     <br>
+                                                     👉🏻  Assign a role ..🔰                                   
+
+                                        </strong>
                                     @endif
 
+                                </div>
+
+                                <div class="col">
+                                    <div class="m-2 p-2 shadow rounded-3">
+                                        <button id="btn-close"
+                                            class="bg-primary shadow rounded-3 text-bold font-bold mx-4 mb-2"type="button"
+                                            wire:click.prevent="updateUserRoles">
+                                            <strong class="shadow rounded-2 p-2">👉🏻Assign-Rol 🔒</strong>
+                                        </button>
+                                        <strong>Crt + click select + row roles.</strong>
+                                    </div>
+                                    <div class="form-check mt-4">
+                                   
+
+                                        <hr>
+                                        <label title="After checking, update"
+                                            class="mx-4 m-2 p-2 punter shadow rounded-3" title="Banned User">
+                                            <input class="form-check-input" type="checkbox" wire:model="ban"
+                                                id="ban" name="ban" wire:model="user_ban">
+                                            <span class="badge text-danger bg-dark p-2 fs-5 m-4">
+                                                <strong class=" p-2 shadow rounded-3 ban-dark">
+                                                Ban !
+                                                    {{ $this->ban ? '💥' : '🚫' }}
+                                                </strong>
+                                            </span>
+                                            <strong class="p-2 ">
+                                                You must update the user for the ban to be effective,  <br> choose the time
+                                                that will be banned
+                                            </strong>
+                                        </label>
+                                    </div>
                                 </div>
 
                                 @if ($this->ban)
@@ -131,27 +147,28 @@
                                     <div class="row shadow p-2 rounded-2 mt-1 ">
 
                                         <label class="mt-1">
-                                       
+
                                             <span class="badge bg-warning text-dark">
-                                                @if($this->ban)
-                                                @if($this->ban_permanent)
-                                                    <span class="bg-danger rounded-2 p-2">Permanently banned.</span>
-                                                @else
-                                                    @if($ban_expiry)
-                                                        <span>Ban expires: {{ $ban_expiry->diffForHumans() }}</span>
+                                                @if ($this->ban)
+                                                    @if ($this->ban_permanent)
+                                                        <span class="bg-danger rounded-2 p-2">Permanently
+                                                            banned.</span>
                                                     @else
-                                                        <span>The ban does not have an expiry date.</span>
+                                                        @if ($ban_expiry)
+                                                            <span class="bg-dark rounded-2 p-1">Ban expires: {{ $ban_expiry->diffForHumans() }}</span>
+                                                        @else
+                                                            <span class="bg-success rounded-2 p-1">The ban does not have an expiry date.</span>
+                                                        @endif
                                                     @endif
+                                                @else
+                                                    <span>This user has not been banned.</span>
                                                 @endif
-                                            @else
-                                                <span>This user has not been banned.</span>
-                                            @endif
-                                            
-                                            
+
+
                                             </span>
                                         </label>
-                                        
-                                     
+
+
                                         <select class="form-select" id="selectedBanOption"
                                             wire:model="selectedBanOption">
                                             <option value="">Ban Duration</option>

@@ -25,18 +25,28 @@ class Usuarios extends Component
     public $user_ban, $ban_reason, $ban, $all_bans, $ban_expiry, $ban_permanent;
 
     public $banOptions = [
-        '5 minutes' => '+2 minutes',
+        '2 minutes' => '+2 minutes',
         '5 minutes' => '+5 minutes',
+        '30 minutes' => '+30 minutes',
         '1 hour' => '+1 hour',
         '3 hours' => '+3 hours',
         '6 hours' => '+6 hours',
+        '9 hours' => '+9 hours',
+        '12 hours' => '+12 hours',
+        '15 hours' => '+15 hours',
         '1 day' => '+1 day',
+        '2 day' => '+2 day',
         '3 days' => '+3 days',
+        '5 days' => '+5 days',        
         '1 week' => '+1 week',
+        '2 week' => '+2 weeks',
+        '3 week' => '+3 weeks', 
         '1 month' => '+1 month',
         '2 months' => '+2 months',
         '3 months' => '+3 months',
         '6 months' => '+6 months',
+        '9 months' => '+9 months',
+        '12 months' => '+12 months',
         'Permanently' => 'permanent',
     ];
     
