@@ -22,9 +22,10 @@ class Usuarios extends Component
     public $selectedUser;
     public $selectedRoles = [];
     public $userRoles = [];
-    public $user_ban, $ban_reason, $ban, $all_bans, $ban_expiry;
+    public $user_ban, $ban_reason, $ban, $all_bans, $ban_expiry, $ban_permanent;
 
     public $banOptions = [
+        '5 minutes' => '+2 minutes',
         '5 minutes' => '+5 minutes',
         '1 hour' => '+1 hour',
         '3 hours' => '+3 hours',
@@ -36,7 +37,7 @@ class Usuarios extends Component
         '2 months' => '+2 months',
         '3 months' => '+3 months',
         '6 months' => '+6 months',
-        'Permanently' => null,
+        'Permanently' => 'permanent',
     ];
     
     public $selectedBanOption;
@@ -109,9 +110,11 @@ class Usuarios extends Component
         $this->email = $record->email;
         $this->ban = $record->isBanned(); // Añadido    
         $this->ban_expiry = $record->bans->last() ? $record->bans->last()->expired_at : null;
-
-
         $this->ban_reason =  $record->bans->last() ? $record->bans->last()->comment : null;
+      
+        $this->ban_permanent = $record->bans->last() ? is_null($record->bans->last()->expired_at) : false;
+    
+        $this->selectedBanOption="";
 
 
         $this->updatedSelectedUser();
@@ -151,15 +154,22 @@ class Usuarios extends Component
         if ($this->selected_id) {
 
             $user = User::find($this->selectedUser);
+
             if ($this->ban) {
-                $user->ban([
-                    'comment' => $this->ban_reason,
-                    'expired_at' => $this->selectedBanOption,
-                ]);
+                if ($this->selectedBanOption == 'permanent') {
+                    $user->ban([
+                        'comment' => $this->ban_reason,
+                    ]);
+                } else {
+                    $user->ban([
+                        'comment' => $this->ban_reason,
+                        'expired_at' =>$this->selectedBanOption
+                    ]);
+                }
             } else {
                 $user->unban();
             }
-
+            
             $record = User::find($this->selected_id);
             $record->update([
                 'name' => $this->name,

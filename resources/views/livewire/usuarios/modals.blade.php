@@ -49,7 +49,7 @@
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <div class="modal-body" style="margin-top:-29px">
+            <div class="modal-body" style="margin-top:-26px">
                 <form>
                     <input type="hidden" wire:model="selected_id">
                     <div class="form-group">
@@ -78,17 +78,18 @@
                                     <button id="btn-close"
                                         class="bg-primary shadow rounded-3 text-bold font-bold mx-4 mb-2"type="button"
                                         wire:click.prevent="updateUserRoles">
-                                        <strong>Assign Roles 🔒</strong>
+                                        <strong>Assign-Rol🔒</strong>
                                     </button>
-                                    <strong>Crt + click select + row Roles.</strong>
+                                    <strong>Crt + click select + row roles.</strong>
 
                                     <div class="form-check mt-4">
-                                        <label class="mx-4 punter" title="Banned User">
+                                        <label title="After checking, update" class="mx-4 punter shadow rounded-3" title="Banned User">
                                             <input class="form-check-input" type="checkbox" wire:model="ban"
                                                 id="ban" name="ban" wire:model="user_ban">
-                                            <span class="badge bg-dark p-2 fs-5"><strong>Ban! ⛔️</strong></span>
-
-                                            {{ $this->ban ? '✅ok' : '⛔️off' }}
+                                            <span class="badge text-danger bg-dark p-2 fs-5"><strong>Ban ! 
+                                                {{ $this->ban ? '💥' : '🚫' }}
+                                                </strong></span>
+                                   
 
                                         </label>
                                     </div>
@@ -127,18 +128,30 @@
 
                                 @if ($this->ban)
 
-                                    <div class="row shadow p-2 rounded-2 mt-2 ">
+                                    <div class="row shadow p-2 rounded-2 mt-1 ">
 
-                                        <label class="mt-1 mx-4 ">
+                                        <label class="mt-1">
+                                       
                                             <span class="badge bg-warning text-dark">
-
-                                                @if ($ban_expiry)
-                                                    Ban expires: {{ $ban_expiry->diffForHumans() }}
+                                                @if($this->ban)
+                                                @if($this->ban_permanent)
+                                                    <span class="bg-danger rounded-2 p-2">Permanently banned.</span>
                                                 @else
-                                                    This user has not been banned.
+                                                    @if($ban_expiry)
+                                                        <span>Ban expires: {{ $ban_expiry->diffForHumans() }}</span>
+                                                    @else
+                                                        <span>The ban does not have an expiry date.</span>
+                                                    @endif
                                                 @endif
+                                            @else
+                                                <span>This user has not been banned.</span>
+                                            @endif
+                                            
+                                            
+                                            </span>
                                         </label>
-                                        </span>
+                                        
+                                     
                                         <select class="form-select" id="selectedBanOption"
                                             wire:model="selectedBanOption">
                                             <option value="">Ban Duration</option>

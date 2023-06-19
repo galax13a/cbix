@@ -1,8 +1,7 @@
 .nav-link:hover{
   background-color:#ceffce;
-
   border-radius: 11px;
-  margin-top: 2px;
+  padding: 6px;
   font-weight: bold;
 } 
 
