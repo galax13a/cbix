@@ -7,10 +7,12 @@
             ✅
         </button>
         <button 
-        type="button" class="btn btn-light"
-             onclick='window.confirmDelete({{ $id_editar }}, "confirm-delete-model")'
-            title="{{ __('messages.btn-crud-delete') }} " type="button" class="btn btn-primary">
-            ⛔️
-        </button>
+        type="button" 
+        class="btn btn-light"
+        title="{{ __('messages.btn-crud-delete') }}"
+        onclick="window.confirmDelete({{ $id_editar }}, '{{ $x_delete ?? 'confirm-delete-model' }}')">
+        ⛔️
+    </button>
+    
     </div>
 </div>

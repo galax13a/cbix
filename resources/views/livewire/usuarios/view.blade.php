@@ -6,7 +6,24 @@
             <div class="card">
 
                 <div class="card-header bg-transparent">
-                    <x-btnmore />
+                    <x-btnmore>
+                        <a href=" {{ route('admin.roles') }} " target="_blank" title="New Roles">
+                            <button class="btn btn-icon shadow-sm text-warning">
+                                <i class="fab fa-get-pocket fs-5"></i>
+
+                            </button>
+                        </a>
+
+                        <a href=" {{ url('admin/bans') }} " target="_blank" title="Users bans">
+                            <button class="btn btn-icon shadow-sm text-danger">
+                                <i class="fas fa-user-secret fs-5"></i>
+
+                            </button>
+                        </a>
+
+                    </x-btnmore>
+
+
                 </div>
 
                 <div class="card-body">
@@ -15,35 +32,41 @@
                         <table class="table table-bordered table-sm">
                             <thead class="thead">
                                 <tr class="text-center">
-                                    <td>👻</td>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <td>Bans</td>
                                     <th class="text-center thead">Command</th>
                                 </tr>
                             </thead>
                             <tbody>
+                             
+                                
                                 @forelse($usuarios as $row)
-                                    <tr class="text-left">
+                                <tr>
+                                    <td data-record="{{ $row->id }}">
+                                        <li class="shadow-sm rounded-3 p-2 text-danger m-1 fas fa-user2-secret fs-6">
+                                            <span class=" badge text-dark ">{{ $loop->iteration }}</span></li>
+                                        {{ $row->name }}
+                                    </td>
+                                    <td>{{ $row->email }}</td>
+                                    
                                         <td class="text-bold text-center">
-                                            <a href="#" @click.prevent="openwin36('updateDataModal')" wire:click="edit({{$row->id}})">
-                                                <i title="Roles Users" class="shadow-sm rounded-3 p-2 text-dark m-1 fab fa-get-pocket fs-5"></i>
-                                            </a>
-                                            
-                                            <i title="Users Segurity"
-                                                class="shadow-sm rounded-3 p-2 text-dark m-1 fas fa-user-shield fs-5"></i>
-                                            <i title="Bans! Users"
-                                                class="shadow-sm rounded-3 p-2 text-danger m-1 fas fa-user-secret fs-5">												
-											</i>
-											
+                                            @if ($row->isBanned()) 
+                                                <i title="Bans! Users"
+                                                class="shadow-sm rounded-3 p-2 text-danger m-1 fas fa-user-secret fs-5">
+                                            </i>
+                                              
+                                              @else
+                                              <i title="Bans! Users"
+                                              class="shadow-sm rounded-3 p-2 text-dark m-1 fas fa-user-secret fs-5">
+                                          </i>
+                                        @endif
+                                        
                                         </td>
-                                        <td>
-											<li       class="shadow-sm rounded-3 p-2 text-danger m-1 fas fa-user2-secret fs-6"><span class=" badge text-dark ">{{ $loop->iteration }}</span></li>
-                                            {{ $row->name }}
-                                        </td>
-                                        <td>{{ $row->email }}</td>
                                         <td width="90">
                                             <x-btncrud>
                                                 <x-slot name="id_editar">{{ $row->id }}</x-slot>
+                                                <x-slot name="x_delete">delete-model</x-slot>
                                             </x-btncrud>
                                         </td>
                                     </tr>

@@ -39,6 +39,7 @@ document.addEventListener('keydown', function (event) {
         }
     }
 });
+
 window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
 
     var tdElement = document.querySelector(`td[data-record="${recordId}"]`);
@@ -56,7 +57,7 @@ window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
 
         Notiflix.Confirm.show(
             'Confirmation Delete',
-            `¿Are you sure you want to delete this record :  ${tdText} ?`,
+            `¿Are you sure you want to delete this record :  ${tdText} ?  `,
             'YES',
             'No',
             function () {

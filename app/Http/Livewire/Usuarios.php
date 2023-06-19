@@ -11,6 +11,8 @@ class Usuarios extends Component
 {
     use WithPagination;
 
+    protected $listeners = ['confirm-delete-td' => 'destroy_model', 'delete-model' => 'destroy'];
+
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $email;
     public $password;
@@ -20,17 +22,24 @@ class Usuarios extends Component
     public $selectedUser;
     public $selectedRoles = [];
     public $userRoles = [];
+    public $user_ban, $ban_reason, $ban;
 
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
 
+    public function mount(){        
+        $this->user_ban = false;
+        $this->ban_reason = null;
+        $this->ban = false;
+    }
+
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        $this->roles = Role::all();
+        $this->roles = Role::all();       
 
         return view('livewire.usuarios.view', [
             'usuarios' => User::latest()
@@ -78,6 +87,7 @@ class Usuarios extends Component
         $this->selected_id = $id; 
 		$this->name = $record-> name;
 		$this->email = $record-> email;
+        $this->ban = $record->isBanned(); // Añadido     
 
         $this->updatedSelectedUser();
 
@@ -94,13 +104,13 @@ class Usuarios extends Component
     public function updateUserRoles()
     {
         $user = User::find($this->selectedUser);
-        $roles = Role::whereIn('id', $this->selectedRoles)->get();
+        $roles = Role::whereIn('id', $this->selectedRoles)->get();  
 
         if ($user && $roles) {
             $user->syncRoles($roles); // Asigna los roles al usuario
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Roles Successfully created!',
+                'message' => '¡ Successfully created roles !',
             ]);
             $this->updatedSelectedUser();
         }
@@ -111,21 +121,32 @@ class Usuarios extends Component
         $this->validate([
 		'name' => 'required',
 		'email' => 'required|email',
+        'ban' => 'required'
         ]);
 
         if ($this->selected_id) {
+           
+            $user = User::find($this->selectedUser);
+            if ($this->ban) {
+                $user->ban();
+            } else {
+                $user->unban();
+            }
+
 			$record = User::find($this->selected_id);
             $record->update([ 
 			'name' => $this-> name,
 			'email' => $this-> email
             ]);
 
+           
+
             $this->resetInput();
             $this->dispatchBrowserEvent('closeModal');
 	
              $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Usuario Successfully updated.!',
+                'message' => '¡ User Successfully updated.!',
             ]);
         }
     }

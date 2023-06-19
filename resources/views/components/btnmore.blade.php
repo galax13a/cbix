@@ -11,5 +11,9 @@
         @if (session()->has('message'))
         <div wire:poll.4s class="btn btn-sm btn-info" style="margin-top:0px; margin-bottom:0px;"> {{ session('message') }} </div>
         @endif
-        </div>
+    
+        {{ $slot }}
+    
+    </div>
+
 </div>

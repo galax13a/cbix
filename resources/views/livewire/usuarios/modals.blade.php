@@ -49,7 +49,7 @@
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal"
                     aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="margin-top:-29px">
                 <form>
                     <input type="hidden" wire:model="selected_id">
                     <div class="form-group">
@@ -73,13 +73,14 @@
 
                         <div class="container">
                             <div class="row">
-                                <div class="col">
-                                    <label>Select* Roles: control + click select more.</label>
+                                <div class="col text-center">
+                                    <label>Crt + click select Roles.</label>
                                     <button id="btn-close"
                                         class="shadow rounded-3 text-bold font-bold mx-4 mb-2"type="button"
                                         wire:click.prevent="updateUserRoles">
                                         🔐 Assign Roles
-                                    </button>
+                                    </button>                                                                     
+
                                 </div>
                                 <div class="col">
                                     <select wire:model="selectedRoles" multiple style="height: 260px;">
@@ -104,18 +105,36 @@
                                     @endif
                                 
                                 </div>
+
+                                <div class="row shadow p-2 rounded-2 mt-2">
+                                    <div class="form-check">
+                                        <label class="mx-4">
+                                            <input class="form-check-input" type="checkbox" wire:model="ban" id="ban" name="ban" wire:model="user_ban">
+                                             Ban User 🚫
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-text">Reason for Ban</span>
+                                            <textarea class="form-control" aria-label="With textarea" id="ban_reason" wire:model="banReason"></textarea>
+                                          </div>
+
+                                        @error('ban')
+                                        <span class="error text-danger">{{ $message }}</span>
+                                    @enderror
+                                   
+                                    </div>
+                           
+                                </div>
                                 
                             </div>
                         </div>
 
-
                     </div>
-
 
 
                 </form>
             </div>
             <div class="modal-footer">
+
                 <button id="btn-close" type="button" wire:click.prevent="cancel()"
                     class="btn btn-icon shadow-lg m-2" data-bs-dismiss="modal">❌ Close</button>
 
