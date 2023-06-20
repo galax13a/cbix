@@ -47,7 +47,9 @@ class Usuarios extends Component
         '6 months' => '+6 months',
         '9 months' => '+9 months',
         '12 months' => '+12 months',
-        'Permanently' => 'permanent',
+        'Permanently 📛' => 'permanent'
+     
+
     ];
     
     public $selectedBanOption;
@@ -165,6 +167,7 @@ class Usuarios extends Component
 
             $user = User::find($this->selectedUser);
 
+           
             if ($this->ban) {
                 if ($this->selectedBanOption == 'permanent') {
                     $user->ban([
@@ -179,7 +182,8 @@ class Usuarios extends Component
             } else {
                 $user->unban();
             }
-            
+
+           
             $record = User::find($this->selected_id);
             $record->update([
                 'name' => $this->name,

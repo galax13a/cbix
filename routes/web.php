@@ -58,16 +58,28 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('admin/gifts', 'livewire.gifts.index')->middleware('auth')->name('admin.gifts');
-	Route::view('apps0tags', 'livewire.apps0tags.index')->middleware('auth');
-	Route::view('admin/credits-goals', 'livewire.credits_goals.index')->middleware('auth')->name('admin.credits_goals');
-	Route::view('admin/apps', 'livewire.apps.index')->middleware('auth')->name('admin.apps');
-	Route::view('admin/supports', 'livewire.supports.index')->middleware('auth')->name('admin.supports');
-	Route::view('admin/tasks', 'livewire.tasks.index')->middleware('auth')->name('admin.tasks');
-	Route::view('admin/stats', 'livewire.stats.index')->middleware('auth')->name('admin.stats');
-    Route::view('admin/users', 'livewire.usuarios.index')->middleware('auth')->name('usuarios');
-    Route::view('admin/roles', 'livewire.roles.index')->middleware('auth')->name('admin.roles');
-    
+	
+Route::view('ban', 'ban');
+Route::get('unban-expired', 'BanController@unbanExpired')->middleware('auth', 'can:manage-bans')->name('unban-expired');
+Route::view('/unban-request', 'livewire.unbans.index')->middleware('auth')->name('unban.request');
+
+
+Route::middleware(['auth', 'checkbanned'])->group(function () {
+
+    Route::view('root/dashboard', 'livewire.admin.dashboard.index')->middleware('auth');
+
+    Route::view('admin/gifts', 'livewire.gifts.index')->name('admin.gifts');
+    Route::view('admin/apps0tags', 'livewire.apps0tags.index');
+    Route::view('admin/credits-goals', 'livewire.credits_goals.index')->name('admin.credits_goals');
+    Route::view('admin/apps', 'livewire.apps.index')->name('admin.apps');
+    Route::view('admin/supports', 'livewire.supports.index')->name('admin.supports');
+    Route::view('admin/tasks', 'livewire.tasks.index')->name('admin.tasks');
+    Route::view('admin/stats', 'livewire.stats.index')->name('admin.stats');
+    Route::view('admin/users', 'livewire.usuarios.index')->name('usuarios');
+    Route::view('admin/roles', 'livewire.roles.index')->name('admin.roles');
+});
+
+
     Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');
     Route::view('estudiomodelos', 'livewire.estudiomodelos.index')->middleware('auth');
     Route::view('estudio_modelos', 'livewire.estudio_modelos.index')->middleware('auth');
@@ -79,4 +91,4 @@ Route::get('/en', function () {
     Route::view('categors', 'livewire.categors.index')->middleware('auth');
 
     Route::view('pages', 'livewire.pages.index')->middleware('auth');
-    Route::view('root/dashboard', 'livewire.admin.dashboard.index')->middleware('auth');
+   

@@ -17,8 +17,16 @@ select option:checked {
   margin-right: 4px;
   margin-left: 4px;
   color: #000;
+  text-transform: uppercase;
 }
-.d
+select option {
+
+  border-radius: 11px;
+  margin: 2px;
+  padding: 2px;
+
+}
+
 body.dark select option:checked {
   color: #000;
   background: rgb(100, 21, 96);
