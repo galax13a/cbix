@@ -41,16 +41,16 @@
 									</span>									
 								</td>
 								<td>									
-									<span class="d-inline-block text-truncate" style="max-width: 150px;">
+									<span>
 										{{ $row->reply_comment }}
 									</span>									
 									
 								</td>
 								<td>{{ $row->email }}</td>
 								<td>
-									<span class="badge text-black text-bold bg-warning text-uppercase shadow border-2">
-										{{ $row->status }}
-									</span>
+									<x-comstatus>										
+										<x-slot name="status">{{ $row->status ?? 'pending' }}</x-slot>
+									</x-comstatus>									
 									
 								</td>
 								<td width="90">

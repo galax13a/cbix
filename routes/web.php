@@ -59,25 +59,29 @@ Route::get('/en', function () {
 
 //Route Hooks - Do not delete//
 	
-Route::view('ban', 'ban');
-Route::get('unban-expired', 'BanController@unbanExpired')->middleware('auth', 'can:manage-bans')->name('unban-expired');
-Route::view('/unban-request', 'livewire.unbans.index')->middleware('auth')->name('unban.request');
 
+	// rutas de bans
+    Route::view('ban', 'ban');
+    Route::get('unban-expired', 'BanController@unbanExpired')->middleware('auth', 'can:manage-bans')->name('unban-expired');
+    Route::view('/unban-request', 'livewire.unbans.index')->middleware('auth')->name('unban.request');
+    // termina bans..
 
-Route::middleware(['auth', 'checkbanned'])->group(function () {
+    Route::middleware(['auth', 'checkbanned'])->group(function () {      
 
-    Route::view('root/dashboard', 'livewire.admin.dashboard.index')->middleware('auth');
+        Route::view('root/dashboard', 'livewire.admin.dashboard.index')->middleware('auth');
+        Route::view('admin/unbans', 'livewire.admin.dashboard.unbans.index')->middleware('auth')->name('admin.unbans');
 
-    Route::view('admin/gifts', 'livewire.gifts.index')->name('admin.gifts');
-    Route::view('admin/apps0tags', 'livewire.apps0tags.index');
-    Route::view('admin/credits-goals', 'livewire.credits_goals.index')->name('admin.credits_goals');
-    Route::view('admin/apps', 'livewire.apps.index')->name('admin.apps');
-    Route::view('admin/supports', 'livewire.supports.index')->name('admin.supports');
-    Route::view('admin/tasks', 'livewire.tasks.index')->name('admin.tasks');
-    Route::view('admin/stats', 'livewire.stats.index')->name('admin.stats');
-    Route::view('admin/users', 'livewire.usuarios.index')->name('usuarios');
-    Route::view('admin/roles', 'livewire.roles.index')->name('admin.roles');
-});
+        Route::view('admin/gifts', 'livewire.gifts.index')->name('admin.gifts');
+        Route::view('admin/apps0tags', 'livewire.apps0tags.index');
+        Route::view('admin/credits-goals', 'livewire.credits_goals.index')->name('admin.credits_goals');
+        Route::view('admin/apps', 'livewire.apps.index')->name('admin.apps');
+        Route::view('admin/supports', 'livewire.supports.index')->name('admin.supports');
+        Route::view('admin/tasks', 'livewire.tasks.index')->name('admin.tasks');
+        Route::view('admin/stats', 'livewire.stats.index')->name('admin.stats');
+        Route::view('admin/users', 'livewire.usuarios.index')->name('usuarios');
+        Route::view('admin/roles', 'livewire.roles.index')->name('admin.roles');
+
+    });
 
 
     Route::view('apionechaturs', 'livewire.apionechaturs.index')->middleware('auth');

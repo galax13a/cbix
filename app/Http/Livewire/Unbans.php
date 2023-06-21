@@ -53,7 +53,8 @@ class Unbans extends Component
         Unban::create([ 
 			'sent_by' => auth()->id(),			
 			'comment' => $this-> comment,			
-			'email' => $this-> email
+			'email' => $this-> email,
+            'status' => 'pending'
         ]);
         
         $this->resetInput();

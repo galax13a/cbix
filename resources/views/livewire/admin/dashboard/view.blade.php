@@ -88,13 +88,13 @@
 
 
                             <div class="col-md-3 mb-4 rounded-4 dash-card2">
-                                <a href="#"
+                                <a href="{{ route('admin.unbans') }}"
                                     class="shadow-sm card align-items-center text-decoration-none border-0 hover-lift-light py-4">
                                     <span class="icon-circle icon-circle-lg text-danger opacity-75">
                                         <i class="fas fa-user-secret fs-2"></i>
                                     </span>
                                     <span class=" mt-3">
-                                        Bans
+                                        Bans [{{ $this->bans_total}}]
                                     </span>
                                 </a>
                             </div>

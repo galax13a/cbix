@@ -8,6 +8,7 @@ use App\Models\Test;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 
+
 class Dashboard extends Component
 {
     use WithPagination;
@@ -16,6 +17,7 @@ class Dashboard extends Component
     public $selected_id, $keyWord, $name;
     
    public $usersCount, $rolesCount;
+   public $bans_total;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -27,6 +29,7 @@ class Dashboard extends Component
 
         $this->usersCount = User::count();
         $this->rolesCount = Role::count();
+        $this->bans_total = User::onlyBanned()->count();
 
 		$keyWord = '%'.$this->keyWord .'%';
 
