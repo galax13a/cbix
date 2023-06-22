@@ -4,36 +4,35 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Support;
+use App\Models\Support_admin;
 
-class Supports extends Component
+class Supports_admin extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $type_support, $sent_by, $support_id, $message, $reply_message, $status, $priority;
+    public $selected_id, $keyWord, $type_support, $name, $sent_by, $support_id, $message, $reply_message, $status, $priority;
+   
     protected $listeners = ['confirm-delete-td' => 'destroy_model', 'delete-model' => 'destroy'];
 
-    
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
 
     public function render()
-    {
+    { 
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.supports.view', [
-    'supports' => Support::latest()
-        ->where(function ($query) use ($keyWord) {
-            $query->where('name', 'LIKE', $keyWord)
-                ->orWhere('message', 'LIKE', $keyWord);
-        })
-        ->where('sent_by', auth()->id())
-        ->paginate(10)
-]);
-
+        return view('livewire.admin.dashboard.supports_admin.view', [
+            'supports' => Support_admin::latest()
+						->orWhere('type_support', 'LIKE', $keyWord)
+						->orWhere('name', 'LIKE', $keyWord)				
+						->orWhere('message', 'LIKE', $keyWord)
+						->orWhere('reply_message', 'LIKE', $keyWord)
+						->orWhere('status', 'LIKE', $keyWord)
+						->orWhere('priority', 'LIKE', $keyWord)->paginate(10)
+        ]);
     }
 	
     public function cancel()
@@ -43,8 +42,8 @@ class Supports extends Component
 	
     private function resetInput()
     {		
-		$this->name = null;
 		$this->type_support = null;
+		$this->name = null;
 		$this->sent_by = null;
 		$this->support_id = null;
 		$this->message = null;
@@ -56,18 +55,17 @@ class Supports extends Component
     public function store()
     {
         $this->validate([
-		'name' => 'required',
 		'type_support' => 'required',
+		'name' => 'required',	
 		'message' => 'required',
-        'priority' => 'required'
-		
+		'priority' => 'required',
         ]);
 
-        Support::create([ 
-			'name' => $this-> name,
+        Support_admin::create([ 
 			'type_support' => $this-> type_support,
+			'name' => $this-> name,
 			'sent_by' => auth()->id(),			
-			'message' => $this-> message,		
+			'message' => $this-> message,			
 			'status' => 'pending',
 			'priority' => $this-> priority
         ]);
@@ -76,16 +74,16 @@ class Supports extends Component
 		$this->dispatchBrowserEvent('closeModal');		
         $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Support Successfully created!',
+                'message' => '¡ Support_admin Successfully created!',
             ]);
     }
 
     public function edit($id)
     {
-        $record = Support::findOrFail($id);
+        $record = Support_admin::findOrFail($id);
         $this->selected_id = $id; 
-		$this->name = $record-> name;
 		$this->type_support = $record-> type_support;
+		$this->name = $record-> name;
 		$this->sent_by = $record-> sent_by;
 		$this->support_id = $record-> support_id;
 		$this->message = $record-> message;
@@ -97,21 +95,15 @@ class Supports extends Component
     public function update()
     {
         $this->validate([
-		'name' => 'required',
-		'sent_by' => 'required',
-		'message' => 'required',
+		'reply_message' => 'required',
 		'status' => 'required',
 		'priority' => 'required',
         ]);
 
         if ($this->selected_id) {
-			$record = Support::find($this->selected_id);
+			$record = Support_admin::find($this->selected_id);
             $record->update([ 
-			'name' => $this-> name,
-			'type_support' => $this-> type_support,
-			'sent_by' => $this-> sent_by,
-			'support_id' => $this-> support_id,
-			'message' => $this-> message,
+			'support_id' => auth()->id(),			
 			'reply_message' => $this-> reply_message,
 			'status' => $this-> status,
 			'priority' => $this-> priority
@@ -122,7 +114,7 @@ class Supports extends Component
 	
              $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
-                'message' => '¡ Support Successfully updated.!',
+                'message' => '¡ Support_admin Successfully updated.!',
             ]);
         }
     }
@@ -130,7 +122,7 @@ class Supports extends Component
     public function destroy($id)
     {
         if ($id) {
-            Support::where('id', $id)->delete();
+            Support_admin::where('id', $id)->delete();
         }
     }
 }

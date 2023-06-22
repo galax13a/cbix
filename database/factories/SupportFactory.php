@@ -14,8 +14,13 @@ class SupportFactory extends Factory
     {
         return [
 			'name' => $this->faker->name,
-			'description' => $this->faker->name,
+			'type_support' => $this->faker->name,
+			'sent_by' => $this->faker->name,
+			'support_id' => $this->faker->name,
+			'message' => $this->faker->name,
+			'reply_message' => $this->faker->name,
 			'status' => $this->faker->name,
+			'priority' => $this->faker->name,
         ];
     }
 }

@@ -11,7 +11,7 @@
                 </span>
                 @break
             @case('resolved')
-                <span class="badge text-black text-bold bg-success text-uppercase shadow border-2">
+                <span class="badge text-blank text-bold bg-success text-uppercase shadow border-2">
                     {{ $status }}
                 </span>
                 @break

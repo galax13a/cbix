@@ -7,6 +7,7 @@
         <div class="footer-links mt-2 p-2">
             <a href="mailto:contact@botchatur.com" class="text-muted me-3">Contact</a>
             <a href="/help" class="text-muted">Help</a> /
+            <a href="{{route('supports')}}" class="text-muted">Supports</a> /
             <a href="/help" class="text-muted">Apps</a>
         </div>
     </div>

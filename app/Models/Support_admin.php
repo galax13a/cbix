@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Support extends Model
+class Support_admin extends Model
 {
 	use HasFactory;
 	
@@ -13,7 +13,7 @@ class Support extends Model
 
     protected $table = 'supports';
 
-    protected $fillable = ['name','type_support','sent_by','support_id','message','reply_message','status','priority']; // fillable2
+    protected $fillable = ['type_support','name','sent_by','support_id','message','reply_message','status','priority']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

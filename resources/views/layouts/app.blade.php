@@ -48,10 +48,7 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
-						<li class="nav-item">
-                            <a href="{{ url('/unbans') }}" class="nav-link">🟣 Unbans</a> 
-                        </li>
-						
+					
                             <li class="nav-item">
                                 <a href="{{ url('/root/dashboard') }}" class="nav-link ">🦖 Dashboard</a>
                             </li>

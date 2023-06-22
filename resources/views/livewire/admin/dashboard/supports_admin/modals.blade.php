@@ -12,9 +12,9 @@
                 <form>
 
                     <div class="form-group">
-                        <label for="type_support"></label>
+                        <label for="type_support">Tipo de Soporte</label>
                         <select wire:model.defer="type_support" class="form-control" id="type_support">
-                            <option value="">🔔Type support</option>
+                            <option value="">Type support</option>
                             <option value="payments">Pagos</option>
                             <option value="work">Trabajo</option>
                             <option value="request">Solicitud</option>
@@ -60,7 +60,7 @@
                                 Leave us a Message 📨 <br> So we can help you
                             </strong>
                         </span>
-                        <textarea style="height:190px;" class="form-control" aria-label="With textarea" id="ban_reason"
+                        <textarea style="height:150px;" class="form-control" aria-label="With textarea" id="ban_reason"
                             wire:model.defer="message" placeholder="💭  tell us what happens to you?">
                         </textarea>
 
@@ -91,10 +91,10 @@
                         <label for="priority"></label>
                         <select wire:model.defer="priority" class="form-control" id="priority">
                             <option value="">🔘 Select Priority</option>
-                            <option value="low">🟤Low</option>
+                            <option value="low">🟤low</option>
                             <option value="medium">🟡Medium</option>
-                            <option value="hight">🟣Hight</option>
-                        
+                            <option value="hight">🟣hight</option>
+                            <option value="ultra">🔴Ultra</option>
                         </select>
                         @error('priority')
                             <span class="error text-danger">{{ $message }}</span>
@@ -112,7 +112,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Edit Modal -->
 <div wire:ignore.self class="modal fade" id="updateDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog"
@@ -173,25 +172,20 @@
 
                     <div class="form-group">
                         <label for=""></label>
-                        <x-comstatus>
-                            <x-slot name="status">{{ $this->status ?? 'pending' }}</x-slot>
-                        </x-comstatus>
                         <span class="input-group-text">
                             <strong>
                                 Reply Support 📢
                             </strong>
                         </span>
-                        <textarea style="height:150px;" class="form-control" 
-                         aria-label="With textarea" id="reply"
-                         disabled
-                            wire:model.defer="reply_message" placeholder="💭 A support agent will contact you">
+                        <textarea style="height:150px;" class="form-control" aria-label="With textarea" id="reply"
+                            wire:model.defer="reply_message" placeholder="💭  How can you help, support">
                            </textarea>                 
                     </div>
                     @error('reply_message')
                     <span class="error text-danger">{{ $message }}</span>
                 @enderror
 
-                    <div class="form-group d-none">
+                    <div class="form-group">
                         <label for="status">Status:</label>
                         <select wire:model="status" class="form-control" id="status">
                             <option value="pending">🟨Pending</option>
@@ -199,7 +193,19 @@
                             <option value="resolved">🟩Resolved</option>
                         </select>
                     </div>
-
+                    <div class="form-group">
+                        <label for="priority"></label>
+                        <select wire:model.defer="priority" class="form-control" id="priority">
+                            <option value="">🔘 Select Priority</option>
+                            <option value="low">🟤low</option>
+                            <option value="medium">🟡Medium</option>
+                            <option value="hight">🟣hight</option>
+                            <option value="ultra">🔴Ultra</option>
+                        </select>
+                        @error('priority')
+                            <span class="error text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                 </form>
             </div>

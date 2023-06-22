@@ -34,7 +34,7 @@ class RoleSeeder extends Seeder
        $rol16 = Role::create(['name'=>'webmaster']);
        $rol17 = Role::create(['name'=>'blogger']);
        $rol18 = Role::create(['name'=>'studio-webcam']);
-       $rol6 = Role::create(['name'=>'studio-model']);
+    //   $rol6 = Role::create(['name'=>'studio-model']);
        $rol19 = Role::create(['name'=>'independent-model']);
        $rol23 = Role::create(['name'=>'photographer']);
        $rol24 = Role::create(['name'=>'community manager']);
@@ -58,6 +58,8 @@ class RoleSeeder extends Seeder
        Permission::create(['name' =>'admin.stats'])->syncRoles([$rol2]);          
        Permission::create(['name' =>'admin.config'])->syncRoles([$rol2]);       
        Permission::create(['name' =>'admin.tasks'])->syncRoles([$rol1]); 
+       Permission::create(['name' =>'admin.unbans'])->syncRoles([$rol1],[$rol2],[$rol22]); 
+       Permission::create(['name' =>'admin.supports'])->syncRoles([$rol1],[$rol2],[$rol22]); 
        
        Permission::create(['name' =>'admin.cms'])->syncRoles([$rol2]);       
        Permission::create(['name' =>'admin.cms.pages'])->syncRoles([$rol2]);

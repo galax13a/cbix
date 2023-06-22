@@ -9,14 +9,19 @@ class CreateSupportsAndReplySupportsTable extends Migration
     public function up()
     {
         Schema::create('supports', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->id();            
             $table->string('name');
-            $table->text('description');
-            $table->enum('status', ['open', 'in_progress', 'closed'])->default('open');
-            $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->string('type_support')->nullable()->default('other');
+            $table->unsignedBigInteger('sent_by');
+            $table->unsignedBigInteger('support_id')->nullable();
+            $table->text('message');
+            $table->text('reply_message')->nullable();
+            $table->enum('status', ['pending', 'in_progress', 'resolved'])->default('pending');
+            $table->string('priority')->default('low');
+            $table->timestamps();            
+            // Relaciones
+            $table->foreign('sent_by')->references('id')->on('users');
+            $table->foreign('support_id')->references('id')->on('users');
         });
 
         Schema::create('reply0supports', function (Blueprint $table) {

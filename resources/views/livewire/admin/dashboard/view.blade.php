@@ -61,7 +61,7 @@
 
 
                             <div class="col-md-3 mb-4  rounded-4 dash-card2">
-                                <a href="{{ route('usuarios') }}"
+                                <a href="{{ route('root.users') }}"
                                     class="shadow-sm card align-items-center text-decoration-none border-0 hover-lift-light py-4">
                                     <span class="icon-circle icon-circle-lg bg-pastel-primary text-dark opacity-75">
 
