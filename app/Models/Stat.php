@@ -13,7 +13,7 @@ class Stat extends Model
 
     protected $table = 'stats';
 
-    protected $fillable = ['name']; // fillable2
+    protected $fillable = ['name','codex','location','url']; // fillable2
 	 
     // booted sin users [] 
 }

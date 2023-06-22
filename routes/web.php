@@ -58,7 +58,8 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	
+
+
 // rutas de bans
 Route::view('ban', 'ban');
 Route::get('unban-expired', 'BanController@unbanExpired')->middleware('auth', 'can:manage-bans')->name('unban-expired');
@@ -97,7 +98,7 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
     Route::view('admin/tasks', 'livewire.tasks.index')
         ->middleware('can:admin.tasks')->name('admin.tasks');
 
-    Route::view('admin/stats', 'livewire.stats.index')
+    Route::view('admin/stats', 'livewire.admin.stats.index')
             ->middleware('can:admin.stats')->name('admin.stats');
 
     Route::view('admin/users', 'livewire.usuarios.index')

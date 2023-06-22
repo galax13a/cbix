@@ -14,6 +14,9 @@ class StatFactory extends Factory
     {
         return [
 			'name' => $this->faker->name,
+			'codex' => $this->faker->name,
+			'location' => $this->faker->name,
+			'url' => $this->faker->name,
         ];
     }
 }
