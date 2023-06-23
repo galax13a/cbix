@@ -20,7 +20,7 @@ class App extends Model
      */
     public function appsCategor()
     {
-        return $this->hasOne('App\Models\AppsCategor', 'id', 'apps_categors_id');
+        return $this->hasOne('App\Models\Apps0categor', 'id', 'apps_categors_id');
     }
     
     /**

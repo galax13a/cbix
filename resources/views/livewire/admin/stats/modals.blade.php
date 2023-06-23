@@ -19,7 +19,7 @@
                                Code , JavaScript⚠️
                             </strong>
                         </span>
-                        <textarea style="height:150px;" class="form-control" aria-label="With textarea" id="ban_reason"
+                        <textarea style="height:210px;" class="form-control" aria-label="With textarea" id="ban_reason"
                             wire:model.defer="codex" 
                             placeholder="paste the google analytics code or any compatible code in javascript ✔️">
                         </textarea>
@@ -74,7 +74,7 @@
                                Code , JavaScript⚠️
                             </strong>
                         </span>
-                        <textarea style="height:150px;" class="form-control" aria-label="With textarea" id="ban_reason"
+                        <textarea style="height:210px;" class="form-control" aria-label="With textarea" id="ban_reason"
                             wire:model.defer="codex" 
                             placeholder="paste the google analytics code or any compatible code in javascript ✔️">
                         </textarea>

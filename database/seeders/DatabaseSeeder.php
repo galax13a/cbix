@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Modelo::factory(3)->create(); //create Modelo     
         \App\Models\Estudio::factory(3)->create(); //crate studio
         \App\Models\Apichatur::factory(3)->create(); // create apichatur
+        $this->call(AppSeeder::class);
        
 
     }

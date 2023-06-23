@@ -31,10 +31,15 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description');
+            $table->string('url')->nullable();
+            $table->enum('target', ['parent', 'new'])->nullable();
+            $table->string('icon')->nullable();
+            $table->string('image')->nullable();
+            $table->string('download_url')->nullable();
             $table->boolean('is_approved')->default(false);           
             $table->foreignId('apps_categors_id')->constrained('apps0categors')->onDelete('cascade');
             $table->string('meta_title')->nullable();
-            $table->string('meta_description')->nullable();
+            $table->text('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();
             $table->boolean('active')->default(false);
             $table->timestamps();

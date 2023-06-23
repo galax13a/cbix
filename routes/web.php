@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Middleware\LanguageSwitcher;
 use App\Http\Livewire\ChaturbateController; // Agregar esta línea
 use Spatie\Permission\Models\Role;
+use App\Http\Livewire\Apps;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -58,6 +59,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('apps0categors', 'livewire.apps0categors.index')->middleware('auth');
 
 
 // rutas de bans
@@ -92,8 +94,14 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
     Route::view('admin/supports', 'livewire.admin.dashboard.supports_admin.index')
     ->middleware('can:admin.supports')->name('admin.supports');
 
-    Route::view('admin/apps', 'livewire.apps.index')
+    
+    Route::get('admin/apps/install/{id_app}', Apps::class)
+    ->middleware('can:admin.apps')
+    ->name('admin.apps.install');;
+
+    Route::view('admin/apps', 'livewire.admin.apps_admin.index')
         ->middleware('can:admin.apps')->name('admin.apps');    
+
 
     Route::view('admin/tasks', 'livewire.tasks.index')
         ->middleware('can:admin.tasks')->name('admin.tasks');

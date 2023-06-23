@@ -68,7 +68,7 @@ class RoleSeeder extends Seeder
        Permission::create(['name' =>'admin.cms.categorys'])->syncRoles([$rol2]);
        Permission::create(['name' =>'admin.cms.config-site'])->syncRoles([$rol2]);       
 
-       Permission::create(['name' =>'admin.apps'])->syncRoles([$rol2]);       
+       Permission::create(['name' =>'admin.apps'])->syncRoles([$rol2], [$rol1]);       
        Permission::create(['name' =>'admin.app.awards'])->syncRoles([$rol2]);
        Permission::create(['name' =>'admin.app.forum'])->syncRoles([$rol2]);
        Permission::create(['name' =>'admin.app.tools'])->syncRoles([$rol2]);

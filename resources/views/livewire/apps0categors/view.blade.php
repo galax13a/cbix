@@ -1,4 +1,4 @@
-@section('title', __('Apps'))
+@section('title', __('Apps0Categors'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 
@@ -6,42 +6,26 @@
 			<div class="card">			
 					
 				<div class="card-header bg-transparent" >					
-					<x-btnmore/>	
-					
-					<li class="nav-item">
-						<a href="{{ url('/admin/apps/estudios') }}" class="nav-link">📂 Estudios</a>
-					</li>
+					<x-btnmore/>					
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.apps.modals')
+						@include('livewire.apps0categors.modals')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Description</th>
-								<th>Is Approved</th>
-								<th>Apps Categors Id</th>
-								<th>Meta Title</th>
-								<th>Meta Description</th>
-								<th>Meta Keywords</th>
 								<th>Active</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>
-							@forelse($apps as $row)
+							@forelse($apps0categors as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->description }}</td>
-								<td>{{ $row->is_approved }}</td>
-								<td>{{ $row->apps_categors->name }}</td>
-								<td>{{ $row->meta_title }}</td>
-								<td>{{ $row->meta_description }}</td>
-								<td>{{ $row->meta_keywords }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td width="90">
 											<x-btncrud> 
@@ -56,7 +40,7 @@
 							@endforelse
 						</tbody>
 					</table>						
-					<div class="float-end">{{ $apps->links() }}</div>
+					<div class="float-end">{{ $apps0categors->links() }}</div>
 					</div>
 				</div>
 			</div>
