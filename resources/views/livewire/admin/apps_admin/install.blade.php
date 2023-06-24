@@ -3,29 +3,46 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
+                
                 <div class="card border-0 shadow">
                     <div class="card-header bg-transparent m-2">
-                        <h5 class="card-title">Install App > {{ $app->name }}</h5>
+                        <h5 class="card-title">
+
+                            <a href="{{ route('admin.apps') }}" class="custom-link ">
+                                💜 Apps
+                            </a>
+
+                            ▶️ {{ $app->name }}
+                        </h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-5">
                                 <img src="{{ $app->image ? $app->image : asset('apps/default.png') }}" width="93%"
                                     class="card-img-top1" alt="App Image">
-                                    <div class="d-flex justify-content-end p-1 m-1 shadow rounded-4">
-                                     
-                                        @if ($app->active)
-                                        <strong class="p-3">
-                                            if you want to install this app for your site
-                                        </strong>                                     
-                                            <a href="#" class="btn btn-dark m-2">💛Install</a>
-                                        @else
-                                        <strong class="p-3">uninstall this app for your site</strong>                                        
-                                        <a href="#" class="btn btn-dark m-2 bg-transparent-75">❌Un-Install</a>
+                                <div class="d-flex justify-content-end p-1 m-1 shadow rounded-4">
 
-                                        @endif
-                                    </div>
-                                    
+                                    @if ($app->install)
+                                        <strong class="p-3">
+                                            🟠 if you want to install this app for your site 👉
+                                        </strong>
+                                        <a href="javascript:void(0)"
+                                         class="btn btn-dark m-2"
+                                         wire:click.prevent="install()"
+                                            onclick="dispatchLoadingEvent('hourglass', 1600);">
+                                            💛 Install
+                                        </a>
+                                    @else
+                                        <strong class="p-3">uninstall this app for your site</strong>
+                                        <a href="javascript:void(0)"                                           
+                                            class="btn btn-dark m-2"
+                                            wire:click.prevent="install({{$app->id}})"
+                                               onclick="dispatchLoadingEvent('hourglass', 1600);">
+                                            ❌Un-Install
+                                        </a>
+                                    @endif
+                                </div>
+
                             </div>
                             <div class="col-md-7 shadow rounded-4 p-4 mr-3 ">
                                 <div class="d-flex align-items-center p-2 shadow-sm rounded-2">

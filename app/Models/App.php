@@ -13,12 +13,20 @@ class App extends Model
 
     protected $table = 'apps';
 
-    protected $fillable = ['name','description','is_approved','apps_categors_id','meta_title','meta_description','meta_keywords','active']; // fillable2
+    protected $fillable = ['name','slug','description','version','menu','url','target','icon','image','download_url','is_approved','install','apps_categors_id','meta_title','meta_description','meta_keywords','active']; // fillable2
 	
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function apps0authors()
+    {
+        return $this->hasMany('App\Models\Apps0author', 'app_id', 'id');
+    }
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function appsCategor()
+    public function apps_categors()
     {
         return $this->hasOne('App\Models\Apps0categor', 'id', 'apps_categors_id');
     }
@@ -26,25 +34,17 @@ class App extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function appAuthors()
+    public function apps_installs()
     {
-        return $this->hasMany('App\Models\AppAuthor', 'app_id', 'id');
+        return $this->hasMany('App\Models\Apps0install', 'app_id', 'id');
     }
     
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function appInstalls()
+    public function apps_tags()
     {
-        return $this->hasMany('App\Models\AppInstall', 'app_id', 'id');
-    }
-    
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function appTags()
-    {
-        return $this->hasMany('App\Models\AppTag', 'app_id', 'id');
+        return $this->hasMany('App\Models\Apps0tag', 'app_id', 'id');
     }
      
     // booted sin users [] 

@@ -49,6 +49,9 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/apps') }}" class="nav-link">🟣 Apps</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/apps0categors') }}" class="nav-link">🟣 Apps0categors</a> 
                         </li>
 				

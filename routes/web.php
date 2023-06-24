@@ -6,6 +6,8 @@ use App\Http\Middleware\LanguageSwitcher;
 use App\Http\Livewire\ChaturbateController; // Agregar esta línea
 use Spatie\Permission\Models\Role;
 use App\Http\Livewire\Apps;
+use App\Http\Livewire\Apps_install;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,7 +61,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('apps0categors', 'livewire.apps0categors.index')->middleware('auth');
+
 
 
 // rutas de bans
@@ -70,20 +72,20 @@ Route::view('/unban-request', 'livewire.unbans.index')->middleware('auth')->name
 // termina bans..
 
 Route::get('/debug', function () {
-    $role = Role::findByName('admin'); 
-    $permissions = $role->permissions;   
+    $role = Role::findByName('admin');
+    $permissions = $role->permissions;
     return response()->json($permissions);
     //$role = Role::findByName('root');        
     //dd($role->hasPermissionTo('admin.unbans')); // Debería imprimir "true" si el rol tiene el permiso
 });
-    
+
 
 Route::middleware(['auth', 'checkbanned'])->group(function () {
 
-    
+
     Route::view('root/dashboard', 'livewire.admin.dashboard.index')
-    ->middleware('can:root.dashboard')->name('root.dashboard');
-    
+        ->middleware('can:root.dashboard')->name('root.dashboard');
+
 
     Route::view('root/dashboard/users', 'livewire.usuarios.index')
         ->middleware('can:root.dashboard.users')->name('root.users');
@@ -92,38 +94,34 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
         ->middleware('can:admin.unbans')->name('admin.unbans');
 
     Route::view('admin/supports', 'livewire.admin.dashboard.supports_admin.index')
-    ->middleware('can:admin.supports')->name('admin.supports');
+        ->middleware('can:admin.supports')->name('admin.supports');
 
-    
-    Route::get('admin/apps/install/{id_app}', Apps::class)
-    ->middleware('can:admin.apps')
-    ->name('admin.apps.install');;
+    // router Apps
+    Route::view('admin/apps', 'livewire.apps.index')
+    ->middleware('can:admin.apps')->name('admin.apps');
 
-    Route::view('admin/apps', 'livewire.admin.apps_admin.index')
-        ->middleware('can:admin.apps')->name('admin.apps');    
-
+    Route::view('apps0categors', 'livewire.apps0categors.index')->middleware('auth');
 
     Route::view('admin/tasks', 'livewire.tasks.index')
         ->middleware('can:admin.tasks')->name('admin.tasks');
 
     Route::view('admin/stats', 'livewire.admin.stats.index')
-            ->middleware('can:admin.stats')->name('admin.stats');
+        ->middleware('can:admin.stats')->name('admin.stats');
 
     Route::view('admin/users', 'livewire.usuarios.index')
-    ->middleware('can:admin.users')->name('admin.users');
+        ->middleware('can:admin.users')->name('admin.users');
 
     Route::view('admin/roles', 'livewire.roles.index')
-    ->middleware('can:admin.roles')->name('admin.roles');   
+        ->middleware('can:admin.roles')->name('admin.roles');
 
     Route::view('admin/gifts', 'livewire.gifts.index')
-    ->middleware('can:admin.gifts')->name('admin.gifts');
+        ->middleware('can:admin.gifts')->name('admin.gifts');
 
     Route::view('admin/apps0tags', 'livewire.apps0tags.index')
-    ->middleware('can:admin.apps0tags')->name('admin.apps0tags');
-    
+        ->middleware('can:admin.apps0tags')->name('admin.apps0tags');
+
     Route::view('admin/credits-goals', 'livewire.credits_goals.index')
-    ->middleware('can:admin.credits_goals')->name('admin.credits_goals');
-    
+        ->middleware('can:admin.credits_goals')->name('admin.credits_goals');
 });
 
 

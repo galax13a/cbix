@@ -30,13 +30,17 @@ return new class extends Migration
         Schema::create('apps', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug');
             $table->text('description');
+            $table->string('version')->nullable();
+            $table->enum('menu', ['front', 'admin'])->nullable()->default('admin');
             $table->string('url')->nullable();
             $table->enum('target', ['parent', 'new'])->nullable();
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
             $table->string('download_url')->nullable();
             $table->boolean('is_approved')->default(false);           
+            $table->boolean('install')->default(false)->nullable();           
             $table->foreignId('apps_categors_id')->constrained('apps0categors')->onDelete('cascade');
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
