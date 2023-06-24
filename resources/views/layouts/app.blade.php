@@ -35,7 +35,11 @@
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img class="d-none" src="/dino24.png" alt="botcham logo">
-                    <strong> {{ config('app.name', 'Laravel') }} </strong>
+                    <strong>
+                        <i class="fas fa-ghost"></i>
+                        
+                        {{ config('app.name', 'Laravel') }} 
+                        </strong>
                 </a>
                 <button class="navbar-toggler bg-primary" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

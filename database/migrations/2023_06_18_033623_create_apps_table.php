@@ -18,14 +18,14 @@ return new class extends Migration
             $table->boolean('active')->default(true);
             $table->timestamps();
         });
-    
+
         // Tags Table
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
         });
-    
+
         // Apps Table
         Schema::create('apps', function (Blueprint $table) {
             $table->id();
@@ -39,8 +39,8 @@ return new class extends Migration
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
             $table->string('download_url')->nullable();
-            $table->boolean('is_approved')->default(false);           
-            $table->boolean('install')->default(false)->nullable();           
+            $table->boolean('is_approved')->default(false);
+            $table->boolean('install')->default(false)->nullable();
             $table->foreignId('apps_categors_id')->constrained('apps0categors')->onDelete('cascade');
             $table->string('meta_title')->nullable();
             $table->text('meta_description')->nullable();
@@ -48,7 +48,17 @@ return new class extends Migration
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
-    
+
+        // App Comments Table
+        Schema::create('app0comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('app_id')->constrained('apps')->onDelete('cascade');
+            $table->text('comment');
+            $table->timestamps();
+        });
+
+
         // App Authors Table
         Schema::create('apps0authors', function (Blueprint $table) {
             $table->id();
@@ -56,7 +66,17 @@ return new class extends Migration
             $table->foreignId('app_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
-    
+
+        // App Comments Table
+        Schema::create('app0comments', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('app_id')->constrained('apps')->onDelete('cascade');
+            $table->text('comment');
+            $table->timestamps();
+        });
+
+
         // App Installs Table
         Schema::create('apps0installs', function (Blueprint $table) {
             $table->id();
@@ -65,7 +85,7 @@ return new class extends Migration
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
-    
+
         // App Tag Table
         Schema::create('apps0tags', function (Blueprint $table) {
             $table->id();
@@ -74,5 +94,4 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-    
 };

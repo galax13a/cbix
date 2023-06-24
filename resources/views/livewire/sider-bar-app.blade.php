@@ -6,7 +6,7 @@
            <div id="sidebar-app" x-show="sidebarOpenApp" :class="{'col-sm-auto': sidebarOpenApp, 'sticky-top': sidebarOpenApp, 'fade': !sidebarOpenApp, 'show': !sidebarOpenApp}">
                <!-- Conten sidebar app -->                                   
                     <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center">
-                        <a href="/" class="p-2 link-dark nav-link" tooltips="App Download"  data-bs-placement="right" data-bs-original-title="Icon-only">
+                        <a href="/" class="p-2 " tooltips="App Download"  data-bs-placement="right" data-bs-original-title="Icon-only">
                             <i class="bi-bootstrap fs-1"></i>
                         </a>
                         <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">

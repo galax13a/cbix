@@ -28,7 +28,7 @@
                                         </strong>
                                         <a href="javascript:void(0)"
                                          class="btn btn-dark m-2"
-                                         wire:click.prevent="install()"
+                                         wire:click.prevent="install2({{$app->id}})"
                                             onclick="dispatchLoadingEvent('hourglass', 1600);">
                                             💛 Install
                                         </a>
@@ -36,7 +36,7 @@
                                         <strong class="p-3">uninstall this app for your site</strong>
                                         <a href="javascript:void(0)"                                           
                                             class="btn btn-dark m-2"
-                                            wire:click.prevent="install({{$app->id}})"
+                                            wire:click.prevent="install2({{$app->id}})"
                                                onclick="dispatchLoadingEvent('hourglass', 1600);">
                                             ❌Un-Install
                                         </a>
