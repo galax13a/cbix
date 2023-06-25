@@ -13,10 +13,24 @@ class Apps extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $description, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active;
 	public $app;
+	protected $queryString = [
+		'appid' => ['except' => ''],
+		'appname'
+	];
+	
+	public $appid,$appname;
+
+
 	public function updatingKeyWord() // reset pages keywork
 	{
 		$this->resetPage();
 	}
+	public function mount()
+{
+    $this->selected_id = $this->appid;
+	$this->app= App::findOrFail($this->appid);
+}
+
 
 	public function render()
 	{
@@ -101,10 +115,15 @@ class Apps extends Component
 	public function install($id)
 	{
 		$this->app = $this->edit($id);
+		$this->appid = $id;
+		$this->appname = $this->app->name;
 	}
 	public function appHome()
 	{
 		$this->selected_id = $this->resetInput();
+
+		$this->appid = null;
+		$this->appname = null;
 	}
 
 
