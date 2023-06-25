@@ -10,11 +10,11 @@
 
                 <div class="card-header bg-transparent shadow border-0">
                     <a href="javascript:void(0)" class="custom-link " wire:click="appHome">
-                        💜 Apps {{$this->selected_id}}
+                        💜 Apps 
                     </a>
                     @if ($this->selected_id !== null)
-                        ▶️ {{ $app->name }}
-						/ Installation process						
+                        / {{ $app->name }}
+						/ Free Credits / 						
 						<span class="badge shadow-sm bg-warning text-dark "><i class="fas fa-plus-circle"></i> 35 credits</span>
 						
                     @endif
@@ -94,11 +94,24 @@
 
                                                     </p>
                                                 </div>
-                                                <div class="card-body shadow-sm w-25 rounded-5 text-center">
-                                                    <small>
-                                                        Instalado
-                                                        <i class="fas fa-ghost text-success"></i>
+                                                <div title="enter the application" class=" punter card-body shadow w-25 rounded-5 text-center">
+                                                    @if ($app->install)
+													<strong>
+													<small>
+                                                        
+														Enter                
+														<i class="fas fa-arrow-circle-right"></i>                                         
                                                     </small>
+												</strong>
+													@else
+													<small>
+														<strong>
+                                                        <i class="fas fa-ghost text-danger"></i>
+														Not installed
+													</strong>
+                                                    </small>
+													@endif
+												
                                                 </div>
                                             </div>
 
@@ -121,9 +134,17 @@
                                                     <button class="btn btn border-0"
                                                         wire:click.prevent="install({{ $app->id }})"
                                                         onclick="dispatchLoadingEvent('hourglass', 1600); window.scrollTo(0,0);">
-                                                        <small class="custom-link p-2 punter shadow-sm"><i
-                                                                class="far fa-play-circle punter"></i> Install </small>
+                                                        <small class="custom-link p-2 punter shadow-sm">
+															<i class="far fa-play-circle punter"></i> 
+																Install 
+															</small>
                                                     </button>
+													@if ($app->install)
+													<i class="fas fa-ghost text-success"></i>
+													@else
+													<i class="fas fa-ghost text-danger"></i>	
+													@endif
+													
 
                                                 </div>
 

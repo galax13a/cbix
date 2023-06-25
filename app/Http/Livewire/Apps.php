@@ -24,7 +24,7 @@ class Apps extends Component
 	}
 	public function mount(Request $request)
 	{		
-		$segment = $request->segment(4); // Obtener el ID de la URL
+	//	$segment = $request->segment(4); // Obtener el ID de la URL
 	
 	    if ($request->has('appid')) {
 			$this->app = App::find($this->appid);
@@ -40,6 +40,10 @@ class Apps extends Component
 	public function render()
 	{
 		$keyWord = '%' . $this->keyWord . '%';
+
+		if ($this->selected_id) {
+			$this->app = App::find($this->selected_id);
+		}
 
 		return view('livewire.apps.view', [
 			'apps' => App::latest()
@@ -122,6 +126,37 @@ class Apps extends Component
 		$this->appid = $id;
 		$this->appname = $this->app->name;
 	}
+
+	public function updateApp($id,$install){
+
+		$this->app->update([
+			'install' => $install			
+		]);	
+
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => '¡ App Successfully updated!',
+		]);
+	}
+
+	public function installApp($install)
+	{
+		try {
+	
+			$this->app->update([
+				'install' => $install			
+			]);				
+		
+			//$this->app = $this->edit($this->selected_id);
+		} catch (\Exception $e) {
+			$this->dispatchBrowserEvent('notify', [
+				'type' => 'error',
+				'message' => 'An error occurred during app installation.',
+			]);
+		}
+	}
+	
+
 	public function appHome()
 	{
 		$this->selected_id = $this->resetInput();
