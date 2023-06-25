@@ -10,13 +10,45 @@
 
                 <div class="card-header bg-transparent shadow border-0">
                     <a href="javascript:void(0)" class="custom-link " wire:click="appHome">
-                        💜 Apps 
+                        💜 Apps
                     </a>
+                    /
+                    <button id="btn-new" @click="openwin36('createDataModal')" class="rounded-3 shadow bg-transparent">
+                        <strong>
+                            Categorys 
+							<i class="fas fa-folder-open"></i>
+                        </strong>
+                    </button>
+                    <button id="btn-new" @click="openwin36('createDataModal')"
+                        class="rounded-3 shadow bg-transparent">
+                        <strong>
+                            Tags 
+							<i class="fas fa-tags"></i>
+                        </strong>
+                    </button>
+
+                    <button id="btn-new" @click="openwin36('createDataModal')"
+                        class="rounded-3 shadow bg-transparent">
+                        <strong>
+                            authors 
+							<i class="fas fa-user-shield"></i>
+                        </strong>
+                    </button>
+
+                    <button id="btn-new" @click="openwin36('createDataModal')"
+                        class="rounded-3 shadow bg-transparent">
+                        <strong>
+                            Comments <i class="fas fa-comments"></i>
+                        </strong>
+                    </button>
+
+
+
                     @if ($this->selected_id !== null)
                         / {{ $app->name }}
-						/ Free Credits / 						
-						<span class="badge shadow-sm bg-warning text-dark "><i class="fas fa-plus-circle"></i> 35 credits</span>
-						
+                        / Free Credits /
+                        <span class="badge shadow-sm bg-warning text-dark "><i class="fas fa-plus-circle"></i> 35
+                            credits</span>
                     @endif
 
                 </div>
@@ -26,7 +58,6 @@
 
                     @if ($this->selected_id !== null)
                         @include('livewire.apps.install')
-
                     @else
                         <div class="container mt-6">
 
@@ -47,7 +78,8 @@
                                             </div>
                                         </div>
 
-                                        <button id="btn-new" class="rounded-3 shadow bg-transparent">
+                                        <button id="btn-new" @click="openwin36('createDataModal')"
+                                            class="rounded-3 shadow bg-transparent">
                                             <strong>
                                                 Create app <i class="fas fa-plus-circle"></i>
                                             </strong>
@@ -85,7 +117,7 @@
                                                     <p class="p-4">
                                                         <strong>
                                                             <i
-                                            class="fas fa-chevron-circle-down"></i>{{ $app->name }}
+                                                                class="fas fa-chevron-circle-down"></i>{{ $app->name }}
 
                                                         </strong>
                                                         <br>
@@ -94,24 +126,25 @@
 
                                                     </p>
                                                 </div>
-                                                <div title="enter the application" class=" punter card-body shadow w-25 rounded-5 text-center">
+                                                <div title="enter the application"
+                                                    class=" punter card-body shadow w-25 rounded-5 text-center">
                                                     @if ($app->install)
-													<strong>
-													<small>
-                                                        
-														Enter                
-														<i class="fas fa-arrow-circle-right"></i>                                         
-                                                    </small>
-												</strong>
-													@else
-													<small>
-														<strong>
-                                                        <i class="fas fa-ghost text-danger"></i>
-														Not installed
-													</strong>
-                                                    </small>
-													@endif
-												
+                                                        <strong>
+                                                            <small>
+
+                                                                Enter
+                                                                <i class="fas fa-arrow-circle-right"></i>
+                                                            </small>
+                                                        </strong>
+                                                    @else
+                                                        <small>
+                                                            <strong>
+                                                                <i class="fas fa-ghost text-danger"></i>
+                                                                Not installed
+                                                            </strong>
+                                                        </small>
+                                                    @endif
+
                                                 </div>
                                             </div>
 
@@ -135,16 +168,16 @@
                                                         wire:click.prevent="install({{ $app->id }})"
                                                         onclick="dispatchLoadingEvent('hourglass', 1600); window.scrollTo(0,0);">
                                                         <small class="custom-link p-2 punter shadow-sm">
-															<i class="far fa-play-circle punter"></i> 
-																Install 
-															</small>
+                                                            <i class="far fa-play-circle punter"></i>
+                                                            Install
+                                                        </small>
                                                     </button>
-													@if ($app->install)
-													<i class="fas fa-ghost text-success"></i>
-													@else
-													<i class="fas fa-ghost text-danger"></i>	
-													@endif
-													
+                                                    @if ($app->install)
+                                                        <i class="fas fa-ghost text-success"></i>
+                                                    @else
+                                                        <i class="fas fa-ghost text-danger"></i>
+                                                    @endif
+
 
                                                 </div>
 
@@ -161,21 +194,22 @@
 
                                         </div>
                                     @endforeach
-
+                                    <div class="float-end">{{ $apps->links() }}</div>
                                 </div>
-
                             </div>
 
                         </div>
-                    @endif
-
 
                 </div>
+                @endif
 
 
             </div>
+
+
         </div>
     </div>
+</div>
 
 
 </div>

@@ -9,7 +9,7 @@
                     <i class="fas fa-backward p-2 shadow rounded-5 custom-link punter" wire:click="appHome"
                         onclick="dispatchLoadingEvent('standard', 1300); window.scrollTo(0,0);"></i>
 
-                    Uninstall this app for your site
+                        🟠  This app is installed, Congratulations 🙂
                 </strong>                
                
             @else
@@ -18,7 +18,7 @@
                         onclick="dispatchLoadingEvent('hourglass', 1300);">
                     </i>
 
-                    🟠 if you want to install this app 
+                    you are about to install the app
                 </strong>
                 
             @endif
@@ -29,7 +29,7 @@
             onclick="dispatchLoadingEvent('hourglass', 1300);"
             >
             <strong>
-                {{ $this->app->install ? '🚫Uninstall 😣' : '👉Installer App 🍎' }}
+                {{ $this->app->install ? '🚫Uninstall App' : '👉Installer App 🍎' }}
             </strong>
                 
             </button>

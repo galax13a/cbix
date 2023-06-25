@@ -6,6 +6,7 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\App;
 use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 
 class Apps extends Component
 {
@@ -17,6 +18,9 @@ class Apps extends Component
 	protected $queryString = ['appid', 'appname'];
 	public $pageTitle;
 	public $appid,$appname;
+	public $appnew;
+
+	use WithFileUploads;
 
 	public function updatingKeyWord() // reset pages keywork
 	{
@@ -32,7 +36,7 @@ class Apps extends Component
 			$this->selected_id = $request->input('appid'); 		
 			$this->pageTitle = 'App Install ' . $this->app->name;	
 		}		
-
+		$this->appnew = 0;
 
 	}
 	
@@ -51,7 +55,7 @@ class Apps extends Component
 				->orWhere('slug', 'LIKE', $keyWord)
 				->orWhere('description', 'LIKE', $keyWord)
 				->orWhere('apps_categors_id', 'LIKE', $keyWord)
-				->orWhere('active', 'LIKE', $keyWord)->paginate(10)
+				->orWhere('active', 'LIKE', $keyWord)->paginate(5)
 		]);
 	}
 
