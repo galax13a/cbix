@@ -1,3 +1,6 @@
+@section('title')
+    {{ $pageTitle ?? 'Apps Site' }}
+@endsection
 
 <div class="container-fluid">
     <div class="row justify-content-center">
@@ -10,7 +13,10 @@
                         💜 Apps {{$this->selected_id}}
                     </a>
                     @if ($this->selected_id !== null)
-                        ▶️ {{ $this->name }}
+                        ▶️ {{ $app->name }}
+						/ Installation process						
+						<span class="badge shadow-sm bg-warning text-dark "><i class="fas fa-plus-circle"></i> 35 credits</span>
+						
                     @endif
 
                 </div>
@@ -20,6 +26,7 @@
 
                     @if ($this->selected_id !== null)
                         @include('livewire.apps.install')
+
                     @else
                         <div class="container mt-6">
 
@@ -77,9 +84,8 @@
                                                     <br>
                                                     <p class="p-4">
                                                         <strong>
-
                                                             <i
-                                                                class="fas fa-chevron-circle-down"></i>{{ $app->name }}
+                                            class="fas fa-chevron-circle-down"></i>{{ $app->name }}
 
                                                         </strong>
                                                         <br>
@@ -149,8 +155,6 @@
             </div>
         </div>
     </div>
-
-
 
 
 </div>

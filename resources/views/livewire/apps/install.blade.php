@@ -13,20 +13,21 @@
                                 <a href="javascript:void(0)"
                                  class="btn btn-dark m-2"
                                  wire:click.prevent="install2({{$app->id}})"
-                                    onclick="dispatchLoadingEvent('hourglass', 1600);">
+                                    onclick="dispatchLoadingEvent('dots', 1600);">
                                     💛 Install
                                 </a>
                             @else
                                 <strong class="p-3">
                                 <i class="fas fa-backward p-2 shadow rounded-5 custom-link punter"
                                 wire:click="appHome"
+                                onclick="dispatchLoadingEvent('standard', 1600); window.scrollTo(0,0);"
                                 ></i>
                                 uninstall this app for your site
                             </strong>
                                 <a href="javascript:void(0)"                                           
                                     class="btn btn-dark m-2"
                                     wire:click.prevent="install2({{$app->id}})"
-                                       onclick="dispatchLoadingEvent('hourglass', 1600);">
+                                       onclick="dispatchLoadingEvent('dots', 1600);">
                                     ❌Un-Install
                                 </a>
                             @endif
@@ -42,7 +43,6 @@
                         <div class="des" style="max-width: 100%; max-height: 300px; overflow: auto;">
                             {{ $app->description }}
                         </div>
-
 
                         <p class="card-text">ID: {{ $app->id }}</p>
                         <p class="card-text p-2 m-1 shadow-sm rounded-4">Version:

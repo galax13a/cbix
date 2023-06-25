@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\App;
+use Illuminate\Http\Request;
 
 class Apps extends Component
 {
@@ -13,29 +14,32 @@ class Apps extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $description, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active;
 	public $app;
-	protected $queryString = [
-		'appid' => ['except' => ''],
-		'appname'
-	];
-	
+	protected $queryString = ['appid', 'appname'];
+	public $pageTitle;
 	public $appid,$appname;
-
 
 	public function updatingKeyWord() // reset pages keywork
 	{
 		$this->resetPage();
 	}
-	public function mount()
-{
-    $this->selected_id = $this->appid;
-	$this->app= App::findOrFail($this->appid);
-}
+	public function mount(Request $request)
+	{		
+		$segment = $request->segment(4); // Obtener el ID de la URL
+	
+	    if ($request->has('appid')) {
+			$this->app = App::find($this->appid);
+			abort_if(is_null($this->app), 404, 'App not found');			
+			$this->selected_id = $request->input('appid'); 		
+			$this->pageTitle = 'App Install ' . $this->app->name;	
+		}		
 
+
+	}
+	
 
 	public function render()
 	{
 		$keyWord = '%' . $this->keyWord . '%';
-
 
 		return view('livewire.apps.view', [
 			'apps' => App::latest()
