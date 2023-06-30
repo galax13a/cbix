@@ -63,9 +63,8 @@
                             @include('livewire.apps.create-app')
                         @break
 
-                        @case('editapp')
-                            <p>Opción: Editar App</p>
-                            <!-- Aquí puedes agregar el código correspondiente al caso 'editapp' -->
+                        @case('editor')
+                        @include('livewire.apps.editor-app')
                         @break
 
                         @default

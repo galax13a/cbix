@@ -1,4 +1,4 @@
-<div class="row align-content-center container-sm">
+<div class="row container-fluid">
 
     <div class="col-12 shadow rounded-4 p-4 ">
         <form wire:submit.prevent="create1">
@@ -34,6 +34,8 @@
                 @if ($slug && $this->slugExists($slug))
                     <p class="text-danger shadow-sm p-2 rounded-3">Slug app, already exists. Please choose a different
                         one.</p>
+                        @elseif ($slug)
+                        <span class="badge p-1 p-1 bg-warning text-black" >Enabled app</span>
                 @endif
             </div>
     </div>

@@ -16,7 +16,7 @@ class Apps extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $description, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active;
 	public $app;
-	protected $queryString = ['appid', 'appname', 'menux'];
+	protected $queryString = ['appid', 'appname', 'menux', 'name'];
 	public $pageTitle;
 	public $appid, $appname;
 	public $appnew;
@@ -41,6 +41,7 @@ class Apps extends Component
 		}
 		$this->appnew = false;
 		$this->menux = $request->input('menux');
+		$this->name = $request->input('name');
 	}
 
 	public function newapp()
@@ -54,16 +55,29 @@ class Apps extends Component
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ App new create',
+			'message' => '¡creation of new app started',
 		]);
+	}
+
+	public function editorcreate(){
+
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'info',
+			'message' => '¡ Creando...app',
+		]);
+
 	}
 
 	public function create1()
 	{
+		$this->menux = "editor";
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ Create 1',
+			'message' => '¡ Create editor app',
 		]);
+
+		
+		
 	}
 	public  function slugExists($slug)
 	{
