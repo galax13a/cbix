@@ -53,6 +53,22 @@
         <p class="card-text p-2 m-1 shadow-sm rounded-4">Author:
             {{ $app->author ? $app->author : 'No author available' }}</p>
         <!-- Agrega más detalles de la aplicación si es necesario -->
+
+        <div class="col-12 mt-4">
+
+            <button id="btn-new" class="m-4 rounded-3 shadow p-2">
+                @if ($this->app->install)
+                <strong class="p-4 m-4 shadow rounded-3 text-warning ">
+                    Enter App {{$this->app->name}}
+                    <i class="fas fa-play-circle"></i>
+                </strong>    
+                @endif
+                
+            </button>
+
+        </div>
+
+
     </div>
 </div>
 </div>

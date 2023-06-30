@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\App;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class Apps extends Component
 {
@@ -15,11 +16,13 @@ class Apps extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $description, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active;
 	public $app;
-	protected $queryString = ['appid', 'appname'];
+	protected $queryString = ['appid', 'appname', 'menux'];
 	public $pageTitle;
-	public $appid,$appname;
+	public $appid, $appname;
 	public $appnew;
-
+	public $menux;
+	public $slugExists = false;
+	
 	use WithFileUploads;
 
 	public function updatingKeyWord() // reset pages keywork
@@ -27,19 +30,50 @@ class Apps extends Component
 		$this->resetPage();
 	}
 	public function mount(Request $request)
-	{		
-	//	$segment = $request->segment(4); // Obtener el ID de la URL
-	
-	    if ($request->has('appid')) {
-			$this->app = App::find($this->appid);
-			abort_if(is_null($this->app), 404, 'App not found');			
-			$this->selected_id = $request->input('appid'); 		
-			$this->pageTitle = 'App Install ' . $this->app->name;	
-		}		
-		$this->appnew = 0;
+	{
+		//	$segment = $request->segment(4); // Obtener el ID de la URL
 
+		if ($request->has('appid')) {
+			$this->app = App::find($this->appid);
+			abort_if(is_null($this->app), 404, 'App not found');
+			$this->selected_id = $request->input('appid');
+			$this->pageTitle = 'App Install ' . $this->app->name;
+		}
+		$this->appnew = false;
+		$this->menux = $request->input('menux');
 	}
-	
+
+	public function newapp()
+	{
+		$this->appnew = true;
+		$this->menux = "createapp";
+
+		$this->selected_id = $this->resetInput();
+		$this->appid = null;
+		$this->appname = null;
+
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => '¡ App new create',
+		]);
+	}
+
+	public function create1()
+	{
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => '¡ Create 1',
+		]);
+	}
+	public  function slugExists($slug)
+	{
+		return App::where('slug', $slug)->exists();
+	}
+
+	public function updatedName()
+	{
+		$this->slug = Str::slug($this->name);
+	}
 
 	public function render()
 	{
@@ -53,9 +87,10 @@ class Apps extends Component
 			'apps' => App::latest()
 				->orWhere('name', 'LIKE', $keyWord)
 				->orWhere('slug', 'LIKE', $keyWord)
-				->orWhere('description', 'LIKE', $keyWord)
+				->orWhere('en', 'LIKE', $keyWord)
+				->orWhere('es', 'LIKE', $keyWord)
 				->orWhere('apps_categors_id', 'LIKE', $keyWord)
-				->orWhere('active', 'LIKE', $keyWord)->paginate(5)
+				->orWhere('active', 'LIKE', $keyWord)->paginate(10)
 		]);
 	}
 
@@ -131,11 +166,12 @@ class Apps extends Component
 		$this->appname = $this->app->name;
 	}
 
-	public function updateApp($id,$install){
+	public function updateApp($id, $install)
+	{
 
 		$this->app->update([
-			'install' => $install			
-		]);	
+			'install' => $install
+		]);
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
@@ -146,11 +182,11 @@ class Apps extends Component
 	public function installApp($install)
 	{
 		try {
-	
+
 			$this->app->update([
-				'install' => $install			
-			]);				
-		
+				'install' => $install
+			]);
+
 			//$this->app = $this->edit($this->selected_id);
 		} catch (\Exception $e) {
 			$this->dispatchBrowserEvent('notify', [
@@ -159,14 +195,14 @@ class Apps extends Component
 			]);
 		}
 	}
-	
+
 
 	public function appHome()
 	{
 		$this->selected_id = $this->resetInput();
-
 		$this->appid = null;
 		$this->appname = null;
+		$this->menux = null;
 	}
 
 
