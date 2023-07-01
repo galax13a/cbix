@@ -42,7 +42,7 @@
 
     <button id="btn-new" type="submit" class="p-2 m-2 rounded-3 shadow-sm"
         @if (!$slug || $this->slugExists($slug)) disabled @endif>
-        <strong>Create App 🍒</strong>
+        <strong>Next  App 🍒</strong>
     </button>
 
     </form>

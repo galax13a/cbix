@@ -56,7 +56,7 @@
 
                 </div>
 
-                <div class="card-body">
+                <div class="card-body col-xl">
 
                     @switch($this->menux)
                         @case('createapp')
@@ -84,6 +84,5 @@
         </div>
     </div>
 </div>
-
 
 </div>

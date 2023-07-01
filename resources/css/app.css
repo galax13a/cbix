@@ -1,3 +1,30 @@
+.input-wrapper {
+  position: relative;
+}
+
+.input-float {
+  padding: 10px;
+  border: none;
+  background-color: #ffffff;
+  box-shadow: none;
+  transition: box-shadow 0.3s;
+  font-weight: bold;
+  font-size: 22px;
+  text-transform: capitalize;
+ 
+}
+
+.input-float:hover {
+border: 1px dashed;
+}
+
+.input-float:focus {
+  outline: none;
+  background-color: #e8ecf5;
+  border: none;
+
+}
+
 .nav-link:hover{
   background-color:#ceffce;
   border-radius: 11px;
