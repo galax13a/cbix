@@ -1,7 +1,7 @@
 <div class="row container-fluid">
 
     <div class="col-12 shadow rounded-4 p-4 ">
-        <form wire:submit.prevent="create1">
+        <form >
             <div class="row g-3 align-items-center">
                 <div class="input-group input-group-lg">
                     <span class="bg-black input-group-text text-bold text-warning" id="inputGroup-sizing-lg">
@@ -41,7 +41,8 @@
     </div>
 
     <button id="btn-new" type="submit" class="p-2 m-2 rounded-3 shadow-sm"
-        @if (!$slug || $this->slugExists($slug)) disabled @endif>
+    wire:click.prevent="create1()"
+        @if (!$name || $this->slugExists($slug)) disabled @endif>
         <strong>Next  App 🍒</strong>
     </button>
 

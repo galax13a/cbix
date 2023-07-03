@@ -1,11 +1,30 @@
+.ce-paragraph.cdx-block.ce-paragraph--left {
+  background-color: #fffffe;
+  border-radius: 10px;
+  padding: 1px;
+  margin: 3px;
+  padding-left: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: capitalize;  
+}
+.cdx-marker{
+background-color: #90f5c2;
+  border-radius: 10px;
+  padding: 1px;
+  margin: 3px;
+  padding-left: 2px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-transform: capitalize;
+}
+
 .input-wrapper {
   position: relative;
 }
 
 .input-float {
-  padding: 10px;
+  padding: 4px;
   border: none;
-  background-color: #ffffff;
+  padding-left: 4px;
   box-shadow: none;
   transition: box-shadow 0.3s;
   font-weight: bold;
@@ -15,7 +34,8 @@
 }
 
 .input-float:hover {
-border: 1px dashed;
+
+background-color: #d7f5e6;
 }
 
 .input-float:focus {

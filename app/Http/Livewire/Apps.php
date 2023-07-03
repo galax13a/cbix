@@ -70,13 +70,13 @@ class Apps extends Component
 
 	public function create1()
 	{
-		$this->menux = "editor";
+		
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ Create editor app',
-		]);
+			'message' => '¡ Create app editor js',
+		]);		
 
-		
+		//$this->menux = "editor";
 		
 	}
 	public  function slugExists($slug)
