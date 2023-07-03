@@ -22,6 +22,8 @@
 
     <link href="{{ asset('cs/select2.min.css') }}" rel="stylesheet" />
 
+    @stack('scripts-head')
+
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
     @livewireStyles
@@ -52,6 +54,10 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
+						<li class="nav-item">
+                            <a href="{{ url('/appeditors') }}" class="nav-link">🟣 Appeditors</a> 
+                        </li>
+				
 						<li class="nav-item">
                             <a href="{{ route('admin.apps') }}" class="nav-link">🟣 Apps</a> 
                         </li>
@@ -120,6 +126,7 @@
 
         </script>
     <script src= {{ asset('js/alpinejs.js') }} defer></script>
+    @stack('scripts-body')   
 </body>
 
 </html>

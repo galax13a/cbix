@@ -29,12 +29,12 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
                         data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <button id="btn-new" type="submit" wire:click.prevent="editorcreate()"
-                                class="p-1 m-1 shadow rounded-4">
+                            <button id="btn-new" type="submit" onclick="saveEditorData()" class="p-1 m-1 shadow rounded-4">
                                 <strong>
-                                    <i class="far fa-save"></i> Saveme
+                                  <i class="far fa-save"></i> Saveme
                                 </strong>
-                            </button>
+                              </button>
+                              
 
                             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                                 <input type="radio" checked class="btn-check" name="btnradio" id="btnradio1"
@@ -259,6 +259,22 @@
                         embed: Embed,
                         underline: Underline,
                         delimiter: Delimiter,
+                        code: CodeTool,
+                        list: {
+                            class: NestedList,
+                            inlineToolbar: true,
+                            config: {
+                                defaultStyle: 'unordered'
+                            },
+                        },
+                        table: {
+                            class: Table,
+                            inlineToolbar: true,
+                            config: {
+                                rows: 2,
+                                cols: 3,
+                            },
+                        },
 
                     },
                     EditorJsLibrary: EditorJS //ref EditorJS - This means only one global thing
@@ -273,6 +289,19 @@
 
         },
     })
+
+    function saveEditorData() {
+  //const editor = new EditorJS();
+
+  editor.save().then((outputData) => {
+    console.log('Article data:', outputData);
+    // Aquí puedes realizar acciones adicionales con los datos del artículo guardado
+  }).catch((error) => {
+    console.log('Saving failed:', error);
+  });
+}
+
+
 </script>
 <style>
     .ce-editorjsColumns_col {

@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('slug');
             $table->text('es')->nullable();
             $table->text('en');
+            $table->json('editorjs')->nullable();
             $table->string('version')->nullable();
             $table->enum('menu', ['front', 'admin'])->nullable()->default('admin');
             $table->string('url')->nullable();
@@ -51,6 +52,33 @@ return new class extends Migration
             $table->integer('downloads_bot')->default(0)->nullable();
             $table->timestamps();
         });
+
+        Schema::create('appeditors', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug');
+            $table->text('es')->nullable();
+            $table->text('en');
+            $table->json('editorjs')->nullable();
+            $table->string('version')->nullable();
+            $table->enum('menu', ['front', 'admin'])->nullable()->default('admin');
+            $table->string('url')->nullable();
+            $table->enum('target', ['parent', 'new'])->nullable();
+            $table->string('icon')->nullable();
+            $table->string('image')->nullable();
+            $table->string('download_url')->nullable();
+            $table->boolean('is_approved')->default(false);
+            $table->boolean('install')->default(false)->nullable();
+            $table->foreignId('apps_categors_id')->constrained('apps0categors')->onDelete('cascade');
+            $table->string('meta_title')->nullable();
+            $table->text('meta_description')->nullable();
+            $table->string('meta_keywords')->nullable();
+            $table->boolean('active')->default(false);
+            $table->integer('downloads')->default(100)->nullable();
+            $table->integer('downloads_bot')->default(0)->nullable();
+            $table->timestamps();
+        });
+
 
         // App Comments Table
         Schema::create('app0comments', function (Blueprint $table) {
