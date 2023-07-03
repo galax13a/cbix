@@ -22,6 +22,11 @@
 <script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.8.1/dist/bundle.min.js"></script>
 @endpush
 
+@push('scripts-body')
+<script src="{{ asset('js/config-editorjs.js') }}" defer></script>
+@endpush
+
+
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">
