@@ -1,4 +1,13 @@
-var editor = new EditorJS({
+var isReadOnly = false;
+var editor;
+
+function toggleReadOnly() {
+    isReadOnly = !isReadOnly;
+    editor.readOnly.toggle();
+    
+}
+
+editor = new EditorJS({
     holder: 'editorjs',
     autofocus: false,
     placeholder: '🦄 Let`s write an awesome story!',
@@ -78,14 +87,14 @@ var editor = new EditorJS({
             }
         },
         Color: {
-            class: ColorPlugin, // if load from CDN, please try: window.ColorPlugin
+            class: ColorPlugin,
             config: {
                 colorCollections: ['#EC7878', '#9C27B0', '#673AB7', '#3F51B5', '#0070FF', '#03A9F4',
                     '#00BCD4', '#4CAF50', '#8BC34A', '#CDDC39', '#FFF'
                 ],
                 defaultColor: '#FF1300',
                 type: 'text',
-                customPicker: true // add a button to allow selecting any colour  
+                customPicker: true
             }
         },
         columns: {
@@ -114,19 +123,13 @@ var editor = new EditorJS({
                             cols: 3,
                         },
                     },
-
                 },
-                EditorJsLibrary: EditorJS //ref EditorJS - This means only one global thing
+                EditorJsLibrary: EditorJS
             }
         },
-
         style: EditorJSStyle.StyleInlineTool,
-        //image: SimpleImage,
         embed: Embed,
         underline: Underline,
         delimiter: Delimiter,
-
-    },
-
-
-})
+    }
+});
