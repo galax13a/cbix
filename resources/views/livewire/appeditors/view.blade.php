@@ -11,10 +11,7 @@
                         Create Apps
                     </strong>
                 </div>
-                {{ $name }}
-                json
-
-				{{!! $this->editorjs !!}}
+           
 
                 <div class="card-body">
                     <div class="editorbot">
@@ -186,11 +183,9 @@
         <script>
 
             document.addEventListener('livewire:load', function() {
-                Livewire.on('loadeditor', function(editorData) {
-                   
+                Livewire.on('loadeditor', function(editorData) {                   
 					editor.render(JSON.parse(editorData));				
-					alert('editor ready');
-                  
+					//alert('editor ready');                  
                 });
             });
 
@@ -198,9 +193,10 @@
 					try {
 						const outputData = await editor.save();
 						console.log('Article data:', outputData);
-						//@this.set('editorjs', JSON.stringify(outputData));
-						alert('Editor ready2');
+						@this.set('editorjs', JSON.stringify(outputData));						
+						window.livewire.emit('emit_editorjs');
 						//Livewire.emit('saveJson');
+						//alert('Editor ready2');
 					} catch (error) {
 						console.log('Saving failed:', error);
 					}

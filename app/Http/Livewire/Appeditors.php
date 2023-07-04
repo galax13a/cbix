@@ -13,10 +13,12 @@ class Appeditors extends Component
 {
 	use WithPagination;
 
+	protected $listeners = ['emit_editorjs' => 'saveJson'];
+
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
 
-
+	
 	public function updatingKeyWord() // reset pages keywork
 	{
 		$this->resetPage();
@@ -32,12 +34,12 @@ class Appeditors extends Component
 		$slug = Str::slug($this->name);
 		$filename = $slug . '.json';
 		$filePath = resource_path('views/livewire/appeditors/myapps/' . $filename);
-		//File::put($filePath, $data);
+		File::put($filePath, $data);
 		//File::put($filePath, json_encode($data));
-		Storage::put($filePath, $data);
+		//Storage::put($filePath, $data);
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ App Save !',
+			'message' => '¡ App Save Json Ok!',
 		]);
 	}
 
