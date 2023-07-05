@@ -1,5 +1,5 @@
 @section('title', __('Appeditors'))
-<div class="container-fluid">
+<div class="container-fluid" style="z-index:1960;">
     <div class="row justify-content-center">
 
         <div class="col-md-12 my-2" id="view-js-live-pages">
@@ -185,11 +185,13 @@
                     </div>
                 </div>
 
+				<div class="card-footer d-flex justify-content-end">
+					<strong>Apps Webmaster Botchatur</strong>
+				</div>
+
             </div>
 
-            <div class="card-footer d-flex justify-content-end">
-                <strong>Apps Webmaster Botchatur</strong>
-            </div>
+       
 
         </div>
     </div>

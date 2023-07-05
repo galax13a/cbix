@@ -8,6 +8,8 @@ use App\Models\Appeditor;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
+use Livewire\WithFileUploads;
 
 class Appeditors extends Component
 {
@@ -31,8 +33,8 @@ class Appeditors extends Component
 	public function saveJson()
 {
     $data = $this->editorjs;
-    $slug = Str::slug($this->name);
-    $filename = $slug . '.json';
+    $this->slug = Str::slug($this->name);
+    $filename = $this->slug . '.json';
     $filePath = 'apps/pages/' . $filename;
     // Verificar si la carpeta existe, de lo contrario, crearla
     if (!Storage::exists(dirname($filePath))) {
@@ -48,15 +50,40 @@ class Appeditors extends Component
 
 	$this->validate([
 		'name' => 'required',
-		'slug' => 'required',
+		'slug' => 'required|unique',
 		'en' => 'required',
 		'is_approved' => 'required',
 		'apps_categors_id' => 'required',
 		'active' => 'required',
 	]);
 
-	
 
+Appeditor::create([
+			'name' => $this->name,
+			'slug' => $this->slug,
+			'es' => 'Spanish Content',
+			'en' => 'English Content',
+			'editorjs' => $this->editorjs,			
+			'menu' => $this->menu,
+			'url' => $this->url,
+			'target' => $this->target,			
+			'download_url' => $this->download_url,
+			'is_approved' => 1,
+			'install' => 1,
+			'apps_categors_id' => $this->apps_categors_id,
+			'meta_title' => $this->meta_title,
+			'meta_description' => $this->meta_description,
+			'meta_keywords' => $this->meta_keywords,
+			'active' => $this->active
+			
+		]);
+
+		$this->resetInput();
+		$this->dispatchBrowserEvent('closeModal');
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => '¡ Appeditor Successfully created!',
+		]);
 
 }
 

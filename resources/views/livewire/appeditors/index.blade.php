@@ -1,25 +1,29 @@
 @extends('layouts.app')
 @push('scripts-head')
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/list@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/nested-list@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/checklist@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@2.5.3/dist/bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/table@2.2.2/dist/table.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@1.3.0/dist/bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/underline@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@weekwood/editorjs-hyperlink@1.0.9/dist/bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/editorjs-style@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/editorjs-tooltip"></script>
-<script src="https://cdn.jsdelivr.net/npm/editorjs-text-color-plugin@2.0.3/dist/bundle.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/editorjs-header-with-alignment@1.0.1/dist/bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/editorjs-paragraph-with-alignment@3.0.0"></script>
-<script src="https://cdn.jsdelivr.net/npm/@calumk/editorjs-columns@latest"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@1.3.0/dist/bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/code@2.8.0/dist/bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@editorjs/image@2.8.1/dist/bundle.min.js"></script>
+
+<script src="{{ asset('js/editorcam/editorcam.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/header.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/list.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/list-nested.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/checklist.js') }}" defer></script>
+
+<script src="{{ asset('js/editorcam/simple-image.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/embed.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/table.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/marker.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/underline.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/hyperlink.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/editorcam-style.js') }}" defer></script>
+
+<script src="{{ asset('js/editorcam/tooltip.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/text-color.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/header-with-alignment.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/paragraph-with-alignment.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/columns.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/delimiter.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/code.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/image.js') }}" defer></script>
+
 @endpush
 
 @push('scripts-body')
