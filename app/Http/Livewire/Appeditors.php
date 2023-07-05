@@ -29,27 +29,45 @@ class Appeditors extends Component
 	}
 
 	public function saveJson()
-	{
-		$data = $this->editorjs;
-		$slug = Str::slug($this->name);
-		$filename = $slug . '.json';
-		$filePath = resource_path('views/livewire/appeditors/myapps/' . $filename);
-		File::put($filePath, $data);
-		//File::put($filePath, json_encode($data));
-		//Storage::put($filePath, $data);
-		$this->dispatchBrowserEvent('notify', [
-			'type' => 'success',
-			'message' => '¡ App Save Json Ok!',
-		]);
-	}
+{
+    $data = $this->editorjs;
+    $slug = Str::slug($this->name);
+    $filename = $slug . '.json';
+    $filePath = 'apps/pages/' . $filename;
+    // Verificar si la carpeta existe, de lo contrario, crearla
+    if (!Storage::exists(dirname($filePath))) {
+        Storage::makeDirectory(dirname($filePath));
+    }
+    // Guardar el archivo en el storage
+    Storage::put($filePath, $data);
+    $this->dispatchBrowserEvent('notify', [
+        'type' => 'success',
+        'message' => '¡App Save File Ok!',
+    ]);
 
-	public function loadJson($filename)
-	{
-		$filePath = resource_path('views/livewire/appeditors/myapps/' . $filename);
-		$data = File::get($filePath);
-		$this->editorjs = $data;
-		$this->emit('loadeditor', $this->editorjs);
-	}
+
+	$this->validate([
+		'name' => 'required',
+		'slug' => 'required',
+		'en' => 'required',
+		'is_approved' => 'required',
+		'apps_categors_id' => 'required',
+		'active' => 'required',
+	]);
+
+	
+
+
+}
+
+public function loadJson($filename)
+{
+    $filePath = 'apps/pages/' . $filename;
+    
+    $data = Storage::get($filePath);
+    $this->editorjs = $data;
+    $this->emit('loadeditor', $this->editorjs);
+}
 
 	public function render()
 	{

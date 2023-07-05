@@ -8,7 +8,7 @@
                 <div class="card-header bg-transparent shadow">
 
                     <strong>
-                        Create Apps
+						🍒  Create Apps
                     </strong>
                 </div>
 
@@ -24,8 +24,15 @@
                                 </div>
                             </div>
 
-                            <div class="col-3 text-center">
-                                <h6>Apps🍒</h6>
+                            <div class="col-3 text-center ">
+                                <h6 class="shadow rounded-3 p-2 mx-2">
+									Apps Pages
+									<button onclick="toggleReadOnly()"
+									class="border-0 shadow rounded-4 bg-light text-primary">									<i class="fas fa-eye"></i>
+								</button>
+
+								</h6>
+								
                             </div>
 
                             <div class="col-9 " wire:ignore>
@@ -35,14 +42,16 @@
 
                             <div class="col-3">
 
-                                <div class="accordion" id="accordionExample">
+                                <div class="accordion shadow" id="accordionExample">
                                     <div class="accordion-item">
+										
                                         <h2 class="accordion-header" id="headingOne">
                                             <button class="accordion-button text-bg-dark" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                                 aria-expanded="true" aria-controls="collapseOne">
                                                 🧁 Tools Apps
                                             </button>
+											
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show"
                                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -63,11 +72,7 @@
                                                     <i class="far fa-folder-open"></i> Load JSON2
                                                 </strong>
                                             </button>
-                                            <button onclick="toggleReadOnly()"
-											class="border-0 shadow rounded-4 bg-warning"
-											>
-												<i class="fas fa-eye"></i>
-											</button>
+										
 
                                             <div class="btn-group" role="group"
                                                 aria-label="Basic radio toggle button group">
@@ -81,8 +86,9 @@
 
                                             </div>
                                         </div>
+
                                     </div>
-                                </div>
+                               
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="headingTwo">
                                         <button class="accordion-button collapsed" type="button"
@@ -101,6 +107,9 @@
 
                                         </div>
                                     </div>
+
+								</div>
+								
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
                                             <button class="accordion-button collapsed" type="button"
@@ -211,25 +220,4 @@
             }
         }
     </script>
-    <style>
-        .ce-toolbar__actions {
-            right: calc(100% + 3px);
-            background-color: rgba(255, 255, 255, .5);
-            border-radius: 4px;
-        }
-
-        .ce-editorjsColumns_col {
-            border: 1px dashed #c2ccb9;
-            border-radius: 5px;
-            gap: 10px;
-            padding-top: 10px;
-        }
-
-        .ce-editorjsColumns_col:focus-within {
-            box-shadow: 0 6px 18px #e8edfa80;
-        }
-
-        #editorjs {
-            background-color: rgb(255, 255, 255);
-        }
-    </style>
+    

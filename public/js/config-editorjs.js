@@ -3,8 +3,7 @@ var editor;
 
 function toggleReadOnly() {
     isReadOnly = !isReadOnly;
-    editor.readOnly.toggle();
-    
+    editor.readOnly.toggle();    
 }
 
 editor = new EditorJS({

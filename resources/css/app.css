@@ -1,3 +1,32 @@
+.ce-code__textarea {
+  background-color: rgba(2, 52, 71, 0.945);
+  color: yellowgreen;
+  border: 1px dashed yellowgreen;
+  border-radius: 10px;
+}
+
+.ce-toolbar__actions {
+  right: calc(100% + 3px);
+  background-color: rgba(255, 255, 255, .5);
+  border-radius: 4px;
+}
+
+.ce-editorjsColumns_col {
+  border: 1px dashed #c2ccb9;
+  border-radius: 5px;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.ce-editorjsColumns_col:focus-within {
+  box-shadow: 0 6px 18px #e8edfa80;
+}
+
+#editorjs {
+  background-color: rgb(255, 255, 255);
+}
+
+
 .ce-paragraph.cdx-block.ce-paragraph--left {
   background-color: #fffffe;
   border-radius: 10px;
@@ -5,10 +34,11 @@
   margin: 3px;
   padding-left: 2px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  text-transform: capitalize;  
+  text-transform: capitalize;
 }
-.cdx-marker{
-background-color: #90f5c2;
+
+.cdx-marker {
+  background-color: #90f5c2;
   border-radius: 10px;
   padding: 1px;
   margin: 3px;
@@ -30,12 +60,12 @@ background-color: #90f5c2;
   font-weight: bold;
   font-size: 22px;
   text-transform: capitalize;
- 
+
 }
 
 .input-float:hover {
 
-background-color: #d7f5e6;
+  background-color: #d7f5e6;
 }
 
 .input-float:focus {
@@ -45,15 +75,17 @@ background-color: #d7f5e6;
 
 }
 
-.nav-link:hover{
-  background-color:#ceffce;
+.nav-link:hover {
+  background-color: #ceffce;
   border-radius: 11px;
   padding: 6px;
   font-weight: bold;
-} 
-body.dark .ban-dark:hover{
-  background-color:#e95c80;
 }
+
+body.dark .ban-dark:hover {
+  background-color: #e95c80;
+}
+
 select option:checked {
   background: rgb(0, 211, 211);
   border-radius: 6px;
@@ -66,6 +98,7 @@ select option:checked {
   color: #000;
   text-transform: uppercase;
 }
+
 select option {
 
   border-radius: 11px;
@@ -82,35 +115,38 @@ body.dark select option:checked {
   padding-left: 4px;
   border: 1px dashed yellowgreen;
 }
-.dash-card:hover{
+
+.dash-card:hover {
   background-color: rgba(30, 28, 31, 0.3);
   cursor: pointer;
   background: linear-gradient(to right, #cfcd49, #92fd92);
   border-radius: 10px;
-  
-}
-.dash-card:hover{
-  background-color: rgba(30, 28, 31, 0.3);
-  cursor: pointer;
-  background: linear-gradient(to right, #cfcd49, #92fd92);
-  border-radius: 10px;
-  
+
 }
 
-.dash-card2:hover{
+.dash-card:hover {
+  background-color: rgba(30, 28, 31, 0.3);
+  cursor: pointer;
+  background: linear-gradient(to right, #cfcd49, #92fd92);
+  border-radius: 10px;
+
+}
+
+.dash-card2:hover {
   transition: 2.3s;
   background-color: rgba(30, 28, 31, 0.3);
   cursor: pointer;
   background: linear-gradient(to right, #797871, #2f2235);
   border-radius: 10px;
-  
-}
-.dash-card{
- background-color: transparent;
- border: 0px solid #000000;
+
 }
 
-body.dark .dash-card:hover{
+.dash-card {
+  background-color: transparent;
+  border: 0px solid #000000;
+}
+
+body.dark .dash-card:hover {
   background-color: rgba(30, 28, 31, 0.3);
   cursor: pointer;
   background: linear-gradient(to right, #bdb326, #92fd92);
@@ -216,6 +252,7 @@ body.dark tr:hover {
   box-shadow: 0px 0px 10px rgba(25, 184, 4, 0.2);
   transform: rotateX(10deg);
 }
+
 .select2-results__option:hover {
   text-align: center;
   background-color: rgb(150, 0, 219);
@@ -346,6 +383,7 @@ body.dark .select2-selection__rendered {
   text-transform: uppercase;
 
 }
+
 .select2-search__field {
   text-align: center;
   width: 260px;
@@ -385,13 +423,15 @@ tr {
 
 tr:hover {
   cursor: pointer;
-  background-color: rgba(42, 243, 173, 0.2); /* 0.5 es el valor de alfa (transparencia) */
+  background-color: rgba(42, 243, 173, 0.2);
+  /* 0.5 es el valor de alfa (transparencia) */
   font-weight: bold;
   border-radius: 10px;
 }
 
 tr.active {
-  background-color: rgba(184, 114, 10, 0.2); /* 0.5 es el valor de alfa (transparencia) */
+  background-color: rgba(184, 114, 10, 0.2);
+  /* 0.5 es el valor de alfa (transparencia) */
   color: #241919;
   font-weight: bold;
 }
@@ -560,6 +600,7 @@ body.dark .menu-table {
   border-radius: 30%;
   box-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
 }
+
 .menu-item {
   width: 30px;
   height: 32px;
