@@ -16,7 +16,7 @@ class Apps extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $description, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active;
 	public $app;
-	protected $queryString = ['appid', 'appname', 'menux', 'name'];
+	protected $queryString = ['appid', 'appname', 'menux', 'name','appnew'];
 	public $pageTitle;
 	public $appid, $appname;
 	public $appnew;
@@ -39,14 +39,16 @@ class Apps extends Component
 			$this->selected_id = $request->input('appid');
 			$this->pageTitle = 'App Install ' . $this->app->name;
 		}
-		$this->appnew = false;
+		$this->appnew = $request->input('appnew');;
 		$this->menux = $request->input('menux');
 		$this->name = $request->input('name');
+
+		$this->slug = Str::slug($this->name);
 	}
 
 	public function newapp()
 	{
-		$this->appnew = true;
+		
 		$this->menux = "createapp";
 
 		$this->selected_id = $this->resetInput();
@@ -55,7 +57,7 @@ class Apps extends Component
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡creation of new app started',
+			'message' => '¡Step 1 Setup App',
 		]);
 	}
 
@@ -71,12 +73,29 @@ class Apps extends Component
 	public function create1()
 	{
 		
+		$this->validate([
+			'name' => 'required',
+			'slug' => 'required|unique:apps,slug'	
+		]);
+
+		$result = App::create([
+			'name' => $this->name,
+			'slug' => $this->slug,
+			'es' => 'Spanish Content., Apps',
+			'en' => 'English Content, Apps',
+			'is_approved' => 1,
+			'apps_categors_id' => 1, //apps servers //2 apps // 3 apps webs
+			'meta_title' => $this->name . ' Apps Chaturbate',
+			'active' => 1
+		]);
+		
+		$this->appnew = $result->id;
+		
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ Create app editor js',
-		]);		
-
-		//$this->menux = "editor";
+			'message' => '¡App New Successfully created!',
+		]);
+		
 		
 	}
 	public  function slugExists($slug)

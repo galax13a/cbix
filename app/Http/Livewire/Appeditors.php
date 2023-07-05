@@ -54,7 +54,7 @@ class Appeditors extends Component
 		'en' => 'required',
 		'is_approved' => 'required',
 		'apps_categors_id' => 'required',
-		'active' => 'required',
+		'active' => 'required'
 	]);
 
 

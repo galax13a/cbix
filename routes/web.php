@@ -62,7 +62,8 @@ Route::get('/en', function () {
 
 //Route Hooks - Do not delete//
 
-Route::view('admin/apps/root/create', 'livewire.appeditors.index')->middleware('auth');
+Route::view('admin/apps/root/create', 'livewire.appeditors.index')->middleware('auth')->name('create.root.app');
+
 
 // rutas de bans
 Route::view('ban', 'ban');
