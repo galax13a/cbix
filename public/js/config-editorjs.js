@@ -9,7 +9,7 @@ function toggleReadOnly() {
 editor = new EditorJS({
     holder: 'editorjs',
     autofocus: false,
-    placeholder: '🦄 Let`s write an awesome story!',
+    placeholder: '🦄 Let`s write an awesome story!  Click Write📝',
     readOnly: false,
     tools: {
         code: CodeTool,

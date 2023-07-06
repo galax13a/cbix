@@ -109,7 +109,7 @@
 
         </div>
     @else
-        <button id="btn-new" type="submit" class="p-2 m-2 rounded-3 shadow-sm" wire:click.prevent="create1()"
+        <button id="btn-new"  class="p-2 m-2 rounded-3 shadow-sm" wire:click.prevent="create1()"
             @if (!$name || $this->slugExists($slug)) disabled @endif>
             <strong>Next App 🍒</strong>
         </button>

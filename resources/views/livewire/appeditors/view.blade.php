@@ -8,7 +8,7 @@
                 <div class="card-header bg-transparent shadow">
 
                     <strong>
-						🍒  Create Apps
+                        🍒 Create Apps
                     </strong>
                 </div>
 
@@ -19,23 +19,42 @@
 
                             <div class="col-9 text-center">
                                 <div class="input-wrapper">
-                                    <input type="text" id="myInput" class="input-float w-100 rounded-2 punter mx-4"
+                                    <input type="text" id="myInput" class="input-float w-100 rounded-2 punter "
                                         wire:model="name" placeholder="Name App" />
                                 </div>
+
                             </div>
 
                             <div class="col-3 text-center ">
-                                <h6 class="shadow rounded-3 p-2 mx-2">
-									Apps Pages
-									<button onclick="toggleReadOnly()"
-									class="border-0 shadow rounded-4 bg-light text-primary">									<i class="fas fa-eye"></i>
-								</button>
-
-								</h6>
-								
+                                <h6 class="shadow-sm rounded-3 p-2 mx-2">
+                                    Mode Editor
+                                    <button onclick="toggleReadOnly()"
+                                        class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
+                                            class="fas fa-eye"></i>
+                                    </button>
+                                </h6>
                             </div>
 
-                            <div class="col-9 " wire:ignore>
+                            <div class="col-9 text-left ">
+                                <span class=" shadow-sm input-group-text text-bold bg-light" id="inputGroup-sizing-sm">
+                                    <strong class="p-1 rounded-4">
+                                        🌐 Slug: {{ url('/') }}/apps/{{ $slug }}
+                                    </strong>
+                                </span>
+
+                            </div>
+
+                            <div class="col-3 text-center ">
+                                <h6 class="shadow-sm rounded-3 p-2 mx-2">
+                                    Visit Apps
+                                    <button class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                        <i class="fas fa-link"></i>
+                                    </button>
+                                </h6>
+                            </div>
+
+
+                            <div class="col-9 my-4 " wire:ignore>
                                 <div id="editorjs" class="">
                                 </div>
                             </div>
@@ -44,14 +63,14 @@
 
                                 <div class="accordion shadow" id="accordionExample">
                                     <div class="accordion-item">
-										
+
                                         <h2 class="accordion-header" id="headingOne">
                                             <button class="accordion-button text-bg-dark" type="button"
                                                 data-bs-toggle="collapse" data-bs-target="#collapseOne"
                                                 aria-expanded="true" aria-controls="collapseOne">
                                                 🧁 Tools Apps
                                             </button>
-											
+
                                         </h2>
                                         <div id="collapseOne" class="accordion-collapse collapse show"
                                             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
@@ -64,15 +83,13 @@
                                             </button>
 
 
-                                            <button wire:click="loadJson('team-bosa.json')"
-                                                class="p-1 m-1 shadow rounded-4"
-												onclick="dispatchLoadingEvent('hourglass', 600);"
-												>
+                                            <button wire:click="loadJson()" class="p-1 m-1 shadow rounded-4"
+                                                onclick="dispatchLoadingEvent('hourglass', 600);">
                                                 <strong>
                                                     <i class="far fa-folder-open"></i> Load JSON2
                                                 </strong>
                                             </button>
-										
+
 
                                             <div class="btn-group" role="group"
                                                 aria-label="Basic radio toggle button group">
@@ -88,28 +105,28 @@
                                         </div>
 
                                     </div>
-                               
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header" id="headingTwo">
-                                        <button class="accordion-button collapsed" type="button"
-                                            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                            aria-expanded="false" aria-controls="collapseTwo">
-                                            <i class="far fa-keyboard m-1"></i> SEO
-                                        </button>
-                                    </h2>
-                                    <div id="collapseTwo" class="accordion-collapse collapse"
-                                        aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                        <div class="accordion-body">
-                                            <strong>tools seo for apps </strong>
-                                            En el competitivo mundo de las aplicaciones móviles, lograr que tus apps
-                                            se
-                                            destaquen entre
 
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="headingTwo">
+                                            <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                aria-expanded="false" aria-controls="collapseTwo">
+                                                <i class="far fa-keyboard m-1"></i> SEO
+                                            </button>
+                                        </h2>
+                                        <div id="collapseTwo" class="accordion-collapse collapse"
+                                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                            <div class="accordion-body">
+                                                <strong>tools seo for apps </strong>
+                                                En el competitivo mundo de las aplicaciones móviles, lograr que tus apps
+                                                se
+                                                destaquen entre
+
+                                            </div>
                                         </div>
+
                                     </div>
 
-								</div>
-								
                                     <div class="accordion-item">
                                         <h2 class="accordion-header" id="headingThree">
                                             <button class="accordion-button collapsed" type="button"
@@ -185,27 +202,41 @@
                     </div>
                 </div>
 
-				<div class="card-footer d-flex justify-content-end">
-					<strong>Apps Webmaster Botchatur</strong>
-				</div>
+                <div class="card-footer d-flex justify-content-end">
+                    <strong>Apps Webmaster Botchatur</strong>
+                </div>
 
             </div>
 
-       
+
 
         </div>
     </div>
     <script>
-
         let readOnly = false;
 
-        // Función para cambiar el estado de readOnly
-   
-
         document.addEventListener('livewire:load', function() {
+
+            window.addEventListener('load', function() {
+                let editorjsData = {!! json_encode($this->editorjs) !!};
+                if (editorjsData && editorjsData.length !== 0) {
+                    editor.render({!! $this->editorjs !!});
+                }
+            });
+
             Livewire.on('loadeditor', function(editorData) {
                 editor.render(JSON.parse(editorData));
                 //alert('editor ready');                  
+            });
+
+            window.livewire.on('renderEditor', (data) => {
+                //alert('render editirjs');
+                /*
+                        editor.render(JSON.parse(data)).catch((error) => {
+                            console.error('Error al renderizar los datos del editor:', error);
+                        });
+            			*/
+
             });
         });
 
@@ -222,4 +253,3 @@
             }
         }
     </script>
-    

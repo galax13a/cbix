@@ -39,7 +39,7 @@ class Apps extends Component
 			$this->selected_id = $request->input('appid');
 			$this->pageTitle = 'App Install ' . $this->app->name;
 		}
-		$this->appnew = $request->input('appnew');;
+		$this->appnew = $request->input('appnew');
 		$this->menux = $request->input('menux');
 		$this->name = $request->input('name');
 

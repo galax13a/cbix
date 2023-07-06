@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Models\Appeditor;
+use App\Models\App;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -19,98 +19,81 @@ class Appeditors extends Component
 
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
+	public $appid;
+	public $app;
 
-	
 	public function updatingKeyWord() // reset pages keywork
 	{
 		$this->resetPage();
 	}
-	public function mount()
+
+	
+	public function mount(Request $request)
 	{
-		$this->name = 'Team-Bosa';
+		$this->appid = $request->input('appid');
+
+		if ($request->has('appid')) {
+			$this->app = App::find($this->appid);
+			abort_if(is_null($this->app), 404, 'App not found');
+			$this->selected_id = $request->input('appid');			
+		}
+		
+		$this->name = 	$this->app->name;
+		$this->slug = Str::slug($this->name);		
+	
 	}
+	
+
 
 	public function saveJson()
-{
-    $data = $this->editorjs;
-    $this->slug = Str::slug($this->name);
-    $filename = $this->slug . '.json';
-    $filePath = 'apps/pages/' . $filename;
-    // Verificar si la carpeta existe, de lo contrario, crearla
-    if (!Storage::exists(dirname($filePath))) {
-        Storage::makeDirectory(dirname($filePath));
-    }
-    // Guardar el archivo en el storage
-    Storage::put($filePath, $data);
-    $this->dispatchBrowserEvent('notify', [
-        'type' => 'success',
-        'message' => '¡App Save File Ok!',
-    ]);
+	{
+		$data = $this->editorjs;
+		$this->slug = Str::slug($this->name);
+		$filename = $this->slug . '.json';
+		$filePath = 'apps/pages/' . $filename;
+		// Verificar si la carpeta existe, de lo contrario, crearla
+		if (!Storage::exists(dirname($filePath))) {
+			Storage::makeDirectory(dirname($filePath));
+		}
 
-
-	$this->validate([
-		'name' => 'required',
-		'slug' => 'required|unique',
-		'en' => 'required',
-		'is_approved' => 'required',
-		'apps_categors_id' => 'required',
-		'active' => 'required'
-	]);
-
-
-Appeditor::create([
-			'name' => $this->name,
-			'slug' => $this->slug,
-			'es' => 'Spanish Content',
-			'en' => 'English Content',
-			'editorjs' => $this->editorjs,			
-			'menu' => $this->menu,
-			'url' => $this->url,
-			'target' => $this->target,			
-			'download_url' => $this->download_url,
-			'is_approved' => 1,
-			'install' => 1,
-			'apps_categors_id' => $this->apps_categors_id,
-			'meta_title' => $this->meta_title,
-			'meta_description' => $this->meta_description,
-			'meta_keywords' => $this->meta_keywords,
-			'active' => $this->active
-			
+		$record = App::find($this->app->id);
+		$record->update([
+			'editorjs' => $this->editorjs
 		]);
+		// Guardar el archivo en el storage
+		Storage::put($filePath, $data);
 
-		$this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ Appeditor Successfully created!',
+			'message' => '¡ App Editor Ok',
 		]);
 
-}
+	}
 
-public function loadJson($filename)
-{
-    $filePath = 'apps/pages/' . $filename;
-    
-    $data = Storage::get($filePath);
-    $this->editorjs = $data;
-    $this->emit('loadeditor', $this->editorjs);
-}
-
-	public function render()
+	public function loadJson()
 	{
-		$keyWord = '%' . $this->keyWord . '%';
+		$filePath = 'apps/pages/' . $this->slug.'.json';
 
+		$data = Storage::get($filePath);
+		$this->editorjs = $data;
+		$this->emit('loadeditor', $this->editorjs);
+	}
+
+	public function render(Request $request)
+	{
+	
+		$appId = $this->selected_id;
+		$this->app = App::find($appId);
+		$this->name = 	$this->app->name;
+		$this->slug = Str::slug($this->name);
+		$this->editorjs = $this->app->editorjs;
+	//	$this->emit('renderEditor', $this->app->editorjs);	
+	
 		return view('livewire.appeditors.view', [
-			'appeditors' => Appeditor::latest()
-				->orWhere('name', 'LIKE', $keyWord)
-				->orWhere('slug', 'LIKE', $keyWord)
-				->orWhere('es', 'LIKE', $keyWord)
-				->orWhere('en', 'LIKE', $keyWord)
-				->orWhere('editorjs', 'LIKE', $keyWord)
-				->orWhere('downloads', 'LIKE', $keyWord)
-				->orWhere('downloads_bot', 'LIKE', $keyWord)->paginate(10)
+			'appeditors' => App::where('id', $appId)->get(),
 		]);
 	}
+
 
 	public function cancel()
 	{
@@ -153,7 +136,7 @@ public function loadJson($filename)
 			'active' => 'required',
 		]);
 
-		Appeditor::create([
+		App::create([
 			'name' => $this->name,
 			'slug' => $this->slug,
 			'es' => $this->es,
@@ -187,7 +170,7 @@ public function loadJson($filename)
 
 	public function edit($id)
 	{
-		$record = Appeditor::findOrFail($id);
+		$record = App::findOrFail($id);
 		$this->selected_id = $id;
 		$this->name = $record->name;
 		$this->slug = $record->slug;
@@ -224,7 +207,7 @@ public function loadJson($filename)
 		]);
 
 		if ($this->selected_id) {
-			$record = Appeditor::find($this->selected_id);
+			$record = App::find($this->selected_id);
 			$record->update([
 				'name' => $this->name,
 				'slug' => $this->slug,
@@ -262,7 +245,7 @@ public function loadJson($filename)
 	public function destroy($id)
 	{
 		if ($id) {
-			Appeditor::where('id', $id)->delete();
+			App::where('id', $id)->delete();
 		}
 	}
 }
