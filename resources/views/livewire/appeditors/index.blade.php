@@ -23,6 +23,7 @@
 <script src="{{ asset('js/editorcam/delimiter.js') }}" defer></script>
 <script src="{{ asset('js/editorcam/code.js') }}" defer></script>
 <script src="{{ asset('js/editorcam/image.js') }}" defer></script>
+<script src="{{ asset('js/editorcam/raw.js') }}" defer></script>
 
 @endpush
 
@@ -40,9 +41,3 @@
     </div>   
 </div>
 @endsection
-
-
-<script>
-
-
-</script>

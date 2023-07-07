@@ -18,8 +18,8 @@
                 </div>
 
                 <button id="btn-new" class="rounded-3 shadow bg-transparent"
-                    wire:click="newapp"
-                    onclick="dispatchLoadingEvent('hourglass', 900); window.scrollTo(0,0);">
+                    wire:click="newapp()"
+                    onclick="dispatchLoadingEvent('hourglass', 900);">
                     <strong>
                         Create App <i class="fas fa-plus-circle"></i>
                     </strong>

@@ -10,8 +10,8 @@
 
                 <div class="card-header bg-transparent shadow border-0">
                     <strong>
-                        <a href="javascript:void(0)" class="custom-link " wire:click="appHome">
-                            💜 Apps
+                        <a href="{{ route('admin.apps') }}" class="custom-link p-1">
+                             Apps
                         </a>
                         /
                     </strong>

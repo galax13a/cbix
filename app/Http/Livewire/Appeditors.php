@@ -20,7 +20,8 @@ class Appeditors extends Component
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
 	public $appid;
-	public $app;
+	public $app, $app_idioma;
+
 
 	public function updatingKeyWord() // reset pages keywork
 	{
@@ -39,12 +40,13 @@ class Appeditors extends Component
 		}
 		
 		$this->name = 	$this->app->name;
-		$this->slug = Str::slug($this->name);		
+		$this->slug = Str::slug($this->name);
+		$this->app_idioma = 'en';
 	
 	}
+
 	
-
-
+	
 	public function saveJson()
 	{
 		$data = $this->editorjs;
@@ -87,8 +89,11 @@ class Appeditors extends Component
 		$this->name = 	$this->app->name;
 		$this->slug = Str::slug($this->name);
 		$this->editorjs = $this->app->editorjs;
-	//	$this->emit('renderEditor', $this->app->editorjs);	
+		$this->en = $this->app->en;
+		$this->emit('renderEditor', $this->app->editorjs);	
 	
+	//$this->editorjs = json_decode($this->editorjs, true);
+
 		return view('livewire.appeditors.view', [
 			'appeditors' => App::where('id', $appId)->get(),
 		]);

@@ -130,5 +130,6 @@ editor = new EditorJS({
         embed: Embed,
         underline: Underline,
         delimiter: Delimiter,
+        raw: RawTool,
     }
 });
