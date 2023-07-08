@@ -123,7 +123,20 @@ class Appeditors extends Component
 		$this->en = $this->app->en;
 		$this->apps0categor_id = $this->app->apps_categors_id;
 	}
+public function saveSeo() {
 
+	$this->app->update([
+		'meta_title' => $this->meta_title,
+		'meta_description' => $this->meta_description,
+		'meta_keywords' => $this->meta_keywords,
+	]);
+
+	$this->dispatchBrowserEvent('notify', [
+		'type' => 'success',
+		'message' => ' Save SEO App, Ok!! '
+	]);
+
+}
 	public function saveJson()
 	{
 		$data = $this->editorjs;
@@ -144,7 +157,7 @@ class Appeditors extends Component
 		$this->app->update([
 			'menu' => $this->menu,
 			'url' => $this->url,
-			'version' => $this->target,
+			'target' => $this->target,
 			'download_url' => $this->download_url			
 		]);
 

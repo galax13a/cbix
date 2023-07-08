@@ -64,7 +64,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-3">
+                            <div class="col-3" wire:ignore>
 
                                 @include('livewire.appeditors.tabs')
 
@@ -93,39 +93,36 @@
             // Inicializa el editor de inglés
             // Solo inicializa el editor de inglés si el textarea existe
             if (document.querySelector('#editorjsx-en')) {
-        ClassicEditor
-            .create(document.querySelector('#editorjsx-en'))
-            .then(editorjsx => {
-                editorjsx.model.document.on('change:data', () => {
-                	@this.set('en', editorjsx.getData());
-				/*	Livewire.emit('contentUpdated', {
-                        'lang': 'en',
-                        'data': editorjsx.getData()
+                ClassicEditor
+                    .create(document.querySelector('#editorjsx-en'))
+                    .then(editorjsx => {
+                        editorjsx.model.document.on('change:data', () => {
+                            @this.set('en', editorjsx.getData());
+                            /*	Livewire.emit('contentUpdated', {
+                            'lang': 'en',
+                            'data': editorjsx.getData()
+                        });
+    					*/
+                        });
+                    })
+                    .catch(error => {
+                        console.error(error);
                     });
-					*/
-                });
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
+            }
 
-    // Solo inicializa el editor de español si el textarea existe
-    if (document.querySelector('#editorjsx-es')) {
-        ClassicEditor
-            .create(document.querySelector('#editorjsx-es'))
-            .then(editorjsx => {
-                editorjsx.model.document.on('change:data', () => {
-					@this.set('es', editorjsx.getData());
-                });
-            })
-            .catch(error => {
-                console.error(error);
-            });
-    }
-
-
-
+            // Solo inicializa el editor de español si el textarea existe
+            if (document.querySelector('#editorjsx-es')) {
+                ClassicEditor
+                    .create(document.querySelector('#editorjsx-es'))
+                    .then(editorjsx => {
+                        editorjsx.model.document.on('change:data', () => {
+                            @this.set('es', editorjsx.getData());
+                        });
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
 
             window.addEventListener('load', function() {
                 let editorjsData = {!! json_encode($this->editorjs) !!};

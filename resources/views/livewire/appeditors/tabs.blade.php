@@ -10,8 +10,9 @@
 
         </h2>
         <div id="collapseOne"
-         class="accordion-collapse collapse show
-         text-center 
+        
+         class="accordion-collapse collapse 
+         text-center show
          " 
         aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
@@ -107,9 +108,13 @@
                 </div>
 
                 <div class="mb-3">
-                    
-                    <input type="text" class="form-control" id="download_url" wire:model.defer="download_url"
-                        placeholder="Enter Download URL">
+                    <label class="visually-hidden" for="autoSizingInputGroup">URL</label>
+                    <div class="input-group">
+                      <div class="input-group-text">Ⓜ️</div>
+                      <input type="text" class="form-control" id="download_url" wire:model.defer="download_url"
+                      placeholder="Enter Download URL">
+                    </div>
+               
                 </div>
             </div>          
 
@@ -129,9 +134,38 @@
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <strong>tools seo for apps </strong>
-                En el competitivo mundo de las aplicaciones móviles, lograr que tus apps
-                se
-                destaquen entre
+             
+                <div class="form-group">
+                    <label for="meta_title">Meta Title</label>
+                    <textarea wire:model.defer="meta_title" id="meta_title" class="form-control m-2 shadow-sm" aria-label="With textarea" placeholder="💭 Meta Title"></textarea>
+                    @error('meta_title')
+                        <span class="error text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                
+                <div class="form-group">
+                    <label for="meta_description">Meta Description</label>
+                    <textarea wire:model.defer="meta_description" id="meta_description" class="form-control m-2 shadow-sm" aria-label="With textarea" placeholder="💭 Meta Description"></textarea>
+                    @error('meta_description')
+                        <span class="error text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                
+                <div class="form-group">
+                    <label for="meta_keywords">Meta Keywords</label>
+                    <textarea wire:model.defer="meta_keywords" id="meta_keywords" class="form-control m-2 shadow-sm" aria-label="With textarea" placeholder="💭 Meta Keywords"></textarea>
+                    @error('meta_keywords')
+                        <span class="error text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+
+                <div class="container">
+                    <button wire:key="btn-saveseo" wire:click.prevent="saveSeo" class="btn btn-primary">
+                        Guardar SEO
+                    </button>
+                    
+                </div>
+                
 
             </div>
         </div>
