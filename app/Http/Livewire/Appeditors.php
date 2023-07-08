@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\App;
+use App\Models\Tag;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
@@ -16,11 +17,11 @@ class Appeditors extends Component
 	use WithPagination;
 
 	protected $listeners = ['emit_editorjs' => 'saveJson', 'contentUpdated' => 'updateContent', 'myloadjs' => 'loadJson'];
-	
-	protected $queryString = ['appid', 'apps0categor_id','active','app_idioma'];
+
+	protected $queryString = ['appid', 'apps0categor_id', 'active', 'app_idioma'];
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps0categor_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
-	public $appid;
+	public $appid, $tags, $tages;
 	public $app, $app_idioma;
 	public $load_app_json;
 
@@ -28,24 +29,41 @@ class Appeditors extends Component
 	{
 		$this->resetPage();
 	}
+	public function mount(Request $request)
+	{
+		$this->appid = $request->input('appid');
 
+		if ($request->has('appid')) {
+			$this->app = App::find($this->appid);
+			abort_if(is_null($this->app), 404, 'App not found');
+			$this->selected_id = $request->input('appid');
+		}
+
+		$this->name = 	$this->app->name;
+		$this->slug = Str::slug($this->name);
+		$this->app_idioma = 'en';
+		$this->es = $this->app->es;
+		$this->en = $this->app->en;
+		$this->apps0categor_id = $this->app->apps_categors_id;
+		$this->tags = Tag::all();
+	}
 	public function updateContent($content)
-    {
-        if($content['lang'] == 'en') {
-            $this->en = $content['data'];
-        } elseif($content['lang'] == 'es') {
-            $this->es = $content['data'];
-        }
+	{
+		if ($content['lang'] == 'en') {
+			$this->en = $content['data'];
+		} elseif ($content['lang'] == 'es') {
+			$this->es = $content['data'];
+		}
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
 			'message' => ' cambiando datos  '
 		]);
-    }
+	}
 
 	public function store_save()
 	{
-	
+
 		$this->app->update([
 			'name' => $this->name,
 			'slug' => $this->slug,
@@ -61,9 +79,8 @@ class Appeditors extends Component
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ Appeditor Update !' 
+			'message' => '¡ Appeditor Update !'
 		]);
-	
 	}
 
 	public function render()
@@ -85,7 +102,7 @@ class Appeditors extends Component
 		$this->download_url = $this->app->download_url;
 		$this->is_approved = $this->app->is_approved;
 		$this->install = $this->app->install;
-	
+
 		$this->meta_title = $this->app->meta_title;
 		$this->meta_description = $this->app->meta_description;
 		$this->meta_keywords = $this->app->meta_keywords;
@@ -93,50 +110,35 @@ class Appeditors extends Component
 		$this->downloads = $this->app->downloads;
 		$this->downloads_bot = $this->app->downloads_bot;
 
-		if(!$this->en) $this->en = $this->app->en;
-		if(!$this->es) $this->es = $this->app->es;
-
+		if (!$this->en) $this->en = $this->app->en;
+		if (!$this->es) $this->es = $this->app->es;
+		$this->tags = Tag::all();
+		
 		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
 		//$this->emit('renderEditor');
 		//$this->emit('renderEditor', $this->app->editorjs);	
 		//$this->editorjs = json_decode($this->editorjs, true);
-
+		$this->emit('combos');
 		return view('livewire.appeditors.view', [
 			'appeditors' => App::where('id', $appId)->get(),
 		]);
 	}
 
-	public function mount(Request $request)
+
+	public function saveSeo()
 	{
-		$this->appid = $request->input('appid');
 
-		if ($request->has('appid')) {
-			$this->app = App::find($this->appid);
-			abort_if(is_null($this->app), 404, 'App not found');
-			$this->selected_id = $request->input('appid');
-		}
+		$this->app->update([
+			'meta_title' => $this->meta_title,
+			'meta_description' => $this->meta_description,
+			'meta_keywords' => $this->meta_keywords,
+		]);
 
-		$this->name = 	$this->app->name;
-		$this->slug = Str::slug($this->name);
-		$this->app_idioma = 'en';
-		$this->es = $this->app->es;
-		$this->en = $this->app->en;
-		$this->apps0categor_id = $this->app->apps_categors_id;
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => ' Save SEO App, Ok!! '
+		]);
 	}
-public function saveSeo() {
-
-	$this->app->update([
-		'meta_title' => $this->meta_title,
-		'meta_description' => $this->meta_description,
-		'meta_keywords' => $this->meta_keywords,
-	]);
-
-	$this->dispatchBrowserEvent('notify', [
-		'type' => 'success',
-		'message' => ' Save SEO App, Ok!! '
-	]);
-
-}
 	public function saveJson()
 	{
 		$data = $this->editorjs;
@@ -147,18 +149,29 @@ public function saveSeo() {
 		if (!Storage::exists(dirname($filePath))) {
 			Storage::makeDirectory(dirname($filePath));
 		}
-		
+
 		$this->app->update([
 			'editorjs' => $this->editorjs
 		]);
 		// Guardar el archivo en el storage
-		Storage::put($filePath, $data);
+
+		$editorjsObject = json_decode($this->editorjs);
+
+		$emptyEditor = [
+			"blocks" => [],
+			"version" => "2.27.2"
+		];
+
+		if (!(empty($editorjsObject->blocks) && $editorjsObject->version === $emptyEditor["version"])) {
+			Storage::put($filePath, $data);
+		}
+
 
 		$this->app->update([
 			'menu' => $this->menu,
 			'url' => $this->url,
 			'target' => $this->target,
-			'download_url' => $this->download_url			
+			'download_url' => $this->download_url
 		]);
 
 		$this->dispatchBrowserEvent('notify', [
@@ -181,16 +194,16 @@ public function saveSeo() {
 	{
 		$filename = $this->slug . '_' . $this->app_idioma . '.json';
 		$filePath = 'apps/pages/' . $filename;
-	
+
 		if (Storage::exists($filePath)) {
 			$data = Storage::get($filePath);
 			$this->editorjs = $data;
 			$this->emit('loadeditor', $this->editorjs);
 		}
 	}
-	
 
-	
+
+
 
 	public function cancel()
 	{

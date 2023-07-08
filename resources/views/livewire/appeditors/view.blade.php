@@ -14,6 +14,11 @@
 
 
                 <div class="card-body">
+					car tags
+					<pre>
+						{{ var_dump($this->tages) }}
+						</pre>
+						
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
 
@@ -85,13 +90,35 @@
 
         </div>
     </div>
+
+    <style>
+        .select2-container--default.select2-container--focus .select2-selection--multiple {
+            border: solid black 1px;
+            outline: 0;
+            width: 190px;
+        }
+
+        .select2-container--default .select2-selection--multiple {
+            width: 100%;
+        }
+    </style>
     <script>
         let readOnly = false;
 
         document.addEventListener('livewire:load', function() {
 
-            // Inicializa el editor de inglés
-            // Solo inicializa el editor de inglés si el textarea existe
+            window.livewire.on('combos', () => {
+
+                $('#tags').select2();
+                //alert('combos');
+				$('#tags').on('change', function (e) {
+            let data = $('#tags').select2("val");
+            @this.set('tages', data);
+        });
+            });
+
+            $('#tags').select2();
+ 
             if (document.querySelector('#editorjsx-en')) {
                 ClassicEditor
                     .create(document.querySelector('#editorjsx-en'))
@@ -99,10 +126,10 @@
                         editorjsx.model.document.on('change:data', () => {
                             @this.set('en', editorjsx.getData());
                             /*	Livewire.emit('contentUpdated', {
-                            'lang': 'en',
-                            'data': editorjsx.getData()
-                        });
-    					*/
+                                    'lang': 'en',
+                                    'data': editorjsx.getData()
+                                });
+            					*/
                         });
                     })
                     .catch(error => {
@@ -110,7 +137,7 @@
                     });
             }
 
-            // Solo inicializa el editor de español si el textarea existe
+
             if (document.querySelector('#editorjsx-es')) {
                 ClassicEditor
                     .create(document.querySelector('#editorjsx-es'))

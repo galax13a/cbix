@@ -174,7 +174,7 @@
 
     <div class="accordion-item">
         <h2 class="accordion-header" id="headingThree">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            <button class="accordion-button collapsed " type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                 <i class="fas fa-tags m-1"></i> Tags
             </button>
@@ -182,13 +182,29 @@
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <strong>
-                    This is the third item's accordion body.</strong> It is hidden
-                by
-                default, until the
-                collapse plugin adds the appropriate classes that we use to style
-                each
-                element. These
+                    
+                <div class="container text-center">
+           
+                    <div class="m-2 shadow-sm rounded-3 mb-2 p-2 text-center ">
+                        <select class="js-example-basic-multiple" multiple="multiple"  wire:key="select-tags" wire:model="tages" id="tags" name="tags[]" >
+                            @foreach($tags as $tag)
+                                <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                            @endforeach
+                        </select>
+                  
+                    </div>
+                    <button wire:key="btn-savetags" wire:click.prevent="saveTags" class="btn btn-primary">
+                        Guardar Tags
+                    </button>
+
+                    tages #
+                    <pre>
+                        {{ var_dump($this->tages) }}
+                        </pre>
+                        
+
+                </div>
+                
 
             </div>
         </div>

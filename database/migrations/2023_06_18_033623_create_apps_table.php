@@ -109,11 +109,13 @@ return new class extends Migration
         });
 
         // App Tag Table
+
         Schema::create('apps0tags', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('app_id')->constrained()->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+            $table->id();      
+            $table->foreignId('app_id')->constrained('apps')->onDelete('cascade');
+            $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
             $table->timestamps();
         });
+        
     }
 };

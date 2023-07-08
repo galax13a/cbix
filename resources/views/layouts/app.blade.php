@@ -55,8 +55,12 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/appeditors') }}" class="nav-link">🟣 Appeditors</a> 
+                            <a href="{{ url('/tags') }}" class="nav-link">🟣 Tags</a> 
                         </li>
+						<li class="nav-item">
+                            <a href="{{ url('/apps0tags') }}" class="nav-link">🟣 Apps0tags</a> 
+                        </li>
+					
 				
 						<li class="nav-item">
                             <a href="{{ route('admin.apps') }}" class="nav-link">🟣 Apps</a> 
