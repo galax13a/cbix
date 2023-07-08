@@ -1,7 +1,7 @@
 <div class="row container-fluid">
 
-    <div class="col-12 shadow rounded-4 p-4 ">
-        <form>
+    <div class="col-12 shadow rounded-4 p-4 " wire:key="body-head-apps-create">
+    
             <div class="row g-3 align-items-center">
                 <div class="input-group input-group-lg">
                     <span class="bg-black input-group-text text-bold text-warning" id="inputGroup-sizing-lg">
@@ -56,7 +56,7 @@
                     @endif
                 @endif
             </div>
-        </form>
+   
 
 
     </div>
@@ -65,7 +65,7 @@
 
     <a href="{{ route('create.root.app', ['appid' => $this->appnew]) }}" 
         class="p-2 m-2 rounded-3 shadow-sm text-center">
-        <button  class="btn btn-primary">
+        <button wire:key="btn-editor-now"  class="btn btn-primary">
             <strong>👉🏼 Editor Page App Now ⭐️</strong>
         </button>
     </a>
@@ -109,7 +109,7 @@
 
         </div>
     @else
-        <button id="btn-new"  class="p-2 m-2 rounded-3 shadow-sm" wire:click.prevent="create1()"
+        <button id="btn-new" wire:key="btn-next-app"  class="p-2 m-2 rounded-3 shadow-sm" wire:click.prevent="create1()"
             @if (!$name || $this->slugExists($slug)) disabled @endif>
             <strong>Next App 🍒</strong>
         </button>

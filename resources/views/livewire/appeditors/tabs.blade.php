@@ -80,7 +80,7 @@
             <div class="container">
                 <div class="mb-3">
                     <label for="menu" class="form-label"></label>
-                    <select class="form-select" id="menu" wire:model="menu">
+                    <select class="form-select" id="menu" wire:model.defer="menu">
                         <option selected>Choose...Menu</option>
                         <option value="front">Front</option>
                         <option value="admin">Admin</option>
@@ -92,14 +92,14 @@
                     <div class="input-group">
                       <div class="input-group-text">🌐</div>
                       <input type="text" class="form-control" id="url" 
-                      wire:model="url" placeholder="Enter URL">
+                      wire:model.defer="url" placeholder="Enter URL">
                     </div>
                 
                 </div>
 
                 <div class="mb-3">
                     
-                    <select class="form-select" id="target" wire:model="target">
+                    <select class="form-select" id="target" wire:model.defer="target">
                         <option selected>Choose...Target</option>
                         <option value="parent">Parent</option>
                         <option value="new">New</option>
@@ -108,7 +108,7 @@
 
                 <div class="mb-3">
                     
-                    <input type="text" class="form-control" id="download_url" wire:model="download_url"
+                    <input type="text" class="form-control" id="download_url" wire:model.defer="download_url"
                         placeholder="Enter Download URL">
                 </div>
             </div>          

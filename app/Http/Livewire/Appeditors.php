@@ -17,7 +17,7 @@ class Appeditors extends Component
 
 	protected $listeners = ['emit_editorjs' => 'saveJson', 'contentUpdated' => 'updateContent', 'myloadjs' => 'loadJson'];
 	
-	protected $queryString = ['appid', 'apps0categor_id','active'];
+	protected $queryString = ['appid', 'apps0categor_id','active','app_idioma'];
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps0categor_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
 	public $appid;
@@ -63,7 +63,6 @@ class Appeditors extends Component
 			'type' => 'success',
 			'message' => '¡ Appeditor Update !' 
 		]);
-
 	
 	}
 
@@ -99,9 +98,9 @@ class Appeditors extends Component
 
 		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
 		//$this->emit('renderEditor');
-		//$this->emit('renderEditor', $this->app->editorjs);		
-
+		//$this->emit('renderEditor', $this->app->editorjs);	
 		//$this->editorjs = json_decode($this->editorjs, true);
+
 		return view('livewire.appeditors.view', [
 			'appeditors' => App::where('id', $appId)->get(),
 		]);
@@ -125,7 +124,6 @@ class Appeditors extends Component
 		$this->apps0categor_id = $this->app->apps_categors_id;
 	}
 
-
 	public function saveJson()
 	{
 		$data = $this->editorjs;
@@ -136,13 +134,19 @@ class Appeditors extends Component
 		if (!Storage::exists(dirname($filePath))) {
 			Storage::makeDirectory(dirname($filePath));
 		}
-
-		$record = App::find($this->app->id);
-		$record->update([
+		
+		$this->app->update([
 			'editorjs' => $this->editorjs
 		]);
 		// Guardar el archivo en el storage
 		Storage::put($filePath, $data);
+
+		$this->app->update([
+			'menu' => $this->menu,
+			'url' => $this->url,
+			'version' => $this->target,
+			'download_url' => $this->download_url			
+		]);
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
@@ -162,13 +166,16 @@ class Appeditors extends Component
 
 	public function loadJson()
 	{
-		//$filePath = 'apps/pages/' . $this->slug.'.json';
-		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
-		$filePath = 'apps/pages/' . $this->load_app_json;
-		$data = Storage::get($filePath);
-		$this->editorjs = $data;
-		$this->emit('loadeditor', $this->editorjs);
+		$filename = $this->slug . '_' . $this->app_idioma . '.json';
+		$filePath = 'apps/pages/' . $filename;
+	
+		if (Storage::exists($filePath)) {
+			$data = Storage::get($filePath);
+			$this->editorjs = $data;
+			$this->emit('loadeditor', $this->editorjs);
+		}
 	}
+	
 
 	
 
