@@ -8,7 +8,7 @@
                 <div class="card-header bg-transparent shadow">
 
                     <strong>
-                        🍒 Create Apps
+                        🍒 Create Apps / {{ $this->load_app_json }}
                     </strong>
                 </div>
 
@@ -25,21 +25,19 @@
 
                             </div>
 
-                            <div class="col-3 text-center ">
+                            <div class="col-3 text-center " id="show-menu-app-root">
                                 <h6 class="shadow-sm rounded-3 p-2 mx-2">
                                     Editor
                                     <button onclick="toggleReadOnly()"
                                         class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
                                             class="fas fa-eye"></i>
                                     </button>
-									<button class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                    <button class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-link"></i>
                                     </button>
 
-									<button 
-									title="Delete"
-									class="border-0 shadow-sm rounded-4 bg-light text-primary">
-										<i class="fas fa-trash"></i>
+                                    <button title="Delete" class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                        <i class="fas fa-trash"></i>
                                     </button>
                                 </h6>
                             </div>
@@ -55,8 +53,8 @@
 
                             <div class="col-3 text-center ">
                                 <h6 class="shadow-sm rounded-3 p-2 mx-2 punter">
-                                     Apps
-                                 
+                                    Apps
+
                                 </h6>
                             </div>
 
@@ -68,7 +66,7 @@
 
                             <div class="col-3">
 
-								@include('livewire.appeditors.tabs')
+                                @include('livewire.appeditors.tabs')
 
                             </div>
 
@@ -83,7 +81,7 @@
 
             </div>
 
-
+            @include('livewire.appeditors.list')
 
         </div>
     </div>
@@ -92,13 +90,50 @@
 
         document.addEventListener('livewire:load', function() {
 
+            // Inicializa el editor de inglés
+            // Solo inicializa el editor de inglés si el textarea existe
+            if (document.querySelector('#editor-en')) {
+                ClassicEditor
+                    .create(document.querySelector('#editor-en'))
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            Livewire.emit('contentUpdated', {
+                                'lang': 'en',
+                                'data': editor.getData()
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+
+            // Solo inicializa el editor de español si el textarea existe
+            if (document.querySelector('#editor-es')) {
+                ClassicEditor
+                    .create(document.querySelector('#editor-es'))
+                    .then(editor => {
+                        editor.model.document.on('change:data', () => {
+                            Livewire.emit('contentUpdated', {
+                                'lang': 'es',
+                                'data': editor.getData()
+                            });
+                        });
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            }
+
+
+
             window.addEventListener('load', function() {
                 let editorjsData = {!! json_encode($this->editorjs) !!};
-				
+
                 if (editorjsData && editorjsData.length !== 0) {
                     //editor.render({!! $this->editorjs !!});
-					//editor.render(JSON.json_encode({!! $this->editorjs !!}));
-					document.querySelector("#loadJSapp").click();
+                    //editor.render(JSON.json_encode({!! $this->editorjs !!}));
+                    document.querySelector("#loadJSapp").click();
                 }
             });
 
@@ -110,10 +145,10 @@
             window.livewire.on('renderEditor', (data) => {
                 //alert('render editirjs');
                 /*
-                        editor.render(JSON.parse(data)).catch((error) => {
-                            console.error('Error al renderizar los datos del editor:', error);
-                        });
-            			*/
+                            editor.render(JSON.parse(data)).catch((error) => {
+                                console.error('Error al renderizar los datos del editor:', error);
+                            });
+                			*/
 
             });
         });
@@ -121,7 +156,7 @@
         async function saveEditorData() {
             try {
                 const outputData = await editor.save();
-                console.log('Article data:', outputData);
+                //  console.log('Article data:', outputData);
                 @this.set('editorjs', JSON.stringify(outputData));
                 window.livewire.emit('emit_editorjs');
                 //Livewire.emit('saveJson');

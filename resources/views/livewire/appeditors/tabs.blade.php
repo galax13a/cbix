@@ -9,7 +9,11 @@
             </button>
 
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+        <div id="collapseOne"
+         class="accordion-collapse collapse show
+         text-center 
+         " 
+        aria-labelledby="headingOne"
             data-bs-parent="#accordionExample">
 
             <div class="container">
@@ -30,23 +34,26 @@
             
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
                 <input type="radio" class="btn-check" wire:model="app_idioma" value="en" id="btnradio1"
-                    autocomplete="off" {{ $app_idioma == 'en' ? 'checked' : '' }}>
+                    autocomplete="off" {{ $app_idioma == 'en' ? 'checked' : '' }} wire:click="emit_jsoneditor">
                 <label class="btn btn-outline-primary" for="btnradio1">EN</label>
-
+            
                 <input type="radio" class="btn-check" wire:model="app_idioma" value="es" id="btnradio2"
-                    autocomplete="off" {{ $app_idioma == 'es' ? 'checked' : '' }}>
+                    autocomplete="off" {{ $app_idioma == 'es' ? 'checked' : '' }} wire:click="emit_jsoneditor">
                 <label class="btn btn-outline-primary" for="btnradio2">ES</label>
             </div>
+            
+
             </div>
 
-            <span class="input-group-text punter">
+            <span class="input-group-text punter mt-1">
                 <strong title="Describe App ">
                     App / 
                     <i 
+                    @click="openwin36('editDataModal')"
                     title="Select Apps"
                     class="fas fa-file-edit p-2 shadow-sm"></i>
                     <i 
-                    id="show-menu-app"
+                    id="btnshow-menu-app"
                     title="Show Menu"
                     class="fas fa-ice-cream p-2 shadow-sm">
 
@@ -57,10 +64,10 @@
 
             <div class="input-group mt-1 shadow-sm ">
                 @if ($app_idioma == 'en')
-                    <textarea style="height:auto;" class="form-control m-2 shadow-sm" aria-label="With textarea" id="en"
+                    <textarea wire:key="en-textarea" id="en" style="height:auto;" class="form-control m-2 shadow-sm" aria-label="With textarea" id="en"
                         wire:model.defer="en" placeholder="💭 Description App !"></textarea>
                 @else
-                    <textarea style="height:auto;" class="form-control m-2 shadow-sm" aria-label="With textarea" id="es"
+                    <textarea wire:key="es-textarea" id="es" style="height:auto;" class="form-control m-2 shadow-sm" aria-label="With textarea" id="es"
                         wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
                 @endif
 
@@ -79,7 +86,8 @@
                     <label class="visually-hidden" for="autoSizingInputGroup">URL</label>
                     <div class="input-group">
                       <div class="input-group-text">🌐</div>
-                      <input type="text" class="form-control" id="url" wire:model="url" placeholder="Enter URL">
+                      <input type="text" class="form-control" id="url" 
+                      wire:model="url" placeholder="Enter URL">
                     </div>
                 
                 </div>

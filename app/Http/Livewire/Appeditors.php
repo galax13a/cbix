@@ -15,20 +15,70 @@ class Appeditors extends Component
 {
 	use WithPagination;
 
-	protected $listeners = ['emit_editorjs' => 'saveJson'];
-
+	protected $listeners = ['emit_editorjs' => 'saveJson','contentUpdated' => 'updateContent', 'myloadjs' => 'loadJson'];
+	
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps_categors_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
 	public $appid;
 	public $app, $app_idioma;
-
+    public $load_app_json;
 
 	public function updatingKeyWord() // reset pages keywork
 	{
 		$this->resetPage();
 	}
-
 	
+	public function updateContent($payload)
+    {
+		
+        if ($payload['lang'] === 'en') {
+            $this->en = $payload['data'];
+		
+            // Handle the updated content...
+        } else if ($payload['lang'] === 'es') {
+            $this->es = $payload['data'];
+            // Handle the updated content...
+        }
+    }
+	
+	public function render()
+	{
+	
+		$appId = $this->selected_id;
+		$this->app = App::find($appId);
+		$this->name = 	$this->app->name;
+		$this->slug = Str::slug($this->name);
+		$this->editorjs = $this->app->editorjs;
+		$this->en = $this->app->en;
+		$this->es = $this->app->es;
+		$this->url = $this->app->url;
+		$this->version = $this->app->version;
+		$this->menu = $this->app->menu;
+		$this->url = $this->app->url;
+		$this->download_url = $this->app->download_url;
+		
+		$this->target = $this->app->target;
+		$this->download_url = $this->app->download_url;
+		$this->is_approved = $this->app->is_approved;
+		$this->install = $this->app->install;
+		$this->apps_categors_id = $this->app->apps_categors_id;
+		$this->meta_title = $this->app->meta_title;
+		$this->meta_description = $this->app->meta_description;
+		$this->meta_keywords = $this->app->meta_keywords;
+		$this->active = $this->app->active;
+		$this->downloads = $this->app->downloads;
+		$this->downloads_bot = $this->app->downloads_bot;
+		
+		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
+	    //$this->emit('renderEditor');
+		//$this->emit('renderEditor', $this->app->editorjs);		
+
+	    //$this->editorjs = json_decode($this->editorjs, true);
+		return view('livewire.appeditors.view', [
+			'appeditors' => App::where('id', $appId)->get(),
+		]);
+	}
+
 	public function mount(Request $request)
 	{
 		$this->appid = $request->input('appid');
@@ -45,13 +95,12 @@ class Appeditors extends Component
 	
 	}
 
-	
-	
+		
 	public function saveJson()
 	{
 		$data = $this->editorjs;
 		$this->slug = Str::slug($this->name);
-		$filename = $this->slug . '.json';
+		$filename = $this->slug . '_' . $this->app_idioma . '.json';
 		$filePath = 'apps/pages/' . $filename;
 		// Verificar si la carpeta existe, de lo contrario, crearla
 		if (!Storage::exists(dirname($filePath))) {
@@ -72,31 +121,26 @@ class Appeditors extends Component
 
 	}
 
+	public function emit_jsoneditor()
+{
+    $this->dispatchBrowserEvent('notify', [
+        'type' => 'success',
+        'message' => '¡  Cambio de lenguaje a ' . $this->app_idioma
+    ]);
+
+	$this->loadJson();
+}
+
 	public function loadJson()
 	{
-		$filePath = 'apps/pages/' . $this->slug.'.json';
-
+		//$filePath = 'apps/pages/' . $this->slug.'.json';
+		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
+		$filePath = 'apps/pages/' . $this->load_app_json;
+		
+		
 		$data = Storage::get($filePath);
 		$this->editorjs = $data;
 		$this->emit('loadeditor', $this->editorjs);
-	}
-
-	public function render(Request $request)
-	{
-	
-		$appId = $this->selected_id;
-		$this->app = App::find($appId);
-		$this->name = 	$this->app->name;
-		$this->slug = Str::slug($this->name);
-		$this->editorjs = $this->app->editorjs;
-		$this->en = $this->app->en;
-		$this->emit('renderEditor', $this->app->editorjs);	
-	
-	//$this->editorjs = json_decode($this->editorjs, true);
-
-		return view('livewire.appeditors.view', [
-			'appeditors' => App::where('id', $appId)->get(),
-		]);
 	}
 
 

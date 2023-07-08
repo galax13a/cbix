@@ -25,10 +25,13 @@
 <script src="{{ asset('js/editorcam/image.js') }}" defer></script>
 <script src="{{ asset('js/editorcam/raw.js') }}" defer></script>
 
+<script src="{{ asset('js/editorcam/ckeditor.js') }}" defer></script>
+
 @endpush
 
 @push('scripts-body')
 <script src="{{ asset('js/config-editorjs.js') }}" defer></script>
+
 @endpush
 
 
