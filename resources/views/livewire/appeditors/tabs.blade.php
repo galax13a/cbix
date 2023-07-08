@@ -33,11 +33,16 @@
 
             
             <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input type="radio" class="btn-check" wire:model="app_idioma" value="en" id="btnradio1"
+                <input 
+                onclick="dispatchLoadingEvent('hourglass', 900);"
+                type="radio" class="btn-check" wire:model="app_idioma" 
+                value="en" id="btnradio1"
                     autocomplete="off" {{ $app_idioma == 'en' ? 'checked' : '' }} wire:click="emit_jsoneditor">
                 <label class="btn btn-outline-primary" for="btnradio1">EN</label>
             
-                <input type="radio" class="btn-check" wire:model="app_idioma" value="es" id="btnradio2"
+                <input 
+                onclick="dispatchLoadingEvent('hourglass', 900);"
+                type="radio" class="btn-check" wire:model="app_idioma" value="es" id="btnradio2"
                     autocomplete="off" {{ $app_idioma == 'es' ? 'checked' : '' }} wire:click="emit_jsoneditor">
                 <label class="btn btn-outline-primary" for="btnradio2">ES</label>
             </div>

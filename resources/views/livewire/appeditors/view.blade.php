@@ -92,38 +92,38 @@
 
             // Inicializa el editor de inglés
             // Solo inicializa el editor de inglés si el textarea existe
-            if (document.querySelector('#editor-en')) {
-                ClassicEditor
-                    .create(document.querySelector('#editor-en'))
-                    .then(editor => {
-                        editor.model.document.on('change:data', () => {
-                            Livewire.emit('contentUpdated', {
-                                'lang': 'en',
-                                'data': editor.getData()
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.error(error);
+            if (document.querySelector('#editorjsx-en')) {
+        ClassicEditor
+            .create(document.querySelector('#editorjsx-en'))
+            .then(editorjsx => {
+                editorjsx.model.document.on('change:data', () => {
+                	@this.set('en', editorjsx.getData());
+				/*	Livewire.emit('contentUpdated', {
+                        'lang': 'en',
+                        'data': editorjsx.getData()
                     });
-            }
+					*/
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
 
-            // Solo inicializa el editor de español si el textarea existe
-            if (document.querySelector('#editor-es')) {
-                ClassicEditor
-                    .create(document.querySelector('#editor-es'))
-                    .then(editor => {
-                        editor.model.document.on('change:data', () => {
-                            Livewire.emit('contentUpdated', {
-                                'lang': 'es',
-                                'data': editor.getData()
-                            });
-                        });
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
+    // Solo inicializa el editor de español si el textarea existe
+    if (document.querySelector('#editorjsx-es')) {
+        ClassicEditor
+            .create(document.querySelector('#editorjsx-es'))
+            .then(editorjsx => {
+                editorjsx.model.document.on('change:data', () => {
+					@this.set('es', editorjsx.getData());
+                });
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    }
+
 
 
 
