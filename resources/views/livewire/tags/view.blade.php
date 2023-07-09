@@ -6,7 +6,12 @@
 			<div class="card">			
 					
 				<div class="card-header bg-transparent" >					
-					<x-btnmore/>					
+					<x-btnmore/>			
+					
+					<a class="custom-link shadow p-1 m-2" 
+					href="{{route('admin.appstags')}}">
+					App-Tags
+				</a>
 				</div>
 				
 				<div class="card-body">

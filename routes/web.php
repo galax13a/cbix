@@ -61,8 +61,9 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
-	Route::view('apps0tags', 'livewire.apps0tags.index')->middleware('auth');
+	
+Route::view('tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
+Route::view('admin/appstags', 'livewire.apps0tags.index')->middleware('auth')->name('admin.appstags');
 
 Route::view('admin/apps/root/editor-apps', 'livewire.appeditors.index')->middleware('auth')->name('create.root.app');
 
@@ -103,7 +104,7 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
     Route::view('admin/apps', 'livewire.apps.index')
     ->middleware('can:admin.apps')->name('admin.apps');
 
-    Route::view('apps0categors', 'livewire.apps0categors.index')->middleware('auth');
+    Route::view('admin/appscategors', 'livewire.apps0categors.index')->middleware('auth')->name('admin.appcategors');
 
     Route::view('admin/tasks', 'livewire.tasks.index')
         ->middleware('can:admin.tasks')->name('admin.tasks');

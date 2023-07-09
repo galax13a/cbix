@@ -54,22 +54,11 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
-						<li class="nav-item">
-                            <a href="{{ url('/tags') }}" class="nav-link">🟣 Tags</a> 
-                        </li>
-						<li class="nav-item">
-                            <a href="{{ url('/apps0tags') }}" class="nav-link">🟣 Apps0tags</a> 
-                        </li>
 					
-				
 						<li class="nav-item">
                             <a href="{{ route('admin.apps') }}" class="nav-link">🟣 Apps</a> 
                         </li>
-						<li class="nav-item">
-                            <a href="{{ url('/apps0categors') }}" class="nav-link">🟣 Apps0categors</a> 
-                        </li>
-				
-					
+			
                             <li class="nav-item">
                                 <a href="{{ url('/root/dashboard') }}" class="nav-link ">🦖 Dashboard</a>
                             </li>

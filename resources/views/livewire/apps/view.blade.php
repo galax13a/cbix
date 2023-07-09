@@ -11,16 +11,18 @@
                 <div class="card-header bg-transparent shadow border-0">
                     <strong>
                         <a href="{{ route('admin.apps') }}" class="custom-link p-1">
-                             Apps
+                            Apps
                         </a>
                         /
                     </strong>
-                    <button id="btn-new" @click="openwin36('createDataModal')" class="rounded-3 shadow bg-transparent">
-                        <strong>
-                            Categorys
-                            <i class="fas fa-folder-open"></i>
-                        </strong>
-                    </button>
+                    <a href="{{ route('admin.appcategors') }}">
+                        <button id="btn-new" class="rounded-3 shadow bg-transparent">
+                            <strong>
+                                Categorys
+                                <i class="fas fa-folder-open"></i>
+                            </strong>
+                        </button>
+                    </a>
                     <button id="btn-new" @click="openwin36('createDataModal')"
                         class="rounded-3 shadow bg-transparent">
                         <strong>
@@ -64,15 +66,14 @@
                         @break
 
                         @case('editor')
-                        @include('livewire.apps.editor-app')
+                            @include('livewire.apps.editor-app')
                         @break
 
                         @default
                             @if ($this->selected_id !== null)
                                 @include('livewire.apps.install')
                             @else
-                            
-                            @include('livewire.apps.render')
+                                @include('livewire.apps.render')
                         </div>
                         @endif
                 @endswitch

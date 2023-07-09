@@ -92,8 +92,11 @@ class Appeditors extends Component
 			'type' => 'success',
 			'message' => 'Tag Successfully created!',
 		]);
-	}
-	
+		$this->name_tag = null;
+		$tags = Tag::all();
+		$this->emit('uptagsSelects', $tags);
+		
+	}	
 
 	public function updateContent($content)
 	{
@@ -113,7 +116,7 @@ class Appeditors extends Component
 	public function save_imagen() // save imagen
 	{
 		$this->validate([
-			'image' => 'required|image|max:1024', // 1MB Max
+			'image' => 'required|image|max:2024', // 1MB Max
 		]);
 
 		try {

@@ -177,7 +177,7 @@
             <div class="accordion-body">                
 
                     
-                        <select class="js-example-basic-multiple" multiple="multiple" wire:key="select-tags"
+                        <select  class="js-example-basic-multiple" multiple="multiple" wire:key="select-tags"
                             wire:model="tages" id="tags" name="tags[]">
                             @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
