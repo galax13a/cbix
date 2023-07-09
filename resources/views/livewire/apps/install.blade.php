@@ -58,10 +58,14 @@
 
             <button id="btn-new" class="m-4 rounded-3 shadow p-2">
                 @if ($this->app->install)
+                <a href="{{ route('create.root.app', ['appid' => $app->id]) }}"
+                    class="text-decoration-none"
+                    >
                 <strong class="p-4 m-4 shadow rounded-3 text-warning ">
                     Enter App {{$this->app->name}}
                     <i class="fas fa-play-circle"></i>
                 </strong>    
+                </a>
                 @endif
                 
             </button>

@@ -67,16 +67,23 @@
 
                             </p>
                         </div>
-                        <div title="enter the application"
-                            class=" punter card-body shadow w-25 rounded-5 text-center">
+                        <div 
+                            id="div-apps"
+                            title="enter the application"
+                            class=" punter card-body shadow w-25 rounded-5 text-center"
+                        >
                             @if ($app->install)
+                            <a href="{{ route('create.root.app', ['appid' => $app->id]) }}"
+                                class="text-decoration-none"
+                                >
                                 <strong>
                                     <small>
-
-                                        Enter
+                                         Editor Apps
                                         <i class="fas fa-arrow-circle-right"></i>
                                     </small>
                                 </strong>
+                            </a>
+                            
                             @else
                                 <small>
                                     <strong>
@@ -121,7 +128,12 @@
                             @endif
 
                             @if ($app->install)
-                                <i class="fas fa-ghost text-success"></i>
+                                <i title="Install app ok" class="fas fa-ghost text-success"></i>
+                                <button onclick=""
+                                title="view app front-end"
+                                class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
+                                    class="fas fa-eye"></i>
+                            </button>
                             @else
                                 <i class="fas fa-ghost text-danger"></i>
                             @endif
@@ -145,3 +157,10 @@
     </div>
 
 </div>
+
+<style>
+#div-apps:hover{
+background-color: #bcfc91;
+}
+
+</style>

@@ -174,137 +174,130 @@
         </h2>
         <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
             data-bs-parent="#accordionExample">
-            <div class="accordion-body">
+            <div class="accordion-body">                
 
-                <div class="container text-center">
-
-                    <div class="m-2 shadow-sm rounded-3 mb-2 p-2 text-center ">
+                    
                         <select class="js-example-basic-multiple" multiple="multiple" wire:key="select-tags"
                             wire:model="tages" id="tags" name="tags[]">
                             @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
+                   
                         <div class="container">
                             <button wire:key="btn-savetags" wire:click.prevent="saveTags"
                                 class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link">
                                 Save
                                 <i class="fas fa-save"></i>
                             </button>
-                            <a href="{{ route('admin.tags') }}" target="_blank" >
-                            <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"
-                            wire:key="btn-tages">
-                            <strong>
-                                #Tags
-                                <i class="fas fa-bookmark"></i>
-                            </strong>
-                        </button>
-                            </a>
-               
-                            <button 
-                            @click="openwin36('tagsDataModal')"
-                            class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"
-                                wire:key="btn-tagersers-create">
+                                <a href="{{ route('admin.tags') }}" target="_blank">
+                                    <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"
+                                        wire:key="btn-tages">
+                                        <strong>
+                                            #Tags
+                                            <i class="fas fa-bookmark"></i>
+                                        </strong>
+                                    </button>
+                                </a>
+                      
+                                 <button @click="openwin36('tagsDataModal')"
+                                class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link" wire:key="btn-tagersers-create">
                                 <strong>
                                     Create
                                     <i class="fas fa-cloud-upload"></i></i>
                                 </strong>
-                            </button>
-                 
-                        </div>
-                    </div>
+                                </button>            
 
-                </div>
+                        
+                            </div>
 
 
-            </div>
         </div>
     </div>
+</div>
 
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFour">
-            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                <i class="fas fa-images m-1"></i> SEO Imagen
-            </button>
-        </h2>
-        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="container">
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingFour">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="fas fa-images m-1"></i> SEO Imagen
+        </button>
+    </h2>
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div class="container">
 
 
-                    <div class="mt-2 text-center" wire:key="div-imagen-app">
-                        <img id="imagen-tem-app"
-                            src="@if ($this->app->image) {{ Storage::url($this->app->image) }} @endif"
-                            class="img-thumbnail" style="max-width:230px; max-height: 210px;">
-                    </div>
-
-                    <div class="mt-2" wire:key="div-imagen-app">
-                        📸Replace
-                        <img id="imagen-tempo-app" src="" class="img-thumbnail"
-                            style="max-width:230px; max-height: 210px;">
-                    </div>
-
+                <div class="mt-2 text-center" wire:key="div-imagen-app">
+                    <img id="imagen-tem-app"
+                        src="@if ($this->app->image) {{ Storage::url($this->app->image) }} @endif"
+                        class="img-thumbnail" style="max-width:230px; max-height: 210px;">
                 </div>
 
-                <form wire:submit.prevent="save_imagen" enctype="multipart/form-data">
-                    <div class="form-group">
-
-                        <input type="file" class="form-control" id="image" name="image"
-                            wire:model="image">
-                        @error('image')
-                            <span class="error">{{ $message }}</span>
-                        @enderror
-
-                        <!-- Image Preview -->
-                        @if ($image)
-                            <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail mt-3">
-                        @endif
-                    </div>
-                    <br>
-                    <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);"
-                        class="btn btn-primary shadow">
-                        <i class="fas fa-cloud-upload"></i>
-                        Upload Imagen
-                    </button>
-                </form>
-
-            </div>
-        </div>
-    </div>
-
-    <div class="accordion-item">
-        <h2 class="accordion-header" id="headingFive">
-            <button class="accordion-button collapsed  " type="button" data-bs-toggle="collapse"
-                data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                <i class="fas fa-signal m-1"></i> Stats
-            </button>
-        </h2>
-        <div id="collapseFive" class="accordion-collapse collapse " aria-labelledby="headingFive"
-            data-bs-parent="#accordionExample">
-            <div class="accordion-body">
-                <div class="container">
-                    <table class="table table-striped table-bordered">
-                        <thead class="text-center">
-                            <tr>
-                                <th>Downloads</th>
-                                <th>Downloads Bot</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr class="text-center">
-                                <td>{{ $this->app->downloads }}</td>
-                                <td>{{ $this->app->downloads_bot }}</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
+                <div class="mt-2" wire:key="div-imagen-app">
+                    📸Replace
+                    <img id="imagen-tempo-app" src="" class="img-thumbnail"
+                        style="max-width:230px; max-height: 210px;">
                 </div>
 
             </div>
+
+            <form wire:submit.prevent="save_imagen" enctype="multipart/form-data">
+                <div class="form-group">
+
+                    <input type="file" class="form-control" id="image" name="image" wire:model="image">
+                    @error('image')
+                        <span class="error">{{ $message }}</span>
+                    @enderror
+
+                    <!-- Image Preview -->
+                    @if ($image)
+                        <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail mt-3">
+                    @endif
+                </div>
+                <br>
+                <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);" class="btn btn-primary shadow">
+                    <i class="fas fa-cloud-upload"></i>
+                    Upload Imagen
+                </button>
+            </form>
+
         </div>
     </div>
+</div>
+
+<div class="accordion-item">
+    <h2 class="accordion-header" id="headingFive">
+        <button class="accordion-button collapsed  " type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            <i class="fas fa-signal m-1"></i> Stats
+        </button>
+    </h2>
+    <div id="collapseFive" class="accordion-collapse collapse " aria-labelledby="headingFive"
+        data-bs-parent="#accordionExample">
+        <div class="accordion-body">
+            <div class="container">
+                <table class="table table-striped table-bordered">
+                    <thead class="text-center">
+                        <tr>
+                            <th>Downloads</th>
+                            <th>Downloads Bot</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr class="text-center">
+                            <td>{{ $this->app->downloads }}</td>
+                            <td>{{ $this->app->downloads_bot }}</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
 
 </div>

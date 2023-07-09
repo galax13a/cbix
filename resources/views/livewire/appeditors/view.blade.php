@@ -91,11 +91,12 @@
         .select2-container--default.select2-container--focus .select2-selection--multiple {
             border: solid black 1px;
             outline: 0;
-            width: 190px;
+            width: 210px;
         }
 
         .select2-container--default .select2-selection--multiple {
-            width: 100%;
+            width: 210px;
+            
         }
     </style>
     <script>
