@@ -6,11 +6,12 @@ import '../sass/app.scss'
 
 // import alpine js
 window.addEventListener('notify', event => { // notificaciones y modals
-    const { type, message, OpenWin36 } = event.detail;
+    const { type, message, OpenWin36,position = 'center-bottom' } = event.detail;
     //Notiflix.Notify[type](message);
     Notiflix.Notify[type](message, {
         timeout: 3300,
-        showOnlyTheLastOne: true
+        showOnlyTheLastOne: true,
+        position
       });
     if (OpenWin36) {// abrir ventana modal         
         openModal(OpenWin36);

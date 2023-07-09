@@ -87,7 +87,8 @@ class Appeditors extends Component
 			if ($this->app->update(['image' => $path])) {
 				$this->dispatchBrowserEvent('notify', [
 					'type' => 'success',
-					'message' => '¡ Imagen Ok SEO !'
+					'message' => '¡ Imagen Ok SEO !',
+					'position' => 'center-center'
 				]);
 
 				$this->tempImage = $path;

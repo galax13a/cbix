@@ -113,7 +113,7 @@
             document.querySelector("#imagen-tem-app").src = imageUrl;
 			document.getElementById('image').value = null;
 			document.querySelector("#imagen-tempo-app").removeAttribute("src");
-
+            //alert('alert full');
 		//	document.querySelector("#imagen-tempo-app").hidden=true;
         });
 

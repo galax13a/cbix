@@ -227,15 +227,18 @@
             <div class="accordion-body">
                 <div class="container">
                   
-                    @if ($this->app->image)
-                        <div class="mt-2" wire:key="div-imagen-app">
-                            <img id="imagen-tem-app" src="{{ Storage::url($this->app->image) }}" class="img-thumbnail" style="max-width:260px; max-height: 210px;">
+                    
+                        <div class="mt-2 text-center" wire:key="div-imagen-app">
+                            <img id="imagen-tem-app" 
+                            src="@if ($this->app->image){{ Storage::url($this->app->image) }} @endif" 
+                            class="img-thumbnail" style="max-width:230px; max-height: 210px;">
                         </div>
+                       
                         <div class="mt-2" wire:key="div-imagen-app">
-                            Replace img /                
-                            <img id="imagen-tempo-app" src="" class="img-thumbnail" style="max-width:260px; max-height: 210px;">
+                            📸Replace
+                            <img id="imagen-tempo-app" src="" class="img-thumbnail" style="max-width:230px; max-height: 210px;">
                         </div>
-                    @endif
+                    
                 </div>
                 
                 <form wire:submit.prevent="save_imagen" enctype="multipart/form-data">
@@ -252,9 +255,12 @@
                             <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail mt-3">
                         @endif
                     </div>
-                    <button type="submit" class="btn btn-primary">   
+                    <br>
+                    <button type="submit"
+                    onclick="dispatchLoadingEvent('dots', 1600);"
+                    class="btn btn-primary shadow">   
                             <i class="fas fa-cloud-upload"></i>
-                            Up Img
+                            Upload Imagen
                     </button>
                 </form>
 
