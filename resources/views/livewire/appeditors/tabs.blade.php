@@ -5,76 +5,65 @@
             <button class="accordion-button text-bg-dark" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 🧁 Tools Apps
-                
+
             </button>
 
         </h2>
-        <div id="collapseOne"
-        
-         class="accordion-collapse collapse 
+        <div id="collapseOne" class="accordion-collapse collapse 
          text-center show
-         " 
-        aria-labelledby="headingOne"
-            data-bs-parent="#accordionExample">
+         "
+            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
             <div class="container">
-                
-            <button class="p-1 m-1 shadow rounded-4" onclick="saveEditorData()">
-                <strong>
-                    <i class="far fa-save"></i> Save
-                </strong>
-            </button>
+
+                <button class="p-1 m-1 shadow rounded-4" onclick="saveEditorData()">
+                    <strong>
+                        <i class="far fa-save"></i> Save
+                    </strong>
+                </button>
 
                 <button id="loadJSapp" wire:click="loadJson()" class="p-1 m-1 shadow rounded-4 "
-                onclick="dispatchLoadingEvent('hourglass', 600);">
-                <strong>
-                    <i class="far fa-folder-open"></i> Load
-                </strong>
-            </button>
+                    onclick="dispatchLoadingEvent('hourglass', 600);">
+                    <strong>
+                        <i class="far fa-folder-open"></i> Load
+                    </strong>
+                </button>
 
-            
-            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                <input 
-                onclick="dispatchLoadingEvent('hourglass', 900);"
-                type="radio" class="btn-check" wire:model="app_idioma" 
-                value="en" id="btnradio1"
-                    autocomplete="off" {{ $app_idioma == 'en' ? 'checked' : '' }} wire:click="emit_jsoneditor">
-                <label class="btn btn-outline-primary" for="btnradio1">EN</label>
-            
-                <input 
-                onclick="dispatchLoadingEvent('hourglass', 900);"
-                type="radio" class="btn-check" wire:model="app_idioma" value="es" id="btnradio2"
-                    autocomplete="off" {{ $app_idioma == 'es' ? 'checked' : '' }} wire:click="emit_jsoneditor">
-                <label class="btn btn-outline-primary" for="btnradio2">ES</label>
-            </div>
-            
+
+                <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                    <input onclick="dispatchLoadingEvent('hourglass', 900);" type="radio" class="btn-check"
+                        wire:model="app_idioma" value="en" id="btnradio1" autocomplete="off"
+                        {{ $app_idioma == 'en' ? 'checked' : '' }} wire:click="emit_jsoneditor">
+                    <label class="btn btn-outline-primary" for="btnradio1">EN</label>
+
+                    <input onclick="dispatchLoadingEvent('hourglass', 900);" type="radio" class="btn-check"
+                        wire:model="app_idioma" value="es" id="btnradio2" autocomplete="off"
+                        {{ $app_idioma == 'es' ? 'checked' : '' }} wire:click="emit_jsoneditor">
+                    <label class="btn btn-outline-primary" for="btnradio2">ES</label>
+                </div>
+
 
             </div>
 
             <span class="input-group-text punter mt-1">
                 <strong title="Describe App ">
-                    App / 
-                    <i 
-                    @click="openwin36('editDataModal')"
-                    title="Select Apps"
-                    class="fas fa-file-edit p-2 shadow-sm"></i>
-                    <i 
-                    id="btnshow-menu-app"
-                    title="Show Menu"
-                    class="fas fa-ice-cream p-2 shadow-sm">
+                    App /
+                    <i @click="openwin36('editDataModal')" title="Select Apps"
+                        class="fas fa-file-edit p-2 shadow-sm"></i>
+                    <i id="btnshow-menu-app" title="Show Menu" class="fas fa-ice-cream p-2 shadow-sm">
 
                     </i>
-                </strong>                
+                </strong>
             </span>
-            
+
 
             <div class="input-group mt-1 shadow-sm ">
                 @if ($app_idioma == 'en')
-                    <textarea wire:key="en-textarea" id="en" style="height:auto;" class="form-control m-2 shadow-sm" aria-label="With textarea" id="en"
-                        wire:model.defer="en" placeholder="💭 Description App !"></textarea>
+                    <textarea wire:key="en-textarea" id="en" style="height:auto;" class="form-control m-2 shadow-sm"
+                        aria-label="With textarea" id="en" wire:model.defer="en" placeholder="💭 Description App !"></textarea>
                 @else
-                    <textarea wire:key="es-textarea" id="es" style="height:auto;" class="form-control m-2 shadow-sm" aria-label="With textarea" id="es"
-                        wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
+                    <textarea wire:key="es-textarea" id="es" style="height:auto;" class="form-control m-2 shadow-sm"
+                        aria-label="With textarea" id="es" wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
                 @endif
 
             </div>
@@ -91,15 +80,15 @@
                 <div class="mb-3">
                     <label class="visually-hidden" for="autoSizingInputGroup">URL</label>
                     <div class="input-group">
-                      <div class="input-group-text">🌐</div>
-                      <input type="text" class="form-control" id="url" 
-                      wire:model.defer="url" placeholder="Enter URL">
+                        <div class="input-group-text">🌐</div>
+                        <input type="text" class="form-control" id="url" wire:model.defer="url"
+                            placeholder="Enter URL">
                     </div>
-                
+
                 </div>
 
                 <div class="mb-3">
-                    
+
                     <select class="form-select" id="target" wire:model.defer="target">
                         <option selected>Choose...Target</option>
                         <option value="parent">Parent</option>
@@ -110,13 +99,13 @@
                 <div class="mb-3">
                     <label class="visually-hidden" for="autoSizingInputGroup">URL</label>
                     <div class="input-group">
-                      <div class="input-group-text">Ⓜ️</div>
-                      <input type="text" class="form-control" id="download_url" wire:model.defer="download_url"
-                      placeholder="Enter Download URL">
+                        <div class="input-group-text">Ⓜ️</div>
+                        <input type="text" class="form-control" id="download_url" wire:model.defer="download_url"
+                            placeholder="Enter Download URL">
                     </div>
-               
+
                 </div>
-            </div>          
+            </div>
 
 
         </div>
@@ -134,26 +123,29 @@
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <strong>tools seo for apps </strong>
-             
+
                 <div class="form-group">
                     <label for="meta_title">Meta Title</label>
-                    <textarea wire:model.defer="meta_title" id="meta_title" class="form-control m-2 shadow-sm" aria-label="With textarea" placeholder="💭 Meta Title"></textarea>
+                    <textarea wire:model.defer="meta_title" id="meta_title" class="form-control m-2 shadow-sm"
+                        aria-label="With textarea" placeholder="💭 Meta Title"></textarea>
                     @error('meta_title')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="meta_description">Meta Description</label>
-                    <textarea wire:model.defer="meta_description" id="meta_description" class="form-control m-2 shadow-sm" aria-label="With textarea" placeholder="💭 Meta Description"></textarea>
+                    <textarea wire:model.defer="meta_description" id="meta_description" class="form-control m-2 shadow-sm"
+                        aria-label="With textarea" placeholder="💭 Meta Description"></textarea>
                     @error('meta_description')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                
+
                 <div class="form-group">
                     <label for="meta_keywords">Meta Keywords</label>
-                    <textarea wire:model.defer="meta_keywords" id="meta_keywords" class="form-control m-2 shadow-sm" aria-label="With textarea" placeholder="💭 Meta Keywords"></textarea>
+                    <textarea wire:model.defer="meta_keywords" id="meta_keywords" class="form-control m-2 shadow-sm"
+                        aria-label="With textarea" placeholder="💭 Meta Keywords"></textarea>
                     @error('meta_keywords')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
@@ -163,9 +155,9 @@
                     <button wire:key="btn-saveseo" wire:click.prevent="saveSeo" class="btn btn-primary">
                         Guardar SEO
                     </button>
-                    
+
                 </div>
-                
+
 
             </div>
         </div>
@@ -182,40 +174,42 @@
         <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                    
+
                 <div class="container text-center">
-           
+
                     <div class="m-2 shadow-sm rounded-3 mb-2 p-2 text-center ">
-                        <select class="js-example-basic-multiple" multiple="multiple"  wire:key="select-tags" wire:model="tages" id="tags" name="tags[]" >
-                            @foreach($tags as $tag)
+                        <select class="js-example-basic-multiple" multiple="multiple" wire:key="select-tags"
+                            wire:model="tages" id="tags" name="tags[]">
+                            @foreach ($tags as $tag)
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
-                        <button wire:key="btn-savetags" wire:click.prevent="saveTags" class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link">
+                        <button wire:key="btn-savetags" wire:click.prevent="saveTags"
+                            class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link">
                             Save
                             <i class="fas fa-save"></i>
                         </button>
-                        <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"  wire:key="btn-tagersers">
+                        <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link" wire:key="btn-tagersers">
                             <strong>
-                            Create#tags
-                            <i class="fas fa-bookmark"></i>
-                        </strong>
+                                Create#tags
+                                <i class="fas fa-bookmark"></i>
+                            </strong>
                     </div>
-                    
+
 
                     <div id="tagersers" class="tagersers">
-                
+
                         <div class="tages-app" id="tages-app">
 
                         </div>
 
-             
+
                         </button>
-                    </div>      
-                        
+                    </div>
+
 
                 </div>
-                
+
 
             </div>
         </div>
@@ -231,13 +225,39 @@
         <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <strong>This is the fourth item's accordion body.</strong> It is
-                hidden by
-                default, until
-                the
-                collapse plugin adds the appropriate classes that we use to style
-                each
-                element.
+                <div class="container">
+                  
+                    @if ($this->app->image)
+                        <div class="mt-2" wire:key="div-imagen-app">
+                            <img id="imagen-tem-app" src="{{ Storage::url($this->app->image) }}" class="img-thumbnail" style="max-width:260px; max-height: 210px;">
+                        </div>
+                        <div class="mt-2" wire:key="div-imagen-app">
+                            Replace img /                
+                            <img id="imagen-tempo-app" src="" class="img-thumbnail" style="max-width:260px; max-height: 210px;">
+                        </div>
+                    @endif
+                </div>
+                
+                <form wire:submit.prevent="save_imagen" enctype="multipart/form-data">
+                    <div class="form-group">
+                 
+                        <input type="file" class="form-control" id="image" name="image"
+                            wire:model="image">
+                        @error('image')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
+
+                        <!-- Image Preview -->
+                        @if ($image)
+                            <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail mt-3">
+                        @endif
+                    </div>
+                    <button type="submit" class="btn btn-primary">   
+                            <i class="fas fa-cloud-upload"></i>
+                            Up Img
+                    </button>
+                </form>
+
             </div>
         </div>
     </div>

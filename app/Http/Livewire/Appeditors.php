@@ -15,14 +15,15 @@ use Livewire\WithFileUploads;
 class Appeditors extends Component
 {
 	use WithPagination;
+	use WithFileUploads;
 
 	protected $listeners = ['emit_editorjs' => 'saveJson', 'contentUpdated' => 'updateContent', 'myloadjs' => 'loadJson'];
 
 	protected $queryString = ['appid', 'apps0categor_id', 'active', 'app_idioma'];
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps0categor_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
-	public $appid, $tags, $tages;
-	public $app, $app_idioma;
+	public $appid, $tags, $tages, $tempImage;
+	public $app, $app_idioma, $imagen;
 	public $load_app_json;
 
 	public function updatingKeyWord() // reset pages keywork
@@ -45,19 +46,20 @@ class Appeditors extends Component
 		$this->es = $this->app->es;
 		$this->en = $this->app->en;
 		$this->apps0categor_id = $this->app->apps_categors_id;
-		
 
+		$this->imagen = $this->app->imagen;
+		$this->active = $this->app->active;
 	}
 
 	public function saveTags()
-    {   
-        $this->app->tags()->sync($this->tages);
+	{
+		$this->app->tags()->sync($this->tages);
 		$this->tages = $this->app->tags()->pluck('tags.id')->toArray();
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
 			'message' => 'Tags Succesfull OK! '
 		]);
-    }
+	}
 	public function updateContent($content)
 	{
 		if ($content['lang'] == 'en') {
@@ -71,6 +73,40 @@ class Appeditors extends Component
 			'message' => ' cambiando datos  '
 		]);
 	}
+
+
+	public function save_imagen() // save imagen
+	{
+		$this->validate([
+			'image' => 'required|image|max:1024', // 1MB Max
+		]);
+
+		try {
+			$path = $this->image->storeAs('apps_img/' . $this->app->name, $this->app->name . '.' . $this->image->getClientOriginalExtension(), 'public');
+
+			if ($this->app->update(['image' => $path])) {
+				$this->dispatchBrowserEvent('notify', [
+					'type' => 'success',
+					'message' => '¡ Imagen Ok SEO !'
+				]);
+
+				$this->tempImage = $path;
+				$this->emit('uptImgFull', $this->image->temporaryUrl());
+				$this->image = null;
+				
+
+			} else {
+				throw new \Exception("Error al actualizar la base de datos");
+			}
+		} catch (\Exception $e) {
+			// Aquí puedes hacer algo con el error si es necesario, como enviarlo a un servicio de logging
+			$this->dispatchBrowserEvent('notify', [
+				'type' => 'error',
+				'message' => 'Hubo un error al guardar la imagen. ' . $e->getMessage()
+			]);
+		}
+	}
+
 
 	public function store_save()
 	{
@@ -97,12 +133,14 @@ class Appeditors extends Component
 	public function render()
 	{
 
+
 		$appId = $this->selected_id;
 		$this->app = App::find($appId);
 		$this->name = 	$this->app->name;
 		$this->slug = Str::slug($this->name);
 		$this->editorjs = $this->app->editorjs;
 
+		//$this->imagen = $this->app->imagen;
 		$this->url = $this->app->url;
 		$this->version = $this->app->version;
 		$this->menu = $this->app->menu;
@@ -125,13 +163,20 @@ class Appeditors extends Component
 		if (!$this->es) $this->es = $this->app->es;
 		$this->tags = Tag::all();
 
-		if(!$this->tages) $this->tages = $this->app->tags()->pluck('tags.id')->toArray();
+		if (!$this->tages) $this->tages = $this->app->tags()->pluck('tags.id')->toArray();
 
 		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
 		//$this->emit('renderEditor');
 		//$this->emit('renderEditor', $this->app->editorjs);	
 		//$this->editorjs = json_decode($this->editorjs, true);
 		$this->emit('combos');
+
+		if ($this->image) {
+			if ($this->image->temporaryUrl()) {				
+				$this->emit('uptImgTemp', $this->image->temporaryUrl());
+			}
+		}
+
 		return view('livewire.appeditors.view', [
 			'appeditors' => App::where('id', $appId)->get(),
 		]);
@@ -177,6 +222,11 @@ class Appeditors extends Component
 
 		if (!(empty($editorjsObject->blocks) && $editorjsObject->version === $emptyEditor["version"])) {
 			Storage::put($filePath, $data);
+		} else {
+			$this->dispatchBrowserEvent('notify', [
+				'type' => 'success',
+				'message' => '¡ Fail Editor KO....',
+			]);
 		}
 
 
@@ -214,9 +264,6 @@ class Appeditors extends Component
 			$this->emit('loadeditor', $this->editorjs);
 		}
 	}
-
-
-
 
 	public function cancel()
 	{

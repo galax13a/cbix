@@ -14,7 +14,8 @@
 
 
                 <div class="card-body">
-         
+
+				
 
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
@@ -104,6 +105,18 @@
 
         document.addEventListener('livewire:load', function() {
 
+			Livewire.on('uptImgTemp', imageUrl => {            
+            document.querySelector("#imagen-tempo-app").src = imageUrl;
+        });
+		
+		Livewire.on('uptImgFull', imageUrl => {            
+            document.querySelector("#imagen-tem-app").src = imageUrl;
+			document.getElementById('image').value = null;
+			document.querySelector("#imagen-tempo-app").removeAttribute("src");
+
+		//	document.querySelector("#imagen-tempo-app").hidden=true;
+        });
+
             window.livewire.on('combos', () => {
 
                 $('#tags').select2();
@@ -129,10 +142,10 @@
                         editorjsx.model.document.on('change:data', () => {
                             @this.set('en', editorjsx.getData());
                             /*	Livewire.emit('contentUpdated', {
-                                            'lang': 'en',
-                                            'data': editorjsx.getData()
-                                        });
-                    					*/
+                                                'lang': 'en',
+                                                'data': editorjsx.getData()
+                                            });
+                        					*/
                         });
                     })
                     .catch(error => {
