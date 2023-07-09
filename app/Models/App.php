@@ -47,6 +47,10 @@ class App extends Model
     {
         return $this->hasMany('App\Models\Apps0tag', 'app_id', 'id');
     }
-     
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'apps0tags', 'app_id', 'tag_id');
+    }
+    
     // booted sin users [] 
 }

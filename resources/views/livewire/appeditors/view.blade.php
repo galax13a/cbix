@@ -14,11 +14,8 @@
 
 
                 <div class="card-body">
-					car tags
-					<pre>
-						{{ var_dump($this->tages) }}
-						</pre>
-						
+         
+
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
 
@@ -111,14 +108,20 @@
 
                 $('#tags').select2();
                 //alert('combos');
-				$('#tags').on('change', function (e) {
-            let data = $('#tags').select2("val");
-            @this.set('tages', data);
-        });
+                $('#tags').on('change', function(e) {
+                    let data = $('#tags').select2("val");
+                    @this.set('tages', data);
+                });
+
             });
 
             $('#tags').select2();
- 
+            $('#tags').on('change', function(e) {
+                let data = $('#tags').select2("val");
+                @this.set('tages', data);
+            });
+
+
             if (document.querySelector('#editorjsx-en')) {
                 ClassicEditor
                     .create(document.querySelector('#editorjsx-en'))
@@ -126,10 +129,10 @@
                         editorjsx.model.document.on('change:data', () => {
                             @this.set('en', editorjsx.getData());
                             /*	Livewire.emit('contentUpdated', {
-                                    'lang': 'en',
-                                    'data': editorjsx.getData()
-                                });
-            					*/
+                                            'lang': 'en',
+                                            'data': editorjsx.getData()
+                                        });
+                    					*/
                         });
                     })
                     .catch(error => {

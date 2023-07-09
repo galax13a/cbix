@@ -22,6 +22,11 @@ class Tag extends Model
     {
         return $this->hasMany('App\Models\Apps0tag', 'tag_id', 'id');
     }
+
+    public function apps()
+    {
+        return $this->belongsToMany(App::class, 'apps0tags', 'tag_id', 'app_id');
+    }
      
     // booted sin users [] 
 }

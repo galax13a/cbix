@@ -45,8 +45,19 @@ class Appeditors extends Component
 		$this->es = $this->app->es;
 		$this->en = $this->app->en;
 		$this->apps0categor_id = $this->app->apps_categors_id;
-		$this->tags = Tag::all();
+		
+
 	}
+
+	public function saveTags()
+    {   
+        $this->app->tags()->sync($this->tages);
+		$this->tages = $this->app->tags()->pluck('tags.id')->toArray();
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => 'Tags Succesfull OK! '
+		]);
+    }
 	public function updateContent($content)
 	{
 		if ($content['lang'] == 'en') {
@@ -113,7 +124,9 @@ class Appeditors extends Component
 		if (!$this->en) $this->en = $this->app->en;
 		if (!$this->es) $this->es = $this->app->es;
 		$this->tags = Tag::all();
-		
+
+		if(!$this->tages) $this->tages = $this->app->tags()->pluck('tags.id')->toArray();
+
 		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
 		//$this->emit('renderEditor');
 		//$this->emit('renderEditor', $this->app->editorjs);	

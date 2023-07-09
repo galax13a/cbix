@@ -22,6 +22,9 @@ class Appeditor extends Model
     {
         return $this->hasOne('App\Models\Apps0categor', 'id', 'apps_categors_id');
     }
-     
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'apps0tags', 'app_id', 'tag_id');
+    }
     // booted sin users [] 
 }

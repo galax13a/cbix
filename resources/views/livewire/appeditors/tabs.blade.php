@@ -191,16 +191,27 @@
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
-                  
+                        <button wire:key="btn-savetags" wire:click.prevent="saveTags" class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link">
+                            Save
+                            <i class="fas fa-save"></i>
+                        </button>
+                        <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"  wire:key="btn-tagersers">
+                            <strong>
+                            Create#tags
+                            <i class="fas fa-bookmark"></i>
+                        </strong>
                     </div>
-                    <button wire:key="btn-savetags" wire:click.prevent="saveTags" class="btn btn-primary">
-                        Guardar Tags
-                    </button>
+                    
 
-                    tages #
-                    <pre>
-                        {{ var_dump($this->tages) }}
-                        </pre>
+                    <div id="tagersers" class="tagersers">
+                
+                        <div class="tages-app" id="tages-app">
+
+                        </div>
+
+             
+                        </button>
+                    </div>      
                         
 
                 </div>
