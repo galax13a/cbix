@@ -12,10 +12,7 @@
                     </strong>
                 </div>
 
-
-                <div class="card-body">
-
-				
+                <div class="card-body">				
 
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
@@ -45,7 +42,7 @@
                                 </h6>
                             </div>
 
-                            <div class="col-9 text-left ">
+                            <div class="col-9 text-right ">
                                 <span class=" shadow-sm input-group-text text-bold bg-light" id="inputGroup-sizing-sm">
                                     <strong class="p-1 rounded-4">
                                         🌐 Slug: {{ url('/') }}/apps/{{ $slug }}
@@ -85,6 +82,7 @@
             </div>
 
             @include('livewire.appeditors.list')
+            @include('livewire.appeditors.tags')
 
         </div>
     </div>

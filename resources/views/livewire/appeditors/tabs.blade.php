@@ -10,7 +10,7 @@
 
         </h2>
         <div id="collapseOne" class="accordion-collapse collapse 
-         text-center show
+         text-center 
          "
             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
@@ -18,7 +18,8 @@
 
                 <button class="p-1 m-1 shadow rounded-4" onclick="saveEditorData()">
                     <strong>
-                        <i class="far fa-save"></i> Save
+                        <i class="far fa-save"></i>
+                        Save
                     </strong>
                 </button>
 
@@ -171,7 +172,7 @@
                 <i class="fas fa-tags m-1"></i> Tags
             </button>
         </h2>
-        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+        <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
 
@@ -184,29 +185,34 @@
                                 <option value="{{ $tag->id }}">{{ $tag->name }}</option>
                             @endforeach
                         </select>
-                        <button wire:key="btn-savetags" wire:click.prevent="saveTags"
-                            class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link">
-                            Save
-                            <i class="fas fa-save"></i>
-                        </button>
-                        <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link" wire:key="btn-tagersers">
+                        <div class="container">
+                            <button wire:key="btn-savetags" wire:click.prevent="saveTags"
+                                class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link">
+                                Save
+                                <i class="fas fa-save"></i>
+                            </button>
+                            <a href="{{ route('admin.tags') }}" target="_blank" >
+                            <button class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"
+                            wire:key="btn-tages">
                             <strong>
-                                Create#tags
+                                #Tags
                                 <i class="fas fa-bookmark"></i>
                             </strong>
-                    </div>
-
-
-                    <div id="tagersers" class="tagersers">
-
-                        <div class="tages-app" id="tages-app">
-
-                        </div>
-
-
                         </button>
+                            </a>
+               
+                            <button 
+                            @click="openwin36('tagsDataModal')"
+                            class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link"
+                                wire:key="btn-tagersers-create">
+                                <strong>
+                                    Create
+                                    <i class="fas fa-cloud-upload"></i></i>
+                                </strong>
+                            </button>
+                 
+                        </div>
                     </div>
-
 
                 </div>
 
@@ -226,24 +232,25 @@
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <div class="container">
-                  
-                    
-                        <div class="mt-2 text-center" wire:key="div-imagen-app">
-                            <img id="imagen-tem-app" 
-                            src="@if ($this->app->image){{ Storage::url($this->app->image) }} @endif" 
+
+
+                    <div class="mt-2 text-center" wire:key="div-imagen-app">
+                        <img id="imagen-tem-app"
+                            src="@if ($this->app->image) {{ Storage::url($this->app->image) }} @endif"
                             class="img-thumbnail" style="max-width:230px; max-height: 210px;">
-                        </div>
-                       
-                        <div class="mt-2" wire:key="div-imagen-app">
-                            📸Replace
-                            <img id="imagen-tempo-app" src="" class="img-thumbnail" style="max-width:230px; max-height: 210px;">
-                        </div>
-                    
+                    </div>
+
+                    <div class="mt-2" wire:key="div-imagen-app">
+                        📸Replace
+                        <img id="imagen-tempo-app" src="" class="img-thumbnail"
+                            style="max-width:230px; max-height: 210px;">
+                    </div>
+
                 </div>
-                
+
                 <form wire:submit.prevent="save_imagen" enctype="multipart/form-data">
                     <div class="form-group">
-                 
+
                         <input type="file" class="form-control" id="image" name="image"
                             wire:model="image">
                         @error('image')
@@ -256,11 +263,10 @@
                         @endif
                     </div>
                     <br>
-                    <button type="submit"
-                    onclick="dispatchLoadingEvent('dots', 1600);"
-                    class="btn btn-primary shadow">   
-                            <i class="fas fa-cloud-upload"></i>
-                            Upload Imagen
+                    <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);"
+                        class="btn btn-primary shadow">
+                        <i class="fas fa-cloud-upload"></i>
+                        Upload Imagen
                     </button>
                 </form>
 
@@ -275,15 +281,28 @@
                 <i class="fas fa-signal m-1"></i> Stats
             </button>
         </h2>
-        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive"
+        <div id="collapseFive" class="accordion-collapse collapse " aria-labelledby="headingFive"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
-                <strong>This is the fifth item's accordion body.</strong> It is
-                hidden by
-                default, until the
-                collapse plugin adds the appropriate classes that we use to style
-                each
-                element.
+                <div class="container">
+                    <table class="table table-striped table-bordered">
+                        <thead class="text-center">
+                            <tr>
+                                <th>Downloads</th>
+                                <th>Downloads Bot</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr class="text-center">
+                                <td>{{ $this->app->downloads }}</td>
+                                <td>{{ $this->app->downloads_bot }}</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>

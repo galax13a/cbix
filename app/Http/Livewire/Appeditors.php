@@ -6,7 +6,6 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\App;
 use App\Models\Tag;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -19,12 +18,12 @@ class Appeditors extends Component
 
 	protected $listeners = ['emit_editorjs' => 'saveJson', 'contentUpdated' => 'updateContent', 'myloadjs' => 'loadJson'];
 
-	protected $queryString = ['appid', 'apps0categor_id', 'active', 'app_idioma'];
+	protected $queryString = ['appid', 'apps0categor_id', 'active', 'app_idioma','selected_tag'];
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps0categor_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
 	public $appid, $tags, $tages, $tempImage;
 	public $app, $app_idioma, $imagen;
-	public $load_app_json;
+	public $load_app_json,$selected_tag,$name_tag;
 
 	public function updatingKeyWord() // reset pages keywork
 	{
@@ -51,7 +50,7 @@ class Appeditors extends Component
 		$this->active = $this->app->active;
 	}
 
-	public function saveTags()
+	public function saveTags() // sabe only tang pather table hijo
 	{
 		$this->app->tags()->sync($this->tages);
 		$this->tages = $this->app->tags()->pluck('tags.id')->toArray();
@@ -60,6 +59,42 @@ class Appeditors extends Component
 			'message' => 'Tags Succesfull OK! '
 		]);
 	}
+
+	public function get_tags($id) {
+
+		$record = Tag::findOrFail($id);
+        $this->selected_tag = $id; 
+		$this->name_tag = $record-> name;
+
+	}
+	public function store_tag()
+	{
+		$this->validate([
+			'name' => 'required',
+		]);
+	
+		$tag = null;
+	
+		if ($this->selected_tag) {
+			$tag = Tag::updateOrCreate(
+				['id' => $this->selected_tag],
+				['name' => $this->name_tag]
+			);
+		} else {
+			$tag = Tag::create([
+				'name' => $this->name_tag
+			]);
+		}
+	
+		$this->selected_tag = $tag->id;
+	
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => 'Tag Successfully created!',
+		]);
+	}
+	
+
 	public function updateContent($content)
 	{
 		if ($content['lang'] == 'en') {
@@ -134,6 +169,7 @@ class Appeditors extends Component
 	public function render()
 	{
 
+		if(!$this->name_tag) $this->selected_tag = null;
 
 		$appId = $this->selected_id;
 		$this->app = App::find($appId);

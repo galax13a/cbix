@@ -1,3 +1,34 @@
+.tags-all {
+  display: inline-block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tags-all li {
+  display: inline-block;
+  background-color: #f1f1f1;
+  border-radius: 4px;
+  padding: 4px 8px;
+  margin-right: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tags-all li:last-child {
+  margin-right: 0;
+}
+
+.tags-all li a {
+  color: #333;
+  text-decoration: none;
+}
+
+.tags-all li a:hover {
+  text-decoration: underline;
+}
+
+
+
 .ce-code__textarea {
   background-color: rgba(2, 52, 71, 0.945);
   color: yellowgreen;

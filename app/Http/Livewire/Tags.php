@@ -41,7 +41,7 @@ class Tags extends Component
     public function store()
     {
         $this->validate([
-		'name' => 'required',
+		'name_tag' => 'required',
         ]);
 
         Tag::create([ 

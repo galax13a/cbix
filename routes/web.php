@@ -61,7 +61,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('tags', 'livewire.tags.index')->middleware('auth');
+	Route::view('tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
 	Route::view('apps0tags', 'livewire.apps0tags.index')->middleware('auth');
 
 Route::view('admin/apps/root/editor-apps', 'livewire.appeditors.index')->middleware('auth')->name('create.root.app');
