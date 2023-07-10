@@ -1,11 +1,7 @@
 var isReadOnly = false;
 var editor;
 
-const port = window.location.port;
-  const baseUrl = `${window.location.protocol}//${window.location.hostname}:${port}`;
-  const uploadFileUrl = `${baseUrl}/uploadFile`;
-  const fetchUrlUrl = `${baseUrl}/fetchUrl`;
-  const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
 function toggleReadOnly() {
     isReadOnly = !isReadOnly;

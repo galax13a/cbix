@@ -12,14 +12,14 @@
                     </strong>
                 </div>
 
-                <div class="card-body">				
+                <div class="card-body">
 
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
 
                             <div class="col-9 text-center">
                                 <div class="input-wrapper">
-                                    <input type="text" id="nameapp" class="input-float w-100 rounded-2 punter "
+                                    <input type="text" id="nameapp" class="input-float w-100 rounded-2 punter  "
                                         wire:model="name" placeholder="Name App" />
                                 </div>
 
@@ -32,7 +32,8 @@
                                         class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
                                             class="fas fa-eye"></i>
                                     </button>
-                                    <button id="app-link" data-image_upload="{{ route('image.upload')}}" class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                    <button id="app-link" data-image_upload="{{ route('image.upload') }}"
+                                        class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-link"></i>
                                     </button>
 
@@ -88,6 +89,11 @@
     </div>
 
     <style>
+        .image-tool--LinkImagenServer {
+            border-radius: 50%;
+
+        }
+
         .select2-container--default.select2-container--focus .select2-selection--multiple {
             border: solid black 1px;
             outline: 0;
@@ -96,7 +102,7 @@
 
         .select2-container--default .select2-selection--multiple {
             width: 210px;
-            
+
         }
     </style>
     <script>
@@ -104,29 +110,29 @@
 
         document.addEventListener('livewire:load', function() {
 
-			Livewire.on('uptImgTemp', imageUrl => {            
-            document.querySelector("#imagen-tempo-app").src = imageUrl;
-        });
+            Livewire.on('uptImgTemp', imageUrl => {
+                document.querySelector("#imagen-tempo-app").src = imageUrl;
+            });
 
-        Livewire.on('uptagsSelects', (tags) => {
-    $('#tags').select2('destroy'); // Destruir el select2 existente
-    $('#tags').empty(); // Vaciar las opciones del select
-    
-    tags.forEach((tag) => {
-        $('#tags').append(new Option(tag.name, tag.id, false, false));
-    });
-    
-    $('#tags').select2(); // Inicializar el nuevo select2
-});
+            Livewire.on('uptagsSelects', (tags) => {
+                $('#tags').select2('destroy'); // Destruir el select2 existente
+                $('#tags').empty(); // Vaciar las opciones del select
 
-		
-		Livewire.on('uptImgFull', imageUrl => {            
-            document.querySelector("#imagen-tem-app").src = imageUrl;
-			document.getElementById('image').value = null;
-			document.querySelector("#imagen-tempo-app").removeAttribute("src");
-            //alert('alert full');
-		//	document.querySelector("#imagen-tempo-app").hidden=true;
-        });
+                tags.forEach((tag) => {
+                    $('#tags').append(new Option(tag.name, tag.id, false, false));
+                });
+
+                $('#tags').select2(); // Inicializar el nuevo select2
+            });
+
+
+            Livewire.on('uptImgFull', imageUrl => {
+                document.querySelector("#imagen-tem-app").src = imageUrl;
+                document.getElementById('image').value = null;
+                document.querySelector("#imagen-tempo-app").removeAttribute("src");
+                //alert('alert full');
+                //	document.querySelector("#imagen-tempo-app").hidden=true;
+            });
 
             window.livewire.on('combos', () => {
 
@@ -153,10 +159,10 @@
                         editorjsx.model.document.on('change:data', () => {
                             @this.set('en', editorjsx.getData());
                             /*	Livewire.emit('contentUpdated', {
-                                                'lang': 'en',
-                                                'data': editorjsx.getData()
-                                            });
-                        					*/
+                                                    'lang': 'en',
+                                                    'data': editorjsx.getData()
+                                                });
+                            					*/
                         });
                     })
                     .catch(error => {
@@ -179,6 +185,7 @@
             }
 
             window.addEventListener('load', function() {
+
                 let editorjsData = {!! json_encode($this->editorjs) !!};
 
                 if (editorjsData && editorjsData.length !== 0) {

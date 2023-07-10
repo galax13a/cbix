@@ -1,3 +1,33 @@
+.image-tool__image-picture{
+    max-width: 90%;
+    vertical-align: bottom;
+    display: block;
+  
+}
+.image-tool--withBorder .image-tool__image {
+  border: 1px solid var(--border-color);
+  border: 2px dashed #63eea8;
+  border-radius: 14px;
+}
+
+.image-tool--BorderImagen26 .image-tool__image .image-tool__image-picture {
+
+  border-radius: 16px;
+  border: 3px solid #fff;
+  box-shadow: 0px 0px 12px #494646;
+  backdrop-filter: blur(60px);
+}
+
+
+.image-tool__image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 2px;
+  padding: 24px;
+}
+
 .tags-all {
   display: inline-block;
   list-style: none;

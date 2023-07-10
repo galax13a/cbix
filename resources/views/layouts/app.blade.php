@@ -51,6 +51,9 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
+						<li class="nav-item">
+                            <a href="{{ url('/tests') }}" class="nav-link">🟣 Tests</a> 
+                        </li>
 					
 						<li class="nav-item">
                             <a href="{{ route('admin.apps') }}" class="nav-link">🟣 Apps</a> 

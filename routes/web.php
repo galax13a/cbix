@@ -63,6 +63,7 @@ Route::get('/en', function () {
 
 //Route Hooks - Do not delete//
 	
+	
 Route::view('admin/tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
 Route::view('admin/appstags', 'livewire.apps0tags.index')->middleware('auth')->name('admin.appstags');
 
@@ -128,6 +129,8 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
 
     Route::view('admin/credits-goals', 'livewire.credits_goals.index')
         ->middleware('can:admin.credits_goals')->name('admin.credits_goals');
+
+    Route::view('tests', 'livewire.tests.index')->middleware('can:admin.test');
 });
 
 

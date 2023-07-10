@@ -60,6 +60,7 @@ class RoleSeeder extends Seeder
        Permission::create(['name' =>'admin.tasks'])->syncRoles([$rol1]); 
        Permission::create(['name' =>'admin.unbans'])->syncRoles([$rol1],[$rol2],[$rol22]); 
        Permission::create(['name' =>'admin.supports'])->syncRoles([$rol1],[$rol2],[$rol22]); 
+       Permission::create(['name' =>'admin.test'])->syncRoles([$rol1],[$rol2]); 
        
        Permission::create(['name' =>'admin.cms'])->syncRoles([$rol2]);       
        Permission::create(['name' =>'admin.cms.pages'])->syncRoles([$rol2]);
