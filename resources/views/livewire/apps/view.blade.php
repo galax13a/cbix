@@ -23,13 +23,15 @@
                             </strong>
                         </button>
                     </a>
-                    <button id="btn-new" @click="openwin36('createDataModal')"
+                    <a href="{{ route('admin.tags') }}">
+                    <button id="btn-new"
                         class="rounded-3 shadow bg-transparent">
                         <strong>
                             Tags
                             <i class="fas fa-tags"></i>
                         </strong>
                     </button>
+                    </a>
 
                     <button id="btn-new" @click="openwin36('createDataModal')"
                         class="rounded-3 shadow bg-transparent">

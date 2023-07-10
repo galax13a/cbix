@@ -47,10 +47,10 @@
                         <div class="user d-flex flex-row align-items-center">
 
                             @if ($app->image)
-                                <img src="{{ $app->image }}" width="90"
+                                <img src="{{ Storage::url($app->image) }}" width="90"
                                     class="user-img rounded-circle mr-2 " alt="App Image">
                             @else
-                                <img src="{{ asset('apps/default.png') }}" width="90"
+                                <img src="{{ asset('apps/default.jpg') }}" width="90"
                                     class="user-img rounded-circle mr-2">
                             @endif
 

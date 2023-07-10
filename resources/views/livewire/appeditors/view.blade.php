@@ -19,7 +19,7 @@
 
                             <div class="col-9 text-center">
                                 <div class="input-wrapper">
-                                    <input type="text" id="myInput" class="input-float w-100 rounded-2 punter "
+                                    <input type="text" id="nameapp" class="input-float w-100 rounded-2 punter "
                                         wire:model="name" placeholder="Name App" />
                                 </div>
 
@@ -32,7 +32,7 @@
                                         class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
                                             class="fas fa-eye"></i>
                                     </button>
-                                    <button class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                    <button id="app-link" data-image_upload="{{ route('image.upload')}}" class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-link"></i>
                                     </button>
 

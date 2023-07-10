@@ -7,6 +7,7 @@ use App\Http\Livewire\ChaturbateController; // Agregar esta línea
 use Spatie\Permission\Models\Role;
 use App\Http\Livewire\Apps;
 use App\Http\Livewire\Apps_install;
+use App\Http\Controllers\EditorjsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +63,12 @@ Route::get('/en', function () {
 
 //Route Hooks - Do not delete//
 	
-Route::view('tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
+Route::view('admin/tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
 Route::view('admin/appstags', 'livewire.apps0tags.index')->middleware('auth')->name('admin.appstags');
 
 Route::view('admin/apps/root/editor-apps', 'livewire.appeditors.index')->middleware('auth')->name('create.root.app');
 
+Route::any('/codex-image-upload', [EditorjsController::class, 'imageUpload'])->name('image.upload');
 
 // rutas de bans
 Route::view('ban', 'ban');

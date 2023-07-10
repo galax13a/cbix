@@ -17,10 +17,7 @@
     </title>
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
-    <link href="{{ asset('cs/select2.min.css') }}" rel="stylesheet" />
+ 
 
     @stack('scripts-head')
 
@@ -36,7 +33,7 @@
         <nav class="navbar navbar-expand-md shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="d-none" src="/dino24.png" alt="botcham logo">
+                   
                     <strong>
                         <i class="fas fa-ghost"></i>
                         
@@ -98,13 +95,8 @@
 
     @livewireScripts
 
-    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
-    <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
-    <script src="{{ asset('js/select2.min.js') }}" defer></script>
-
-    <link type="text/css" rel="stylesheet" href="{{ asset('cs/jquery-ui.css') }}">
     <script src="{{ asset('js/util.js') }} "></script>
-
+    @stack('scripts-body') 
     <script type="module">
         //if (window.location.href.indexOf('/admin/') !== -1) {     
         let addModal0 = document.querySelector('#createDataModal');
@@ -119,7 +111,7 @@
 
         </script>
     <script src= {{ asset('js/alpinejs.js') }} defer></script>
-    @stack('scripts-body')   
+  
 </body>
 
 </html>

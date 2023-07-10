@@ -1,10 +1,21 @@
 var isReadOnly = false;
 var editor;
 
+const port = window.location.port;
+  const baseUrl = `${window.location.protocol}//${window.location.hostname}:${port}`;
+  const uploadFileUrl = `${baseUrl}/uploadFile`;
+  const fetchUrlUrl = `${baseUrl}/fetchUrl`;
+  const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
 function toggleReadOnly() {
     isReadOnly = !isReadOnly;
     editor.readOnly.toggle();    
 }
+
+var appLink = document.getElementById('app-link');
+var imageUploadUrl = appLink.dataset.image_upload;
+console.log(imageUploadUrl);
+
 
 editor = new EditorJS({
     holder: 'editorjs',
@@ -23,9 +34,12 @@ editor = new EditorJS({
             class: ImageTool,
             config: {
                 endpoints: {
-                    byFile: 'http://localhost:8008/uploadFile', // Your backend file uploader endpoint
-                    byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
-                }
+                           byFile: `${imageUploadUrl}`,
+                           byUrl: `${imageUploadUrl}`,
+                },
+                additionalRequestHeaders: {
+                    'X-CSRF-TOKEN': csrfToken,
+                  },
             }
         },
 
