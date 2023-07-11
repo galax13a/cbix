@@ -52,6 +52,13 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/uploadimages') }}" class="nav-link">🟣 Uploadimages</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/uploadfolders') }}" class="nav-link">🟣 Uploadfolders</a> 
+                        </li>
+		
+						<li class="nav-item">
                             <a href="{{ url('/tests') }}" class="nav-link">🟣 Tests</a> 
                         </li>
 					

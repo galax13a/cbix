@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Estudio::factory(3)->create(); //crate studio
         \App\Models\Apichatur::factory(3)->create(); // create apichatur
         $this->call(AppSeeder::class);
+        $this->call(UploadFolderSeeder::class);
        
 
     }

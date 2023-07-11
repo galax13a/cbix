@@ -62,6 +62,9 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('uploadimages', 'livewire.uploadimages.index')->middleware('auth');
+	Route::view('uploadfolders', 'livewire.uploadfolders.index')->middleware('auth');
+	Route::view('uploadfolder', 'livewire.uploadfolder.index')->middleware('auth');
 	
 	
 Route::view('admin/tags', 'livewire.tags.index')->middleware('auth')->name('admin.tags');
