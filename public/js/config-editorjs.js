@@ -202,5 +202,6 @@ editor = new EditorJS({
         raw: RawTool,
         code: CodeTool,
         
-    }
+    },
+    
 });
