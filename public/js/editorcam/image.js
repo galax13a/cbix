@@ -2098,16 +2098,14 @@
                         toggle: !0
                     },  {
                         name: "BorderImagen26",
-                        icon: '<svg width="24px" height="24px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18V9C6 7.34315 7.34315 6 9 6H39C40.6569 6 42 7.34315 42 9V18" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 24V31" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 15V31" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 19V31" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 30V39C6 40.6569 7.34315 42 9 42H39C40.6569 42 42 40.6569 42 39V30" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>             ',                        
+                        icon: '<svg width="24px" height="24px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 18V9C6 7.34315 7.34315 6 9 6H39C40.6569 6 42 7.34315 42 9V18" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M32 24V31" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M24 15V31" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 19V31" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 30V39C6 40.6569 7.34315 42 9 42H39C40.6569 42 42 40.6569 42 39V30" stroke="#000000" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',                        
                         title: "Border Imagen",
-                        toggle: !0,
-                        className: "BorderImagen26",                                           
-                            onClick: (e) => {
-                              // Lógica para abrir el cuadro de diálogo o realizar alguna acción cuando se hace clic en el ícono
-                              console.log("Link Imagen clicked");
-                            }
-                          
-                        
+                        toggle: !0
+                    },  {
+                        name: "img-blur",
+                        icon: '<svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#fd86ba" stroke="#fd86ba"><g id="SVGRepo_bgCarrier" stroke-width="0"/><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/><g id="SVGRepo_iconCarrier"><g><path fill="none" d="M0 0h24v24H0z"/><path d="M18.154 19.568A9 9 0 0 1 5.432 6.846L1.393 2.808l1.415-1.415 19.799 19.8-1.415 1.414-3.038-3.04zM6.847 8.262a7 7 0 0 0 9.891 9.89l-9.89-9.89zM20.414 16.2l-1.599-1.599a6.995 6.995 0 0 0-1.865-6.55L12 3.1 9.657 5.443 8.243 4.03 12 .272l6.364 6.364a9.002 9.002 0 0 1 2.05 9.564z"/></g></g></svg>',                        
+                        title: "Blur Imagen",
+                        toggle: !0
                     }]
                 }
             }]),

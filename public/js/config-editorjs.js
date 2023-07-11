@@ -19,15 +19,35 @@ editor = new EditorJS({
     placeholder: '🦄 Let`s write an awesome story!  Click Write📝',
     readOnly: false,
     tools: {
-        code: CodeTool,
+        
+        header: {
+            class: Header,
+            shortcut: 'CMD+SHIFT+H',
+            config: {
+                placeholder: 'Enter a header',
+                levels: [1, 2, 3, 4, 5, 6],
+                defaultLevel: 2,
+                defaultAlignment: 'left'
+            }
+        },       
 
         paragraph: {
             class: Paragraph,
             inlineToolbar: true
         },
-
+        quote: {
+            class: Quote,
+            inlineToolbar: true,
+            shortcut: 'CMD+SHIFT+O',
+            config: {
+              quotePlaceholder: 'Enter a quote',
+              captionPlaceholder: 'Quote\'s author',
+            },
+          },
+        
         image: {
             class: ImageTool,
+            shortcut: 'CMD+SHIFT+P',
             config: {
                 endpoints: {
                            byFile: `${imageUploadUrl}`,
@@ -39,15 +59,20 @@ editor = new EditorJS({
             }
         },
 
-        header: {
-            class: Header,
+        carousel: {
+            class: Carousel,
             config: {
-                placeholder: 'Enter a header',
-                levels: [1, 2, 3, 4, 5, 6],
-                defaultLevel: 2,
-                defaultAlignment: 'left'
+                endpoints: {
+                    byFile: `${imageUploadUrl}`,
+                },
+                additionalRequestHeaders: {
+                    'X-CSRF-TOKEN': csrfToken,
+                  },
+          
             }
         },
+        imageGallery: ImageGallery,
+ 
         list: {
             class: NestedList,
             inlineToolbar: true,
@@ -55,6 +80,7 @@ editor = new EditorJS({
                 defaultStyle: 'unordered'
             },
         },
+        delimiter: Delimiter,
 
         checklist: {
             class: Checklist,
@@ -106,16 +132,34 @@ editor = new EditorJS({
                 customPicker: true
             }
         },
+        AnyButton: {
+            class: AnyButton,
+            inlineToolbar: false,
+            config:{
+              css:{
+                "btnColor": "btn-chatur",
+              }
+            }
+          },
+                   
         columns: {
             class: editorjsColumns,
             config: {
                 tools: {
+                    AnyButton: {
+                        class: AnyButton,
+                        inlineToolbar: true,
+                        config:{
+                          css:{
+                            "btnColor": "btn-chatur",
+                          }
+                        }
+                      },
                     header: Header,
-                    style: EditorJSStyle.StyleInlineTool,
-                    image: SimpleImage,
+                    style: EditorJSStyle.StyleInlineTool,                   
                     embed: Embed,
                     underline: Underline,
-                    delimiter: Delimiter,
+                    delimiter: Delimiter,                    
                     code: CodeTool,
                     list: {
                         class: NestedList,
@@ -123,6 +167,10 @@ editor = new EditorJS({
                         config: {
                             defaultStyle: 'unordered'
                         },
+                    },
+                    Marker: {
+                        class: Marker,
+                        shortcut: 'CMD+SHIFT+M',
                     },
                     table: {
                         class: Table,
@@ -132,14 +180,27 @@ editor = new EditorJS({
                             cols: 3,
                         },
                     },
+                    image: {
+                        class: ImageTool,
+                        config: {
+                            endpoints: {
+                                       byFile: `${imageUploadUrl}`,
+                                       byUrl: `${imageUploadUrl}`,
+                            },
+                            additionalRequestHeaders: {
+                                'X-CSRF-TOKEN': csrfToken,
+                              },
+                        }
+                    },
                 },
                 EditorJsLibrary: EditorJS
             }
         },
         style: EditorJSStyle.StyleInlineTool,
         embed: Embed,
-        underline: Underline,
-        delimiter: Delimiter,
+        underline: Underline,      
         raw: RawTool,
+        code: CodeTool,
+        
     }
 });

@@ -69,7 +69,8 @@ Route::view('admin/appstags', 'livewire.apps0tags.index')->middleware('auth')->n
 
 Route::view('admin/apps/root/editor-apps', 'livewire.appeditors.index')->middleware('auth')->name('create.root.app');
 
-Route::any('/codex-image-upload', [EditorjsController::class, 'imageUpload'])->name('image.upload');
+//Route::any('/codex-image-upload', [EditorjsController::class, 'imageUpload'])->name('image.upload');
+Route::post('/codex-image-upload', [EditorjsController::class, 'imageUpload'])->name('image.upload');
 
 // rutas de bans
 Route::view('ban', 'ban');

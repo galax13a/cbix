@@ -27,6 +27,11 @@
     <script src="{{ asset('js/editorcam/code.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/image.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/raw.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/gallery-urls.js') }}" ></script>
+    <script src="{{ asset('js/editorcam/button.js') }}" defer ></script>
+    <script src="{{ asset('js/editorcam/carrusel.js') }}" defer ></script>
+    <script src="{{ asset('js/editorcam/quote.js') }}" defer ></script>
+    
 
     <script src="{{ asset('js/editorcam/ckeditor.js') }}" defer></script>
 @endpush
