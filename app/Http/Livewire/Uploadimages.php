@@ -29,7 +29,7 @@ class Uploadimages extends Component
                 ->where(function ($query) use ($keyWord) {     
                     $query->where('name', 'LIKE', $keyWord)        
                     ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(10)
+                })->paginate(100)
         ]);
     }
 	

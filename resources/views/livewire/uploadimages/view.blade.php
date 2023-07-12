@@ -14,24 +14,47 @@
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
-							<tr> 
+							<tr class="text-center"> 
 								<td>#</td> 
-								<th>Uploadfolder Id</th>
+								<th>Folder</th>
 								<th>Name</th>
 								<th>Size</th>
+								<th>Pic</th>
 								<th>Url</th>
-								<th>Extension</th>
+								<th>Ext</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>
 							@forelse($uploadimages as $row)
-							<tr>
+							<tr class="text-center">
 								<td>{{ $loop->iteration }}</td> 
 								<td>{{ $row->uploadfolder->name }}</td>
 								<td>{{ $row->name }}</td>
-								<td>{{ $row->size }}</td>
-								<td>{{ $row->url }}</td>
+								<td>
+									@php
+										$fileSize = $row->size / 1024;
+									@endphp
+									@if ($fileSize > 1024)
+										{{ number_format($fileSize / 1024, 3) }} MB
+									@else
+										{{ number_format($fileSize, 1) }} KB
+									@endif
+								</td>
+								
+								<td>  
+									@php
+									$extension = $row->extension;
+									$fileName = str_replace('_original', '', $row->name);
+									$imageUrl = str_replace('_original', '_230', $row->url);
+								@endphp
+								
+								<img class="img-responsive rounded-5 shadow" src="{{ url($imageUrl ) }}" alt="{{ $fileName }}" style="width: 40px; height: 34px;">
+								
+								</td>
+								
+								<td><a class="custom-link p-1 punter shadow-sm rounded-3" href="{{ url($row->url) }}" target="_blank"> 🔎</a></td>
+
 								<td>{{ $row->extension }}</td>
 								<td width="90">
 											<x-btncrud> 

@@ -14,7 +14,7 @@
 
                 <div class="card-body">
 
-      
+
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
 
@@ -110,6 +110,17 @@
         let readOnly = false;
 
         document.addEventListener('livewire:load', function() {
+
+
+            var editorContainer = document.getElementById('editorjs');
+            editorContainer.addEventListener('click', function(event) {
+                var target = event.target;
+                if (target.tagName === 'IMG') {
+                    var imageUrl = target.src;
+                    alert('URL de la imagen: ' + imageUrl);
+                }
+            });
+
 
             Livewire.on('uptImgTemp', imageUrl => {
                 document.querySelector("#imagen-tempo-app").src = imageUrl;
