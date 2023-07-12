@@ -49,7 +49,7 @@
 							<tr class="text-center">
 								<td>{{ $loop->iteration }}</td> 
 								<td>
-									<strong class="badge bg-primary shadow-sm">
+									<strong class="badge bg-primary shadow-sm border-warning">
 									{{ $row->uploadfolder->name }}
 								</strong>
 								</td>

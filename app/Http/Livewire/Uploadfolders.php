@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Uploadfolder;
-use App\Models\Uploadimage;
+
 class Uploadfolders extends Component
 {
     use WithPagination;

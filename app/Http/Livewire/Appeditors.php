@@ -10,6 +10,8 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Log;
 
 class Appeditors extends Component
 {
@@ -113,38 +115,50 @@ class Appeditors extends Component
 	}
 
 
-	public function save_imagen() // save imagen
-	{
-		$this->validate([
-			'image' => 'required|image|max:2024', // 1MB Max
-		]);
+	public function save_imagen()
+{
+    $this->validate([
+        'image' => 'required|image|max:6024', // 1MB Max
+    ]);
 
-		try {
-			$path = $this->image->storeAs('apps_img/' . $this->app->name, $this->app->name . '.' . $this->image->getClientOriginalExtension(), 'public');
+    try {
+        $image = Image::make($this->image->getRealPath())
+            ->resize(320, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+		
 
-			if ($this->app->update(['image' => $path])) {
-				$this->dispatchBrowserEvent('notify', [
-					'type' => 'success',
-					'message' => '¡ Imagen Ok SEO !',
-					'position' => 'center-center'
-				]);
+        $path = 'public/apps/images/'.$this->app->slug.'/'.$this->app->name.'.'.$this->image->getClientOriginalExtension();
 
-				$this->tempImage = $path;
-				$this->emit('uptImgFull', $this->image->temporaryUrl());
-				$this->image = null;
-				
+        Storage::put($path, (string) $image->encode());
 
-			} else {
-				throw new \Exception("Error al actualizar la base de datos");
-			}
-		} catch (\Exception $e) {
-			// Aquí puedes hacer algo con el error si es necesario, como enviarlo a un servicio de logging
-			$this->dispatchBrowserEvent('notify', [
-				'type' => 'error',
-				'message' => 'Hubo un error al guardar la imagen. ' . $e->getMessage()
-			]);
-		}
-	}
+        if ($this->app->update(['image' => Storage::url($path)])) {
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'success',
+                'message' => '¡Imagen Ok SEO!',
+                'position' => 'center-center'
+            ]);
+			$url = asset(Storage::url($path) . '?num=' . Str::random(10));
+
+			$this->emit('uptImgFull', $url);
+            $this->image = null;
+
+        } else {
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => 'Error al actualizar la base de datos'
+            ]);
+        }
+    } catch (\Exception $e) {
+        // Aquí puedes hacer algo con el error si es necesario, como enviarlo a un servicio de logging
+		Log::error('Error al guardar la imagen: ' . $e->getMessage());
+		
+        $this->dispatchBrowserEvent('notify', [
+            'type' => 'failure',
+            'message' => 'Hubo un error al guardar la imagen. ' . $e->getMessage()
+        ]);
+    }
+}
 
 
 	public function store_save()

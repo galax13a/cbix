@@ -4,7 +4,8 @@ namespace Database\Seeders;
 use App\Models\UploadFolder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\User;
+use Illuminate\Support\Facades\Storage;
+
 
 class UploadFolderSeeder extends Seeder
 {
@@ -14,40 +15,73 @@ class UploadFolderSeeder extends Seeder
     public function run(): void
     {
         UploadFolder::create([
-            'name' => 'Apps',
+            'name' => 'apps',
             'user_id' => 16,
             'active' => true,
         ]);
 
         UploadFolder::create([
-            'name' => 'Pages',
+            'name' => 'pages',
             'user_id' => 16,
             'active' => true,
         ]);
 
         UploadFolder::create([
-            'name' => 'Verifications',
+            'name' => 'verifications',
             'user_id' => 16,
             'active' => true,
         ]);
 
         UploadFolder::create([
-            'name' => 'Prize-Social',
+            'name' => 'prize-social',
             'user_id' => 16,
             'active' => true,
         ]);
 
         UploadFolder::create([
-            'name' => 'Themes',
+            'name' => 'themes',
             'user_id' => 16,
             'active' => true,
         ]);
 
         UploadFolder::create([
-            'name' => 'Profiles',
+            'name' => 'profiles',
             'user_id' => 16,
             'active' => true,
         ]);
+
+        UploadFolder::create([
+            'name' => 'users',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+        UploadFolder::create([
+            'name' => 'system',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+
+        //create directory
+        $directories = [
+            'public/system/images',
+            'public/apps/images',
+            'public/pages/images',
+            'public/verifications/images',
+            'public/prize-social/images',
+            'public/themes/images',
+            'public/profiles/images',
+            'public/users/images',
+        ];
+        
+        foreach ($directories as $directory) {
+            $directory = strtolower($directory);
+            
+            if (!Storage::exists($directory)) {
+                Storage::makeDirectory($directory);
+            }
+        }
+        
+
     
     }
 }
