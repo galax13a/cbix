@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Uploadimage;
+use App\Models\Uploadfolder;
 
 class Uploadimages extends Component
 {
@@ -12,31 +13,57 @@ class Uploadimages extends Component
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $uploadfolder_id, $name, $size, $url, $extension;
+    public $folders, $foldermy;
+
 
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
+    public function select_folder($folder_id){
+        $this->foldermy = $folder_id;
+        $this->dispatchBrowserEvent('notify', [
+            'type' => 'success',
+            'message' => '¡ Folder Select !',
+        ]);
+    }
+
+    public function getImagesCount($folderId)
+    {
+        return Uploadfolder::find($folderId)->uploadimages()->count();
+    }
+    public function mount(){
+        $this->foldermy = null;
+    }
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
+        $keyWord = '%' . $this->keyWord . '%';
 
-
-        return view('livewire.uploadimages.view', [
-            'uploadimages' => Uploadimage::with('user')
-                ->latest()
-                ->where('user_id', auth()->id())
-                ->when($keyWord, function ($query, $keyWord) {
-                    $query->where(function ($subquery) use ($keyWord) {
-                        $subquery->where('name', 'LIKE', '%' . $keyWord . '%')
-                            ->orWhereHas('uploadfolder', function ($subquery) use ($keyWord) {
-                                $subquery->where('name', 'LIKE', '%' . $keyWord . '%');
-                            });
+        $this->folders = Uploadfolder::all();
+    
+        $query = Uploadimage::latest()
+        ->when($keyWord, function ($query, $keyWord) {
+            $query->where(function ($subquery) use ($keyWord) {
+                $subquery->where('name', 'LIKE', '%' . $keyWord . '%')
+                    ->orWhereHas('uploadfolder', function ($subquery) use ($keyWord) {
+                        $subquery->where('name', 'LIKE', '%' . $keyWord . '%');
                     });
-                })
-                ->paginate(100)
-        ]);
+            });
+        })
+        ->when(!$keyWord, function ($query) {
+            // Aquí puedes agregar cualquier otra condición o dejarla vacía para obtener todos los registros
+        });
+    
+    
+    
+        if ($this->foldermy !== null) {
+            $query->where('uploadfolder_id', $this->foldermy);
+        }
+    
+        $uploadimages = $query->paginate(100);
+    
+        return view('livewire.uploadimages.view', compact('uploadimages'));
     }
 	
     public function cancel()

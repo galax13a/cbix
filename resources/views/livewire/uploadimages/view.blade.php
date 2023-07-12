@@ -11,8 +11,27 @@
 				
 				<div class="card-body">
 						@include('livewire.uploadimages.modals')
+
+
+						<div class="container mb-2">
+							<div class="row align-items-start">
+								@foreach ($folders as $folder )
+								<div class="col">
+									<strong 
+									wire:click="select_folder({{$folder->id}})"
+									class="p-1 shadow m-1 rounded-3 punter custom-link">
+										📂	{{$folder->name}}
+										[ {{$this->getImagesCount($folder->id)}} ]
+										
+									</strong>
+								</div>		
+								@endforeach							  
+							 					
+							</div>
+						</div>	
+
 				<div class="table-responsive">
-					<table class="table >
+					<table class="table ">
 						<thead class="thead">
 							<tr class="text-center"> 
 								<td>#</td> 
@@ -20,7 +39,7 @@
 								<th>Name</th>
 								<th>Size</th>
 								<th>Pic</th>
-								<th>Url</th>
+							
 								<th>Ext</th>
 									<th class="text-center thead">Command</th>
 							</tr>
@@ -29,7 +48,11 @@
 							@forelse($uploadimages as $row)
 							<tr class="text-center">
 								<td>{{ $loop->iteration }}</td> 
-								<td>{{ $row->uploadfolder->name }}</td>
+								<td>
+									<strong class="badge bg-primary shadow-sm">
+									{{ $row->uploadfolder->name }}
+								</strong>
+								</td>
 								<td>{{ $row->name }}</td>
 								<td>
 									@php
@@ -52,10 +75,10 @@
 								<img class=" rounded-5 shadow-sm img-thumbnail" src="{{ url($imageUrl ) }}" alt="{{ $fileName }}" style="width: 66px; height: 66px;">
 								
 								</td>
-								
-								<td><a class="custom-link p-1 punter shadow-sm rounded-3" href="{{ url($row->url) }}" target="_blank"> 🔎</a></td>
-
-								<td>{{ $row->extension }}</td>
+								<td>
+								{{ $row->extension }}
+								 <a class="custom-link p-1 punter shadow-sm rounded-3" href="{{ url($row->url) }}" target="_blank"> 🔎</a>
+								</td>
 								<td width="90">
 											<x-btncrud> 
 											<x-slot name="id_editar">{{$row->id}}</x-slot>
