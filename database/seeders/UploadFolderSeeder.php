@@ -15,8 +15,39 @@ class UploadFolderSeeder extends Seeder
     {
         UploadFolder::create([
             'name' => 'Apps',
-            'user_id' => 1,
+            'user_id' => 16,
             'active' => true,
         ]);
+
+        UploadFolder::create([
+            'name' => 'Pages',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+
+        UploadFolder::create([
+            'name' => 'Verifications',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+
+        UploadFolder::create([
+            'name' => 'Prize-Social',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+
+        UploadFolder::create([
+            'name' => 'Themes',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+
+        UploadFolder::create([
+            'name' => 'Profiles',
+            'user_id' => 16,
+            'active' => true,
+        ]);
+    
     }
 }

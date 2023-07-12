@@ -25,7 +25,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('uploadfolder_id')->nullable();
             $table->string('name');
-            $table->float('size');
+            $table->unsignedBigInteger('size');
             $table->string('url');
             $table->string('extension');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

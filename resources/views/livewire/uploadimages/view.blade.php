@@ -12,7 +12,7 @@
 				<div class="card-body">
 						@include('livewire.uploadimages.modals')
 				<div class="table-responsive">
-					<table class="table table-bordered table-sm">
+					<table class="table >
 						<thead class="thead">
 							<tr class="text-center"> 
 								<td>#</td> 
@@ -49,7 +49,7 @@
 									$imageUrl = str_replace('_original', '_230', $row->url);
 								@endphp
 								
-								<img class="img-responsive rounded-5 shadow" src="{{ url($imageUrl ) }}" alt="{{ $fileName }}" style="width: 40px; height: 34px;">
+								<img class=" rounded-5 shadow-sm img-thumbnail" src="{{ url($imageUrl ) }}" alt="{{ $fileName }}" style="width: 66px; height: 66px;">
 								
 								</td>
 								

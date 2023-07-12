@@ -22,14 +22,20 @@ class Uploadimages extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.uploadimages.view', [
-            'uploadimages' => Uploadimage::with('user')->latest()
 
+        return view('livewire.uploadimages.view', [
+            'uploadimages' => Uploadimage::with('user')
+                ->latest()
                 ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {     
-                    $query->where('name', 'LIKE', $keyWord)        
-                    ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(100)
+                ->when($keyWord, function ($query, $keyWord) {
+                    $query->where(function ($subquery) use ($keyWord) {
+                        $subquery->where('name', 'LIKE', '%' . $keyWord . '%')
+                            ->orWhereHas('uploadfolder', function ($subquery) use ($keyWord) {
+                                $subquery->where('name', 'LIKE', '%' . $keyWord . '%');
+                            });
+                    });
+                })
+                ->paginate(100)
         ]);
     }
 	

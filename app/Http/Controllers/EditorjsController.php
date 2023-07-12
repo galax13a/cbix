@@ -19,7 +19,7 @@ class EditorjsController extends Controller
 
             $userID = auth()->id();
             $user = User::find($userID);
-            $maxFileSize = 2048; // Tamaño máximo en KB
+            $maxFileSize = 4048; // Tamaño máximo en KB
             $fileSize = $request->file('image')->getSize() / 1024; // Tamaño del archivo en KB
             $fileSizeKB = $request->file('image')->getSize(); // Tamaño del archivo en KB
             $fileSizeMB = $fileSizeKB / 1024; // Tamaño del archivo en MB con decimales
@@ -59,9 +59,6 @@ class EditorjsController extends Controller
                 ];
                 return response()->json($errorResponse, 400);
             } else {
-
-  
-
                 // Guardar el registro en la tabla uploadimages
                 $uploadImage = new UploadImage();
                 $uploadImage->user_id = $user->id;
