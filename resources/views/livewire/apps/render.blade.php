@@ -45,24 +45,24 @@
 
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="user d-flex flex-row align-items-center">
-
+    
                             @if ($app->image)
-                                <img src="{{ Storage::url($app->image) }}" width="90"
-                                    class="user-img rounded-circle mr-2 " alt="App Image">
+                                <img src="{{ asset($app->image) }}" width="90"
+                                    class="user-img rounded-circle mr-2 img-thumbnail " alt="App Image">
                             @else
                                 <img src="{{ asset('apps/default.jpg') }}" width="90"
                                     class="user-img rounded-circle mr-2">
                             @endif
 
                             <br>
-                            <p class="p-4">
+                            <p class="p-2">
                                 <strong>
                                     <i
                                         class="fas fa-chevron-circle-down"></i>{{ $app->name }}
 
                                 </strong>
                                 <br>
-                            <p class="card-text" style="max-height: 90px; overflow: auto;">
+                            <p class="card-text my-3" style="max-height: 90px; overflow: auto;">
                                 {!! Str::words($app->en, 26) !!}
 
                             </p>
@@ -70,7 +70,8 @@
                         <div 
                             id="div-apps"
                             title="enter the application"
-                            class=" punter card-body shadow w-25 rounded-5 text-center"
+                            class=" punter card-body shadow w-25 rounded-5 text-center "
+                            style="max-width:30%"
                         >
                             @if ($app->install)
                             <a href="{{ route('create.root.app', ['appid' => $app->id]) }}"
@@ -85,8 +86,8 @@
                             </a>
                             
                             @else
-                                <small>
-                                    <strong>
+                                <small class="shadow-sm" >
+                                    <strong >
                                         <i class="fas fa-ghost text-danger"></i>
                                         Not installed
                                     </strong>

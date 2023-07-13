@@ -1,3 +1,19 @@
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  border: 1px dashed #5a5e5a; 
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  color: #000000;  
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background .2s ease-in-out;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: #0d45a5;
+
+}
+
 .cdxcarousel-removeBtn {
   position: absolute;
   padding: 3px;

@@ -10,7 +10,19 @@ function toggleReadOnly() {
 
 var appLink = document.getElementById('app-link');
 var imageUploadUrl = appLink.dataset.image_upload;
-console.log(imageUploadUrl);
+var urlParams = new URLSearchParams(window.location.search);
+var slug = urlParams.get('slug');
+imageUploadUrl = imageUploadUrl + '?slug=' + slug;
+//console.log(imageUploadUrl);
+
+window.addEventListener('load', function() {
+
+     urlParams = new URLSearchParams(window.location.search);
+     slug = urlParams.get('slug');
+    imageUploadUrl = imageUploadUrl + '?slug=' + slug;
+    //console.log(imageUploadUrl);
+
+});
 
 
 editor = new EditorJS({

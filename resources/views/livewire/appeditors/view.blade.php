@@ -122,10 +122,6 @@
             });
 
 
-            Livewire.on('uptImgTemp', imageUrl => {
-                document.querySelector("#imagen-tempo-app").src = imageUrl;
-            });
-
             Livewire.on('uptagsSelects', (tags) => {
                 $('#tags').select2('destroy'); // Destruir el select2 existente
                 $('#tags').empty(); // Vaciar las opciones del select
@@ -145,6 +141,8 @@
                 //alert('alert full');
                 //	document.querySelector("#imagen-tempo-app").hidden=true;
             });
+
+
 
             window.livewire.on('combos', () => {
 

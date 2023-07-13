@@ -20,7 +20,7 @@ class Appeditors extends Component
 
 	protected $listeners = ['emit_editorjs' => 'saveJson', 'contentUpdated' => 'updateContent', 'myloadjs' => 'loadJson'];
 
-	protected $queryString = ['appid', 'apps0categor_id', 'active', 'app_idioma','selected_tag'];
+	protected $queryString = ['appid', 'apps0categor_id', 'active', 'app_idioma','selected_tag','slug'];
 	protected $paginationTheme = 'bootstrap';
 	public $selected_id, $keyWord, $name, $slug, $es, $en, $editorjs, $version, $menu, $url, $target, $icon, $image, $download_url, $is_approved, $install, $apps0categor_id, $meta_title, $meta_description, $meta_keywords, $active, $downloads, $downloads_bot;
 	public $appid, $tags, $tages, $tempImage;
@@ -117,44 +117,82 @@ class Appeditors extends Component
 
 	public function save_imagen()
 {
-    $this->validate([
-        'image' => 'required|image|max:6024', // 1MB Max
-    ]);
+
+	try {
+		$this->validate([
+			'image' => 'required|image|max:2024|mimes:jpeg,png,gif', // Maximum size of 1MB
+		]);
+	} catch (\Illuminate\Validation\ValidationException $e) {
+		$errorMessage = $e->getMessage();
+		$this->emit('failimg', $errorMessage);
+		$this->image = null;
+		return false;
+	}
 
     try {
-        $image = Image::make($this->image->getRealPath())
-            ->resize(320, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-		
 
-        $path = 'public/apps/images/'.$this->app->slug.'/'.$this->app->name.'.'.$this->image->getClientOriginalExtension();
+		if ($this->image && $this->image->getSize() > 0) {
 
-        Storage::put($path, (string) $image->encode());
+			$fileSize = $this->image->getSize();
+			$maxSizeKB = 2048; // Tamaño máximo en kilobytes (2MB)
+			// Divide el tamaño del archivo para obtener el tamaño en kilobytes
+			$fileSizeKB = $fileSize / 1024;
 
-        if ($this->app->update(['image' => Storage::url($path)])) {
-            $this->dispatchBrowserEvent('notify', [
-                'type' => 'success',
-                'message' => '¡Imagen Ok SEO!',
-                'position' => 'center-center'
-            ]);
-			$url = asset(Storage::url($path) . '?num=' . Str::random(10));
+			if ($fileSizeKB > $maxSizeKB) {
 
-			$this->emit('uptImgFull', $url);
-            $this->image = null;
+				$formattedMaxSize = number_format($maxSizeKB/1024, 1);
+				$formattedFileSize = number_format($fileSizeKB/1024, 3);
+				$this->dispatchBrowserEvent('notify', [
+					'type' => 'failure',
+					'message' => 'Image Size Exceeded! Maximum allowed size: ' . $formattedMaxSize . ' KB. Current file size: ' . $formattedFileSize . ' KB.',
+					'position' => 'center-center'
+				]);
+				return false;
+				//$this->emit('failimg');
+			 }else {			
 
-        } else {
-            $this->dispatchBrowserEvent('notify', [
-                'type' => 'failure',
-                'message' => 'Error al actualizar la base de datos'
-            ]);
-        }
+				$image = Image::make($this->image->getRealPath())
+				->orientate()->resize(320, null, function ($constraint) {
+					$constraint->aspectRatio();
+				});
+
+				$path = 'public/apps/images/'.$this->app->slug.'/'.$this->app->name.'.'.$this->image->getClientOriginalExtension();
+				Storage::put($path, (string) $image->encode());
+
+					if ($this->app->update(['image' => Storage::url($path)])) {
+						$this->dispatchBrowserEvent('notify', [
+							'type' => 'success',
+							'message' => '¡Imagen Ok SEO!',
+							'position' => 'center-center'
+						]);
+						$url = asset(Storage::url($path) . '?num=' . Str::random(10));
+
+						$this->emit('uptImgFull', $url);
+						$this->image = null;
+
+					} else {
+						$this->dispatchBrowserEvent('notify', [
+							'type' => 'failure',
+							'position' => 'center-center',
+							'message' => 'Error DB Tabla'
+						]);
+					}
+			}
+        }else
+		{
+			$this->dispatchBrowserEvent('notify', [
+				'type' => 'failure',
+				'position' => 'center-center',
+				'message' => 'Select imagen Miniture'
+			]);
+		}
     } catch (\Exception $e) {
         // Aquí puedes hacer algo con el error si es necesario, como enviarlo a un servicio de logging
 		Log::error('Error al guardar la imagen: ' . $e->getMessage());
 		
         $this->dispatchBrowserEvent('notify', [
             'type' => 'failure',
+			'position' => 'center-center',
             'message' => 'Hubo un error al guardar la imagen. ' . $e->getMessage()
         ]);
     }

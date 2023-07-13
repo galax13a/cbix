@@ -123,7 +123,24 @@ if (btn_upt || btn_str) {
 }
 
 $(document).ready(() => {
-
+    
+    Livewire.on('uptImgTemp', imageUrl => {
+        document.querySelector("#imagen-tempo-app").src = imageUrl;
+    });
+    
+    Livewire.on('failimg', errorMessage => {
+        // Handle the error message
+           // console.log(errorMessage);
+            const notifyEvent = new CustomEvent('notify', {
+                    detail: {
+                        type: 'failure',
+                        message: errorMessage,
+                        position: 'center-center',
+                    },
+                    });
+                    window.dispatchEvent(notifyEvent);
+        });
+        
     $('tr').click(function () {
         $(this).addClass('active').siblings().removeClass('active');
     });

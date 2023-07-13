@@ -231,7 +231,7 @@
 
                 <div class="mt-2 text-center" wire:key="div-imagen-app">
                     <img id="imagen-tem-app"
-                        src="@if ($this->app->image) {{ Storage::url($this->app->image) }} @endif"
+                        src="@if ($this->app->image) {{ asset($app->image) }} @endif"
                         class="img-thumbnail" style="max-width:230px; max-height: 210px;">
                 </div>
 
@@ -246,7 +246,7 @@
             <form wire:submit.prevent="save_imagen" enctype="multipart/form-data">
                 <div class="form-group">
 
-                    <input type="file" class="form-control" id="image" name="image" wire:model="image">
+                    <input type="file" class="form-control" id="image" name="image" wire:model="image" accept="image/*">
                     @error('image')
                         <span class="error">{{ $message }}</span>
                     @enderror
@@ -257,7 +257,7 @@
                     @endif
                 </div>
                 <br>
-                <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);" class="btn btn-primary shadow">
+                <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);" class="btn btn-primary shadow-lg">
                     <i class="fas fa-cloud-upload"></i>
                     Upload Imagen
                 </button>
