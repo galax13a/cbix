@@ -27,10 +27,14 @@ class Appeditors extends Component
 	public $app, $app_idioma, $imagen;
 	public $load_app_json,$selected_tag,$name_tag;
 
+	public $selected_imagen_url, $selectedImage, $imageFiles = [];	
+
+
 	public function updatingKeyWord() // reset pages keywork
 	{
 		$this->resetPage();
 	}
+
 	public function mount(Request $request)
 	{
 		$this->appid = $request->input('appid');
@@ -50,7 +54,100 @@ class Appeditors extends Component
 
 		$this->imagen = $this->app->imagen;
 		$this->active = $this->app->active;
+
+		$this->get_folder_images();
+
 	}
+
+	public function render()
+	{
+
+		if(!$this->name_tag) $this->selected_tag = null;
+
+		$appId = $this->selected_id;
+		$this->app = App::find($appId);
+		$this->name = 	$this->app->name;
+		
+		$this->editorjs = $this->app->editorjs;
+		$this->slug = $this->app->slug;
+
+		//$this->imagen = $this->app->imagen;
+		$this->url = $this->app->url;
+		$this->version = $this->app->version;
+		$this->menu = $this->app->menu;
+		$this->url = $this->app->url;
+		$this->download_url = $this->app->download_url;
+
+		$this->target = $this->app->target;
+		$this->download_url = $this->app->download_url;
+		$this->is_approved = $this->app->is_approved;
+		$this->install = $this->app->install;
+
+		$this->meta_title = $this->app->meta_title;
+		$this->meta_description = $this->app->meta_description;
+		$this->meta_keywords = $this->app->meta_keywords;
+		//$this->active = $this->app->active;
+		$this->downloads = $this->app->downloads;
+		$this->downloads_bot = $this->app->downloads_bot;
+
+		if (!$this->en) $this->en = $this->app->en;
+		if (!$this->es) $this->es = $this->app->es;
+		$this->tags = Tag::all();
+
+		if (!$this->tages) $this->tages = $this->app->tags()->pluck('tags.id')->toArray();
+
+		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
+		//$this->emit('renderEditor');
+		//$this->emit('renderEditor', $this->app->editorjs);	
+		//$this->editorjs = json_decode($this->editorjs, true);
+		$this->emit('combos');
+
+		if ($this->image) {
+			if ($this->image->temporaryUrl()) {				
+				$this->emit('uptImgTemp', $this->image->temporaryUrl());
+			}
+		}
+
+		$this->slug = Str::slug($this->name);
+		$this->get_folder_images();
+
+		return view('livewire.appeditors.view', [
+			'appeditors' => App::where('id', $appId)->get(),
+		]);
+	}
+
+	private function get_folder_images()
+    {
+		$this->imageFiles = [];
+        $folderPath = 'public/apps/images/' . $this->slug;
+        $filesInFolder = Storage::files($folderPath);
+
+
+		if ($this->selected_imagen_url) {
+			$folderPath = 'public/apps/images/' . $this->slug;
+			$extension = pathinfo($this->selected_imagen_url, PATHINFO_EXTENSION);
+			$imageUrl = str_replace($extension, '', $this->selected_imagen_url);
+			$imageParts = explode('/', $imageUrl);
+			$imageName = end($imageParts);			
+			$imageName = rtrim($imageName, '.');
+			$imageName = rtrim($imageName, '_');
+			$extension = pathinfo($this->selected_imagen_url, PATHINFO_EXTENSION);
+			$this->imageFiles[] = $imageName.'_.'.$extension;
+			$this->imageFiles[] = $imageName.'_230.'.$extension;
+			$this->imageFiles[] = $imageName.'_460.'.$extension;
+			$this->imageFiles[] = $imageName.'_840.'.$extension;
+			
+		}
+
+        foreach ($filesInFolder as $path) {
+            $file = pathinfo($path);
+            // Verifica la extensión del archivo para asegurarte de que sea una imagen
+            if (in_array($file['extension'], ['jpg', 'png', 'gif', 'jpeg'])) {
+               // $this->imageFiles[] = $file['basename'];  // Sólo el nombre del archivo
+            }
+
+        }
+    }
 
 	public function saveTags() // sabe only tang pather table hijo
 	{
@@ -115,12 +212,12 @@ class Appeditors extends Component
 	}
 
 
-	public function save_imagen()
-{
+	public function save_imagen()	
+  {
 
 	try {
 		$this->validate([
-			'image' => 'required|image|max:2024|mimes:jpeg,png,gif', // Maximum size of 1MB
+			'image' => 'required|image|max:2024|mimes:jpeg,png,gif,jpeg', // Maximum size of 1MB
 		]);
 	} catch (\Illuminate\Validation\ValidationException $e) {
 		$errorMessage = $e->getMessage();
@@ -198,7 +295,6 @@ class Appeditors extends Component
     }
 }
 
-
 	public function store_save()
 	{
 
@@ -218,59 +314,6 @@ class Appeditors extends Component
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
 			'message' => '¡ Appeditor Update !'
-		]);
-	}
-
-	public function render()
-	{
-
-		if(!$this->name_tag) $this->selected_tag = null;
-
-		$appId = $this->selected_id;
-		$this->app = App::find($appId);
-		$this->name = 	$this->app->name;
-		$this->slug = Str::slug($this->name);
-		$this->editorjs = $this->app->editorjs;
-
-		//$this->imagen = $this->app->imagen;
-		$this->url = $this->app->url;
-		$this->version = $this->app->version;
-		$this->menu = $this->app->menu;
-		$this->url = $this->app->url;
-		$this->download_url = $this->app->download_url;
-
-		$this->target = $this->app->target;
-		$this->download_url = $this->app->download_url;
-		$this->is_approved = $this->app->is_approved;
-		$this->install = $this->app->install;
-
-		$this->meta_title = $this->app->meta_title;
-		$this->meta_description = $this->app->meta_description;
-		$this->meta_keywords = $this->app->meta_keywords;
-		//$this->active = $this->app->active;
-		$this->downloads = $this->app->downloads;
-		$this->downloads_bot = $this->app->downloads_bot;
-
-		if (!$this->en) $this->en = $this->app->en;
-		if (!$this->es) $this->es = $this->app->es;
-		$this->tags = Tag::all();
-
-		if (!$this->tages) $this->tages = $this->app->tags()->pluck('tags.id')->toArray();
-
-		$this->load_app_json = $this->slug . '_' . $this->app_idioma . '.json';
-		//$this->emit('renderEditor');
-		//$this->emit('renderEditor', $this->app->editorjs);	
-		//$this->editorjs = json_decode($this->editorjs, true);
-		$this->emit('combos');
-
-		if ($this->image) {
-			if ($this->image->temporaryUrl()) {				
-				$this->emit('uptImgTemp', $this->image->temporaryUrl());
-			}
-		}
-
-		return view('livewire.appeditors.view', [
-			'appeditors' => App::where('id', $appId)->get(),
 		]);
 	}
 
@@ -387,123 +430,6 @@ class Appeditors extends Component
 		$this->downloads = null;
 		$this->downloads_bot = null;
 		*/
-	}
-
-	public function store()
-	{
-		$this->validate([
-			'name' => 'required',
-			'slug' => 'required',
-			'en' => 'required',
-			'is_approved' => 'required',
-			'apps_categors_id' => 'required',
-			'active' => 'required',
-		]);
-
-		App::create([
-			'name' => $this->name,
-			'slug' => $this->slug,
-			'es' => $this->es,
-			'en' => $this->en,
-			'editorjs' => $this->editorjs,
-			'version' => $this->version,
-			'menu' => $this->menu,
-			'url' => $this->url,
-			'target' => $this->target,
-			'icon' => $this->icon,
-			'image' => $this->image,
-			'download_url' => $this->download_url,
-			'is_approved' => $this->is_approved,
-			'install' => $this->install,
-			'apps_categors_id' => $this->apps_categors_id,
-			'meta_title' => $this->meta_title,
-			'meta_description' => $this->meta_description,
-			'meta_keywords' => $this->meta_keywords,
-			'active' => $this->active,
-			'downloads' => $this->downloads,
-			'downloads_bot' => $this->downloads_bot
-		]);
-
-		$this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');
-		$this->dispatchBrowserEvent('notify', [
-			'type' => 'success',
-			'message' => '¡ Appeditor Successfully created!',
-		]);
-	}
-
-	public function edit($id)
-	{
-		$record = App::findOrFail($id);
-		$this->selected_id = $id;
-		$this->name = $record->name;
-		$this->slug = $record->slug;
-		$this->es = $record->es;
-		$this->en = $record->en;
-		$this->editorjs = $record->editorjs;
-		$this->version = $record->version;
-		$this->menu = $record->menu;
-		$this->url = $record->url;
-		$this->target = $record->target;
-		$this->icon = $record->icon;
-		$this->image = $record->image;
-		$this->download_url = $record->download_url;
-		$this->is_approved = $record->is_approved;
-		$this->install = $record->install;
-		$this->apps0categor_id = $record->apps_categors_id;
-		$this->meta_title = $record->meta_title;
-		$this->meta_description = $record->meta_description;
-		$this->meta_keywords = $record->meta_keywords;
-		$this->active = $record->active;
-		$this->downloads = $record->downloads;
-		$this->downloads_bot = $record->downloads_bot;
-	}
-
-	public function update()
-	{
-		$this->validate([
-			'name' => 'required',
-			'slug' => 'required',
-			'en' => 'required',
-			'is_approved' => 'required',
-			'apps_categors_id' => 'required',
-			'active' => 'required',
-		]);
-
-		if ($this->selected_id) {
-			$record = App::find($this->selected_id);
-			$record->update([
-				'name' => $this->name,
-				'slug' => $this->slug,
-				'es' => $this->es,
-				'en' => $this->en,
-				'editorjs' => $this->editorjs,
-				'version' => $this->version,
-				'menu' => $this->menu,
-				'url' => $this->url,
-				'target' => $this->target,
-				'icon' => $this->icon,
-				'image' => $this->image,
-				'download_url' => $this->download_url,
-				'is_approved' => $this->is_approved,
-				'install' => $this->install,
-				'apps_categors_id' => $this->apps_categors_id,
-				'meta_title' => $this->meta_title,
-				'meta_description' => $this->meta_description,
-				'meta_keywords' => $this->meta_keywords,
-				'active' => $this->active,
-				'downloads' => $this->downloads,
-				'downloads_bot' => $this->downloads_bot
-			]);
-
-			$this->resetInput();
-			$this->dispatchBrowserEvent('closeModal');
-
-			$this->dispatchBrowserEvent('notify', [
-				'type' => 'success',
-				'message' => '¡ Appeditor Successfully updated.!',
-			]);
-		}
 	}
 
 	public function destroy($id)

@@ -21,7 +21,6 @@ window.addEventListener('load', function() {
      slug = urlParams.get('slug');
     imageUploadUrl = imageUploadUrl + '?slug=' + slug;
     //console.log(imageUploadUrl);
-
 });
 
 

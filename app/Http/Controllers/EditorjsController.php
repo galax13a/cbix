@@ -68,7 +68,7 @@ class EditorjsController extends Controller
             $this->storeImages($file, $file_name_save, $file_extension, $slug);
 
             // Obtener la URL de la imagen original y redimensionada
-            $original_url = Storage::url($storagePathWithSlug . $file_name_save . '_original.' . $file_extension);
+            $original_url = Storage::url($storagePathWithSlug . $file_name_save . '_.' . $file_extension);
             $resized_url_230 = Storage::url($storagePathWithSlug . $file_name_save . '_230.' . $file_extension);
             $resized_url_460 = Storage::url($storagePathWithSlug . $file_name_save . '_460.' . $file_extension);
             $resized_url_840 = Storage::url($storagePathWithSlug . $file_name_save . '_840.' . $file_extension);
@@ -118,7 +118,7 @@ class EditorjsController extends Controller
     private function storeImages($file, $file_name_save, $file_extension, $slug)
     {
         $storagePathWithSlug = self::STORAGE_PATH . $slug . '/';
-        $original_path = $storagePathWithSlug . $file_name_save . '_original.' . $file_extension;
+        $original_path = $storagePathWithSlug . $file_name_save . '_.' . $file_extension;
         $resized_path_230 = $storagePathWithSlug . $file_name_save . '_230.' . $file_extension;
         $resized_path_460 = $storagePathWithSlug . $file_name_save . '_460.' . $file_extension;
         $resized_path_840 = $storagePathWithSlug . $file_name_save . '_840.' . $file_extension;
@@ -141,7 +141,7 @@ class EditorjsController extends Controller
         })->orientate();
 
         // Guardar la imagen redimensionada con el nombre personalizado
-        $file->storeAs($storagePathWithSlug, $file_name_save . '_original.' . $file_extension); // save original imagen
+        $file->storeAs($storagePathWithSlug, $file_name_save . '_.' . $file_extension); // save original imagen
         $image_230->save(storage_path('app/' . $resized_path_230));
         $image_460->save(storage_path('app/' . $resized_path_460));
         $image_840->save(storage_path('app/' . $resized_path_840));
