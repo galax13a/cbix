@@ -58,6 +58,15 @@ class Appeditors extends Component
 		$this->get_folder_images();
 
 	}
+	public function get_gallery_app(){
+
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'position' => 'center-center',
+			'message' => 'GalleryOK! '
+		]);
+
+	}
 
 	public function render()
 	{
@@ -139,14 +148,6 @@ class Appeditors extends Component
 			
 		}
 
-        foreach ($filesInFolder as $path) {
-            $file = pathinfo($path);
-            // Verifica la extensión del archivo para asegurarte de que sea una imagen
-            if (in_array($file['extension'], ['jpg', 'png', 'gif', 'jpeg'])) {
-               // $this->imageFiles[] = $file['basename'];  // Sólo el nombre del archivo
-            }
-
-        }
     }
 
 	public function saveTags() // sabe only tang pather table hijo

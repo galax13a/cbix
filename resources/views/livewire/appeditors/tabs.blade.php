@@ -172,7 +172,7 @@
                 <i class="fas fa-tags m-1"></i> Tags
             </button>
         </h2>
-        <div id="collapseThree" class="accordion-collapse collapse show" aria-labelledby="headingThree"
+        <div id="collapseThree" class="accordion-collapse collapse " aria-labelledby="headingThree"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">                
 
@@ -201,18 +201,17 @@
                                 </a>
                       
                                  <button @click="openwin36('tagsDataModal')"
-                                class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link" wire:key="btn-tagersers-create">
-                                <strong>
-                                    Create
-                                    <i class="fas fa-cloud-upload"></i></i>
-                                </strong>
-                                </button>            
-
+                                    class="rounded-4 p-1 shadow-sm mt-1 border-0 custom-link" wire:key="btn-tagersers-create">
+                                    <strong>
+                                        Create
+                                        <i class="fas fa-cloud-upload"></i></i>
+                                    </strong>
+                                </button>    
                         
-                            </div>
+                        </div>
 
 
-        </div>
+            </div>
     </div>
 </div>
 
@@ -220,10 +219,11 @@
     <h2 class="accordion-header" id="headingFour">
         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
             data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-            <i class="fas fa-images m-1"></i> SEO Imagen
+            <i class="fas fa-images m-1"></i> 
+            SEO Imagen
         </button>
     </h2>
-    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
             <div class="container">
@@ -257,10 +257,22 @@
                     @endif
                 </div>
                 <br>
-                <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);" class="btn btn-primary shadow-lg">
-                    <i class="fas fa-cloud-upload"></i>
-                    Upload Imagen
-                </button>
+                <div class="container">                
+                    <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);" 
+                    class="btn btn-chatur shadow-sm border-2"
+                    >
+                        <i class="fas fa-cloud-upload"></i>
+                        Upload
+                    </button>
+                    <button  
+                    onclick="dispatchLoadingEvent('dots', 900);"
+                    class="btn btn-chatur shadow-sm"
+                    wire:click.prevent='get_gallery_app'
+                    >
+                        <i class="fas fa-images"></i> 
+                        Gallery
+                    </button>
+            </div>
             </form>
 
         </div>

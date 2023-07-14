@@ -91,6 +91,15 @@
     </div>
 
     <style>
+        
+<style>
+    .modal-dialog {
+        max-width: 960px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+
         .image-tool--LinkImagenServer {
             border-radius: 50%;
 
