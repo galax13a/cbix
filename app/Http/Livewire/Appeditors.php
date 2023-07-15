@@ -28,6 +28,9 @@ class Appeditors extends Component
 	public $load_app_json,$selected_tag,$name_tag;
 
 	public $selected_imagen_url, $selectedImage, $imageFiles = [];	
+	public $folders_imagenes;
+    public $storage_path = 'public/apps/images/';
+
 
 
 	public function updatingKeyWord() // reset pages keywork
@@ -124,8 +127,35 @@ class Appeditors extends Component
 			'appeditors' => App::where('id', $appId)->get(),
 		]);
 	}
+	public function get_folders_app() {
 
-	private function get_folder_images()
+		$path = $this->storage_path . $this->slug;
+		$files = Storage::files($path);
+	
+		$this->folders_imagenes = array_map(function ($file) {
+			$name = pathinfo($file, PATHINFO_BASENAME);
+			$extension = pathinfo($file, PATHINFO_EXTENSION);
+	
+			$imagePath = Storage::url($file);
+			[$width, $height] = getimagesize(public_path($imagePath));
+	
+			return [
+				'name' => $name,
+				'extension' => $extension,
+				'width' => $width,
+				'height' => $height
+			];
+		}, $files);
+		
+		$this->dispatchBrowserEvent('notify', [
+			'type' => 'success',
+			'message' => 'Folders Loaders OK! ',
+			'position' => 'center-center'
+		]);
+    }
+
+
+	private function get_folder_images() // para el select de la vista updateimg
     {
 		$this->imageFiles = [];
         $folderPath = 'public/apps/images/' . $this->slug;

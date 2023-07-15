@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="card-body">
-                    
+
                     @include('livewire.appeditors.updateimg')
 
                     <div class="editorbot">
@@ -91,13 +91,11 @@
     </div>
 
     <style>
-        
-<style>
-    .modal-dialog {
-        max-width: 960px;
-        margin-right: auto;
-        margin-left: auto;
-    }
+        <style>.modal-dialog {
+            max-width: 960px;
+            margin-right: auto;
+            margin-left: auto;
+        }
 
 
         .image-tool--LinkImagenServer {
@@ -120,21 +118,6 @@
         let readOnly = false;
 
         document.addEventListener('livewire:load', function() {
-
-
-            var editorContainer = document.getElementById('editorjs');
-            editorContainer.addEventListener('click', function(event) {
-                var target = event.target;
-                if (target.tagName === 'IMG') {
-                    var imageUrl = target.src;
-                    //alert('URL de la imagen: ' + imageUrl);                    
-                    dispatchLoadingEvent('arrows', 600);
-                    @this.set('selected_imagen_url', imageUrl);
-                    @this.set('selectedImage', null);
-                    
-                    openwin36('uptimagenDataModal');
-                }
-            });
 
             Livewire.on('uptagsSelects', (tags) => {
                 $('#tags').select2('destroy'); // Destruir el select2 existente
@@ -205,6 +188,23 @@
             }
 
             window.addEventListener('load', function() {
+
+                var editorContainer = document.getElementById('editorjs');
+
+                editorContainer.addEventListener('click', function(event) {
+                    var target = event.target;
+                    if (target.tagName === 'IMG') {
+                        var imageUrl = target.src;
+                        //alert('URL de la imagen: ' + imageUrl);                    
+                        dispatchLoadingEvent('arrows', 600);
+                        @this.set('selected_imagen_url', imageUrl);
+                        @this.set('selectedImage', null);
+
+                        openwin36('uptimagenDataModal');
+                    }
+                });
+
+      
 
                 let editorjsData = {!! json_encode($this->editorjs) !!};
 
