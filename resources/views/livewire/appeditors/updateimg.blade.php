@@ -76,22 +76,43 @@
                         <div class="container">
                             <div class="container shadow text-center m-2 mb-2 p-3 rounded-3">
                                 @if ($selectedImage)
-                                    <img src="{{ asset($selectedImage) }}" title="" alt="Selected Image"
+                                    <img id="img-selected-app" src="{{ asset($selectedImage) }}" title="" alt="Selected Image"
                                         class="rounded-3 img-thumbnail shadow" style="max-width: 230px;">
                                 @elseif($selected_imagen_url)
-                                    <img src="{{ $selected_imagen_url }}" alt="Default Image"
+                                    <img id="img-selected-app" src="{{ $selected_imagen_url }}" alt="Default Image"
                                         class="img-fluid rounded-3 img-thumbnail shadow"
                                         style="width: 33%; height: 33%;">
                                 @endif
                             </div>
 
-                            <div class="row row-cols-4 row-cols-md-4 g-4">
-                                @if ($folders_imagenes)                                       
+                            <div class="input-group">
+                                <div class="input-group-text bg-warning">
+                                    <i class="fas fa-link"> Change image by url</i>
+                                </div>
+                                <input wire:model.defer="selectedImage" type="text" class="form-control" id="selectedImage"
+                                    placeholder="Image URL">
+                                <button id="pastel-link" wire:key='pastel-link' title="Paste Link"
+                                    class="btn btn-ligth shadow rounded-2">
+                                    <i class="fas fa-paste"></i>
+                                </button>
+                            </div>
+                            <div class="input-group">
+                                <strong class="bg-warning p-1 border-right-3" 
+                                style="margin-top:-4px;
+                                ">
+                                    Current image / or you can change it
+                                </strong>
+                            </div>
+                       
+                            <div class="row row-cols-4 row-cols-md-4 g-4" id="gallery-apps-ids"
+                            style="max-height: 190px; overflow: auto;"
+                            >
+                                                         
                                   
                                    @foreach ($folders_imagenes as $image)
                                        <div class="col text-center">
-                                           <div class="shadow" id="gallery-apps-ids">
-                                               <img src="{{ Storage::url($storage_path . $slug . '/' . $image['name']) }}"
+                                           <div class="shadow" >
+                                               <img id="{{$image['name']}}" src="{{ Storage::url($storage_path . $slug . '/' . $image['name']) }}"
                                                    title="{{ $image['name'] }}" class="card-img-top img-thumbnail"
                                                    style="width:120px; height:120px; ">
                                                <div class="card-body">
@@ -119,12 +140,12 @@
                                        </div>
                                    @endforeach
    
-                               @endif
+                  
                                </div>
 
                             <div class="d-flex justify-content-end align-items-end flex-column">
 
-                                <div class="col">
+                                <div class="col m-2">
                                     <button title="Get Galerry App" wire:click='get_folders_app'
                                         onclick="dispatchLoadingEvent('dots', 900);"
                                         class="btn btn-chatur border-darkpor ">
@@ -143,22 +164,7 @@
                         </div>
                     </div>
 
-                    <div class="input-group">
-                        <div class="input-group-text bg-warning">
-                            <i class="fas fa-link"> Change image by url</i>
-                        </div>
-                        <input wire:model.defer="selectedImage" type="text" class="form-control" id="selectedImage"
-                            placeholder="Image URL">
-                        <button id="pastel-link" wire:key='pastel-link' title="Paste Link"
-                            class="btn btn-ligth shadow rounded-2">
-                            <i class="fas fa-paste"></i>
-                        </button>
-                    </div>
-                    <div class="input-group">
-                        <strong>
-                            🟣 Current image / or you can change it
-                        </strong>
-                    </div>
+                    
 
 
                 </div>

@@ -4,6 +4,13 @@
 #gallery-apps-ids img {
   cursor: url('/public/icons/punter-checkbox.png'), auto;
 }
+.gallery_img_active {
+  border: 2px solid red;
+}
+
+.gallery_img_shadow {
+  box-shadow: 0 0 12px rgba(159, 34, 243, 0.795);
+}
 
 .border-darkpor{
   border: 1px solid #2b123a;

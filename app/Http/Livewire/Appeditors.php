@@ -60,6 +60,8 @@ class Appeditors extends Component
 
 		$this->get_folder_images();
 
+		$this->folders_imagenes = [];
+
 	}
 	public function get_gallery_app(){
 
@@ -146,7 +148,7 @@ class Appeditors extends Component
 				'height' => $height
 			];
 		}, $files);
-		
+
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
 			'message' => 'Folders Loaders OK! ',

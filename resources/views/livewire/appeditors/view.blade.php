@@ -119,6 +119,33 @@
 
         document.addEventListener('livewire:load', function() {
 
+            var galleryElement = document.getElementById("gallery-apps-ids");
+        
+            if (galleryElement) {
+                galleryElement.addEventListener("click", function(event) {
+
+                    if (event.target.tagName === "IMG") {
+                        var imgSelectedAppElement = document.querySelector("#img-selected-app");
+                        const clickedImage = event.target;
+                        const allImages = document.querySelectorAll("#gallery-apps-ids img");
+                        // Remove the class from all images
+                        allImages.forEach(function(image) {
+                            image.classList.remove("gallery_img_shadow");
+                        });
+                        // Add the class to the clicked image
+                        clickedImage.classList.add("gallery_img_shadow");
+                        var domain = window.location.origin;
+                        imgSelectedAppElement.src = clickedImage.src;
+                        document.querySelector("#selectedImage").value = clickedImage.src;
+                        window.scrollTo({
+                                top: 0,
+                                behavior: "smooth"
+                            });
+                    }
+                });
+            
+            }
+
             Livewire.on('uptagsSelects', (tags) => {
                 $('#tags').select2('destroy'); // Destruir el select2 existente
                 $('#tags').empty(); // Vaciar las opciones del select
@@ -189,8 +216,8 @@
 
             window.addEventListener('load', function() {
 
-                var editorContainer = document.getElementById('editorjs');
 
+                var editorContainer = document.getElementById('editorjs');
                 editorContainer.addEventListener('click', function(event) {
                     var target = event.target;
                     if (target.tagName === 'IMG') {
