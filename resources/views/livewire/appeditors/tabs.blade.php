@@ -23,7 +23,8 @@
                     </strong>
                 </button>
 
-                <button id="loadJSapp" wire:click="loadJson()" class="p-1 m-1 shadow rounded-4 "
+                <button id="loadJSapp" wire:click="loadJson()" 
+                class="p-1 m-1 shadow rounded-4 d-none "
                     onclick="dispatchLoadingEvent('hourglass', 600);">
                     <strong>
                         <i class="far fa-folder-open"></i> Load

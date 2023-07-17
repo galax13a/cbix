@@ -91,7 +91,7 @@
             <button id="saveButton" class="p-2 m-1 shadow-sm rounded-3 border-0"  style="display: none;" onclick="saveEditorData()">
                 <strong>
                     <i class="far fa-save"></i>
-                    Save
+                    Save App
                 </strong>
             </button>
 

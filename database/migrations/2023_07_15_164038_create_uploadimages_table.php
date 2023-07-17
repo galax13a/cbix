@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('uploadfolders', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->enum('storage', ['local', 'cloud', 'bi'])->default('local')->nullable();
+            $table->enum('storage_host', ['s3', 'google', 'do'])->nullable();
             $table->boolean('active')->default(false);
             $table->unsignedBigInteger('user_id'); 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
