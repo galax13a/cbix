@@ -119,11 +119,3 @@
     </div>
 </div>
 
-
-<style>
-    .modal-dialog {
-        max-width: 920px;
-        margin-right: auto;
-        margin-left: auto;
-    }
-</style>

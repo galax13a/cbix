@@ -34,6 +34,8 @@ return new class extends Migration
             $table->text('es')->nullable();
             $table->text('en');
             $table->json('editorjs')->nullable();
+            $table->json('esjs')->nullable();
+            $table->json('enjs')->nullable();
             $table->string('version')->nullable();
             $table->enum('menu', ['front', 'admin'])->nullable()->default('admin');
             $table->string('url')->nullable();

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\UploadFolder;
+use App\Models\Uploadsize;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
@@ -14,6 +15,25 @@ class UploadFolderSeeder extends Seeder
      */
     public function run(): void
     {
+
+        Uploadsize::create([
+            'name' => 'Small',
+            'width' => 260,
+            'active' => true
+        ]);
+
+        Uploadsize::create([
+            'name' => 'Medium',
+            'width' => 520,
+            'active' => true
+        ]);
+
+        Uploadsize::create([
+            'name' => 'Hd',
+            'width' => 1024,
+            'active' => true
+        ]);
+
         UploadFolder::create([
             'name' => 'apps',
             'user_id' => 16,

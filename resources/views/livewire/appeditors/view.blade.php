@@ -87,28 +87,31 @@
             @include('livewire.appeditors.list')
             @include('livewire.appeditors.tags')
 
+            
+            <button id="saveButton" class="p-2 m-1 shadow-sm rounded-3 border-0"  style="display: none;" onclick="saveEditorData()">
+                <strong>
+                    <i class="far fa-save"></i>
+                    Save
+                </strong>
+            </button>
+
         </div>
     </div>
 
     <style>
-        <style>.modal-dialog {
+       .modal-dialog {
             max-width: 960px;
             margin-right: auto;
             margin-left: auto;
         }
-
-
         .image-tool--LinkImagenServer {
             border-radius: 50%;
-
         }
-
         .select2-container--default.select2-container--focus .select2-selection--multiple {
             border: solid black 1px;
             outline: 0;
             width: 210px;
         }
-
         .select2-container--default .select2-selection--multiple {
             width: 210px;
 
@@ -119,8 +122,22 @@
 
         document.addEventListener('livewire:load', function() {
 
+
+            window.onscroll = function() { // button scroll save
+                scrollFunction()
+            };
+
+            function scrollFunction() {
+                // Cambia "20" a la cantidad de scroll que quieres que el usuario haga antes de que aparezca el botón
+                if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                    document.getElementById("saveButton").style.display = "block";
+                } else {
+                    document.getElementById("saveButton").style.display = "none";
+                }
+            }
+
             var galleryElement = document.getElementById("gallery-apps-ids");
-        
+
             if (galleryElement) {
                 galleryElement.addEventListener("click", function(event) {
 
@@ -137,13 +154,10 @@
                         var domain = window.location.origin;
                         imgSelectedAppElement.src = clickedImage.src;
                         document.querySelector("#selectedImage").value = clickedImage.src;
-                        window.scrollTo({
-                                top: 0,
-                                behavior: "smooth"
-                            });
+
                     }
                 });
-            
+
             }
 
             Livewire.on('uptagsSelects', (tags) => {
@@ -226,14 +240,11 @@
                         dispatchLoadingEvent('arrows', 600);
                         @this.set('selected_imagen_url', imageUrl);
                         @this.set('selectedImage', null);
-
                         openwin36('uptimagenDataModal');
                     }
                 });
 
-      
-
-                let editorjsData = {!! json_encode($this->editorjs) !!};
+                let editorjsData = {!! json_encode($this->enjs) !!};
 
                 if (editorjsData && editorjsData.length !== 0) {
                     //editor.render({!! $this->editorjs !!});
@@ -248,12 +259,10 @@
             });
 
             window.livewire.on('renderEditor', (data) => {
-                //alert('render editirjs');
-                /*
-                            editor.render(JSON.parse(data)).catch((error) => {
-                                console.error('Error al renderizar los datos del editor:', error);
-                            });
-                			*/
+            
+                editor.render(data).catch((error) => {
+                    console.error('Error al renderizar los datos del editor:', error);
+                });
 
             });
         });

@@ -1,7 +1,7 @@
 <?php
 
 namespace Database\Seeders;
-
+use Illuminate\Support\Facades\DB;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Page;
@@ -25,6 +25,23 @@ class DatabaseSeeder extends Seeder
         \App\Models\Apichatur::factory(3)->create(); // create apichatur
         $this->call(AppSeeder::class);
         $this->call(UploadFolderSeeder::class);
+
+        DB::table('siteconfigs')->insert([
+            'name' => 'Botchatur',
+            'crm' => false,
+            'apps' => false,
+            'thumbnail' => 360,
+            'localimg' => true,
+            's3amazon' => false,
+            's3google' => false,
+            'siteupkeep' => false,
+            'code_google_anality' => null,
+            'code_head_front' => null,
+            'code_head_back' => null,
+            'code_body_front' => null,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
        
 
     }

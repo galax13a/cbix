@@ -27,13 +27,21 @@ return new class extends Migration
             $table->string('name');
             $table->unsignedBigInteger('size');
             $table->string('url');
+            $table->string('url_s3')->nullable();
+            $table->string('url_s4')->nullable();
             $table->string('extension');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('uploadfolder_id')->references('id')->on('uploadfolders')->onDelete('cascade');
             $table->timestamps();
         });
-        
-        
+
+      Schema::create('uploadsizes', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('width');
+            $table->boolean('active')->default(false);            
+            $table->timestamps();
+        });       
         
     }
 
@@ -44,5 +52,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('uploadimages');
         Schema::dropIfExists('uploadfolders');
+        Schema::dropIfExists('uploadsizes');
     }
 };

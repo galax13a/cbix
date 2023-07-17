@@ -77,11 +77,11 @@
                             <div class="container shadow text-center m-2 mb-2 p-3 rounded-3">
                                 @if ($selectedImage)
                                     <img id="img-selected-app" src="{{ asset($selectedImage) }}" title="" alt="Selected Image"
-                                        class="rounded-3 img-thumbnail shadow" style="max-width: 230px;">
+                                        class="rounded-3 img-thumbnail shadow" style="max-width: 230px; height: 260px;">
                                 @elseif($selected_imagen_url)
                                     <img id="img-selected-app" src="{{ $selected_imagen_url }}" alt="Default Image"
                                         class="img-fluid rounded-3 img-thumbnail shadow"
-                                        style="width: 33%; height: 33%;">
+                                        style="width: 33%; height: 260px;">
                                 @endif
                             </div>
 
@@ -98,38 +98,42 @@
                             </div>
                             <div class="input-group">
                                 <strong class="bg-warning p-1 border-right-3" 
-                                style="margin-top:-4px;
-                                ">
-                                    Current image / or you can change it
+                                    style="margin-top:-4px;
+                                    ">  
+                                     Current image / or you can change it
                                 </strong>
-                            </div>
-                       
-                            <div class="row row-cols-4 row-cols-md-4 g-4" id="gallery-apps-ids"
-                            style="max-height: 190px; overflow: auto;"
-                            >
-                                                         
+                            </div>                       
+                            <div 
+                            class="row row-cols-4 row-cols-md-4 g-4" id="gallery-apps-ids"
+                            style="max-height: 260px; overflow: auto;"
+                            >                                                        
                                   
                                    @foreach ($folders_imagenes as $image)
                                        <div class="col text-center">
-                                           <div class="shadow" >
-                                               <img id="{{$image['name']}}" src="{{ Storage::url($storage_path . $slug . '/' . $image['name']) }}"
+                                           <div class="shadow rounded-3" >
+
+                                               <img id="{{$image['name']}}" 
+                                               src="{{ Storage::url($storage_path . $slug . '/' . $image['name']) }}"
                                                    title="{{ $image['name'] }}" class="card-img-top img-thumbnail"
-                                                   style="width:120px; height:120px; ">
+                                                   style="width:120px; height:95px; ">
+                                           
                                                <div class="card-body">
                                                    <i class="fas fa-image shadow"></i>
                                                    <strong class="badge p-1 rounded-3 shadow bg-dark">
                                                        {{ number_format($image['width'], 0) }}
                                                        *
                                                        {{ number_format($image['height'], 0) }}
-                                                       </i>Pix.</strong>
+                                                       </i>Px. </strong> 
                                                    <i title="Delete Pic"
-                                                       class="fas fa-trash p-1 rounded-4 shadow-sm text-danger punter "></i>
+                                                       class="fas fa-trash p-1 rounded-4 shadow-sm text-danger punter ">
+                                                    </i>
+                                                    Size: 4.2 MG
                                                    @php
                                                        $urlParts = explode('_', $image['name']);
                                                        $finalName = end($urlParts);
                                                        $firstLetter = substr($finalName, 0, 1);
                                                        if ($firstLetter == '.') {
-                                                               $finalName = '💜 Original'.$finalName;
+                                                               $finalName = '💜 1Pic'.$finalName;
                                                        }
                                             
                                                    @endphp

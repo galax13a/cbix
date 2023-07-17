@@ -62,6 +62,8 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('siteconfigs', 'livewire.siteconfigs.index')->middleware('auth');
+	Route::view('uploadsizes', 'livewire.uploadsizes.index')->middleware('auth');
 	Route::view('uploadimages', 'livewire.uploadimages.index')->middleware('auth');
 	Route::view('uploadfolders', 'livewire.uploadfolders.index')->middleware('auth');
 	Route::view('uploadfolder', 'livewire.uploadfolder.index')->middleware('auth');

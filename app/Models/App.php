@@ -14,7 +14,7 @@ class App extends Model
     protected $table = 'apps';
 
     //protected $fillable = ['downloads', 'downloads_bot', 'name','slug','es', 'en','version','menu','url','target','icon','image','download_url','is_approved','install','apps_categors_id','meta_title','meta_description','meta_keywords','active']; // fillable2
-    protected $fillable = ['name','slug','es','en','editorjs','version','menu','url','target','icon','image','download_url','is_approved','install','apps_categors_id','meta_title','meta_description','meta_keywords','active','downloads','downloads_bot']; // fillable2
+    protected $fillable = ['esjs', 'enjs','name','slug','es','en','editorjs','version','menu','url','target','icon','image','download_url','is_approved','install','apps_categors_id','meta_title','meta_description','meta_keywords','active','downloads','downloads_bot']; // fillable2
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

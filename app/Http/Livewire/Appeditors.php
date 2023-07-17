@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use Livewire\WithFileUploads;
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Support\Facades\Log;
+use App\Models\Siteconfig;
+
 
 class Appeditors extends Component
 {
@@ -30,7 +32,7 @@ class Appeditors extends Component
 	public $selected_imagen_url, $selectedImage, $imageFiles = [];	
 	public $folders_imagenes;
     public $storage_path = 'public/apps/images/';
-
+	public $enjs, $esjs;
 
 
 	public function updatingKeyWord() // reset pages keywork
@@ -124,6 +126,10 @@ class Appeditors extends Component
 
 		$this->slug = Str::slug($this->name);
 		$this->get_folder_images();
+
+		$this->enjs = $this->app->enjs;
+		$this->esjs = $this->app->esjs;
+
 
 		return view('livewire.appeditors.view', [
 			'appeditors' => App::where('id', $appId)->get(),
@@ -365,7 +371,8 @@ class Appeditors extends Component
 			'message' => ' Save SEO App, Ok!! '
 		]);
 	}
-	public function saveJson()
+
+	public function saveJson() //save json
 	{
 		$data = $this->editorjs;
 		$this->slug = Str::slug($this->name);
@@ -376,11 +383,6 @@ class Appeditors extends Component
 			Storage::makeDirectory(dirname($filePath));
 		}
 
-		$this->app->update([
-			'editorjs' => $this->editorjs
-		]);
-		// Guardar el archivo en el storage
-
 		$editorjsObject = json_decode($this->editorjs);
 
 		$emptyEditor = [
@@ -390,13 +392,33 @@ class Appeditors extends Component
 
 		if (!(empty($editorjsObject->blocks) && $editorjsObject->version === $emptyEditor["version"])) {
 			Storage::put($filePath, $data);
+
+			if($this->app_idioma == 'en'){
+			$this->app->update([
+				'enjs' => $data
+			]);
+		}else {
+			$this->app->update([
+				'esjs' => $data
+			]);
+		}
+
 		} else {
 			$this->dispatchBrowserEvent('notify', [
 				'type' => 'success',
 				'message' => '¡ Fail Editor KO....',
 			]);
 		}
-
+		
+		if($this->app_idioma == 'en'){
+			$this->app->update([
+				'enjs' =>  $this->editorjs
+			]);
+		}else {
+			$this->app->update([
+				'esjs' =>  $this->editorjs
+			]);
+		}
 
 		$this->app->update([
 			'menu' => $this->menu,
@@ -421,16 +443,45 @@ class Appeditors extends Component
 		$this->loadJson();
 	}
 
-	public function loadJson()
+	public function loadJson() 
 	{
-		$filename = $this->slug . '_' . $this->app_idioma . '.json';
-		$filePath = 'apps/pages/' . $filename;
 
-		if (Storage::exists($filePath)) {
-			$data = Storage::get($filePath);
-			$this->editorjs = $data;
-			$this->emit('loadeditor', $this->editorjs);
+		$siteconfig = Siteconfig::first();
+
+		$apclud = $siteconfig->apps;
+
+		if($apclud) {
+			//db get
+			if($this->app_idioma == 'en'){
+				$data = $this->enjs;
+			}else {
+				$data = $this->esjs;
+			}
+			
+			 $this->emit('renderEditor', json_decode($data));
+		}else {
+			//get json
+			$filename = $this->slug . '_' . $this->app_idioma . '.json';
+			$filePath = 'apps/pages/' . $filename;
+	
+			if (Storage::exists($filePath)) {
+				$data = Storage::get($filePath);
+				$this->editorjs = $data;
+				$this->emit('loadeditor', $this->editorjs);
+			}else {
+
+				$this->dispatchBrowserEvent('notify', [
+					'type' => 'failure',
+					'message' => '¡ No se encontro el file json '
+				]);
+
+			}
+
 		}
+	
+	
+
+	
 	}
 
 	public function cancel()

@@ -52,6 +52,12 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/siteconfigs') }}" class="nav-link">🟣 Siteconfigs</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/uploadsizes') }}" class="nav-link">🟣 Uploadsizes</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/uploadimages') }}" class="nav-link">🟣 Uploadimages</a> 
                         </li>
 						<li class="nav-item">

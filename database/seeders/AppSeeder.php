@@ -15,6 +15,8 @@ class AppSeeder extends Seeder
     {
         // Crea registros de ejemplo en la tabla "apps"      
 
+     
+
         DB::table('apps0categors')->insert([
             [
                 'name' => 'server',

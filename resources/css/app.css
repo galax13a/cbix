@@ -1,15 +1,26 @@
+#saveButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1900;
+
+}
+
+
 #editorjs img {
   cursor: url('/public/icons/edit_img.png'), auto;
 }
 #gallery-apps-ids img {
   cursor: url('/public/icons/punter-checkbox.png'), auto;
 }
-.gallery_img_active {
-  border: 2px solid red;
-}
 
 .gallery_img_shadow {
   box-shadow: 0 0 12px rgba(159, 34, 243, 0.795);
+  filter: blur(16px);
+  -webkit-filter: blur(1px);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;   
 }
 
 .border-darkpor{
