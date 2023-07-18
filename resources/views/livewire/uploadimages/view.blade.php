@@ -53,7 +53,8 @@
 									{{ $row->uploadfolder->name }}
 								</strong>
 								</td>
-								<td>{{ $row->name }}</td>
+								<td data-record="{{ $row->id }}">
+									{{ $row->name }}</td>
 								<td>
 									@php
 										$fileSize = $row->size / 1024;
@@ -96,6 +97,39 @@
 					<div class="float-end">{{ $uploadimages->links() }}</div>
 					</div>
 				</div>
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Total Imagens</th>
+							<th>Total Size</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{{ \App\Models\Uploadimage::count() }}</td>
+							<td>
+								<strong>
+								{{ formatBytes(\App\Models\Uploadimage::sum('size')) }}
+							</strong>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		
+			@php
+			function formatBytes($bytes, $precision = 2) { 
+				$units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+		
+				$bytes = max($bytes, 0); 
+				$pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+				$pow = min($pow, count($units) - 1); 
+				$bytes /= pow(1024, $pow);		
+				return round($bytes, $precision) . ' ' . $units[$pow]; 
+			} 
+			@endphp
+
 			</div>
 		</div>
 	</div>
