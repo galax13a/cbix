@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('idioma')->nullable()->default('en');
             $table->boolean('crm')->nullable()->default(false); // si trabaja json o db
             $table->boolean('apps')->nullable()->default(false); // json o db
-            $table->smallInteger('thumbnail'); /// size img defa
+            $table->unsignedBigInteger('thumbnail'); /// size img defa
             $table->boolean('localimg')->nullable()->default(true);
             $table->boolean('s3amazon')->nullable()->default(false);
             $table->boolean('s3google')->nullable()->default(false); 

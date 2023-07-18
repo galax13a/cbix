@@ -68,11 +68,12 @@
 								<td>  
 									@php
 									$extension = $row->extension;
-									$fileName = str_replace('_original', '', $row->name);
-									$imageUrl = str_replace('_original', '_230', $row->url);
+									//$fileName = str_replace('_original', '', $row->name);
+									$fileName =  $row->name;
+									//$imageUrl = str_replace('_original', '_230', $row->url);
 								@endphp
 								
-								<img class=" rounded-5 shadow-sm img-thumbnail" src="{{ url($imageUrl ) }}" alt="{{ $fileName }}" style="width: 66px; height: 66px;">
+								<img class=" rounded-5 shadow-sm img-thumbnail" src="{{ url($row->url ) }}" alt="{{ $fileName }}" style="width: 66px; height: 66px;">
 								
 								</td>
 								<td>

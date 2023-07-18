@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
 use App\Models\User;
 use App\Models\Uploadimage;
+use App\Models\Uploadsize;
 
 class EditorjsController extends Controller
 {
@@ -17,18 +18,10 @@ class EditorjsController extends Controller
 
     public function imageUpload(Request $request)
     {
-        // Obtener el archivo enviado
         try {
             $file = $request->image;
             $user = User::findOrFail(auth()->id());
             $slug = $request->input('slug');
-            /*
-            $errorResponse = [
-                'success' => 0,
-                'error' => 'No se ha proporcionado un slug. '.$slug
-            ];
-            return response()->json($errorResponse, 400);
-            */
 
             if (!$request->has('slug')) {
                 $errorResponse = [
@@ -38,10 +31,8 @@ class EditorjsController extends Controller
                 return response()->json($errorResponse, 400);
             }
 
-            // Obtenemos el slug
             $slug = $request->input('slug');
 
-            // Ajustamos las rutas con el slug
             $storagePathWithSlug = self::STORAGE_PATH . $slug . '/';
             $publicPathWithSlug = self::PUBLIC_PATH . $slug . '/';
     
@@ -53,57 +44,42 @@ class EditorjsController extends Controller
 
             $file_name_save = Str::slug($file_name) . '_' . time() . '_original';
 
-            $uploadImage = UploadImage::firstOrCreate(
-                ['name' => $file_name_save],
-                [
-                    'user_id' => $user->id,
-                    'size' => $file->getSize(),
-                    'url' => $publicPathWithSlug . $file_name_save . '.' . $file_extension,
-                    'extension' => $file_extension,
-                    'uploadfolder_id' => 1,
-                ]
-            );
+            $this->storeImages($file, $file_name_save, $file_extension, $slug, $user, $publicPathWithSlug);
 
-            // Creating and saving images
-            $this->storeImages($file, $file_name_save, $file_extension, $slug);
+            $activeUploadSizes = Uploadsize::where('active', true)->get();
+            $resized_images = array();
+            foreach ($activeUploadSizes as $uploadSize) {
+                $width = $uploadSize->width;
+                $resized_url = Storage::url($storagePathWithSlug . $file_name_save . "_{$width}." . $file_extension);
+                $resized_images["resized_{$width}"] = $resized_url;
+            }
 
-            // Obtener la URL de la imagen original y redimensionada
-            $original_url = Storage::url($storagePathWithSlug . $file_name_save . '_.' . $file_extension);
-            $resized_url_230 = Storage::url($storagePathWithSlug . $file_name_save . '_230.' . $file_extension);
-            $resized_url_460 = Storage::url($storagePathWithSlug . $file_name_save . '_460.' . $file_extension);
-            $resized_url_840 = Storage::url($storagePathWithSlug . $file_name_save . '_840.' . $file_extension);
+            $original_url = Storage::url($storagePathWithSlug . $file_name_save . '.' . $file_extension);
 
-            // Crear la respuesta en formato JSON
             $response = array(
                 'success' => 1,
-                'file' => (object) array(
-                    'url' => $original_url,
-                    'resized_900' => $resized_url_840,
-                    'resized_230' => $resized_url_230,
-                    'resized_520' => $resized_url_460,
+                'file' => (object) array_merge(
+                    ['url' => $original_url],
+                    $resized_images
                 )
             );
 
-            // Devolver la respuesta
             return response()->json($response);
         } catch (\Exception $e) {
-            // Loguear el error para su posterior análisis
             Log::error('Error al cargar el archivo en EditorJS: ' . $e->getMessage());
 
-            // Crear una respuesta de error
             $errorResponse = [
                 'success' => 0,
                 'error' => 'Error al cargar el archivo. Por favor, inténtalo de nuevo.'
             ];
-            // Devolver la respuesta de error
             return response()->json($errorResponse, 500);
         }
     }
 
     private function validateFileSize($file, $user)
     {
-        $fileSizeKB = $file->getSize() / 1024; // Tamaño del archivo en KB
-        $fileSizeMB = $fileSizeKB / 1024; // Tamaño del archivo en MB con decimales
+        $fileSizeKB = $file->getSize() / 1024;
+        $fileSizeMB = $fileSizeKB / 1024; 
         $fileSizeFormatted = number_format($fileSizeMB, 2) . ' MB ?User : ' . $user->name;
 
         if ($fileSizeKB > self::MAX_FILE_SIZE) {
@@ -115,35 +91,49 @@ class EditorjsController extends Controller
         }
     }
 
-    private function storeImages($file, $file_name_save, $file_extension, $slug)
+    private function storeImages($file, $file_name_save, $file_extension, $slug, $user, $publicPathWithSlug)
     {
         $storagePathWithSlug = self::STORAGE_PATH . $slug . '/';
-        $original_path = $storagePathWithSlug . $file_name_save . '_.' . $file_extension;
-        $resized_path_230 = $storagePathWithSlug . $file_name_save . '_230.' . $file_extension;
-        $resized_path_460 = $storagePathWithSlug . $file_name_save . '_460.' . $file_extension;
-        $resized_path_840 = $storagePathWithSlug . $file_name_save . '_840.' . $file_extension;
+        $original_path = $storagePathWithSlug . $file_name_save . '.' . $file_extension;
 
-        // Crear la carpeta de destino si no existe
         if (!Storage::exists($storagePathWithSlug)) {
             Storage::makeDirectory($storagePathWithSlug);
         }
 
-        $image_230 = Image::make($file)->orientate()->resize(null, 230, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        $file->storeAs($storagePathWithSlug, $file_name_save . '.' . $file_extension); // save original image
 
-        $image_460 = Image::make($file)->orientate()->resize(null, 520, function ($constraint) {
-            $constraint->aspectRatio();
-        });
+        UploadImage::create(
+            [
+                'name' => $file_name_save,
+                'user_id' => $user->id,
+                'size' => $file->getSize(),
+                'url' => $publicPathWithSlug . $file_name_save . '.' . $file_extension,
+                'extension' => $file_extension,
+                'uploadfolder_id' => 1,
+            ]
+        );
 
-        $image_840 = Image::make($file)->resize(900, null, function ($constraint) {
-            $constraint->aspectRatio();
-        })->orientate();
+        $activeUploadSizes = Uploadsize::where('active', true)->get();
+        foreach ($activeUploadSizes as $uploadSize) {
+            $width = $uploadSize->width;
+            $resized_path = $storagePathWithSlug . $file_name_save . "_{$width}." . $file_extension;
 
-        // Guardar la imagen redimensionada con el nombre personalizado
-        $file->storeAs($storagePathWithSlug, $file_name_save . '_.' . $file_extension); // save original imagen
-        $image_230->save(storage_path('app/' . $resized_path_230));
-        $image_460->save(storage_path('app/' . $resized_path_460));
-        $image_840->save(storage_path('app/' . $resized_path_840));
+            $image = Image::make($file)->orientate()->resize($width, null, function ($constraint) {
+                $constraint->aspectRatio();
+            });
+
+            $image->save(storage_path('app/' . $resized_path));
+
+            UploadImage::create(
+                [
+                    'name' => $file_name_save . "_{$width}",
+                    'user_id' => $user->id,
+                    'size' => Storage::size($resized_path),
+                    'url' => $publicPathWithSlug . $file_name_save . "_{$width}." . $file_extension,
+                    'extension' => $file_extension,
+                    'uploadfolder_id' => 1,
+                ]
+            );
+        }
     }
 }

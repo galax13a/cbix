@@ -16,7 +16,9 @@
                             <thead class="thead">
                                 <tr class="text-center">
                                     <td>#</td>
-                                    <th>Name</th>
+                                    <th>Folder</th>
+                                    <th>Storage</th>
+                                    <th>Storage Cloud</th>
 									<th>Images</th>
 									<th>Sizes</th>
                                     <th>Active</th>
@@ -28,6 +30,8 @@
                                     <tr class="text-center">
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $row->name }}</td>
+                                        <td>{{ $row->storage }}</td>
+                                        <td>{{ $row->storage_host }}</td>
 										<td>{{ $this->getImagesCount($row->id) }}</td>
 									   <td>{{ $this->getTotalSize($row->id) }}</td>
                                         <td class="text-center">
