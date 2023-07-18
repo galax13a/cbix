@@ -25,10 +25,16 @@
                             wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="jeditor"></label>
+                        <label for="jeditor">json en</label>
                         <textarea wire:key="edit-en-textarea" id="editorjsx" style="height:160px;"
                             class="form-control m-2 shadow-sm" aria-label="With textarea"
-                            wire:model.defer="editorjs" placeholder="💭 Description App !"></textarea>
+                            wire:model.defer="enjs" placeholder="💭 Description App !"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="jeditor">json es</label>
+                        <textarea wire:key="edit-en-textarea" id="editorjsxes" style="height:160px;"
+                            class="form-control m-2 shadow-sm" aria-label="With textarea"
+                            wire:model.defer="esjs" placeholder="💭 Description App !"></textarea>
                     </div>
                     
                    

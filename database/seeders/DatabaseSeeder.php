@@ -29,7 +29,7 @@ class DatabaseSeeder extends Seeder
         DB::table('siteconfigs')->insert([
             'name' => 'Botchatur',
             'crm' => false,
-            'apps' => false,
+            'apps' => true,
             'thumbnail' => 360,
             'localimg' => true,
             's3amazon' => false,

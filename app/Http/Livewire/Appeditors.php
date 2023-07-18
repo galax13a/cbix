@@ -52,7 +52,7 @@ class Appeditors extends Component
 
 		$this->name = 	$this->app->name;
 		$this->slug = Str::slug($this->name);
-		$this->app_idioma = 'en';
+		$this->app_idioma = $request->input('app_idioma');
 		$this->es = $this->app->es;
 		$this->en = $this->app->en;
 		$this->apps0categor_id = $this->app->apps_categors_id;
@@ -342,6 +342,8 @@ class Appeditors extends Component
 			'slug' => $this->slug,
 			'es' => $this->es,
 			'en' => $this->en,
+			'enjs' => $this->enjs,
+			'esjs' => $this->esjs,
 			'version' => $this->version,
 			'is_approved' => $this->is_approved,
 			'apps_categors_id' => $this->apps0categor_id,
@@ -352,7 +354,7 @@ class Appeditors extends Component
 
 		$this->dispatchBrowserEvent('notify', [
 			'type' => 'success',
-			'message' => '¡ Appeditor Update !'
+			'message' => '¡ Appeditor Update Ok !'
 		]);
 	}
 

@@ -184,7 +184,5 @@ class Uploadimages extends Component
             ]);
         }
     }
-    
-
 
 }
