@@ -45,6 +45,48 @@ return new class extends Migration
             $table->timestamps();
         });       
         
+        Schema::create('uploadthumbnails', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('width');
+            $table->integer('height');
+            $table->boolean('active')->default(false);            
+            $table->timestamps();
+        });  
+
+        Schema::create('uploadplans', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->integer('megas');
+            $table->float('price_any')->default(0);
+            $table->float('price_mes')->default(0);
+            $table->string('des_es')->nullable();
+            $table->string('des_en')->nullable();
+            $table->enum('plan_filex', ['video', 'pics', 'files', 'links']);
+            $table->enum('plan', ['free', 'pro', 'system']);
+            $table->boolean('active')->default(false);
+            $table->timestamps();
+        }); 
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->unsignedBigInteger('uploadplan_id')->nullable();
+            $table->foreign('uploadplan_id')->references('id')->on('uploadplans')->onDelete('set null');
+        });
+
+        Schema::create('paymentstorage', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('plan_id');
+            $table->float('pay');
+            $table->date('datex'); // Nuevo campo fecha
+            $table->enum('plan', ['mes', 'any', 'promo']);
+            $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('plan_id')->references('id')->on('uploadplans')->onDelete('cascade');
+        });
+
+
     }
 
     /**
@@ -55,5 +97,14 @@ return new class extends Migration
         Schema::dropIfExists('uploadimages');
         Schema::dropIfExists('uploadfolders');
         Schema::dropIfExists('uploadsizes');
+        Schema::dropIfExists('uploadsizes_thumbnails');
+        Schema::dropIfExists('uploadplans');
+        Schema::dropIfExists('paymentstorage');
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropForeign(['uploadplan_id']);
+            $table->dropColumn('uploadplan_id');
+        });
+        
     }
 };

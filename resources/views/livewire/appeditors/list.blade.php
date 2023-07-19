@@ -24,19 +24,15 @@
                             class="form-control m-2 shadow-sm @if ($this->app_idioma !== 'es') d-none @endif" aria-label="With textarea"
                             wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="jeditor">json en</label>
-                        <textarea wire:key="edit-en-textarea" id="editorjsx" style="height:160px;"
-                            class="form-control m-2 shadow-sm" aria-label="With textarea"
-                            wire:model.defer="enjs" placeholder="💭 Description App !"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="jeditor">json es</label>
-                        <textarea wire:key="edit-en-textarea" id="editorjsxes" style="height:160px;"
-                            class="form-control m-2 shadow-sm" aria-label="With textarea"
-                            wire:model.defer="esjs" placeholder="💭 Description App !"></textarea>
-                    </div>
-                    
+         
+                        <div class="container-json">                 
+                            <textarea wire:key="edit-en-textarea" id="editorjsx-en" style="height:160px; max-width: 720px;"
+                                class="large-area-json large-area-json--input" aria-label="With textarea"
+                                wire:model.defer="enjs" placeholder="💭 Description App !">
+                            </textarea>
+                         
+                        </div>
+
                    
                     <div class="form-group">
                         <label for="version"></label>
@@ -125,3 +121,12 @@
     </div>
 </div>
 
+
+
+<style>
+    .modal-dialog {
+        max-width: 920px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+</style>

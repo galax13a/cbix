@@ -48,11 +48,16 @@ class Appeditors extends Component
 			$this->app = App::find($this->appid);
 			abort_if(is_null($this->app), 404, 'App not found');
 			$this->selected_id = $request->input('appid');
+	
 		}
+		if ($request->has('app_idioma')) {
+			$this->app_idioma = $request->input('app_idioma');
+		}
+		else 	$this->app_idioma = 'en';
 
 		$this->name = 	$this->app->name;
 		$this->slug = Str::slug($this->name);
-		$this->app_idioma = $request->input('app_idioma');
+		
 		$this->es = $this->app->es;
 		$this->en = $this->app->en;
 		$this->apps0categor_id = $this->app->apps_categors_id;
@@ -451,7 +456,7 @@ class Appeditors extends Component
 		$siteconfig = Siteconfig::first();
 
 		$apclud = $siteconfig->apps;
-
+		
 		if($apclud) {
 			//db get
 			if($this->app_idioma == 'en'){

@@ -16,8 +16,7 @@
         @endif
     </title>
 
-    <!-- Fonts -->
- 
+    <!-- Fonts --> 
 
     @stack('scripts-head')
 
@@ -51,6 +50,14 @@
                     @auth()
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
+						<li class="nav-item">
+                            <a href="{{ url('/uploadplans') }}" class="nav-link">🟣 Uploadplans</a> 
+                        </li>
+					
+						<li class="nav-item">
+                            <a href="{{ url('/uploadthumbnails') }}" class="nav-link">🟣 thumbnails</a> 
+                        </li>
+					
 						<li class="nav-item">
                             <a href="{{ url('/siteconfigs') }}" class="nav-link">🟣 Siteconfigs</a> 
                         </li>

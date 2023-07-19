@@ -117,6 +117,7 @@
 
         }
     </style>
+
     <script>
         let readOnly = false;
 
@@ -195,14 +196,14 @@
                 @this.set('tages', data);
             });
 
-
+            //ck editor EN... 
             if (document.querySelector('#editorjsx-en')) {
                 ClassicEditor
                     .create(document.querySelector('#editorjsx-en'))
                     .then(editorjsx => {
                         editorjsx.model.document.on('change:data', () => {
                             @this.set('en', editorjsx.getData());
-                            /*	Livewire.emit('contentUpdated', {
+                                                /*	Livewire.emit('contentUpdated', {
                                                     'lang': 'en',
                                                     'data': editorjsx.getData()
                                                 });

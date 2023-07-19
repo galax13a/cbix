@@ -20,6 +20,8 @@ return new class extends Migration
             $table->timestamps();
         });
 
+
+
         Schema::create('gifts0replay', function (Blueprint $table) {
             $table->id();           
             $table->text('message')->nullable(); // Message sent with the gift

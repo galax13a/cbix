@@ -1,3 +1,38 @@
+.container-json {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr;
+  align-items: center;
+ background-color: #1d0d02;
+  box-sizing: border-box;
+  padding: 20px;
+  gap: 20px;
+}
+
+.large-area-json { 
+  height: 360px;
+  width: 860px;
+  padding: 20px;
+  box-sizing: border-box;
+  color: #aaaaaa;
+  background: #444444;
+  border: none;
+  border-radius: 10px;
+  outline: none;
+  resize: none;
+  font-family: monospace;
+  transition: background 0.25s, color 0.25s;
+  border: 2px dashed #01be60;
+}
+
+.large-area-json:hover,
+.large-area-json:focus {
+  background: #4a4a4a;
+}
+
+.large-area-json:focus {
+  color: #eeeeee;
+}
+
 #saveButton {
   position: fixed;
   bottom: 20px;
@@ -5,7 +40,6 @@
   z-index: 1900;
 
 }
-
 
 #editorjs img {
   cursor: url('/public/icons/edit_img.png'), auto;
