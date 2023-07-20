@@ -51,6 +51,9 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/backups') }}" class="nav-link">🟣 Backups</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/uploadplans') }}" class="nav-link">🟣 Uploadplans</a> 
                         </li>
 					

@@ -11,6 +11,11 @@
 				
 				<div class="card-body">
 						@include('livewire.uploadplans.modals')
+
+						<x-storage-usage-report />
+						<hr>
+
+
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">

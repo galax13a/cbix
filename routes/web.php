@@ -2,11 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Middleware\LanguageSwitcher;
-use App\Http\Livewire\ChaturbateController; // Agregar esta línea
+
 use Spatie\Permission\Models\Role;
-use App\Http\Livewire\Apps;
-use App\Http\Livewire\Apps_install;
+
 use App\Http\Controllers\EditorjsController;
 
 /*
@@ -35,6 +33,9 @@ Route::middleware(['auth'])->group(function () { // url auth admin
     });
 });
 
+Route::get('/upgrade-plan', [UpgradePlanController::class, 'index'])->name('upgrade-plan');
+
+
 Route::get('/test-speed', function () { // test speed
     return view('testspeed');
 });
@@ -62,6 +63,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('backups', 'livewire.backups.index')->middleware('auth');
 	Route::view('uploadplans', 'livewire.uploadplans.index')->middleware('auth');
 	Route::view('uploadthumbnails', 'livewire.uploadthumbnails.index')->middleware('auth');
 	Route::view('uploadsizes_thumbnails', 'livewire.uploadsizes_thumbnails.index')->middleware('auth');

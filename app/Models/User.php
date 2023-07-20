@@ -56,4 +56,10 @@ class User extends Authenticatable implements BannableInterface
     {
         return $this->hasMany(Page::class);
     }
+
+    public function uploadPlan()
+{
+    return $this->belongsTo('App\Models\UploadPlan');
+}
+
 }

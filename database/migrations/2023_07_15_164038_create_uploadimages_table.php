@@ -17,10 +17,11 @@ return new class extends Migration
             $table->enum('storage', ['local', 'cloud', 'bi'])->default('local')->nullable();
             $table->enum('storage_host', ['s3', 'google', 'do'])->nullable();
             $table->boolean('active')->default(false);
-            $table->unsignedBigInteger('user_id'); 
+            $table->unsignedBigInteger('user_id')->nullable(); // Acepta valores nulos
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
+        
         
         Schema::create('uploadimages', function (Blueprint $table) {
             $table->id();

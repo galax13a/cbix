@@ -8,6 +8,8 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Storage;
 use App\Models\UploadPlan;
+use App\Models\User;
+use Spatie\Permission\Models\Role;
 
 class UploadFolderSeeder extends Seeder
 {
@@ -16,11 +18,11 @@ class UploadFolderSeeder extends Seeder
      */
     public function run(): void
     {
-
+  
         $plans = [
             [
                 'name' => 'Plan System',
-                'megas' => 30000, // 500 megabytes
+                'megas' => 11026, // 10 gigas megabytes
                 'des_en' => 'Plan  de storage',
                 'des_es' => 'Plan almacenamiento',
                 'plan_filex' => 'files',
@@ -90,7 +92,16 @@ class UploadFolderSeeder extends Seeder
         foreach ($plans as $plan) {
             UploadPlan::create($plan);
         }
-        
+
+        $roles = ['root', 'admin'];
+
+        $userIds = User::whereHas('roles', function ($query) use ($roles) {
+            $query->whereIn('name', $roles);
+        })->pluck('id');
+
+        User::whereIn('id', $userIds)->update(['uploadplan_id' => 1]);
+        // asingamos plan system a roles root y admin
+
         Uploadthumbnail::create([
             'name'=> 'defaul',
             'width' => 360,
@@ -119,48 +130,48 @@ class UploadFolderSeeder extends Seeder
 
         UploadFolder::create([
             'name' => 'apps',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 
         UploadFolder::create([
             'name' => 'pages',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 
         UploadFolder::create([
             'name' => 'verifications',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 
         UploadFolder::create([
             'name' => 'prize-social',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 
         UploadFolder::create([
             'name' => 'themes',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 
         UploadFolder::create([
             'name' => 'profiles',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 
         UploadFolder::create([
             'name' => 'users',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
         UploadFolder::create([
             'name' => 'system',
-            'user_id' => 16,
+            'user_id' => 2,
             'active' => true,
         ]);
 

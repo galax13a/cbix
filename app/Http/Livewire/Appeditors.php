@@ -454,18 +454,21 @@ class Appeditors extends Component
 	{
 
 		$siteconfig = Siteconfig::first();
-
 		$apclud = $siteconfig->apps;
-		
+
 		if($apclud) {
 			//db get
-			if($this->app_idioma == 'en'){
+			if ($this->app_idioma == 'en' && isset($this->enjs) && strlen($this->enjs) > 54) {
 				$data = $this->enjs;
-			}else {
-				$data = $this->esjs;
+				$this->emit('renderEditor', json_decode($data));
+			} elseif ($this->app_idioma == 'es' && isset($this->esjs) && strlen($this->esjs) > 54) {
+				$data = $this->esjs;				
+				$this->emit('renderEditor', json_decode($data));
 			}
+	
 			
-			 $this->emit('renderEditor', json_decode($data));
+			
+			
 		}else {
 			//get json
 			$filename = $this->slug . '_' . $this->app_idioma . '.json';
@@ -486,8 +489,6 @@ class Appeditors extends Component
 
 		}
 	
-	
-
 	
 	}
 
