@@ -5,21 +5,21 @@
             <button class="accordion-button text-bg-dark" type="button" data-bs-toggle="collapse"
                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 🧁 Tools Apps
-
             </button>
 
         </h2>
-        <div id="collapseOne" class="accordion-collapse collapse 
+        <div id="collapseOne" 
+        class="accordion-collapse collapse 
          text-center 
          "
             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
             <div class="container">
 
-                <button class="p-1 m-1 shadow rounded-4" onclick="saveEditorData()">
+                <button class="p-1 m-1 shadow-sm rounded-2 btn btn-chatur " onclick="saveEditorData()">
                     <strong>
-                        <i class="far fa-save"></i>
-                        Save
+                      
+                        Save App <i class="far fa-save"></i>
                     </strong>
                 </button>
 
@@ -262,16 +262,16 @@
                     <button type="submit" onclick="dispatchLoadingEvent('dots', 1600);" 
                     class="btn btn-chatur shadow-sm border-2"
                     >
-                        <i class="fas fa-cloud-upload"></i>
-                        Upload
+                    <i class="fas fa-cloud-upload"></i>
+                     
                     </button>
                     <button  
                     onclick="dispatchLoadingEvent('dots', 900);"
                     class="btn btn-chatur shadow-sm"
                     wire:click.prevent='get_gallery_app'
                     >
-                        <i class="fas fa-images"></i> 
-                        Gallery
+                    <i class="fas fa-images"></i> 
+                        
                     </button>
             </div>
             </form>

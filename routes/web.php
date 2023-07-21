@@ -35,6 +35,10 @@ Route::middleware(['auth'])->group(function () { // url auth admin
 
 Route::get('/upgrade-plan', [UpgradePlanController::class, 'index'])->name('upgrade-plan');
 
+Route::post('/getpage-editor', [App\Http\Controllers\EditorjsController::class, 'GetUrlDom']);
+Route::post('/getchatur', [App\Http\Controllers\EditorjsController::class, 'getchaturdom']);
+
+
 
 Route::get('/test-speed', function () { // test speed
     return view('testspeed');

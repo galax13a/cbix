@@ -29,7 +29,7 @@
 
                             <div class="col-3 text-center " id="show-menu-app-root">
                                 <h6 class="shadow-sm rounded-3 p-2 mx-2">
-                                    Editor
+                                    
                                     <button onclick="toggleReadOnly()"
                                         class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
                                             class="fas fa-eye"></i>
@@ -98,24 +98,29 @@
                     <strong>
                         Save App
                     </strong>
-
                 </button>
 
                 <div class="card-footer d-flex justify-content-end">
                     <strong>Editor Apps Botchatur</strong>
                 </div>
 
-
                 @include('livewire.appeditors.list')
                 @include('livewire.appeditors.tags')
-
-
-
 
             </div>
         </div>
 
         <style>
+
+select {
+     background: transparent;
+     border: none;
+     font-size: 14px;
+     height: 30px;
+     padding: 5px;
+     max-width:260px;
+  }
+
             .modal-dialog {
                 max-width: 960px;
                 margin-right: auto;
