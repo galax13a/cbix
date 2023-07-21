@@ -12,21 +12,34 @@ class BtnCB {
         this.data = data || {};
         this.config = config;
 
+        // Main container
         this.container = document.createElement('div');
         
+        // Button container
         this.buttonContainer = document.createElement('div');
         this.buttonContainer.id = 'btncbstyle';
 
+        // Create div that will contain other elements
+        this.elementsContainer = document.createElement('div');
+        this.elementsContainer.id = 'containerelemtorbutton-cb';
+
+        // Create label input
         this.labelInput = document.createElement('input');
         this.labelInput.value = this.data.label || 'Label Button';
         this.labelInput.placeholder = 'Hello Button';
-        this.labelInput.addEventListener('input', () => { this.buttonElement.textContent = this.labelInput.value; });
+        this.labelInput.addEventListener('input', () => {
+            this.buttonElement.textContent = this.labelInput.value;
+        });
 
+        // Create link input
         this.linkInput = document.createElement('input');
         this.linkInput.value = this.data.link || '';
         this.linkInput.placeholder = 'Link URl';
-        this.linkInput.addEventListener('input', () => { this.buttonElement.href = this.linkInput.value; });
+        this.linkInput.addEventListener('input', () => {
+            this.buttonElement.href = this.linkInput.value;
+        });
 
+        // Create target select
         this.targetSelect = document.createElement('select');
         const optionSelf = document.createElement('option');
         optionSelf.value = "_self";
@@ -37,8 +50,11 @@ class BtnCB {
         this.targetSelect.appendChild(optionSelf);
         this.targetSelect.appendChild(optionBlank);
         this.targetSelect.value = this.data.target || '_self';
-        this.targetSelect.addEventListener('change', () => { this.buttonElement.target = this.targetSelect.value; });
+        this.targetSelect.addEventListener('change', () => {
+            this.buttonElement.target = this.targetSelect.value;
+        });
 
+        // Create size select
         this.sizeSelect = document.createElement('select');
         const optionSmall = document.createElement('option');
         optionSmall.value = "25%";
@@ -53,8 +69,11 @@ class BtnCB {
         this.sizeSelect.appendChild(optionMedium);
         this.sizeSelect.appendChild(optionLarge);
         this.sizeSelect.value = this.data.size || '100%';
-        this.sizeSelect.addEventListener('change', () => { this.buttonElement.style.width = this.sizeSelect.value; });
+        this.sizeSelect.addEventListener('change', () => {
+            this.buttonElement.style.width = this.sizeSelect.value;
+        });
 
+        // Create style select
         this.styleSelect = document.createElement('select');
         const optionStyle1 = document.createElement('option');
         optionStyle1.value = "style1";
@@ -76,6 +95,7 @@ class BtnCB {
             }
         });
 
+        // Create button element
         this.buttonElement = document.createElement('a');
         this.buttonElement.classList.add('btn', 'btn-chatur');
         if (typeof this.data.style === 'string' && this.data.style.trim() !== '') {
@@ -84,18 +104,21 @@ class BtnCB {
             this.buttonElement.classList.add('style1');
         }
 
-        this.buttonElement.textContent = this.data.label || 'Button Label';
+        this.buttonElement.textContent = this.data.label || 'Access Free 🔓';
         this.buttonElement.href = this.data.link || '#';
         this.buttonElement.target = this.data.target || '_self';
 
+        // Add button element to button container
         this.buttonContainer.appendChild(this.buttonElement);
 
-        this.container.appendChild(this.labelInput);
-        this.container.appendChild(this.linkInput);
-        this.container.appendChild(this.targetSelect);
-        this.container.appendChild(this.sizeSelect);
-        this.container.appendChild(this.styleSelect);
+        // Append elements to the elements container
+        this.elementsContainer.appendChild(this.labelInput);
+        this.elementsContainer.appendChild(this.linkInput);
+        this.elementsContainer.appendChild(this.targetSelect);
+        this.elementsContainer.appendChild(this.sizeSelect);
+        this.elementsContainer.appendChild(this.styleSelect);
 
+        // Create alignment select
         this.alignmentSelect = document.createElement('select');
         const optionLeft = document.createElement('option');
         optionLeft.value = "text-start";
@@ -117,8 +140,29 @@ class BtnCB {
             }
         });
 
-        this.container.appendChild(this.alignmentSelect);
+         // Create toggle button
+         this.toggleButton = document.createElement('i');
+         this.toggleButton.id = 'btn-cbedit';
+         this.toggleButton.className = 'far fa-edit shadow-sm rounded-5 p-1 text-primary punter';
+         this.buttonContainer.appendChild(this.toggleButton);
+
+        // Append alignment select to elements container
+        this.elementsContainer.appendChild(this.alignmentSelect);
+
+        // Append elements container to the main container
+        this.container.appendChild(this.elementsContainer);
         this.container.appendChild(this.buttonContainer);
+
+        this.elementsContainer.style.display = 'none'; // none elements buttons
+
+        // Toggle button functionality
+        this.toggleButton.addEventListener('click', () => {
+            if (this.elementsContainer.style.display === 'none') {
+                this.elementsContainer.style.display = 'block';
+            } else {
+                this.elementsContainer.style.display = 'none';
+            }
+        });
 
         this.linkInput.classList.add('input-link-editor');
         this.labelInput.classList.add('input-cb');
@@ -144,5 +188,5 @@ class BtnCB {
     }
 }
 
-// Assigns the BtnCB class to a global property
+// Assigns the BtnCB class to the global scope
 window.BtnCB = BtnCB;

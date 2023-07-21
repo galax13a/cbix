@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="card-body">
-
+link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
                     @include('livewire.appeditors.updateimg')
 
                     <div class="editorbot">
