@@ -1,7 +1,7 @@
 class GetChatur {
     static get toolbox() {
       return {
-        title: 'GetChatur',
+        title: 'Surf my chaturbate account',
         icon: '🔖',
         name: "BorderImagen26",
       };
@@ -36,16 +36,27 @@ class GetChatur {
       this.loadingImage.alt = 'Loading';
 
       this.loadingElement.appendChild(this.loadingImage);
-  
+
+      this.linkButtonElement = document.createElement('a');
+      this.linkButtonElement.className ='btn btn-chatur style1';
+      this.linkButtonElement.textContent = 'Live Show 🔓';
+      this.linkButtonElement.style.maxWidth = '260px';
+
+      this.linkButtonContainer = document.createElement('div');
+      this.linkButtonContainer.id = 'container-link-btn-chatur';
+      this.linkButtonContainer.classList.add('text-center');
+     
+
       this.render();
     }
   
     render() {
+
       this.container.style.width = '100%';
       this.container.style.marginTop = '20px';
   
       this.urlInput.value = this.data.url || '';
-      this.urlInput.placeholder = 'Insert Link Model Chatrur...';
+      this.urlInput.placeholder = 'Insert Link Model Chatrurbate...';
       this.urlInput.style.width = '100%';
       this.urlInput.addEventListener('blur', this.fetchMetaData.bind(this));
   
@@ -68,8 +79,11 @@ class GetChatur {
       this.container.appendChild(this.nameElement);
       this.container.appendChild(this.imageElement);
       this.container.appendChild(this.loadingElement);
+      this.container.appendChild(this.linkButtonContainer);
+      this.linkButtonContainer.appendChild(this.linkButtonElement);
       
-  
+      this.linkButtonElement.className = 'text-wrap text-capitalize custom-link';
+      
       return this.container;
     }
   
@@ -81,7 +95,9 @@ class GetChatur {
   
       this.titleElement.value = metadata.title;
       this.nameElement.value = metadata.name;
-      this.imageElement.src = metadata.image;
+      this.imageElement.src = metadata.image;     
+
+      this.linkButtonElement.textContent = metadata.name + ' Live Show 🔓';   
 
       this.loadingElement.style.display = 'none';
     }
@@ -117,10 +133,9 @@ class GetChatur {
         title: this.titleElement.value,
         name: this.nameElement.value,
         image: this.imageElement.src,
+        button: this.linkButtonElement.href,
       };
     }
   }
-  
-  // Assigns the GetChatur class to a global property
-  window.GetChatur = GetChatur;
+window.GetChatur = GetChatur;
   

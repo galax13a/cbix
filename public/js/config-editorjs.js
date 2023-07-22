@@ -36,7 +36,7 @@ editor = new EditorJS({
         },
         linkpage: window.GetPage,
         getchatur:window.GetChatur,        
-        btncb:window.BtnCB,
+        btnsimple:window.BtnSimple,
         paragraph: {
             class: Paragraph,
             inlineToolbar: true
@@ -222,6 +222,8 @@ editor = new EditorJS({
         code: CodeTool,
 
     },
+
+    
 
 });
 });

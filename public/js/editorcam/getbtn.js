@@ -1,7 +1,7 @@
-class BtnCB {
+class BtnSimple {
     static get toolbox() {
         return {
-            title: 'BtnCB',
+            title: 'Button Free',
             icon: '🔲',
             name: "BtnCB",
         };
@@ -34,7 +34,7 @@ class BtnCB {
         // Create link input
         this.linkInput = document.createElement('input');
         this.linkInput.value = this.data.link || '';
-        this.linkInput.placeholder = 'Link URl';
+        this.linkInput.placeholder = '🌐Link URl';
         this.linkInput.addEventListener('input', () => {
             this.buttonElement.href = this.linkInput.value;
         });
@@ -43,10 +43,10 @@ class BtnCB {
         this.targetSelect = document.createElement('select');
         const optionSelf = document.createElement('option');
         optionSelf.value = "_self";
-        optionSelf.textContent = "Same Tab/Window";
+        optionSelf.textContent = "Tab/ self";
         const optionBlank = document.createElement('option');
         optionBlank.value = "_blank";
-        optionBlank.textContent = "New Tab/Window";
+        optionBlank.textContent = "Tab/New Win";
         this.targetSelect.appendChild(optionSelf);
         this.targetSelect.appendChild(optionBlank);
         this.targetSelect.value = this.data.target || '_self';
@@ -140,10 +140,11 @@ class BtnCB {
             }
         });
 
-         // Create toggle button
+        this.elementsContainer.className = 'shadow p-2 m-2 rounded-3';
+         // Create toggle button li de editor button 
          this.toggleButton = document.createElement('i');
          this.toggleButton.id = 'btn-cbedit';
-         this.toggleButton.className = 'far fa-edit shadow-sm rounded-5 p-1 text-primary punter';
+         this.toggleButton.className = 'fas fa-undo shadow-sm rounded-5 p-1 punter';
          this.buttonContainer.appendChild(this.toggleButton);
 
         // Append alignment select to elements container
@@ -170,6 +171,8 @@ class BtnCB {
             this.buttonContainer.classList.add(this.alignmentSelect.value);
         }
         this.buttonElement.style.width =  this.data.size || '100%';
+
+        
     }
 
     render() {
@@ -189,4 +192,4 @@ class BtnCB {
 }
 
 // Assigns the BtnCB class to the global scope
-window.BtnCB = BtnCB;
+window.BtnSimple = BtnSimple;
