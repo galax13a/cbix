@@ -1,7 +1,7 @@
 class GetChatur {
     static get toolbox() {
         return {
-            title: 'Surf my chaturbate account',
+            title: 'Surf Chaturbate 🤤',
             icon: '🔖',
             name: "BorderImagen26",
         };
@@ -9,6 +9,9 @@ class GetChatur {
 
     static get isInline() {
         return false;
+    }
+    get shortcut() {
+        return 'Control+Shift+.';
     }
 
     constructor({ data, api, config }) {
@@ -35,21 +38,22 @@ class GetChatur {
         this.loadingElement.appendChild(this.loadingImage);
 
         this.linkButtonElement = document.createElement('a');
-        this.linkButtonElement.className = 'btn btn-chatur style1';
-        this.linkButtonElement.textContent = 'Live Show 🔓';
-        this.linkButtonElement.style.maxWidth = '260px';
+        this.linkButtonElement.className = 'btn btn-chatur style1 p-2';
+        this.linkButtonElement.textContent = 'Live Show 🔓';        
+        this.linkButtonElement.style.maxWidth = '360px';
         this.linkButtonContainer = document.createElement('div');
         this.linkButtonContainer.id = 'container-link-btn-chatur';
         this.linkButtonContainer.classList.add('text-center');
-        this.linkButtonElement.className = 'text-wrap text-capitalize custom-link';
-
+        this.linkButtonElement.className = 'text-wrap text-capitalize p-2 text-decoration-none btn-web-link';
+        this.linkButtonElement.style.textDecoration = 'none';
         // Contenedor title model
         this.titleContainer = document.createElement('div');
         this.titleContainer.id = 'container-simple-cb-p';        
         this.titleModelElement = document.createElement('p');
         //this.titleContainer.appendChild(this.titleModelElement);      
-        this.titleContainer.className = 'text-center shadow-sm p-2 m-2 rounded-3';
-
+        this.titleContainer.className = 'text-center shadow-sm p-2 m-2 rounded-3 punter';
+        this.linkButtonElement.contentEditable = "true";
+      
         this.render();
     }
 
@@ -59,7 +63,7 @@ class GetChatur {
         this.container.style.marginTop = '20px';
 
         this.urlInput.value = this.data.url || '';
-        this.urlInput.placeholder = 'Insert Link Model Chatrurbate...';
+        this.urlInput.placeholder = '🔗 Insert the link of the chaturbate account 🔓. + Enter';
         this.urlInput.style.width = '100%';
         this.urlInput.addEventListener('blur', this.fetchMetaData.bind(this));
 
@@ -89,11 +93,11 @@ class GetChatur {
         this.titleContainer.appendChild(this.titleModelElement); 
         //this.titleModelElement.textContent = this.titleElement.value;
         this.titleModelElement.contentEditable = "true";
-        this.titleModelElement.textContent = this.data.titlemodel || this.titleElement.value;;
+        this.titleModelElement.textContent = this.data.titlemodel || this.titleElement.value;
         this.titleElement.addEventListener('input', () => {
             //this.titleModelElement.textContent = this.titleElement.value;
         });
-
+        this.linkButtonElement.textContent = this.data.titlebutton || 'Live Show 🔓';
         return this.container;
     }
 
@@ -106,8 +110,8 @@ class GetChatur {
         this.titleElement.value = metadata.title;
         this.nameElement.value = metadata.name;
         this.imageElement.src = metadata.image;
-        this.titleModelElement.textContent = this.titleElement.value;
-        this.linkButtonElement.textContent = metadata.name + ' Live Show 🔓';
+        this.titleModelElement.textContent = this.data.titlemodel || this.titleElement.value;
+        this.linkButtonElement.textContent = this.data.titlebutton || metadata.name + ' Live Show 🔓';
        
         this.loadingElement.style.display = 'none';
     }
@@ -140,8 +144,7 @@ class GetChatur {
     save() {
         const url = `https://chatur.com/${this.nameElement.value}`;
         this.linkButtonElement.href = url;
-        this.linkButtonElement.target = '_blank'; // Esto hará que la URL se abra en una nueva pestaña.
-        // this.titleContainer.textContent = this.titleElement.value;
+        this.linkButtonElement.target = '_blank'; 
 
         return {
             url: this.urlInput.value,
@@ -149,6 +152,7 @@ class GetChatur {
             name: this.nameElement.value,
             image: this.imageElement.src,
             button: this.linkButtonElement.href,
+            titlebutton: this.linkButtonElement.textContent,
             titlemodel:   this.titleModelElement.innerText,
         };
     }

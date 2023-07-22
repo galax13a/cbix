@@ -1,3 +1,26 @@
+.btn-web-link {
+  font-weight: bold;
+  font-size: 16px; 
+  color: #0f0f0f;
+  background-color: #8a00cac4;
+  border-radius: 0px 0px 8px 8px;
+  color: #000000;
+  border-bottom: 2px solid #000000; 
+  box-shadow: 0 4px 26px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+
+.btn-web-link:hover {
+  font-weight: bold;
+  font: size 18px;
+  color: #0f0f0f;
+  background-color: #ac0738b4;
+  border-radius: 0px 0px 8px 8px;
+  color: #000000;
+  border-bottom: 2px solid #1db959; 
+  box-shadow: 0 4px 26px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 #btn-cbedit {
   position: absolute;
   bottom: 0;
