@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="card-body">
-link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
+                    link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
                     @include('livewire.appeditors.updateimg')
 
                     <div class="editorbot">
@@ -29,7 +29,7 @@ link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
 
                             <div class="col-3 text-center " id="show-menu-app-root">
                                 <h6 class="shadow-sm rounded-3 p-2 mx-2">
-                                    
+
                                     <button onclick="toggleReadOnly()"
                                         class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i
                                             class="fas fa-eye"></i>
@@ -39,7 +39,8 @@ link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
                                         <i class="fas fa-link"></i>
                                     </button>
 
-                                    <button onclick="clearEditor()"  title="Clean Editor" class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                    <button onclick="clearEditor()" title="Clean Editor"
+                                        class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-eraser"></i>
                                     </button>
 
@@ -111,15 +112,14 @@ link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
         </div>
 
         <style>
-
-select {
-     background: transparent;
-     border: none;
-     font-size: 14px;
-     height: 30px;
-     padding: 5px;
-     max-width:260px;
-  }
+            select {
+                background: transparent;
+                border: none;
+                font-size: 14px;
+                height: 30px;
+                padding: 5px;
+                max-width: 260px;
+            }
 
             .modal-dialog {
                 max-width: 960px;
@@ -150,7 +150,7 @@ select {
 
 
                 window.onscroll = function() { // button scroll save
-                    scrollFunction()
+                    scrollFunction();
                 };
 
                 function scrollFunction() {
@@ -281,7 +281,7 @@ select {
                         if (confirm('¿Deseas limpiar el editor?')) {
                             editor.clear();
                         }
-                    }               
+                    }
                 });
 
                 window.livewire.on('renderEditor', (data) => {
@@ -293,7 +293,7 @@ select {
                 });
             });
 
-            function clearEditor() {              
+            function clearEditor() {
                 editor.clear();
             }
 

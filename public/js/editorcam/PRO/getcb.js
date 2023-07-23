@@ -98,6 +98,7 @@ class GetChatur {
             //this.titleModelElement.textContent = this.titleElement.value;
         });
         this.linkButtonElement.textContent = this.data.titlebutton || 'Live Show 🔓';
+        this.titleElement.style.display = 'none';
         return this.container;
     }
 

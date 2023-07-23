@@ -151,6 +151,21 @@ class EditorjsController extends Controller
         return response()->json(['error' => 'Unable to fetch URL'], 400);
     }
 
+    public function loadIframe(Request $request) {
+        $url = $request->get('url');
+        if(filter_var($url, FILTER_VALIDATE_URL)) {
+            return response()->json([
+                'iframe' => $url,
+                'mensaje' => 'Página cargada con éxito',
+            ]);
+        }
+        else {
+            return response()->json([
+                'mensaje' => 'La URL proporcionada no es válida',
+            ]);
+        }
+    }
+    
     public function GetUrlDom(Request $request)
     {
         $url = $request->input('url');

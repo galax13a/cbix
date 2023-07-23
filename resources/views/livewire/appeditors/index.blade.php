@@ -28,19 +28,19 @@
     <script src="{{ asset('js/editorcam/image.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/raw.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/gallery-urls.js') }}" ></script>
-    <script src="{{ asset('js/editorcam/button.js') }}" defer ></script>
     <script src="{{ asset('js/editorcam/carrusel.js') }}" defer ></script>
-    <script src="{{ asset('js/editorcam/quote.js') }}" defer ></script>
-    
+    <script src="{{ asset('js/editorcam/quote.js') }}" defer ></script>   
 
     <script src="{{ asset('js/editorcam/ckeditor.js') }}" defer></script>
 @endpush
 
 @push('scripts-body')
-    <script src="{{ asset('js/editorcam/getbtn.js') }}" defer></script>    
-    <script src="{{ asset('js/editorcam/linkone.js') }}" defer></script>    
-    <script src="{{ asset('js/editorcam/getcb.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/iframesimple.js') }}" defer></script>  
+    <script src="{{ asset('js/editorcam/PRO/getbtn.js') }}" defer></script>    
+    <script src="{{ asset('js/editorcam/PRO/linkone.js') }}" defer></script>    
+    <script src="{{ asset('js/editorcam/PRO/getcb.js') }}" defer></script>
     <script src="{{ asset('js/config-editorjs.js') }}" defer></script>
+
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('js/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('js/select2.min.js') }}" defer></script>

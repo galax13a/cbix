@@ -37,6 +37,7 @@ Route::get('/upgrade-plan', [UpgradePlanController::class, 'index'])->name('upgr
 
 Route::post('/getpage-editor', [App\Http\Controllers\EditorjsController::class, 'GetUrlDom']);
 Route::post('/getchatur', [App\Http\Controllers\EditorjsController::class, 'getchaturdom']);
+Route::post('/loadiframe', [\App\Http\Controllers\EditorjsController::class, 'loadIframe']);
 
 
 

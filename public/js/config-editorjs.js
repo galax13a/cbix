@@ -37,6 +37,7 @@ editor = new EditorJS({
         linkpage: window.GetPage,
         getchatur:window.GetChatur,        
         btnsimple:window.BtnSimple,
+        iframesimple:window.IframeUrlSimple,
         paragraph: {
             class: Paragraph,
             inlineToolbar: true
@@ -136,31 +137,15 @@ editor = new EditorJS({
                 type: 'text',
                 customPicker: true
             }
-        },
-        AnyButton: {
-            class: AnyButton,
-            inlineToolbar: false,
-            config: {
-                css: {
-                    "btnColor": "btn-chatur",
-                }
-            }
-        },
+        }, 
 
         columns: {
             class: editorjsColumns,
             config: {
                 tools: {
-                    AnyButton: {
-                        class: AnyButton,
-                        inlineToolbar: true,
-                        config: {
-                            css: {
-                                "btnColor": "btn-chatur",
-                            }
-                        }
-                    },
+                    
                     header: Header,
+                    btnsimple:window.BtnSimple,
                     getchatur:window.GetChatur,    
                     linkpage: window.GetPage,
                     style: EditorJSStyle.StyleInlineTool,
