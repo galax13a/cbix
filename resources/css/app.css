@@ -1,5 +1,23 @@
+[contenteditable="true"]{
+  padding: 4px;
+}
+
+[contenteditable="true"]:focus {
+  background-color: #dbfde4; 
+  outline: none; 
+  border-radius: 12px;
+  padding: 4px;
+}
+
 .block-container-link-page{
-  background-color: #01be60;
+  background-color: #f2f5f2;
+  text-align: right;
+}
+.block-container-link-page .btn-web-link{
+  background-color: #a42ddbc4;
+
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+  
 }
 .btn-web-link {
   font-weight: bold;

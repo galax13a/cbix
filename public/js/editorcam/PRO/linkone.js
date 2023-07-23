@@ -33,18 +33,18 @@ class LinkPage {
         this.linkButtonElement.contentEditable = "true";
         this.linkButtonElement.rel = 'nofollow noopener';
         this.linkButtonElement.target = '_blank';
-        this.randomNumber = Math.floor(Math.random() * (1000 - 10 + 1)) + 10;     
-        
-              //buttonlink
-              this.linkButtonElement.textContent = this.data.titlebutton || 'Enter Label Link';
-              this.linkButtonElement.href = this.data.url || '';
-              this.linkButtonElement.className = 'text-wrap text-capitalize p-2 text-decoration-none btn-web-link mb-4 bx-4';
-              this.linkButtonElement.style.width = '90%';              
-              // Crear un nuevo div y asignarle el id              
-              this.linkContainer = document.createElement('div');
-              this.linkContainer.id = 'container-link-page-' + this.randomNumber;
-            //  this.linkContainer.className = 'block-container-link-page';
-        
+        this.randomNumber = Math.floor(Math.random() * (1000 - 10 + 1)) + 10;
+
+        //buttonlink
+        this.linkButtonElement.textContent = this.data.titlebutton || 'Enter Label Link';
+        this.linkButtonElement.href = this.data.url || '';
+        this.linkButtonElement.className = 'text-wrap text-capitalize p-2 text-decoration-none btn-web-link mb-4 bx-4';
+        this.linkButtonElement.style.width = '90%';
+                 
+        this.linkContainer = document.createElement('div');
+        this.linkContainer.id = 'container-link-page-' + this.randomNumber;
+        this.linkContainer.className = 'block-container-link-page';
+
         this.render();
     }
 
@@ -69,7 +69,7 @@ class LinkPage {
         this.container.appendChild(this.loadingElement);
 
         this.titleElement.textContent = this.data.title || '';
-        this.descriptionElement.textContent = this.data.description || ''; 
+        this.descriptionElement.textContent = this.data.description || '';
 
         this.hr = document.createElement('hr');
         this.container.appendChild(this.linkContainer);
@@ -100,7 +100,7 @@ class LinkPage {
         this.loadingElement.style.display = 'none';
         this.titleElement.textContent = this.data.title || metadata.title;
         this.descriptionElement.textContent = this.data.description || metadata.description;
-      
+
         this.linkButtonElement.href = url;
 
     }
@@ -115,7 +115,7 @@ class LinkPage {
     }
 
     fetchFromServer(url) {
-    
+
         return fetch('/getpage-editor', {
             method: 'POST',
             headers: {
