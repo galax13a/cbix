@@ -81,6 +81,31 @@ class EditorjsController extends Controller
         }
     }
 
+    public function getAIFree(Request $request)
+    {
+        $quote = $this->generateQuote($request->topic);
+
+        return response()->json([
+            'quote' => $quote
+        ]);
+    }
+
+    public function generateQuote($topic)
+    {
+ 
+        $quotes = [
+            'Esta es la primera cita posible.',
+            'Esta es la segunda cita posible.',
+            'Esta es la tercera cita posible.',
+            'Esta es la cuarta cita posible.',
+        ];
+        $randomIndex = rand(0, count($quotes) - 1);
+
+        return $quotes[$randomIndex];
+    }
+
+
+
 
     public function getChaturDom(Request $request)
     {
@@ -122,26 +147,26 @@ class EditorjsController extends Controller
             $prueba = $pathSegments[0];
 
             // Generate a random number between 0 and 1
-            $randomNumber = mt_rand() / mt_getrandmax();         
+            $randomNumber = mt_rand() / mt_getrandmax();
 
             $path = parse_url($url, PHP_URL_PATH);
             $segments = explode('/', rtrim($path, '/'));
             $name = end($segments);
 
             // Append the random number to the URL
-            $image = 'https://cbjpeg.stream.highwebmedia.com/stream?room=' . $name  . '&Botchatur='.$randomNumber;
+            $image = 'https://cbjpeg.stream.highwebmedia.com/stream?room=' . $name  . '&Botchatur=' . $randomNumber;
 
             // Create random float for image URL
             $randomFloat = mt_rand() / mt_getrandmax();
             $image .= '&f=' . $randomFloat;
 
-      
+
             $name = str_replace("&amp;", "-", $name);
 
             // Build the data array
-            $data = [ 
+            $data = [
                 'title' => '💜' . 'Botchatur' . ':: ' . $title . ' | 💘 Join my live show now ',
-                'name' => '❤️'. $name,
+                'name' => '❤️' . $name,
                 'image' => $image,
             ];
 
@@ -151,21 +176,21 @@ class EditorjsController extends Controller
         return response()->json(['error' => 'Unable to fetch URL'], 400);
     }
 
-    public function loadIframe(Request $request) {
+    public function loadIframe(Request $request)
+    {
         $url = $request->get('url');
-        if(filter_var($url, FILTER_VALIDATE_URL)) {
+        if (filter_var($url, FILTER_VALIDATE_URL)) {
             return response()->json([
                 'iframe' => $url,
                 'mensaje' => 'Página cargada con éxito',
             ]);
-        }
-        else {
+        } else {
             return response()->json([
                 'mensaje' => 'La URL proporcionada no es válida',
             ]);
         }
     }
-    
+
     public function GetUrlDom(Request $request)
     {
         $url = $request->input('url');

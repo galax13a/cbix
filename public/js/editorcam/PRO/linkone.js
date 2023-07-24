@@ -36,7 +36,7 @@ class LinkPage {
         this.randomNumber = Math.floor(Math.random() * (1000 - 10 + 1)) + 10;
 
         //buttonlink
-        this.linkButtonElement.textContent = this.data.titlebutton || 'Enter Label Link';
+        this.linkButtonElement.textContent = this.data.titlebutton || '::Link 😸';
         this.linkButtonElement.href = this.data.url || '';
         this.linkButtonElement.className = 'text-wrap text-capitalize p-2 text-decoration-none btn-web-link mb-4 bx-4';
         this.linkButtonElement.style.width = '90%';

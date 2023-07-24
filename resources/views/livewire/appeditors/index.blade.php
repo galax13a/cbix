@@ -39,6 +39,8 @@
     <script src="{{ asset('js/editorcam/PRO/getbtn.js') }}" defer></script>    
     <script src="{{ asset('js/editorcam/PRO/linkone.js') }}" defer></script>    
     <script src="{{ asset('js/editorcam/PRO/getcb.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/IAFree.js') }}" defer></script>
+    
     <script src="{{ asset('js/config-editorjs.js') }}" defer></script>
 
     <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

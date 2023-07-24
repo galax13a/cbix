@@ -34,10 +34,12 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },
+        iafree:window.IAFree,
         linkpage: window.GetPage,
         getchatur:window.GetChatur,        
         btnsimple:window.BtnSimple,
         iframesimple:window.IframeUrlSimple,
+                
         paragraph: {
             class: Paragraph,
             inlineToolbar: true
