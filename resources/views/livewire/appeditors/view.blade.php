@@ -16,6 +16,9 @@
                     link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
                     @include('livewire.appeditors.updateimg')
 
+
+                    <ul> <li>Juan</li> <li>Pedro</li> <li>María</li> </ul>
+
                     <div class="editorbot">
                         <div class="row justify-center d-flex ">
 

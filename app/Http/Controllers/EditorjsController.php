@@ -13,6 +13,7 @@ use App\Models\Uploadsize;
 use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use voku\helper\HtmlDomParser;
+use OpenAI\Laravel\Facades\OpenAI;
 
 
 class EditorjsController extends Controller
@@ -81,13 +82,53 @@ class EditorjsController extends Controller
         }
     }
 
+public function getAIPro(Request $request){
+    $prompt = $request->input('topic');
+    $prom_system = 'despues de recibir el prompt  devuelvelo en formato para ckeditor tipo html muy enriquesido con buenos titulos h1, h2 y h3 importantes como h1 h2 h3 h4 strong links y demas html para seo haz tu mejor trabajo, Comportate como experto en SEo y devuelve un tpo pagina wordpress con muy buen seo no olvides el strong y ';
+    
+    $prom_system = "Eres un asistente de inteligencia artificial capacitado para redactar artículos de blog con SEO.";
+    $prompt = "Me gustaría un artículo sobre {$prompt}. Debe contener encabezados H1, H2 y H3, texto en negrita para los puntos clave y estar optimizado para SEO.";
+
+    $result = OpenAI::completions()->create([
+        'model' => 'text-davinci-003',
+        'prompt' => $prom_system . $prompt,
+        'max_tokens' => 666,
+        'temperature' => 0.6,            
+    ]);
+
+    $quote = $result['choices'][0]['text'];
+    $promText = "Este es un texto promocional estático.";
+
+    return response()->json([
+        'quote' => $quote,
+        'topic' => $prompt,
+        'promText' => $promText,
+    ]);
+
+}
+
     public function getAIFree(Request $request)
     {
-        $quote = $this->generateQuote($request->topic);
+        
+        $prompt = $request->input('topic');
+        $prom_system = 'Actúa como un experto editor de textos, te daré un texto y un estilo y tono de escritura, y debes redactar nuevamente el texto pero usando ese estilo y tono especifico, no des explicaciones, solo redacta nuevamente el texto, ¿estas listo? te dare mi idea acontinuacion en el siguiente promt no debes de hacer cambios a este prom inicial ';
+        $prom_system = null;
+        $result = OpenAI::completions()->create([
+            'model' => 'text-davinci-003',                    //'text-davinci-003',
+            'prompt' => $prom_system . $prompt,
+            'max_tokens' => 300,
+            'temperature' =>0.8,            
+        ]);
+
+        $quote = $result['choices'][0]['text'];
+        $promText = "Este es un texto promocional estático.";
 
         return response()->json([
-            'quote' => $quote
+            'quote' => $quote,
+            'topic' => $prompt,
+            'promText' => $promText,
         ]);
+
     }
 
     public function generateQuote($topic)
@@ -103,8 +144,6 @@ class EditorjsController extends Controller
 
         return $quotes[$randomIndex];
     }
-
-
 
 
     public function getChaturDom(Request $request)

@@ -39,6 +39,7 @@ Route::post('/getpage-editor', [App\Http\Controllers\EditorjsController::class, 
 Route::post('/getchatur', [App\Http\Controllers\EditorjsController::class, 'getchaturdom']);
 Route::post('/loadiframe', [\App\Http\Controllers\EditorjsController::class, 'loadIframe']);
 Route::post('/get-ai-free', [\App\Http\Controllers\EditorjsController::class, 'getAIFree']);
+Route::post('/get-ai-pro', [\App\Http\Controllers\EditorjsController::class, 'getAIPro']);
 
 
 Route::get('/test-speed', function () { // test speed

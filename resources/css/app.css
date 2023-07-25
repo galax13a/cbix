@@ -29,6 +29,10 @@
   box-shadow: 0 4px 26px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.btn-web-link-pro{
+  background-color: #00b2cac4;
+}
+
 .btn-web-link:hover {
   font-weight: bold;
   font: size 18px;

@@ -16,22 +16,23 @@
                 <form>
 
                     <div wire:ignore>
-                        <textarea wire:key="edit-en-textarea" id="editorjsx-en" style="height:480px;"
-                            class="form-control m-2 shadow-sm @if ($this->app_idioma !== 'en') d-none @endif" aria-label="With textarea"
-                            wire:model.defer="en" placeholder="💭 Description App !"></textarea>
-                        <br>
-                        <textarea wire:key="edit-es-textarea" id="editorjsx-es" style="height:480px;"
-                            class="form-control m-2 shadow-sm @if ($this->app_idioma !== 'es') d-none @endif" aria-label="With textarea"
-                            wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
-                    </div>
-         
-                        <div class="container-json">                 
-                            <textarea wire:key="edit-en-textarea" id="editorjsx-en" style="height:160px; max-width: 720px;"
-                                class="large-area-json large-area-json--input" aria-label="With textarea"
-                                wire:model.defer="enjs" placeholder="💭 Description App !">
-                            </textarea>
-                         
-                        </div>
+                        <textarea wire:key="edit-en-textarea" id="editorjsx-en-1" style="height:480px;"
+                        class="form-control m-2 shadow-sm @if ($this->app_idioma !== 'en') d-none @endif" aria-label="With textarea"
+                        wire:model.defer="en" placeholder="💭 Description App !"></textarea>
+<br>
+<textarea wire:key="edit-es-textarea" id="editorjsx-es" style="height:480px;"
+                        class="form-control m-2 shadow-sm @if ($this->app_idioma !== 'es') d-none @endif" aria-label="With textarea"
+                        wire:model.defer="es" placeholder="💭 Descripción de la aplicación !"></textarea>
+</div>
+
+<div class="container-json">                 
+<textarea wire:key="edit-en-textarea" id="editorjsx-en-2" style="height:160px; max-width: 720px;"
+    class="large-area-json large-area-json--input" aria-label="With textarea"
+    wire:model.defer="enjs" placeholder="💭 Description App !">
+</textarea>
+
+</div>
+
 
                    
                     <div class="form-group">
