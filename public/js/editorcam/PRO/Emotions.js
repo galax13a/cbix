@@ -12,6 +12,9 @@ class EmoticonsBlock {
         this.config = config;
 
         this.container = document.createElement('div');
+        this.toolbarmenu = document.createElement('div');
+        this.tool_title = document.createElement('h2');
+        this.toolbarmenu.id = "tool-emotions";
         this.headerSelect = this.createHeaderSelect();
         this.emotionsList = this.createEmotionsList();
         this.emoticonsContainer = this.createEmoticonsContainer();
@@ -25,17 +28,27 @@ class EmoticonsBlock {
         this.loadingImage.alt = 'Loading';
         this.loadingElement.appendChild(this.loadingImage);
 
-        this.container.appendChild(this.headerSelect);
-        this.container.appendChild(this.emotionsList);
+        this.container.appendChild(this.toolbarmenu);
+        this.tool_title.textContent = 'Emotions v1.11 :: 🐶🐱🐭🐹🐰🦊';
+
+        this.toolbarmenu.appendChild(this.tool_title);
+        this.toolbarmenu.appendChild(this.headerSelect);
+        this.toolbarmenu.appendChild(this.emotionsList);
+        
         this.container.appendChild(this.emoticonsContainer);
         this.container.appendChild(this.loadingElement);
+
+       
+
+        this.container.className = 'shadow p-2 m-2 mt-4 rounded-3 mb-4';
+        this.toolbarmenu.className = 'shadow-sm p-2 mt-3 rounded-3 mb-4';
 
         this.loadEmoticons();
     }
 
     createHeaderSelect() {
         const select = document.createElement('select');
-        ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach((header) => {
+        ['extra','h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach((header) => {
             const option = document.createElement('option');
             option.value = header;
             option.textContent = header;
@@ -51,6 +64,7 @@ class EmoticonsBlock {
         const select = document.createElement('select');
         select.className = 'btn-web-link btn-web-link-pro border-0 shadow';
         select.addEventListener('change', () => this.updateEmoticonsCategory());
+        select.value = this.data.emotion ? this.data.emotion : '';
         return select;
     }
 
@@ -75,10 +89,14 @@ class EmoticonsBlock {
                     option.textContent = category;
                     this.emotionsList.appendChild(option);
                 });
+                this.emotionsList.value = this.data.emotion ? this.data.emotion : Object.keys(emoticons)[0];
+
                 // Populate the container with the first category's emoticons
                 this.updateEmoticonsCategory();
+
                 // Set initial emoticon size
                 this.updateEmoticonsSize();
+
                 // Hide loading element
                 this.loadingElement.style.display = 'none';
             });
@@ -92,6 +110,7 @@ class EmoticonsBlock {
             'h4': '1em',
             'h5': '0.83em',
             'h6': '0.67em',
+            'extra': '3em',
         };
         const headerSize = this.headerSelect.value;
         this.emoticonsContainer.style.fontSize = headerMap[headerSize];
@@ -129,6 +148,7 @@ class EmoticonsBlock {
 
     save() {
         this.data.header = this.headerSelect.value;
+        this.data.emotion = this.emotionsList.value;
         return this.data;
     }
 }

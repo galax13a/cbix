@@ -39,14 +39,35 @@ class OLHTML {
         this.topicInput.className = 'input-link-editor';
         this.liNumberInput.className = 'input-cb';
         this.columnsInput.className = 'input-cb';
+        //toolbar
+        this.toolbarmenu = document.createElement('div');
+        this.toolbarmenu.className = 'shadow m-2 p-2 mt-3 rounded-3 mb-0'
+        //ToglleOnly
+        this.btn_edit_div = document.createElement('div');
+        this.btn_edit_div.style.textAlign = 'center';
+        this.btn_edit_div.style.marginTop = '-20px';
 
-        this.container.appendChild(this.headerSelect);
-        this.container.appendChild(this.typeSelect);
-        this.container.appendChild(this.liNumberInput);
-        this.container.appendChild(this.topicInput);
-        this.container.appendChild(this.columnsInput);
-        this.container.appendChild(this.generateButton);
+
+        this.btntoggleReadOnly = document.createElement('button');
+        this.btntoggleReadOnly.className = 'btn btn-cb shadow-sm p-2 rounded-2 mb-1';
+        this.btntoggleReadOnly.innerHTML = '<i class="fas fa-undo"></i>';
+
+        this.btntoggleReadOnly.addEventListener('click', () => {
+            this.toolbarmenu.style.display = this.toolbarmenu.style.display === 'none' ? '' : 'none';
+        });
+
+        this.container.appendChild(this.toolbarmenu);
+        this.toolbarmenu.appendChild(this.headerSelect);
+        this.toolbarmenu.appendChild(this.typeSelect);
+        this.toolbarmenu.appendChild(this.liNumberInput);
+        this.toolbarmenu.appendChild(this.topicInput);
+        this.toolbarmenu.appendChild(this.columnsInput);
+        this.toolbarmenu.appendChild(this.generateButton);
         this.container.appendChild(this.rowContainer);
+
+        this.container.appendChild(this.btn_edit_div);
+        this.btn_edit_div.appendChild(this.btntoggleReadOnly);
+
 
         this.restoreFromData();
     }
@@ -183,22 +204,29 @@ class OLHTML {
         this.liNumberInput.value = this.data.liNumber ? this.data.liNumber : '5';
         this.topicInput.value = this.data.topic ? this.data.topic : (this.getRandomEmoji() + ' Typer');
         this.columnsInput.value = this.data.columns ? this.data.columns : '2';
+
         this.generateLists();
     }
 
     getRandomEmoji() {
         const emojiList = ['🫠', '🙄', '😯', '😦', '😧', '😮', '😲', '🥱', '😴', '🤤', '😪', '😵',
-                            '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '🥲', '🥹', '😊', '😇', '🙂', 
-                            '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜',
-                            '🤪', '🤨', '🧐', '🤓', '😎', '🥸', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟', 
-                            '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😮‍💨', '😤', '😠',
-                            '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🫣', '🤗',
-                            '🫡', '🤔', '🫢', '🤭', '🤫', '🤥', '😶', '😶‍🌫️', '😐', '😑', '😬'];
+            '😀', '😃', '😄', '😁', '😆', '😅', '😂', '🤣', '🥲', '🥹', '😊', '😇', '🙂',
+            '🙃', '😉', '😌', '😍', '🥰', '😘', '😗', '😙', '😚', '😋', '😛', '😝', '😜',
+            '🤪', '🤨', '🧐', '🤓', '😎', '🥸', '🤩', '🥳', '😏', '😒', '😞', '😔', '😟',
+            '😕', '🙁', '☹️', '😣', '😖', '😫', '😩', '🥺', '😢', '😭', '😮‍💨', '😤', '😠',
+            '😡', '🤬', '🤯', '😳', '🥵', '🥶', '😱', '😨', '😰', '😥', '😓', '🫣', '🤗',
+            '🫡', '🤔', '🫢', '🤭', '🤫', '🤥', '😶', '😶‍🌫️', '😐', '😑', '😬'];
         const randomIndex = Math.floor(Math.random() * emojiList.length);
         return emojiList[randomIndex];
     }
 
     render() {
+        // Check if data exists
+        if (this.data && Object.keys(this.data).length > 0) {
+            this.toolbarmenu.style.display = 'none';
+        } else {
+            this.toolbarmenu.style.display = 'block';
+        }
         return this.container;
     }
 
