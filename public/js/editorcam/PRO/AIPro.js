@@ -69,8 +69,7 @@ class AIPro {
         this.translateSelect.add(englishOption);
         this.translateSelect.add(spanishOption);
         this.translateSelect.className = 'select-lang';
-        this.translateSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';    
-
+        this.translateSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow'; 
 
     }
 
@@ -94,22 +93,22 @@ class AIPro {
       
 
         ClassicEditor
-        .create(this.containerArticle)
+        .create(this.containerArticle, {
+            codeBlock: {
+                languages: [
+                    { language: 'css', label: 'CSS' },
+                    { language: 'html', label: 'HTML' }
+                ]
+            }
+        })
         .then(editor => {
             this.editor = editor;
             if (this.data.article) {
                 this.editor.setData(this.data.article);
             }
-    
-            // Agregar el detector de eventos a la instancia del editor
-            editor.editing.view.document.on('enter', (evt, data) => {
-                data.preventDefault();
-                editor.execute('shiftEnter');  // Esto inserta un simple salto de línea en lugar de un nuevo párrafo
-                editor.editing.view.scrollToTheSelection();
-            }, { priority: 'highest' });
-    
         })
         .catch(error => console.error(error));
+    
     
         
 

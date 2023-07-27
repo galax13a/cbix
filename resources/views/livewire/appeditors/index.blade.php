@@ -32,11 +32,10 @@
     <script src="{{ asset('js/editorcam/quote.js') }}" defer ></script>   
 
     <script src="{{ asset('js/editorcam/ckeditor.js') }}" defer></script>
-    
-    
 @endpush
 
 @push('scripts-body')
+    <script src="{{ asset('js/editorcam/PRO/CardHTML.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/Emotions.js') }}" defer></script>    
     <script src="{{ asset('js/editorcam/PRO/OLHTML.js') }}" defer></script> 
     <script src="{{ asset('js/editorcam/PRO/iframesimple.js') }}" defer></script>  

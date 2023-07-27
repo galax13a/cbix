@@ -35,6 +35,7 @@ editor = new EditorJS({
             }
         },
         emotioconsblock: window.EmoticonsBlock,
+        cardhtml:window.CardBlock,
         olhtml : window.OLHTML,
         iapro:window.AIPro,
         iafree:window.IAFree,
