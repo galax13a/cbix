@@ -37,6 +37,8 @@
 @endpush
 
 @push('scripts-body')
+    <script src="{{ asset('js/editorcam/PRO/Emotions.js') }}" defer></script>    
+    <script src="{{ asset('js/editorcam/PRO/OLHTML.js') }}" defer></script> 
     <script src="{{ asset('js/editorcam/PRO/iframesimple.js') }}" defer></script>  
     <script src="{{ asset('js/editorcam/PRO/getbtn.js') }}" defer></script>    
     <script src="{{ asset('js/editorcam/PRO/linkone.js') }}" defer></script>    

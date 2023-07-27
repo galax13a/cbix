@@ -82,30 +82,55 @@ class EditorjsController extends Controller
         }
     }
 
-public function getAIPro(Request $request){
-    $prompt = $request->input('topic');
-    $prom_system = 'despues de recibir el prompt  devuelvelo en formato para ckeditor tipo html muy enriquesido con buenos titulos h1, h2 y h3 importantes como h1 h2 h3 h4 strong links y demas html para seo haz tu mejor trabajo, Comportate como experto en SEo y devuelve un tpo pagina wordpress con muy buen seo no olvides el strong y ';
+    public function getAIPro(Request $request)
+    {
+        $prompt = $request->input('topic');
+        $prompt_translate = $request->input('topic');
+        $translate = $request->input('translate');
+        $tokens = $request->input('tokens', 100);
+        $tokens = intval($tokens); 
+        $prom_system_es = "Eres un asistente de inteligencia artificial capacitado para redactar artículos de blog con SEO SENIOR experto en google y posicionamiento. genera texto en html para generar un excelente articulo";
+        $prom_system_en = "You are an AI assistant trained to write blog articles with SEO like Wordpress. Generate text in HTML format that can be displayed in CKEditor and receive pure HTML.";
     
-    $prom_system = "Eres un asistente de inteligencia artificial capacitado para redactar artículos de blog con SEO.";
-    $prompt = "Me gustaría un artículo sobre {$prompt}. Debe contener encabezados H1, H2 y H3, texto en negrita para los puntos clave y estar optimizado para SEO.";
+        if ($translate === "en") {
+            // Si es una solicitud de traducción en inglés, cambiamos el prompt y el sistema de instrucciones a inglés.
+            $prompt = "You are a translation assistant, do not reply to this message as a robot,, You must translate this text from Spanish correctly to English:  {$prompt_translate}";
+            $prom_system = $prom_system_en;
+        } elseif ($translate === "es") {
+            // Si no es una solicitud de traducción, utilizamos el prompt y el sistema de instrucciones en español.
+            $prompt = "Eres un asistente de traducción, no respondas a este mensaje como robot , Debes de Traducir esto de texto Spanish correctamente al inglés :  {$prompt_translate}";
+            $prom_system = $prom_system_es;
+        }
 
-    $result = OpenAI::completions()->create([
-        'model' => 'text-davinci-003',
-        'prompt' => $prom_system . $prompt,
-        'max_tokens' => 666,
-        'temperature' => 0.6,            
-    ]);
-
-    $quote = $result['choices'][0]['text'];
-    $promText = "Este es un texto promocional estático.";
-
-    return response()->json([
-        'quote' => $quote,
-        'topic' => $prompt,
-        'promText' => $promText,
-    ]);
-
-}
+        switch ($translate) {
+            case 'en':
+                $prom_system = $prom_system_en;
+                break;
+            case 'es':
+                $prom_system = $prom_system_es;
+                break;
+            default:
+                $prom_system = $prom_system_es;
+                break;
+        }
+    
+        $result = OpenAI::completions()->create([
+            'model' => 'text-davinci-003',//text-davinci-003
+            'prompt' => $prom_system . $prompt,
+            'max_tokens' => $tokens,
+            'temperature' => 0.8 ,            
+        ]);
+    
+        $quote = $result['choices'][0]['text'];
+        $promText = "Este es un texto promocional estático.";
+    
+        return response()->json([
+            'quote' => $quote,
+            'topic' => $prompt_translate,
+            'promText' => $promText,
+        ]);
+    }
+    
 
     public function getAIFree(Request $request)
     {

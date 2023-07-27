@@ -18,7 +18,7 @@ class IAFree {
 
     // Creando el botón para generar
     this.generateButton = document.createElement('button');
-    this.generateButton.innerText = 'Create Content AI';
+    this.generateButton.innerText = 'Create Content AI-Free 🐇';
     this.generateButton.addEventListener('click', this.fetchMetaData.bind(this));
 
     // Creando el elemento de visualización para la cita
@@ -59,8 +59,8 @@ class IAFree {
   async fetchMetaData() {
       this.loadingElement.style.display = 'block';
       const metadata = await this.fetchFromServer(this.topicElement.value);
-      const formattedQuote = metadata.quote.replace(/^"(.*)"$/, '$1');
-      this.typeWriterEffect(formattedQuote);       
+     // const formattedQuote = metadata.quote.replace(/^"(.*)"$/, '$1');
+      this.typeWriterEffect(metadata.quote);       
   }
   
   fetchFromServer(topic) {

@@ -23,14 +23,21 @@
   font-size: 16px; 
   color: #0f0f0f;
   background-color: #8a00cac4;
-  border-radius: 0px 0px 8px 8px;
+  border-radius: 0px 0px 8px 0px;
   color: #000000;
   border-bottom: 2px solid #000000; 
   box-shadow: 0 4px 26px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
 }
+.btn-web-link-copy{
+  margin-right: 2px;
+  background-color: #b7b8afc4;
+}
 
 .btn-web-link-pro{
-  background-color: #00b2cac4;
+  background-color: #10e04fc4;
+}
+.btn-cb:hover{
+  background-color: #02f0a1;
 }
 
 .btn-web-link:hover {

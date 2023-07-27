@@ -20,7 +20,7 @@ window.addEventListener('load', function () {
 editor = new EditorJS({
     holder: 'editorjs',
     autofocus: false,
-    placeholder: '🦄 Let`s write an awesome story!  Click Write📝',
+    placeholder: '🦄 Let`s write an awesome story! Click Write, 📝 Start Tab to start generating content',
     readOnly: false,
     tools: {
 
@@ -34,6 +34,8 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },
+        emotioconsblock: window.EmoticonsBlock,
+        olhtml : window.OLHTML,
         iapro:window.AIPro,
         iafree:window.IAFree,
         linkpage: window.GetPage,
