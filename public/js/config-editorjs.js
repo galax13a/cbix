@@ -34,8 +34,9 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },
-        emotioconsblock: window.EmoticonsBlock,
+        cardpro: window.CardsPro,
         cardhtml:window.CardBlock,
+        emotioconsblock: window.EmoticonsBlock,        
         olhtml : window.OLHTML,
         iapro:window.AIPro,
         iafree:window.IAFree,

@@ -1,7 +1,7 @@
 class CardBlock {
     static get toolbox() {
         return {
-            title: 'CardBlock',
+            title: '🔘 CardBlockLine',
             icon: '🔲',
             name: "CardBlockhtml",
         };
@@ -33,7 +33,7 @@ class CardBlock {
             this.saveToData();
         });
 
-        this.columnsSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow ';
+        this.columnsSelect.className = 'input-cb shadow form-control-sm';
         this.textAlignSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';
         this.widthSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';
 
@@ -50,17 +50,33 @@ class CardBlock {
         this.restoreFromData();
     }
 
+
     createColumnsSelect() {
-        const select = document.createElement('select');
-        ['1', '2', '3', '4', '5', '6', '7', '8'].forEach((cols) => {
-            const option = document.createElement('option');
-            option.value = cols;
-            option.textContent = cols + ' Cards(s)';
-            select.appendChild(option);
+        const input = document.createElement('input');
+        input.type = 'number'; // Crear un input numérico
+        input.className = 'form-control'; // Añadir clases de Bootstrap para el diseño
+        input.value = this.data.columns ? this.data.columns : '1'; // Valor predeterminado
+        input.addEventListener('blur', () => {
+            if (input.value > 12) {
+                input.value = 12; // Restablecer el valor a 8 si el usuario ingresa un número mayor
+                let eventDetail = {
+                    type: 'failure',
+                    message: 'Max 12 Cards',
+                    position: 'center-center',
+                };
+                let notifyEvent = new CustomEvent('notify', { detail: eventDetail });
+                window.dispatchEvent(notifyEvent);
+            }
+            if (input.value < 1) {
+                input.value = 1; // Restablecer el valor a 1 si el usuario ingresa un número menor
+            }
+            // Actualizar las tarjetas después de cambiar la entrada
+            this.generateCards();
+            this.saveToData();
         });
-        select.value = this.data.columns ? this.data.columns : '1';
-        return select;
+        return input;
     }
+    
 
     createTextAlignSelect() {
         const select = document.createElement('select');
@@ -219,6 +235,7 @@ class CardBlock {
     }
 
     render() {
+        
         return this.container;
     }
 

@@ -2,6 +2,35 @@
 <div class="container-fluid" style="z-index:1960;">
     <div class="row justify-content-center">
 
+
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasComponents"
+            aria-labelledby="offcanvasExampleLabel">
+            <div class="offcanvas-header">
+                <h4 class="offcanvas-title shadow p-2 rounded-3" id="offcanvasLabel"> ::BotChatur, EditorCams 😸</h4>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <div>
+                    <p>
+                        Here you have a gallery of reactive components for your blog, page, or design of your profile,
+                        you can go exploring in different components and choose with a click the one that you like best
+                        and then edit it easily.
+                    </p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <img id="cardline1" class="punter" src="{{ asset('editorcam/imgs/cards/card-line.png') }}"
+                            width="460px" alt="Create CardLine">
+                    </li>
+                    <li class="list-group-item">Card Imagen</li>
+                    <li class="list-group-item">A third item</li>
+                    <li class="list-group-item">A fourth item</li>
+                    <li class="list-group-item">And a fifth one</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="col-md-12 my-2" id="view-js-live-pages">
             <div class="card">
 
@@ -13,7 +42,7 @@
                 </div>
 
                 <div class="card-body">
-                    link <i class="fas fa-pencil-alt shadow-sm rounded-4 p-1 text-primary"></i>
+
                     @include('livewire.appeditors.updateimg')
 
                     <div class="editorbot">
@@ -62,7 +91,6 @@
                             <div class="col-3 text-center ">
                                 <h6 class="shadow-sm rounded-3 p-2 mx-2 punter">
                                     Apps
-
                                 </h6>
                             </div>
 
@@ -112,6 +140,10 @@
         </div>
 
         <style>
+            .offcanvas.offcanvas-start {
+                width: 530px;
+            }
+
             select {
                 background: transparent;
                 border: none;
@@ -149,12 +181,12 @@
             document.addEventListener('livewire:load', function() {
 
 
+
                 window.onscroll = function() { // button scroll save
                     scrollFunction();
                 };
 
-                function scrollFunction() {
-                    // Cambia "20" a la cantidad de scroll que quieres que el usuario haga antes de que aparezca el botón
+                function scrollFunction() {                 
                     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
                         document.getElementById("saveButton").style.display = "block";
                     } else {
@@ -162,30 +194,31 @@
                     }
                 }
 
-                var galleryElement = document.getElementById("gallery-apps-ids");
+                /*
+                                var galleryElement = document.getElementById("gallery-apps-ids");
 
-                if (galleryElement) {
-                    galleryElement.addEventListener("click", function(event) {
+                                if (galleryElement) {
+                                    galleryElement.addEventListener("click", function(event) {
 
-                        if (event.target.tagName === "IMG") {
-                            var imgSelectedAppElement = document.querySelector("#img-selected-app");
-                            const clickedImage = event.target;
-                            const allImages = document.querySelectorAll("#gallery-apps-ids img");
-                            // Remove the class from all images
-                            allImages.forEach(function(image) {
-                                image.classList.remove("gallery_img_shadow");
-                            });
-                            // Add the class to the clicked image
-                            clickedImage.classList.add("gallery_img_shadow");
-                            var domain = window.location.origin;
-                            imgSelectedAppElement.src = clickedImage.src;
-                            document.querySelector("#selectedImage").value = clickedImage.src;
+                                        if (event.target.tagName === "IMG") {
+                                            var imgSelectedAppElement = document.querySelector("#img-selected-app");
+                                            const clickedImage = event.target;
+                                            const allImages = document.querySelectorAll("#gallery-apps-ids img");
+                                            // Remove the class from all images
+                                            allImages.forEach(function(image) {
+                                                image.classList.remove("gallery_img_shadow");
+                                            });
+                                            // Add the class to the clicked image
+                                            clickedImage.classList.add("gallery_img_shadow");
+                                            var domain = window.location.origin;
+                                            imgSelectedAppElement.src = clickedImage.src;
+                                            document.querySelector("#selectedImage").value = clickedImage.src;
 
-                        }
-                    });
+                                        }
+                                    });
 
-                }
-
+                                }
+                */
                 Livewire.on('uptagsSelects', (tags) => {
                     $('#tags').select2('destroy'); // Destruir el select2 existente
                     $('#tags').empty(); // Vaciar las opciones del select
