@@ -14,9 +14,10 @@ class CardBlock {
         this.cardsData = this.data.cardsData || [];
 
         this.container = document.createElement('div');
-        this.container.id = 'cardContainer';
-        this.container.className = 'd-grid gap-2'
+        this.container.id = 'cardContainerHtmlv1';           
 
+        this.containerRows = document.createElement('div');
+        this.containerRows.className = 'container';
         this.rowContainer = document.createElement('div');
         this.rowContainer.className = 'row';
 
@@ -25,8 +26,8 @@ class CardBlock {
         this.widthSelect = this.createWidthSelect();
 
         this.generateButton = document.createElement('button');
-        this.generateButton.textContent = 'Create Card 😸';
-        this.generateButton.className = 'btn btn-cb shadow';
+        this.generateButton.textContent = 'Create Cards 😸';
+        this.generateButton.className = 'btn btn-cb shadow mx-3 bg-warning';
         this.generateButton.addEventListener('click', () => {
             this.generateCards();
             this.saveToData();
@@ -34,7 +35,7 @@ class CardBlock {
 
         this.columnsSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow ';
         this.textAlignSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';
-        this.widthSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';      
+        this.widthSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';
 
         this.toolbarmenu = document.createElement('div');
         this.toolbarmenu.className = 'shadow m-2 p-2 mt-3 rounded-3 mb-0';
@@ -43,6 +44,7 @@ class CardBlock {
         this.toolbarmenu.appendChild(this.widthSelect);
         this.toolbarmenu.appendChild(this.generateButton);
         this.container.appendChild(this.toolbarmenu);
+        this.container.appendChild(this.containerRows)
         this.container.appendChild(this.rowContainer);
 
         this.restoreFromData();
@@ -93,22 +95,59 @@ class CardBlock {
         // Generate new cards
         for (let i = 0; i < this.columnsSelect.value; i++) {
             const cardContainer = document.createElement('div');
-            
+
             cardContainer.className = `card text-${this.textAlignSelect.value} w-${this.widthSelect.value} shadow border-1 rounded-3 mt-4 mb-3`;
-            cardContainer.id = `card-${i+1}`;
-            //cardContainer.style.marginRight = '2px';
+            
+            cardContainer.id = `card-${i + 1}`;
 
             const cardBody = document.createElement('div');
             cardBody.className = 'card-body';
 
-            const cardTitle = document.createElement('h5');
+            const cardTitle = document.createElement(this.cardsData[i]?.titleType || 'h5');
             cardTitle.className = 'card-title';
-            cardTitle.textContent = this.cardsData[i]?.title || 'Hello Title';
+            cardTitle.textContent = this.cardsData[i]?.title || 'Hello Title ' + i;
             cardTitle.contentEditable = "true";
             cardTitle.addEventListener('input', () => {
                 this.cardsData[i] = this.cardsData[i] || {};
                 this.cardsData[i].title = cardTitle.textContent;
             });
+            
+            // Add dblclick event card title
+            const handleTitleDblClick = (e) => {
+                e.preventDefault();
+                const titleTypeSelect = document.createElement('select');
+                titleTypeSelect.className = 'form-select form-select-sm';
+                ['h5', 'h4', 'h3', 'h2', 'h1'].forEach((value) => {
+                    const option = document.createElement('option');
+                    option.value = value;
+                    option.textContent = value.toUpperCase();
+                    if (e.target.tagName.toLowerCase() === value) {
+                        option.selected = true;
+                    }
+                    titleTypeSelect.appendChild(option);
+                });
+
+                e.target.replaceWith(titleTypeSelect);
+                titleTypeSelect.focus();
+                titleTypeSelect.addEventListener('change', () => {
+                    const newTitle = document.createElement(titleTypeSelect.value);
+                    newTitle.textContent = this.cardsData[i]?.title || 'Hello Title';
+                    newTitle.contentEditable = "true";
+                    newTitle.addEventListener('input', () => {
+                        this.cardsData[i] = this.cardsData[i] || {};
+                        this.cardsData[i].title = newTitle.textContent;
+                    });
+                    newTitle.addEventListener('dblclick', handleTitleDblClick);
+                    titleTypeSelect.replaceWith(newTitle);
+                    this.cardsData[i].titleElement = newTitle;
+                    this.cardsData[i].titleType = titleTypeSelect.value;
+                    this.saveToData();
+                });
+            };
+            cardTitle.addEventListener('dblclick', handleTitleDblClick);
+
+            // ...            
+            cardBody.appendChild(cardTitle);            
 
             const cardText = document.createElement('p');
             cardText.className = 'card-text';
@@ -119,69 +158,50 @@ class CardBlock {
                 this.cardsData[i].text = cardText.textContent;
             });
 
- // ...
+            // ...
+            const cardLink = document.createElement('a'); // card link
+            cardLink.className = 'btn btn-cb shadow text-decoration-none';//text-decoration-none
+            cardLink.href = this.cardsData[i]?.link || '#';
+            cardLink.textContent = this.cardsData[i]?.linkText || 'Go Link';
+            cardLink.contentEditable = "true";
+            cardLink.addEventListener('input', () => {
+                this.cardsData[i] = this.cardsData[i] || {};
+                this.cardsData[i].linkText = cardLink.textContent;
+            });
 
-const cardLink = document.createElement('a');
-cardLink.className = 'btn btn-cb shadow text-decoration-none';//text-decoration-none
-cardLink.href = this.cardsData[i]?.link || '#';
-cardLink.textContent = this.cardsData[i]?.linkText || 'Go Link';
-cardLink.contentEditable = "true";
-cardLink.addEventListener('input', () => {
-    this.cardsData[i] = this.cardsData[i] || {};
-    this.cardsData[i].linkText = cardLink.textContent;
-});
+            // Add dblclick event
+            cardLink.addEventListener('dblclick', (e) => {
+                e.preventDefault();
+                const linkInput = document.createElement('input');
+                linkInput.type = 'text';
+                linkInput.value = this.cardsData[i]?.link || '#';
+                linkInput.className = 'linkInput';
+                cardLink.replaceWith(linkInput);
+                linkInput.focus();
+                linkInput.addEventListener('blur', () => {
+                    this.cardsData[i].link = linkInput.value;
+                    cardLink.href = linkInput.value;
+                    linkInput.replaceWith(cardLink);
+                });
 
-// Add dblclick event
-cardLink.addEventListener('dblclick', (e) => {
-    e.preventDefault();
-    
-    // Create an input field and prefill it with the current link
-    const linkInput = document.createElement('input');
-    linkInput.type = 'text';
-    linkInput.value = this.cardsData[i]?.link || '#';
-    
-    // Replace the link with the input field
-    cardLink.replaceWith(linkInput);
-    
-    // Focus the input field
-    linkInput.focus();
+                linkInput.addEventListener('keydown', (event) => {
+                    if (event.key === 'Enter') {
+             
+                        this.cardsData[i].link = linkInput.value;
+                        cardLink.href = linkInput.value;
+                        linkInput.replaceWith(cardLink);
+                    }
+                });
+            });
 
-    // Add an event to handle when the input field loses focus
-    linkInput.addEventListener('blur', () => {
-        // Update the link
-        this.cardsData[i].link = linkInput.value;
-        cardLink.href = linkInput.value;
-        
-        // Replace the input field with the link
-        linkInput.replaceWith(cardLink);
-    });
-    
-    // Add an event to handle when the enter key is pressed
-    linkInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-            // Update the link
-            this.cardsData[i].link = linkInput.value;
-            cardLink.href = linkInput.value;
-            
-            // Replace the input field with the link
-            linkInput.replaceWith(cardLink);
-        }
-    });
-});
-
-// ...
-
-cardBody.appendChild(cardLink);
-
-
+            cardBody.appendChild(cardLink);
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
             cardBody.appendChild(cardLink);
             cardContainer.appendChild(cardBody);
-
             this.rowContainer.appendChild(cardContainer);
         }
-    }    
+    }
 
     saveToData() {
         this.data.columns = this.columnsSelect.value;
@@ -194,7 +214,7 @@ cardBody.appendChild(cardLink);
         this.columnsSelect.value = this.data.columns ? this.data.columns : '1';
         this.textAlignSelect.value = this.data.textAlign ? this.data.textAlign : 'start';
         this.widthSelect.value = this.data.width ? this.data.width : '100';
-        
+
         this.generateCards();
     }
 

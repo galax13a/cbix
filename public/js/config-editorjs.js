@@ -149,8 +149,9 @@ editor = new EditorJS({
             class: editorjsColumns,
             config: {
                 tools: {
-                    
                     header: Header,
+                    cardhtml:window.CardBlock,
+                    olhtml : window.OLHTML,
                     btnsimple:window.BtnSimple,
                     getchatur:window.GetChatur,    
                     linkpage: window.GetPage,

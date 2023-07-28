@@ -129,23 +129,26 @@ class OLHTML {
 
     createColumnsInput() {
         const input = document.createElement('input');
-        input.type = 'text';
-        input.pattern = '[1-4]?';
-        input.value = this.data.columns ? this.data.columns : '2';
+        input.type = 'number'; // Asumiendo que quieres un input numérico
+        input.min = '1'; // Mínimo valor aceptado
+        input.max = '33'; // Máximo valor aceptado
+        input.pattern = '[1-3]?[0-3]?'; // Acepta valores de 1 a 33
+        input.value = this.data.columns ? this.data.columns : '2'; // Valor por defecto
         input.addEventListener('input', () => {
-            if (input.value > 4) {
+            if (input.value > 33) {
                 let eventDetail = {
                     type: 'failure',
-                    message: 'Max 4 Columns',
+                    message: 'Max 33 Columns',
                     position: 'center-center',
                 };
                 let notifyEvent = new CustomEvent('notify', { detail: eventDetail });
                 window.dispatchEvent(notifyEvent);
-                input.value = 4;
+                input.value = 33; // Restablece el valor a 33 si el usuario ingresa un número mayor
             }
         });
         return input;
     }
+    
 
     generateLists() {
         // Clear current lists
