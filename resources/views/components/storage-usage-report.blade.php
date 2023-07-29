@@ -3,7 +3,7 @@
         <div class="card-body">
             <h4 class="card-title bg-light rounded-3 shadow-sm">
                 <i class="fas fa-database"></i>
-                Storage Usage
+                HostOne-Storage
             </h4>
             <p class="card-text">
                 <strong>🐼 User:</strong> {{ $user->name }}

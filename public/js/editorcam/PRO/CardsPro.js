@@ -2,7 +2,7 @@ class CardsPro {
     static get toolbox() {
         return {
             title: 'CardsPro',
-            icon: '🔲',
+            icon: '◼️',
         };
     }
 
@@ -16,12 +16,15 @@ class CardsPro {
             throw new Error('Offcanvas element not found');
         }
 
-        // Agrega un listener al evento de clic del elemento
         const cardLineImage = document.getElementById('cardline1');
-        cardLineImage.addEventListener('click', () => {                
-            editor.blocks.insert('cardhtml', {}, {}, editor.blocks.getBlocksCount(), true);
-
-            // Cierra el offcanvas
+        cardLineImage.addEventListener('click', () => {            
+               editor.blocks.insert('cardblock', {}, {}, editor.blocks.getBlocksCount(), true);
+            this.bsOffcanvas.hide();
+        });
+        
+        const cardImage = document.getElementById('cardimagen1');
+        cardImage.addEventListener('click', () => {            
+               editor.blocks.insert('cardblockimagen', {}, {}, editor.blocks.getBlocksCount(), true);
             this.bsOffcanvas.hide();
         });
 

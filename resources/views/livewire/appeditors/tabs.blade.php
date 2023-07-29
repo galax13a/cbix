@@ -8,9 +8,9 @@
             </button>
 
         </h2>
-        <div id="collapseOne" 
-        class="accordion-collapse collapse 
-         text-center 
+        <div 
+        id="collapseOne" 
+        class="accordion-collapse collapse text-center  show
          "
             aria-labelledby="headingOne" data-bs-parent="#accordionExample">
 
@@ -121,7 +121,7 @@
                 <i class="far fa-keyboard m-1"></i> SEO
             </button>
         </h2>
-        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        <div id="collapseTwo" class="accordion-collapse collapse " aria-labelledby="headingTwo"
             data-bs-parent="#accordionExample">
             <div class="accordion-body">
                 <strong>tools seo for apps </strong>
@@ -224,7 +224,7 @@
             SEO Imagen
         </button>
     </h2>
-    <div id="collapseFour" class="accordion-collapse collapse show" aria-labelledby="headingFour"
+    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
         data-bs-parent="#accordionExample">
         <div class="accordion-body">
             <div class="container">

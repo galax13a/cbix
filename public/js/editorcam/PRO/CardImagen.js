@@ -1,10 +1,28 @@
-class CardBlock {
+class CardBlockImagen {
     static get toolbox() {
         return {
-            title: '🔘 CardBlockLine',
-            icon: '🔲',
-            name: "CardBlockhtml",
+            title: '▶️CardImagen',
+            icon: '▪️',
+            name: "BlockImagen",
         };
+    }
+
+    async customPrompt(titulo, mensaje) {
+        return new Promise((resolve, reject) => {
+            window.Notiflix.Confirm.prompt(
+                titulo,
+                mensaje,
+                '👻 Link here!',
+                'Ok',
+                'Cancel',
+                (clientAnswer) => {
+                    resolve(clientAnswer);
+                },
+                () => {
+                    resolve(null);
+                }
+            );
+        });
     }
 
     constructor({ data, api, config }) {
@@ -98,10 +116,14 @@ class CardBlock {
             option.textContent = width + '% Width';
             select.appendChild(option);
         });
-        select.value = this.data.width ? this.data.width : '100';
+        select.value = this.data.width ? this.data.width : '25';
         return select;
     }
-
+    getRandomImgURL() {
+        let randomNum = Math.floor(Math.random() * 133) + 1; // generates a random number between 1 and 60
+        return `/editorcam/imgs/cards/img-girl${randomNum}.jpg`;
+    }
+    
     generateCards() {
         // Clear current cards
         while (this.rowContainer.firstChild) {
@@ -112,7 +134,36 @@ class CardBlock {
         for (let i = 0; i < this.columnsSelect.value; i++) {
             const cardContainer = document.createElement('div');
 
-            cardContainer.className = `card text-${this.textAlignSelect.value} w-${this.widthSelect.value} shadow border-1 rounded-3 mt-4 mb-3`;
+                 // Add image to the card
+             
+                 const cardImage = document.createElement('img');
+                 if (this.cardsData[i] && this.cardsData[i].image) {
+                     cardImage.src = this.cardsData[i].image;
+                 } else {
+                     cardImage.src = this.getRandomImgURL();
+                 }
+                 
+                 cardImage.onerror = function() {
+                     cardImage.src = '/editorcam/imgs/cards/img-girl1.jpg'; // default image if the initial image doesn't load
+                 };
+                    
+                 cardImage.alt = `Image for card ${i + 1}`;
+                 cardImage.className = 'img-thumbnail shadow p-2 rounded-3 float-end'; // Bootstrap class to style the image
+                 
+                 cardImage.addEventListener('dblclick', async (e) => {
+                     e.preventDefault();
+                     const newImgURL = await this.customPrompt('Change image', 'Enter the new image URL:🔗');
+                     if (newImgURL) {
+                         this.cardsData[i] = this.cardsData[i] || {}; // Ensure the card data object exists
+                         this.cardsData[i].image = newImgURL;
+                         cardImage.src = newImgURL;
+                         this.saveToData();
+                     }
+                 });
+     
+                 cardContainer.appendChild(cardImage);
+
+            cardContainer.className = `card text-${this.textAlignSelect.value} w-${this.widthSelect.value} shadow border-1 rounded-3 mb-4 mt-3`;
             
             cardContainer.id = `card-${i + 1}`;
 
@@ -160,10 +211,8 @@ class CardBlock {
                     this.saveToData();
                 });
             };
-            cardTitle.addEventListener('dblclick', handleTitleDblClick);
 
-            // ...            
-            cardBody.appendChild(cardTitle);            
+            cardTitle.addEventListener('dblclick', handleTitleDblClick);
 
             const cardText = document.createElement('p');
             cardText.className = 'card-text';
@@ -210,7 +259,8 @@ class CardBlock {
                 });
             });
 
-            cardBody.appendChild(cardLink);
+                 // ...            
+            cardBody.appendChild(cardTitle);   
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
             cardBody.appendChild(cardLink);
@@ -227,9 +277,9 @@ class CardBlock {
     }
 
     restoreFromData() {
-        this.columnsSelect.value = this.data.columns ? this.data.columns : '1';
+        this.columnsSelect.value = this.data.columns ? this.data.columns : '4';
         this.textAlignSelect.value = this.data.textAlign ? this.data.textAlign : 'start';
-        this.widthSelect.value = this.data.width ? this.data.width : '100';
+        this.widthSelect.value = this.data.width ? this.data.width : '25';
 
         this.generateCards();
     }
@@ -245,4 +295,4 @@ class CardBlock {
     }
 }
 
-window.CardBlock = CardBlock;
+window.CardBlockImagen = CardBlockImagen;

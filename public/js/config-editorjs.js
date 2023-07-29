@@ -35,7 +35,8 @@ editor = new EditorJS({
             }
         },
         cardpro: window.CardsPro,
-        cardhtml:window.CardBlock,
+        cardblock: window.CardBlock,
+        cardblockimagen: window.CardBlockImagen,
         emotioconsblock: window.EmoticonsBlock,        
         olhtml : window.OLHTML,
         iapro:window.AIPro,
@@ -152,6 +153,7 @@ editor = new EditorJS({
                 tools: {
                     header: Header,
                     cardhtml:window.CardBlock,
+                    cardblockimagen: window.CardBlockImagen,
                     olhtml : window.OLHTML,
                     btnsimple:window.BtnSimple,
                     getchatur:window.GetChatur,    

@@ -20,10 +20,17 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <img id="cardline1" class="punter" src="{{ asset('editorcam/imgs/cards/card-line.png') }}"
-                            width="460px" alt="Create CardLine">
+                        <img id="cardline1" class="punter"
+                         src="{{ asset('editorcam/imgs/cards/card-line.png') }}"
+                         width="460px" alt="Create CardLine"
+                        >
                     </li>
-                    <li class="list-group-item">Card Imagen</li>
+                    <li class="list-group-item">
+                        <img id="cardimagen1" class="punter"
+                         src="{{ asset('editorcam/imgs/cards/card-imagen-1.png') }}"
+                         width="460px" alt="Create CardLine"
+                        >
+                    </li>
                     <li class="list-group-item">A third item</li>
                     <li class="list-group-item">A fourth item</li>
                     <li class="list-group-item">And a fifth one</li>
@@ -194,7 +201,7 @@
                     }
                 }
 
-                /*
+                
                                 var galleryElement = document.getElementById("gallery-apps-ids");
 
                                 if (galleryElement) {
@@ -218,7 +225,7 @@
                                     });
 
                                 }
-                */
+                
                 Livewire.on('uptagsSelects', (tags) => {
                     $('#tags').select2('destroy'); // Destruir el select2 existente
                     $('#tags').empty(); // Vaciar las opciones del select
@@ -284,7 +291,7 @@
 
                 window.addEventListener('load', function() {
 
-
+/*
                     var editorContainer = document.getElementById('editorjs');
                     editorContainer.addEventListener('click', function(event) {
                         var target = event.target;
@@ -297,6 +304,7 @@
                             openwin36('uptimagenDataModal');
                         }
                     });
+*/
 
                     let editorjsData = {!! json_encode($this->enjs) !!};
 
