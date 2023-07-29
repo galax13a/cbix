@@ -1,8 +1,8 @@
 class CardBlockImagen {
     static get toolbox() {
         return {
-            title: '▶️CardImagen',
-            icon: '▪️',
+            title: '▶️ CardImagen',
+            icon: '<i class="icon-tiktok"></i>',
             name: "BlockImagen",
         };
     }
@@ -148,7 +148,7 @@ class CardBlockImagen {
                  };
                     
                  cardImage.alt = `Image for card ${i + 1}`;
-                 cardImage.className = 'img-thumbnail shadow p-2 rounded-3 float-end'; // Bootstrap class to style the image
+                 cardImage.className = 'img-thumbnail shadow p-2 rounded-3 float-end mt-2'; // Bootstrap class to style the image
                  
                  cardImage.addEventListener('dblclick', async (e) => {
                      e.preventDefault();

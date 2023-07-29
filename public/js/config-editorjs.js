@@ -34,6 +34,7 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },
+        tiktok:  window.TikTokBlock,
         cardpro: window.CardsPro,
         cardblock: window.CardBlock,
         cardblockimagen: window.CardBlockImagen,
@@ -152,6 +153,7 @@ editor = new EditorJS({
             config: {
                 tools: {
                     header: Header,
+                    tiktok:  window.TikTokBlock,
                     cardhtml:window.CardBlock,
                     cardblockimagen: window.CardBlockImagen,
                     olhtml : window.OLHTML,

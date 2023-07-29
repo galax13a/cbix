@@ -2,45 +2,16 @@ class CardsPro {
     static get toolbox() {
         return {
             title: 'CardsPro',
-            icon: '◼️',
+            icon: '<i class="fas fa-id-card"></i>',
         };
     }
 
-    constructor() {
-        this.offcanvasEl = document.getElementById('offcanvasComponents');
-        this.bsOffcanvas = new bootstrap.Offcanvas(this.offcanvasEl);
+    constructor() {             
+                
     }
-
-    showOffcanvas() {
-        if (!this.offcanvasEl) {
-            throw new Error('Offcanvas element not found');
-        }
-
-        const cardLineImage = document.getElementById('cardline1');
-        cardLineImage.addEventListener('click', () => {            
-               editor.blocks.insert('cardblock', {}, {}, editor.blocks.getBlocksCount(), true);
-            this.bsOffcanvas.hide();
-        });
-        
-        const cardImage = document.getElementById('cardimagen1');
-        cardImage.addEventListener('click', () => {            
-               editor.blocks.insert('cardblockimagen', {}, {}, editor.blocks.getBlocksCount(), true);
-            this.bsOffcanvas.hide();
-        });
-
-        try {
-            // Intenta abrir el offcanvas
-            this.bsOffcanvas.show();
-            console.log('ready card full');
-        } catch (error) {
-            // Si algo sale mal, registra el error en la consola
-            console.log('Error showing offcanvas:', error);
-        }
-    }
-
     render() {
-        // Return an empty element as this block has no visible rendering
-        this.showOffcanvas();
+        const event = new Event('open-card-pro');
+        document.dispatchEvent(event);
         return undefined;
     }
 
