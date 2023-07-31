@@ -34,10 +34,11 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },
-        tiktok:  window.TikTokBlock,
+        tiktok:  window.TikTokBlock,      
         cardpro: window.CardsPro,
         cardblock: window.CardBlock,
         cardblockimagen: window.CardBlockImagen,
+        cardblockimagenH: window.CardBlockImagenH,
         emotioconsblock: window.EmoticonsBlock,        
         olhtml : window.OLHTML,
         iapro:window.AIPro,
@@ -156,6 +157,7 @@ editor = new EditorJS({
                     tiktok:  window.TikTokBlock,
                     cardhtml:window.CardBlock,
                     cardblockimagen: window.CardBlockImagen,
+                    cardblockimagenH: window.CardBlockImagenH,
                     olhtml : window.OLHTML,
                     btnsimple:window.BtnSimple,
                     getchatur:window.GetChatur,    

@@ -6,36 +6,8 @@
             role="button" aria-controls="offcanvasComponents">
             Open Offcanvas
         </a>
-       
-        <div class="card mb-3 w-25" style="">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img class="img-thumbnail" src="{{ asset('editorcam/imgs/cards/card-imagen-2.png') }}"
-                        alt="Create CardLine">
 
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <button class="btn btn-cb">Link Blog</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card text-start w-25 shadow border-1 rounded-3 mb-4 mt-3" id="card-4"><img
-                src="/editorcam/imgs/cards/img-girl52.jpg" alt="Image for card 4"
-                class="img-thumbnail shadow p-2 rounded-3 float-end mt-2">
-            <div class="card-body">
-                <h5 class="card-title" contenteditable="true">Hello Title 3</h5>
-                <p class="card-text" contenteditable="true">here you can edit and complete your card for more
-                    creativity, edit this content</p><a class="btn btn-cb shadow text-decoration-none" href="#"
-                    contenteditable="true">Go Link</a>
-            </div>
-        </div>
-
+      
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasComponents"
             aria-labelledby="offcanvasExampleLabel">
@@ -92,7 +64,8 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree-2" aria-expanded="false" aria-controls="collapseThree-2">
+                                data-bs-target="#collapseThree-2" aria-expanded="false"
+                                aria-controls="collapseThree-2">
                                 <strong>SocialMedia</strong>
                             </button>
                         </h2>
@@ -108,7 +81,8 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour-2" aria-expanded="false" aria-controls="collapseFour-2">
+                                data-bs-target="#collapseFour-2" aria-expanded="false"
+                                aria-controls="collapseFour-2">
                                 <strong>Containers</strong>
                             </button>
                         </h2>
@@ -126,16 +100,23 @@
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item">
                                         <h4>CardLine</h4>
-                                        <img id="cardline1" class="pointer"
+                                        <img id="cardline1" title="Select Push" class="punter"
                                             src="{{ asset('editorcam/imgs/cards/card-line.png') }}" width="410px"
                                             height="160px" alt="Create CardLine">
                                     </li>
                                     <li class="list-group-item">
-                                        <h4>Card-Imagen</h4>
-                                        <img id="cardimagen1" class="pointer" src="" width="410px"
-                                            height="200px" alt="Create CardImagen">
+                                        <h4>Card-ImagenV</h4>
+                                        <img id="cardimagen1" title="Select Push" class="punter" width="410px"
+                                            src="{{ asset('editorcam/imgs/cards/card-imagen-1.png') }}" height="200px"
+                                            alt="Create CardImagen">
                                     </li>
-                                    <li class="list-group-item">A third item</li>
+                                    <li class="list-group-item">
+                                        <h4>Card-ImagenH</h4>
+                                        <img id="cardimagenH" title="Select Push" class="punter"
+                                            src="{{ asset('editorcam/imgs/cards/icard-imagenH.png') }}" width="410px"
+                                            height="200px" alt="Create CardImagenH">
+
+                                    </li>
                                     <li class="list-group-item">A fourth item</li>
                                     <li class="list-group-item">And a fifth one</li>
                                 </ul>
@@ -160,12 +141,7 @@
                         <div id="collapseFive-3" class="accordion-collapse collapse" aria-labelledby="headingFive"
                             data-bs-parent="#accordionExample3">
                             <div class="accordion-body">
-                                <strong>This is the Chaturbate item's accordion body.</strong> It is hidden by default,
-                                until the collapse plugin adds the appropriate classes that we use to style each
-                                element. These classes control the overall appearance, as well as the showing and hiding
-                                via CSS transitions. You can modify any of this with custom CSS or overriding our
-                                default variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                chatur data
                             </div>
                         </div>
                     </div>
@@ -354,6 +330,11 @@
                     console.error("Element with ID 'cardimagen' not found.");
                     return;
                 }
+                const cardimagenH = document.getElementById('cardimagenH');
+                if (!cardimagen) {
+                    console.error("Element with ID 'cardimagen' not found.");
+                    return;
+                }
 
                 function getRandomNumber(min, max) {
                     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -369,7 +350,7 @@
                 setTimeout(() => {
                     document.getElementById('a-offcanvasComponents').click();
                     loadRandomImage();
-                }, 2000);
+                }, 3000);
 
 
                 document.addEventListener('open-card-pro', function() {
@@ -386,6 +367,12 @@
                 const cardImage = document.getElementById('cardimagen1');
                 cardImage.addEventListener('click', () => {
                     editor.blocks.insert('cardblockimagen', {}, {}, editor.blocks.getBlocksCount(), true);
+                });
+
+                const cardImageH = document.getElementById('cardimagenH');
+                cardImageH.addEventListener('click', () => {
+                    //     alert('cardimage insert');
+                    editor.blocks.insert('cardblockimagenH', {}, {}, editor.blocks.getBlocksCount(), true);
                 });
 
 

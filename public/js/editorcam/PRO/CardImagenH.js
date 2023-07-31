@@ -32,7 +32,7 @@ class CardBlockImagenH {
         this.cardsData = this.data.cardsData || [];
 
         this.container = document.createElement('div');
-        this.container.id = 'cardContainerHtmlv1';           
+        this.container.id = 'cardContainerHtmlv1';
 
         this.containerRows = document.createElement('div');
         this.containerRows.className = 'container';
@@ -42,6 +42,7 @@ class CardBlockImagenH {
         this.columnsSelect = this.createColumnsSelect();
         this.textAlignSelect = this.createTextAlignSelect();
         this.widthSelect = this.createWidthSelect();
+        this.alignImagen = this.createAlignImagen();
 
         this.generateButton = document.createElement('button');
         this.generateButton.textContent = 'Create Cards 😸';
@@ -54,12 +55,14 @@ class CardBlockImagenH {
         this.columnsSelect.className = 'input-cb shadow form-control-sm';
         this.textAlignSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';
         this.widthSelect.className = 'btn-web-link btn-web-link-pro border-0 shadow';
+        this.alignImagen.className = 'btn-web-link btn-web-link-pro border-0 shadow';
 
         this.toolbarmenu = document.createElement('div');
         this.toolbarmenu.className = 'shadow m-2 p-2 mt-3 rounded-3 mb-0';
         this.toolbarmenu.appendChild(this.columnsSelect);
         this.toolbarmenu.appendChild(this.textAlignSelect);
         this.toolbarmenu.appendChild(this.widthSelect);
+        this.toolbarmenu.appendChild(this.alignImagen);
         this.toolbarmenu.appendChild(this.generateButton);
         this.container.appendChild(this.toolbarmenu);
         this.container.appendChild(this.containerRows)
@@ -94,7 +97,18 @@ class CardBlockImagenH {
         });
         return input;
     }
-    
+
+    createAlignImagen() {
+        const select = document.createElement('select');
+        ['left', 'right'].forEach((align) => {
+            const option = document.createElement('option');
+            option.value = align;
+            option.textContent = align.charAt(0).toUpperCase() + align.slice(1);
+            select.appendChild(option);
+        });
+        select.value = this.data.alignImagen ? this.data.alignImagen : 'left';
+        return select;
+    }
 
     createTextAlignSelect() {
         const select = document.createElement('select');
@@ -123,7 +137,7 @@ class CardBlockImagenH {
         let randomNum = Math.floor(Math.random() * 133) + 1; // generates a random number between 1 and 60
         return `/editorcam/imgs/cards/img-girl${randomNum}.jpg`;
     }
-    
+
     generateCards() {
         // Clear current cards
         while (this.rowContainer.firstChild) {
@@ -134,41 +148,60 @@ class CardBlockImagenH {
         for (let i = 0; i < this.columnsSelect.value; i++) {
             const cardContainer = document.createElement('div');
 
-                 // Add image to the card
-             
-                 const cardImage = document.createElement('img');
-                 if (this.cardsData[i] && this.cardsData[i].image) {
-                     cardImage.src = this.cardsData[i].image;
-                 } else {
-                     cardImage.src = this.getRandomImgURL();
-                 }
-                 
-                 cardImage.onerror = function() {
-                     cardImage.src = '/editorcam/imgs/cards/img-girl1.jpg'; // default image if the initial image doesn't load
-                 };
-                    
-                 cardImage.alt = `Image for card ${i + 1}`;
-                 cardImage.className = 'img-thumbnail shadow p-2 rounded-3 float-end mt-2'; // Bootstrap class to style the image
-                 
-                 cardImage.addEventListener('dblclick', async (e) => {
-                     e.preventDefault();
-                     const newImgURL = await this.customPrompt('Change image', 'Enter the new image URL:🔗');
-                     if (newImgURL) {
-                         this.cardsData[i] = this.cardsData[i] || {}; // Ensure the card data object exists
-                         this.cardsData[i].image = newImgURL;
-                         cardImage.src = newImgURL;
-                         this.saveToData();
-                     }
-                 });
-     
-                 cardContainer.appendChild(cardImage);
+            const cardImage = document.createElement('img');
+            if (this.cardsData[i] && this.cardsData[i].image) {
+                cardImage.src = this.cardsData[i].image;
+            } else {
+                cardImage.src = this.getRandomImgURL();
+            }
+
+            cardImage.onerror = function () {
+                cardImage.src = '/editorcam/imgs/cards/img-girl1.jpg'; // default image if the initial image doesn't load
+            };
+
+            cardImage.alt = `Image for card ${i + 1}`;
+            cardImage.className = 'img-fluid rounded-start shadow p-2 rounded-3 float-end mt-2 mb-2'; // Bootstrap class to style the image
+
+            cardImage.addEventListener('dblclick', async (e) => {
+                e.preventDefault();
+                const newImgURL = await this.customPrompt('Change image', 'Enter the new image URL:🔗');
+                if (newImgURL) {
+                    this.cardsData[i] = this.cardsData[i] || {}; // Ensure the card data object exists
+                    this.cardsData[i].image = newImgURL;
+                    cardImage.src = newImgURL;
+                    this.saveToData();
+                }
+            });
+
+            //BULDER CARD
+            // Add image to the card
+            const row = document.createElement('div');
+            row.classList.add('row', 'g-0');
+            // Crear la columna para la imagen
+            const colImage = document.createElement('div');
+            colImage.classList.add('col-md-4');
+            // Crear la columna para el contenido de la tarjeta
+            const colContent = document.createElement('div');
+            colContent.classList.add('col-md-8');
+
+            const card_footer = document.createElement('div');
+            card_footer.className = 'card-footer bg-transparent border-light';
+            const card_footer_p = document.createElement('p');
+
+            card_footer_p.textContent = this.cardsData[i]?.footerText || '#tag1, #tag2';
+            card_footer_p.contentEditable = "true";
+            card_footer_p.addEventListener('input', () => {
+                this.cardsData[i] = this.cardsData[i] || {};
+                this.cardsData[i].footerText  = card_footer_p.textContent;
+            });
+                       
 
             cardContainer.className = `card text-${this.textAlignSelect.value} w-${this.widthSelect.value} shadow border-1 rounded-3 mb-4 mt-3`;
-            
+
             cardContainer.id = `card-${i + 1}`;
 
             const cardBody = document.createElement('div');
-            cardBody.className = 'card-body';
+            cardBody.className = 'card-body mt-2 mb-2 p-2';
 
             const cardTitle = document.createElement(this.cardsData[i]?.titleType || 'h5');
             cardTitle.className = 'card-title';
@@ -178,7 +211,7 @@ class CardBlockImagenH {
                 this.cardsData[i] = this.cardsData[i] || {};
                 this.cardsData[i].title = cardTitle.textContent;
             });
-            
+
             // Add dblclick event card title
             const handleTitleDblClick = (e) => {
                 e.preventDefault();
@@ -251,7 +284,7 @@ class CardBlockImagenH {
 
                 linkInput.addEventListener('keydown', (event) => {
                     if (event.key === 'Enter') {
-             
+
                         this.cardsData[i].link = linkInput.value;
                         cardLink.href = linkInput.value;
                         linkInput.replaceWith(cardLink);
@@ -259,12 +292,36 @@ class CardBlockImagenH {
                 });
             });
 
-                 // ...            
-            cardBody.appendChild(cardTitle);   
-            cardBody.appendChild(cardTitle);
-            cardBody.appendChild(cardText);
-            cardBody.appendChild(cardLink);
-            cardContainer.appendChild(cardBody);
+       
+
+            if(this.alignImagen.value ==='left') {
+                cardContainer.appendChild(row);
+                row.appendChild(colImage);
+                colImage.appendChild(cardImage);
+                row.appendChild(colContent);        
+                colContent.appendChild(cardBody);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(cardLink);
+                cardBody.appendChild(card_footer);
+                cardBody.appendChild(card_footer_p);
+            }else { 
+                cardContainer.appendChild(row);
+                       
+                row.appendChild(colContent);
+                colContent.appendChild(cardBody);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(cardLink);
+                cardBody.appendChild(card_footer);
+                cardBody.appendChild(card_footer_p);
+                row.appendChild(colImage);       
+                colImage.appendChild(cardImage);
+            }
+
+       
             this.rowContainer.appendChild(cardContainer);
         }
     }
@@ -273,19 +330,22 @@ class CardBlockImagenH {
         this.data.columns = this.columnsSelect.value;
         this.data.textAlign = this.textAlignSelect.value;
         this.data.width = this.widthSelect.value;
+        this.data.alignImagen = this.alignImagen.value;
         this.data.cardsData = this.cardsData;
+
     }
 
     restoreFromData() {
-        this.columnsSelect.value = this.data.columns ? this.data.columns : '4';
+        this.columnsSelect.value = this.data.columns ? this.data.columns : '2';
         this.textAlignSelect.value = this.data.textAlign ? this.data.textAlign : 'start';
-        this.widthSelect.value = this.data.width ? this.data.width : '25';
+        this.alignImagen.value = this.data.alignImagen ? this.data.alignImagen : 'left';
+        this.widthSelect.value = this.data.width ? this.data.width : '50';
 
         this.generateCards();
     }
 
     render() {
-        
+
         return this.container;
     }
 
