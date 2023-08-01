@@ -43,6 +43,7 @@ class CardBlockImagenH {
         this.textAlignSelect = this.createTextAlignSelect();
         this.widthSelect = this.createWidthSelect();
         this.alignImagen = this.createAlignImagen();
+        this.colorInput = this.createColor();
 
         this.generateButton = document.createElement('button');
         this.generateButton.textContent = 'Create Cards 😸';
@@ -65,13 +66,45 @@ class CardBlockImagenH {
         this.toolbarmenu.appendChild(this.alignImagen);
         this.toolbarmenu.appendChild(this.generateButton);
         this.container.appendChild(this.toolbarmenu);
-        this.container.appendChild(this.containerRows)
+        this.container.appendChild(this.containerRows);
         this.container.appendChild(this.rowContainer);
-
         this.restoreFromData();
     }
 
-
+    createColor(i) {
+        const colorInput = document.createElement('input');
+        colorInput.type = 'color';
+        colorInput.className = 'form-control form-control-color';
+        colorInput.id = 'exampleColorInput';
+        colorInput.title = 'Choose your color';
+    
+        const commonColors = [
+            '#fdeebd', '#fcf6f5', '#e6f7ff', '#f0f9e8', '#fff1e6', '#fce4ec',
+            '#f0e6fc', '#e1f5fe', '#e8f5e9', '#fff9c4', '#ffe0b2', '#d1c4e9',
+            '#f3e5f5', '#f1f8e9', '#f9fbe7', '#e3f2fd', '#e0f7fa', '#e0f2f1',
+            '#e8eaf6', '#f3e5f5', '#f9fbe7', '#fff3e0', '#ffebee', '#e0f7fa',
+            '#ede7f6', '#d0d9ff'
+        ];
+        
+        if (typeof i !== 'undefined' && this.cardsData[i] && this.cardsData[i].colorcard) {
+            colorInput.value = this.cardsData[i].colorcard;
+        } else {
+            colorInput.value = commonColors[Math.floor(Math.random() * commonColors.length)];        
+        }
+    
+        colorInput.addEventListener('blur', () => {
+            if (typeof i !== 'undefined') {
+                this.cardsData[i] = this.cardsData[i] || {};
+                this.cardsData[i].colorcard = colorInput.value;
+            }
+            this.generateCards();
+            this.saveToData();
+        });
+    
+        return colorInput;
+    }
+    
+    
     createColumnsSelect() {
         const input = document.createElement('input');
         input.type = 'number'; // Crear un input numérico
@@ -172,7 +205,6 @@ class CardBlockImagenH {
                     this.saveToData();
                 }
             });
-
             //BULDER CARD
             // Add image to the card
             const row = document.createElement('div');
@@ -192,12 +224,10 @@ class CardBlockImagenH {
             card_footer_p.contentEditable = "true";
             card_footer_p.addEventListener('input', () => {
                 this.cardsData[i] = this.cardsData[i] || {};
-                this.cardsData[i].footerText  = card_footer_p.textContent;
-            });
-                       
+                this.cardsData[i].footerText = card_footer_p.textContent;
+            });            
 
             cardContainer.className = `card text-${this.textAlignSelect.value} w-${this.widthSelect.value} shadow border-1 rounded-3 mb-4 mt-3`;
-
             cardContainer.id = `card-${i + 1}`;
 
             const cardBody = document.createElement('div');
@@ -258,7 +288,7 @@ class CardBlockImagenH {
 
             // ...
             const cardLink = document.createElement('a'); // card link
-            cardLink.className = 'btn btn-cb shadow text-decoration-none';//text-decoration-none
+            cardLink.className = 'btn btn-cb shadow text-decoration-none mx-2';//text-decoration-none
             cardLink.href = this.cardsData[i]?.link || '#';
             cardLink.textContent = this.cardsData[i]?.linkText || 'Go Link';
             cardLink.contentEditable = "true";
@@ -292,36 +322,42 @@ class CardBlockImagenH {
                 });
             });
 
-       
+            const colorInput = this.createColor(i); // Pasa el índice
+            const divi_color_link = document.createElement('div');
+            divi_color_link.className = `container p-1 m-1 d-flex align-items-center justify-content-${this.textAlignSelect.value} shadow-sm`;
+            cardContainer.style.backgroundColor = colorInput.value;
 
-            if(this.alignImagen.value ==='left') {
+            if (this.alignImagen.value === 'left') {
                 cardContainer.appendChild(row);
                 row.appendChild(colImage);
                 colImage.appendChild(cardImage);
-                row.appendChild(colContent);        
-                colContent.appendChild(cardBody);
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardTitle);
-                cardBody.appendChild(cardText);
-                cardBody.appendChild(cardLink);
-                cardBody.appendChild(card_footer);
-                cardBody.appendChild(card_footer_p);
-            }else { 
-                cardContainer.appendChild(row);
-                       
                 row.appendChild(colContent);
                 colContent.appendChild(cardBody);
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardTitle);
                 cardBody.appendChild(cardText);
-                cardBody.appendChild(cardLink);
+                cardBody.appendChild(divi_color_link);
+                divi_color_link.appendChild(cardLink);
+                divi_color_link.appendChild(colorInput);
                 cardBody.appendChild(card_footer);
                 cardBody.appendChild(card_footer_p);
-                row.appendChild(colImage);       
+            } else {
+                cardContainer.appendChild(row);
+                row.appendChild(colContent);
+                colContent.appendChild(cardBody);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardTitle);
+                cardBody.appendChild(cardText);
+                cardBody.appendChild(divi_color_link);
+                divi_color_link.appendChild(cardLink);
+                divi_color_link.appendChild(colorInput);
+                cardBody.appendChild(card_footer);
+                cardBody.appendChild(card_footer_p);
+                row.appendChild(colImage);
                 colImage.appendChild(cardImage);
             }
 
-       
+
             this.rowContainer.appendChild(cardContainer);
         }
     }
@@ -331,7 +367,7 @@ class CardBlockImagenH {
         this.data.textAlign = this.textAlignSelect.value;
         this.data.width = this.widthSelect.value;
         this.data.alignImagen = this.alignImagen.value;
-        this.data.cardsData = this.cardsData;
+        this.data.cardsData = this.cardsData;        
 
     }
 
@@ -340,6 +376,7 @@ class CardBlockImagenH {
         this.textAlignSelect.value = this.data.textAlign ? this.data.textAlign : 'start';
         this.alignImagen.value = this.data.alignImagen ? this.data.alignImagen : 'left';
         this.widthSelect.value = this.data.width ? this.data.width : '50';
+        this.colorInput.value = this.data.colorcard || '#fdeebd';
 
         this.generateCards();
     }

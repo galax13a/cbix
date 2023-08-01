@@ -7,7 +7,20 @@
             Open Offcanvas
         </a>
 
-      
+        <div class="card text-center">
+            <div class="card-header">
+                Featured
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+            <div class="card-footer text-muted">
+                LinCard         
+             
+            </div>
+        </div>
 
         <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasComponents"
             aria-labelledby="offcanvasExampleLabel">
@@ -64,8 +77,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree-2" aria-expanded="false"
-                                aria-controls="collapseThree-2">
+                                data-bs-target="#collapseThree-2" aria-expanded="false" aria-controls="collapseThree-2">
                                 <strong>SocialMedia</strong>
                             </button>
                         </h2>
@@ -81,13 +93,12 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour-2" aria-expanded="false"
-                                aria-controls="collapseFour-2">
+                                data-bs-target="#collapseFour-2" aria-expanded="false" aria-controls="collapseFour-2">
                                 <strong>Containers</strong>
                             </button>
                         </h2>
-                        <div id="collapseFour-2" class="accordion-collapse collapse show"
-                            aria-labelledby="headingFour" data-bs-parent="#accordionExample2">
+                        <div id="collapseFour-2" class="accordion-collapse collapse show" aria-labelledby="headingFour"
+                            data-bs-parent="#accordionExample2">
                             <div class="accordion-body">
                                 <p>
                                     Here you have a gallery of reactive components for your blog, page, or design of
@@ -210,9 +221,15 @@
                                         <i class="fas fa-eraser"></i>
                                     </button>
 
+                                    <button title="Magic Cards" id="cardmagic" class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                        <i class="fas fa-magic"></i>
+                                    </button>
+                                    
                                     <button title="Delete" class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-trash"></i>
                                     </button>
+                                  
+                                  
                                 </h6>
                             </div>
 
@@ -335,6 +352,10 @@
                     console.error("Element with ID 'cardimagen' not found.");
                     return;
                 }
+                const btn_cardmagic = document.getElementById('cardmagic');
+                btn_cardmagic.addEventListener('click',() => {
+                    document.getElementById('a-offcanvasComponents').click();
+                })
 
                 function getRandomNumber(min, max) {
                     return Math.floor(Math.random() * (max - min + 1)) + min;
