@@ -39,6 +39,7 @@
 @push('scripts-body')
 
     <script src="{{ asset('js/editorcam/PRO/Tiktok.js') }}" defer></script>    
+    <script src="{{ asset('js/editorcam/PRO/CardLineImg.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CardImagenH.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CardImagen.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CardBlock.js') }}" defer></script>

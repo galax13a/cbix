@@ -97,7 +97,7 @@ class CardBlockImagenH {
                 this.cardsData[i] = this.cardsData[i] || {};
                 this.cardsData[i].colorcard = colorInput.value;
             }
-            this.generateCards();
+       //     this.generateCards();
             this.saveToData();
         });
     

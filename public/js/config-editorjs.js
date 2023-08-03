@@ -37,6 +37,7 @@ editor = new EditorJS({
         tiktok:  window.TikTokBlock,      
         cardpro: window.CardsPro,
         cardblock: window.CardBlock,
+        cardlineimg: window.CardBlockLineImg, 
         cardblockimagen: window.CardBlockImagen,
         cardblockimagenH: window.CardBlockImagenH,
         emotioconsblock: window.EmoticonsBlock,        

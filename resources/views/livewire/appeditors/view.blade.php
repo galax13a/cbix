@@ -7,18 +7,24 @@
             Open Offcanvas
         </a>
 
-        <div class="card text-center">
-            <div class="card-header">
-                Featured
+        <button id="btn-open-canvas-imgs" class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas"
+            data-bs-target="#cards-gallery-back" aria-controls="offcanvasTop">Toggle top offcanvas</button>
+
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="cards-gallery-back" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header shadow">
+                <h5 id="offcanvasTopLabel">Cards Backgrounds</h5>
+                <hr>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
             </div>
-            <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-            <div class="card-footer text-muted">
-                LinCard         
-             
+            <div class="offcanvas-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col" id="image-container"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -30,11 +36,7 @@
                     aria-label="Close"></button>
             </div>
             <div class="offcanvas-body">
-
-                <!-- Accordion Group #1 -->
                 <div class="accordion" id="accordionExample1">
-
-                    <!-- Accordion Item #1: Datasets -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingOne">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -69,11 +71,7 @@
                     </div>
 
                 </div>
-
-                <!-- Accordion Group #2 -->
                 <div class="accordion" id="accordionExample2">
-
-                    <!-- Accordion Item #1: SocialMedia -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -88,8 +86,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Accordion Item #2: Containers -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -126,9 +122,14 @@
                                         <img id="cardimagenH" title="Select Push" class="punter"
                                             src="{{ asset('editorcam/imgs/cards/icard-imagenH.png') }}" width="410px"
                                             height="200px" alt="Create CardImagenH">
+                                    </li>
+                                    <li class="list-group-item">
+                                        <h4>Card-ImagenColor</h4>
+                                        <img id="cardimagenH2" title="Select Push" class="punter"
+                                            src="{{ asset('editorcam/imgs/cards/card-container1.png') }}"
+                                            width="410px" height="200px" alt="Create CardImagenH">
 
                                     </li>
-                                    <li class="list-group-item">A fourth item</li>
                                     <li class="list-group-item">And a fifth one</li>
                                 </ul>
                             </div>
@@ -137,10 +138,7 @@
 
                 </div>
 
-                <!-- Accordion Group #3 -->
                 <div class="accordion" id="accordionExample3">
-
-                    <!-- Accordion Item #1: Chaturbate -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFive">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -156,8 +154,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Accordion Item #2: Albums -->
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingSix">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
@@ -221,15 +217,16 @@
                                         <i class="fas fa-eraser"></i>
                                     </button>
 
-                                    <button title="Magic Cards" id="cardmagic" class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                    <button title="Magic Cards" id="cardmagic"
+                                        class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-magic"></i>
                                     </button>
-                                    
+
                                     <button title="Delete" class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                         <i class="fas fa-trash"></i>
                                     </button>
-                                  
-                                  
+
+
                                 </h6>
                             </div>
 
@@ -266,18 +263,15 @@
                                     <x-storage-usage-report />
                                 </div>
 
-
                             </div>
 
                         </div>
 
                     </div>
 
-
-
                 </div>
 
-                <button id="saveButton" class="p-1 m-1 shadow-sm rounded-4  " style="display: none;"
+                <button id="saveButton" class="p-1 m-1 shadow-sm rounded-4" style="display: none;"
                     onclick="saveEditorData()">
                     <strong>
                         Save App
@@ -295,14 +289,33 @@
         </div>
 
         <style>
+            .form-control-sm {
+                width: 10ch;
+    
+            }
+            .form-control-color {
+                width: 1.9rem;
+
+                padding: 0.375rem;
+                background-color: transparent;
+                border: none;
+            }
+
             .ce-popover-item__icon {
                 -webkit-box-shadow: 0 0 0 0px;
             }
 
             .offcanvas.offcanvas-start {
                 width: 560px;
-                background: rgba(255, 255, 255, 0.66);
+                background: rgba(255, 255, 255, 0.493);
                 backdrop-filter: blur(10px);
+                border-radius: 3px;
+            }
+
+            .offcanvas.offcanvas-top {
+                height: 75%;
+                background: rgba(255, 255, 255, 0.274);
+                backdrop-filter: blur(6px);
                 border-radius: 3px;
             }
 
@@ -340,7 +353,69 @@
         <script>
             let readOnly = false;
 
-            document.addEventListener('livewire:load', function() {
+            function loadImages() {
+
+                const path = '/editorcam/imgs/cards/bck/';
+                const container = document.getElementById('image-container');
+
+                const images = container.getElementsByTagName('img');
+
+                if (!images.length > 0) {
+
+                    const loader = document.createElement('div');
+                    loader.style.position = 'absolute';
+                    loader.className = 'bg-warning p-3';
+                    loader.style.left = '50%';
+                    loader.style.top = '50%';
+                    loader.style.transform = 'translate(-50%, -50%)';
+                    loader.innerHTML = 'loading images';
+                    container.appendChild(loader);
+
+                    setTimeout(() => {
+                        loader.remove();
+                    }, 3000);
+
+                    for (let i = 1; i <= 70; i++) {
+                        const imgSrc = `${path}${i}.jpg`;
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.alt = `Imagen ${i}`;
+                        img.title = 'Click to Copy and Pastel Url img';
+                        img.onclick = () => copyImageUrl(imgSrc);
+                        container.appendChild(img);
+
+                    }
+                }
+
+
+            }
+
+
+            function copyImageUrl(url) {
+                navigator.clipboard.writeText(url).then(() => {
+                    let eventDetail = {
+                        type: 'success',
+                        message: 'Copy Imagen Ok!',
+                        position: 'center-center',
+                    };
+                    let notifyEvent = new CustomEvent('notify', {
+                        detail: eventDetail
+                    });
+                    window.dispatchEvent(notifyEvent);
+                }).catch(() => {
+                    let eventDetail = {
+                        type: 'failure',
+                        message: 'Error Copy Imagen',
+                        position: 'center-center',
+                    };
+                    let notifyEvent = new CustomEvent('notify', {
+                        detail: eventDetail
+                    });
+                    window.dispatchEvent(notifyEvent);
+                });
+            }
+
+            document.addEventListener('livewire:load', function() { // load              
 
                 const cardimagen = document.getElementById('cardimagen1');
                 if (!cardimagen) {
@@ -353,7 +428,7 @@
                     return;
                 }
                 const btn_cardmagic = document.getElementById('cardmagic');
-                btn_cardmagic.addEventListener('click',() => {
+                btn_cardmagic.addEventListener('click', () => {
                     document.getElementById('a-offcanvasComponents').click();
                 })
 
@@ -376,6 +451,11 @@
 
                 document.addEventListener('open-card-pro', function() {
                     document.getElementById('a-offcanvasComponents').click();
+                });
+
+                document.addEventListener('open-card-pro-imgs', function() {
+                    loadImages();
+                    document.getElementById('btn-open-canvas-imgs').click();
 
                 });
 
@@ -396,6 +476,11 @@
                     editor.blocks.insert('cardblockimagenH', {}, {}, editor.blocks.getBlocksCount(), true);
                 });
 
+                const cardImageH2 = document.getElementById('cardimagenH2');
+                cardImageH2.addEventListener('click', () => {
+                    //     alert('cardimage insert');
+                    editor.blocks.insert('cardlineimg', {}, {}, editor.blocks.getBlocksCount(), true);
+                });
 
                 window.onscroll = function() { // button scroll save
                     scrollFunction();
@@ -408,7 +493,6 @@
                         document.getElementById("saveButton").style.display = "none";
                     }
                 }
-
 
                 var galleryElement = document.getElementById("gallery-apps-ids");
 
