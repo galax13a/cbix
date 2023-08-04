@@ -6,13 +6,13 @@
             role="button" aria-controls="offcanvasComponents">
             Open Offcanvas
         </a>
-
+        <i class="bi bi-arrow-down-right-square-fill"></i>
         <button id="btn-open-canvas-imgs" class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#cards-gallery-back" aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
         <div class="offcanvas offcanvas-top" tabindex="-1" id="cards-gallery-back" aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header shadow">
-                <h5 id="offcanvasTopLabel">Cards Backgrounds</h5>
+                <h4 id="offcanvasTopLabel">Cards Backgrounds</h4>
                 <hr>
                 <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                     aria-label="Close"></button>
@@ -75,7 +75,8 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree-2" aria-expanded="false" aria-controls="collapseThree-2">
+                                data-bs-target="#collapseThree-2" aria-expanded="false"
+                                aria-controls="collapseThree-2">
                                 <strong>SocialMedia</strong>
                             </button>
                         </h2>
@@ -89,12 +90,13 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingFour">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseFour-2" aria-expanded="false" aria-controls="collapseFour-2">
+                                data-bs-target="#collapseFour-2" aria-expanded="false"
+                                aria-controls="collapseFour-2">
                                 <strong>Containers</strong>
                             </button>
                         </h2>
-                        <div id="collapseFour-2" class="accordion-collapse collapse show" aria-labelledby="headingFour"
-                            data-bs-parent="#accordionExample2">
+                        <div id="collapseFour-2" class="accordion-collapse collapse show"
+                            aria-labelledby="headingFour" data-bs-parent="#accordionExample2">
                             <div class="accordion-body">
                                 <p>
                                     Here you have a gallery of reactive components for your blog, page, or design of
@@ -291,8 +293,8 @@
         <style>
             .form-control-sm {
                 width: 10ch;
-    
             }
+
             .form-control-color {
                 width: 1.9rem;
 
