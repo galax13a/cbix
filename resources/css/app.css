@@ -4,6 +4,21 @@
 #container-card-block{
   padding: 4.5rem !important;
 }
+.rounded-6{
+  border-radius:26px;
+}
+.rounded-7{
+  border-radius:33px;
+}
+.rounded-8{
+  border-radius:38px;
+}
+.rounded-9{
+  border-radius:46px;
+}
+.rounded-10{
+  border-radius:50%;
+}
 
 #image-container img {
   width: 360px;
@@ -29,7 +44,7 @@
 }
 
 [contenteditable="true"]:focus {
-  background-color: #dbfde4; 
+  background-color: #cecece; 
   outline: none; 
   border-radius: 12px;
   padding: 4px;

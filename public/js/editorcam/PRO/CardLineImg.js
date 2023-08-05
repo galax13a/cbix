@@ -18,6 +18,7 @@ class CardBlockLineImg {
 
         this.containerRows = document.createElement('div');
         this.containerRows.className = 'container';
+        this.containerRows.id = 'containerRows';
         this.rowContainer = document.createElement('div');
         this.rowContainer.className = `row justify-content-${this.data.textAlign ? this.data.textAlign : 'start'}`;
 
@@ -56,8 +57,7 @@ class CardBlockLineImg {
         this.toolbarmenu.appendChild(this.alto);
 
         this.toolbarmenu.appendChild(this.generateButton);
-        this.container.appendChild(this.toolbarmenu);
-        this.container.appendChild(this.containerRows)
+        this.container.appendChild(this.toolbarmenu);        
         this.container.appendChild(this.rowContainer);
 
         this.restoreFromData();
@@ -67,6 +67,41 @@ class CardBlockLineImg {
         const num = Math.floor(Math.random() * number) + 1;
         return num;
     }
+    
+    
+     removeRoundedClasses(element, prefix = 'rounded-', fo=10) {
+        for (let i = 0; i <= fo; i++) {
+            const className = `${prefix}${i}`;
+            element.classList.remove(className);
+        }
+    }
+
+    createshadow(i) {
+        const div = document.createElement('div');
+        div.innerHTML = '<i class="bi bi-aspect-ratio-fill"></i>';
+        div.title = 'Shadow Card';       
+        if (this.cardsData[i].shadow) div.className = 'p-1 m-1 shadow-sm bg-gray punter rounded-3 border border-2 border-dark';
+        else div.className = 'p-1 m-1 shadow-sm bg-gray punter rounded-3';
+
+        div.addEventListener('click', () => {
+            const divGetCard = document.querySelector("#container-card-block" + i);
+            this.cardsData[i] = this.cardsData[i] || {};
+        
+            if (this.cardsData[i].shadow) {
+                divGetCard.classList.remove('shadow');
+                div.className = 'p-1 m-1 shadow-sm bg-gray punter rounded-3';
+            } else {
+                divGetCard.classList.add('shadow');
+                div.className = 'p-1 m-1 shadow-sm bg-gray punter rounded-3 border border-2 border-dark';
+            }
+            this.cardsData[i].shadow = !this.cardsData[i].shadow;
+            this.saveToData();
+        });
+
+        return div;
+    }
+    
+    
     createContainerfootercard(i = 0, menucolor=null) {
 
         const container = document.createElement('div');
@@ -84,20 +119,43 @@ class CardBlockLineImg {
         divi2.className = 'col-6';
         divi2.id = 'divi2menu'+i ;
 
+        const padding = `
+        <label for="customRangePaddinng${i}" class="form-label">Padding Main</label>
+        <input type="range" class="form-range" id="customRangePadding_main${i}" min="1" max="26" step="1">
+        `;
+
         const paddingHtml = `
             <label for="customRangePadding${i}" class="form-label">Padding Card</label>
-            <input type="range" class="form-range" id="customRangePadding${i}" min="1" max="8" step="1">
+            <input type="range" class="form-range" id="customRangePadding${i}" min="1" max="12" step="1">
         `;
         const borderHtml = `
             <label for="customRangeBorder${i}" class="form-label">Border Card</label>
             <input type="range" class="form-range" id="customRangeBorder${i}" min="0" max="5" step="1">
         `;
-        divmenu.innerHTML = paddingHtml + borderHtml;
+        const border2Html = `
+            <label for="customRangeBorder${i}" class="form-label">Rounded Card</label>
+            <input type="range" class="form-range" id="customRangeBorder2${i}" min="0" max="10" step="1">
+        `;
+
+        divmenu.innerHTML = padding + paddingHtml + borderHtml + border2Html;
+        const paddingRange0 = divmenu.querySelector(`#customRangePadding_main${i}`);
         const paddingRange = divmenu.querySelector(`#customRangePadding${i}`);
         const borderRange = divmenu.querySelector(`#customRangeBorder${i}`);
+        const borderRange2 = divmenu.querySelector(`#customRangeBorder2${i}`);
+
         divi.appendChild(divmenu);
         row.appendChild(divi);
         row.appendChild(divi2);        
+
+        paddingRange0.addEventListener('input', () => {
+            paddingRange0.title = 'Range '+ paddingRange0.value;
+            this.cardsData[i] = this.cardsData[i] || {};
+            this.cardsData[i].paddingValue0 = paddingRange0.value;          
+            const divGetCard = document.querySelector("#container-card-block-main-"+i);
+            divGetCard.style.padding = `${paddingRange0.value}rem`;          
+            this.saveToData();
+        });
+    
     
         paddingRange.addEventListener('input', () => {
             paddingRange.title = 'Range '+ paddingRange.value;
@@ -112,19 +170,31 @@ class CardBlockLineImg {
             borderRange.title = 'Border '+ borderRange.value;
             this.cardsData[i] = this.cardsData[i] || {};
             this.cardsData[i].borderValue = borderRange.value;
-            alert(borderRange.value);
+            const divGetCard = document.querySelector("#container-card-block"+i);
+            //divGetCard.classList = `border border-${borderRange.value}`;     
+            this.removeRoundedClasses(divGetCard,'border-', 5);   
+            divGetCard.classList.add(`border-${borderRange.value}`);
+            this.saveToData();
+        });
+
+        borderRange2.addEventListener('input', () => {
+            borderRange2.title = 'Border '+ borderRange2.value;
+            this.cardsData[i] = this.cardsData[i] || {};
+            this.cardsData[i].borderValue2 = borderRange2.value;
+            const divGetCard = document.querySelector("#container-card-block"+i);     
+            this.removeRoundedClasses(divGetCard,'rounded-', 10);   
+            divGetCard.classList.add(`rounded-${borderRange2.value}`);
             this.saveToData();
         });
 
             const cardData = this.cardsData[i];
-            if (cardData) {
-            if (paddingRange) {
-                paddingRange.value = cardData.paddingValue || '1';
-            }
-            if (borderRange) {
-                borderRange.value = cardData.borderValue || '1';
-            }
-        }
+            if (cardData) {   
+                paddingRange0.value = cardData.paddingValue0 || '1'; 
+                paddingRange.value = cardData.paddingValue || '1';    
+                borderRange.value = cardData.borderValue || '0';      
+                borderRange2.value = cardData.borderValue2 || '1';
+                
+           }
 
             return container;
     }
@@ -195,10 +265,25 @@ class CardBlockLineImg {
             return input;
     }
 
+    createSelectImageMain(cardContainer, i) {
+        const imgselect = document.createElement('div');
+            imgselect.className = 'p-2 m-1 bg-grey punter rounded-circle text-primary';
+            imgselect.title = 'Imagen URL Main';
+        imgselect.addEventListener('click', async () => {
+            const url = await this.customPrompt('Background Image URL', 'Please enter the URL for the background image:');
+            if (url) {
+                cardContainer.style.backgroundImage = `url(${url})`;
+            this.cardsData[i] = this.cardsData[i] || { };
+            this.cardsData[i].backgroundUrlMain = url;
+            }
+        });
+            return imgselect;
+    }
+
             createSelectImage(cardContainer, i) {
         const imgselect = document.createElement('div');
             imgselect.className = 'p-2 m-1 bg-light punter rounded-circle text-dark';
-            imgselect.title = 'Imagen URL';
+            imgselect.title = 'Imagen URL Card';
         imgselect.addEventListener('click', async () => {
             const url = await this.customPrompt('Background Image URL', 'Please enter the URL for the background image:');
             if (url) {
@@ -369,20 +454,28 @@ class CardBlockLineImg {
 
             const cardBody = document.createElement('div');
             cardBody.id = 'container-card-block'+i;
-            cardBody.className = 'card-body border border-2';
+            
             cardBody.style.backgroundSize = 'cover'; // Esto hará que la imagen cubra completamente el contenedor
             cardBody.style.backgroundPosition = 'center'; // Esto centrará la imagen en el contenedor
             cardBody.style.height = alturaTotal + 'px';
             cardBody.style.padding =`${this.cardsData[i]?.paddingValue ?? 1}rem`; 
+            let claseborder = '';
+            let claseronder = '';
+            let clase_shadow = '';
+            if(this.cardsData[i]?.borderValue) claseborder = `border border-${this.cardsData[i]?.borderValue}`; else claseborder = '';
+            if(this.cardsData[i]?.borderValue2) claseronder = `rounded-${this.cardsData[i]?.borderValue2}`; else claseronder = '';
+            if(this.cardsData[i]?.shadow) clase_shadow = `shadow`; else clase_shadow = '';            
+
+            cardBody.className = `card-body border ${clase_shadow}  ${claseborder} ${claseronder}`;// class vBody
 
             if (this.cardsData[i]?.backgroundUrl) {
                 cardBody.style.backgroundImage = `url(${this.cardsData[i].backgroundUrl})`;
             } else {
                 const randomNumber = this.gerene_imagen(71); // Asumiendo que esto devuelve un número
-            const url_tem_back = `/editorcam/imgs/cards/backgraund/one/${randomNumber}.jpg`;
-            this.cardsData[i] = this.cardsData[i] || { };
-            this.cardsData[i].backgroundUrl = url_tem_back;
-            cardBody.style.backgroundImage = `url(${url_tem_back})`;             
+                const url_tem_back = `/editorcam/imgs/cards/backgraund/one/${randomNumber}.jpg`;
+                this.cardsData[i] = this.cardsData[i] || { };
+                this.cardsData[i].backgroundUrl = url_tem_back;
+                cardBody.style.backgroundImage = `url(${url_tem_back})`;             
             }
 
             const cardTitle = document.createElement(this.cardsData[i]?.titleType || 'h5');
@@ -473,13 +566,25 @@ class CardBlockLineImg {
                 });
             });
 
+            const divcontainer2 = document.createElement('div'); //main card
+            divcontainer2.id = 'container-card-block-main-'+i;
+            divcontainer2.className =` border ${clase_shadow}  ${claseborder} `;
+            divcontainer2.style.padding =`${this.cardsData[i]?.paddingValue0 ?? 1}rem`; 
+            divcontainer2.style.backgroundSize = 'cover'; // Esto hará que la imagen cubra completamente el contenedor
+            divcontainer2.style.backgroundPosition = 'center'; // Esto centrará la imagen en el contenedor
+            if (this.cardsData[i]?.backgroundUrlMain) {
+                divcontainer2.style.backgroundImage = `url(${this.cardsData[i].backgroundUrlMain})`;
+            } 
+
             const colorInput = this.createColor(i);
             const cardHeader = this.createHeader(i,colorInput.value);
             const cardFooter = this.createFooter(i,colorInput.value);
             const select_imagen = this.createSelectImage(cardBody, i);
+            const select_imagenMain = this.createSelectImageMain(divcontainer2, i);
             const select_gallery = this.createSelectImage_gallery();
             select_imagen.innerHTML = '<i class="fas fa-image"></i>';
-            select_gallery.innerHTML = '<i class="fas fa-images"></i>';
+            select_gallery.innerHTML = '<i class="bi bi-file-image"></i>';
+            select_imagenMain.innerHTML = '<i class="bi bi-image-alt"></i>';
 
             const text_color_input  = this.createColorText(i);
 
@@ -492,6 +597,7 @@ class CardBlockLineImg {
             cardFooter.style.color = text_color_input.value;
 
             const cardMenuFooter = this.createContainerfootercard(i);
+            const div_shadow = this.createshadow(i);
             const crustermenu_toolmini = cardMenuFooter.querySelector(`#divi2menu${i}`);
 
             if(this.borderCheck.checked) cardContainer.appendChild(cardHeader);
@@ -504,14 +610,18 @@ class CardBlockLineImg {
             toolmini.appendChild(colorInput);
             toolmini.appendChild(select_gallery);
             toolmini.appendChild(text_color_input);
-            cardContainer.appendChild(cardBody);
+            toolmini.appendChild(div_shadow);
+            toolmini.appendChild(select_imagenMain);
+
+            cardContainer.appendChild(divcontainer2);
+            divcontainer2.appendChild(cardBody);
+
             if(this.borderCheck.checked) cardContainer.appendChild(cardFooter);
             this.rowContainer.appendChild(cardContainer);
 
             cardContainer.appendChild(cardMenuFooter);
             crustermenu_toolmini.appendChild(toolmini);
-          //  console.log(crustermenu_toolmini);
-
+  
         }
 
             const br = document.createElement("div");
