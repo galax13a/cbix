@@ -8,6 +8,24 @@ use App\Models\Apionechatur;
 
 class ChaturbateController extends Controller
 {
+
+    public function profile_api(Request $request)
+    {
+        $apiUrl = $request->url;
+/*
+        $response = Http::get($apiUrl);
+
+        if ($response->successful()) {
+            $profile = $response->json();
+
+            return response()->json($profile);
+        } else {
+            return response()->json(['error' => 'Error url']);
+        }
+        */
+        return response()->json(['error' => 'REsponser Profile Server']);
+    }
+
     public function profile($chaturbateId, $username)
     {
         // Obtenemos la URL de la API de la base de datos

@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () { // url auth admin
         return view('api.index');
     });
 });
+Route::post('/chatur/profile/api', 'App\Http\Controllers\ChaturbateController@profile_api'); //editor api profile cb api
 
 Route::get('/upgrade-plan', [UpgradePlanController::class, 'index'])->name('upgrade-plan');
 

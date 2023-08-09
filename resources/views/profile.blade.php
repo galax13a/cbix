@@ -264,7 +264,7 @@
             <div class="card text-center ">
                 <div class="card-header rounded-4">
                     <img src="https://roomimg.stream.highwebmedia.com/riw/{{ $profile['username'] }}.jpg"
-                        class="profile-image mx-auto">
+                        class="profile-image mx-auto"> 
                     <h2><span class="badge bg-dark  shadow-lg rounded-4">{{ $profile['username'] }}</span></h2>
                 </div>
                 <div class="card-body">

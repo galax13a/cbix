@@ -10,6 +10,8 @@
         <button id="btn-open-canvas-imgs" class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#cards-gallery-back" aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
+    
+
         <div class="offcanvas offcanvas-top" tabindex="-1" id="cards-gallery-back" aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header shadow">
                 <h4 id="offcanvasTopLabel">Cards Backgrounds</h4>
@@ -75,8 +77,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="headingThree">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseThree-2" aria-expanded="false"
-                                aria-controls="collapseThree-2">
+                                data-bs-target="#collapseThree-2" aria-expanded="false" aria-controls="collapseThree-2">
                                 <strong>SocialMedia</strong>
                             </button>
                         </h2>
@@ -441,14 +442,17 @@
                 function loadRandomImage() {
                     const randomNumber = getRandomNumber(1, 6);
                     cardimagen.src = `{{ asset('editorcam/imgs/cards/card-imagen-${randomNumber}.png') }}`;
-                    console.log(cardimagen.src);
+                    //console.log(cardimagen.src);
 
                 }
 
+                /* menu canvas
                 setTimeout(() => {
                     document.getElementById('a-offcanvasComponents').click();
                     loadRandomImage();
                 }, 3000);
+
+                */
 
 
                 document.addEventListener('open-card-pro', function() {

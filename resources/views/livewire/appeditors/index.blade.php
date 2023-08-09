@@ -2,7 +2,7 @@
 @push('scripts-head')
     <link href="{{ asset('cs/select2.min.css') }}" rel="stylesheet" />
     <link type="text/css" rel="stylesheet" href="{{ asset('cs/jquery-ui.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('cs/cards1.css') }}">
 
     <script src="{{ asset('js/editorcam/editorcam.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/header.js') }}" defer></script>
@@ -32,12 +32,12 @@
     <script src="{{ asset('js/editorcam/quote.js') }}" defer ></script>   
     <script src="{{ asset('js/editorcam/ckeditor.js') }}" defer></script>
     <script  src="https://www.tiktok.com/embed.js"></script>
-    
+ 
 
 @endpush
 
 @push('scripts-body')
-
+    <script src="{{ asset('js/editorcam/PRO/CardBlockCbApi.js') }}" defer></script>   
     <script src="{{ asset('js/editorcam/PRO/Tiktok.js') }}" defer></script>    
     <script src="{{ asset('js/editorcam/PRO/CardLineImg.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CardImagenH.js') }}" defer></script>

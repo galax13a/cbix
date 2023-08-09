@@ -34,8 +34,10 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },
+       
         tiktok:  window.TikTokBlock,      
         cardpro: window.CardsPro,
+        cardcbjson : window.Cardchatur,
         cardblock: window.CardBlock,
         cardlineimg: window.CardBlockLineImg, 
         cardblockimagen: window.CardBlockImagen,
