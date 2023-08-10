@@ -35,6 +35,9 @@ class Cardchatur {
         this.iframeElement = document.createElement('iframe');
         this.iframeElement.classList.add('iframe-url-editor');
 
+        this.cardlistarmodels = null;
+        this.dataModels = null;
+
         this.cardData = {
             username: this.data.username,
             token_balance: this.data.token_balance,
@@ -79,7 +82,8 @@ class Cardchatur {
         const row = this.createRow();
         const col1 = this.createColumn('col-4');
         const col2 = this.createColumn('col-4');
-        const col3 = this.createColumn('col-4');
+        const col3 = this.createDiv('coly-3', 'col-4');
+        const col3containerlista = this.createDiv('col-list-top10-chatur', 'container');
 
         const toolrender = this.createDiv('tolrender', 'container');
 
@@ -95,9 +99,15 @@ class Cardchatur {
         const Cardchatur = this.RenderCB();
         const CardSlider = this.RenderSlider();
         const CardListadoTop = this.RenderListModels();
+
         coly1.innerHTML += Cardchatur + '<br/><hr> ';
         coly2.innerHTML += CardSlider;
-        coly3.innerHTML += CardListadoTop;
+        coly3.appendChild(col3containerlista);
+        col3containerlista.innerHTML = CardListadoTop;
+
+
+        this.cardlistarmodels = col3containerlista; // culum3 data
+
 
         this.container.appendChild(contenedor);
         return this.container;
@@ -183,42 +193,61 @@ class Cardchatur {
 
     RenderListModels() {
         const temple = `
-        <ol class="list-group list-group-numbered">
+        <ol class="list-group list-group-numbered shadow m-1">
  
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-              
-                    <img src="https://roomimg.stream.highwebmedia.com/riw/bella_willis_.jpg?1691594760" class="img-fluid rounded-start rounded-3 shadow" alt="...">
-             
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                    </div>
-                    <span class="badge bg-primary rounded-pill">14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                    </div>
-                    <span class="badge bg-primary rounded-pill">14</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between align-items-start">
-                    <div class="ms-2 me-auto">
-                    <div class="fw-bold">Subheading</div>
-                    Content for list item
-                    </div>
-                    <span class="badge bg-primary rounded-pill">14</span>
-                </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start ">
+            <div class="ms-2 me-auto">
+                <div class="">
+                    <img src="https://roomimg.stream.highwebmedia.com/ri/livanddrew.jpg" class="img-fluid rounded-3 shadow" alt="livanddrew">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fw-bold">🔺Liv and Drew</div>
+                <p class="p-2">
+                💡 Topic: Good vibes only! | New videos in bio! |  | -- At Goal: Sex at every goal! [every 1111 tokens] -- The goal will repeat 10 times
+                </p>
+            </div>
+            <span class="badge bg-primary rounded-pill">5636</span>
+            </li>
+                  
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="">
+                    <img src="https://roomimg.stream.highwebmedia.com/ri/itwasinsimpsons.jpg" class="img-fluid rounded-3 shadow" alt="itwasinsimpsons">
+                </div>
+            </div>
+                <div class="col-md-6">
+                    <div class="fw-bold">🔺Lisa</div>
+                    <p class="p-2">
+                    💡 Topic: take off bra!!!&lt;3 #18 #lovense #teen #new #brunette [2699 tokens remaining]
+                    </p>
+                </div>
+                <span class="badge bg-primary rounded-pill">5750</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+                <div class="">
+                    <img src="https://roomimg.stream.highwebmedia.com/ri/bella_willis_.jpg" class="img-fluid rounded-3 shadow" alt="bella_willis_">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="fw-bold">🔺♡ BELLA ♡DAKOTA♡</div>
+                <p class="p-2">
+                💡 Topic: GOAL: boob flash [0 tokens remaining] welcome! Let's have a good time today💜 #new #shy #skinny #18 #asian
+                </p>
+            </div>
+            <span class="badge bg-primary rounded-pill">4298</span>
+            </li>
                 </ol>
-            `;    
-          
+            `;
+
         return temple;
     }
 
     RenderSlider() {
 
         const temple = `
-        <div id="carrusel_card" class="carousel slide rounded-3" style="height:190px;">
+        <div id="carrusel_card" class="carousel slide rounded-3" style="height:260px;">
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img src="/editorcam/imgs/cards/bck/1.jpg" class="d-block w-100" alt="...">
@@ -277,31 +306,84 @@ class Cardchatur {
         }
         return true;
     }
-
+    
+    formatNumberWithDots(number) {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+      
 
     loadData() {
-        const url = this.urlInput.value;
-
+        const limit = 3;
         const type_loading = "hourglass";
         const seg = 1000;
         dispatchLoadingEvent(type_loading, seg);
+        this.loadingElement.style.display = 'block';
 
-        fetch('/chatur/profile/api', {
+        fetch('/chatur/lists/models10', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
             },
-            body: JSON.stringify({ url })
+            body: JSON.stringify({ limit })
         })
             .then(response => response.json())
             .then(data => {
                 this.loadingElement.style.display = 'none';
 
-                if (data) {
 
-                    this.container.innerHTML += this.RenderCB();
-                    this.cardData = data;
+                if (data && data.results) {
+                    const container = document.getElementById('cards-container');
+                    let htmlString = '<ol class="list-group list-group-numbered shadow">';
+                    this.loadingElement.style.display = 'block';
+                    data.results.forEach(result => {
+                        htmlString += `
+                        <li class="list-group-item d-flex justify-content-between align-items-start">
+                            <div class="ms-2 me-auto" data-iframe="${result.iframe_embed_revshare}">
+                                <div class="col-10">
+                                    <img src="${result.image_url_360x270}" class="img-fluid img-thumbnail border border-2 rounded-3 shadow img-clickable" alt="${result.username}">
+                                    <i class="bi bi-vinyl-fill shadow rounded-circle" title = "Views Guys"></i>
+                                    <span class="badge bg-primary rounded-pill shadow-sm">  ${this.formatNumberWithDots(result.num_users)}</span>
+                                    </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="fw-bold">🔺${result.display_name || result.username}</div>
+                                <p class="p-2">
+                                💡 Topic: ${result.room_subject}
+                                </p>                                
+                            </div>
+                      
+                         
+                        </li>`;
+                    });
+
+                    htmlString += '</ol>';
+                    this.cardlistarmodels.innerHTML = htmlString; 
+                
+                    document.querySelectorAll('.img-clickable').forEach(imgElement => {
+                        imgElement.addEventListener('click', (e) => {
+                            const type_loading = "hourglass";
+                            const seg = 2000;
+                            dispatchLoadingEvent(type_loading, seg);
+                          
+
+                            const iframeContent = e.target.parentElement.parentElement.getAttribute('data-iframe');
+                            const iframeContainer = document.getElementById('iframeContainer');
+                            const iframeSpinner = document.getElementById('iframeSpinner');
+                    
+                            iframeContainer.innerHTML = iframeContent;
+                            const iframeElement = iframeContainer.querySelector('iframe');
+                            iframeElement.addEventListener('load', () => {
+                                iframeSpinner.style.display = 'none'; // Ocultar el spinner una vez que el iframe esté cargado
+                            });
+                    
+                            new bootstrap.Modal(document.getElementById('iframeModal')).show();
+                        });
+                    });
+
+                    this.loadingElement.style.display = 'none';
+                    
+
                 } else {
                     let eventDetail = {
                         type: 'failure',

@@ -25,6 +25,17 @@ class ChaturbateController extends Controller
         */
         return response()->json(['error' => 'REsponser Profile Server']);
     }
+    public function listmodelschatur(Request $request){
+        $webmasterCbKey = env('WEBMASTER_CB', 'https://chaturbate.com/api/public/affiliates/onlinerooms/?wm=gQ4iQ&client_ip=request_ip');        
+        $limite = $request->input('limit', 15);
+
+        $url_api = $webmasterCbKey . '&limit=' . $limite;
+        $response = Http::get($url_api);
+
+        if ($response->successful()) {
+             return response()->json($response->json());
+        }
+    }
 
     public function profile($chaturbateId, $username)
     {

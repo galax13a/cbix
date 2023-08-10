@@ -10,7 +10,19 @@
         <button id="btn-open-canvas-imgs" class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#cards-gallery-back" aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
-    
+
+            <div class="modal fade" id="iframeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="ratio ratio-16x9" id="iframeContainer">
+                                <div class="spinner-border text-primary" id="iframeSpinner" role="status"></div> <!-- Spinner aquí -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
 
         <div class="offcanvas offcanvas-top" tabindex="-1" id="cards-gallery-back" aria-labelledby="offcanvasTopLabel">
             <div class="offcanvas-header shadow">
