@@ -304,6 +304,9 @@
         </div>
 
         <style>
+            .ck-widget.raw-html-embed .raw-html-embed__source {
+                min-height: 430px;
+            }
             .form-control-sm {
                 width: 10ch;
             }

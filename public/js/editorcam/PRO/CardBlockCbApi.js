@@ -34,16 +34,17 @@ class Cardchatur {
         this.loadingElement.style.display = 'none';
         this.iframeElement = document.createElement('iframe');
         this.iframeElement.classList.add('iframe-url-editor');
+        this.rowMain = this.createRow();
 
         this.cardlistarmodels = null;
         this.dataModels = null;
 
-        this.cardData = {
-            username: this.data.username,
-            token_balance: this.data.token_balance,
-            num_followers: this.data.num_followers,
-            num_viewers: this.data.num_viewers,
-            last_broadcast: this.data.last_broadcast,
+        this.cardData = { 
+            username: this.data.modelname || 'Model Cam',
+            imgurl: this.data.imgurl,
+            button_caption: this.data.button,
+            backimg: this.data.backimg,
+            socialred: this.data.socialid,
         };
 
         this.renderConstruct();
@@ -61,7 +62,8 @@ class Cardchatur {
         column.appendChild(this.butonLink);
         column.appendChild(linkcb);
         this.container.appendChild(this.loadingElement);
-        this.urlInput.style.width = '70%';
+        this.urlInput.style.width = '70%'; 
+
         return this.container;
 
     }
@@ -79,37 +81,35 @@ class Cardchatur {
         title_card.className = 'text-center';
         this.container.appendChild(title_card);
         const contenedor = this.createDiv('contenedRen', 'container');
-        const row = this.createRow();
-        const col1 = this.createColumn('col-4');
+        
+        const col1 = this.createDiv('coly1','col-6');
         const col2 = this.createColumn('col-4');
-        const col3 = this.createDiv('coly-3', 'col-4');
+        const col3 = this.createDiv('coly3', 'col-6');
         const col3containerlista = this.createDiv('col-list-top10-chatur', 'container');
 
         const toolrender = this.createDiv('tolrender', 'container');
 
-        contenedor.appendChild(row);
+        contenedor.appendChild(this.rowMain);
 
-        const coly1 = row.appendChild(col1);
-        const coly2 = row.appendChild(col2);
-        const coly3 = row.appendChild(col3);
+        const coly1 = this.rowMain.appendChild(col1);
+     //   const coly2 = row.appendChild(col2);
+        const coly3 = this.rowMain.appendChild(col3);
 
         coly1.appendChild(title);
-        coly2.appendChild(title2);
+     //   coly2.appendChild(title2);
         coly3.appendChild(title3);
         const Cardchatur = this.RenderCB();
         const CardSlider = this.RenderSlider();
         const CardListadoTop = this.RenderListModels();
 
         coly1.innerHTML += Cardchatur + '<br/><hr> ';
-        coly2.innerHTML += CardSlider;
+    //    coly2.innerHTML += CardSlider;
         coly3.appendChild(col3containerlista);
         col3containerlista.innerHTML = CardListadoTop;
 
-
         this.cardlistarmodels = col3containerlista; // culum3 data
-
-
         this.container.appendChild(contenedor);
+
         return this.container;
 
     }
@@ -171,13 +171,13 @@ class Cardchatur {
         return button;
     }
 
-    createLinkCB() {
+    createLinkCB(href="https://chaturbate.com/statsapi/authtoken/") {
         const container = document.createElement('div');
         container.className
         const link = document.createElement('a');
-        link.className = 'custom-link text-decoration-none p-1 ';
+        link.className = 'text-decoration-none p-1 ';
         link.textContent = "Api.";
-        link.href = "https://chaturbate.com/statsapi/authtoken/";
+        link.href = href;
         link.target = "_blank";
         return link;
     }
@@ -194,22 +194,6 @@ class Cardchatur {
     RenderListModels() {
         const temple = `
         <ol class="list-group list-group-numbered shadow m-1">
- 
-            <li class="list-group-item d-flex justify-content-between align-items-start ">
-            <div class="ms-2 me-auto">
-                <div class="">
-                    <img src="https://roomimg.stream.highwebmedia.com/ri/livanddrew.jpg" class="img-fluid rounded-3 shadow" alt="livanddrew">
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="fw-bold">🔺Liv and Drew</div>
-                <p class="p-2">
-                💡 Topic: Good vibes only! | New videos in bio! |  | -- At Goal: Sex at every goal! [every 1111 tokens] -- The goal will repeat 10 times
-                </p>
-            </div>
-            <span class="badge bg-primary rounded-pill">5636</span>
-            </li>
-                  
             <li class="list-group-item d-flex justify-content-between align-items-start">
             <div class="ms-2 me-auto">
                 <div class="">
@@ -233,7 +217,7 @@ class Cardchatur {
             <div class="col-md-6">
                 <div class="fw-bold">🔺♡ BELLA ♡DAKOTA♡</div>
                 <p class="p-2">
-                💡 Topic: GOAL: boob flash [0 tokens remaining] welcome! Let's have a good time today💜 #new #shy #skinny #18 #asian
+                💡 Topic: GOAL: boob flash  [every 1111 tokens] welcome! Let's have a good time today💜 #new #shy #skinny #18 #asian #Zahori
                 </p>
             </div>
             <span class="badge bg-primary rounded-pill">4298</span>
@@ -274,23 +258,24 @@ class Cardchatur {
     }
     RenderCB(data = null) {
         const temple = `
-            <div class="card profile-card-1 shadow mb-4 mt-2 bg-light" id= "card-cb-defa" style="height:360px;">
+        <div class="card profile-card-1 shadow mb-4 mt-2 bg-light" id= "card-cb-defa" style="height:360px;">
             <img src="https://images.pexels.com/photos/946351/pexels-photo-946351.jpeg?w=500&h=650&auto=compress&cs=tinysrgb"
             alt="profile-sample1" class="background" />
             <img src="https://roomimg.stream.highwebmedia.com/riw/${this.urlInput.value}.jpg" alt="profile-image" class="profile" />
             <div class="card-content mb-4 mt-2">
-                <h2>${this.urlInput.value}  </h2>
-                <a href="#" class="btn btn-chatur p-1 shadow text-decoration-none text-white"> <strong>Access Content 🔒</strong></a>
-                    <div class="icon-block">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"> <i class="fab fa-twitch"></i></a>
-                        <a href="#"> <i class="fab fa-discord"></i></a>
-                        <a  href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
+                <h2 contenteditable="true">${this.urlInput.value}</h2>
+                <a href="#" class="btn btn-chatur p-1 shadow text-decoration-none text-white" contenteditable="true"> <strong>Access Content 🔒</strong></a>
+                <div class="icon-block">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"> <i class="fab fa-twitch"></i></a>
+                    <a href="#"> <i class="fab fa-discord"></i></a>
+                    <a  href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
             </div>
-         </div>
-     `;
-        return temple;
+        </div>
+    `;
+    
+    return temple;    
 
     }
     validateDomain(url) {
@@ -306,14 +291,23 @@ class Cardchatur {
         }
         return true;
     }
-    
+
     formatNumberWithDots(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-      }
-      
+    }
+
+    showIframeModal(iframeContent) {
+        const type_loading = "hourglass";
+        const seg = 1600;
+        dispatchLoadingEvent(type_loading, seg);
+        const iframeContainer = document.getElementById('iframeContainer');
+        iframeContainer.innerHTML = iframeContent;    
+        const modal = new bootstrap.Modal(document.getElementById('iframeModal'));
+        modal.show();
+    }
 
     loadData() {
-        const limit = 3;
+        const limit = 2;
         const type_loading = "hourglass";
         const seg = 1000;
         dispatchLoadingEvent(type_loading, seg);
@@ -329,10 +323,9 @@ class Cardchatur {
         })
             .then(response => response.json())
             .then(data => {
-                this.loadingElement.style.display = 'none';
+              
 
-
-                if (data && data.results) {
+                    if (data && data.results) {
                     const container = document.getElementById('cards-container');
                     let htmlString = '<ol class="list-group list-group-numbered shadow">';
                     this.loadingElement.style.display = 'block';
@@ -340,49 +333,49 @@ class Cardchatur {
                         htmlString += `
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto" data-iframe="${result.iframe_embed_revshare}">
-                                <div class="col-10">
-                                    <img src="${result.image_url_360x270}" class="img-fluid img-thumbnail border border-2 rounded-3 shadow img-clickable" alt="${result.username}">
+                                <div class="col-12">
+                                <h5 class = "text-primary  p-1 m-1 text-capitalize ">${result.username} </h5>
+                                    <img src="${result.image_url_360x270}" class="img-fluid img-thumbnail border border-2 rounded-3 shadow img-clickable punter" alt="${result.username}">
+                                    <strong class="d-block"><i class="bi bi-flag"></i> ${result.location}</strong>                                  
                                     <i class="bi bi-vinyl-fill shadow rounded-circle" title = "Views Guys"></i>
                                     <span class="badge bg-primary rounded-pill shadow-sm">  ${this.formatNumberWithDots(result.num_users)}</span>
+                                    <strong > ${result.spoken_languages}</strong>  
                                     </div>
                             </div>
                             <div class="col-md-6">
-                                <div class="fw-bold">🔺${result.display_name || result.username}</div>
+                                <div class="fw-bold punter" id = "topic-rom-cb-block">🔺${result.display_name || result.username}  
+                                <i class="bi bi-arrow-through-heart"></i> </div>
                                 <p class="p-2">
                                 💡 Topic: ${result.room_subject}
                                 </p>                                
-                            </div>
-                      
+                            </div>                      
                          
                         </li>`;
                     });
 
                     htmlString += '</ol>';
-                    this.cardlistarmodels.innerHTML = htmlString; 
-                
+                    this.cardlistarmodels.innerHTML = htmlString;
+                                      
                     document.querySelectorAll('.img-clickable').forEach(imgElement => {
                         imgElement.addEventListener('click', (e) => {
-                            const type_loading = "hourglass";
-                            const seg = 2000;
-                            dispatchLoadingEvent(type_loading, seg);
-                          
-
                             const iframeContent = e.target.parentElement.parentElement.getAttribute('data-iframe');
-                            const iframeContainer = document.getElementById('iframeContainer');
-                            const iframeSpinner = document.getElementById('iframeSpinner');
-                    
-                            iframeContainer.innerHTML = iframeContent;
-                            const iframeElement = iframeContainer.querySelector('iframe');
-                            iframeElement.addEventListener('load', () => {
-                                iframeSpinner.style.display = 'none'; // Ocultar el spinner una vez que el iframe esté cargado
-                            });
-                    
-                            new bootstrap.Modal(document.getElementById('iframeModal')).show();
+                            this.showIframeModal(iframeContent);
+                        });
+                    });
+
+                    document.querySelectorAll('#topic-rom-cb-block').forEach(divElement => {
+                        divElement.addEventListener('click', (e) => {
+                            const iframeContent = e.target.parentElement.parentElement.querySelector('.ms-2').getAttribute('data-iframe');
+                            this.showIframeModal(iframeContent);
                         });
                     });
 
                     this.loadingElement.style.display = 'none';
-                    
+                    const moreModels = this.createLinkCB("https://facexcam.com/top10");
+                    moreModels.classList.add('btn', 'btn-cb', 'shadow', 'm-2', 'p-1', 'w-100');
+                    moreModels.textContent = 'More Models Top 100...';
+                    this.cardlistarmodels.appendChild(moreModels);
+                //    this.rowMain.style.display = 'block';
 
                 } else {
                     let eventDetail = {
@@ -396,13 +389,14 @@ class Cardchatur {
     }
 
     save() {
+
         return {
             url: this.urlInput.value,
             username: this.cardData.username,
-            token_balance: this.cardData.token_balance,
-            num_followers: this.cardData.num_followers,
-            num_viewers: this.cardData.num_viewers,
-            last_broadcast: this.cardData.last_broadcast,
+            imgurl: this.cardData.imgurl,
+            button_caption: this.cardData.button,
+            backimg: this.cardData.backimg,
+            socialred: this.cardData.socialred,
         };
     }
 

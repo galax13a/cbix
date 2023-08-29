@@ -36,6 +36,7 @@ editor = new EditorJS({
         },
        
         tiktok:  window.TikTokBlock,      
+        codexPro : window.CodexPro,
         cardpro: window.CardsPro,
         cardcbjson : window.Cardchatur,
         cardblock: window.CardBlock,
@@ -157,7 +158,7 @@ editor = new EditorJS({
             config: {
                 tools: {
                     header: Header,
-                    tiktok:  window.TikTokBlock,
+                    iframesimple:window.IframeUrlSimple,                    
                     cardhtml:window.CardBlock,
                     cardblockimagen: window.CardBlockImagen,
                     cardblockimagenH: window.CardBlockImagenH,
@@ -169,7 +170,7 @@ editor = new EditorJS({
                     embed: Embed,
                     underline: Underline,
                     delimiter: Delimiter,
-                    code: CodeTool,
+                    codexPro : window.CodexPro,
                     list: {
                         class: NestedList,
                         inlineToolbar: true,
@@ -219,9 +220,7 @@ editor = new EditorJS({
         },
         style: EditorJSStyle.StyleInlineTool,
         embed: Embed,
-        underline: Underline,
-        raw: RawTool,
-        code: CodeTool,
+        underline: Underline  
 
     },
 

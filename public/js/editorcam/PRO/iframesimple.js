@@ -56,11 +56,29 @@ class IframeUrlSimple {
     }
 
     loadIframe() {
-        const url = this.urlInput.value;
-
+        let url = this.urlInput.value;
+        let iframe = url;
         const type_loading = "hourglass";
         const seg = 3000;
         dispatchLoadingEvent(type_loading, seg);
+
+         if (iframe.includes('<iframe')) {
+
+            var srcStart = iframe.indexOf('src="');
+            if (srcStart !== -1) {
+                srcStart += 5;  
+                var srcEnd = iframe.indexOf('"', srcStart);
+                if (srcEnd !== -1) {
+                    iframe = iframe.substring(srcStart, srcEnd);                  
+                }
+            }
+        } else {
+                iframe = url;
+        }
+
+        url = iframe;
+        console.log(iframe);
+        this.urlInput.value = url;
 
         fetch('/loadiframe', { // Reemplaza esto con tu ruta del servidor Laravel
             method: 'POST',

@@ -21,6 +21,7 @@ window.jQuery = jQuery;
 
 
 window.Notiflix = Notiflix;
+//window.ClassicEditor = ClassicEditor;
   // Cambiar el color de fondo en Notiflix.Block
   /*
   Notiflix.Block.init({
