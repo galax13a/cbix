@@ -6,7 +6,7 @@
             role="button" aria-controls="offcanvasComponents">
             Open Offcanvas
         </a>
-        <i class="bi bi-arrow-down-right-square-fill"></i>
+       
         <button id="btn-open-canvas-imgs" class="btn btn-primary d-none" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#cards-gallery-back" aria-controls="offcanvasTop">Toggle top offcanvas</button>
 
@@ -304,9 +304,7 @@
         </div>
 
         <style>
-            .ck-widget.raw-html-embed .raw-html-embed__source {
-                min-height: 430px;
-            }
+        
             .form-control-sm {
                 width: 10ch;
             }

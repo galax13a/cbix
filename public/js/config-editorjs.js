@@ -222,9 +222,7 @@ editor = new EditorJS({
         embed: Embed,
         underline: Underline  
 
-    },
-
-    
+    },    
 
 });
 });

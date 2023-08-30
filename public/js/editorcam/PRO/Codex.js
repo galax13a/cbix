@@ -1,8 +1,8 @@
-class CodexPro {
+class CodeX {
     static get toolbox() {
       return {
-        title: 'CodexPro',
-        icon: '<i class="bi bi-code-square"></i>',
+        title: 'CodeX',
+        icon: '<i class="bi bi-code-slash"></i>',
       };
     }
   
@@ -24,12 +24,6 @@ class CodexPro {
       this.cssTextarea.placeholder = 'Enter additional CSS here... 🎨';
       this.cssTextarea.addEventListener('input', this.handleCssInput.bind(this));
   
-      this.jsTextarea = document.createElement('textarea');
-      this.jsTextarea.classList.add('codexpro-textarea');
-      this.jsTextarea.value = this.data.js || '';
-      this.jsTextarea.placeholder = 'Enter JavaScript code here... 🚀';
-      this.jsTextarea.addEventListener('input', this.handleJsInput.bind(this));
-  
       this.textarea = document.createElement('textarea');
       this.textarea.classList.add('codexpro-textarea');
       this.textarea.value = this.data.content || '';
@@ -45,15 +39,12 @@ class CodexPro {
   
       this.container.appendChild(this.toggleButton);
       this.container.appendChild(this.cssTextarea);
-      this.container.appendChild(this.jsTextarea);
       this.container.appendChild(this.textarea);
       this.container.appendChild(this.codeView);
       this.codeView.contentEditable = true; // Set to true when showing the HTML view
   
       if (this.data.content) {
         this.textarea.style.display = 'none';
-        this.cssTextarea.style.display = 'none';
-        this.jsTextarea.style.display = 'none';
         this.codeView.style.display = 'block';
         this.updateCodeView();
       }
@@ -71,14 +62,10 @@ class CodexPro {
     toggleView() {
       if (this.textarea.style.display === 'none') {
         this.textarea.style.display = 'block';
-        this.cssTextarea.style.display = 'block';
-        this.jsTextarea.style.display = 'block';
         this.codeView.style.display = 'none';
         this.codeView.contentEditable = false;
       } else {
         this.textarea.style.display = 'none';
-        this.cssTextarea.style.display = 'none';
-        this.jsTextarea.style.display = 'none';
         this.codeView.style.display = 'block';
         this.updateCodeView();
         this.codeView.contentEditable = true; // Set to true when showing the HTML view
@@ -89,16 +76,12 @@ class CodexPro {
       this.updateCodeView();
     }
   
-    handleJsInput() {
-      this.updateCodeView();
-    }
-  
     handleCodeViewInput() {
       this.textarea.value = this.codeView.innerHTML;
     }
   
     updateCodeView() {
-      this.codeView.innerHTML = `<style>${this.cssTextarea.value}</style><script>${this.jsTextarea.value}</script>${this.textarea.value}`;
+      this.codeView.innerHTML = `<style>${this.cssTextarea.value}</style>${this.textarea.value}`;
     }
   
     render() {
@@ -108,14 +91,11 @@ class CodexPro {
     save() {
       const content = this.textarea.value;
       const css = this.cssTextarea.value;
-      const js = this.jsTextarea.value;
       return {
         content,
         css,
-        js,
       };
     }
   }
   
-  window.CodexPro = CodexPro;
-  
+  window.Codex = CodeX;
