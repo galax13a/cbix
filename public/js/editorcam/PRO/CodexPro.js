@@ -5,6 +5,7 @@ class CodexPro {
         icon: '<i class="bi bi-code-square"></i>',
       };
     }
+    
   
     constructor({ data, api }) {
       this.data = data || {};
@@ -43,11 +44,12 @@ class CodexPro {
       this.codeView.contentEditable = false; // Initially, set to false
       this.codeView.addEventListener('input', this.handleCodeViewInput.bind(this));
   
-      this.container.appendChild(this.toggleButton);
+   
       this.container.appendChild(this.cssTextarea);
       this.container.appendChild(this.jsTextarea);
       this.container.appendChild(this.textarea);
       this.container.appendChild(this.codeView);
+      this.container.appendChild(this.toggleButton);
       this.codeView.contentEditable = true; // Set to true when showing the HTML view
   
       if (this.data.content) {

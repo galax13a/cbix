@@ -1,0 +1,6 @@
+.nav-link:hover {
+    background-color: #4891bb;
+    border-radius: 11px;
+    padding: 6px;
+    font-weight: bold;
+}

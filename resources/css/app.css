@@ -97,7 +97,7 @@
 }
 
 [contenteditable="true"]:focus {
-  background-color: #cecece; 
+  background-color: #f0ededb0; 
   outline: none; 
   border-radius: 12px;
   padding: 4px;

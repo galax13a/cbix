@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sociallinks', function (Blueprint $table) {
+        Schema::create('socialinks', function (Blueprint $table) {
             $table->id();
             $table->string('icon');
             $table->unsignedBigInteger('user_id');
@@ -26,7 +26,7 @@ return new class extends Migration
                   
             $table->foreign('social_media_id')
                   ->references('id')
-                  ->on('social_media')
+                  ->on('socialmedias')
                   ->onDelete('cascade');
         });
     }
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('social_links');
+        Schema::dropIfExists('socialinks');
     }
 };

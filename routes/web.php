@@ -72,6 +72,9 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('themas', 'livewire.themas.index')->middleware('auth');
+	Route::view('editors', 'livewire.editors.index')->middleware('auth');
+	Route::view('componentes', 'livewire.componentes.index')->middleware('auth');
 	Route::view('backups', 'livewire.backups.index')->middleware('auth');
 	Route::view('uploadplans', 'livewire.uploadplans.index')->middleware('auth');
 	Route::view('uploadthumbnails', 'livewire.uploadthumbnails.index')->middleware('auth');

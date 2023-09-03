@@ -52,6 +52,15 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/themas') }}" class="nav-link">🟣 Themas</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/editors') }}" class="nav-link">🟣 Editors</a> 
+                        </li>
+						<li class="nav-item">
+                            <a href="{{ url('/componentes') }}" class="nav-link">🟣 Componentes</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/backups') }}" class="nav-link">🟣 Backups</a> 
                         </li>
 						<li class="nav-item">
