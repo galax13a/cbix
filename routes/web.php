@@ -45,6 +45,9 @@ Route::post('/get-ai-free', [\App\Http\Controllers\EditorjsController::class, 'g
 Route::post('/get-ai-pro', [\App\Http\Controllers\EditorjsController::class, 'getAIPro']);
 
 
+Route::any('/themas/components', [\App\Http\Controllers\ThemacomponentsController::class, 'createthemacom']);
+
+
 Route::get('/test-speed', function () { // test speed
     return view('testspeed');
 });
@@ -72,6 +75,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('themas-components', 'livewire.themacoms.index')->middleware('auth');
 	Route::view('themas', 'livewire.themas.index')->middleware('auth');
 	Route::view('editors', 'livewire.editors.index')->middleware('auth');
 	Route::view('componentes', 'livewire.componentes.index')->middleware('auth');

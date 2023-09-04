@@ -7,32 +7,32 @@
                <!-- Conten sidebar theme app -->                                   
                     <div class="d-flex flex-sm-column flex-row flex-nowrap align-items-center">
                         <a href="/themas" class="p-2 text-dark " tooltips="Theme"  data-bs-placement="right" data-bs-original-title="Icon-only">
-                            <i class="bi bi-window-dock fs-1"></i></i>
+                            <i class="bi bi-window-dock fs-3"></i></i>
                         </a>
                         <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center align-items-center">
                             <li class="nav-item">
                                 <a href="{{ url('/home') }}" class="nav-link link-dark py-2 px-2" tooltips="Home App"  data-bs-placement="right" data-bs-original-title="Home">
-                                    <i class="bi-house fs-1"></i>
+                                    <i class="bi-house fs-3"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/test-speed') }}"  class="nav-link link-dark py-2 px-2" tooltips="Test Speed"  data-bs-placement="right" data-bs-original-title="Dashboard">
-                                    <i class="bi-speedometer2 fs-1"></i>
+                                    <i class="bi-speedometer2 fs-3"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{ url('/cbhrs') }}" class="nav-link link-dark py-2 px-2" tooltips="Stats"  data-bs-placement="right" data-bs-original-title="Orders">
-                                    <i class="bi-table fs-1"></i>
+                                    <i class="bi-table fs-3"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link link-dark py-2 px-2" tooltips="Favorites"  data-bs-placement="right" data-bs-original-title="Products">
-                                    <i class="bi-heart fs-1"></i>
+                                    <i class="bi-heart fs-3"></i>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" class="nav-link link-dark py-2 px-2" tooltips="Chat App"  data-bs-placement="right" >
-                                    <i class="bi-chat fs-1"></i>
+                                    <i class="bi-chat fs-3"></i>
                                 </a>                            
                             </li>
                             

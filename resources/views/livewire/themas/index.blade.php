@@ -22,6 +22,7 @@
 @push('scripts-body')
  
     <script src="{{ asset('js/editorcam/PRO/CodexPro.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/ComponentsV1.js') }}" defer></script>
     <script src="{{ asset('js/editor-theme.js') }}" defer></script>
   
 @endpush
@@ -34,25 +35,5 @@
         </div>     
     </div>   
 </div>
-<div class="floating-footer">
-    <nav class="navbar navbar-light bg-light rounded-3">
-        <div class="container-fluid">
-			<div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-			  <div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-			  <div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-          	<div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-            <a tooltips="Save Thema" title = "SaveMe"class="navbar-brand" href="#"><i class="bi bi-save2"></i></a>
-            <a class="navbar-brand" title ="See theme" href="#"><i class="bi bi-arrow-up-right-square"></i></a>
-			<a class="navbar-brand" title="Create Theme" href="#"><i class="bi bi-google-play"></i></a>
-        </div>
-    </nav>
-</div>
+
 @endsection

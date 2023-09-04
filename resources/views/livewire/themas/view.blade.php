@@ -1,56 +1,94 @@
 @section('title', __('Themas'))
-<div class="container-fluid" >
-	<div class="row justify-content-center">
-			<div class="col-md-12 my-2" id="view-js-live-pages">
-				<div class="card ">								
-					<div class="card-header bg-transparent shadow">
-						<strong>
-							<i class="bi bi-window-sidebar"></i> Themes Folio
-						</strong>
-					</div>
-					
-					<div class="card-body" >
-							@include('livewire.themas.modals')						
-							<div id="editorjs"></div>
-				</div>
-		</div>
-	</div>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-md-12 my-2" id="view-js-live-pages">
+            <div class="card">
+                <div class="card-header bg-transparent shadow">
+                    <div class="row">
+                        <div class="col-4">
+                            <strong><i class="bi bi-window-sidebar"></i> File Thema</strong>
 
-	
-<div class="floating-footer">
-    <nav class="navbar navbar-light bg-light rounded-3">
-        <div class="container-fluid">
-			<div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-			  <div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-			  <div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-          	<div class="col">
-				<a class="navbar-brand" href="#">Menú 1</a>
-			  </div>
-            <a tooltips="Save Thema" title = "SaveMe"class="navbar-brand" href="#"><i class="bi bi-save2"></i></a>
-            <a class="navbar-brand" title ="See theme" href="#"><i class="bi bi-arrow-up-right-square"></i></a>
-			<a class="navbar-brand" title="Create Theme" href="#"><i class="bi bi-google-play"></i></a>
+                            <button onclick="" title="New Document"
+                                class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                <i class="bi bi-plus-square-dotted"></i>
+                            </button>
+                        </div>
+                        <div class="col-6 align-items-center">
+							
+                            <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#"><i
+                                    class="bi bi-save2"></i> Save</a>
+                            |
+                            <button onclick="toggleReadOnly()"
+                                class="border-0 shadow-sm rounded-4 bg-light text-primary"> <i class="fas fa-eye"></i>
+                            </button>
+                            |
+                            <a class="navbar-brand" title="Create Theme" href="#">
+                                <i class="bi bi-google-play"> Generate </i></a>
+                            |
+                            <button onclick="clearEditor()" title="Clean Editor"
+                                class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                <i class="fas fa-eraser"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-body">
+                    @include('livewire.themas.modals')
+                    <div id="editorjs"></div>
+                </div>
+            </div>
         </div>
-    </nav>
-</div>
 
-<style>
-	.floating-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000; 
+        <div class="col-md-12 my-2" id="view-js-live-pages">
+            <div class="card">
+                <div class="card-header bg-transparent shadow">
+                    <div class="row">
+                        <div class="col-10">
+                            <strong><i class="bi bi-window-sidebar"></i> Folios Themas</strong>
 
-	
-}
+							 
+                        </div>
+                        <div class="col-2">
+                            <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#"><i
+                                    class="bi bi-cloud-upload"></i> UpLoad File</a>
 
-</style>
-	<script>
-	
-	</script>
+                        </div>
+                        <col class="col-4">
+
+						 <div class="componentes">
+								componentes
+								<x-themacoms.lista1 />
+								<hr>
+						 </div>
+
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item">Theme App.html</li>
+							<li class="list-group-item">Css App.css</li>
+							<li class="list-group-item">Script Js App.js</li>
+							<li class="list-group-item">Script php App.php</li>
+							<li class="list-group-item">Imagen Thema App</li>
+							
+						  </ul>
+						<col class="col-8">
+             
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="card-body">
+                @include('livewire.themas.modals')
+                <div id="editorjs"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function clearEditor() {
+            editor.clear();
+        }
+
+    </script>
 </div>
