@@ -20,6 +20,7 @@
 <body style="background-color: #fff;">
 
     <div id="app">
+     
         <main class="py-1">
             <livewire:sider-barthemelayur />
         </main>

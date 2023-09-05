@@ -1,4 +1,5 @@
 @section('title', __('Themas'))
+
 <div class="container-fluid">
     <div class="row justify-content-center">
         <div class="col-md-12 my-2" id="view-js-live-pages">
@@ -58,7 +59,16 @@
                         </div>
                         <col class="col-4">
 
-						
+						 <div class="componentes">
+								componentes
+								<x-themacoms.lista1 />
+								<x-themacoms.btnup />
+								<x-themacoms.navbar-flex />	
+								<x-themacoms.home-one-flex />				
+								<hr>
+								<x-themacoms.botones-all />
+						 </div>
+
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">Theme App.html</li>
 							<li class="list-group-item">Css App.css</li>

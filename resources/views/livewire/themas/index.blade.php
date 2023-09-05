@@ -16,7 +16,7 @@
     <script src="{{ asset('js/editorcam/header-with-alignment.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/paragraph-with-alignment.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/columns.js') }}" defer></script>
-    
+
 @endpush
 
 @push('scripts-body')
@@ -25,7 +25,7 @@
     <script src="{{ asset('js/editorcam/PRO/ComponentsV1.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsThemaRender.js') }}" defer></script>    
     <script src="{{ asset('js/editor-theme.js') }}" defer></script>
-  
+
 @endpush
 
 @section('content')

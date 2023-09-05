@@ -7,9 +7,19 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use App\Models\Themacom;
+
 
 class ThemacomponentsController extends Controller
 {
+
+    public function store(Request $request)
+    {
+
+        
+
+    }
+
     public function createthemacom(Request $request)
     {
         try {
@@ -42,9 +52,10 @@ class ThemacomponentsController extends Controller
             $componentContent = <<<BLADE
             <div>             
                  <style>{$css}</style>
+                 <section>{$filteredContent}</section>
                  <script>{$js}</script>
                  <?php {$php} ?>           
-                 <section>{$filteredContent}</section>
+                 
             </div>
             BLADE;
 
