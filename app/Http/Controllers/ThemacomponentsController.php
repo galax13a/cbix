@@ -40,14 +40,14 @@ class ThemacomponentsController extends Controller
            $php = $data['php'] ?? '';         
 
             $componentContent = <<<BLADE
-            <div>
-             <section>{$filteredContent}</section>
+            <div>             
                  <style>{$css}</style>
                  <script>{$js}</script>
                  <?php {$php} ?>           
+                 <section>{$filteredContent}</section>
             </div>
             BLADE;
-/*
+
             if (File::put($componentPath, $componentContent)) {
                 $instruction = "Ready Ok !!! copy paste new componente Blade: <x-themacoms.{$slug} />";
                 return response()->json([
@@ -56,13 +56,14 @@ class ThemacomponentsController extends Controller
                     'instruction' => $instruction
                 ]);
             }
-            */
+            
+            /*
             $instruction = "<x-themacoms.{$slug} />";
             return response()->json([
                 'success' => true, 
                 'slug' => $slug,
                 'instruction' => $instruction
-            ]);
+            ]);*/
 
         } catch (ValidationException $e) {
             Log::error('Error al validar el formulario para crear un themacom: ' . $e->getMessage());

@@ -8,7 +8,7 @@ use App\Models\Themacom;
 
 class Themacoms extends Component
 {
-    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy'];
+    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'store'];
 
     use WithPagination;
 
@@ -26,12 +26,8 @@ class Themacoms extends Component
 
         return view('livewire.themacoms.view', [
             'themacoms' => Themacom::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('pic', 'LIKE', $keyWord)
-						->orWhere('slug', 'LIKE', $keyWord)
-						->orWhere('codex', 'LIKE', $keyWord)
-						->orWhere('active', 'LIKE', $keyWord)
-						->orWhere('type', 'LIKE', $keyWord)->paginate(10)
+						->orWhere('name', 'LIKE', $keyWord)			
+						->orWhere('type', 'LIKE', $keyWord)->paginate(30)
         ]);
     }
 	
@@ -50,7 +46,7 @@ class Themacoms extends Component
 		$this->type = null;
     }
 
-    public function store()
+       public function store()
     {
         $this->validate([
 		'name' => 'required',

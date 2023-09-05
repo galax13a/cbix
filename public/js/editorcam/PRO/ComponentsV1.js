@@ -23,7 +23,9 @@ class ComponentsV1 {
     this.phpTextarea = this.createTextarea('php', 'Enter PHP code here... 💻', this.handlePhpInput.bind(this)); // New PHP Textarea
     this.htmlcodex = this.createTextarea('content', 'Enter your HTML code here... 📋');
 
-    this.createButtonElement = this.createButton('Crear componente', this.createBladeComponent.bind(this));
+    this.createButtonElement = this.createButton('Create Component', this.createBladeComponent.bind(this));
+    this.createButtonElement.className = 'custom-link btn btn-cb';
+    this.createButtonElement.innerHTML = '<i class="bi bi-cpu"></i> Create Component';
 
     this.codeView = document.createElement('div');
     this.codeView.classList.add('codexpro-code-view');
@@ -151,11 +153,10 @@ class ComponentsV1 {
 
 
   async createBladeComponent() {
-    //const componentName = prompt('Nombre del componente:');
-    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
     const componentName = await this.customPrompt('Component Blade', 'do not use - or strange characters, we are ready !!');
-    if (!componentName) return alert('Component no Apply');
+    if (!componentName) return //alert('Component no Apply');
 
     const dataToSend = {
       name: componentName,

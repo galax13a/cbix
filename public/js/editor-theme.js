@@ -11,6 +11,7 @@ editor = new EditorJS({
     placeholder: '📝 Lets start creating a good theme for folio pages',
     readOnly: false,
     tools: {
+        themacomponentrender : window.ThemacomponentRender,
         componentsv1 : window.ComponentsV1,
         codexPro : window.CodexPro,   
         header: {

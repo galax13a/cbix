@@ -23,6 +23,7 @@
  
     <script src="{{ asset('js/editorcam/PRO/CodexPro.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsV1.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/ComponentsThemaRender.js') }}" defer></script>    
     <script src="{{ asset('js/editor-theme.js') }}" defer></script>
   
 @endpush

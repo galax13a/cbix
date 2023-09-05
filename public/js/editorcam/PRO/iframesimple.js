@@ -77,7 +77,7 @@ class IframeUrlSimple {
         }
 
         url = iframe;
-        console.log(iframe);
+       // console.log(iframe);
         this.urlInput.value = url;
 
         fetch('/loadiframe', { // Reemplaza esto con tu ruta del servidor Laravel

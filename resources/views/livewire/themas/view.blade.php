@@ -36,6 +36,7 @@
 
                 <div class="card-body">
                     @include('livewire.themas.modals')
+					
                     <div id="editorjs"></div>
                 </div>
             </div>
@@ -57,12 +58,7 @@
                         </div>
                         <col class="col-4">
 
-						 <div class="componentes">
-								componentes
-								<x-themacoms.lista1 />
-								<hr>
-						 </div>
-
+						
 						<ul class="list-group list-group-flush">
 							<li class="list-group-item">Theme App.html</li>
 							<li class="list-group-item">Css App.css</li>
