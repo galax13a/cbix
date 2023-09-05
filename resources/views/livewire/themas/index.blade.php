@@ -26,6 +26,7 @@
     <script src="{{ asset('js/editorcam/PRO/ComponentsThemaRender.js') }}" defer></script>    
     <script src="{{ asset('js/editor-theme.js') }}" defer></script>
 
+
 @endpush
 
 @section('content')

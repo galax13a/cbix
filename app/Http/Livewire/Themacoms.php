@@ -8,16 +8,25 @@ use App\Models\Themacom;
 
 class Themacoms extends Component
 {
-    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'store'];
+    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx'];
 
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $pic, $slug, $codex, $active, $type;
+    public $editorjs;
 
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
+    }
+
+    public function salvarx(){
+        
+        $this->dispatchBrowserEvent('notify', [
+            'type' => 'success',
+            'message' => '¡ready Salvar',
+        ]);
     }
 
     public function render()

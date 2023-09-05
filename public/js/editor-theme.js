@@ -2,11 +2,10 @@ var isReadOnly = false;
 var editor;
 
 const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
-window.addEventListener('load', function () {
-   
+window.addEventListener('load', function () {  
 
 editor = new EditorJS({
-    holder: 'editorjs',
+    holder: 'editorthema',
     autofocus: false,
     placeholder: '📝 Lets start creating a good theme for folio pages',
     readOnly: false,

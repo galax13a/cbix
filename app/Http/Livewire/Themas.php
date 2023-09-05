@@ -9,16 +9,25 @@ use Illuminate\Support\Str;
 
 class Themas extends Component
 {
-    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy'];
+    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx'];
 
     use WithPagination;
-
+	protected $queryString = ['themecreate', 'editar'];
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $pic, $slug, $htmlen, $htmles, $css, $js, $active, $type;
-    public $error_slug;
+    public $error_slug, $editorjs, $themecreate, $editar;
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
+    }
+
+    public function salvarx(){
+        
+        $this->dispatchBrowserEvent('notify', [
+            'type' => 'success',
+            'position' => 'center-center',
+            'message' => '¡ready Salvar',
+        ]);
     }
 
     public function render()
@@ -32,8 +41,7 @@ class Themas extends Component
         
         return view('livewire.themas.view', [
             'themas' => Thema::latest()
-						->orWhere('name', 'LIKE', $keyWord)				
-						->orWhere('htmlen', 'LIKE', $keyWord)				
+						->orWhere('name', 'LIKE', $keyWord)						
 						->orWhere('type', 'LIKE', $keyWord)->paginate(66)
         ]);
     }
