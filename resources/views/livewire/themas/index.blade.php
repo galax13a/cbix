@@ -6,7 +6,6 @@
     <script src="{{ asset('js/editorcam/list.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/list-nested.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/checklist.js') }}" defer></script>
-    <script src="{{ asset('js/editorcam/simple-image.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/embed.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/table.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/marker.js') }}" defer></script>
@@ -20,7 +19,7 @@
 @endpush
 
 @push('scripts-body')
- 
+<script src="{{ asset('js/editorcam/PRO/Emotions.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CodexPro.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsV1.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsThemaRender.js') }}" defer></script>    

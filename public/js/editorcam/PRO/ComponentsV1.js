@@ -14,7 +14,7 @@ class ComponentsV1 {
     this.container.classList.add('codexpro-container');
 
     this.toggleButton = document.createElement('button');
-    this.toggleButton.classList.add('codexpro-toggle-button');
+    this.toggleButton.className = 'btn btn-outline-secondary custom-link mb-1 border border-0';
     this.toggleButton.textContent = 'View Code 📄';
     this.toggleButton.addEventListener('click', this.toggleView.bind(this));
 
@@ -155,7 +155,7 @@ class ComponentsV1 {
   async createBladeComponent() {
 
     const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    const componentName = await this.customPrompt('Component Blade', 'do not use - or strange characters, we are ready !!');
+    const componentName = await this.customPrompt('Component Blade', 'Do not use - or strange characters, You can use spaces !!');
     if (!componentName) return //alert('Component no Apply');
 
     const dataToSend = {
@@ -191,7 +191,7 @@ class ComponentsV1 {
           };
           let notifyEvent = new CustomEvent('notify', { detail: eventDetail });
           window.dispatchEvent(notifyEvent);
-          console.log(`Thema Component   : ${responseData.instruction}`)
+          
           },
           () => {
              // is not client
@@ -201,7 +201,14 @@ class ComponentsV1 {
           );
 
       } else {
-        alert('Error Create Component');
+       
+        let eventDetail = {
+          type: 'failure',
+          message: 'Error Create Component',
+          position: 'center-center',
+      };
+      let notifyEvent = new CustomEvent('notify', { detail: eventDetail });
+      window.dispatchEvent(notifyEvent);
       }
     } catch (error) {
       console.error('Error sent componet :', error);

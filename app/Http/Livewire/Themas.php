@@ -6,13 +6,14 @@ use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Thema;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 
 class Themas extends Component
 {
     protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx'];
 
     use WithPagination;
-	protected $queryString = ['themecreate', 'editar'];
+	protected $queryString = ['themecreate', 'selected_id'];
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $pic, $slug, $htmlen, $htmles, $css, $js, $active, $type;
     public $error_slug, $editorjs, $themecreate, $editar;
@@ -20,6 +21,20 @@ class Themas extends Component
     {
         $this->resetPage();
     }
+
+    public function mount(Request $request)
+    {
+        $this->themecreate = $request->input('themecreate', 'wait');
+        $this->selected_id = $request->input('selected_id', null);
+    
+        if ($this->selected_id > 0) {
+            $this->emit('showEditor');
+            $this->themecreate = 'ok';
+        }
+    }
+    
+
+
 
     public function salvarx(){
         
@@ -30,14 +45,40 @@ class Themas extends Component
         ]);
     }
 
+    public function newtheme(){
+        $this->themecreate = 'new';
+        $this->selected_id = null;
+       /*
+        $this->dispatchBrowserEvent('notify', [
+            'type' => 'success',
+            'position' => 'center-center',
+            'message' => 'New thema',
+        ]);
+        */
+
+      //  $this->emit('showEditor');
+
+    }
+    public function updatedSelectedId()
+    {
+        if ($this->selected_id > 0) {
+            $this->emit('showEditor');
+            $this->themecreate = 'ok';
+        }
+    }
+
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
         $this->slug = Str::slug($this->name);
 
+       
         if(Thema::where('slug', $this->slug)->exists()) {
             $this->error_slug = "The slug already exists.";
         }else     $this->error_slug = "";
+
+            
+       // if ($this->selected_id > 0) $this->emit('showEditor');
         
         return view('livewire.themas.view', [
             'themas' => Thema::latest()
@@ -71,24 +112,28 @@ class Themas extends Component
         'slug' => 'required|unique:themas,slug'	
         ]);
 
-        Thema::create([ 
-			'name' => $this-> name,
-			'pic' => $this-> pic,
-            'slug' =>  Str::slug($this->name),
-			'htmlen' => "",
-			'htmles' => "",
-			'css' => $this-> css,
-			'js' => $this-> js,
-			'active' => false,
-			'type' => $this-> type
+        $newThema = Thema::create([
+            'name' => $this->name,
+            'pic' => $this->pic,
+            'slug' => Str::slug($this->name),
+            'htmlen' => "",
+            'htmles' => "",
+            'css' => $this->css,
+            'js' => $this->js,
+            'active' => false,
+            'type' => $this->type
         ]);
-        
+
         $this->resetInput();
-		$this->dispatchBrowserEvent('closeModal');		
+        $this->selected_id = $newThema->id;           
+        $this->themecreate = 'ok';     
+		//$this->dispatchBrowserEvent('closeModal');		
+        $this->emit('showEditor');
         $this->dispatchBrowserEvent('notify', [
                 'type' => 'success',
                 'message' => '¡ Thema Successfully created!',
             ]);
+       
     }
 
     public function edit($id)

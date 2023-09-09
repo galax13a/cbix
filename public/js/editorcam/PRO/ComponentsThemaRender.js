@@ -63,10 +63,10 @@ class ThemacomponentRender {
                 this.codeView.innerHTML = responseData.data;
                 this.codeView.style.display = 'block';
             } else {
-                console.error("Error fetching component code.");
+                alert("Error fetching component code.");
             }
         } catch (error) {
-            console.error("Fetch error: ", error);
+            alert("Fetch error: ", error);
         }
     }
 

@@ -27,14 +27,6 @@
     </div>
 
   
-    <style>
-        body{
-            background-image: linear-gradient(to bottom, #ffffff, #fffefe79);
-        }
-          
-      
-    </style>
-
     @livewireScripts
 
     <script src="{{ asset('js/util.js') }} "></script>
