@@ -4,97 +4,63 @@
     <div class="row justify-content-center">
         <div class="col-md-12 my-2" id="view-js-live-pages">
             <div class="card">
-                <div class="card-header  bg-transparent shadow">
+                <div class="card-header  bg-transparent shadow" id="menu-thema-card">
                     <div class="row">
-                        <div class="col-8" wire:key='menutabcard'>
+                        <div class="col-10" wire:key='menutabcard'>
                             <strong><i class="bi bi-window-sidebar"></i> File Thema</strong>
-                                <button wire:click="newtheme"
-                                    onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'"
-                                    title="New Document" class="border-0 shadow-sm rounded-4 bg-light text-primary">
-                                    <i class="bi bi-plus-square-dotted"></i>
-                                </button>
-                            @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')                         
-                                <button  
-                                    title="Save Thema"
-                                    onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0); saveEditorData();"
-                                    class="border-0 shadow-sm rounded-4 bg-light text-primary">
-                                    <i class="bi bi-save2"></i>
-                                </button>
-                                <button  
-                                    title="Reload Thema"
-                                    onclick="reloadPage();"
-                                    class="border-0 shadow-sm rounded-4 bg-light text-primary">                        
-                                    <i class="bi bi-arrow-clockwise"></i>
-                                  </button>
-                                    <button  
-                                    title="Thema English"
-                                    onclick=""
-                                    class="border-0 shadow-sm rounded-4 bg-light text-primary">                        
-                                    <span class="badge rounded-pill text-bg-dark">EN</span> | 
-                                  </button>
-                                    <button  
-                                    title="Thema Spanish"
-                                    onclick=";"
-                                    class="border-0 shadow-sm rounded-4 bg-light text-primary">                        
-                                    <span class="badge rounded-pill text-bg-light">ES</span>
-                                    </button>                               |
-                                    <button  
-                                    title="SEO thema"
-                                    onclick=""
-                                    class="border-0 shadow-sm rounded-4 bg-light text-warning">                        
-                                    <i class="bi bi-file-medical-fill fs-5"></i>
-                                    </button>
-                                    <button  
-                                    title="Traductor thema"
-                                    onclick=""
-                                    class="border-0 shadow-sm rounded-4 bg-light text-info">                        
-                                    <i class="bi bi-badge-tm fs-5"></i>
-                                    </button>                                    
-                                    <button onclick="clearEditor()" title="Clean Editor"
-                                    class="border-0 shadow-sm rounded-4 bg-light text-primary">
-                                    <i class="fas fa-eraser"></i>
-                                    </button>
-                        
+                            <a href="javascript:void(0)" wire:click="toggleLanguage('es')"
+                                class="badge {{ $currentLanguage === 'es' ? 'text-bg-light' : 'text-bg-dark' }}">English</a>
+                            |
+                            <a href="javascript:void(0)" wire:click="toggleLanguage('en')"
+                                class="badge {{ $currentLanguage === 'en' ? 'text-bg-light' : 'text-bg-dark' }}">Spanish</a>
+
+                            <button wire:click="newtheme"
+                                onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'"
+                                title="New Document" class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                <i class="bi bi-plus-square-dotted"></i>
+                            </button>
+                            @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')
+                                <!--   <x-themacoms.themabarcard />  -->
                             @endif
-                        </div>                       
-                      
+                        </div>
+
                     </div>
 
                 </div>
 
                 @if ($this->themecreate == 'new')
-                 <div id="form-creatediv" wire:key='form-create'>
-                    <form wire:submit.prevent="store">
-                        <div class="form-group mt-3">
+                    <div id="form-creatediv" wire:key='form-create'>
+                        <form wire:submit.prevent="store">
+                            <div class="form-group mt-3">
 
-                            @if ($name > '')
-                                @if ($error_slug != '')
-                                    <div class="badge badge-danger text-bg-danger"
-                                        wire:key="error-slug-theme-off1">
-                                        {{ $error_slug }}
-                                    </div>
-                                @else
-                                    <div class="badge badge-success text-bg-info"
-                                        wire:key="error-slug-theme-ok1">
-                                        Thema slug Ready !!
-                                    </div>
+                                @if ($name > '')
+                                    @if ($error_slug != '')
+                                        <div class="badge badge-danger text-bg-danger" wire:key="error-slug-theme-off1">
+                                            {{ $error_slug }}
+                                        </div>
+                                    @else
+                                        <div class="badge badge-success text-bg-info" wire:key="error-slug-theme-ok1">
+                                            Thema slug Ready !!
+                                        </div>
+                                    @endif
                                 @endif
-                            @endif
 
-                            <span class="badge text-bg-light"> <strong>{{ $this->slug }}</strong> </span>
-                            <input type="text" class="input-link-editor w-100" wire:key='namemodel'
-                                id="name" wire:model="name">
-                        </div>
-                        <button type="submit" class="custom-link btn btn-cb m-2 p-2 w-100">
-                            Save Thema
-                        </button>
-                       @error('name') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </form>
-                </div>
-            @endif
+                                <span class="badge text-bg-light"> <strong>{{ $this->slug }}</strong> </span>
+                                <input type="text" class="input-link-editor w-100" wire:key='namemodel'
+                                    id="name" wire:model="name">
+                            </div>
+                            <button type="submit" class="custom-link btn btn-cb m-2 p-2 w-100">
+                                Save Thema
+                            </button>
+                            @error('name')
+                                <span class="error text-danger">{{ $message }}</span>
+                            @enderror
+                        </form>
+                    </div>
+                @endif
 
                 <div class="container text-center" wire:key='thema-captions'>
-                    @if ($this->themecreate == 'wait' )
+                    @if ($this->themecreate == 'wait')
                         <div class="row">
                             <div class="col">
                                 <div class="shadown">
@@ -109,10 +75,9 @@
                             <div class="col">
                                 <div class="shadown">
                                     <button title="Video" class="btn btb-cb custom-link p-5 m-3"
-                                        style="font-size: 2rem; padding: 20px;"> 
-                                        <i class="bi bi-youtube fs-1"
-                                            style="font-size: 2rem;"></i> 
-                                        </button>
+                                        style="font-size: 2rem; padding: 20px;">
+                                        <i class="bi bi-youtube fs-1" style="font-size: 2rem;"></i>
+                                    </button>
                                 </div>
                             </div>
                             <div class="col">
@@ -128,15 +93,14 @@
 
                 @include('livewire.themas.modals')
 
-                @if ($this->selected_id > 0 || $this->themecreate !== 'new' && $this->themecreate !== 'wait')
+                @if ($this->selected_id > 0 || ($this->themecreate !== 'new' && $this->themecreate !== 'wait'))
                     <div class="card-body" wire:key='editorthemax'>
                         <div wire:ignore id="editorthema"></div>
                     </div>
                 @else
                     <div class="card-body" wire:key='editorthemax2'>
-                        <div class="d-none" wire:ignore id="editorthema"></div>                    
+                        <div class="d-none" wire:ignore id="editorthema"></div>
                     </div>
-
                 @endif
 
             </div>
@@ -144,51 +108,66 @@
 
         @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')
             <div class="col-md-12 my-2" id="view-js-live-pages" wire:key='foliothema'>
-                <div class="card">
+                <div class="card" id="menu-editor-theme">
                     <div class="card-header bg-transparent shadow">
                         <div class="row">
                             <div class="col-10">
                                 <strong><i class="bi bi-window-sidebar"></i> Folios Themas</strong>
                             </div>
-                            <div class="col-2">
-                                <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
-                                    <i class="bi bi-cloud-upload"></i> UpLoad File</a>
-                            </div>
                             <col class="col-10">
                             <div class="componentes">
-                                <ul class="nav justify-content-end">
+                                <ul class="nav justify-content-end gap-2 ">
+                                    <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
+                                        <i class="bi bi-cloud-upload"></i> UpLoad</a>
+
                                     <li class="nav-item">
-                                        <a class="nav-link active" aria-current="page" href="#">List Files</a>
+                                        <a class=" custom-link" aria-current="page" href="#">List Files</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Css</a>
+                                        <a class=" custom-link" href="#">Css</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#">Js</a>
+                                        <a class=" custom-link" href="#">Js</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link disabled" aria-disabled="true">Pro</a>
+                                        <a class="custom-link" href="#" aria-disabled="true">Assets</a>
                                     </li>
                                 </ul>
 
                                 </a>
-                                {{ $this->themecreate }}
 
                                 <x-themacoms.btnup />
 
                             </div>
+
+                            <div class="container align-content-md-start col-12">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item punter">app.html</li>
+                                    <li class="list-group-item punter">
+                                        <span class="badge text-bg-warning">Create</span>
+                                        layout.html
+                                    </li>
+                                    <li class="list-group-item punter">app.css</li>
+                                    <li class="list-group-item punter">app.js</li>
+                                    <li class="list-group-item punter">fiveicon.ico</li>
+                                    <li class="list-group-item punter">Readme.md</li>
+                                </ul>
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
             </div>
 
-            <button class="btn btn-cb btn-toggle-thema">
+            <!-- Agrega un atributo de datos (data-js-toggle) al botón -->
+            <button class="btn btn-cb btn-toggle-thema" data-js-toggle>
                 <i class="bi bi-box-arrow-in-up fs-4 "></i>
             </button>
 
-            <div class="floating-foo-menu shadow" id="menu-editor-theme">
-                <nav class="navbar navbar-light bg-light rounded-3">
+
+            <div class="floating-foo-menu shadow"">
+                <nav class="navbar navbar-light bg-light rounded-3" id="nav-footer-thema">
                     <div class="container-fluid">
                         <div class="container text-center">
                             <div class="row">
@@ -235,6 +214,8 @@
             </div>
         @endif
 
+        <x-themacoms.tema-sidebar />
+
         <style>
             body {
                 background-image: linear-gradient(to bottom, #ffffff, #fffefe79);
@@ -279,36 +260,59 @@
             }
         </style>
         <script>
-            const controlTheme = document.querySelector("#menu-editor-theme");
-            const toggleButton = document.querySelector('.btn-toggle-thema');
+            document.addEventListener('DOMContentLoaded', function() {
+                const controlTheme = document.querySelector("#menu-editor-theme");
+                const toggleButton = document.querySelector('.btn-toggle-thema');
+                const foliosthemas = document.querySelector("#nav-footer-thema");
+                const menuthemacard = document.querySelector("#menu-thema-card");
+                const sidebarthema = document.querySelector("#sidebar-thema");
 
-            let isMenuVisible = true; // Estado inicial
-            if (toggleButton) {
-                toggleButton.addEventListener('click', () => {
-                    controlTheme.classList.toggle('d-none');
-                    isMenuVisible = !isMenuVisible; // Invertir el estado
+                // Recupera el estado del menú desde el almacenamiento local (localStorage)
+                let isMenuVisible = localStorage.getItem('isMenuVisible') === 'true';
 
-                    if (isMenuVisible) {
-                        toggleButton.innerHTML = '<i class="bi bi-box-arrow-in-up fs-3"></i>';
-                    } else {
-                        toggleButton.innerHTML = '<i class="bi bi-box-arrow-in-down fs-3"></i>';
-                    }
-                });
-            }
-            function reloadPage() {
-                    dispatchLoadingEvent('hourglass', 1000);
-                    location.reload();
+                if (toggleButton) {
+                    toggleButton.addEventListener('click', () => {
+                        controlTheme.classList.toggle('d-none');
+                        foliosthemas.classList.toggle('d-none');
+                        menuthemacard.classList.toggle('d-none');
+                        sidebarthema.classList.toggle('d-none');
+                        isMenuVisible = !isMenuVisible;
+
+                        // Guarda el estado en el almacenamiento local (localStorage)
+                        localStorage.setItem('isMenuVisible', isMenuVisible.toString());
+
+                        if (isMenuVisible) {
+                            toggleButton.innerHTML = '<i class="bi bi-box-arrow-in-up fs-3"></i>';
+                        } else {
+                            toggleButton.innerHTML = '<i class="bi bi-box-arrow-in-down fs-3"></i>';
+                        }
+                    });
                 }
+
+                if (!isMenuVisible) {
+                    controlTheme.classList.add('d-none');
+                    foliosthemas.classList.add('d-none');
+                    menuthemacard.classList.add('d-none');
+                    sidebarthema.classList.add('d-none');
+                }
+            });
+
+
+
+            function reloadPage() {
+                dispatchLoadingEvent('hourglass', 1000);
+                location.reload();
+            }
 
             document.addEventListener('livewire:load', function() { // load  
                 var editor2 = document.getElementById('editorthema');
                 setTimeout(function() {
                     if (editor2) {
-                    //    editor2.classList.add('d-none');
+                        //    editor2.classList.add('d-none');
                     }
                 }, 300);
 
-           
+
 
                 Livewire.on('showEditor', function() {
                     if (editor2) {

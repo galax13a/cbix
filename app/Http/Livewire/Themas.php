@@ -13,10 +13,10 @@ class Themas extends Component
     protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx'];
 
     use WithPagination;
-	protected $queryString = ['themecreate', 'selected_id'];
+	protected $queryString = ['themecreate', 'selected_id','currentLanguage'];
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $pic, $slug, $htmlen, $htmles, $css, $js, $active, $type;
-    public $error_slug, $editorjs, $themecreate, $editar;
+    public $error_slug, $editorjs, $themecreate, $editar,$currentLanguage = 'en';
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
@@ -26,15 +26,26 @@ class Themas extends Component
     {
         $this->themecreate = $request->input('themecreate', 'wait');
         $this->selected_id = $request->input('selected_id', null);
-    
+        $this->currentLanguage =  $request->input('currentLanguage', 'en'); ;
         if ($this->selected_id > 0) {
             $this->emit('showEditor');
             $this->themecreate = 'ok';
         }
+        if ($this->currentLanguage === 'es') {
+            // Realiza cualquier acción necesaria para cambiar a español
+        } elseif ($this->currentLanguage === 'en') {
+            // Realiza cualquier acción necesaria para cambiar a inglés
+        }
     }
-    
 
-
+    public function showNotification($type, $message)
+    {
+        $this->dispatchBrowserEvent('notify', [
+            'type' => $type,
+            'position' => 'center-center',
+            'message' => $message,
+        ]);
+    }
 
     public function salvarx(){
         
@@ -66,20 +77,24 @@ class Themas extends Component
             $this->themecreate = 'ok';
         }
     }
-
+    public function toggleLanguage()
+    {
+        if ($this->currentLanguage === 'en') {
+            $this->currentLanguage = 'es';
+            $this->showNotification('success', 'New theme Spanish');
+        } else {
+            $this->currentLanguage = 'en';
+            $this->showNotification('success', 'New theme English');
+        }
+    }
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-        $this->slug = Str::slug($this->name);
-
-       
+        $this->slug = Str::slug($this->name);       
         if(Thema::where('slug', $this->slug)->exists()) {
             $this->error_slug = "The slug already exists.";
-        }else     $this->error_slug = "";
-
-            
-       // if ($this->selected_id > 0) $this->emit('showEditor');
-        
+        }else     $this->error_slug = "";            
+       // if ($this->selected_id > 0) $this->emit('showEditor');        
         return view('livewire.themas.view', [
             'themas' => Thema::latest()
 						->orWhere('name', 'LIKE', $keyWord)						

@@ -52,7 +52,7 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-                            <a href="{{ url('/themacoms') }}" class="nav-link">🟣 Themacoms</a> 
+                            <a href="{{ url('/themas-components') }}" class="nav-link">🟣 Themacoms</a> 
                         </li>
 						<li class="nav-item">
                             <a href="{{ url('/themas') }}" class="nav-link">🟣 Themas</a> 
