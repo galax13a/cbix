@@ -51,10 +51,10 @@ class ThemacomponentsController extends Controller
 
             $componentContent = <<<BLADE
             <div>             
+                 <?php {$php} ?>   
                  <style>{$css}</style>
                  <section>{$filteredContent}</section>
-                 <script>{$js}</script>
-                 <?php {$php} ?>           
+                 <script>{$js}</script>                       
                  
             </div>
             BLADE;

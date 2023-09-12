@@ -7,30 +7,30 @@
                 {{-- <x-themacoms.btnup /> --}}
                 {{-- <x-themacoms.home-one-flex /> --}}
                 {{--  <x-themacoms.navbar-flex /> --}}
-
-                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
-
-                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-                    <div class="offcanvas-header">
-                        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+               
+                <div class="offcanvas offcanvas-start {{ $isOffcanvasVisible ? 'show' : '' }}" data-bs-scroll="true" id="offcambastemalist" aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas-header shadow">
+                      <h5 class="offcanvas-title " id="offcanvasWithBothOptionsLabel">Temas List</h5>
+                      <button wire:click="$set('isOffcanvasVisible', false)" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
-
-                        <div class="card-group">
-
-                            <div class="card">
-                              <img src="..." class="card-img-top" alt="...">
-                              <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>                                
-                              </div>
-                            </div>
-
+                        <div class="col">
+                            @foreach ($themas as $theme)
+                                <div class="card mb-3">
+                                    <img src="{{ $theme->pic }}" class="card-img-top" alt="{{ $theme->name }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $theme->name }}</h5>
+                                        <a href="?themecreate=ok&selected_id={{ $theme->id }}&currentLanguage=en"
+                                            class="btn btn-cb custom-link">Select Tema</a>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
+                        <div class="float-end">{{ $themas->links() }}</div>
                     </div>
-                    </div>
-            
+                </div>
+
+
                 <div class="card-header  bg-transparent shadow" id="menu-thema-card">
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
@@ -109,7 +109,7 @@
                             </div>
                             <div class="col">
                                 <div class="shadown">
-                                    <button  title="Themas cars" class="btn btb-cb custom-link p-5 m-3"
+                                    <button  onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"  wire:click="toggleOffcanvasVisible" title="Themas cars" class="btn btb-cb custom-link p-5 m-3"
                                         style="font-size: 2rem; padding: 20px;"> <i class="bi bi-window-sidebar fs-1"
                                             style="font-size: 2rem;"></i> </button>
                                 </div>
@@ -140,54 +140,54 @@
                         <div class="row">
                             <div class="col-8">
                                 <strong><i class="bi bi-window-sidebar"></i> Folios Themas</strong>
-                            </div>                        
-                            <div class="col-4">
-                                
-                                <ul class="nav justify-content-end gap-2 ">
-                                <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
-                                    <i class="bi bi-cloud-upload"></i> UpLoad</a>
-
-                                <li class="nav-item">
-                                    <a class=" custom-link" aria-current="page" href="#">List Files</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class=" custom-link" href="#">Css</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class=" custom-link" href="#">Js</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="custom-link" href="#" aria-disabled="true">Assets</a>
-                                </li>
-                            </ul>
-                        </div>
-                      </div>
-                    </div>
-                        <div class="row" style="min-height:360px; max-height: 260px; overflow-y: auto;">
-               
-                               <div class="container align-content-md-start col-12 mt-3">                                                            
-                                <ul class="list-group list-group-flush">                           
-                                    <li class="list-group-item punter">                                  
-                                        layout-{{ $this->tema ? $this->tema->slug : 'Thema New' }}.blade
-                                        <span class="badge text-bg-warning ">Create</span>
-                                    </li>
-                                    <li class="list-group-item punter">index.blade</li>
-                                    <li class="list-group-item punter">app.css</li>
-                                    <li class="list-group-item punter">app.js</li>
-                                    <li class="list-group-item punter">fiveicon.ico</li>
-                                    <li class="list-group-item punter">readme.md</li>
-                                </ul>
-                            
                             </div>
-                            
+                            <div class="col-4">
+
+                                <ul class="nav justify-content-end gap-2 ">
+                                    <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
+                                        <i class="bi bi-cloud-upload"></i> UpLoad</a>
+
+                                    <li class="nav-item">
+                                        <a class=" custom-link" aria-current="page" href="#">List Files</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class=" custom-link" href="#">Css</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class=" custom-link" href="#">Js</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="custom-link" href="#" aria-disabled="true">Assets</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                   
+                    </div>
+                    <div class="row" style="min-height:360px; max-height: 260px; overflow-y: auto;">
+
+                        <div class="container align-content-md-start col-12 mt-3">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item punter">
+                                    layout-{{ $this->tema ? $this->tema->slug : 'Thema New' }}.blade
+                                    <span class="badge text-bg-warning ">Create</span>
+                                </li>
+                                <li class="list-group-item punter">index.blade</li>
+                                <li class="list-group-item punter">app.css</li>
+                                <li class="list-group-item punter">app.js</li>
+                                <li class="list-group-item punter">fiveicon.ico</li>
+                                <li class="list-group-item punter">readme.md</li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
 
             <div class="container text-end">
                 <h6>by {{ $this->tema ? $this->tema->name : 'Thema New' }}</h6>
-                
+
             </div>
             <button class="btn btn-cb btn-toggle-thema" data-js-toggle>
                 <i class="bi bi-box-arrow-in-up fs-4 "></i>
@@ -197,56 +197,64 @@
                 <nav class="navbar navbar-light bg-light rounded-3 text-dark" id="nav-footer-thema">
                     <div class="container-fluid ">
                         <div class="container text-center">
-                            <div class="row">                             
+                            <div class="row">
                                 <div class="col-12 align-center">
                                     <div class="container text-center">
                                         <div class="row align-items-center p-1 rounded-3">
-                                            <div class="col-12 d-none " style="min-height:90px;" id="control-thema" wire:key='controltema'>
+                                            <div class="col-12 d-none " style="min-height:90px;" id="control-thema"
+                                                wire:key='controltema'>
                                                 <p>Select any element on the canvas to activate its settings menu.</p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                    <div class="row align-items-center">
-                                        <div class="col align-items-center">
-                                            
-                                            <a tooltips="New Thema" title="New " class="navbar-brand"
-                                                onclick="saveEditorData()" href="javascript:void(0)">
-                                                <i class="bi bi-plus-square-dotted"></i> New
-                                            </a>
-                                            <a tooltips="Save Theme" title="SaveMe" class="navbar-brand"
-                                                onclick="saveEditorData()" href="javascript:void(0)">
-                                                <i class="bi bi-save2"></i> Save
-                                            </a>
-                                            <a class="navbar-brand togle-foo-menu" title="See Theme"
-                                                href="javascript:void(0)">
-                                                <i class="bi bi-arrow-up-right-square"></i> Online Theme
-                                            </a>
-                                            <a class="navbar-brand" title="Create Theme" href="javascript:void(0)">
-                                                <i class="bi bi-google-play"></i> Generate Theme
-                                            </a>
-                                            <button onclick="clearEditor()" title="Clean Editor"
-                                                class="border-0 shadow-sm rounded-4 bg-light text-primary">
-                                                <i class="fas fa-eraser"></i>
-                                            </button>
-                                        </div>
-                                        <div class="col-4">
-                                            <span>
-                                             <strong>{{ config('app.url') }} - ToolBox v1.0</strong>
+                                <div class="row align-items-center">
+                                    <div class="col align-items-center">
+
+                                        <a tooltips="New Thema" title="New " class="navbar-brand"
+                                            onclick="saveEditorData()" href="javascript:void(0)">
+                                            <i class="bi bi-plus-square-dotted"></i> New
+                                        </a>
+                                        <a tooltips="Save Theme" title="SaveMe" class="navbar-brand"
+                                            onclick="saveEditorData()" href="javascript:void(0)">
+                                            <i class="bi bi-save2"></i> Save
+                                        </a>
+                                        <a class="navbar-brand togle-foo-menu" title="See Theme"
+                                            href="javascript:void(0)">
+                                            <i class="bi bi-arrow-up-right-square"></i> Online Theme
+                                        </a>
+                                        <a class="navbar-brand" title="Create Theme" href="javascript:void(0)">
+                                            <i class="bi bi-google-play"></i> Public
+                                        </a>
+                                        <button onclick="clearEditor()" title="Clean Editor"
+                                            class="border-0 shadow-sm rounded-4 bg-light text-primary">
+                                            <i class="fas fa-eraser fs-5"></i>
+                                        </button>
+                                
+                                        <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);" title="List Temas" class="border-0 shadow-sm rounded-4 bg-light text-dark"
+                                             wire:click="toggleOffcanvasVisible">
+                                               <i class="bi bi-list-task fs-5"></i>
+                                        </button>                               
+                                      
+
+                                    </div>
+                                    <div class="col-4">
+                                        <span>
+                                            <strong>{{ config('app.url') }} - ToolBox v1.0</strong>
                                         </span>
-                                        </div>
                                     </div>
                                 </div>
-                        
+                            </div>
+
                         </div>
                     </div>
                 </nav>
             </div>
         @endif
-    
-   @if($this->themecreate !== 'wait' && $this->themecreate !== 'new')
-        <x-themacoms.tema-sidebar />
-   @endif    
+
+        @if ($this->themecreate !== 'wait' && $this->themecreate !== 'new')
+            <x-themacoms.tema-sidebar />
+        @endif
         <style>
             body {
                 background-image: linear-gradient(to bottom, #ffffff, #fffefe79);
@@ -305,7 +313,7 @@
                         controlTheme.classList.toggle('d-none');
                         foliosthemas.classList.toggle('d-none');
                         menuthemacard.classList.toggle('d-none');
-                        if(sidebarthema)sidebarthema.classList.toggle('d-none');
+                        if (sidebarthema) sidebarthema.classList.toggle('d-none');
                         isMenuVisible = !isMenuVisible;
 
                         localStorage.setItem('isMenuVisible', isMenuVisible.toString());

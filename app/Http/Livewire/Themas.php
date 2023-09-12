@@ -13,13 +13,36 @@ class Themas extends Component
     protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx'];
 
     use WithPagination;
-	protected $queryString = ['themecreate', 'selected_id','currentLanguage'];
+	protected $queryString = ['themecreate', 'selected_id','currentLanguage','page' => ['except' => 1]];
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $pic, $slug, $htmlen, $htmles, $css, $js, $active, $type;
     public $error_slug, $editorjs, $themecreate, $editar,$currentLanguage = 'en', $tema;
+    public $isOffcanvasVisible = false;
+
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
+    }
+    
+    public function toggleOffcanvasVisible()
+    {
+        $this->isOffcanvasVisible = ! $this->isOffcanvasVisible;
+    }
+    
+    public function render()
+    {
+        $this->slug = Str::slug($this->name);       
+    
+        if(Thema::where('slug', $this->slug)->exists()) {
+            $this->error_slug = "The slug already exists.";
+        } else {
+            $this->error_slug = "";
+        }            
+        // if ($this->selected_id > 0) $this->emit('showEditor');            
+        return view('livewire.themas.view', [
+            'themas' => Thema::latest()
+                        ->paginate(5)  
+        ]);
     }
 
     public function mount(Request $request)
@@ -27,16 +50,16 @@ class Themas extends Component
         $this->themecreate = $request->input('themecreate', 'wait');
         $this->selected_id = $request->input('selected_id', null);
         $this->currentLanguage =  $request->input('currentLanguage', 'en');
-
+        $this->page =  $request->input('page', 1);;
         if ($this->selected_id > 0) {
             $this->emit('showEditor');
             $this->themecreate = 'ok';
             $this->tema = Thema::findOrFail($this->selected_id);
         }
         if ($this->currentLanguage === 'es') {
-            // Realiza cualquier acción necesaria para cambiar a español
+        
         } elseif ($this->currentLanguage === 'en') {
-            // Realiza cualquier acción necesaria para cambiar a inglés
+       
         }
     }
 
@@ -89,22 +112,8 @@ class Themas extends Component
             $this->showNotification('success', 'New theme English');
         }
     }
-    public function render()
-    {
-		$keyWord = '%'.$this->keyWord .'%';
-        $this->slug = Str::slug($this->name);       
-        if(Thema::where('slug', $this->slug)->exists()) {
-            $this->error_slug = "The slug already exists.";
-        }else     $this->error_slug = "";            
-       // if ($this->selected_id > 0) $this->emit('showEditor');        
-   
-        return view('livewire.themas.view', [
-            'themas' => Thema::latest()
-						->orWhere('name', 'LIKE', $keyWord)						
-						->orWhere('type', 'LIKE', $keyWord)->paginate(66)
-        ]);
-    }
-	
+
+    	
     public function cancel()
     {
         $this->resetInput();
