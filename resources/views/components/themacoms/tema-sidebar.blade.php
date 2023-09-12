@@ -1,9 +1,6 @@
 <div>             
-     <style>
- 
-     </style>
-     <section>
-        <div x-data="{ open_sidebar_wire: false }" id="sidebar-thema">
+      <section>
+        <div x-data="{ open_sidebar_wire: false }" id="sidebar-thema" wire:key='sidebarthema'>
         <!-- Sidebar -->
         <div :class="{ 'd-none': !open_sidebar_wire, '': open_sidebar_wire }" class="border-right sidebar-sticky floating-menu" id="sidebar-wrapper">
             <div class="list-group list-group-flush rounded-2">
@@ -19,8 +16,7 @@
                     <span>Reload</span>
                 </a>
                 
-     <!-- resources/views/livewire/language-toggle.blade.php -->
-
+                <!-- resources/views/livewire/language-toggle.blade.php -->
 
                 <a href="javascript:void(0)" title="SEO thema" class="list-group-item list-group-item-action text-warning">
                     <i class="bi bi-card-checklist fs-5"> </i> <span>Seo Thema</span>
@@ -45,8 +41,7 @@
                 class="list-group-item list-group-item-action badge {{ $this->currentLanguage === 'es' ? 'text-bg-light' : 'text-bg-dark' }}">English</a>
           
                 <a href="javascript:void(0)" wire:click="toggleLanguage('en')"
-                class="list-group-item list-group-item-action badge  {{ $this->currentLanguage === 'en' ? 'text-bg-light' : 'text-bg-dark' }}">Spanish</a>
-            
+                class="list-group-item list-group-item-action badge  {{ $this->currentLanguage === 'en' ? 'text-bg-light' : 'text-bg-dark' }}">Spanish</a>            
               
                 <a href="javascript:void(0)" class="navbar-brand mb-0 h3  p-2 shadow-lg list-group-item "> </a> 
                               
@@ -59,8 +54,7 @@
                 <i x-show="open_sidebar_wire" class="fas fa-times"></i>
             </button>
           
-        </div></section>
-     <script></script>
-     <?php  ?>           
-     
+        </div>
+    </section>
+
 </div>

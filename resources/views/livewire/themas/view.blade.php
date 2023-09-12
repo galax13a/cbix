@@ -1,9 +1,36 @@
 @section('title', __('Themas'))
-
 <div class="container-fluid">
+
     <div class="row justify-content-center">
         <div class="col-md-12 my-2" id="view-js-live-pages">
             <div class="card">
+                {{-- <x-themacoms.btnup /> --}}
+                {{-- <x-themacoms.home-one-flex /> --}}
+                {{--  <x-themacoms.navbar-flex /> --}}
+
+                <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">Enable both scrolling & backdrop</button>
+
+                    <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Backdrop with scrolling</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+
+                        <div class="card-group">
+
+                            <div class="card">
+                              <img src="..." class="card-img-top" alt="...">
+                              <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>                                
+                              </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    </div>
+            
                 <div class="card-header  bg-transparent shadow" id="menu-thema-card">
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
@@ -82,7 +109,7 @@
                             </div>
                             <div class="col">
                                 <div class="shadown">
-                                    <button title="Themas cars" class="btn btb-cb custom-link p-5 m-3"
+                                    <button  title="Themas cars" class="btn btb-cb custom-link p-5 m-3"
                                         style="font-size: 2rem; padding: 20px;"> <i class="bi bi-window-sidebar fs-1"
                                             style="font-size: 2rem;"></i> </button>
                                 </div>
@@ -94,11 +121,11 @@
                 @include('livewire.themas.modals')
 
                 @if ($this->selected_id > 0 || ($this->themecreate !== 'new' && $this->themecreate !== 'wait'))
-                    <div class="card-body" wire:key='editorthemax'>
+                    <div class="card-body mt-4" wire:key='editorthemax'>
                         <div wire:ignore id="editorthema"></div>
                     </div>
                 @else
-                    <div class="card-body" wire:key='editorthemax2'>
+                    <div class="card-body mt-4" wire:key='editorthemax2'>
                         <div class="d-none" wire:ignore id="editorthema"></div>
                     </div>
                 @endif
@@ -111,80 +138,78 @@
                 <div class="card" id="menu-editor-theme">
                     <div class="card-header bg-transparent shadow">
                         <div class="row">
-                            <div class="col-10">
+                            <div class="col-8">
                                 <strong><i class="bi bi-window-sidebar"></i> Folios Themas</strong>
-                            </div>
-                            <col class="col-10">
-                            <div class="componentes">
+                            </div>                        
+                            <div class="col-4">
+                                
                                 <ul class="nav justify-content-end gap-2 ">
-                                    <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
-                                        <i class="bi bi-cloud-upload"></i> UpLoad</a>
+                                <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
+                                    <i class="bi bi-cloud-upload"></i> UpLoad</a>
 
-                                    <li class="nav-item">
-                                        <a class=" custom-link" aria-current="page" href="#">List Files</a>
+                                <li class="nav-item">
+                                    <a class=" custom-link" aria-current="page" href="#">List Files</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class=" custom-link" href="#">Css</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class=" custom-link" href="#">Js</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="custom-link" href="#" aria-disabled="true">Assets</a>
+                                </li>
+                            </ul>
+                        </div>
+                      </div>
+                    </div>
+                        <div class="row" style="min-height:360px; max-height: 260px; overflow-y: auto;">
+               
+                               <div class="container align-content-md-start col-12 mt-3">                                                            
+                                <ul class="list-group list-group-flush">                           
+                                    <li class="list-group-item punter">                                  
+                                        layout-{{ $this->tema ? $this->tema->slug : 'Thema New' }}.blade
+                                        <span class="badge text-bg-warning ">Create</span>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class=" custom-link" href="#">Css</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class=" custom-link" href="#">Js</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="custom-link" href="#" aria-disabled="true">Assets</a>
-                                    </li>
-                                </ul>
-
-                                </a>
-
-                                <x-themacoms.btnup />
-
-                            </div>
-
-                            <div class="container align-content-md-start col-12">
-                                <ul class="list-group list-group-flush">
-                                    <li class="list-group-item punter">app.html</li>
-                                    <li class="list-group-item punter">
-                                        <span class="badge text-bg-warning">Create</span>
-                                        layout.html
-                                    </li>
+                                    <li class="list-group-item punter">index.blade</li>
                                     <li class="list-group-item punter">app.css</li>
                                     <li class="list-group-item punter">app.js</li>
                                     <li class="list-group-item punter">fiveicon.ico</li>
-                                    <li class="list-group-item punter">Readme.md</li>
+                                    <li class="list-group-item punter">readme.md</li>
                                 </ul>
+                            
                             </div>
-
+                            
                         </div>
-                    </div>
+                   
                 </div>
-
             </div>
 
-            <!-- Agrega un atributo de datos (data-js-toggle) al botón -->
+            <div class="container text-end">
+                <h6>by {{ $this->tema ? $this->tema->name : 'Thema New' }}</h6>
+                
+            </div>
             <button class="btn btn-cb btn-toggle-thema" data-js-toggle>
                 <i class="bi bi-box-arrow-in-up fs-4 "></i>
             </button>
 
-
-            <div class="floating-foo-menu shadow"">
-                <nav class="navbar navbar-light bg-light rounded-3" id="nav-footer-thema">
-                    <div class="container-fluid">
+            <div class="floating-foo-menu shadow">
+                <nav class="navbar navbar-light bg-light rounded-3 text-dark" id="nav-footer-thema">
+                    <div class="container-fluid ">
                         <div class="container text-center">
-                            <div class="row">
-                                <div class="col-2">
-                                    <i class="bi bi-terminal-plus"></i> <strong>ToolBox v1.0</strong>
-                                </div>
-                                <div class="col-10 align-center">
+                            <div class="row">                             
+                                <div class="col-12 align-center">
                                     <div class="container text-center">
-                                        <div class="row align-items-center p-1 rounded-3 shadow" id="control-theme">
-                                            <div class="col">
+                                        <div class="row align-items-center p-1 rounded-3">
+                                            <div class="col-12 d-none " style="min-height:90px;" id="control-thema" wire:key='controltema'>
                                                 <p>Select any element on the canvas to activate its settings menu.</p>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                                     <div class="row align-items-center">
                                         <div class="col align-items-center">
-                                            <strong>BotChatur.com</strong><br>
+                                            
                                             <a tooltips="New Thema" title="New " class="navbar-brand"
                                                 onclick="saveEditorData()" href="javascript:void(0)">
                                                 <i class="bi bi-plus-square-dotted"></i> New
@@ -205,17 +230,23 @@
                                                 <i class="fas fa-eraser"></i>
                                             </button>
                                         </div>
+                                        <div class="col-4">
+                                            <span>
+                                             <strong>{{ config('app.url') }} - ToolBox v1.0</strong>
+                                        </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                        
                         </div>
                     </div>
                 </nav>
             </div>
         @endif
-
+    
+   @if($this->themecreate !== 'wait' && $this->themecreate !== 'new')
         <x-themacoms.tema-sidebar />
-
+   @endif    
         <style>
             body {
                 background-image: linear-gradient(to bottom, #ffffff, #fffefe79);
@@ -267,7 +298,6 @@
                 const menuthemacard = document.querySelector("#menu-thema-card");
                 const sidebarthema = document.querySelector("#sidebar-thema");
 
-                // Recupera el estado del menú desde el almacenamiento local (localStorage)
                 let isMenuVisible = localStorage.getItem('isMenuVisible') === 'true';
 
                 if (toggleButton) {
@@ -275,10 +305,9 @@
                         controlTheme.classList.toggle('d-none');
                         foliosthemas.classList.toggle('d-none');
                         menuthemacard.classList.toggle('d-none');
-                        sidebarthema.classList.toggle('d-none');
+                        if(sidebarthema)sidebarthema.classList.toggle('d-none');
                         isMenuVisible = !isMenuVisible;
 
-                        // Guarda el estado en el almacenamiento local (localStorage)
                         localStorage.setItem('isMenuVisible', isMenuVisible.toString());
 
                         if (isMenuVisible) {
