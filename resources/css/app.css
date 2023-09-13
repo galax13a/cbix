@@ -2,6 +2,9 @@ body {
   background-color: #fdfcfd;
  background-image: linear-gradient(0deg, #db7bf3 0%, #B5FFFC 73%, #ffffff 100%); 
 }
+li::marker {
+  color: hotpink;
+}
 
 .btn-hover1 {
   display: block;
