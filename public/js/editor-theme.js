@@ -11,8 +11,7 @@ editor = new EditorJS({
     readOnly: false,
     tools: {
         header: {
-            class: Header,
-            shortcut: 'CMD+SHIFT+H',
+            class: Header,         
             config: {
                 placeholder: 'Enter a header',
                 levels: [1, 2, 3, 4, 5, 6],
@@ -20,9 +19,9 @@ editor = new EditorJS({
                 defaultAlignment: 'left'
             }
         },     
+        seotool : window.SeoTools,
         themacomponentrender : window.ThemacomponentRender,
-        componentsv1 : window.ComponentsV1,
-        codexPro : window.CodexPro,   
+        componentsv1 : window.ComponentsV1,    
         emotioconsblock: window.EmoticonsBlock,   
          
     },    

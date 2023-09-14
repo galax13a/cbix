@@ -7,11 +7,13 @@
                 {{-- <x-themacoms.btnup /> --}}
                 {{-- <x-themacoms.home-one-flex /> --}}
                 {{--  <x-themacoms.navbar-flex /> --}}
-               
-                <div class="offcanvas offcanvas-start {{ $isOffcanvasVisible ? 'show' : '' }}" data-bs-scroll="true" id="offcambastemalist" aria-labelledby="offcanvasWithBothOptionsLabel">
+
+                <div class="offcanvas offcanvas-start {{ $isOffcanvasVisible ? 'show' : '' }}" data-bs-scroll="true"
+                    id="offcambastemalist" aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header shadow">
-                      <h5 class="offcanvas-title " id="offcanvasWithBothOptionsLabel">Temas List</h5>
-                      <button wire:click="$set('isOffcanvasVisible', false)" type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        <h5 class="offcanvas-title " id="offcanvasWithBothOptionsLabel">Temas List</h5>
+                        <button wire:click="$set('isOffcanvasVisible', false)" type="button" class="btn-close"
+                            data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
                     <div class="offcanvas-body">
                         <div class="col">
@@ -35,19 +37,40 @@
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
                             <strong><i class="bi bi-window-sidebar"></i> File Thema</strong>
-                            <a href="javascript:void(0)" wire:click="toggleLanguage('es')"
-                                class="badge {{ $currentLanguage === 'es' ? 'text-bg-light' : 'text-bg-dark' }}">English</a>
-                            |
                             <a href="javascript:void(0)" wire:click="toggleLanguage('en')"
-                                class="badge {{ $currentLanguage === 'en' ? 'text-bg-light' : 'text-bg-dark' }}">Spanish</a>
+                            class="badge {{ $currentLanguage === 'en' ? 'text-bg-light' : 'text-bg-dark' }}">English</a>
+                         |
+                         <a href="javascript:void(0)" wire:click="toggleLanguage('es')"
+                            class="badge {{ $currentLanguage === 'es' ? 'text-bg-light' : 'text-bg-dark' }}">Spanish</a>
+                         |
+                         <a href="javascript:void(0)" wire:click="toggleLanguage('fr')"
+                            class="badge {{ $currentLanguage === 'fr' ? 'text-bg-light' : 'text-bg-dark' }}">French</a>
+                         |
+                         <a href="javascript:void(0)" wire:click="toggleLanguage('de')"
+                            class="badge {{ $currentLanguage === 'de' ? 'text-bg-light' : 'text-bg-dark' }}">German</a>                       
 
-                            <button wire:click="newtheme"
+                        <button wire:click="newtheme"
                                 onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'"
                                 title="New Document" class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                 <i class="bi bi-plus-square-dotted"></i>
-                            </button>
+                         </button>
+
+                          <span class="badge text-bg-warning">
+                            ::
+                            @php
+                                $slugColumn = 'slug_' . $this->currentLanguage;
+                            @endphp
+                        
+                            @if (!is_null($this->tema->$slugColumn))
+                                {{ $this->tema->$slugColumn }}
+                            @else
+                                Sin Slug
+                            @endif
+                        </span>
+                        
+                        
                             @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')
-                                <!--   <x-themacoms.themabarcard />  -->                                
+                                <!--   <x-themacoms.themabarcard />  -->
                             @endif
                         </div>
 
@@ -109,9 +132,10 @@
                             </div>
                             <div class="col">
                                 <div class="shadown">
-                                    <button  onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"  wire:click="toggleOffcanvasVisible" title="Themas cars" class="btn btb-cb custom-link p-5 m-3"
-                                        style="font-size: 2rem; padding: 20px;"> <i class="bi bi-window-sidebar fs-1"
-                                            style="font-size: 2rem;"></i> </button>
+                                    <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
+                                        wire:click="toggleOffcanvasVisible" title="Themas cars"
+                                        class="btn btb-cb custom-link p-5 m-3" style="font-size: 2rem; padding: 20px;">
+                                        <i class="bi bi-window-sidebar fs-1" style="font-size: 2rem;"></i> </button>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +211,7 @@
 
             <div class="container text-end">
                 <h6>by {{ $this->tema ? $this->tema->name : 'Thema New' }}</h6>
-               
+
             </div>
             <button class="btn btn-cb btn-toggle-thema" data-js-toggle>
                 <i class="bi bi-box-arrow-in-up fs-4 "></i>
@@ -230,12 +254,13 @@
                                             class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                             <i class="fas fa-eraser fs-5"></i>
                                         </button>
-                                
-                                        <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);" title="List Temas" class="border-0 shadow-sm rounded-4 bg-light text-dark"
-                                             wire:click="toggleOffcanvasVisible">
-                                               <i class="bi bi-list-task fs-5"></i>
-                                        </button>                               
-                                      
+
+                                        <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
+                                            title="List Temas" class="border-0 shadow-sm rounded-4 bg-light text-dark"
+                                            wire:click="toggleOffcanvasVisible">
+                                            <i class="bi bi-list-task fs-5"></i>
+                                        </button>
+
 
                                     </div>
                                     <div class="col-4">
@@ -306,6 +331,37 @@
                 const menuthemacard = document.querySelector("#menu-thema-card");
                 const sidebarthema = document.querySelector("#sidebar-thema");
 
+                Livewire.on('msgjs', async function (params) {
+                let titulo = params.title;
+                let mensaje = params.msg;
+                let inputx = params.input;
+                let slugColumnName = params.slug; // Get the slug column name
+                const slug = await customPrompt(titulo, mensaje, inputx);
+
+                if (slug !== null) {
+                    Livewire.emit('sluger', { slug: slug, column: slugColumnName }); // Send both slug and column name
+                }
+            });
+
+            async function customPrompt(titulo, mensaje, inputx) {
+                return new Promise((resolve) => {
+                    window.Notiflix.Confirm.prompt(
+                        titulo,
+                        mensaje,
+                        `${inputx}`,
+                        'Ok',
+                        'Cancel',
+                        (clientAnswer) => {
+                            resolve(clientAnswer);
+                        },
+                        () => {
+                            resolve(null);
+                        }
+                    );
+                });
+            }
+
+
                 let isMenuVisible = localStorage.getItem('isMenuVisible') === 'true';
 
                 if (toggleButton) {
@@ -334,8 +390,6 @@
                 }
             });
 
-
-
             function reloadPage() {
                 dispatchLoadingEvent('hourglass', 1000);
                 location.reload();
@@ -348,8 +402,6 @@
                         //    editor2.classList.add('d-none');
                     }
                 }, 300);
-
-
 
                 Livewire.on('showEditor', function() {
                     if (editor2) {

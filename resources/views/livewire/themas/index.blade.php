@@ -19,7 +19,8 @@
 @endpush
 
 @push('scripts-body')
-<script src="{{ asset('js/editorcam/PRO/Emotions.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/SeoTools.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/Emotions.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CodexPro.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsV1.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsThemaRender.js') }}" defer></script>    

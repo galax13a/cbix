@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('pic')->nullable();
             $table->string('slug_en')->unique();
             $table->string('slug_es')->unique()->nullable();
+            $table->string('slug_fr')->unique()->nullable();
+            $table->string('slug_de')->unique()->nullable();
             $table->text('htmlen')->nullable();
             $table->text('htmles')->nullable();
             $table->text('css')->nullable();

@@ -1,7 +1,7 @@
 class ThemacomponentRender {
     static get toolbox() {
         return {
-            title: 'RenderThemaComponent',
+            title: 'RenderComponent',
             icon: '<i class="bi bi-braces"></i>',
         };
     }
