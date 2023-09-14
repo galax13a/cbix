@@ -37,17 +37,19 @@
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
                             <strong><i class="bi bi-window-sidebar"></i> File Thema</strong>
-                            <a href="javascript:void(0)" wire:click="toggleLanguage('en')"
-                            class="badge {{ $currentLanguage === 'en' ? 'text-bg-light' : 'text-bg-dark' }}">English</a>
-                         |
-                         <a href="javascript:void(0)" wire:click="toggleLanguage('es')"
-                            class="badge {{ $currentLanguage === 'es' ? 'text-bg-light' : 'text-bg-dark' }}">Spanish</a>
-                         |
-                         <a href="javascript:void(0)" wire:click="toggleLanguage('fr')"
-                            class="badge {{ $currentLanguage === 'fr' ? 'text-bg-light' : 'text-bg-dark' }}">French</a>
-                         |
-                         <a href="javascript:void(0)" wire:click="toggleLanguage('de')"
-                            class="badge {{ $currentLanguage === 'de' ? 'text-bg-light' : 'text-bg-dark' }}">German</a>                       
+                        @if($this->tema)
+                            @foreach ($this->tema->getAttributes() as $column => $value)
+                            @if (strpos($column, 'slug_') === 0)
+                                @php
+                                    $language = substr($column, 5); // Elimina 'slug_' para obtener el código de idioma
+                                    $isActive = $currentLanguage === $language;
+                                @endphp
+                                <a href="javascript:void(0)" wire:click="toggleLanguage('{{ $language }}')"
+                                    class="badge {{ $isActive ? 'text-bg-dark' : 'text-bg-light' }}">{{ ucfirst($language) }}</a>
+                                {{ !$loop->last ? '|' : '' }}
+                            @endif
+                        @endforeach
+                        @endif
 
                         <button wire:click="newtheme"
                                 onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'"
@@ -60,12 +62,13 @@
                             @php
                                 $slugColumn = 'slug_' . $this->currentLanguage;
                             @endphp
-                        
+                         @if($this->tema)
                             @if (!is_null($this->tema->$slugColumn))
                                 {{ $this->tema->$slugColumn }}
                             @else
-                                Sin Slug
+                                Not Slug
                             @endif
+                        @endif
                         </span>
                         
                         

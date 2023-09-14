@@ -8,7 +8,7 @@ use App\Models\Thema;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use PhpParser\Node\Stmt\TryCatch;
+use Illuminate\Support\Facades\Schema;
 
 class Themas extends Component
 {
@@ -68,29 +68,31 @@ class Themas extends Component
 
     public function toggleLanguage($lengua = 'en')
     {
-        $languageSlugs = [
-            'en' => 'slug_en',
-            'es' => 'slug_es',
-            'fr' => 'slug_fr',
-            'de' => 'slug_de',
-        ];
+        // Obtener todas las columnas de la tabla que comienzan con "slug_"
+        $tableColumns = Schema::getColumnListing('themas');
        
-        if (array_key_exists($lengua, $languageSlugs)) {
-            $slugColumnName = $languageSlugs[$lengua];            
-            if (is_null($this->tema->$slugColumnName)) {                
+        $slugColumns = array_filter($tableColumns, function ($column) {
+            return strpos($column, 'slug_') === 0;
+        });
+        dd($slugColumns);
+        // Verificar si hay alguna columna de slug para el idioma dado
+        if (in_array("slug_$lengua", $slugColumns)) {
+            $slugColumnName = "slug_$lengua";
+            $this->showNotification('success', 'entro se valido el iidioma :: ');
+            if (is_null($this->tema->$slugColumnName)) {
                 $this->emit('msgjs', [
                     'slug' => $slugColumnName,
                     'title' => 'Create Slug',
                     'msg' => 'Currently there is no slug for ' . $lengua . ', do you want to create one?',
                     'input' => 'Name Slug ' . $lengua,
-                ]);                
+                ]);
                 $this->currentLanguage = $lengua;
             } else {
-               $this->showNotification('success', 'Editor Success Full :: '. $lengua);
-               $this->currentLanguage = $lengua;
+                $this->showNotification('success', 'Editor Success Full :: ' . $lengua);
+                $this->currentLanguage = $lengua;
             }
         } else {
-               $this->showNotification('failure', 'Language not supported');
+            $this->showNotification('failure', 'Language not supported');
         }
     }
     
@@ -98,7 +100,11 @@ class Themas extends Component
     {
 
         $this->slug = Str::slug($this->name);       
-        $this->tema = Thema::findOrFail($this->selected_id);
+        $this->tema = Thema::find($this->selected_id);
+
+        if (!$this->tema) {
+            $this->themecreate = 'new';
+        }        
 
         if(Thema::where('slug_en', $this->slug)->exists()) {
             $this->error_slug = "The slug already exists.";

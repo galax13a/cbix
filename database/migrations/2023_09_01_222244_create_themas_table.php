@@ -19,6 +19,9 @@ return new class extends Migration
             $table->string('slug_es')->unique()->nullable();
             $table->string('slug_fr')->unique()->nullable();
             $table->string('slug_de')->unique()->nullable();
+            $table->string('slug_pt-BR')->unique()->nullable();            
+            $table->string('slug_zh-CN')->unique()->nullable();  
+            $table->string('slug_hi')->unique()->nullable();                     
             $table->text('htmlen')->nullable();
             $table->text('htmles')->nullable();
             $table->text('css')->nullable();
