@@ -33,7 +33,7 @@ class Themas extends Component
     {
         $this->slug = Str::slug($this->name);       
     
-        if(Thema::where('slug', $this->slug)->exists()) {
+        if(Thema::where('slug_en', $this->slug)->exists()) {
             $this->error_slug = "The slug already exists.";
         } else {
             $this->error_slug = "";
@@ -83,15 +83,7 @@ class Themas extends Component
 
     public function newtheme(){
         $this->themecreate = 'new';
-        $this->selected_id = null;
-       /*
-        $this->dispatchBrowserEvent('notify', [
-            'type' => 'success',
-            'position' => 'center-center',
-            'message' => 'New thema',
-        ]);
-        */
-
+        $this->selected_id = null;      
       //  $this->emit('showEditor');
 
     }
@@ -136,15 +128,16 @@ class Themas extends Component
     {
         $this->validate([
 		'name' => 'required',
-        'slug' => 'required|unique:themas,slug'	
+        'slug' => 'required|unique:themas,slug_en'	
         ]);
 
         $newThema = Thema::create([
             'name' => $this->name,
             'pic' => $this->pic,
-            'slug' => Str::slug($this->name),
+            'slug_en' => Str::slug($this->name),
+            'slug_es' => null,
             'htmlen' => "",
-            'htmles' => "",
+            'htmles' => null,
             'css' => $this->css,
             'js' => $this->js,
             'active' => false,

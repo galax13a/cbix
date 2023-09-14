@@ -187,7 +187,7 @@
 
             <div class="container text-end">
                 <h6>by {{ $this->tema ? $this->tema->name : 'Thema New' }}</h6>
-                
+               
             </div>
             <button class="btn btn-cb btn-toggle-thema" data-js-toggle>
                 <i class="bi bi-box-arrow-in-up fs-4 "></i>

@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('themas', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name');            
             $table->string('pic')->nullable();
-            $table->string('slug')->unique();
-            $table->text('htmlen');
+            $table->string('slug_en')->unique();
+            $table->string('slug_es')->unique()->nullable();
+            $table->text('htmlen')->nullable();
             $table->text('htmles')->nullable();
             $table->text('css')->nullable();
             $table->text('js')->nullable();

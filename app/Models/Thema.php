@@ -13,7 +13,7 @@ class Thema extends Model
 
     protected $table = 'themas';
 
-    protected $fillable = ['name','pic','slug','htmlen','htmles','css','js','active','type']; // fillable2
+    protected $fillable = ['name','pic','slug_en','slug_es','htmlen','htmles','css','js','active','type']; // fillable2
 	 
     // booted sin users [] 
 }
