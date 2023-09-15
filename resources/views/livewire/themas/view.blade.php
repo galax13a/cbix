@@ -32,46 +32,56 @@
                     </div>
                 </div>
 
-
                 <div class="card-header  bg-transparent shadow" id="menu-thema-card">
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
                             <strong><i class="bi bi-window-sidebar"></i> File Thema</strong>
-                        @if($this->tema)
-                            @foreach ($this->tema->getAttributes() as $column => $value)
-                            @if (strpos($column, 'slug_') === 0)
-                                @php
-                                    $language = substr($column, 5); // Elimina 'slug_' para obtener el código de idioma
-                                    $isActive = $currentLanguage === $language;
-                                @endphp
-                                <a href="javascript:void(0)" wire:click="toggleLanguage('{{ $language }}')"
-                                    class="badge {{ $isActive ? 'text-bg-dark' : 'text-bg-light' }}">{{ ucfirst($language) }}</a>
-                                {{ !$loop->last ? '|' : '' }}
-                            @endif
-                        @endforeach
-                        @endif
+                            @if ($this->tema)
 
-                        <button wire:click="newtheme"
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-cb custom-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Slug : {{ ucfirst($currentLanguage) }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                    @foreach ($this->tema->getAttributes() as $column => $value)
+                                        @if (strpos($column, 'slug_') === 0)
+                                            @php
+                                                $language = substr($column, 5); // Elimina 'slug_' para obtener el código de idioma
+                                                $isActive = $currentLanguage === $language;
+                                            @endphp
+                                            <li><a class="dropdown-item" href="javascript:void(0)" wire:click="toggleLanguage('{{ $language }}')">
+                                                    {{ ucfirst($language) }}
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            </div>
+                            
+                            
+                            @endif
+         
+                            <button wire:click="newtheme"
                                 onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'"
                                 title="New Document" class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                 <i class="bi bi-plus-square-dotted"></i>
-                         </button>
+                            </button>
 
-                          <span class="badge text-bg-warning">
-                            ::
-                            @php
-                                $slugColumn = 'slug_' . $this->currentLanguage;
-                            @endphp
-                         @if($this->tema)
-                            @if (!is_null($this->tema->$slugColumn))
-                                {{ $this->tema->$slugColumn }}
-                            @else
-                                Not Slug
-                            @endif
-                        @endif
-                        </span>
-                        
-                        
+                            <span class="badge text-bg-warning shadow-sm">
+                                ::
+                                @php
+                                    $slugColumn = 'slug_' . $this->currentLanguage;
+                                @endphp
+                                @if ($this->tema)
+                                    @if (!is_null($this->tema->$slugColumn))
+                                      {{Str::slug($this->tema->name)}}/{{ $this->tema->$slugColumn }}
+                                    @else
+                                        Not Slug
+                                    @endif
+                                @endif
+                            </span>
+
+
                             @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')
                                 <!--   <x-themacoms.themabarcard />  -->
                             @endif
@@ -137,7 +147,8 @@
                                 <div class="shadown">
                                     <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
                                         wire:click="toggleOffcanvasVisible" title="Themas cars"
-                                        class="btn btb-cb custom-link p-5 m-3" style="font-size: 2rem; padding: 20px;">
+                                        class="btn btb-cb custom-link p-5 m-3"
+                                        style="font-size: 2rem; padding: 20px;">
                                         <i class="bi bi-window-sidebar fs-1" style="font-size: 2rem;"></i> </button>
                                 </div>
                             </div>
@@ -171,7 +182,7 @@
                             <div class="col-4">
 
                                 <ul class="nav justify-content-end gap-2 ">
-                                    <a tooltips="Save Thema" title="SaveMe" class="navbar-brand" href="#">
+                                    <a tooltips="Save Thema" title="Upload" class="navbar-brand" href="#">
                                         <i class="bi bi-cloud-upload"></i> UpLoad</a>
 
                                     <li class="nav-item">
@@ -284,6 +295,9 @@
             <x-themacoms.tema-sidebar />
         @endif
         <style>
+            .munuselect{
+            background-color: #36f06dc2;
+            }
             body {
                 background-image: linear-gradient(to bottom, #ffffff, #fffefe79);
             }
@@ -334,35 +348,38 @@
                 const menuthemacard = document.querySelector("#menu-thema-card");
                 const sidebarthema = document.querySelector("#sidebar-thema");
 
-                Livewire.on('msgjs', async function (params) {
-                let titulo = params.title;
-                let mensaje = params.msg;
-                let inputx = params.input;
-                let slugColumnName = params.slug; // Get the slug column name
-                const slug = await customPrompt(titulo, mensaje, inputx);
+                Livewire.on('msgjs', async function(params) {
+                    let titulo = params.title;
+                    let mensaje = params.msg;
+                    let inputx = params.input;
+                    let slugColumnName = params.slug; // Get the slug column name
+                    const slug = await customPrompt(titulo, mensaje, inputx);
 
-                if (slug !== null) {
-                    Livewire.emit('sluger', { slug: slug, column: slugColumnName }); // Send both slug and column name
-                }
-            });
-
-            async function customPrompt(titulo, mensaje, inputx) {
-                return new Promise((resolve) => {
-                    window.Notiflix.Confirm.prompt(
-                        titulo,
-                        mensaje,
-                        `${inputx}`,
-                        'Ok',
-                        'Cancel',
-                        (clientAnswer) => {
-                            resolve(clientAnswer);
-                        },
-                        () => {
-                            resolve(null);
-                        }
-                    );
+                    if (slug !== null) {
+                        Livewire.emit('sluger', {
+                            slug: slug,
+                            column: slugColumnName
+                        }); // Send both slug and column name
+                    }
                 });
-            }
+
+                async function customPrompt(titulo, mensaje, inputx) {
+                    return new Promise((resolve) => {
+                        window.Notiflix.Confirm.prompt(
+                            titulo,
+                            mensaje,
+                            `${inputx}`,
+                            'Ok',
+                            'Cancel',
+                            (clientAnswer) => {
+                                resolve(clientAnswer);
+                            },
+                            () => {
+                                resolve(null);
+                            }
+                        );
+                    });
+                }
 
 
                 let isMenuVisible = localStorage.getItem('isMenuVisible') === 'true';

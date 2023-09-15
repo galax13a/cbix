@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Thema;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Schema;
 
@@ -33,11 +34,47 @@ class Themas extends Component
             try {
                 $this->tema = Thema::findOrFail($this->selected_id);            
             } catch (ModelNotFoundException $e) {
-                abort(404, 'Tema no encontrado '.$e);
+                abort(404, 'Tema no fount id '.$e);
             }
         }
 
     }
+
+    public function salvarx()
+    {        
+        $slugColumn = 'slug_' . $this->currentLanguage;
+        $slug = $this->tema->$slugColumn;
+    
+        if ($slug) {
+            if ($this->editorjs) {
+                $this->editorjs = json_encode($this->editorjs);
+            } else {
+                $this->showNotification('failure', 'Editor String Error');
+                return;
+            }
+             
+            $filename = $slug . '_' . $this->currentLanguage . '.json';
+            $foler = Str::slug($this->tema->name);
+            $filePath = "temas/folio/{$foler}/{$filename}";
+    
+            if (Storage::exists($filePath)) {
+                // El archivo ya existe, así que lo sobrescribiremos
+                Storage::put($filePath, $this->editorjs);
+                $this->showNotification('success', 'Theme updated successfully in ' . $this->currentLanguage);
+            } else {
+                // El archivo no existe, así que lo crearemos
+                if (!Storage::exists(dirname($filePath))) {
+                    Storage::makeDirectory(dirname($filePath));
+                }
+                Storage::put($filePath, $this->editorjs);
+                $this->showNotification('success', 'New theme saved in ' . $this->currentLanguage);
+            }
+        } else {
+            $this->showNotification('failure', 'You must create the slug first for this language before saving the theme in ' . $this->currentLanguage);
+        }
+    }
+    
+    
 
     public function sluger($data)//recibe del front para cambiar y el slug de idioma
     {
@@ -74,11 +111,11 @@ class Themas extends Component
         $slugColumns = array_filter($tableColumns, function ($column) {
             return strpos($column, 'slug_') === 0;
         });
-        dd($slugColumns);
+      //  dd($slugColumns);
         // Verificar si hay alguna columna de slug para el idioma dado
         if (in_array("slug_$lengua", $slugColumns)) {
             $slugColumnName = "slug_$lengua";
-            $this->showNotification('success', 'entro se valido el iidioma :: ');
+            
             if (is_null($this->tema->$slugColumnName)) {
                 $this->emit('msgjs', [
                     'slug' => $slugColumnName,
@@ -122,10 +159,6 @@ class Themas extends Component
     public function showNotification($type, $message)
     {
         $this->dispatchBrowserEvent('notify', ['type' => $type,'position' => 'center-center', 'message' => $message]);
-    }
-
-    public function salvarx(){        
-        $this->showNotification('success', 'SAval x');
     }
 
     public function newtheme(){
