@@ -47,7 +47,7 @@ class Themas extends Component
     
         if ($slug) {
             if ($this->editorjs) {
-                $this->editorjs = json_encode($this->editorjs);
+             //   $this->editorjs = json_encode($this->editorjs);
             } else {
                 $this->showNotification('failure', 'Editor String Error');
                 return;
@@ -125,12 +125,33 @@ class Themas extends Component
                 ]);
                 $this->currentLanguage = $lengua;
             } else {
-                $this->showNotification('success', 'Editor Success Full :: ' . $lengua);
+               
                 $this->currentLanguage = $lengua;
+                $this->loadJson();
+                $this->showNotification('success', 'Editor Success Full OK:: ' . $lengua);
             }
         } else {
             $this->showNotification('failure', 'Language not supported');
         }
+    }
+
+    public function loadJson() 
+	{
+        
+        $slugColumn = 'slug_' . $this->currentLanguage;
+        $slug = $this->tema->$slugColumn;        
+        $filename = $slug . '_' . $this->currentLanguage . '.json';
+        $foler = Str::slug($this->tema->name);
+        $filePath = "temas/folio/{$foler}/{$filename}";
+
+        if (Storage::exists($filePath)) {
+            $data = Storage::get($filePath);
+            $this->editorjs = $data;
+            $this->emit('loadeditor', $this->editorjs);
+        }else {    
+            $this->showNotification('failure', 'No loader Json File, please try again. '.$filePath);
+        }
+
     }
     
     public function render()
@@ -139,7 +160,7 @@ class Themas extends Component
         $this->slug = Str::slug($this->name);       
         $this->tema = Thema::find($this->selected_id);
 
-        if (!$this->tema) {
+        if (!$this->tema && $this->themecreate !== 'wait') {
             $this->themecreate = 'new';
         }        
 

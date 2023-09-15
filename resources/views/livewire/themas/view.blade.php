@@ -35,7 +35,7 @@
                 <div class="card-header  bg-transparent shadow" id="menu-thema-card">
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
-                            <strong><i class="bi bi-window-sidebar"></i> File Thema</strong>
+                            <strong><i class="bi bi-window-sidebar"></i> Folio Tema</strong>
                             @if ($this->tema)
 
                             <div class="btn-group" role="group">
@@ -46,7 +46,7 @@
                                     @foreach ($this->tema->getAttributes() as $column => $value)
                                         @if (strpos($column, 'slug_') === 0)
                                             @php
-                                                $language = substr($column, 5); // Elimina 'slug_' para obtener el código de idioma
+                                                $language = substr($column, 5); 
                                                 $isActive = $currentLanguage === $language;
                                             @endphp
                                             <li><a class="dropdown-item" href="javascript:void(0)" wire:click="toggleLanguage('{{ $language }}')">
@@ -56,8 +56,7 @@
                                         @endif
                                     @endforeach
                                 </ul>
-                            </div>
-                            
+                            </div>                            
                             
                             @endif
          
@@ -67,20 +66,20 @@
                                 <i class="bi bi-plus-square-dotted"></i>
                             </button>
 
-                            <span class="badge text-bg-warning shadow-sm">
-                                ::
+                            <span class="badge text-bg-warning shadow-sm ">                                
                                 @php
                                     $slugColumn = 'slug_' . $this->currentLanguage;
                                 @endphp
                                 @if ($this->tema)
                                     @if (!is_null($this->tema->$slugColumn))
                                       {{Str::slug($this->tema->name)}}/{{ $this->tema->$slugColumn }}
-                                    @else
-                                        Not Slug
+                                    @else                                  
+                                    <a class="custom-link p-1 text-capitalize" wire:click="toggleLanguage('{{ $this->currentLanguage }}')" href="javascript:void(0)"> 
+                                        Create Slug {{ $this->currentLanguage }}
+                                     </a>
                                     @endif
                                 @endif
                             </span>
-
 
                             @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')
                                 <!--   <x-themacoms.themabarcard />  -->
@@ -275,7 +274,6 @@
                                             <i class="bi bi-list-task fs-5"></i>
                                         </button>
 
-
                                     </div>
                                     <div class="col-4">
                                         <span>
@@ -431,10 +429,15 @@
                     }
                 });
 
-                window.livewire.on('renderEditor', (data) => {
-                    editor.render(data).catch((error) => {
-                        console.error('Error render editor:', error);
-                    });
+                Livewire.on('loadeditor', function(editorData) {
+                    if (editorData) {
+                        editor.render(JSON.parse(editorData));
+
+                    } else {
+                        if (confirm('¿Deseas limpiar el editor?')) {
+                            editor.clear();
+                        }
+                    }
                 });
 
             });
