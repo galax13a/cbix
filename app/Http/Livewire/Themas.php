@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Schema;
 
 class Themas extends Component
 {
-    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx', 'sluger' => 'sluger'];
+    protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'salvar' => 'salvarx', 'sluger' => 'sluger','myloadjs' => 'loadJson'];
 
     use WithPagination;
 	protected $queryString = ['themecreate', 'selected_id','currentLanguage','page' => ['except' => 1]];
@@ -32,7 +32,8 @@ class Themas extends Component
             $this->emit('showEditor');
             $this->themecreate = 'ok';
             try {
-                $this->tema = Thema::findOrFail($this->selected_id);            
+                $this->tema = Thema::findOrFail($this->selected_id);        
+               
             } catch (ModelNotFoundException $e) {
                 abort(404, 'Tema no fount id '.$e);
             }
@@ -74,8 +75,6 @@ class Themas extends Component
         }
     }
     
-    
-
     public function sluger($data)//recibe del front para cambiar y el slug de idioma
     {
         try {
@@ -137,20 +136,21 @@ class Themas extends Component
 
     public function loadJson() 
 	{
-        
-        $slugColumn = 'slug_' . $this->currentLanguage;
-        $slug = $this->tema->$slugColumn;        
-        $filename = $slug . '_' . $this->currentLanguage . '.json';
-        $foler = Str::slug($this->tema->name);
-        $filePath = "temas/folio/{$foler}/{$filename}";
+        if($this->tema){
+            $slugColumn = 'slug_' . $this->currentLanguage;
+            $slug = $this->tema->$slugColumn;        
+            $filename = $slug . '_' . $this->currentLanguage . '.json';
+            $foler = Str::slug($this->tema->name);
+            $filePath = "temas/folio/{$foler}/{$filename}";
 
-        if (Storage::exists($filePath)) {
-            $data = Storage::get($filePath);
-            $this->editorjs = $data;
-            $this->emit('loadeditor', $this->editorjs);
-        }else {    
-            $this->showNotification('failure', 'No loader Json File, please try again. '.$filePath);
-        }
+            if (Storage::exists($filePath)) {
+                $data = Storage::get($filePath);
+                $this->editorjs = $data;
+                $this->emit('loadeditor', $this->editorjs);
+            }else {    
+                $this->showNotification('failure', 'No loader Json File, please try again. '.$filePath);
+            }
+    }
 
     }
     

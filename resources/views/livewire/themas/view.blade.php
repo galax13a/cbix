@@ -414,13 +414,13 @@
             }
 
             document.addEventListener('livewire:load', function() { // load  
-                var editor2 = document.getElementById('editorthema');
-                setTimeout(function() {
-                    if (editor2) {
-                        //    editor2.classList.add('d-none');
-                    }
-                }, 300);
 
+                setTimeout(function() {
+                Livewire.emit('myloadjs');
+            }, 300);
+            
+                var editor2 = document.getElementById('editorthema');
+                
                 Livewire.on('showEditor', function() {
                     if (editor2) {
                         editor2.classList.remove('d-none');
@@ -465,5 +465,6 @@
                 });
                 window.dispatchEvent(notifyEvent);
             }
+          
         </script>
     </div>
