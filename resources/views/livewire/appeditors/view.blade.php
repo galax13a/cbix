@@ -538,14 +538,14 @@
                 }
 
                 Livewire.on('uptagsSelects', (tags) => {
-                    $('#tags').select2('destroy'); // Destruir el select2 existente
-                    $('#tags').empty(); // Vaciar las opciones del select
+                    $('#tags').select2('destroy'); 
+                    $('#tags').empty(); 
 
                     tags.forEach((tag) => {
                         $('#tags').append(new Option(tag.name, tag.id, false, false));
                     });
 
-                    $('#tags').select2(); // Inicializar el nuevo select2
+                    $('#tags').select2(); 
                 });
                 Livewire.on('uptImgFull', imageUrl => {
                     document.querySelector("#imagen-tem-app").src = imageUrl;

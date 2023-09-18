@@ -7,7 +7,9 @@
                 {{-- <x-themacoms.btnup /> --}}
                 {{-- <x-themacoms.home-one-flex /> --}}
                 {{--  <x-themacoms.navbar-flex /> --}}
-
+        
+                <x-themacoms.btnup />
+                
                 <div class="offcanvas offcanvas-start {{ $isOffcanvasVisible ? 'show' : '' }}" data-bs-scroll="true"
                     id="offcambastemalist" aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header shadow">
@@ -36,29 +38,7 @@
                     <div class="row">
                         <div class="col-10" wire:key='menutabcard'>
                             <strong><i class="bi bi-window-sidebar"></i> Folio Tema</strong>
-                            @if ($this->tema)
-
-                            <div class="btn-group" role="group">
-                                <button type="button" class="btn btn-cb custom-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                   Slug : {{ ucfirst($currentLanguage) }}
-                                </button>
-                                <ul class="dropdown-menu">
-                                    @foreach ($this->tema->getAttributes() as $column => $value)
-                                        @if (strpos($column, 'slug_') === 0)
-                                            @php
-                                                $language = substr($column, 5); 
-                                                $isActive = $currentLanguage === $language;
-                                            @endphp
-                                            <li><a class="dropdown-item" href="javascript:void(0)" wire:click="toggleLanguage('{{ $language }}')">
-                                                    {{ ucfirst($language) }}
-                                                </a>
-                                            </li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>                            
-                            
-                            @endif
+                           
          
                             <button wire:click="newtheme"
                                 onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'"
@@ -76,11 +56,13 @@
                                     @else                                  
                                     <a class="custom-link p-1 text-capitalize" wire:click="toggleLanguage('{{ $this->currentLanguage }}')" href="javascript:void(0)"> 
                                         Create Slug {{ $this->currentLanguage }}
-                                     </a>
+                                     </a>                                 
+                                
                                     @endif
                                 @endif
                             </span>
 
+                       
                             @if ($this->themecreate !== 'new' && $this->themecreate !== 'wait')
                                 <!--   <x-themacoms.themabarcard />  -->
                             @endif
@@ -89,6 +71,8 @@
                     </div>
 
                 </div>
+
+                <!-- new !-->
 
                 @if ($this->themecreate == 'new')
                     <div id="form-creatediv" wire:key='form-create'>
@@ -111,6 +95,32 @@
                                 <input type="text" class="input-link-editor w-100" wire:key='namemodel'
                                     id="name" wire:model="name">
                             </div>
+
+                            <hr>
+                           
+
+                            <div class="btn-group" role="group">
+                                <button type="button" class="btn btn-cb custom-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                   Slug : {{ ucfirst($currentLanguage) }}
+                                </button>
+                                <ul class="dropdown-menu">
+                                   
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0)" wire:click="toggleLanguage('en', true)">
+                                                English
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" href="javascript:void(0)" wire:click="toggleLanguage('es',true)">
+                                                Spanish
+                                            </a>
+                                        </li>
+                                
+                                </ul>
+                            </div>                            
+                            
+                      
+
                             <button type="submit" class="custom-link btn btn-cb m-2 p-2 w-100">
                                 Save Thema
                             </button>
@@ -158,11 +168,11 @@
                 @include('livewire.themas.modals')
 
                 @if ($this->selected_id > 0 || ($this->themecreate !== 'new' && $this->themecreate !== 'wait'))
-                    <div class="card-body mt-4" wire:key='editorthemax'>
+                    <div class="card-body " wire:key='editorthemax'>
                         <div wire:ignore id="editorthema"></div>
                     </div>
                 @else
-                    <div class="card-body mt-4" wire:key='editorthemax2'>
+                    <div class="card-body " wire:key='editorthemax2'>
                         <div class="d-none" wire:ignore id="editorthema"></div>
                     </div>
                 @endif
@@ -247,9 +257,9 @@
                                 </div>
                                 <div class="row align-items-center">
                                     <div class="col align-items-center">
-
+                                     
                                         <a tooltips="New Thema" title="New " class="navbar-brand"
-                                            onclick="saveEditorData()" href="javascript:void(0)">
+                                        onclick="dispatchLoadingEvent('hourglass', 1000); window.scrollTo(0,0);window.location.href = '?themecreate=new'">
                                             <i class="bi bi-plus-square-dotted"></i> New
                                         </a>
                                         <a tooltips="Save Theme" title="SaveMe" class="navbar-brand"
@@ -263,16 +273,30 @@
                                         <a class="navbar-brand" title="Create Theme" href="javascript:void(0)">
                                             <i class="bi bi-google-play"></i> Public
                                         </a>
+                                        |
                                         <button onclick="clearEditor()" title="Clean Editor"
                                             class="border-0 shadow-sm rounded-4 bg-light text-primary">
                                             <i class="fas fa-eraser fs-5"></i>
                                         </button>
-
+                                        |
                                         <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
                                             title="List Temas" class="border-0 shadow-sm rounded-4 bg-light text-dark"
                                             wire:click="toggleOffcanvasVisible">
                                             <i class="bi bi-list-task fs-5"></i>
                                         </button>
+                                        |
+                                        <a title='Delete Slug' class="custom-link p-1 text-capitalize" href="javascript:void(0)" 
+                                        onclick="if (confirm('¿Estás seguro de que deseas eliminar este slug?')) { @this.deleteSlug() }">
+                                       <i class="bi bi-file-minus fs-5"></i>Slug
+                                        </a>
+                                        |
+                                        <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
+                                            title="Generate Page" class="border-0 shadow-sm rounded-4 bg-light text-dark"
+                                            wire:click="generar_page">
+                                        <i class="bi bi-file-earmark-plus fs-5"></i>
+                                        </button>
+                                     
+                                     
 
                                     </div>
                                     <div class="col-4">
@@ -401,10 +425,11 @@
                 }
 
                 if (!isMenuVisible) {
-                    controlTheme.classList.add('d-none');
-                    foliosthemas.classList.add('d-none');
+  
+                    if (controlTheme !== null) controlTheme.classList.add('d-none');
+                    if (foliosthemas !== null) foliosthemas.classList.add('d-none');
                     menuthemacard.classList.add('d-none');
-                    sidebarthema.classList.add('d-none');
+                    if (sidebarthema !== null)sidebarthema.classList.add('d-none');
                 }
             });
 
@@ -417,7 +442,7 @@
 
                 setTimeout(function() {
                 Livewire.emit('myloadjs');
-            }, 300);
+            }, 600);
             
                 var editor2 = document.getElementById('editorthema');
                 

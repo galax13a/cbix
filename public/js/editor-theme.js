@@ -20,6 +20,7 @@ editor = new EditorJS({
             }
         },     
         seotool : window.SeoTools,
+        componentcloud : window.ComponentCloud,
         themacomponentrender : window.ThemacomponentRender,
         componentsv1 : window.ComponentsV1,    
         emotioconsblock: window.EmoticonsBlock,   

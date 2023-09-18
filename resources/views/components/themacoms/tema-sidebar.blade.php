@@ -37,13 +37,32 @@
                 <a href="javascript:void(0)" title="Clean Editor" onclick="clearEditor()" class="list-group-item list-group-item-action">
                     <i class="fas fa-eraser"></i> <span>Clean Thema</span>
                 </a>
-                <a wire:key='temamenues' href="javascript:void(0)" wire:click="toggleLanguage('en')"
-                class="list-group-item list-group-item-action {{ $this->currentLanguage === 'es' ? 'bg-light' : 'munuselect' }}">English</a>
-          
-                <a wire:key='temamenuen' href="javascript:void(0)" wire:click="toggleLanguage('es')"
-                class="list-group-item list-group-item-action {{ $this->currentLanguage === 'en' ? 'bg-light' : 'munuselect' }}">Spanish</a>            
               
+                @if ($this->tema)
+                <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-cb custom-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                       Slug : {{ ucfirst($this->currentLanguage) }}
+                    </button>
+                    <ul class="dropdown-menu">
+                        @foreach ($this->tema->getAttributes() as $column => $value)
+                            @if (strpos($column, 'slug_') === 0)
+                                @php
+                                    $language = substr($column, 5); 
+                                    $isActive = $this->currentLanguage === $language;
+                                @endphp
+                                <li><a class="dropdown-item" href="javascript:void(0)" wire:click="toggleLanguage('{{ $language }}')">
+                                        {{ ucfirst($language) }}
+                                    </a>
+                                </li>
+                            @endif
+                        @endforeach
+                    </ul>
+                </div>                            
+                
+                @endif
+                
                 <a href="javascript:void(0)" class="navbar-brand mb-0 h3  p-2 shadow-lg list-group-item "> </a> 
+        
                               
             </div>
         </div>       

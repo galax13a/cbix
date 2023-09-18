@@ -14,7 +14,7 @@ class SEOTOOLS {
         this.row = this.createDiv('row');
         this.col = this.createDiv('col-6');
         this.col_edit = this.createDiv('col-12');
-        this.colImagen = this.createDiv('col-6');
+        this.colImagen = this.createDiv('col-6','text-center');
         this.imagenSeo = this.createDiv('col-6', 'align-self-center', 'p-4', 'm-3');   
         this.imagenSeo.className = 'text-center';
         this.imagenSeo.id = 'imagen-seo';
@@ -87,7 +87,6 @@ class SEOTOOLS {
         }
     }
 }
-
     
     createDiv(...classNames) {
         const div = document.createElement('div');
