@@ -293,7 +293,7 @@
                                         <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
                                             title="Generate Page" class="border-0 shadow-sm rounded-4 bg-light text-dark"
                                             wire:click="generar_page">
-                                        <i class="bi bi-file-earmark-plus fs-5"></i>
+                                            <i class="bi bi-filetype-html fs-4"></i>
                                         </button>
                                      
                                      

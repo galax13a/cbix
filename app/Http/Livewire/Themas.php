@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Schema;
+use App\Http\Controllers\CRenderEditorjsController;
 
 class Themas extends Component
 {
@@ -62,111 +63,11 @@ class Themas extends Component
         }
     }
 
- public function generar_page()
+    public function generar_page() // geenra page 
     {
-        $slugColumn = 'slug_' . $this->currentLanguage;
-        $slug = $this->tema->$slugColumn;
-
-        if ($slug) {
-
-            $editorData = json_decode($this->editorjs, true);
-            $htmlContent = '';
-            $cssContent = '';
-            $jsContent = '';
-            $headContent = '';
-            foreach ($editorData['blocks'] as $block) {
-                $blockType = $block['type'];
-                $blockData = $block['data'];
-                if ($blockType === 'header') {
-                    $text = $blockData['text'];
-                    $level = $blockData['level'];
-                    $htmlContent .= "<h$level>$text</h$level>";                    
-            
-                }elseif ($blockType === 'seotool') {
-                    $title = isset($blockData['title']) ? htmlspecialchars($blockData['title']) : null;
-                    $description = isset($blockData['description']) ? htmlspecialchars($blockData['description']) : null;
-                    $keywords = isset($blockData['keywords']) ? htmlspecialchars($blockData['keywords']) : null;
-                    $imgSrc = isset($blockData['imgSrc']) ? htmlspecialchars($blockData['imgSrc']) : null;
-                    $imgAlt = isset($blockData['imgAlt']) ? htmlspecialchars($blockData['imgAlt']) : null;
-
-                    if ($title) $headContent .= "<title>$title</title>";
-                    if ($description) $headContent .= "<meta name=\"description\" content=\"$description\">";
-                    if ($keywords) $headContent .= "<meta name=\"keywords\" content=\"$keywords\">";
-                    if ($title) $headContent .= "<meta property=\"og:title\" content=\"$title\">";
-                    if ($description) $headContent .= "<meta property=\"og:description\" content=\"$description\">";
-                    if ($imgSrc) $headContent .= "<meta property=\"og:image\" content=\"$imgSrc\">";
-                    if ($imgAlt) $headContent .= "<meta property=\"og:image:alt\" content=\"$imgAlt\">";
-                }
-                elseif ($blockType === 'paragraph') {
-                    $text = $blockData['text'];
-                    $htmlContent .= "<p>$text</p>";
-                } elseif ($blockType === 'componentcloud') {
-
-                    $content = $blockData['content'];
-                    $css = $blockData['css'];
-                    $js = $blockData['js'];
-                    $cssContent .= $css;
-                    $jsContent .= $js;
-                    $htmlContent .= $content;
-                }
-            }
-
-            $this->storeContents($htmlContent, $cssContent, $jsContent,$headContent);
-            $this->showNotification('success', 'Page generated successfully in ' . $this->currentLanguage);
-        } else {
-            $this->showNotification('failure', 'You must create the slug first for this language before generating the page in ' . $this->currentLanguage);
-        }
-    }
-    private function storeContents($htmlContent, $cssContent, $jsContent, $headContent)
-    {
-        $bootstrapCssUrl = asset('storage/temas/cdn/bootstrap5.2/css/bootstrap.min.css');
-        $bootstrapJsUrl = asset('storage/temas/cdn/bootstrap5.2/js/bootstrap.bundle.min.js');
-        
-        $folio = Str::slug($this->tema->name);
-        $assets_cdn = asset('storage/temas/cdn/folio/'.$folio);
-
-        // Save CSS and JS to their respective files
-        $cssFilePath = "public/temas/cdn/folio/$folio/style.css";
-        Storage::put($cssFilePath, $cssContent);
-    
-        $jsFilePath = "public/temas/cdn/folio/$folio/app.js";
-        Storage::put($jsFilePath, $jsContent);
-    
-        // Update the HTML template to reference those files
-        $htmlTemplate = "
-            <!DOCTYPE html>
-            <html lang=\"$this->currentLanguage\">
-                <head>
-                    $headContent
-                    <meta charset=\"UTF-8\">
-                    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-                    <link href=\"$bootstrapCssUrl\" rel=\"stylesheet\" />
-                    <link href=\"$assets_cdn/style.css\" rel=\"stylesheet\">
-                </head>
-                <body>
-                    $htmlContent
-                    <script src=\"$assets_cdn/app.js\" defer></script>
-                    <script src=\"$bootstrapJsUrl\" defer></script>
-                </body>
-            </html>
-        ";
-    
-        // Save the HTML template to the first location
-        $htmlFileName = 'index.html';
-        $htmlFilePath = 'temas/folio/' . $folio . '/' . $htmlFileName;
-        Storage::put($htmlFilePath, $htmlTemplate);
-    
-        // Save the HTML template to the second location (public directory)
-        $htmlPublicPath = "public/temas/cdn/folio/$folio/$htmlFileName";
-        Storage::put($htmlPublicPath, $htmlTemplate);
-    
-        $bladeContent = "@extends('tema.app')
-            @section('content')
-                {!! $htmlContent !!}
-            @endsection";
-        $bladeFileName = 'index.blade.php';
-        $bladeFilePath = 'temas/folio/' . $folio . '/' . $bladeFileName;
-        Storage::put($bladeFilePath, $bladeContent);
+        $controller = app(CRenderEditorjsController::class);
+        $response = $controller->generatePageFromEditorJS($this->editorjs, $this->currentLanguage, $this->tema);
+        $this->showNotification($response['status'], $response['message']);
     }
     
     public function salvarx()
@@ -180,8 +81,7 @@ class Themas extends Component
             // Check if the "blocks" key is empty
             if (empty($editorData['blocks'])) {
                 $this->showNotification('failure', 'No file was saved due to the absence of blocks in the content');
-            } else {
-                // File name
+            } else {            
                 $filename = $slug . '_' . $this->currentLanguage . '.json';
                 // Folder where files will be stored (in the storage system)
                 $folder = 'temas/folio/' . Str::slug($this->tema->name);
@@ -189,7 +89,6 @@ class Themas extends Component
                 $filePath = $folder . '/' . $filename;
                 // Save the content to the file in the storage system
                 Storage::put($filePath, $this->editorjs);
-
                 $this->showNotification('success', 'Theme updated successfully in ' . $this->currentLanguage);
             }
         } else {
