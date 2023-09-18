@@ -62,7 +62,7 @@ class Themas extends Component
         }
     }
 
-    public function generar_page()
+ public function generar_page()
     {
         $slugColumn = 'slug_' . $this->currentLanguage;
         $slug = $this->tema->$slugColumn;
@@ -81,7 +81,7 @@ class Themas extends Component
                     $text = $blockData['text'];
                     $level = $blockData['level'];
                     $htmlContent .= "<h$level>$text</h$level>";                    
-               // ...
+            
                 }elseif ($blockType === 'seotool') {
                     $title = isset($blockData['title']) ? htmlspecialchars($blockData['title']) : null;
                     $description = isset($blockData['description']) ? htmlspecialchars($blockData['description']) : null;
@@ -117,15 +117,22 @@ class Themas extends Component
             $this->showNotification('failure', 'You must create the slug first for this language before generating the page in ' . $this->currentLanguage);
         }
     }
-
-
     private function storeContents($htmlContent, $cssContent, $jsContent, $headContent)
-
     {
-        $bootstrapCssUrl = asset('temas/cdn/bootstrap5.2/css/bootstrap.min.css');
-        $bootstrapjs = asset('temas/cdn/bootstrap5.2/js/bootstrap.bundle.min.js');
+        $bootstrapCssUrl = asset('storage/temas/cdn/bootstrap5.2/css/bootstrap.min.css');
+        $bootstrapJsUrl = asset('storage/temas/cdn/bootstrap5.2/js/bootstrap.bundle.min.js');
         
-        
+        $folio = Str::slug($this->tema->name);
+        $assets_cdn = asset('storage/temas/cdn/folio/'.$folio);
+
+        // Save CSS and JS to their respective files
+        $cssFilePath = "public/temas/cdn/folio/$folio/style.css";
+        Storage::put($cssFilePath, $cssContent);
+    
+        $jsFilePath = "public/temas/cdn/folio/$folio/app.js";
+        Storage::put($jsFilePath, $jsContent);
+    
+        // Update the HTML template to reference those files
         $htmlTemplate = "
             <!DOCTYPE html>
             <html lang=\"$this->currentLanguage\">
@@ -133,38 +140,35 @@ class Themas extends Component
                     $headContent
                     <meta charset=\"UTF-8\">
                     <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-                    <link href=\"style.css\" rel=\"stylesheet\">
                     <link href=\"$bootstrapCssUrl\" rel=\"stylesheet\" />
+                    <link href=\"$assets_cdn/style.css\" rel=\"stylesheet\">
                 </head>
                 <body>
-                    <style>
-                        $cssContent
-                    </style>
                     $htmlContent
-                    <script>
-                        $jsContent
-                    </script>
-                    <script src=\"$bootstrapjs\" defer></script>
+                    <script src=\"$assets_cdn/app.js\" defer></script>
+                    <script src=\"$bootstrapJsUrl\" defer></script>
                 </body>
             </html>
         ";
-        
-        
-
+    
+        // Save the HTML template to the first location
         $htmlFileName = 'index.html';
-        $htmlFilePath = 'temas/folio/' . Str::slug($this->tema->name) . '/' . $htmlFileName;
+        $htmlFilePath = 'temas/folio/' . $folio . '/' . $htmlFileName;
         Storage::put($htmlFilePath, $htmlTemplate);
-
+    
+        // Save the HTML template to the second location (public directory)
+        $htmlPublicPath = "public/temas/cdn/folio/$folio/$htmlFileName";
+        Storage::put($htmlPublicPath, $htmlTemplate);
+    
         $bladeContent = "@extends('tema.app')
             @section('content')
                 {!! $htmlContent !!}
             @endsection";
         $bladeFileName = 'index.blade.php';
-        $bladeFilePath = 'temas/folio/' . Str::slug($this->tema->name) . '/' . $bladeFileName;
+        $bladeFilePath = 'temas/folio/' . $folio . '/' . $bladeFileName;
         Storage::put($bladeFilePath, $bladeContent);
     }
-
-
+    
     public function salvarx()
     {
         $slugColumn = 'slug_' . $this->currentLanguage;
