@@ -221,7 +221,7 @@ class Themas extends Component
         } else {
             $this->error_slug = "";
         }
-        // if ($this->selected_id > 0) $this->emit('showEditor');            
+    
         return view('livewire.themas.view', [
             'themas' => Thema::latest()
                 ->paginate(5)

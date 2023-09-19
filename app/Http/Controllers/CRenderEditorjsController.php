@@ -39,7 +39,7 @@ class CRenderEditorjsController extends Controller
         ];
         $alignmentMappings = [
             'center' => 'justify-content-center',
-            'left'   => 'justify-content-start', // puedes omitir esto si el comportamiento predeterminado es a la izquierda
+            'left'   => 'justify-content-start', 
             'right'  => 'justify-content-end',
         ];
 
@@ -50,9 +50,8 @@ class CRenderEditorjsController extends Controller
             switch ($blockType) {
                 case 'header':
                     $alignmentClass = $alignmentMappings[$blockData['alignment']] ?? '';
-                    $classAttribute = $alignmentClass ? " class='{$alignmentClass}'" : "";
+                    $classAttribute = $alignmentClass ? " class='{$alignmentClass}'" : "";                 
                     $parsedContent['html'] .= "<div class='d-flex {$alignmentClass}'><h{$blockData['level']}>{$blockData['text']}</h{$blockData['level']}></div>";
-                  
                     break;
 
                 case 'seotool':
@@ -93,12 +92,10 @@ class CRenderEditorjsController extends Controller
                 $bootstrapCssUrl = asset('storage/temas/cdn/bootstrap5.2/css/bootstrap.min.css');
                 $bootstrapJsUrl = asset('storage/temas/cdn/bootstrap5.2/js/bootstrap.bundle.min.js');
                 $assets_cdn = asset('storage/temas/cdn/folio/' . $folderName);
-
                 // Save CSS and JS to their respective files
                 Storage::put("public/temas/cdn/folio/$folderName/style.css", $contents['css']);
                 Storage::put("public/temas/cdn/folio/$folderName/app.js", $contents['js']);
 
-                // Generate and save the HTML template
                 $htmlTemplate = "
                     <!DOCTYPE html>
                     <html lang=\"$currentLanguage\">
@@ -109,8 +106,14 @@ class CRenderEditorjsController extends Controller
                             <link href=\"$bootstrapCssUrl\" rel=\"stylesheet\" />
                             <link href=\"$assets_cdn/style.css\" rel=\"stylesheet\">
                         </head>
-                        <body>
-                            {$contents['html']}
+                        <body>                          
+                            <div class=\"container-xxl mt-2 mt-2\">
+                                <div class=\"row\">                
+                                    <div class=\"col\">
+                                    {$contents['html']}
+                                    </div>
+                                </div>                    
+                           </div>   
                             <script src=\"$assets_cdn/app.js\" defer></script>
                             <script src=\"$bootstrapJsUrl\" defer></script>
                         </body>
@@ -124,7 +127,6 @@ class CRenderEditorjsController extends Controller
                         {!! {$contents['html']} !!}
                     @endsection";
                 Storage::put('temas/folio/' . $folderName . '/index.blade.php', $bladeContent);
-
                 return $assets_cdn;
 
             } catch (\Exception $e) {                

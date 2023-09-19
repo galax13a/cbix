@@ -16,7 +16,7 @@ editor = new EditorJS({
                 placeholder: 'Enter a header',
                 levels: [1, 2, 3, 4, 5, 6],
                 defaultLevel: 2,
-                defaultAlignment: 'left'
+                defaultAlignment: 'center' 
             }
         },     
         seotool : window.SeoTools,

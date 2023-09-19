@@ -6,10 +6,8 @@
             <div class="card">
                 {{-- <x-themacoms.btnup /> --}}
                 {{-- <x-themacoms.home-one-flex /> --}}
-                {{--  <x-themacoms.navbar-flex /> --}}
-        
-                <x-themacoms.btnup />
-                
+                {{--  <x-themacoms.navbar-flex /> --}} 
+                <x-themacoms.btnup />                
                 <div class="offcanvas offcanvas-start {{ $isOffcanvasVisible ? 'show' : '' }}" data-bs-scroll="true"
                     id="offcambastemalist" aria-labelledby="offcanvasWithBothOptionsLabel">
                     <div class="offcanvas-header shadow">
@@ -279,30 +277,29 @@
                                             <i class="fas fa-eraser fs-5"></i>
                                         </button>
                                         |
-                                        <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
-                                            title="List Temas" class="border-0 shadow-sm rounded-4 bg-light text-dark"
-                                            wire:click="toggleOffcanvasVisible">
-                                            <i class="bi bi-list-task fs-5"></i>
-                                        </button>
-                                        |
                                         <a title='Delete Slug' class="custom-link p-1 text-capitalize" href="javascript:void(0)" 
                                         onclick="if (confirm('¿Estás seguro de que deseas eliminar este slug?')) { @this.deleteSlug() }">
                                        <i class="bi bi-file-minus fs-5"></i>Slug
                                         </a>
                                         |
-                                        <button onclick="dispatchLoadingEvent('hourglass', 300); window.scrollTo(0,0);"
-                                            title="Generate Page" class="border-0 shadow-sm rounded-4 bg-light text-dark"
-                                            wire:click="generar_page">
-                                            <i class="bi bi-filetype-html fs-4"></i>
-                                        </button>
                                      
-                                     
-
                                     </div>
                                     <div class="col-4">
                                         <span>
                                             <strong>{{ config('app.url') }} - ToolBox v1.0</strong>
                                         </span>
+                                        |
+                                    <button onclick="dispatchLoadingEvent('hourglass', 300);"
+                                        title="List Temas" class="border-0 shadow-sm rounded-4 bg-light text-dark"
+                                        wire:click="toggleOffcanvasVisible">
+                                        <i class="bi bi-list-task fs-5"></i>
+                                    </button>                                    
+                                        |
+                                        <button onclick="dispatchLoadingEvent('hourglass', 300);"
+                                        title="Generate Page" class="border-0 shadow-sm rounded-4 bg-light text-dark"
+                                        wire:click="generar_page">
+                                        <i class="bi bi-filetype-html fs-4"></i>
+                                    </button>
                                     </div>
                                 </div>
                             </div>
