@@ -20,6 +20,8 @@ editor = new EditorJS({
             }
         },     
         seotool : window.SeoTools,
+        divmargin : window.DivMargin,
+        cropimagen : window.CropImagen,
         componentcloud : window.ComponentCloud,
         themacomponentrender : window.ThemacomponentRender,
         componentsv1 : window.ComponentsV1,    

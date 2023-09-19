@@ -74,6 +74,12 @@ class CRenderEditorjsController extends Controller
                     $parsedContent['html'] .= "<p>{$blockData['text']}</p>";
                     break;
 
+                case 'divmargin':
+                    $paddingClass = $blockData['padding'] ?? '';  
+                    $marginClass = $blockData['margin'] ?? '';  
+                    $parsedContent['html'] .= "<div id='divi-margin' class='{$paddingClass} {$marginClass}'></div>"; 
+                    break;                
+
                 case 'componentcloud':
                     $parsedContent['html'] .= $blockData['content'];
                     $parsedContent['css'] .= $blockData['css'];
