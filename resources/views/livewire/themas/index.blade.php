@@ -22,6 +22,8 @@
     <script src="{{ asset('js/editorcam/PRO/ComponentCloud.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/DivMargin.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/CropImagen.js') }}" defer></script>
+    <script src="{{ asset('js/editorcam/PRO/CReditorUploadImagen.js') }}" defer></script>
+    
     <script src="{{ asset('js/editorcam/PRO/Emotions.js') }}" defer></script>    
     <script src="{{ asset('js/editorcam/PRO/ComponentsV1.js') }}" defer></script>
     <script src="{{ asset('js/editorcam/PRO/ComponentsThemaRender.js') }}" defer></script>    

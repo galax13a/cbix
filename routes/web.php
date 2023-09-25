@@ -38,6 +38,10 @@ Route::post('/chatur/lists/models10', 'App\Http\Controllers\ChaturbateController
 
 Route::get('/upgrade-plan', [UpgradePlanController::class, 'index'])->name('upgrade-plan');
 
+Route::post('/editorjs/uploadcrop', [App\Http\Controllers\EditorjsController::class, 'uploadCrop']);
+
+Route::post('/editorjs/creditoruploadimagen', [App\Http\Controllers\EditorjsController::class, 'creditoruploadimagen']);
+
 Route::post('/getpage-editor', [App\Http\Controllers\EditorjsController::class, 'GetUrlDom']);
 Route::post('/getchatur', [App\Http\Controllers\EditorjsController::class, 'getchaturdom']);
 Route::post('/loadiframe', [\App\Http\Controllers\EditorjsController::class, 'loadIframe']);

@@ -5,6 +5,11 @@ body {
 li::marker {
   color: hotpink;
 }
+.resizable-image {
+  resize: both;
+  overflow: auto;
+  border: 2px dashed #333;
+}
 
 .btn-hover1 {
   display: block;

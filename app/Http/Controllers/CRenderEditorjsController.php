@@ -96,9 +96,11 @@ class CRenderEditorjsController extends Controller
         try {
                 $folderName = 'ID' . $tema->id . '-' . Str::slug($tema->name);
                 $bootstrapCssUrl = asset('storage/temas/cdn/bootstrap5.2/css/bootstrap.min.css');
-                $bootstrapJsUrl = asset('storage/temas/cdn/bootstrap5.2/js/bootstrap.bundle.min.js');
+                $bootstrapJsUrl = asset('storage/temas/cdn/bootstrap5.2/js/bootstrap.bundle.min.js');                
                 $assets_cdn = asset('storage/temas/cdn/folio/' . $folderName);
                 // Save CSS and JS to their respective files
+                //<link href=\"$bootstrapCssUrl\" rel=\"stylesheet\" />
+                //<link href=\"$assets_cdn/style.css\" rel=\"stylesheet\">
                 Storage::put("public/temas/cdn/folio/$folderName/style.css", $contents['css']);
                 Storage::put("public/temas/cdn/folio/$folderName/app.js", $contents['js']);
 
@@ -109,8 +111,8 @@ class CRenderEditorjsController extends Controller
                             {$contents['head']}
                             <meta charset=\"UTF-8\">
                             <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">
-                            <link href=\"$bootstrapCssUrl\" rel=\"stylesheet\" />
-                            <link href=\"$assets_cdn/style.css\" rel=\"stylesheet\">
+                            <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\" integrity=\"sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN\" crossorigin=\"anonymous\">                            
+                            <link href=\"$assets_cdn/style.css\" rel=\"stylesheet\">                
                         </head>
                         <body>                          
                             <div class=\"container-xxl mt-2 mt-2\">
@@ -121,7 +123,7 @@ class CRenderEditorjsController extends Controller
                                 </div>                    
                            </div>   
                             <script src=\"$assets_cdn/app.js\" defer></script>
-                            <script src=\"$bootstrapJsUrl\" defer></script>
+                            <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js\" integrity=\"sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL\" crossorigin=\"anonymous\"></script>
                         </body>
                     </html>
                 ";
