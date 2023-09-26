@@ -111,7 +111,6 @@ window.addEventListener('loading', event => {
 let btn_upt = document.getElementById("btn-update");
 let btn_str = document.getElementById("btn-store");
 
-
 if (btn_upt || btn_str) {
 
     btn_upt.addEventListener("click", function () {
@@ -145,5 +144,3 @@ $(document).ready(() => {
         $(this).addClass('active').siblings().removeClass('active');
     });
 });
-
-
