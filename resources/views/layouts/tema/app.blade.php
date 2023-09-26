@@ -9,7 +9,7 @@
         @endif
     </title>
     @stack('scripts-head')
-    @vite(['resources/js/app.js'])
+
 </head>
 
 <body>
