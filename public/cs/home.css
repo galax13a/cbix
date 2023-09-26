@@ -1,0 +1,39 @@
+:root {
+    --highlight-color: #f0e372f3;
+  }
+
+.hero__title .icon-text img {
+    position: absolute;
+    left: 0;
+    margin-left: -5px;
+}
+.marketery {
+    position: relative;
+  }
+  
+.marketery::before {
+    background-color: var(--highlight-color);
+    content: "";
+    position: absolute;
+    width: calc(100% + 4px);
+    height: 60%;
+    left: -2px;
+    bottom: 0;
+    z-index: -1;
+    transform: rotate(-2deg);
+  }
+  .marketery2 {
+    position: relative;
+  }
+  
+.marketery2::before {
+    background-color: var(--highlight-color);
+    content: "";
+    position: absolute;
+    width: calc(100% + 6px);
+    height: 55%;
+    left: -3px;
+    bottom: 0;
+    z-index: -1;
+  }
+  
