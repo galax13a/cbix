@@ -18,6 +18,7 @@
         <main class="master">
             @yield('content')
         </main>
+        <x-themacoms.footerhome />
     </div>
     @stack('scripts-body')
 </body>

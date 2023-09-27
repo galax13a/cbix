@@ -79,7 +79,7 @@
                         data-wow-duration="1500ms" id="style-2Ylfc">
                         <h3>
                             55K 
-                            <svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" id="app-store-circle" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><rect id="secondary" x="3" y="3" width="18" height="18" rx="9" transform="translate(24 0) rotate(90)" style="fill: #2ca9bc; stroke-width: 2;"></rect><line id="primary" x1="12.89" y1="7" x2="8.44" y2="16" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><path id="primary-2" data-name="primary" d="M15.56,16,11.11,7M8,14h8" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><rect id="primary-3" data-name="primary" x="3" y="3" width="18" height="18" rx="9" transform="translate(24 0) rotate(90)" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></rect></g></svg>
+                            <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 8.5H13.5C16 8.5 16 12 13.5 12H10.5" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M10.5 12H13.5C16 12 16 15.5 13.5 15.5H8" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M10 17V7" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M13 8.5V7" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M13 17V15.5" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 12C3 4.5885 4.5885 3 12 3C19.4115 3 21 4.5885 21 12C21 19.4115 19.4115 21 12 21C4.5885 21 3 19.4115 3 12Z" stroke="#323232" stroke-width="2"></path> <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 3C4.5885 3 3 4.5885 3 12C3 19.4115 4.5885 21 12 21C19.4115 21 21 19.4115 21 12C21 4.5885 19.4115 3 12 3ZM8 8.25C7.86193 8.25 7.75 8.36193 7.75 8.5C7.75 8.63807 7.86193 8.75 8 8.75H9.75V15.25H8C7.86193 15.25 7.75 15.3619 7.75 15.5C7.75 15.6381 7.86193 15.75 8 15.75H9.75V17C9.75 17.1381 9.86193 17.25 10 17.25C10.1381 17.25 10.25 17.1381 10.25 17V15.75H12.75V17C12.75 17.1381 12.8619 17.25 13 17.25C13.1381 17.25 13.25 17.1381 13.25 17V15.75H13.5C14.187 15.75 14.7234 15.5076 15.0873 15.1255C15.4481 14.7467 15.625 14.2456 15.625 13.75C15.625 13.2544 15.4481 12.7533 15.0873 12.3745C14.9467 12.2268 14.7803 12.1 14.5894 12C14.7803 11.9 14.9467 11.7732 15.0873 11.6255C15.4481 11.2467 15.625 10.7456 15.625 10.25C15.625 9.75436 15.4481 9.25328 15.0873 8.87446C14.7234 8.49236 14.187 8.25 13.5 8.25H13.25V7C13.25 6.86193 13.1381 6.75 13 6.75C12.8619 6.75 12.75 6.86193 12.75 7V8.25H10.25V7C10.25 6.86193 10.1381 6.75 10 6.75C9.86193 6.75 9.75 6.86193 9.75 7V8.25H8Z" fill="#323232"></path> </g></svg>                            
                         </h3>
                         <span>
                             Top selling Apps
@@ -120,13 +120,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="blog-grid">
                                 <div class="blog-img">
-                                    <div class="date">04 FEB</div>
+                                    <div class="date shadow border border-2 text-bg-dark">Auto Tiper 💚</div>
                                     <a href="#">
-                                        <img src="https://www.bootdey.com/image/350x280/FFB6C1/000000" title="" alt="">
+                                        <img src="{{asset('temas/home/auto.jpeg')}}" title="" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
+                                    <h5><a href="#">Send auto tips to your favorites</a></h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
                                     <div class="btn-bar">
                                         <a href="#" class="px-btn-arrow">
@@ -140,13 +140,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="blog-grid">
                                 <div class="blog-img">
-                                    <div class="date">04 FEB</div>
+                                    <div class="date shadow border border-2 text-bg-danger">Goshts Live 💜</div>
                                     <a href="#">
-                                        <img src="https://www.bootdey.com/image/350x280/87CEFA/000000" title="" alt="">
+                                        <img src="{{asset('temas/home/visit.jpeg')}}" title="" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
+                                    <h5><a href="#">Support with a view to your live</a></h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
                                     <div class="btn-bar">
                                         <a href="#" class="px-btn-arrow">
@@ -160,13 +160,13 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="blog-grid">
                                 <div class="blog-img">
-                                    <div class="date">04 FEB</div>
+                                    <div class="date shadow border border-2 text-bg-warning">Create Bio ❤️</div>
                                     <a href="#">
-                                        <img src="https://www.bootdey.com/image/350x280/FF7F50/000000" title="" alt="">
+                                        <img src="{{asset('temas/home/create.jpeg')}}" title="" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
+                                    <h5><a href="#">Create cute and quick bios, Profiles pro chatur</a></h5>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
                                     <div class="btn-bar">
                                         <a href="#" class="px-btn-arrow">
@@ -184,6 +184,8 @@
           <div class="container" id="bios">
                 <div class="row justify-content-md-between justify-content-xxl-center text-md-start">
                     <div class="col-12 text-center"><h1 class="display-2">Create Bios Chatur</h1></div>
+                    
+                    
                   <div class="mb-4 mb-lg-0 col-md-8 col-lg-7 col-xxl-5">
              
                     <h2 class="display-5 aos-init aos-animate" data-aos="fade-down" data-aos-delay="0">
@@ -207,7 +209,7 @@
                 <img src="https://designmodo.com/startup/app/i/feature-6.png" srcset="i/feature-6@2x.png 2x" alt="" class="img-fluid aos-init aos-animate" data-aos="fade-down" data-aos-delay="500">
               </div>
 
-            <section class="section mb-2 ">
+            <section class="section mb-2 gray-bg">
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-around flex-row-reverse">
                         <div class="col-lg-6">
@@ -462,14 +464,19 @@
                               </ul>
                             </div>
                           </div>
-                        </div>
-                        
-                        
-               
+                        </div>                 
 
                     </div>
 
             </div>
 
-    
+               <div class="container-fire">                
+                    <div class="red flame"></div>
+                    <div class="orange flame"></div>
+                    <div class="yellow flame"></div>
+                    <div class="white flame"></div>
+                    <div class="blue circle"></div>
+                    <div class="black circle"></div>
+              </div>
+
     @endsection
