@@ -1,7 +1,7 @@
     @extends('layouts.tema.app')
     @section('title', __('Home Donwload AppStudio'))
     @push('scripts-head')
-        <link href="{{ asset('cs/home.css') }}" rel="stylesheet">
+        {{-- <link href="{{ asset('cs/home.css') }}" rel="stylesheet"> --}}
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     @endpush
@@ -12,13 +12,27 @@
     @endpush
 
     @section('content')
-        <x-themacoms.navbar-flex />
-        <div class="container-fluid ">
-            <div class="row mt-5 p-4">
-                <div class="col-md-6 col-xl-6">
-                    <div class="mt-5">
-                        <span class="mb-4" id="style-OlaZr">
-                            <span> # No</span>Trending Apps On Play Store - Usa | Europe | Canada</span>
+        <x-themacoms.navbar-flex />           
+        <<x-themacoms.btnup/>
+        <div class="container-fluid">                           
+
+            <div class="row mt-5">
+                <div class="container text-center">
+                    <div class="row align-items-start">
+                      <div class="col">                   
+                      </div>
+                      <div class="col">             
+                      </div>
+                      <div class="col mt-2">
+                        <div class="animate-gh mt-5">
+                            <img  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6 col-xl-6 px-5">
+
+                    <div class="mt-1" id="home">                       
                         <h3>
                            Get BotCamStudio&nbsp;&nbsp;  By Using Botchatur&nbsp;Apps                           
                         </h3>
@@ -31,8 +45,8 @@
                             the essence of your work, we are here to help you present yourself in the best way
                             possible.  <mark>lime minty black beanwraps</mark>
                         </p>
-                        <div class="hero__btn btns mt-5">
-                            <button class="btn btn-primary p-2 m-3"> DownLoad </button>
+                       
+                        <div class="hero__btn btns mt-5">                        
 
                             <span class="mb-4" id="style-OlaZr">
                                 <span> # No</span>Trending Apps On Play Store - Usa | Europe | Canada</span>
@@ -47,15 +61,23 @@
                                 an expert in your field looking to update your image, or an artist looking to capture
                                 the essence of your work, we are here to help you present yourself in the best way
                                 possible.  <mark>lime minty black beanwraps</mark>
+                              
                             </p>
-                            <button class="btn btn-primary p-2 m-3 text-end"> DownLoad </button>
+
+                                    <div class="text-end">
+                                        <x-themacoms.btn-hover-3/>
+                                    </div>
+                            
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-4">
                     <img decoding="async" src="{{ asset('temas/home/img_01.png') }}" alt="App Botchatur">
+                    <div class="animate-gh text-end">
+                        <img  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                    </div>
                 </div>
-                <div class="col-md-6 col-xl-2 mt-2">
+                <div class="col-md-6 col-xl-2 mt-3">
                     <div class=""  id="style-Z56Nr"> <img decoding="async"
                            src="{{ asset('temas/home/img-w.png') }}" alt="">
                     </div>
@@ -77,176 +99,281 @@
                             K+
                            <span class="badge badge-dark p-1">  Active Install Apps </span>
                         </p>
+                        <div class="animate-gh mt-5">
+                            <img title="Get Credits Free"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
+                        </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container-fluid">
-            <div class="row justify-content-center">
-                <div class="container">
-                    <div class="col-xl-12 m-3">
-                
-                        <div class="codexpro-code-view"  style="display: block;">                  
-                        
-                            <section
-                                class="elementor-section elementor-inner-section elementor-element elementor-element-8792b91 elementor-section-boxed elementor-section-height-default false snipcss-GkBnj"
-                                data-id="8792b91" data-element_type="section">
-                                <div class="elementor-container elementor-column-gap-no">
-                                    <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-0e424d3"
-                                        data-id="0e424d3" data-element_type="column">
-                                        <div class="elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-dd35ef2 false elementor-widget elementor-widget-heading animated fadeInUp"
-                                                data-id="dd35ef2" data-element_type="widget"
-                                                data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h2 class="elementor-heading-title elementor-size-default">
-                                                        About Us
-                                                    </h2>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-94d21d6 elementor-widget elementor-widget-text-editor animated fadeInUp"
-                                                data-id="94d21d6" data-element_type="widget"
-                                                data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-                                                data-widget_type="text-editor.default">
-                                                <div class="elementor-widget-container">
-                                                    Leading the way in
-                                                    <span id="style-8M1Fl" class="style-8M1Fl">
-                                                        Creative
-                                                    </span>
-                                                    Marketing Agency
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-0e0e711 elementor-widget__width-auto elementor-hidden-mobile elementor-widget-divider--view-line elementor-widget elementor-widget-divider animated fadeInUp"
-                                                data-id="0e0e711" data-element_type="widget"
-                                                data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-                                                data-widget_type="divider.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="elementor-divider">
-                                                        <span class="elementor-divider-separator">
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-3d46ee8 elementor-widget__width-auto false elementor-widget elementor-widget-heading animated fadeInUp"
-                                                data-id="3d46ee8" data-element_type="widget"
-                                                data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-                                                data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h2 class="elementor-heading-title elementor-size-default">
-                                                        Best marketing agency de vanesa de la torre</h2>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-3af87da elementor-widget elementor-widget-text-editor animated fadeInUp"
-                                                data-id="3af87da" data-element_type="widget"
-                                                data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-                                                data-widget_type="text-editor.default">
-                                                <div class="elementor-widget-container">
-                                                    We provide marketing services to startups and small businesses to
-                                                    looking for a partner of their digital media, design &amp; development,
-                                                    lead generation and communications requirents. We work with you, not for
-                                                    you. Although we have a great resources.
-                                                    <br>
-                                                    <br>
-                                                    We are an experienced and talented team of passionate consultants who
-                                                    live and breathe search engine marketing is simply dummy text of the
-                                                    printing and typesetting industry has been the industry’s standard dummy
-                                                    text ever since the 1500s, when an unknown printer took a galley of type
-                                                    and scrambled it to make a type electronic typesetting, remaining
-                                                    essentially.
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-b9736ef elementor-widget elementor-widget-button animated fadeInUp"
-                                                data-id="b9736ef" data-element_type="widget"
-                                                data-settings="{&quot;_animation&quot;:&quot;fadeInUp&quot;}"
-                                                data-widget_type="button.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="elementor-button-wrapper">
-                                                        <a class="elementor-button elementor-button-link elementor-size-sm"
-                                                            href="#">
-                                                            <span class="elementor-button-content-wrapper">
-                                                                <span class="elementor-button-text">
-                                                                    More About Us
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-fc9f9d1"
-                                        data-id="fc9f9d1" data-element_type="column">
-                                        <div class="elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-8cb4ca2 IT_animation_5 elementor-widget__width-auto elementor-absolute none false false none-data-animation false elementor-widget elementor-widget-image style-gPdkR"
-                                                data-id="8cb4ca2" data-element_type="widget"
-                                                data-settings="{&quot;_position&quot;:&quot;absolute&quot;}"
-                                                data-widget_type="image.default" id="style-gPdkR">
-                                                <div class="elementor-widget-container">
-                                                    <img decoding="async" width="54" height="54"
-                                                        src="{{asset('temas/home/ghost.png')}}"
-                                                        class="attachment-full size-full wp-image-2576" alt="">
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-56a1d4a IT_animation_2 none false false none-data-animation false elementor-widget elementor-widget-image style-P15KG"
-                                                data-id="56a1d4a" data-element_type="widget"
-                                                data-widget_type="image.default" id="style-P15KG">
-                                                <div class="elementor-widget-container">
-                                                    <img decoding="async" loading="lazy" width="598" height="582"
-                                                        src="https://themexriver.com/appilo-theme/seo-agency/wp-content/uploads/sites/56/2021/11/ab-1-1.png"
-                                                        class="attachment-full size-full wp-image-2569" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+
+            <section class="section gray-bg mb-3" id="download" >
+                <div class="container--fluid mx-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 text-center">
+                            <div class="section-title" id="apps">
+                                <h2>Apps Downloads</h2>
+                                <div class="col-12 text-center"><h2 class="display-2">App BotStudio</h2></div>
+                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites</p>
+                            </div>
                         </div>
-
-                        <section class="row_am blog_list_main snipcss-iJH9j">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-6 aos-init aos-animate" data-aos="fade-in"
-                                        data-aos-duration="1500">
-                                        <div class="blog_img">
-                                            <img src="http://kalanidhithemes.com/live-preview/landing-page/apper/all-demo/05-app-landing-page-video-hero/images/blod-detail.png"
-                                                alt="image">
-                                            <span>
-                                                20 min ago
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div class="blog_text">
-                                            <span class="choice_badge">
-                                                EDITOR CHOICE
-                                            </span>
-                                            <div class="section_title">
-                                                <h2>
-                                                    Top rated app of the year!
-                                                </h2>
-                                                <p>
-                                                    Lorem Ipsum is simply dummy text of the printing and typesetting in
-                                                    dustry lorem Ipsum has been the industrys standard dummy text ev
-                                                    er since the 1500s, when an unknown printer took a galley of type and
-                                                    scrambled it to make a type specimen book. It has survived not only five
-                                                    centuries, but also the leap into electronic Lorem Ipsum is simply dummy
-                                                    text of the printing and typesetting.
-                                                </p>
-                                                <a href="blog-single.html">
-                                                    READ MORE
-                                                </a>
-                                            </div>
-                                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-grid">
+                                <div class="blog-img">
+                                    <div class="date">04 FEB</div>
+                                    <a href="#">
+                                        <img src="https://www.bootdey.com/image/350x280/FFB6C1/000000" title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                    <div class="btn-bar">
+                                        <a href="#" class="px-btn-arrow">
+                                            <span>Read More</span>
+                                            <i class="arrow"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-                        </section>
-
-
-
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-grid">
+                                <div class="blog-img">
+                                    <div class="date">04 FEB</div>
+                                    <a href="#">
+                                        <img src="https://www.bootdey.com/image/350x280/87CEFA/000000" title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                    <div class="btn-bar">
+                                        <a href="#" class="px-btn-arrow">
+                                            <span>Read More</span>
+                                            <i class="arrow"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="blog-grid">
+                                <div class="blog-img">
+                                    <div class="date">04 FEB</div>
+                                    <a href="#">
+                                        <img src="https://www.bootdey.com/image/350x280/FF7F50/000000" title="" alt="">
+                                    </a>
+                                </div>
+                                <div class="blog-info">
+                                    <h5><a href="#">Prevent 75% of visitors from google analytics</a></h5>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.</p>
+                                    <div class="btn-bar">
+                                        <a href="#" class="px-btn-arrow">
+                                            <span>Read More</span>
+                                            <i class="arrow"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
+
+          <div class="container" id="bios">
+                <div class="row justify-content-md-between justify-content-xxl-center text-md-start">
+                    <div class="col-12 text-center"><h1 class="display-2">Create Bios Chatur</h1></div>
+                  <div class="mb-4 mb-lg-0 col-md-8 col-lg-7 col-xxl-5">
+             
+                    <h2 class="display-5 aos-init aos-animate" data-aos="fade-down" data-aos-delay="0">
+                      Let’s do it together. We could create anything.
+                    </h2>
+                    <a class="btn btn-cb shadow text-decoration-none" href="#" contenteditable="true">Go Link</a>
+                  </div>
+                  <img src="https://designmodo.com/startup/app/i/feature-6.png" id="js-get-smile" class="visually-hidden" style="opacity: 0.01;">
+                  <div class="d-none d-xxl-block col-xxl-1">
+                  </div>
+                  <div class="mb-md-15 mb-8 col-md-8 col-lg-5 col-xxl-4">
+                    <p class="fs-2 mb-0 aos-init aos-animate" data-aos="fade-down" data-aos-delay="250">
+                      Start growing in half the time with an
+                      <span class="text-nowrap">
+                        all-in-one
+                      </span>
+                      website builder - no more long hours spent on the boring stuff!
+                    </p>
+                  </div>
+                </div>
+                <img src="https://designmodo.com/startup/app/i/feature-6.png" srcset="i/feature-6@2x.png 2x" alt="" class="img-fluid aos-init aos-animate" data-aos="fade-down" data-aos-delay="500">
+              </div>
+
+            <section class="section mb-2 " id="bios">
+                <div class="container-fluid">
+                    <div class="row align-items-center justify-content-around flex-row-reverse">
+                        <div class="col-lg-6">
+                            <div class="about-text">
+                                <h3 class="dark-color">Do some awsome stuff with me.</h3>
+                                <h4 class="theme-color">UI / UX Designer &amp; Web Developer</h4>
+                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
+                                <p>I design and develop services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores.</p>
+                                <div class="text-end">
+                                    <x-themacoms.btn-hover-2/>
+                                  </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 text-center">
+                            <div class="about-img">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section class="price_plan_area section mb-2" id="pricing">
+                
+                <div class="container-fluid">
+                  <div class="row justify-content-center">
+                    <div class="col-12 col-sm-8 col-lg-6">
+                      <!-- Section Heading-->
+                      <div class="section-heading section-title" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    
+                        <h3>Let's find a way together</h3>
+                        <h6>Pricing Plans</h6>
+                        <p>Appland is completely creative, lightweight, clean &amp; super responsive app landing page.</p>
+                        <div class="line"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center">
+                    <!-- Single Price Plan Area-->
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                      <div class="single_price_plan wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="title">
+                          <h3>Start Up</h3>
+                          <p>Start a trial</p>
+                          <div class="line"></div>
+                        </div>
+                        <div class="price">
+                          <h4>$0</h4>
+                        </div>
+                        <div class="description">
+                          <p><i class="lni lni-checkmark-circle"></i>Duration: 7days</p>
+                          <p><i class="lni lni-checkmark-circle"></i>10 Features</p>
+                          <p><i class="lni lni-close"></i>No Hidden Fees</p>
+                          <p><i class="lni lni-close"></i>100+ Video Tuts</p>
+                          <p><i class="lni lni-close"></i>No Tools</p>
+                        </div>
+                        <div class="button"><a class="btn btn-success btn-2" href="#">Get Started</a></div>
+                      </div>
+                    </div>
+                    <!-- Single Price Plan Area-->
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                      <div class="single_price_plan active wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <!-- Side Shape-->
+                        <div class="side-shape"><img src="https://bootdey.com/img/popular-pricing.png" alt=""></div>
+                        <div class="title"><span>Popular</span>
+                          <h3>Small Business</h3>
+                          <p>For Small Business Team</p>
+                          <div class="line"></div>
+                        </div>
+                        <div class="price">
+                          <h4>$9.99</h4>
+                        </div>
+                        <div class="description">
+                          <p><i class="lni lni-checkmark-circle"></i>Duration: 3 Month</p>
+                          <p><i class="lni lni-checkmark-circle"></i>50 Features</p>
+                          <p><i class="lni lni-checkmark-circle"></i>No Hidden Fees</p>
+                          <p><i class="lni lni-checkmark-circle"></i>150+ Video Tuts</p>
+                          <p><i class="lni lni-close"></i>5 Tools</p>
+                        </div>
+                        <div class="button"><a class="btn btn-warning" href="#">Get Started</a></div>
+                      </div>
+                    </div>
+                    <!-- Single Price Plan Area-->
+                    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+                      <div class="single_price_plan wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="title">
+                          <h3>Enterprise</h3>
+                          <p>Unlimited Possibilities</p>
+                          <div class="line"></div>
+                        </div>
+                        <div class="price">
+                          <h4>$49.99</h4>
+                        </div>
+                        <div class="description">
+                          <p><i class="lni lni-checkmark-circle"></i>Duration: 1 year</p>
+                          <p><i class="lni lni-checkmark-circle"></i>Unlimited Features</p>
+                          <p><i class="lni lni-checkmark-circle"></i>No Hidden Fees</p>
+                          <p><i class="lni lni-checkmark-circle"></i>Unlimited Video Tuts</p>
+                          <p><i class="lni lni-checkmark-circle"></i>Unlimited Tools</p>
+                        </div>
+                        <div class="button"><a class="btn btn-info" href="#">Get Started</a></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+
+              <div class="container" id="api">
+                <div class="row">
+                    <div class="col-xl-4 col-md-4 mb-3 mb-lg-5">
+                          <!--Card-->
+                          <div class="card overflow-hidden text-center">
+                            <img src="https://www.bootdey.com/image/280x120/6495ED/000000" class="card-img-top img-fluid" alt="">
+                    
+                            <!--Card body-->
+                            <div class="card-body p-0">
+                              <!--avatar-->
+                              <a href="#!.html" class="avatar xl rounded-circle bg-gray bg-opacity-10 p-1 position-relative mt-n5 d-block mx-auto">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="avatar-img img-fluid rounded-circle" alt="">
+                              </a>
+                              <h5 class="mb-0 pt-3">
+                                <a href="#!.html" class="text-reset">Noah Pierre</a>
+                              </h5>
+                              <span class="text-muted small d-block mb-4">Full stack developer</span>
+                              <div class="row mx-0 border-top border-bottom">
+                                <div class="col-6 text-center border-end py-3">
+                                  <h5 class="mb-0">2345</h5>
+                                  <small class="text-muted">Followers</small>
+                                </div>
+                                <div class="col-6 text-center py-3">
+                                  <h5 class="mb-0">54</h5>
+                                  <small class="text-muted">Following</small>
+                                </div>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+                                  <span class="text-muted small">Join</span>
+                                  <strong>April 2014</strong>
+                                </li>
+                                <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+                                  <span class="text-muted small">Location</span>
+                                  <strong>Barcelona, Spain</strong>
+                                </li>
+                                <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+                                  <span class="text-muted small d-flex align-items-center">
+                                    <span class="align-middle lh-1 me-1 size-5 border border-4 border-success rounded-circle d-inline-block"></span>
+                                    Online
+                                  </span>
+                                  <div class="text-end">
+                                    <a href="#!.html" class="btn btn-sm btn-primary">Follow</a>
+                                  </div>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        
+               
+
+                    </div>
+
             </div>
-        </div>
+
+    
     @endsection

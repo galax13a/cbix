@@ -8,8 +8,9 @@
             @yield('title')
         @endif
     </title>
-    @stack('scripts-head')
-
+    @stack('scripts-head')   
+    @vite(['resources/css/home.css'])
+    
 </head>
 
 <body>
