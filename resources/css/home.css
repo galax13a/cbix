@@ -1,10 +1,118 @@
-
 :root {
     --highlight-color: #e1f813cb;    
   }
 .punter {
     cursor: grab; 
 }
+.btn-new:hover {
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Definición de la sombra */
+  }
+.accordion-style .card {
+    background: transparent;
+    box-shadow: none;
+    margin-bottom: 15px;
+    margin-top: 0 !important;
+    border: none;
+}
+.accordion-style .card:last-child {
+    margin-bottom: 0;
+}
+.accordion-style .card-header {
+    border: 0;
+    background: none;
+    padding: 0;
+    border-bottom: none;
+}
+.accordion-style .btn-link {
+    color: #8302cee1;
+    position: relative;
+    display: block;
+    width: 100%;
+    text-align: left;
+    white-space: normal;
+    box-shadow: none;
+    padding: 15px 55px;
+    text-decoration: none;
+}
+.mx-auto {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+.rounded {
+    border-radius: 0.25rem !important;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: top;
+}
+.accordion-style .btn-link:hover {
+    text-decoration: none;
+}
+.accordion-style .btn-link.collapsed {
+    color: #575a7b;
+}
+.accordion-style .btn-link.collapsed:after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 1rem;
+    color: #8403da;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    box-shadow: 8px 8px 30px 0 rgba(0, 0, 0, 0.12);
+}
+.accordion-style .btn-link:after {
+    content: "-";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: 1rem;
+    color: #fff;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #14e0589a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(-50%);
+    box-shadow: 8px 8px 30px 0 rgba(0, 0, 0, 0.12);
+}
+.accordion-style .card-body {
+    padding-top: 0px;
+    padding-left: 3.5rem;
+    padding-bottom: 0;
+}
+.accordion-style .card-body:before {
+    position: absolute;
+    content: "";
+    border-style: dashed;
+    border-width: 0 0 0 1.2px;
+    border-color: #f99218;
+    left: 20px;
+    top: 0;
+    z-index: 1;
+    bottom: 0;
+}
+@media screen and (max-width: 767px) {
+    .accordion-style .btn-link {
+        padding: 15px 40px 15px 55px;
+    }
+}
+@media screen and (max-width: 575px) {
+    .accordion-style .btn-link {
+        padding: 15px 30px 15px 55px;
+    }
+}
+
 .price_plan_area {
     position: relative;
     z-index: 1;
@@ -297,90 +405,3 @@
     bottom: 0;
     z-index: -1;
   }
-  @keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translate3d(0, 100%, 0);
-        opacity: 0;
-        transform: translate3d(0px, 100%, 0px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: none;
-        opacity: 1;
-        transform: none;
-    }
-
-}
-@keyframes IT_animation_5 {
-    0% {
-        transform: translate(0, 0) rotate(0);
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-
-    20% {
-        transform: translate(73px, -1px) rotate(36deg);
-        transform: translate(73px, -1px) rotate(36deg);
-    }
-
-    40% {
-        transform: translate(111px, 72px) rotate(72deg);
-        transform: translate(111px, 72px) rotate(72deg);
-    }
-
-    60% {
-        transform: translate(93px, 122px) rotate(108deg);
-        transform: translate(93px, 122px) rotate(108deg);
-    }
-
-    80% {
-        transform: translate(-70px, 72px) rotate(124deg);
-        transform: translate(-70px, 72px) rotate(124deg);
-    }
-
-    100% {
-        transform: translate(0, 0) rotate(0);
-        transform: translate(0px, 0px) rotate(0deg);
-    }
-
-}
-
-@keyframes IT_animation_2 {
-    0% {
-        transform: translateY(0);
-        transform: translateY(0px);
-    }
-
-    25% {
-        transform: translateY(-40px);
-        transform: translateY(-40px);
-    }
-
-    50% {
-        transform: translateY(0);
-        transform: translateY(0px);
-    }
-
-    75% {
-        transform: translateY(40px);
-        transform: translateY(40px);
-    }
-
-    100% {
-        transform: translateY(0);
-        transform: translateY(0px);
-    }
-
-}                           
-#style-8M1Fl.style-8M1Fl {
-    color: #b956fe;
-}
-
-#style-gPdkR.style-gPdkR {
-    animation: 12s linear 0s infinite alternate none running IT_animation_5;
-}
-
-#style-P15KG.style-P15KG {
-    animation: 12s linear 0s infinite alternate none running IT_animation_2;
-}

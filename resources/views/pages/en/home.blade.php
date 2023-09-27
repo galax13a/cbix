@@ -32,28 +32,22 @@
                   </div>
                 <div class="col-md-6 col-xl-6 px-5">
 
-                    <div class="mt-1" id="home">                       
+                    <div class="mt-1 text-center" id="home">                       
                         <h3>
                            Get BotCamStudio&nbsp;&nbsp;  By Using Botchatur&nbsp;Apps                           
                         </h3>
-                        <h1>COOL <strong class="marketery2" style="--highlight-color: #86ff3fcc;">CamEditor</strong> Nice
+                        <h1>COOL <strong class="marketery2" style="--highlight-color: #86ff3fcc;">CamEditor</strong> Profile
                         </h1>
-                        <p class="wow fadeInUp style-1ceoc" data-wow-delay=".4s" data-wow-duration="1500ms"
-                            id="style-1ceoc">At Botchatur Studio, we believe that every professional has a unique
+                        <p>
+                            At Botchatur Studio, we believe that every professional has a unique
                             story to tell. Whether you are a recent graduate looking to stand out in the job market,
                             an expert in your field looking to update your image, or an artist looking to capture
                             the essence of your work, we are here to help you present yourself in the best way
                             possible.  <mark>lime minty black beanwraps</mark>
                         </p>
                        
-                        <div class="hero__btn btns mt-5">                        
-
-                            <span class="mb-4" id="style-OlaZr">
-                                <span> # No</span>Trending Apps On Play Store - Usa | Europe | Canada</span>
-                            <h3 class="text-end">
-                               Get BotCamStudio&nbsp;&nbsp;  By Using Botchatur&nbsp;Apps                           
-                            </h3>
-                            <h1 class="text-end">COOL <strong class="marketery2" style="--highlight-color: #9c2abeb6;">AutoTyper</strong> Nice
+                        <div class="hero__btn btns mt-5">   
+                            <h1 class="text-center">COOL <strong class="marketery2" style="--highlight-color: #9c2abeb6;">AutoTyper</strong> Nice
                             </h1>
                             <p class="wow fadeInUp style-1ceoc" data-wow-delay=".4s" data-wow-duration="1500ms"
                                 id="style-1ceoc">At Botchatur Studio, we believe that every professional has a unique
@@ -84,7 +78,8 @@
                     <div class="hero__top-selling-app wow fadeInRight style-2Ylfc" data-wow-delay=".4s"
                         data-wow-duration="1500ms" id="style-2Ylfc">
                         <h3>
-                            5.00
+                            55K 
+                            <svg fill="#000000" width="64px" height="64px" viewBox="0 0 24 24" id="app-store-circle" data-name="Flat Line" xmlns="http://www.w3.org/2000/svg" class="icon flat-line"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><rect id="secondary" x="3" y="3" width="18" height="18" rx="9" transform="translate(24 0) rotate(90)" style="fill: #2ca9bc; stroke-width: 2;"></rect><line id="primary" x1="12.89" y1="7" x2="8.44" y2="16" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><path id="primary-2" data-name="primary" d="M15.56,16,11.11,7M8,14h8" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></path><rect id="primary-3" data-name="primary" x="3" y="3" width="18" height="18" rx="9" transform="translate(24 0) rotate(90)" style="fill: none; stroke: #000000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></rect></g></svg>
                         </h3>
                         <span>
                             Top selling Apps
@@ -97,11 +92,15 @@
                             First Youtube videos Uploaded
                             8 3 8 5
                             K+
-                           <span class="badge badge-dark p-1">  Active Install Apps </span>
-                        </p>
-                        <div class="animate-gh mt-5">
+                           <span class="badge text-bg-dark p-1">  Active Install Apps </span>
+                    </p>
+                        <div class="animate-gh mt-1 ">
                             <img title="Get Credits Free"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
                         </div>
+                        <div class="container mt-5 ml-3">
+                            <svg width="64px" height="64px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="a"></g> <g id="b"> <path d="M30.02,5c-8.18,0-14.81,6.63-14.81,14.81,0,5.56,3.12,10.66,8.07,13.19l8.05,6.25,10.43-10.41c1.99-2.59,3.07-5.76,3.07-9.03,0-8.18-6.63-14.81-14.81-14.81Z" fill="#f2d865" fill-rule="evenodd"></path> <path d="M30.02,5c-.56,0-1.12,.03-1.66,.1,7.4,.83,13.15,7.1,13.15,14.71,0,3.27-1.08,6.44-3.07,9.03l-8.97,8.95,1.87,1.45,10.43-10.41c1.99-2.59,3.07-5.76,3.07-9.03,0-8.18-6.63-14.81-14.81-14.81h0Z" fill="#f2d865" fill-rule="evenodd"></path> <path d="M14.44,33c-2.4,0-4.33,1.93-4.33,4.33s1.93,4.33,4.33,4.33v8.67c-2.4,0-4.33,1.94-4.33,4.34s1.93,4.33,4.33,4.33h20.3c1,0,1.93-.34,2.66-.91l-1.92-18.93-6.9-6.17H14.44Z" fill="#f2d865" fill-rule="evenodd"></path> <path d="M26.04,50.33H14.45c-2.4,0-4.34-1.93-4.34-4.33s1.93-4.33,4.34-4.33h9.94l1.65,8.67Z" fill="#e9c03d" fill-rule="evenodd"></path> <circle cx="39.08" cy="43.39" fill="#f5e680" r="14.81" transform="translate(-15.15 21.73) rotate(-26.22)"></circle> <circle cx="39.08" cy="43.39" fill="#ebb680" r="8.12"></circle> <circle cx="30.02" cy="19.81" fill="#ebb680" r="8.12" transform="translate(8.18 48.38) rotate(-86.02)"></circle> <path d="M39.08,28.58c-.67,0-1.33,.05-1.99,.14,7.32,1.01,12.78,7.27,12.78,14.67,0,7.4-5.47,13.66-12.8,14.66,.67,.09,1.34,.14,2.01,.14,8.18,0,14.81-6.63,14.81-14.81s-6.63-14.81-14.81-14.81Z" fill="#f2d865" fill-rule="evenodd"></path> <path d="M39.08,35.27c-.46,0-.9,.04-1.34,.11,3.85,.64,6.79,3.98,6.79,8.01s-2.94,7.37-6.79,8.01c.43,.07,.88,.11,1.34,.11,4.49,0,8.12-3.64,8.12-8.12s-3.63-8.12-8.12-8.12Z" fill="#e6a361" fill-rule="evenodd"></path> <path d="M30.02,11.69c-.44,0-.87,.04-1.29,.1,3.87,.62,6.83,3.97,6.83,8.02s-2.96,7.4-6.83,8.02c.42,.07,.85,.1,1.29,.1,4.49,0,8.12-3.63,8.12-8.12s-3.64-8.12-8.12-8.12Z" fill="#e6a361" fill-rule="evenodd"></path> <path d="M43.33,28.23c1.59-2.52,2.5-5.44,2.5-8.42,0-8.72-7.09-15.81-15.81-15.81s-15.81,7.09-15.81,15.81c0,4.81,2.17,9.22,5.79,12.19h-5.56c-2.94,0-5.33,2.39-5.33,5.33,0,1.79,.89,3.37,2.25,4.33-1.36,.97-2.25,2.55-2.25,4.33s.89,3.37,2.25,4.33c-1.35,.97-2.25,2.54-2.25,4.33,0,2.94,2.39,5.33,5.33,5.33h20.3c1.07,0,2.08-.35,2.95-.94,.46,.04,.91,.14,1.38,.14,8.72,0,15.81-7.09,15.81-15.81,0-7.24-4.91-13.29-11.56-15.15Zm-27.12-8.42c0-7.61,6.19-13.81,13.81-13.81s13.81,6.19,13.81,13.81c0,2.86-.93,5.66-2.59,7.99-.71-.1-1.42-.22-2.16-.22-4.23,0-8.07,1.7-10.91,4.42h-4.62c-4.53-2.4-7.34-7.04-7.34-12.19Zm-5.1,17.52c0-1.84,1.5-3.33,3.33-3.33h12c-1.44,1.94-2.46,4.19-2.89,6.67H14.44c-1.84,0-3.33-1.5-3.33-3.33Zm3.33,12c-1.84,0-3.33-1.5-3.33-3.33s1.5-3.33,3.33-3.33h8.91c-.01,.25-.07,.48-.07,.72,0,2.1,.43,4.11,1.18,5.94H14.44Zm0,8.67c-1.84,0-3.33-1.5-3.33-3.33s1.5-3.33,3.33-3.33h11.05c1.74,2.97,4.38,5.35,7.6,6.67H14.44Zm24.64-.8c-7.61,0-13.81-6.19-13.81-13.81s6.15-13.81,13.81-13.81,13.81,6.19,13.81,13.81-6.19,13.81-13.81,13.81Z"></path> <path d="M39.08,34.27c-5.03,0-9.12,4.09-9.12,9.12s4.09,9.12,9.12,9.12,9.12-4.09,9.12-9.12-4.09-9.12-9.12-9.12Zm0,16.24c-3.93,0-7.12-3.2-7.12-7.12s3.2-7.12,7.12-7.12,7.12,3.19,7.12,7.12-3.19,7.12-7.12,7.12Z"></path> <path d="M30.02,28.93c5.03,0,9.12-4.09,9.12-9.12s-4.09-9.12-9.12-9.12-9.12,4.09-9.12,9.12,4.09,9.12,9.12,9.12Zm0-16.24c3.93,0,7.12,3.2,7.12,7.12s-3.2,7.12-7.12,7.12-7.12-3.19-7.12-7.12,3.19-7.12,7.12-7.12Z"></path> <path d="M30.02,20.81c.4,0,.72,.32,.72,.72s-.32,.72-.72,.72c-.19,0-.37-.08-.51-.21-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41c.27,.27,.58,.46,.92,.6v.28c0,.55,.45,1,1,1s1-.45,1-1v-.29c1.01-.4,1.72-1.37,1.72-2.52,0-1.5-1.22-2.72-2.72-2.72-.4,0-.72-.32-.72-.72s.32-.72,.72-.72c.19,0,.38,.08,.51,.21,.39,.39,1.02,.39,1.41,0s.39-1.02,0-1.41c-.27-.27-.58-.46-.92-.6v-.28c0-.55-.45-1-1-1s-1,.45-1,1v.29c-1,.4-1.72,1.37-1.72,2.52,0,1.5,1.22,2.72,2.72,2.72Z"></path> <path d="M39.08,42.39c-.4,0-.72-.32-.72-.72s.32-.72,.72-.72c.19,0,.37,.07,.51,.21,.39,.39,1.02,.39,1.41,0s.39-1.02,0-1.41c-.27-.27-.58-.47-.92-.6v-.28c0-.55-.45-1-1-1s-1,.45-1,1v.29c-1,.4-1.72,1.37-1.72,2.52,0,1.5,1.22,2.72,2.72,2.72,.4,0,.72,.32,.72,.72s-.32,.72-.72,.72c-.19,0-.37-.08-.51-.21-.39-.39-1.02-.39-1.41,0s-.39,1.02,0,1.41c.27,.27,.58,.46,.92,.6v.28c0,.55,.45,1,1,1s1-.45,1-1v-.29c1-.4,1.72-1.37,1.72-2.52,0-1.5-1.22-2.72-2.72-2.72Z"></path> <circle cx="39.08" cy="31.92" r="1"></circle> <circle cx="39.08" cy="54.85" r="1"></circle> <circle cx="50.55" cy="43.39" r="1"></circle> <circle cx="27.62" cy="43.39" r="1"></circle> <path d="M47.9,35.99c.39-.39,.39-1.03,0-1.41-.39-.39-1.03-.39-1.41,0-.39,.39-.39,1.03,0,1.41s1.03,.39,1.41,0Z"></path> <path d="M30.27,50.79c-.39,.39-.39,1.03,0,1.41,.39,.39,1.03,.39,1.41,0,.39-.39,.39-1.03,0-1.41-.39-.39-1.03-.39-1.41,0Z"></path> <path d="M47.19,50.49c-.27,0-.52,.11-.71,.29-.39,.39-.39,1.03,0,1.41,.19,.19,.44,.29,.71,.29s.52-.11,.71-.29c.39-.39,.39-1.03,0-1.41-.19-.19-.44-.29-.71-.29Z"></path> <path d="M30.98,36.28c.26,0,.52-.11,.71-.29,.39-.39,.39-1.03,0-1.41-.19-.19-.44-.29-.71-.29s-.52,.11-.71,.29c-.39,.39-.39,1.03,0,1.41,.19,.19,.44,.29,.71,.29Z"></path> <circle cx="30.02" cy="8.34" r="1"></circle> <circle cx="41.48" cy="19.81" r="1"></circle> <circle cx="18.55" cy="19.81" r="1"></circle> <path d="M38.83,12.41c.39-.39,.39-1.03,0-1.41-.39-.39-1.03-.39-1.41,0-.39,.39-.39,1.03,0,1.41s1.03,.39,1.41,0Z"></path> <path d="M21.2,27.21c-.39,.39-.39,1.03,0,1.41,.39,.39,1.03,.39,1.41,0,.39-.39,.39-1.03,0-1.41-.39-.39-1.03-.39-1.41,0Z"></path> <path d="M21.91,12.7c.27,0,.52-.11,.71-.29,.39-.39,.39-1.03,0-1.41-.19-.19-.44-.29-.71-.29s-.52,.11-.71,.29c-.39,.39-.39,1.03,0,1.41,.19,.19,.44,.29,.71,.29Z"></path> </g> <g id="c"></g> <g id="d"></g> <g id="e"></g> <g id="f"></g> <g id="g"></g> <g id="h"></g> <g id="i"></g> <g id="j"></g> <g id="k"></g> <g id="l"></g> <g id="m"></g> <g id="n"></g> <g id="o"></g> <g id="p"></g> <g id="q"></g> <g id="r"></g> <g id="s"></g> <g id="t"></g> <g id="u"></g> <g id="v"></g> <g id="w"></g> <g id="x"></g> <g id="y"></g> <g id="a`"></g> <g id="aa"></g> <g id="ab"></g> <g id="ac"></g> <g id="ad"></g> <g id="ae"></g> <g id="af"></g> <g id="ag"></g> <g id="ah"></g> <g id="ai"></g> <g id="aj"></g> <g id="ak"></g> <g id="al"></g> <g id="am"></g> <g id="an"></g> <g id="ao"></g> <g id="ap"></g> <g id="aq"></g> <g id="ar"></g> <g id="as"></g> <g id="at"></g> <g id="au"></g> <g id="av"></g> <g id="aw"></g> <g id="ax"></g> </g></svg>
+                            <button class="btn btn-new"><strong> Get Credits </strong></button>
+                       </div>
                 </div>
             </div>
 
@@ -208,7 +207,7 @@
                 <img src="https://designmodo.com/startup/app/i/feature-6.png" srcset="i/feature-6@2x.png 2x" alt="" class="img-fluid aos-init aos-animate" data-aos="fade-down" data-aos-delay="500">
               </div>
 
-            <section class="section mb-2 " id="bios">
+            <section class="section mb-2 ">
                 <div class="container-fluid">
                     <div class="row align-items-center justify-content-around flex-row-reverse">
                         <div class="col-lg-6">
@@ -230,6 +229,99 @@
                     </div>
                 </div>
             </section>
+
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="mx-auto text-center">
+                            <img src="https://www.bootdey.com/image/800x540/FF7F50/000000" class="rounded" alt="...">
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="ps-lg-6 ps-xl-10 w-lg-90">
+                            <div class="mb-4">
+                                <div class="main-title title-left">Getting a Loan<span class="line-left"></span></div>
+                                <h2 class="w-90">The greater part of the people trust on us</h2>
+                            </div>
+                            <p class="mb-4">
+                                There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+                            </p>
+            
+            
+            
+                            <div id="accordion" class="accordion-style">
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">How quick will my credit be subsidized?</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordion" style="">
+                                        <div class="card-body position-relative">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.There are many variations
+                                            of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">What is outsourced financial support?</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
+                                        <div class="card-body position-relative">
+                                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here,
+                                            content here', making it look like readable English.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">How long is an affirmed financing cost and credit offer substantial?</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
+                                        <div class="card-body position-relative">
+                                            Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident,
+                                            sometimes on purpose (injected humour and the like).
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingFour">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">What sorts of commercial enterprise financing do you offer?</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-bs-parent="#accordion">
+                                        <div class="card-body position-relative">
+                                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="headingFive">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">How might I roll out an improvement to my application?</button>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-bs-parent="#accordion">
+                                        <div class="card-body position-relative">
+                                            All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, Making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to
+                                            generate Lorem Ipsum which looks reasonable.
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            
+            
+            
+            </div>
+            
 
 
             <section class="price_plan_area section mb-2" id="pricing">
@@ -318,23 +410,27 @@
               </section>
 
 
-              <div class="container" id="api">
+              <div class="container section" id="api">
                 <div class="row">
                     <div class="col-xl-4 col-md-4 mb-3 mb-lg-5">
                           <!--Card-->
                           <div class="card overflow-hidden text-center">
-                            <img src="https://www.bootdey.com/image/280x120/6495ED/000000" class="card-img-top img-fluid" alt="">
-                    
+                            <div class="p-3">
+                            <svg width="100%" height="100%">
+                                <image href="https://static-assets.highwebmedia.com/images/logo.svg?hash=asdjfnjdsj-cr-sofi" width="100%" height="100%" data-paction="CBLogo"></image>
+                                </svg>
+                            </div>
                             <!--Card body-->
                             <div class="card-body p-0">
                               <!--avatar-->
-                              <a href="#!.html" class="avatar xl rounded-circle bg-gray bg-opacity-10 p-1 position-relative mt-n5 d-block mx-auto">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="avatar-img img-fluid rounded-circle" alt="">
+                              <a href="/en/chatur/api" class="avatar xl rounded-circle bg-gray bg-opacity-10 p-1 position-relative mt-n5 d-block mx-auto">
+                                <img src="{{asset('temas/home/madeline_jackson.jpg')}}" class="avatar-img img-fluid rounded-circle" alt="">
+                           
                               </a>
                               <h5 class="mb-0 pt-3">
-                                <a href="#!.html" class="text-reset">Noah Pierre</a>
+                                <a href="#!.html" class="text-reset">Madeline Jackson</a>
                               </h5>
-                              <span class="text-muted small d-block mb-4">Full stack developer</span>
+                              <span class="text-muted small d-block mb-4">Full Modelo Chatur</span>
                               <div class="row mx-0 border-top border-bottom">
                                 <div class="col-6 text-center border-end py-3">
                                   <h5 class="mb-0">2345</h5>
