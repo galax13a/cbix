@@ -25,7 +25,7 @@
                       </div>
                       <div class="col mt-2">
                         <div class="animate-gh mt-5">
-                            <img  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                            <img loading="lazy"  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                         </div>
                       </div>
                     </div>
@@ -54,36 +54,32 @@
                             <h2 class="text-end">
                                 *<strong class="marketery2" 
                                 style="--highlight-color: #9c2abeb6;">
-                                AutoTyper</strong> Nice 😎
+                                Model </strong> Moderator 😎
                             </h2>
-                            <p class="wow fadeInUp style-1ceoc" data-wow-delay=".4s" data-wow-duration="1500ms"
-                                id="style-1ceoc">
+                            <p class="wow fadeInUp"  id="style-1ceoc">
                                 With our automated tips feature, it's never been easier to show your support for your favorite models.
                                  Forget about complicated processes and enjoy supporting your model by 
                                  automatically sending your support, without using your hands.
-                                possible.  <mark> <b>Free access </b></mark>
-                              
+                                possible.  <mark> <b>Free access </b></mark>                              
                             </p>
-
-                                    <div class="text-end">
-                                        <x-themacoms.btn-hover-3/>
-                                    </div>
+                        <div class="text-end m-2">                            
+                            <a class="btn-hover3" href="/download">Download App</a>
+                        </div>
                             
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-4">
-                    <img decoding="async" src="{{ asset('temas/home/img_01.png') }}" alt="App Botchatur">
+                    <img loading="lazy" decoding="async" src="{{ asset('temas/home/img_01.png') }}" alt="App Botchatur">
                     <div class="animate-gh text-end">
-                        <img  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                        <img loading="lazy"  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-2 mt-0">
-                    <div class=""  id="style-Z56Nr"> <img decoding="async"
-                           src="{{ asset('temas/home/img-w.png') }}" alt="">
+                    <div class=""  id="style-Z56Nr"> 
+                        <img loading="lazy" decoding="async" src="{{ asset('temas/home/img-w.png') }}" alt="">
                     </div>
-                    <div class="hero__top-selling-app wow fadeInRight style-2Ylfc" data-wow-delay=".4s"
-                        data-wow-duration="1500ms" id="style-2Ylfc">
+                    <div class="hero__top-selling-app wow fadeInRight style-2Ylfc" id="style-2Ylfc">
                         <h3>
                             55K 
                             <svg width="64px" height="64px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M8 8.5H13.5C16 8.5 16 12 13.5 12H10.5" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M10.5 12H13.5C16 12 16 15.5 13.5 15.5H8" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M10 17V7" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M13 8.5V7" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M13 17V15.5" stroke="#323232" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3 12C3 4.5885 4.5885 3 12 3C19.4115 3 21 4.5885 21 12C21 19.4115 19.4115 21 12 21C4.5885 21 3 19.4115 3 12Z" stroke="#323232" stroke-width="2"></path> <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 3C4.5885 3 3 4.5885 3 12C3 19.4115 4.5885 21 12 21C19.4115 21 21 19.4115 21 12C21 4.5885 19.4115 3 12 3ZM8 8.25C7.86193 8.25 7.75 8.36193 7.75 8.5C7.75 8.63807 7.86193 8.75 8 8.75H9.75V15.25H8C7.86193 15.25 7.75 15.3619 7.75 15.5C7.75 15.6381 7.86193 15.75 8 15.75H9.75V17C9.75 17.1381 9.86193 17.25 10 17.25C10.1381 17.25 10.25 17.1381 10.25 17V15.75H12.75V17C12.75 17.1381 12.8619 17.25 13 17.25C13.1381 17.25 13.25 17.1381 13.25 17V15.75H13.5C14.187 15.75 14.7234 15.5076 15.0873 15.1255C15.4481 14.7467 15.625 14.2456 15.625 13.75C15.625 13.2544 15.4481 12.7533 15.0873 12.3745C14.9467 12.2268 14.7803 12.1 14.5894 12C14.7803 11.9 14.9467 11.7732 15.0873 11.6255C15.4481 11.2467 15.625 10.7456 15.625 10.25C15.625 9.75436 15.4481 9.25328 15.0873 8.87446C14.7234 8.49236 14.187 8.25 13.5 8.25H13.25V7C13.25 6.86193 13.1381 6.75 13 6.75C12.8619 6.75 12.75 6.86193 12.75 7V8.25H10.25V7C10.25 6.86193 10.1381 6.75 10 6.75C9.86193 6.75 9.75 6.86193 9.75 7V8.25H8Z" fill="#323232"></path> </g></svg>                            
@@ -130,12 +126,12 @@
                             <div class="blog-grid">
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-dark"> <b>Auto Tiper 💚</b></div>
-                                    <a href="#">
-                                        <img src="{{asset('temas/home/auto.jpeg')}}" title="" alt="">
+                                    <a href="/moderator">
+                                        <img loading="lazy" src="{{asset('temas/home/auto.jpeg')}}" title="" alt="Moderator Cam">
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h5><a href="javascript:void(0)">Send auto tips to your favorites</a></h5>
+                                    <h5><a href="javascript:void(0)">Tool for room moderator, Sends automatic tokens</a></h5>
                                     <p>
                                         Sending automatic tips to your favorite models has never been easier. With our seamless system, 
                                         you can support your top cams effortlessly and without missing a beat. Elevate your experience on our platform by giving 
@@ -143,7 +139,7 @@
                                          Try it today and make your favorite models feel appreciated like never before.
                                     </p>
                                     <div class="btn-bar">
-                                        <a href="#" class="px-btn-arrow">
+                                        <a href="/moderator" class="px-btn-arrow">
                                             <span>Read More</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -155,8 +151,8 @@
                             <div class="blog-grid">
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-danger"> <b>Guest Live 💛</b></div>
-                                    <a href="#">
-                                        <img src="{{asset('temas/home/visit.jpeg')}}" title="" alt="">
+                                    <a href="/traffic">
+                                        <img loading="lazy" src="{{asset('temas/home/visit.jpeg')}}" title="" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-info">
@@ -167,7 +163,7 @@
                                          all while enjoying the content you love. Join us in creating a more interactive and engaging live experience today
                                     </p>
                                     <div class="btn-bar">
-                                        <a href="#" class="px-btn-arrow">
+                                        <a href="/traffic" class="px-btn-arrow">
                                             <span>Read More</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -179,8 +175,8 @@
                             <div class="blog-grid">
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-warning"> <b>Create Bio ❤️</b></div>
-                                    <a href="#">
-                                        <img src="{{asset('temas/home/create.jpeg')}}" title="" alt="">
+                                    <a href="/bios/create">
+                                        <img loading="lazy" src="{{asset('temas/home/create.jpeg')}}" title="" alt="">
                                     </a>
                                 </div>
                                 <div class="blog-info">
@@ -192,7 +188,7 @@
                                          Try it now and let your creativity shine! Create your account and start creating.
                                     </p>
                                     <div class="btn-bar">
-                                        <a href="#" class="px-btn-arrow">
+                                        <a href="/bios/create" class="px-btn-arrow">
                                             <span>Read More</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -226,7 +222,7 @@
                   </div>
                 </div>
                 <div class="row align-items-center mt-2 mb-2">
-                <img src="{{ asset('temas/home/website.png')}}"  alt="create bio pages chatur" style="margin-top:-99px; z-index:-1;" class="img-fluid" >
+                <img loading="lazy" src="{{ asset('temas/home/website.png')}}"  alt="create bio pages chatur" style="margin-top:-99px; z-index:-1;" class="img-fluid" >
             </div>
               </div>
 
@@ -250,7 +246,7 @@
                         </div>
                         <div class="col-lg-6 text-center">
                             <div class="about-img">
-                                <img class="border rounded-3 shadow" alt="create profiles  chatur" src="{{ asset('temas/home/bot7.jpeg')}}">
+                                <img loading="lazy" class="border rounded-3 shadow" alt="create profiles  chatur" src="{{ asset('temas/home/bot7.jpeg')}}">
                             </div>
                         </div>
                     </div>
@@ -382,7 +378,7 @@
                     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                       <div class="single_price_plan active wow fadeInUp">
              
-                        <div class="side-shape"><img src="{{asset('temas/home/popular-pricing.png')}}" alt=""></div>
+                        <div class="side-shape"><img loading="lazy" src="{{asset('temas/home/popular-pricing.png')}}" alt=""></div>
                         <div class="title"><span>Popular</span>
                           <h3>Small Business</h3>
                           <p>For Small Business Team</p>
@@ -442,11 +438,12 @@
               </section>
      <!-- api-->
         <section>
-              <div class="container-fluid" id="api">
+              <div class="container-fluid mt-3" id="profile">
                   <div class="row">
-                    <div class="col-4">                    
+                    <h2 class="display-4 text-center m-2">Create Api and share or your Profile Chaturbe</h2>
+                    <div class="col-md-4 col-xxl-4">                    
                           
-                        <div class="card overflow-hidden text-center bg-opacity-25 bg-dark">
+                        <div class="card overflow-hidden text-center bg-opacity-25 bg-dark ">
                             <div class="p-3">
                             <svg width="100%" height="100%">
                                 <image href="https://static-assets.highwebmedia.com/images/logo.svg?hash=asdjfnjdsj-cr-sofi" 
@@ -457,19 +454,24 @@
                             <div class="card-body p-0">
 
                               <a href="/en/chatur/api" class="avatar xl rounded-circle bg-gray bg-opacity-10 p-1 position-relative mt-n5 d-block mx-auto">
-                                <img src="{{asset('temas/home/madeline_jackson.jpg')}}" class="avatar-img img-fluid rounded-circle shadow-lg" alt="">
+                                <img loading="lazy" src="{{asset('temas/home/madeline_jackson.jpg')}}" 
+                                class="avatar-img img-fluid rounded-circle shadow-lg" alt="" >
                               </a>
                               <h5 class="mb-0 pt-3">
                                 <a href="/profile" class="text-reset fs-3">Madeline Jackson</a>
                               </h5>
-                              <span class="text-muted small d-block mb-4">Full Modelo Chatur</span>
+                              <span class="text-muted small d-block mb-4">
+                                Hey, everyone, I’m Leah. I am from Brno, Czech Republic
+                                I’m 19 years old and I enjoy every second of living my life. My motto is “Carpe Diem” 
+                                from Dead Poets Society. I also love reading, especially poetry!
+                              </span>
                               <div class="row mx-0 border-top border-bottom">
                                 <div class="col-6 text-center border-end py-3">
                                   <h5 class="mb-0">550561</h5>
                                   <small class="text-muted">Followers</small>
                                 </div>
                                 <div class="col-6 text-center py-3">
-                                  <h5 class="mb-0">54</h5>
+                                  <h5 class="mb-0">54k</h5>
                                   <small class="text-muted">Following</small>
                                 </div>
                               </div>
@@ -478,6 +480,11 @@
                                   <span class="text-muted small">Birth Date</span>
                                   <strong>April 4, 2003</strong>
                                 </li>
+                                <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
+                                    <span class="text-muted small">Language's:</span>
+                                    <strong>English, German</strong>
+                                  </li>
+                                
                                 <li class="list-group-item px-3 d-flex align-items-center justify-content-between">
                                   <span class="text-muted small">Location</span>
                                   <strong>Brno, Czech Republic</strong>
@@ -498,8 +505,47 @@
                         </div>                 
 
                         <div class="col-md-8">                            
-                            <div class="container m-2 p-2 bg-light rounded-3 h-100 w-100 bg-opacity-50">
-                                    <h2 class="fs-2">Api Chatur</h2>
+                            <div class="container m-2 p-2 bg-light rounded-3 h-100 w-100 bg-opacity-50">                           
+                                   
+                                <div class="container text-center">   
+                                    <h3> Create Profile</h3>
+                                    <b>Write your username, you must be Live in to generate the profile</b>
+                                    <form>
+                                        <div class="form-group row">                                            
+                                             <div class="col-12 shadow p-2 mr-2 rounded-3 ">
+                                                <input type="text" class="form-control" id="namemodel" placeholder="Insert name CB"> 
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <button class="btn-hover2 m-2 p-2 text-center" >Create Card</button>                                                
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <button class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #3fd9ffcc;" >Create Profile</button>
+                                            </div>
+                                            <div class="col-md-4 col-sm-6">
+                                                <button class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #ef3fffcc;" >Create Api</button>
+                                            </div>
+                                        </div>         
+                                    </form>
+                                </div>
+
+                                <div class="container text-center p-2 m-2">                                       
+                                    
+                                <b> Token Authorization </b> <br>
+                                <p>
+                                   The link allows you to track your stats on Chaturbate and share data. You can create custom business cards 
+                                   from botchatur or hire a professional to do it. 
+                                   Check the chatur API documentation, you can share it with your moderator for better support.                                    
+                                    how do i create the api  
+                                    You can find this link in your profile in Settings & Privacy at the end
+                                    Statistics
+                                    Authorize your 3rd party stats
+                                    url statsapi/authtoken/    
+                                </p>
+                                <h3>How Create Api Chatur</h3>                                       
+                                <img loading="lazy" class="img-fluid rounded-2 shadow-sm" style="z-index:-1; margin-top:-5px; margin-right: 36px;"  src="{{ asset('temas/home/cb-api.png')}}">
+
+                            </div>
+
                             </div>
                         </div>
 
@@ -507,7 +553,7 @@
                  
               </div>
         </section>
-
+            
                <div class="container-fire">                
                     <div class="red flame"></div>
                     <div class="orange flame"></div>

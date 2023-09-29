@@ -4,9 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <title>{{ config('app.name', 'Home') }} | @hasSection('title')
-            @yield('title')
-        @endif
+    <title>{{ config('app.name', 'Home') }} | @hasSection('title') @yield('title')  @endif
     </title>
     @stack('scripts-head')   
     @vite(['resources/css/home.css'])
@@ -18,7 +16,9 @@
         <main class="master">
             @yield('content')
         </main>
+        
         <x-themacoms.footerhome />
+        
     </div>
     @stack('scripts-body')
 </body>
