@@ -9,19 +9,20 @@
     <meta property='og:type' content='website' />
     <meta itemprop="thumbnailUrl" content='{{asset('temas/home/logo-botchatur-editor.png')}}' />
     <meta property='og:site_name' content='BotChatur Bio & profiles CB' />
-
     @endpush
     @push('scripts-body')
-        <script>
-            document.addEventListener('DOMContentLoaded', function () {
-            var scroll = new SmoothScroll('a[href*="#"]', {
-                speed: 333,
-                offset: 90
-            });
-        });
-
-        </script>        
-    @endpush
+     <script>
+         document.addEventListener('DOMContentLoaded', function () {
+            var scroll;
+            if (typeof SmoothScroll !== 'undefined') {
+                scroll = new SmoothScroll('a[href*="#"]', {
+                    speed: 333,
+                    offset: 90
+                });
+            } else {
+                console.error('SmoothScroll no found ready dom.');
+            }
+            });</script>@endpush
 
     @section('content')
         <x-themacoms.navbar-flex />           

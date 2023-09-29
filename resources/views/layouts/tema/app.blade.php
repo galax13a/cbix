@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-    <title>{{ config('app.name', 'Home') }} | @hasSection('title') @yield('title')@endif</title>
-    @stack('scripts-head')   
-    @vite(['resources/css/home.css','resources/js/home.js'])    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+<title>{{ config('app.name', 'Home') }} | @hasSection('title') @yield('title')@endif</title>
+@stack('scripts-head')   
+@vite(['resources/css/home.css','resources/js/home.js'])    
 </head>
 <body>
-    <div id="app">
+<div id="app">
         <main class="master">
             @yield('content')
         </main>        
@@ -18,9 +18,9 @@
     @stack('scripts-body')
 </body>
 <style>
-    a{
-        color: #7FFFD4;
-    }
+a{
+    color: #7FFFD4;
+}
 body {
     background-image: linear-gradient(to bottom, #ffffff, #c5acacbb);
     

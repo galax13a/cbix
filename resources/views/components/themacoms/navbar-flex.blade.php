@@ -44,7 +44,6 @@
                     <li class="nav-item">                                
                         <a class="nav-link" href="#pricing">💚 Price</a>
                     </li>
-
                        <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <span>
@@ -58,9 +57,10 @@
                             EN
                         </a>
                         </li>
-                          <li><a class="dropdown-item" href="/es">
+                        <li><a class="dropdown-item" href="/es">
                             <svg width="22px" height="22px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#C60A1D" d="M36 27a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h28a4 4 0 0 1 4 4v18z"></path><path fill="#FFC400" d="M0 12h36v12H0z"></path><path fill="#EA596E" d="M9 17v3a3 3 0 1 0 6 0v-3H9z"></path><path fill="#F4A2B2" d="M12 16h3v3h-3z"></path><path fill="#DD2E44" d="M9 16h3v3H9z"></path><ellipse fill="#EA596E" cx="12" cy="14.5" rx="3" ry="1.5"></ellipse><ellipse fill="#FFAC33" cx="12" cy="13.75" rx="3" ry=".75"></ellipse><path fill="#99AAB5" d="M7 16h1v7H7zm9 0h1v7h-1z"></path><path fill="#66757F" d="M6 22h3v1H6zm9 0h3v1h-3zm-8-7h1v1H7zm9 0h1v1h-1z"></path></g></svg>
-                            ES</a></li>       
+                            ES</a>
+                        </li>       
                             <li><a class="dropdown-item" href="/fr">
                                 <span>
                                     <svg width="22px" height="22px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ED2939" d="M36 27a4 4 0 0 1-4 4h-8V5h8a4 4 0 0 1 4 4v18z"></path><path fill="#002495" d="M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h8V5H4z"></path><path fill="#EEE" d="M12 5h12v26H12z"></path></g></svg>    
@@ -72,8 +72,7 @@
                                   <svg width="22px" height="22px" viewBox="0 -4 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_503_3849)"> <rect width="28" height="20" rx="2" fill="white"></rect> <mask id="mask0_503_3849" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20"> <rect width="28" height="20" rx="2" fill="white"></rect> </mask> <g mask="url(#mask0_503_3849)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6.66667H28V0H0V6.66667Z" fill="#262626"></path> <g filter="url(#filter0_d_503_3849)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 13.3333H28V6.66666H0V13.3333Z" fill="#F01515"></path> </g> <g filter="url(#filter1_d_503_3849)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20H28V13.3333H0V20Z" fill="#FFD521"></path> </g> </g> </g> <defs> <filter id="filter0_d_503_3849" x="0" y="6.66666" width="28" height="6.66666" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix> <feOffset></feOffset> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"></feColorMatrix> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_503_3849"></feBlend> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_503_3849" result="shape"></feBlend> </filter> <filter id="filter1_d_503_3849" x="0" y="13.3333" width="28" height="6.66666" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix> <feOffset></feOffset> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"></feColorMatrix> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_503_3849"></feBlend> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_503_3849" result="shape"></feBlend> </filter> <clipPath id="clip0_503_3849"> <rect width="28" height="20" rx="2" fill="white"></rect> </clipPath> </defs> </g></svg>
                                 </span>
                             DE</a>
-                            </li>         
-                            
+                            </li>                                   
                           <li><a class="dropdown-item" href="/br">
                             <span>
                                 <svg width="22px" height="22px" viewBox="0 -4 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_503_4726)"> <rect width="28" height="20" rx="2" fill="white"></rect> <mask id="mask0_503_4726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20"> <rect width="28" height="20" rx="2" fill="white"></rect> </mask> <g mask="url(#mask0_503_4726)"> <rect width="28" height="20" fill="#05AB41"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.53152 10.5597C3.12552 10.297 3.12552 9.70301 3.53152 9.44031L13.6377 2.90103C13.8581 2.75843 14.1416 2.75843 14.362 2.90103L24.4682 9.44031C24.8742 9.70301 24.8742 10.297 24.4682 10.5597L14.362 17.099C14.1416 17.2416 13.8581 17.2416 13.6377 17.099L3.53152 10.5597Z" fill="#FDD216"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0002 14.6666C16.5775 14.6666 18.6668 12.5773 18.6668 9.99998C18.6668 7.42265 16.5775 5.33331 14.0002 5.33331C11.4228 5.33331 9.3335 7.42265 9.3335 9.99998C9.3335 12.5773 11.4228 14.6666 14.0002 14.6666Z" fill="#053087"></path> <mask id="mask1_503_4726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="9" y="5" width="10" height="10"> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0002 14.6666C16.5775 14.6666 18.6668 12.5773 18.6668 9.99998C18.6668 7.42265 16.5775 5.33331 14.0002 5.33331C11.4228 5.33331 9.3335 7.42265 9.3335 9.99998C9.3335 12.5773 11.4228 14.6666 14.0002 14.6666Z" fill="white"></path> </mask> <g mask="url(#mask1_503_4726)"> <path d="M8.77987 8.78021C9.51257 8.18688 11.8769 8.74895 14.084 9.33769C16.291 9.92643 18.5929 11.1604 19.179 11.8842" stroke="white" stroke-width="1.33333" stroke-linecap="square"></path> </g> </g> </g> <defs> <clipPath id="clip0_503_4726"> <rect width="28" height="20" rx="2" fill="white"></rect> </clipPath> </defs> </g></svg>
@@ -81,8 +80,7 @@
                             BR</a></li>
                         </ul>
                       </li>
-                   </ul>
-                  
+                   </ul>                  
                </div>
                <span class="navbar-text text-end">
                 <a href="/login" class="link-underline-light btn-new p-2 rounded-4">
@@ -97,6 +95,4 @@
            </div>
        </nav>
    </section>
-   
-   
 </div>
