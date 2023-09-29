@@ -9,25 +9,25 @@
                             <div class="col-sm-4 col-md-3 item">
                                 <h3>Services</h3>
                                 <ul>
-                                    <li><a href="/moderator">Moderator</a></li>
-                                    <li><a href="/traffic">Traffic</a></li>
-                                    <li><a href="/bots">Bots</a></li>
+                                    <li><a href="{{url('/moderator')}}">Moderator</a></li>
+                                    <li><a href="{{url('/traffic')}}">Traffic</a></li>
+                                    <li><a href="{{url('/bots')}}">Bots</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-4 col-md-3 item">
                                 <h3>About</h3>
                                 <ul>
-                                    <li><a href="/about">Company</a></li>
-                                    <li><a href="/support">Support</a></li>
-                                    <li><a href="/security-policy">security policy</a></li>
+                                    <li><a href="{{url('/about')}}">Company</a></li>
+                                    <li><a href="{{url('/support')}}">Support</a></li>
+                                    <li><a href="{{url('/security-policy')}}">Security policy</a></li>
                                 </ul>
                             </div>
                             <div class="col-sm-4 col-md-3 item">
                                 <h3>Careers</h3>
                                 <ul>
-                                    <li><a href="/afiliate">Affiliate links</a></li>
-                                    <li><a href="/wc">Success Models</a></li>
-                                    <li><a href="/Benefits">Benefits</a></li>
+                                    <li><a href="{{url('/afiliate')}}">Affiliate links</a></li>
+                                    <li><a href="{{url('/wc')}}">Success Models</a></li>
+                                    <li><a href="{{url('/Benefits')}}">Benefits</a></li>
                                 </ul>
                             </div>
                             <div class="col-md-3 col-xxl item social shadow rounded-3 m-2" >          

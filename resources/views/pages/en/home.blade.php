@@ -37,7 +37,7 @@
                       </div>
                       <div class="col mt-2">
                         <div class="animate-gh mt-5">
-                            <img  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                            <img width="44" height="44" src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                         </div>
                       </div>
                     </div>
@@ -144,7 +144,7 @@
                                     I design and develop services for customers of all sizes, 
                                     specializing in creating stylish,  modern websites 
                                 </p>
-                                <a href="{{url('/download')}}">Download BotCamStudio</a>
+                                <a class="bg-dark p-2 rounded-3 shadow" href="{{url('/download')}}">Download BotCamStudio</a>
                                 
                             </div>
                         </div>
@@ -194,7 +194,7 @@
                                          you can show your appreciation directly while enjoying the show. It's the perfect way to make your favorite performers feel valued, 
                                          all while enjoying the content you love. Join us in creating a more interactive and engaging live experience today
                                     </p>
-                                    <div class="btn-bar">
+                                    <div class="btn-bar  bg-dark p-1 rounded-3">
                                         <a href="{{url('/traffic')}}" class="px-btn-arrow">
                                         Guest Traffic
                                             <i class="arrow"></i>
@@ -381,7 +381,7 @@
                       <div class="section-heading section-title">
                     
                         <h2>Get started now with your content <br> #Pricing Plans</h2>
-                        <h6>Get accesss</h6>
+                        <p>Get access</p>
                         <p>
                             Hello! Thank you for your interest in our services at Botestudiocam. We are happy to provide you with information about our plans.
                         </p>
@@ -506,9 +506,9 @@
                                 <img loading="lazy" src="{{asset('temas/home/madeline_jackson.jpg')}}" 
                                 class="avatar-img img-fluid rounded-circle shadow-lg" alt="genere api" >
                               </a>
-                              <h5 class="mb-0 pt-3">
+                             
                                 <a href="{{url('/profile')}}" class="text-reset fs-3">Madeline Jackson</a>
-                              </h5>
+                      
                               <span class="text-muted small d-block mb-4">
                                 Hey, everyone, I’m Leah. I am from Brno, Czech Republic
                                 I’m 19 years old and I enjoy every second of living my life. My motto is “Carpe Diem” 
@@ -591,7 +591,7 @@
                                     url statsapi/authtoken/    
                                 </p>
                                 <h3>How Create Api Chatur</h3>                                       
-                                <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/cb-api-230.png') }} 230w, 
+                                <img width="1000" height="1000" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/cb-api-230.png') }} 230w, 
                                 {{ asset('temas/home/cb-api.png') }} 380w"
                                 sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                 src="{{ asset('temas/home/cb-api-230.png') }}" alt="api chaturbe">
