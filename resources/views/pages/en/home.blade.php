@@ -25,7 +25,7 @@
                       </div>
                       <div class="col mt-2">
                         <div class="animate-gh mt-5">
-                            <img loading="lazy"  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                            <img  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                         </div>
                       </div>
                     </div>
@@ -70,14 +70,14 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-4">
-                    <img loading="lazy" decoding="async" src="{{ asset('temas/home/img_01.png') }}" alt="App Botchatur">
+                    <img  src="{{ asset('temas/home/img_01.png') }}" alt="App Botchatur">
                     <div class="animate-gh text-end">
                         <img loading="lazy"  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-2 mt-0">
                     <div class=""  id="style-Z56Nr"> 
-                        <img loading="lazy" decoding="async" src="{{ asset('temas/home/img-w.png') }}" alt="">
+                        <img src="{{ asset('temas/home/img-w.png') }}" alt="">
                     </div>
                     <div class="hero__top-selling-app wow fadeInRight style-2Ylfc" id="style-2Ylfc">
                         <h3>
