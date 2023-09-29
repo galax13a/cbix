@@ -7,7 +7,7 @@
     <title>{{ config('app.name', 'Home') }} | @hasSection('title') @yield('title')  @endif
     </title>
     @stack('scripts-head')   
-    @vite(['resources/css/home.css'])
+    @vite(['resources/css/home.css','resources/js/home.js'])
     
 </head>
 

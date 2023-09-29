@@ -97,11 +97,6 @@
            </div>
        </nav>
    </section>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.polyfills.min.js"></script>
-   <script>
-       var scroll = new SmoothScroll('a[href*="#"]', {
-           speed: 333,
-           offset: 90
-       });
-   </script>        
+   
+   
 </div>
