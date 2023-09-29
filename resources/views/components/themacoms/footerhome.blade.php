@@ -7,7 +7,7 @@
                     <div class="container mt-2">
                         <div class="row justify-content-center">
                             <div class="col-sm-4 col-md-3 item">
-                                <h3>Services</h3>
+                                <h3 class="text-white">Services</h3>
                                 <ul>
                                     <li><a href="{{url('/moderator')}}">Moderator</a></li>
                                     <li><a href="{{url('/traffic')}}">Traffic</a></li>
@@ -15,7 +15,7 @@
                                 </ul>
                             </div>
                             <div class="col-sm-4 col-md-3 item">
-                                <h3>About</h3>
+                                <h3 class="text-white">About</h3>
                                 <ul>
                                     <li><a href="{{url('/about')}}">Company</a></li>
                                     <li><a href="{{url('/support')}}">Support</a></li>
@@ -23,7 +23,7 @@
                                 </ul>
                             </div>
                             <div class="col-sm-4 col-md-3 item">
-                                <h3>Careers</h3>
+                                <h3 class="text-white">Careers</h3>
                                 <ul>
                                     <li><a href="{{url('/afiliate')}}">Affiliate links</a></li>
                                     <li><a href="{{url('/wc')}}">Success Models</a></li>
