@@ -145,7 +145,7 @@
                                     specializing in creating stylish,  modern websites 
                                 </p>
                                 <a class="bg-dark p-2 rounded-3 shadow" href="{{url('/download')}}">Download BotCamStudio</a>
-                                <h4>try our apps to automate</h4>
+                            
                             </div>
                         </div>
                     </div>
@@ -277,7 +277,7 @@
                                     In this article, we will explore how a moderator can make the most of this tool to create an exceptional profile.
                                 </p>
                                 <div class="text-end">
-                                    <a href="{{url('/moderator')}}" class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #fffdffcc;">Moderator App</a>
+                                    <a href="{{url('/moderator')}}" class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #3b043bcc;">Moderator App</a>
                                   </div>
                             </div>
                         </div>
@@ -315,15 +315,15 @@
                                 such as posting content, responding to queries, sending promotional messages, 
                                 and processing sales. Make sure the bot follows platform policies to avoid compliance issues.
                             </p>                        
-            <h4>system bot</h4>
+         
                             <div id="accordion" class="accordion-style">
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
-                                        <h5 class="mb-0">
+                                     
                                             <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                                 the importance of THE BOT?
                                             </button>
-                                        </h5>
+                                     
                                     </div>
                                     <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-bs-parent="#accordion" style="">
                                         <div class="card-body position-relative">
@@ -335,11 +335,11 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingTwo">
-                                        <h5 class="mb-0">
+                                  
                                             <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                                  Automation BOT ?
                                             </button>
-                                        </h5>
+                                
                                     </div>
                                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordion">
                                         <div class="card-body position-relative">
@@ -350,11 +350,11 @@
                                 </div>
                                 <div class="card">
                                     <div class="card-header" id="headingThree">
-                                        <h5 class="mb-0">
+                                
                                             <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                                 Content Sales Integration ?
                                             </button>
-                                        </h5>
+                              
                                     </div>
                                     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-bs-parent="#accordion">
                                         <div class="card-body position-relative">
@@ -522,7 +522,7 @@
                                   <small class="text-muted">Followers</small>
                                 </div>
                                 <div class="col-6 text-center py-3">
-                                  <h5 class="mb-0">54k</h5>
+                                  <strong>56K</strong>
                                   <small class="text-muted">Following</small>
                                 </div>
                               </div>
