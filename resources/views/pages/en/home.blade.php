@@ -19,9 +19,8 @@
                     speed: 333,
                     offset: 90
                 });
-            } else {
-                console.error('SmoothScroll no found ready dom.');
-            }
+            } 
+            
             });</script>@endpush
 
     @section('content')
