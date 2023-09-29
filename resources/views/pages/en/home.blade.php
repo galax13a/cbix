@@ -36,8 +36,8 @@
                       <div class="col">             
                       </div>
                       <div class="col mt-2">
-                        <div class="animate-gh mt-5">
-                            <img width="66" height="65" src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                        <div class="animate-gh mt-5 col-sm-4">
+                            <img width="26" height="26" src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                         </div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="animate-gh mt-1 ">
-                <img title="Get Credits Free" width="66" height="65"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
+                <img title="Get Credits Free" width="26" height="26"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
             </div>
     <!-- section content home -->        
         <section>
@@ -163,7 +163,7 @@
                                     </a>
                                 </div>
                                 <div class="blog-info bg-dark text-white">
-                                    <strong> Tool for room moderator, Sends automatic tokens </strong>
+                                    <strong class="fs-4"> Tool for room moderator, Sends automatic tokens </strong>
                                     <p>
                                         Sending automatic tips to your favorite models has never been easier. With our seamless system, 
                                         you can support your top cams effortlessly and without missing a beat. Elevate your experience on our platform by giving 
@@ -189,7 +189,7 @@
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h5>Support with a view to your live</h5>
+                                    <strong class="fs-4">Support with a view to your live</strong>
                                     <p>
                                         At Botchatur, we're committed to enhancing your live experience. With our support feature,
                                          you can show your appreciation directly while enjoying the show. It's the perfect way to make your favorite performers feel valued, 
@@ -214,7 +214,7 @@
                                     </a>
                                 </div>
                                 <div class="blog-info bg-dark text-white">
-                                    <h5>Create cute and quick bios, Profiles pro chatur</h5>
+                                    <strong class="fs-4">Create cute and quick bios, Profiles pro chatur</strong>
                                     <p>
                                         Profiles Pro Chatur makes creating adorable bios a breeze. Easily customize your 
                                         Chaturbate profile with our easy-to-use tool, allowing you to express your unique personality in just minutes.
