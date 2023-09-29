@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="animate-gh mt-1 ">
-                <img title="Get Credits Free"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
+                <img title="Get Credits Free" width="44" height="44"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
             </div>
     <!-- section content home -->        
         <section>
@@ -145,13 +145,14 @@
                                     specializing in creating stylish,  modern websites 
                                 </p>
                                 <a class="bg-dark p-2 rounded-3 shadow" href="{{url('/download')}}">Download BotCamStudio</a>
-                                
+                                <h4>try our apps to automate</h4>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
                             <div class="blog-grid">
+                          
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-dark"> <b>Auto Tiper 💚</b></div>
                                     <a href="{{url('/moderator')}}">
@@ -314,13 +315,13 @@
                                 such as posting content, responding to queries, sending promotional messages, 
                                 and processing sales. Make sure the bot follows platform policies to avoid compliance issues.
                             </p>                        
-            
+            <h4>system bot</h4>
                             <div id="accordion" class="accordion-style">
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                Bot Design ?
+                                                the importance of THE BOT?
                                             </button>
                                         </h5>
                                     </div>
@@ -336,7 +337,7 @@
                                     <div class="card-header" id="headingTwo">
                                         <h5 class="mb-0">
                                             <button class="btn btn-link collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                 Automation ?
+                                                 Automation BOT ?
                                             </button>
                                         </h5>
                                     </div>
@@ -516,7 +517,8 @@
                               </span>
                               <div class="row mx-0 border-top border-bottom">
                                 <div class="col-6 text-center border-end py-3">
-                                  <h5 class="mb-0">550561</h5>
+                                  
+                                  <strong>550561</strong>
                                   <small class="text-muted">Followers</small>
                                 </div>
                                 <div class="col-6 text-center py-3">

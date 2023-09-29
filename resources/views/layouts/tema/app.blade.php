@@ -18,8 +18,12 @@
     @stack('scripts-body')
 </body>
 <style>
+    a{
+        color: #0000FF;
+    }
 body {
     background-image: linear-gradient(to bottom, #ffffff, #c5acacbb);
+    
 }
 </style>
 </html>
