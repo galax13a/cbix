@@ -19,15 +19,12 @@
                     speed: 333,
                     offset: 90
                 });
-            } 
-            
+            }             
             });</script>@endpush
-
     @section('content')
         <x-themacoms.navbar-flex />           
         <<x-themacoms.btnup/>
-        <div class="container-fluid">                           
-
+        <div class="container-fluid">         
             <div class="row mt-5">
                 <div class="container">
                     <div class="row">
@@ -43,7 +40,6 @@
                     </div>
                   </div>
                 <div class="col-md-6 col-xl-6 px-5">
-
                     <div class="mt-1 text-end" id="home">                       
                         <h1 class="mb-4">
                            Get BotCamStudio, tools for chatur and other webcams                         
@@ -85,7 +81,6 @@
                     <img width="1000" height="1000" srcset="{{ asset('temas/home/img_01-250.png') }} 250w, {{ asset('temas/home/img_01.png') }} 500w"
                     sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
                     src="{{ asset('temas/home/img_01-250.png') }}" alt="botchatur editorcam">
-
                 
                 </div>
                 <div class="col-md-6 col-xl-2 mt-0">
@@ -117,7 +112,7 @@
             <div class="animate-gh mt-1 ">
                 <img title="Get Credits Free" width="26" height="26"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
             </div>
-    <!-- section content home -->        
+<!-- section content home -->        
         <section>
             <div class="container">
                 <h2>Tool for room moderators, Send tokens automatically</h2>
