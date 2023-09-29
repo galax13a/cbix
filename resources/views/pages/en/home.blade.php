@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-4">                    
-                    <img srcset="{{ asset('temas/home/img_01-250.png') }} 250w, {{ asset('temas/home/img_01.png') }} 500w"
+                    <img width="250" height="250" srcset="{{ asset('temas/home/img_01-250.png') }} 250w, {{ asset('temas/home/img_01.png') }} 500w"
                     sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
                     src="{{ asset('temas/home/img_01-250.png') }}" alt="botchatur editorcam">
 
@@ -90,7 +90,7 @@
                 </div>
                 <div class="col-md-6 col-xl-2 mt-0">
                     <div class=""  id="style-Z56Nr"> 
-                        <img src="{{ asset('temas/home/img-w.png') }}" alt="easy profile cb">
+                        <img width="90" height="90" src="{{ asset('temas/home/img-w.png') }}" alt="easy profile cb">
                     </div>
                     <div class="hero__top-selling-app wow fadeInRight style-2Ylfc" id="style-2Ylfc">
                         <h3>
@@ -156,7 +156,7 @@
                                     <div class="date shadow border border-2 text-bg-dark"> <b>Auto Tiper 💚</b></div>
                                     <a href="{{url('/moderator')}}">
                                         
-                                        <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/auto-230.jpeg') }} 230w, {{ asset('temas/home/auto.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/auto-230.jpeg') }} 230w, {{ asset('temas/home/auto.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                         src="{{ asset('temas/home/auto-230.jpeg') }}" alt="moderator cb">  
                                       
                                     </a>
@@ -183,7 +183,7 @@
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-danger"> <b>Guest Live 💛</b></div>
                                     <a href="{{url('/traffic')}}">
-                                        <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/visit-230.jpeg') }} 230w, {{ asset('temas/home/visit.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/visit-230.jpeg') }} 230w, {{ asset('temas/home/visit.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                         src="{{ asset('temas/home/visit-230.jpeg') }}" alt="create bio live cb">   
                                     </a>
                                 </div>
@@ -208,7 +208,7 @@
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-warning"> <b>Create Bio ❤️</b></div>
                                     <a href="{{url('/bios/create')}}">                      
-                                        <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/create-230.jpeg') }} 230w, {{ asset('temas/home/create.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/create-230.jpeg') }} 230w, {{ asset('temas/home/create.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                         src="{{ asset('temas/home/create-230.jpeg') }}" alt="create bio live cb">   
                                     </a>
                                 </div>
