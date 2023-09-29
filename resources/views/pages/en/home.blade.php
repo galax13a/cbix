@@ -37,7 +37,7 @@
                       </div>
                       <div class="col mt-2">
                         <div class="animate-gh mt-5">
-                            <img width="44" height="44" src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
+                            <img width="66" height="65" src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                         </div>
                       </div>
                     </div>
@@ -115,7 +115,7 @@
                 </div>
             </div>
             <div class="animate-gh mt-1 ">
-                <img title="Get Credits Free" width="44" height="44"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
+                <img title="Get Credits Free" width="66" height="65"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
             </div>
     <!-- section content home -->        
         <section>
@@ -163,7 +163,7 @@
                                     </a>
                                 </div>
                                 <div class="blog-info bg-dark text-white">
-                                    <h5>Tool for room moderator, Sends automatic tokens</h5>
+                                    <strong> Tool for room moderator, Sends automatic tokens </strong>
                                     <p>
                                         Sending automatic tips to your favorite models has never been easier. With our seamless system, 
                                         you can support your top cams effortlessly and without missing a beat. Elevate your experience on our platform by giving 
