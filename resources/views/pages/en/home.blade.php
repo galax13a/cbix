@@ -543,7 +543,8 @@
                                 </p>
                                 <h3>How Create Api Chatur</h3>                                       
                                 <img loading="lazy" class="img-fluid rounded-2 shadow-sm" style="z-index:-1; margin-top:-5px; margin-right: 36px;"  src="{{ asset('temas/home/cb-api.png')}}">
-
+                                <h3>Chatur Web</h3>
+                                <p>Create easy Bio & Profiles </p>
                             </div>
 
                             </div>
