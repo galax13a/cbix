@@ -82,7 +82,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-4">                    
-                    <img width="250" height="250" srcset="{{ asset('temas/home/img_01-250.png') }} 250w, {{ asset('temas/home/img_01.png') }} 500w"
+                    <img width="1000" height="1000" srcset="{{ asset('temas/home/img_01-250.png') }} 250w, {{ asset('temas/home/img_01.png') }} 500w"
                     sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
                     src="{{ asset('temas/home/img_01-250.png') }}" alt="botchatur editorcam">
 
@@ -156,13 +156,13 @@
                                     <div class="date shadow border border-2 text-bg-dark"> <b>Auto Tiper 💚</b></div>
                                     <a href="{{url('/moderator')}}">
                                         
-                                        <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/auto-230.jpeg') }} 230w, {{ asset('temas/home/auto.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        <img width="1000" height="1000" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/auto-230.jpeg') }} 230w, {{ asset('temas/home/auto.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                         src="{{ asset('temas/home/auto-230.jpeg') }}" alt="moderator cb">  
                                       
                                     </a>
                                 </div>
                                 <div class="blog-info bg-dark text-white">
-                                    <h5><a href="javascript:void(0)">Tool for room moderator, Sends automatic tokens</a></h5>
+                                    <h5>Tool for room moderator, Sends automatic tokens</h5>
                                     <p>
                                         Sending automatic tips to your favorite models has never been easier. With our seamless system, 
                                         you can support your top cams effortlessly and without missing a beat. Elevate your experience on our platform by giving 
@@ -183,12 +183,12 @@
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-danger"> <b>Guest Live 💛</b></div>
                                     <a href="{{url('/traffic')}}">
-                                        <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/visit-230.jpeg') }} 230w, {{ asset('temas/home/visit.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        <img width="1000" height="1000" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/visit-230.jpeg') }} 230w, {{ asset('temas/home/visit.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                         src="{{ asset('temas/home/visit-230.jpeg') }}" alt="create bio live cb">   
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <h5><a href="javascript:void(0)">Support with a view to your live</a></h5>
+                                    <h5>Support with a view to your live</h5>
                                     <p>
                                         At Botchatur, we're committed to enhancing your live experience. With our support feature,
                                          you can show your appreciation directly while enjoying the show. It's the perfect way to make your favorite performers feel valued, 
@@ -208,12 +208,12 @@
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-warning"> <b>Create Bio ❤️</b></div>
                                     <a href="{{url('/bios/create')}}">                      
-                                        <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/create-230.jpeg') }} 230w, {{ asset('temas/home/create.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        <img width="1000" height="1000" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/create-230.jpeg') }} 230w, {{ asset('temas/home/create.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                         src="{{ asset('temas/home/create-230.jpeg') }}" alt="create bio live cb">   
                                     </a>
                                 </div>
-                                <div class="blog-info bg-dark text-white"">
-                                    <h5><a href="javascript:void(0)">Create cute and quick bios, Profiles pro chatur</a></h5>
+                                <div class="blog-info bg-dark text-white">
+                                    <h5>Create cute and quick bios, Profiles pro chatur</h5>
                                     <p>
                                         Profiles Pro Chatur makes creating adorable bios a breeze. Easily customize your 
                                         Chaturbate profile with our easy-to-use tool, allowing you to express your unique personality in just minutes.
@@ -256,7 +256,7 @@
                 </div>
                 <div class="row align-items-center mt-2 mb-2">
                     
-                    <img  srcset="{{ asset('temas/home/website.png-250.png') }} 250w, {{ asset('temas/home/website.png') }} 500w" sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
+                    <img width="250" height="250"  srcset="{{ asset('temas/home/website.png-250.png') }} 250w, {{ asset('temas/home/website.png') }} 500w" sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
                     src="{{ asset('temas/home/website.png-250.png')}}" alt="create buider profile chatur" loading="lazy" class="img-fluid">
 
             </div>
@@ -276,13 +276,13 @@
                                     In this article, we will explore how a moderator can make the most of this tool to create an exceptional profile.
                                 </p>
                                 <div class="text-end">
-                                    <a href="{{url('/moderator')}}" class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #470a3acc;">Moderator App</a>
+                                    <a href="{{url('/moderator')}}" class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #fffdffcc;">Moderator App</a>
                                   </div>
                             </div>
                         </div>
                         <div class="col-lg-6 text-center">
                             <div class="about-img col-md-8">
-                                <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/bot7-230.jpeg') }} 230w, {{ asset('temas/home/bot7.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/bot7-230.jpeg') }} 230w, {{ asset('temas/home/bot7.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                                 src="{{ asset('temas/home/bot7-230.jpeg') }}" alt="create profile webcam">                               
                             
                             </div>
@@ -296,7 +296,7 @@
                     <div class="col-lg-6 mb-4 mb-lg-0">
                         <div class="col-md-8 text-center">
 
-                            <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/bot1-230.jpeg') }} 230w, 
+                            <img width="230" height="230" loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/bot1-230.jpeg') }} 230w, 
                             {{ asset('temas/home/bot1.jpeg') }} 380w"
                             sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
                             src="{{ asset('temas/home/bot1-230.jpeg') }}" alt="create bots webcam">
@@ -423,7 +423,7 @@
                     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                       <div class="single_price_plan active wow fadeInUp">
              
-                        <div class="side-shape"><img loading="lazy" src="{{asset('temas/home/popular-pricing.png')}}" alt="princing app"></div>
+                        <div class="side-shape"><img width="230" height="100%" loading="lazy" src="{{asset('temas/home/popular-pricing.png')}}" alt="princing app"></div>
                         <div class="title"><span>Popular</span>
                           <h3>Small Business</h3>
                           <p>For Small Business Team</p>
