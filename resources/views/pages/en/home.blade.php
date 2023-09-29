@@ -2,7 +2,14 @@
     @section('title', __('EditorCam Create Profiles Chatur'))
     @push('scripts-head')<meta name="description" content="Create and edit profiles and bios on Chatur. Customize your profiles with unique bios. Optimize your presence on Chatur!">
     <meta name="keywords" content="Profile Creation, Bio Editing, Chatur, Profile Customization, Unique Bios, Online Presence, Chatur Optimization">    
-    <meta property="og:image" content="FEATURED_IMAGE_URL">
+    <meta property="og:image" content="{{asset('temas/home/logo-botchatur-editor.png')}}">
+    <meta property='og:title' content='¡Crea Biografías Únicas en Chatur!' />
+    <meta property='og:description' content='Optimize your Chatur presence with custom profiles and unique bios. Edit your bio now!' />
+    <meta property='og:url' content='{{asset('temas/home/logo-botchatur-editor.png')}}' />
+    <meta property='og:type' content='website' />
+    <meta itemprop="thumbnailUrl" content='{{asset('temas/home/logo-botchatur-editor.png')}}' />
+    <meta property='og:site_name' content='BotChatur Bio & profiles CB' />
+
     @endpush
     @push('scripts-body')
         <script>
@@ -264,13 +271,13 @@
                                     In this article, we will explore how a moderator can make the most of this tool to create an exceptional profile.
                                 </p>
                                 <div class="text-end">
-                                    <a href="/moderator" class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #ae8dc9cc;">Read More</a>
+                                    <a href="{{url('/moderator')}}" class="btn-hover2 m-2 p-2 text-center" style="--highlight-color: #ae8dc9cc;">Moderator App</a>
                                   </div>
                             </div>
                         </div>
                         <div class="col-lg-6 text-center">
                             <div class="about-img">
-                                <img loading="lazy" class="border rounded-3 shadow" alt="create profiles  chatur" src="{{ asset('temas/home/bot7.jpeg')}}">
+                                <img loading="lazy" class="border rounded-3 shadow" alt="create profiles chatur" src="{{ asset('temas/home/bot7.jpeg')}}">
                             </div>
                         </div>
                     </div>
