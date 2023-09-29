@@ -1,6 +1,9 @@
     @extends('layouts.tema.app')
-    @section('title', __('Home Donwload AppStudio'))
-
+    @section('title', __('EditorCam Create Profiles Chatur'))
+    @push('scripts-head')<meta name="description" content="Create and edit profiles and bios on Chatur. Customize your profiles with unique bios. Optimize your presence on Chatur!">
+    <meta name="keywords" content="Profile Creation, Bio Editing, Chatur, Profile Customization, Unique Bios, Online Presence, Chatur Optimization">    
+    <meta property="og:image" content="FEATURED_IMAGE_URL">
+    @endpush
     @push('scripts-body')
         <script>
             document.addEventListener('DOMContentLoaded', function () {
@@ -65,21 +68,24 @@
                                 possible.  <mark> <b>Free access </b></mark>                              
                             </p>
                         <div class="text-end m-2">                            
-                            <a class="btn-hover3" href="/download">Download App</a>
+                            <a class="btn-hover3" href="{{url('/download')}}">Download App</a>
                         </div>
                             
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 col-xl-4">
-                    <img  src="{{ asset('temas/home/img_01.png') }}" alt="App Botchatur">
+                <div class="col-md-6 col-xl-4">                    
+                    <img srcset="{{ asset('temas/home/img_01-250.png') }} 250w, {{ asset('temas/home/img_01.png') }} 500w"
+                    sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
+                    src="{{ asset('temas/home/img_01-250.png') }}" alt="botchatur editorcam">
+
                     <div class="animate-gh text-end">
                         <img loading="lazy"  src="{{asset('temas/home/ghost.png')}}" title="play game" alt="Ghost" class="ghost-image punter">
                     </div>
                 </div>
                 <div class="col-md-6 col-xl-2 mt-0">
                     <div class=""  id="style-Z56Nr"> 
-                        <img src="{{ asset('temas/home/img-w.png') }}" alt="">
+                        <img src="{{ asset('temas/home/img-w.png') }}" alt="easy profile cb">
                     </div>
                     <div class="hero__top-selling-app wow fadeInRight style-2Ylfc" id="style-2Ylfc">
                         <h3>
@@ -105,6 +111,19 @@
                        </div>
                 </div>
             </div>
+    <!-- section content home -->        
+        <section>
+            <div class="container">
+                <h2>Tool for room moderators, Send tokens automatically</h2>
+            <p>Sending automatic tips to your favorite models has never been easier. With our integrated system, you will be able to support your main cameras effortlessly and without missing a single detail. Enhance your experience on our platform by giving back to those who make it memorable. Try it today and make your favorite models feel appreciated like never before.</p>
+
+            <h2>Live guest 💛</h2>
+            <p>Support while you enjoy live. At Botchatur we are committed to improving your live experience. With our support feature, you can show your appreciation directly while enjoying the show. It's the perfect way to make your favorite artists feel appreciated, while enjoying the content you love. Join us to create a more interactive and engaging live experience today.</p>
+
+            <h2>Create your biography ❤️</h2>
+            <p>Create lovely and fast bios, Chatur profiles pro. Profiles Pro Chatur makes it easy to create adorable bios. Easily customize your Chaturbate profile with our easy-to-use tool, allowing you to express your unique personality in just minutes. Elevate your presence on the platform with charming bios that leave a lasting impression. Try it now and let your creativity shine! Create your account and start creating.</p>
+            </div>
+        </section>
 
 <!-- download-->
             <section class="section gray-bg mb-3" id="download" >
@@ -224,7 +243,10 @@
                   </div>
                 </div>
                 <div class="row align-items-center mt-2 mb-2">
-                <img loading="lazy" src="{{ asset('temas/home/website.png')}}"  alt="create bio pages chatur" style="margin-top:-99px; z-index:-1;" class="img-fluid" >
+                    <img srcset="{{ asset('temas/home/website.png-250.png') }} 250w, {{ asset('temas/home/website.png') }} 500w"
+                    sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
+                    src="{{ asset('temas/home/website.png-250.png')}}" alt="create buider profile chatur" loading="lazy" style="margin-top:-99px; z-index:-1;" class="img-fluid">
+
             </div>
               </div>
 
