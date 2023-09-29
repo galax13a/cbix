@@ -143,7 +143,7 @@
                                     <h2 class="display-2">App BotStudio</h2></div>
                                 <p>
                                     I design and develop services for customers of all sizes, 
-                                    specializing in creating stylish,  modern websites <a href="/download">Download BotCamStudio</a>
+                                    specializing in creating stylish,  modern websites <a href="{{url('/download')}}">Download BotCamStudio</a>
                                 </p>
                                 
                             </div>
@@ -154,8 +154,11 @@
                             <div class="blog-grid">
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-dark"> <b>Auto Tiper 💚</b></div>
-                                    <a href="/moderator">
-                                        <img loading="lazy" src="{{asset('temas/home/auto.jpeg')}}" title="" alt="Moderator Cam">
+                                    <a href="{{url('/moderator')}}">
+                                        
+                                        <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/auto-230.jpeg') }} 230w, {{ asset('temas/home/auto.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        src="{{ asset('temas/home/auto-230.jpeg') }}" alt="moderator cb">  
+                                      
                                     </a>
                                 </div>
                                 <div class="blog-info">
@@ -167,7 +170,7 @@
                                          Try it today and make your favorite models feel appreciated like never before.
                                     </p>
                                     <div class="btn-bar">
-                                        <a href="/moderator" class="px-btn-arrow">
+                                        <a href="{{url('/moderator')}}" class="px-btn-arrow">
                                             <span>Read More</span>
                                             <i class="arrow"></i>
                                         </a>
@@ -179,8 +182,9 @@
                             <div class="blog-grid">
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-danger"> <b>Guest Live 💛</b></div>
-                                    <a href="/traffic">
-                                        <img loading="lazy" src="{{asset('temas/home/visit.jpeg')}}" title="" alt="">
+                                    <a href="{{url('/traffic')}}">
+                                        <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/visit-230.jpeg') }} 230w, {{ asset('temas/home/visit.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        src="{{ asset('temas/home/visit-230.jpeg') }}" alt="create bio live cb">   
                                     </a>
                                 </div>
                                 <div class="blog-info">
@@ -191,8 +195,8 @@
                                          all while enjoying the content you love. Join us in creating a more interactive and engaging live experience today
                                     </p>
                                     <div class="btn-bar">
-                                        <a href="/traffic" class="px-btn-arrow">
-                                            <span>Read More</span>
+                                        <a href="{{url('/traffic')}}" class="px-btn-arrow">
+                                            <span>More Traffic</span>
                                             <i class="arrow"></i>
                                         </a>
                                     </div>
@@ -203,8 +207,9 @@
                             <div class="blog-grid">
                                 <div class="blog-img">
                                     <div class="date shadow border border-2 text-bg-warning"> <b>Create Bio ❤️</b></div>
-                                    <a href="/bios/create">
-                                        <img loading="lazy" src="{{asset('temas/home/create.jpeg')}}" title="" alt="">
+                                    <a href="{{url('/bios/create')}}">                      
+                                        <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/create-230.jpeg') }} 230w, {{ asset('temas/home/create.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                        src="{{ asset('temas/home/create-230.jpeg') }}" alt="create bio live cb">   
                                     </a>
                                 </div>
                                 <div class="blog-info">
@@ -216,8 +221,8 @@
                                          Try it now and let your creativity shine! Create your account and start creating.
                                     </p>
                                     <div class="btn-bar">
-                                        <a href="/bios/create" class="px-btn-arrow">
-                                            <span>Read More</span>
+                                        <a href="{{ url('/bios/create')}}" class="px-btn-arrow">
+                                            <span>Create Bios</span>
                                             <i class="arrow"></i>
                                         </a>
                                     </div>
@@ -250,9 +255,9 @@
                   </div>
                 </div>
                 <div class="row align-items-center mt-2 mb-2">
-                    <img srcset="{{ asset('temas/home/website.png-250.png') }} 250w, {{ asset('temas/home/website.png') }} 500w"
-                    sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
-                    src="{{ asset('temas/home/website.png-250.png')}}" alt="create buider profile chatur" loading="lazy" style="margin-top:-99px; z-index:-1;" class="img-fluid">
+                    
+                    <img  srcset="{{ asset('temas/home/website.png-250.png') }} 250w, {{ asset('temas/home/website.png') }} 500w" sizes="(max-width: 720px) 250px,(max-width: 1024px) 500px"
+                    src="{{ asset('temas/home/website.png-250.png')}}" alt="create buider profile chatur" loading="lazy" class="img-fluid">
 
             </div>
               </div>
@@ -276,8 +281,10 @@
                             </div>
                         </div>
                         <div class="col-lg-6 text-center">
-                            <div class="about-img">
-                                <img loading="lazy" class="border rounded-3 shadow" alt="create profiles chatur" src="{{ asset('temas/home/bot7.jpeg')}}">
+                            <div class="about-img col-md-8">
+                                <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/bot7-230.jpeg') }} 230w, {{ asset('temas/home/bot7.jpeg') }} 380w"  sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                src="{{ asset('temas/home/bot7-230.jpeg') }}" alt="create profile webcam">                               
+                            
                             </div>
                         </div>
                     </div>
@@ -287,8 +294,13 @@
             <div class="container-fluid  mb-2" id="bots">
                 <div class="row align-items-center">
                     <div class="col-lg-6 mb-4 mb-lg-0">
-                        <div class="mx-auto text-center">
-                            <img class="border rounded-3 shadow" src="{{ asset('temas/home/bot1.jpeg')}}" class="rounded" alt="create bots webcam">
+                        <div class="col-md-8 text-center">
+
+                            <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/bot1-230.jpeg') }} 230w, 
+                            {{ asset('temas/home/bot1.jpeg') }} 380w"
+                            sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                            src="{{ asset('temas/home/bot1-230.jpeg') }}" alt="create bots webcam">
+                           
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -366,7 +378,7 @@
                   <div class="row justify-content-center">
                     <div class="col-12 col-sm-8 col-lg-6">
            
-                      <div class="section-heading section-title" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                      <div class="section-heading section-title">
                     
                         <h2>Get started now with your content <br> #Pricing Plans</h2>
                         <h6>Get accesss</h6>
@@ -380,7 +392,7 @@
                   <div class="row justify-content-center">
                    
                     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                      <div class="single_price_plan wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                      <div class="single_price_plan wow fadeInUp">
                         <div class="title">
                           <h3>Start Up #Free </h3>
                           <p>Start a trial</p>
@@ -409,7 +421,7 @@
                     <div class="col-12 col-sm-8 col-md-6 col-lg-4">
                       <div class="single_price_plan active wow fadeInUp">
              
-                        <div class="side-shape"><img loading="lazy" src="{{asset('temas/home/popular-pricing.png')}}" alt=""></div>
+                        <div class="side-shape"><img loading="lazy" src="{{asset('temas/home/popular-pricing.png')}}" alt="princing app"></div>
                         <div class="title"><span>Popular</span>
                           <h3>Small Business</h3>
                           <p>For Small Business Team</p>
@@ -432,7 +444,7 @@
                           <li>6 Content AI</li>
                           <li>Hidden Mark Blank</li>
                         </div>
-                        <div class="button"><a class="btn btn-warning" href="/buy/month">Get Started</a></div>
+                        <div class="button"><a class="btn btn-warning" href="{{url('/buy/month')}}">Get Started</a></div>
                       </div>
                     </div>
                     <!-- Single Price Plan Area-->
@@ -484,12 +496,12 @@
                         
                             <div class="card-body p-0">
 
-                              <a href="/en/chatur/api" class="avatar xl rounded-circle bg-gray bg-opacity-10 p-1 position-relative mt-n5 d-block mx-auto">
+                              <a href="{{url('/chatur/api')}}" class="avatar xl rounded-circle bg-gray bg-opacity-10 p-1 position-relative mt-n5 d-block mx-auto">
                                 <img loading="lazy" src="{{asset('temas/home/madeline_jackson.jpg')}}" 
                                 class="avatar-img img-fluid rounded-circle shadow-lg" alt="" >
                               </a>
                               <h5 class="mb-0 pt-3">
-                                <a href="/profile" class="text-reset fs-3">Madeline Jackson</a>
+                                <a href="{{url('/profile')}}" class="text-reset fs-3">Madeline Jackson</a>
                               </h5>
                               <span class="text-muted small d-block mb-4">
                                 Hey, everyone, I’m Leah. I am from Brno, Czech Republic
@@ -526,7 +538,7 @@
                                     Online
                                   </span>
                                   <div class="text-end">
-                                    <a href="/profile" class="btn btn-sm btn-primary">Follow</a>
+                                    <a href="{{url('/profile')}}" class="btn btn-sm btn-primary">Follow</a>
                                   </div>
                                 </li>
                               </ul>
@@ -573,7 +585,11 @@
                                     url statsapi/authtoken/    
                                 </p>
                                 <h3>How Create Api Chatur</h3>                                       
-                                <img loading="lazy" class="img-fluid rounded-2 shadow-sm" style="z-index:-1; margin-top:-5px; margin-right: 36px;"  src="{{ asset('temas/home/cb-api.png')}}">
+                                <img loading="lazy" class="border rounded-3 shadow" srcset="{{ asset('temas/home/cb-api-230.png') }} 230w, 
+                                {{ asset('temas/home/cb-api.png') }} 380w"
+                                sizes="(max-width: 720px) 230px,(max-width: 1024px) 380px"
+                                src="{{ asset('temas/home/cb-api-230.png') }}" alt="api chaturbe">
+                               
                                 <h3>Chatur Web</h3>
                                 <p>Create easy Bio & Profiles </p>
                             </div>
