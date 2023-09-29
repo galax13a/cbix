@@ -19,7 +19,7 @@
 </body>
 <style>
     a{
-        color: #0000FF;
+        color: #7FFFD4;
     }
 body {
     background-image: linear-gradient(to bottom, #ffffff, #c5acacbb);
