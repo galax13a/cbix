@@ -14,125 +14,73 @@ use GuzzleHttp\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use voku\helper\HtmlDomParser;
 use OpenAI\Laravel\Facades\OpenAI;
-use Spatie\ImageOptimizer\OptimizerChainFactory;
+
 
 class EditorjsController extends Controller
 {
     const MAX_FILE_SIZE = 4048; // Tamaño máximo en KB
     const STORAGE_PATH = 'public/apps/images/';
     const PUBLIC_PATH = 'storage/apps/images/';
-    const PUBLIC_PATH_TEMA = 'storage/apps/images/';
 
-
-    public function creditoruploadimagen(Request $request)
-    {
-       
-            $imageData = $request->input('url');
-                if($imageData){
-
-                    try {
-                    $image = Image::make($imageData);
-                    $extension = $image->mime() === 'image/jpeg' ? 'jpg' : ($image->mime() === 'image/png' ? 'png' : 'webp');
-                    $dimension = $request->input('dimension', '1024x768');             
-                    // Extraer ancho y alto de la dimensión
-                    [$width, $height] = explode('x', $dimension);            
-                    // 2. Redimensionar la imagen
-                    $image->resize($width, $height, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });            
-                    // 3. Guardar la imagen redimensionada
-                    $slug = 'temas/images';
-                    $fileName = Str::random(11) . '.' . $extension;
-                    if (!Storage::disk('public')->exists($slug)) {
-                        Storage::disk('public')->makeDirectory($slug);
-                    }
-                    $path = $slug . '/' . $fileName;
-                    $image->save(storage_path('app/public/' . $path));            
-                    // 4. Devolver respuesta con el estado y URL de la imagen procesada
-                    $url = asset('storage/' . $path); // asumiendo que estás usando el enlace simbólico `storage`
-                    return response()->json([
-                        'success' => 1,
-                        'url' => $url
-                    ]);
-                    
-                } catch (\Exception $e) {
-                    // Registrar el error y devolver un mensaje de error
-                    Log::error('Error al subir y procesar la imagen: ' . $e->getMessage());
-                    return response()->json([
-                        'success' => 0,
-                        'error' => 'Error al subir la imagen. Por favor, inténtalo de nuevo.'
-                    ], 500);
-                }
-            }else {
-                return response()->json([
-                    'success' => 0,
-                    'error' => 'Error File Null Imagen.'
-                ], 500);
-            }
-    }
-    
-    public function uploadCrop(Request $request)
+    public function imageUpload(Request $request)
     {
         try {
-            // Suponiendo que estás usando la autenticación predeterminada de Laravel
-            $user = auth()->user();
-    
-            $base64Image = $request->input('url');
-            if (!preg_match('/^data:image\/(\w+);base64,/', $base64Image, $type)) {
-                return response()->json([
+            $file = $request->image;
+            $user = User::findOrFail(auth()->id());
+            $slug = $request->input('slug');
+
+            if (!$request->has('slug')) {
+                $errorResponse = [
                     'success' => 0,
-                    'error' => 'The provided content is not a valid image.'
-                ], 400);
+                    'error' => 'No se ha proporcionado un slug. Por favor, inténtalo de nuevo.'
+                ];
+                return response()->json($errorResponse, 400);
             }
-    
-            $imageContent = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $base64Image));
-            
-            $slug = 'temas/images';
-            $fileName = Str::random(11) . '.png';
-    
-            if (!Storage::disk('public')->exists($slug)) {
-                Storage::disk('public')->makeDirectory($slug);
+
+            $slug = $request->input('slug');
+
+            $storagePathWithSlug = self::STORAGE_PATH . $slug . '/';
+            $publicPathWithSlug = self::PUBLIC_PATH . $slug . '/';
+
+            $this->validateFileSize($file, $user);
+
+            $fileWithExt = $file->getClientOriginalName();
+            $file_name = pathinfo($fileWithExt, PATHINFO_FILENAME);
+            $file_extension = $file->getClientOriginalExtension();
+
+            $file_name_save = Str::slug($file_name) . '_' . time() . '_original';
+
+            $this->storeImages($file, $file_name_save, $file_extension, $slug, $user, $publicPathWithSlug);
+
+            $activeUploadSizes = Uploadsize::where('active', true)->get();
+            $resized_images = array();
+            foreach ($activeUploadSizes as $uploadSize) {
+                $width = $uploadSize->width;
+                $resized_url = Storage::url($storagePathWithSlug . $file_name_save . "_{$width}." . $file_extension);
+                $resized_images["resized_{$width}"] = $resized_url;
             }
-    
-            // Guarda la imagen directamente sin Intervention Image
-            Storage::disk('public')->put($slug . '/' . $fileName, $imageContent);
-    
-            // Optimiza la imagen con spatie/image-optimizer
-            $absoluteImagePath = storage_path('app/public/' . $slug . '/' . $fileName);
-            $optimizerChain = OptimizerChainFactory::create();
-            $optimizerChain->optimize($absoluteImagePath);
-    
-            // Recolecta información sobre la imagen para la base de datos
-            $size = Storage::disk('public')->size($slug . '/' . $fileName);
-            $extension = pathinfo($fileName, PATHINFO_EXTENSION);
-            $url = asset('storage/' . $slug . '/' . $fileName);
-    
-            // Inserta datos en la base de datos
-            UploadImage::create(
-                [
-                    'name' => $fileName,
-                    'user_id' => $user->id,
-                    'size' => $size,
-                    'url' => $url,
-                    'extension' => $extension,
-                    'uploadfolder_id' => 5,
-                ]
-            );
-    
-            return response()->json([
+
+            $original_url = Storage::url($storagePathWithSlug . $file_name_save . '.' . $file_extension);
+
+            $response = array(
                 'success' => 1,
-                'url' => $url
-            ]);
+                'file' => (object) array_merge(
+                    ['url' => $original_url],
+                    $resized_images
+                )
+            );
+
+            return response()->json($response);
         } catch (\Exception $e) {
-            Log::error('Error uploading the cropped image: ' . $e->getMessage());
-    
-            return response()->json([
+            Log::error('Error al cargar el archivo en EditorJS: ' . $e->getMessage());
+
+            $errorResponse = [
                 'success' => 0,
-                'error' => 'Error uploading the cropped image. Please try again.'
-            ], 500);
+                'error' => 'Error al cargar el archivo. Por favor, inténtalo de nuevo.'
+            ];
+            return response()->json($errorResponse, 500);
         }
     }
-
 
     public function getAIPro(Request $request)
     {
@@ -140,10 +88,10 @@ class EditorjsController extends Controller
         $prompt_translate = $request->input('topic');
         $translate = $request->input('translate');
         $tokens = $request->input('tokens', 100);
-        $tokens = intval($tokens);
+        $tokens = intval($tokens); 
         $prom_system_es = "Eres un asistente de inteligencia artificial capacitado para redactar artículos de blog con SEO SENIOR experto en google y posicionamiento. genera texto en html para generar un excelente articulo";
         $prom_system_en = "You are an AI assistant trained to write blog articles with SEO like Wordpress. Generate text in HTML format that can be displayed in CKEditor and receive pure HTML.";
-
+    
         if ($translate === "en") {
             // Si es una solicitud de traducción en inglés, cambiamos el prompt y el sistema de instrucciones a inglés.
             $prompt = "You are a translation assistant, do not reply to this message as a robot,, You must translate this text from Spanish correctly to English:  {$prompt_translate}";
@@ -165,28 +113,28 @@ class EditorjsController extends Controller
                 $prom_system = $prom_system_es;
                 break;
         }
-
+    
         $result = OpenAI::completions()->create([
-            'model' => 'text-davinci-003', //text-davinci-003
+            'model' => 'text-davinci-003',//text-davinci-003
             'prompt' => $prom_system . $prompt,
             'max_tokens' => $tokens,
-            'temperature' => 0.8,
+            'temperature' => 0.8 ,            
         ]);
-
+    
         $quote = $result['choices'][0]['text'];
         $promText = "Este es un texto promocional estático.";
-
+    
         return response()->json([
             'quote' => $quote,
             'topic' => $prompt_translate,
             'promText' => $promText,
         ]);
     }
-
+    
 
     public function getAIFree(Request $request)
     {
-
+        
         $prompt = $request->input('topic');
         $prom_system = 'Actúa como un experto editor de textos, te daré un texto y un estilo y tono de escritura, y debes redactar nuevamente el texto pero usando ese estilo y tono especifico, no des explicaciones, solo redacta nuevamente el texto, ¿estas listo? te dare mi idea acontinuacion en el siguiente promt no debes de hacer cambios a este prom inicial ';
         $prom_system = null;
@@ -194,7 +142,7 @@ class EditorjsController extends Controller
             'model' => 'text-davinci-003',                    //'text-davinci-003',
             'prompt' => $prom_system . $prompt,
             'max_tokens' => 300,
-            'temperature' => 0.8,
+            'temperature' =>0.8,            
         ]);
 
         $quote = $result['choices'][0]['text'];
@@ -205,11 +153,12 @@ class EditorjsController extends Controller
             'topic' => $prompt,
             'promText' => $promText,
         ]);
+
     }
 
     public function generateQuote($topic)
     {
-
+ 
         $quotes = [
             'Esta es la primera cita posible.',
             'Esta es la segunda cita posible.',
@@ -241,8 +190,10 @@ class EditorjsController extends Controller
         if ($res->getStatusCode() == 200) {
             // Get HTML content
             $html = $res->getBody()->getContents();
+
             // Create a DOM object
             $dom = HtmlDomParser::str_get_html($html);
+
             // Extract data from the HTML
             // TODO: Update these to match the actual structure of Chaturbate's HTML
             $title = $dom->find('title', 0)->plaintext;
@@ -258,17 +209,22 @@ class EditorjsController extends Controller
             }
 
             $prueba = $pathSegments[0];
+
             // Generate a random number between 0 and 1
             $randomNumber = mt_rand() / mt_getrandmax();
+
             $path = parse_url($url, PHP_URL_PATH);
             $segments = explode('/', rtrim($path, '/'));
             $name = end($segments);
 
             // Append the random number to the URL
             $image = 'https://cbjpeg.stream.highwebmedia.com/stream?room=' . $name  . '&Botchatur=' . $randomNumber;
+
             // Create random float for image URL
             $randomFloat = mt_rand() / mt_getrandmax();
             $image .= '&f=' . $randomFloat;
+
+
             $name = str_replace("&amp;", "-", $name);
 
             // Build the data array

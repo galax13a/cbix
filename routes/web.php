@@ -26,15 +26,19 @@ Route::get('/google-auth/redirect', function () {
 Route::get('/google-auth/callback', function () {
     $user_google = Socialite::driver('google')->stateless()->user();
 
-    $user = User::updateOrCreate([
-            'google_id' => $user_google->id,
-        ], [
-            'name' => $user_google->name,
-            'email' => $user_google->email,          
-        ]); 
-        Auth::login($user); 
+    // Busca un usuario existente en la base de datos por su google_id
+    $user = User::where('google_id', $user_google->id)->first();
+
+    if ($user) {
+        // El usuario existe en la base de datos, autentícalo
+        Auth::login($user);
         return redirect('/home');
+    } else {
+        // El usuario no existe en la base de datos, puedes manejarlo según tus necesidades
+        return redirect('/')->with('error', 'Usuario no registrado.');
+    }
 });
+
 
 Route::get('/', function () {
     return view('welcome');
