@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Spatie\Permission\Models\Role;
-
+use Spatie\Permission\Models\User;
 use App\Http\Controllers\EditorjsController;
 
 /*
@@ -19,7 +19,7 @@ use App\Http\Controllers\EditorjsController;
 */
 
 Route::get('/google-auth/redirect', function () {
-    dd(Socialite::driver('google'));
+  
     return Socialite::driver('google')->redirect();
 });
  
