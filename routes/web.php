@@ -23,9 +23,16 @@ Route::get('/google-auth/redirect', function () {
 });
  
 Route::get('/google-auth/callback', function () {
-    $user = Socialite::driver('google')->user();
- 
-    // $user->token
+    $user_google = Socialite::driver('google')->user();
+
+    $user = User::updateOrCreate([
+            'google_id' => $user_google->id,
+        ], [
+            'name' => $user_google->name,
+            'email' => $user_google->email,          
+        ]); 
+        Auth::login($user); 
+        return redirect('/dashboard');
 });
 
 Route::get('/', function () {
