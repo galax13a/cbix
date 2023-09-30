@@ -6,7 +6,7 @@
     <div class="row justify-content-center h-100">
         <div class="col-md-8">
             <div class="card mb-4">
-                <div class="card-header bg-transparent shadow"><strong>{{ __('Login') }} EditorCam</strong></div>
+                <div class="card-header bg-transparent shadow"><strong>App {{ __('Login') }} EditorCam</strong></div>
 
                 <div class="card-body mb-5">
                     <form method="POST" action="{{ route('login') }}">
