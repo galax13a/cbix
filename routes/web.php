@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use Laravel\Socialite\Facades\Socialite;
 use Spatie\Permission\Models\Role;
 
 use App\Http\Controllers\EditorjsController;
@@ -17,6 +17,16 @@ use App\Http\Controllers\EditorjsController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+Route::get('/google-auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+});
+ 
+Route::get('/google-auth/callback', function () {
+    $user = Socialite::driver('google')->user();
+ 
+    // $user->token
+});
 
 Route::get('/', function () {
     return view('welcome');
@@ -123,7 +133,6 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
 
     Route::view('root/dashboard', 'livewire.admin.dashboard.index')
         ->middleware('can:root.dashboard')->name('root.dashboard');
-
 
     Route::view('root/dashboard/users', 'livewire.usuarios.index')
         ->middleware('can:root.dashboard.users')->name('root.users');

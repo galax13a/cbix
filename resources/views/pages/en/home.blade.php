@@ -3,7 +3,7 @@
     @push('scripts-head')<meta name="description" content="Create and edit profiles and bios on Chatur. Customize your profiles with unique bios. Optimize your presence on Chatur!">
     <meta name="keywords" content="Profile Creation, Bio Editing, Chatur, Profile Customization, Unique Bios, Online Presence, Chatur Optimization">    
     <meta property="og:image" content="{{asset('temas/home/logo-botchatur-editor.png')}}">
-    <meta property='og:title' content='¡Crea Biografías Únicas en Chatur!' />
+    <meta property='og:title' content='Create Unique Bios on Chatur 🤩' />
     <meta property='og:description' content='Optimize your Chatur presence with custom profiles and unique bios. Edit your bio now!' />
     <meta property='og:url' content='{{asset('temas/home/logo-botchatur-editor.png')}}' />
     <meta property='og:type' content='website' />
@@ -40,7 +40,7 @@
                     </div>
                   </div>
                 <div class="col-md-6 col-xl-6 px-5">
-                    <div class="mt-1 text-end" id="home">                       
+                    <div class="mt-3 text-end" id="home">                       
                         <h1 class="mb-4">
                            Get BotCamStudio, tools for chatur and other webcams                         
                         </h1>
@@ -83,7 +83,7 @@
                     src="{{ asset('temas/home/img_01-250.png') }}" alt="botchatur editorcam">
                 
                 </div>
-                <div class="col-md-6 col-xl-2 mt-0">
+                <div class="col-md-6 col-xl-2 mt-4">
                     <div class=""  id="style-Z56Nr"> 
                         <img width="90" height="90" src="{{ asset('temas/home/img-w.png') }}" alt="easy profile cb">
                     </div>
