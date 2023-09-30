@@ -34,8 +34,7 @@ Route::get('/google-auth/callback', function () {
         Auth::login($user);
         return redirect('/home');
     } else {
-        // El usuario no existe en la base de datos, puedes manejarlo según tus necesidades
-        return redirect('/')->with('error', 'Usuario no registrado.');
+        $user_google = Socialite::driver('google')->stateless()->user();
     }
 });
 
