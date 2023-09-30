@@ -23,7 +23,7 @@
             });</script>@endpush
     @section('content')
         <x-themacoms.navbar-flex />           
-        <<x-themacoms.btnup/>
+        <x-themacoms.btnup/>
         <div class="container-fluid">         
             <div class="row mt-5">
                 <div class="container">
