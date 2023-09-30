@@ -7,7 +7,6 @@ use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Http\Controllers\EditorjsController;
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,29 +20,22 @@ use GuzzleHttp\Client;
 */
 
 Route::get('/google-auth/redirect', function () {
-    // Redirige al usuario a la página de autorización de Google
+  
     return Socialite::driver('google')->redirect();
 });
-
-
+ 
 Route::get('/google-auth/callback', function () {
     $user_google = Socialite::driver('google')->stateless()->user();
 
-    // Busca un usuario existente en la base de datos por su google_id
-    $user = User::where('google_id', $user_google->id)->first();
-
-    if (!$user) {
-        // Si el usuario no existe en la base de datos, redirige para pedir autorización nuevamente
-        return Socialite::driver('google')->redirect();
-    }
-
-    // Autentica al usuario en Laravel
-    Auth::login($user);
-
-    // Redirige a la página de inicio de tu aplicación
-    return redirect('/home');
+    $user = User::updateOrCreate([
+            'google_id' => $user_google->id,
+        ], [
+            'name' => $user_google->name,
+            'email' => $user_google->email,          
+        ]); 
+        Auth::login($user); 
+        return redirect('/home');
 });
-
 
 Route::get('/', function () {
     return view('welcome');
