@@ -9,7 +9,7 @@
 @vite(['resources/css/home.css','resources/js/home.js'])    
 </head>
 <body>
-<div id="app">
+<div id="app">    
         <main class="master">
             @yield('content')
         </main>        
@@ -18,6 +18,10 @@
     @stack('scripts-body')
 </body>
 <style>
+    body {
+    overflow-x: hidden; 
+}
+
 a{
     color: #7FFFD4;
 }

@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.tema.app')
+@section('title', __('Verify Users'))
 
 @section('content')
 <div class="container">

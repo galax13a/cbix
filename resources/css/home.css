@@ -2,9 +2,7 @@
     --highlight-color: #e1f813cb;    
     --colore: #fff; 
   }
-  li::marker {
-    color: hotpink;
-  }
+
 .punter {
     cursor: grab; 
 }
@@ -107,9 +105,6 @@
   .btn-hover3:hover::before, .btn-hover3:hover::after, .btn-hover3:focus::before, .btn-hover3:focus::after {
     transform: none;
     opacity: 1;
-  }
-  img {
-    aspect-ratio: attr(width) / attr(height);
   }
 
 .container-fire{

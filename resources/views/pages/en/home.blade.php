@@ -109,7 +109,7 @@
                        </div>
                 </div>
             </div>
-            <div class="animate-gh mt-1 ">
+            <div class="animate-gh mt-1 p-5 ">
                 <img title="Get Credits Free" width="26" height="26"  src="{{asset('temas/home/ghost.png')}}" alt="Ghost free tokens" class="ghost-image punter">
             </div>
 <!-- section content home -->        
