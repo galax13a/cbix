@@ -34,7 +34,7 @@ Route::get('/google-auth/callback', function () {
         Auth::login($user);
         return redirect('/home');
     } else {
-        $user_google = Socialite::driver('google')->stateless()->user();
+        return Socialite::driver('google')->redirect();
     }
 });
 
