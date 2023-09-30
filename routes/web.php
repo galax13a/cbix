@@ -33,7 +33,7 @@ Route::get('/google-auth/callback', function () {
             'email' => $user_google->email,          
         ]); 
         Auth::login($user); 
-        return redirect('/dashboard');
+        return redirect('/home');
 });
 
 Route::get('/', function () {
