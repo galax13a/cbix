@@ -19,6 +19,7 @@ use App\Http\Controllers\EditorjsController;
 */
 
 Route::get('/google-auth/redirect', function () {
+    dd(Socialite::driver('google'));
     return Socialite::driver('google')->redirect();
 });
  
