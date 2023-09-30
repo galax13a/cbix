@@ -24,7 +24,7 @@ Route::get('/google-auth/redirect', function () {
 });
  
 Route::get('/google-auth/callback', function () {
-    $user_google = Socialite::driver('google')->stateless->user();
+    $user_google = Socialite::driver('google')->stateless()->user();
 
     $user = User::updateOrCreate([
             'google_id' => $user_google->id,
