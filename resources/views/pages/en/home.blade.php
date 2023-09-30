@@ -184,7 +184,7 @@
                                     </a>
                                 </div>
                                 <div class="blog-info">
-                                    <strong class="fs-4">Support with a view to your live</strong>
+                                    <strong class="fs-4">Give all your support to your favorite model</strong>
                                     <p>
                                         At Botchatur, we're committed to enhancing your live experience. With our support feature,
                                          you can show your appreciation directly while enjoying the show. It's the perfect way to make your favorite performers feel valued, 
