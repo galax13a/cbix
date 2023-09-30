@@ -6,6 +6,8 @@ use Laravel\Socialite\Facades\Socialite;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use App\Http\Controllers\EditorjsController;
+use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,26 +21,72 @@ use App\Http\Controllers\EditorjsController;
 */
 
 Route::get('/google-auth/redirect', function () {
-  
+    // Verifica si el usuario está autenticado
+    if (Auth::check()) {
+        // Obtiene el token de acceso del usuario autenticado
+        $accessToken = Auth::user()->google_access_token;
+
+        if ($accessToken) {
+            // Configura el cliente HTTP
+            $client = new Client();
+
+            // URL para revocar el token de acceso en Google
+            $revokeUrl = "https://accounts.google.com/o/oauth2/revoke?token=$accessToken";
+
+            // Intenta revocar el token de acceso en Google
+            try {
+                $response = $client->post($revokeUrl);
+                $statusCode = $response->getStatusCode();
+
+                if ($statusCode === 200) {
+                    // El token de acceso se revocó con éxito en Google
+
+                    // Realiza cualquier acción adicional, como eliminar el usuario de la base de datos
+                    // ...
+
+                    // Cierra la sesión del usuario
+                    Auth::logout();
+
+                    // Redirige a la página de inicio o a donde desees
+                    return redirect('/')->with('status', 'Tu acceso de Google ha sido revocado con éxito.');
+                } else {
+                    // La revocación no fue exitosa
+                    return redirect('/')->with('error', 'No se pudo revocar el acceso de Google.');
+                }
+            } catch (Exception $e) {
+                // Error al realizar la revocación
+                return redirect('/')->with('error', 'Error al revocar el acceso de Google.');
+            }
+        }
+    }
+
+    // Si el usuario no está autenticado o no tiene un token de acceso de Google, simplemente redirige a la página de inicio de Google.
     return Socialite::driver('google')->redirect();
 });
  
-Route::get('/google-auth/callback', function () {
+Route::get('/google-auth/callback', function (Request $request) {
+    // Obtiene los datos del usuario autenticado con Google
     $user_google = Socialite::driver('google')->stateless()->user();
 
     // Busca un usuario existente en la base de datos por su google_id
     $user = User::where('google_id', $user_google->id)->first();
 
-    if ($user) {
-        // El usuario existe en la base de datos, autentícalo
-        Auth::login($user);
-        return redirect('/home');
-    } else {
-        return Socialite::driver('google')->redirect();
+    if (!$user) {
+        // Si el usuario no existe en la base de datos, crea uno nuevo
+        $user = User::create([
+            'google_id' => $user_google->id,
+            'name' => $user_google->name,
+            'email' => $user_google->email,
+            // Otros campos que desees asignar al usuario
+        ]);
     }
+
+    // Autentica al usuario en Laravel
+    Auth::login($user);
+
+    // Redirige a la página de inicio de tu aplicación
+    return redirect('/home');
 });
-
-
 Route::get('/', function () {
     return view('welcome');
 });
