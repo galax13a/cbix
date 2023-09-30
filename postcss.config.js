@@ -1,10 +1,8 @@
 module.exports = {
-    plugins: {
-      tailwindcss: {},
+    plugins: {   
       autoprefixer: {},
       '@fullhuman/postcss-purgecss': {
         content: ['./resources/**/*.blade.php', './resources/**/*.js'],
       },
     },
   };
-  
