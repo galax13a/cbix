@@ -24,7 +24,7 @@
                             <div class="col-sm-4 col-md-3 item">
                                 <h3 class="text-white">Careers</h3>
                                 <ul>
-                                    <li><a href="{{url('/afiliate')}}">Affiliate links</a></li>
+                                    <li><a href="{{url('/afiliate')}}">Affiliate Links</a></li>
                                     <li><a href="{{url('/wc')}}">Success Models</a></li>
                                     <li><a href="{{url('/Benefits')}}">Benefits</a></li>
                                 </ul>
