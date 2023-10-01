@@ -5,5 +5,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 import 'boxicons/dist/boxicons.js';
 
 import './lib/admin-script.js';
-import './bootstrap';
+import * as bootstrap from 'bootstrap'
+window.bootstrap = bootstrap;
 
+import Notiflix from 'notiflix';
+window.Notiflix = Notiflix;
