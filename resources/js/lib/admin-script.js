@@ -152,8 +152,7 @@ window.addEventListener('loading', event => {
 
     const { type_loading, seg } = event.detail;
     /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
-    */
-    alert('dosh');
+    */    
     if (Notiflix.Loading[type_loading]) {
         Notiflix.Loading[type_loading]('Loading...');
         Notiflix.Loading.remove(seg);
