@@ -150,23 +150,22 @@ window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
 
 window.addEventListener('loading', event => {
     const { type_loading, seg } = event.detail;
-    /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
-    */
-alert('dosh');
-const modalBackdrop = document.querySelector('.modal-backdrop');
-// Verifica si el elemento tiene la clase "show"
-if (modalBackdrop && modalBackdrop.classList.contains('show')) {
 
-    modalBackdrop.classList.remove('modal-backdrop', 'fade', 'show');
-}
-
-    if (Notiflix.Loading[type_loading]) {
-        Notiflix.Loading[type_loading]('Loading...');
-        Notiflix.Loading.remove(seg);
-    } else {
+    // Verifica si el tipo de carga es válido
+    if (!Notiflix.Loading[type_loading]) {
         console.error(`Loading type "${type_loading}" does not exist.`);
+        return;
     }
+
+    // Muestra el indicador de carga
+    Notiflix.Loading[type_loading]('Loading...');
+
+    // Espera un tiempo antes de eliminar el indicador de carga
+    setTimeout(() => {
+        Notiflix.Loading.remove(seg);
+    }, 2000); // Cambia el tiempo de espera según tus necesidades
 });
+
 
 let btn_upt = document.getElementById("btn-update");
 let btn_str = document.getElementById("btn-store");
