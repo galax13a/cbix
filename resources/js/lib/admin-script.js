@@ -180,6 +180,7 @@ if (btn_upt || btn_str) {
 
 
 function dispatchLoadingEvent(type_loading, seg) {
+    /*
     const event = new CustomEvent('loading', {
         detail: {
             type_loading,
@@ -187,6 +188,8 @@ function dispatchLoadingEvent(type_loading, seg) {
         }
     });
     window.dispatchEvent(event);
+    */
+   alert('ready');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
