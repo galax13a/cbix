@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
+
 <title>{{ config('app.name', config('app.name'). ' Dashboard ') }} | @hasSection('title') @yield('title')@endif</title>
 @stack('scripts-head')   
 @vite(['resources/css/adminhome.css','resources/js/adminhome.js'])    
@@ -19,16 +20,23 @@
          <div class="logo-name"><span> B©️T</span>CHA🆃🆄🆁</div>
         </a>
         <ul class="side-menu">
-            <li><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
-            <li><a href="#"><i class='bx bx-store-alt'></i>Shop</a></li>
-            <li class="active"><a href="#"><i class='bx bx-analyse'></i>Analytics</a></li>
-            <li><a href="#"><i class='bx bx-message-square-dots'></i>Tickets</a></li>
-            <li><a href="#"><i class='bx bx-group'></i>Users</a></li>
+            <li class="active"><a href="#"><i class='bx bxs-dashboard'></i>Dashboard</a></li>
+            <li><a href="#"><i class='bx bx-store-alt'></i>Apps</a></li>
+            <li><a href="#"><i class='bx bx-palette'></i>Canvas</a></li>
+            <li><a href="#"><i class='bx bx-ghost'></i>Guests</a></li>            
+            <li><a href="#"><i class='bx bx-wifi'></i>Test</a></li>            
+            <li><a href="#"><i class='bx bxs-hot'></i>Favorites</a></li>                                                
+            <li><a href="#"><i class='bx bx-message-square-dots'></i>Support</a></li>
             <li><a href="#"><i class='bx bx-cog'></i>Settings</a></li>
+
         </ul>
         <ul class="side-menu">
             <li>
                 <a href="#" class="logout">
+            
+
+                    
+
                     <i class='bx bx-log-out-circle'></i>
                     Logout
                 </a>
@@ -42,10 +50,21 @@
         <!-- Navbar -->
         <nav>
             <i class='bx bx-menu'></i>
+            <strong class="ml-3"> Dashboard</strong>
+            <i class='bx bxs-share-alt' ></i>
+            <i class='bx bx-file'></i>
+            <i class='bx bxs-ghost'></i>Gue</a></li>
+            <i class="bx bxs-hot"></i>
+<i class="bx bxl-facebook-square"></i>
+<i class="bxl-airbnb"></i>
+            
+<i class="bx bx-heart">hear</i>
+
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
                     <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
+                    
                 </div>
             </form>
             <input type="checkbox" id="theme-toggle" hidden>
@@ -57,6 +76,7 @@
             <a href="{{url('app/profile')}}" class="profile">
                 <img src="{{ asset('/cam.svg') }}" alt="Logo">
             </a>
+            
         </nav>
 
         <!-- End of Navbar -->
@@ -64,19 +84,9 @@
         <main>
             <div class="header">
                 <div class="left">
-                    <h1>Dashboard</h1>
-                    <ul class="breadcrumb">
-                        <li><a href="#">
-                                Analytics
-                            </a></li>
-                        /
-                        <li><a href="#" class="active">Shop</a></li>
-                    </ul>
+             persiana
                 </div>
-                <a href="#" class="report">
-                    <i class='bx bx-cloud-download'></i>
-                    <span>Download CSV</span>
-                </a>
+                
             </div>
 
             <!-- Insights -->

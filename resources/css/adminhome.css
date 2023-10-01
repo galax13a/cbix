@@ -2,7 +2,7 @@
 
 :root {
     --light: #f6f6f9;
-    --primary: #1976D2;
+    --primary: #7e0db3;
     --light-primary: #CFE8FF;
     --grey: #eee;
     --dark-grey: #AAAAAA;
@@ -11,7 +11,7 @@
 	--light-danger: #FECDD3;
     --warning: #FBC02D;
     --light-warning: #FFF2C6;
-    --success: #388E3C;
+    --success: #45ad4a;
     --light-success: #BBF7D0;
 }
 
@@ -21,7 +21,9 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
+strong {
+    color: var(--dark);
+}
 .bx{
     font-size: 1.7rem;
 }
@@ -149,8 +151,10 @@ body{
     transition: all 0.3s ease;
 }
 
-.sidebar .side-menu li.active a{
+.sidebar .side-menu li.active a {
     color: var(--success);
+    font-weight: bold;
+    transition: color 0.3s ease, font-weight 0.3s ease;
 }
 
 .sidebar.close .side-menu li a{
