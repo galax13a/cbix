@@ -152,6 +152,14 @@ window.addEventListener('loading', event => {
     const { type_loading, seg } = event.detail;
     /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
     */
+alert('dosh');
+const modalBackdrop = document.querySelector('.modal-backdrop');
+// Verifica si el elemento tiene la clase "show"
+if (modalBackdrop && modalBackdrop.classList.contains('show')) {
+
+    modalBackdrop.classList.remove('modal-backdrop', 'fade', 'show');
+}
+
     if (Notiflix.Loading[type_loading]) {
         Notiflix.Loading[type_loading]('Loading...');
         Notiflix.Loading.remove(seg);
@@ -183,7 +191,6 @@ function dispatchLoadingEvent(type_loading, seg) {
     });
     window.dispatchEvent(event);
 }
-
 
 document.addEventListener('DOMContentLoaded', function() {
 
