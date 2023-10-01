@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [
     laravel({
       input: ['resources/css/app.css', 'resources/css/home.css', 'resources/js/home.js',
-      'resources/css/apphome.css','resources/css/apphome.js', 'resources/js/app.js'],
+      'resources/css/adminhome.css','resources/js/adminhome.js', 'resources/js/app.js'],
       refresh: true,
     }),
   ],/*
