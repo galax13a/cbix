@@ -49,6 +49,9 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+                            <a href="{{ url('/admins') }}" class="nav-link">🟣 Admins</a> 
+                        </li>
+						<li class="nav-item">
                             <a href="{{ url('/themas-components') }}" class="nav-link">🟣 Themacoms</a> 
                         </li>
 						<li class="nav-item">

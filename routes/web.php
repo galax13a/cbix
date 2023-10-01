@@ -101,6 +101,7 @@ Route::get('/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('app', 'livewire.admins.index')->middleware('auth');
 	Route::view('themas-components', 'livewire.themacoms.index')->middleware('auth');
 	Route::view('themas', 'livewire.themas.index')->middleware('auth');
 	Route::view('editors', 'livewire.editors.index')->middleware('auth');

@@ -28,10 +28,6 @@ strong {
     font-size: 1.7rem;
 }
 
-a{
-    text-decoration: none;
-}
-
 li{
     list-style: none;
 }
@@ -58,7 +54,7 @@ body{
     background: var(--light);
     width: 230px;
     height: 100%;
-    z-index: 2000;
+    z-index: 666;
     overflow-x: hidden;
     scrollbar-width: none;
     transition: all 0.3s ease;
@@ -625,3 +621,4 @@ body{
     }
 
 }
+/* new code app */ 
