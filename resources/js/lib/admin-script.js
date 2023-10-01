@@ -1,5 +1,5 @@
 
-const sideLinks = document.querySelectorAll('.sidebar .side-menu li a:not(.logout)');
+const sideLinks = document.querySelectorAll('.sidebar-app .side-menu li a:not(.logout)');
 
 sideLinks.forEach(item => {
     const li = item.parentElement;
@@ -12,7 +12,7 @@ sideLinks.forEach(item => {
 });
 
 const menuBar = document.querySelector('.content nav .bx.bx-menu');
-const sideBar = document.querySelector('.sidebar');
+const sideBar = document.querySelector('.sidebar-app');
 
 menuBar.addEventListener('click', () => {
     sideBar.classList.toggle('close');

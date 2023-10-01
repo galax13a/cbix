@@ -47,7 +47,7 @@ body{
     overflow-x: hidden;
 }
 
-.sidebar{
+.sidebar-app{
     position: fixed;
     top: 0;
     left: 0;
@@ -60,15 +60,15 @@ body{
     transition: all 0.3s ease;
 }
 
-.sidebar::-webkit-scrollbar{
+.sidebar-app::-webkit-scrollbar{
     display: none;
 }
 
-.sidebar.close{
+.sidebar-app.close{
     width: 60px;
 }
 
-.sidebar .logo{
+.sidebar-app .logo{
     font-size: 24px;
     font-weight: 700;
     height: 56px;
@@ -80,23 +80,23 @@ body{
     box-sizing: content-box;
 }
 
-.sidebar .logo .logo-name span{
+.sidebar-app .logo .logo-name span{
     color: var(--dark);
 }
 
-.sidebar .logo .bx{
+.sidebar-app .logo .bx{
     min-width: 60px;
     display: flex;
     justify-content: center;
     font-size: 2.2rem;
 }
 
-.sidebar .side-menu{
+.sidebar-app .side-menu{
     width: 100%;
     margin-top: 48px;
 }
 
-.sidebar .side-menu li{
+.sidebar-app .side-menu li{
     height: 48px;
     background: transparent;
     margin-left: 6px;
@@ -104,12 +104,12 @@ body{
     padding: 4px;
 }
 
-.sidebar .side-menu li.active{
+.sidebar-app .side-menu li.active{
     background: var(--grey);
     position: relative;
 }
 
-.sidebar .side-menu li.active::before{
+.sidebar-app .side-menu li.active::before{
     content: "";
     position: absolute;
     width: 40px;
@@ -121,7 +121,7 @@ body{
     z-index: -1;
 }
 
-.sidebar .side-menu li.active::after{
+.sidebar-app .side-menu li.active::after{
     content: "";
     position: absolute;
     width: 40px;
@@ -133,7 +133,7 @@ body{
     z-index: -1;
 }
 
-.sidebar .side-menu li a{
+.sidebar-app .side-menu li a{
     width: 100%;
     height: 100%;
     background: var(--light);
@@ -147,25 +147,25 @@ body{
     transition: all 0.3s ease;
 }
 
-.sidebar .side-menu li.active a {
+.sidebar-app .side-menu li.active a {
     color: var(--success);
     font-weight: bold;
     transition: color 0.3s ease, font-weight 0.3s ease;
 }
 
-.sidebar.close .side-menu li a{
+.sidebar-app.close .side-menu li a{
     width: calc(48px - (4px * 2));
     transition: all 0.3s ease;
 }
 
-.sidebar .side-menu li a .bx{
+.sidebar-app .side-menu li a .bx{
     min-width: calc(60px - ((4px + 6px) * 2));
     display: flex;
     font-size: 1.6rem;
     justify-content: center;
 }
 
-.sidebar .side-menu li a.logout{
+.sidebar-app .side-menu li a.logout{
     color: var(--danger);
 }
 
@@ -176,7 +176,7 @@ body{
     transition: all 0.3s ease;
 }
 
-.sidebar.close~.content{
+.sidebar-app.close~.content{
     width: calc(100% - 60px);
     left: 60px;
 }
