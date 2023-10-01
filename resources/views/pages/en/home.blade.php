@@ -12,7 +12,7 @@
     @endpush
     @push('scripts-body')
     <style>
-          .floating-foo-menu {
+    .floating-foo-menu {
     position: fixed;
     bottom: 0;
     left: 0;
