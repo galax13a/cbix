@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.tema.apphome')
 @section('title', __('Dashboard'))
 @section('content')
 <div class="container-fluid">
@@ -12,10 +12,9 @@
 					@if(auth()->guest())
 					<h1>Home</h1>
 					@else
-						<x-ComCardHome /> {{-- Componente para usuarios registrados --}}
+						<x-ComCardHome /> 
 					@endif
-				</div>
-				
+			</div>				
 	</div>
 </div>
 </div>

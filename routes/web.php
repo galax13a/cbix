@@ -34,12 +34,15 @@ Route::get('/google-auth/callback', function () {
             'email' => $user_google->email,          
         ]); 
         Auth::login($user); 
-        return redirect('/home');
+        return redirect('/adminhome');
 });
 
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+
 Route::middleware(['auth'])->group(function () { // url auth admin
     Route::get('chaturbate/{chaturbateId}/{username}', 'App\Http\Controllers\ChaturbateController@profile')->name('chaturbate');
 
@@ -76,7 +79,7 @@ Route::get('/test-speed', function () { // test speed
 });
 
 Route::get('/home', function () { // test speed
-    return view('home');
+    return view('adminhome');
 });
 Route::get('/cbhrs', function () { // test speed
     return view('cbhrs');

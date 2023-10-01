@@ -18,8 +18,8 @@
     @stack('scripts-body')
 </body>
 <style>
-    body {
-    overflow-x: hidden; 
+body {
+overflow-x: hidden; 
 }
 
 a{

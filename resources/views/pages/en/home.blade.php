@@ -11,6 +11,16 @@
     <meta property='og:site_name' content='BotChatur Bio & profiles CB' />
     @endpush
     @push('scripts-body')
+    <style>
+          .floating-foo-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+}
+    </style>
      <script>
          document.addEventListener('DOMContentLoaded', function () {
             var scroll;
