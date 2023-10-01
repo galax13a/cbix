@@ -78,9 +78,12 @@ Route::get('/test-speed', function () { // test speed
     return view('testspeed');
 });
 
-Route::get('/home', function () { // test speed
-    return view('adminhome');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', function () {
+        return view('livewire.admins.index');
+    });
 });
+
 Route::get('/cbhrs', function () { // test speed
     return view('cbhrs');
 });
