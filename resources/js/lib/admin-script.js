@@ -149,11 +149,10 @@ window.confirmDelete = function (recordId, deletemodel = 'confirm-delete-td') {
 };
 
 window.addEventListener('loading', event => {
- /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
-    */
-   /*
+
     const { type_loading, seg } = event.detail;
-   
+    /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
+    */
     alert('dosh');
     if (Notiflix.Loading[type_loading]) {
         Notiflix.Loading[type_loading]('Loading...');
@@ -161,7 +160,6 @@ window.addEventListener('loading', event => {
     } else {
         console.error(`Loading type "${type_loading}" does not exist.`);
     }
-    */
 
 });
 
@@ -180,7 +178,6 @@ if (btn_upt || btn_str) {
 
 
 function dispatchLoadingEvent(type_loading, seg) {
-    /*
     const event = new CustomEvent('loading', {
         detail: {
             type_loading,
@@ -188,8 +185,6 @@ function dispatchLoadingEvent(type_loading, seg) {
         }
     });
     window.dispatchEvent(event);
-    */
-   alert('ready');
 }
 
 document.addEventListener('DOMContentLoaded', function() {
