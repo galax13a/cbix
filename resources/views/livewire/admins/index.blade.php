@@ -1,4 +1,7 @@
 @extends('layouts.tema.apphome')
+@push('scripts-body')
+
+@endpush
 @section('content')
 <div class="container-fluid">
     <div class="row justify-content-center">

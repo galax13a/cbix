@@ -1,12 +1,11 @@
 @section('title', __('Admins'))
 
-<div class="container-fluid bg-transparent">
-	<div class="row justify-content-center">
+<div class="container-fluid ">
+	<div class="row justify-content-center ">
 
 			<div class="col-md-12 my-2" id="view-js-live-pages">
-			<div class="card">			
-					
-				<div class="card-header bg-transparent" >					
+			<div class="card">								
+				<div class="card-header" >
 					<x-btnmore/>					
 				</div>
 				

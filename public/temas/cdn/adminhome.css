@@ -58,7 +58,6 @@ body{
     overflow-x: hidden;
     scrollbar-width: none;
     transition: all 0.3s ease;
-    
 }
 
 .sidebar-app::-webkit-scrollbar{
@@ -67,7 +66,6 @@ body{
 
 .sidebar-app.close{
     width: 60px;
-    
 }
 
 .sidebar-app .logo{
@@ -95,23 +93,20 @@ body{
 
 .sidebar-app .side-menu{
     width: 100%;
-    margin-top: 46px;
+    margin-top: 48px;
 }
-/* bootsttrap 26 */
+
 .sidebar-app .side-menu li{
     height: 48px;
     background: transparent;
     margin-left: 6px;
     border-radius: 48px 0 0 48px;
-    padding: 3px;
-    margin-left: -26px;
-    
+    padding: 4px;
 }
 
 .sidebar-app .side-menu li.active{
     background: var(--grey);
     position: relative;
-    
 }
 
 .sidebar-app .side-menu li.active::before{
@@ -124,7 +119,6 @@ body{
     right: 0;
     box-shadow: 20px 20px 0 var(--grey);
     z-index: -1;
-    
 }
 
 .sidebar-app .side-menu li.active::after{
@@ -137,8 +131,6 @@ body{
     right: 0;
     box-shadow: 20px -20px 0 var(--grey);
     z-index: -1;
-    
-    
 }
 
 .sidebar-app .side-menu li a{
@@ -153,20 +145,17 @@ body{
     white-space: nowrap;
     overflow-x: hidden;
     transition: all 0.3s ease;
-    
 }
 
 .sidebar-app .side-menu li.active a {
     color: var(--success);
     font-weight: bold;
     transition: color 0.3s ease, font-weight 0.3s ease;
-    
 }
 
 .sidebar-app.close .side-menu li a{
     width: calc(48px - (4px * 2));
     transition: all 0.3s ease;
-    
 }
 
 .sidebar-app .side-menu li a .bx{
@@ -174,7 +163,6 @@ body{
     display: flex;
     font-size: 1.6rem;
     justify-content: center;
-    
 }
 
 .sidebar-app .side-menu li a.logout{
