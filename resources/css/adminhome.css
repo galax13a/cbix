@@ -110,6 +110,15 @@ body{
 .sidebar-app .side-menu li.active{
     background: var(--grey);
     position: relative;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    
+}
+body.dark .sidebar-app .side-menu li.active{
+    background: var(--grey);
+    position: relative;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(108, 238, 57, 0.199);  
     
 }
 
@@ -123,9 +132,9 @@ body{
     right: 0;
     box-shadow: 20px 20px 0 var(--grey);
     z-index: -1;
+    transition: background 0.25s;
     
 }
-
 .sidebar-app .side-menu li.active::after{
     content: "";
     position: absolute;
@@ -135,9 +144,7 @@ body{
     bottom: -40px;
     right: 0;
     box-shadow: 20px -20px 0 var(--grey);
-    z-index: -1;
-    
-    
+    z-index: -1;       
 }
 
 .sidebar-app .side-menu li a{
@@ -151,8 +158,7 @@ body{
     color: var(--dark);
     white-space: nowrap;
     overflow-x: hidden;
-    transition: all 0.3s ease;
-    
+    transition: all 0.3s ease;    
 }
 
 .sidebar-app .side-menu li.active a {
@@ -704,4 +710,24 @@ body.dark #btn-new {
     border: 2px solid #00ff00;
 
   }
+
+  #btn-new {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+  }
   
+#btn-store,
+#btn-close,
+#btn-update {
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+#btn-store:hover,
+#btn-update:hover,
+#btn-close:hover,
+#btn-new:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 2px solid #635994;
+}

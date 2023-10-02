@@ -34,7 +34,7 @@ Route::get('/google-auth/callback', function () {
             'email' => $user_google->email,          
         ]); 
         Auth::login($user); 
-        return redirect('/adminhome');
+        return redirect('/app');
 });
 
 /*
@@ -70,7 +70,6 @@ Route::post('/loadiframe', [\App\Http\Controllers\EditorjsController::class, 'lo
 Route::post('/get-ai-free', [\App\Http\Controllers\EditorjsController::class, 'getAIFree']);
 Route::post('/get-ai-pro', [\App\Http\Controllers\EditorjsController::class, 'getAIPro']);
 
-
 Route::any('/themas/components', [\App\Http\Controllers\ThemacomponentsController::class, 'createthemacom']);
 
 
@@ -80,7 +79,8 @@ Route::get('/test-speed', function () { // test speed
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', function () {
-        return view('livewire.admins.index');
+    //    return view('livewire.admins.index');
+        return  redirect('/app');
     });
 });
 
