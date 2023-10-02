@@ -48,6 +48,12 @@ body{
     overflow-x: hidden;
 }
 
+body.dark * {   
+    color: var(--darky);
+  }
+  body.dark #icon-botchatur{
+    fill: white;
+}
 .sidebar-app{
     position: fixed;
     top: 0;
@@ -82,8 +88,8 @@ body{
     box-sizing: content-box;
 }
 
-.sidebar-app .logo .logo-name span{
-    color: var(--dark);
+body.dark .sidebar-app a{
+    color: var(--danger);
 }
 
 .sidebar-app .logo .bx{
@@ -696,9 +702,7 @@ tr {
     align-items: center;
   }
 
-  body.dark * {   
-    color: var(--darky);
-  }
+ 
   
 body.dark #btn-new {
     transition: all 0.3s ease;
