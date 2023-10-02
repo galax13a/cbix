@@ -1,4 +1,4 @@
-//import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'boxicons/css/boxicons.min.css';
 import * as bootstrap from 'bootstrap'
 window.bootstrap = bootstrap;

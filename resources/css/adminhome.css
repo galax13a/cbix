@@ -66,8 +66,7 @@ body{
 }
 
 .sidebar-app.close{
-    width: 60px;
-    
+    width: 60px;    
 }
 
 .sidebar-app .logo{
@@ -103,9 +102,8 @@ body{
     background: transparent;
     margin-left: 6px;
     border-radius: 48px 0 0 48px;
-    padding: 3px;
-    margin-left: -26px;
-    
+    padding: 5px;
+    margin-left: -26px;    
 }
 
 .sidebar-app .side-menu li.active{
@@ -192,7 +190,21 @@ body{
     width: calc(100% - 60px);
     left: 60px;
 }
+main{
+    background: var(--grey);    
+}
 
+main .card {
+    background-color: var(--light);
+
+}
+main .card-body{
+    background-color: var(--grey);
+   
+}
+main table {
+    color: #D32F2F;
+}
 .content nav{
     height: 56px;
     background: var(--light);
@@ -634,3 +646,44 @@ body{
 
 }
 /* new code app */ 
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #640080 #0a0a0b;
+  }
+  
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 16px;
+  }
+  
+  *::-webkit-scrollbar-track {
+    background: #0a0a0b;
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    background-color: #640080;
+    border-radius: 10px;
+    border: 3px solid #0d1c19;
+  }
+
+  body.dark tr {
+    color: var(--dark);
+  }
+body.dark tr.active {
+    background-color: rgba(70, 24, 12, 0.288);
+    color: #ffffff;
+    font-weight: bold;
+  }
+  
+  body.dark tr:hover {
+    cursor: pointer;
+    background-color: rgb(57, 92, 80);
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(25, 184, 4, 0.2);
+    transform: rotateX(10deg);
+  }
+
