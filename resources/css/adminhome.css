@@ -54,6 +54,7 @@ body.dark * {
   body.dark #icon-botchatur{
     fill: white;
 }
+
 .sidebar-app{
     position: fixed;
     top: 0;
@@ -215,9 +216,11 @@ main .card-body{
     background-color: var(--grey);
    
 }
+/*
 main table {
     color: #D32F2F;
 }
+*/
 .content nav{
     height: 56px;
     background: var(--light);
@@ -700,10 +703,8 @@ transform: rotateX(10deg)rgba(61, 228, 38, 0.459)
 tr {
     justify-content: center;
     align-items: center;
-  }
+  } 
 
- 
-  
 body.dark #btn-new {
     transition: all 0.3s ease;
     border: 2px solid transparent;

@@ -91,12 +91,12 @@
             <!-- Insights -->
             <ul class="insights">
                 <li>
-                    <i class='bx bx-calendar-check'></i>
+                    <i class='bx bxs-balloon' ></i>
                     <span class="info">
                         <h3>
                             1,074
                         </h3>
-                        <p>Paid Order</p>
+                        <p>Topics</p>
                     </span>
                 </li>
                 <li><i class='bx bx-show-alt'></i>
@@ -104,23 +104,23 @@
                         <h3>
                             3,944
                         </h3>
-                        <p>Site Visit</p>
+                        <p>Tags</p>
                     </span>
                 </li>
                 <li><i class='bx bx-line-chart'></i>
                     <span class="info">
                         <h3>
-                            14,721
+                            0.0
                         </h3>
-                        <p>Searches</p>
+                        <p>Links</p>
                     </span>
                 </li>
                 <li><i class='bx bx-dollar-circle'></i>
                     <span class="info">
                         <h3>
-                            $6,742
+                            $100
                         </h3>
-                        <p>Total Sales</p>
+                        <p>Credits</p>
                     </span>
                 </li>
             </ul>
