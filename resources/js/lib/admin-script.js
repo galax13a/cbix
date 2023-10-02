@@ -46,15 +46,35 @@ window.addEventListener('resize', () => {
     }
 });
 
+// togle thema dark
 const toggler = document.getElementById('theme-toggle');
-
-toggler.addEventListener('change', function () {
-    if (this.checked) {
+const storedTheme = localStorage.getItem('theme');
+function applyTheme(theme) {
+    if (theme === 'dark') {
         document.body.classList.add('dark');
+        toggler.checked = true;
     } else {
         document.body.classList.remove('dark');
+        toggler.checked = false;
+    }
+}
+toggler.addEventListener('change', function () {
+    if (this.checked) {
+        localStorage.setItem('theme', 'dark');
+        applyTheme('dark'); 
+    } else {
+        localStorage.setItem('theme', 'light'); 
+        applyTheme('light');
     }
 });
+
+if (storedTheme) {
+    applyTheme(storedTheme); 
+} else {
+
+    applyTheme('dark');
+}
+
 // admin js
 
 window.addEventListener('notify', event => { // notificaciones y modals
