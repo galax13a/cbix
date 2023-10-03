@@ -52,7 +52,7 @@ html{
   
   .slider {
     display: flex;
-    animation: slide 10s linear infinite reverse; /* Ajusta la duración según lo desees y agrega 'reverse' para invertir la dirección */
+    animation: slide 26s linear infinite reverse; /* Ajusta la duración según lo desees y agrega 'reverse' para invertir la dirección */
   }
   
   .slider img {

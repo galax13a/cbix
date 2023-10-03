@@ -1,13 +1,22 @@
 <div>
     
                <!-- End of Reminders SLIDER-->
-               <div class="container-slider ">
-                
-                <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur  </h2> 
-                <mark class="text-bg-danger rounded-3 shadow">
-                     #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
-                 </mark>
-            </div>
+               <div class="row">
+                    <div class="col-8">
+                        <div class="container-slider ">                
+                            <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur  </h2> 
+                            <mark class="text-bg-danger rounded-3 shadow">
+                                 #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
+                             </mark>
+                        </div>
+                    </div>
+                    <div class="col-4 text-end rounded-3">
+                        <a href="#">
+                            <img class="img-fluid " width="40%" height="50%"src="{{url('images/baner260.png')}}" alt="create profile chaturbate hallowen">
+                        </a>
+                    </div>
+               </div>
+               
             <div class="gallery-slidercam mt-2 shadow-lg rounded-3 ">
                 <div class="slider-container blacky rounded-3">
                     <div class="slider">
