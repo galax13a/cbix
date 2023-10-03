@@ -46,6 +46,7 @@ body.dark{
 body{
     background: var(--grey);
     overflow-x: hidden;
+
 }
 
 body.dark * {   
@@ -207,14 +208,15 @@ body.dark .sidebar-app .side-menu li.active{
 main{
     background: var(--grey);    
 }
-
+body.dark .marter{
+    background: var(--grey);    
+}
 main .card {
     background-color: var(--light);
 
 }
 main .card-body{
-    background-color: var(--grey);
-   
+    background-color: var(--grey);   
 }
 /*
 main table {
@@ -701,25 +703,24 @@ box-shadow: 0px 0px 10px rgba(25, 184, 4, 0.2);
 transform: rotateX(10deg)rgba(61, 228, 38, 0.459)
 }
 tr {
-    justify-content: center;
-    align-items: center;
-  } 
+justify-content: center;
+align-items: center;
+} 
 
 body.dark #btn-new {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-  }  
-  body.dark #btn-new:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    border: 2px solid #00ff00;
+transition: all 0.3s ease;
+border: 2px solid transparent;
+}  
+body.dark #btn-new:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+border: 2px solid #00ff00;
 
-  }
-
-  #btn-new {
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-  }
+}
+#btn-new {
+transition: all 0.3s ease;
+border: 2px solid transparent;
+}
   
 #btn-store,
 #btn-close,

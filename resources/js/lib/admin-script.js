@@ -49,13 +49,17 @@ window.addEventListener('resize', () => {
 // togle thema dark
 const toggler = document.getElementById('theme-toggle');
 const storedTheme = localStorage.getItem('theme');
+const iconApp = document.getElementById('icon-app');
+
 function applyTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark');
         toggler.checked = true;
+        iconApp.src = "/logo-dark.svg";
     } else {
         document.body.classList.remove('dark');
         toggler.checked = false;
+        iconApp.src = "/logo.svg";
     }
 }
 toggler.addEventListener('change', function () {

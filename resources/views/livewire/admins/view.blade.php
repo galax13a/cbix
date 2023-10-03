@@ -1,7 +1,8 @@
 @section('title', __('Admins'))
 
 <div class="container-fluid ">
-	<div class="row justify-content-center ">
+	<h1>Welcome, App Dashboard</h1>
+	<div class="row justify-content-center d-none ">
 
 			<div class="col-md-12 my-2" id="view-js-live-pages">
 			<div class="card">								

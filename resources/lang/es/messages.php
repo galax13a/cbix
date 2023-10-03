@@ -3,6 +3,7 @@
 return [
     'welcome' => 'Bienvenido',
     'Login' => 'Iniciar sesión',
+    'Logout' => 'Salir',
     'pages' => 'paginas',    
     'Register' => 'Registro',
     'language' => 'Spanish',
@@ -11,4 +12,5 @@ return [
     'btn-crud-delete' => 'Eliminar Registro',
     'keyword-new' => 'Buscar por palabras',    
     'studio-view-btn-addmodelstudio' => 'Agregar Modelo',
+
 ];
