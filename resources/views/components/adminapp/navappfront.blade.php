@@ -91,7 +91,7 @@
                 <span class="count">12</span>
             </a>
             <a href="{{ url('app/profile') }}" class="profile">
-                <img title="Virtual Cams" width="26px" height="26px" src="{{ asset('/icons/cam.svg') }}" alt="Logo">
+                <img title="Virtual Cams" class="mx-4" width="26px" height="26px" src="{{ asset('/icons/cam.svg') }}" alt="Logo">
             </a>
         </nav>
         <!-- End of Navbar -->

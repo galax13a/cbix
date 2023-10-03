@@ -238,7 +238,7 @@ body.dark .sidebar-app .side-menu li.active{
 
 .content{
     position: relative;
-    width: calc(100% - 230px);
+    width: calc(100% - 190px);
     left: 230px;
     transition: all 0.3s ease;
 }

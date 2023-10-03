@@ -3,10 +3,13 @@
                <!-- End of Reminders SLIDER-->
                <div class="container-slider ">
                 
-                <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur  </h2> <mark class="text-bg-danger rounded-3"> #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 </mark>
+                <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur  </h2> 
+                <mark class="text-bg-danger rounded-3 shadow">
+                     #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
+                 </mark>
             </div>
-            <div class="gallery-slidercam mt-2 shadow-lg ">
-                <div class="slider-container blacky rounded-3 shadow-lg">
+            <div class="gallery-slidercam mt-2 shadow-lg rounded-3 ">
+                <div class="slider-container blacky rounded-3">
                     <div class="slider">
                         <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
                         <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert">
