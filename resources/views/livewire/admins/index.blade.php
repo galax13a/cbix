@@ -1,4 +1,4 @@
-@extends('layouts.tema.apphome')
+@extends('layouts.tema.appadmin')
 @push('scripts-body')
 
 @endpush

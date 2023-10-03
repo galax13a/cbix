@@ -1,7 +1,8 @@
 @section('title', __('Admins'))
-
+@section('title_app', __('app.nav_dash'))
 <div class="container-fluid ">
-	<h1>Welcome, App Dashboard</h1>
+	<h1>{{ __('app.welcome') }} </h1>
+	
 	<div class="row justify-content-center d-none ">
 
 			<div class="col-md-12 my-2" id="view-js-live-pages">
@@ -20,7 +21,7 @@
 								<th>Name</th>
 								<th>Active</th>
 								<th>Pic</th>
-									<th class="text-center thead">Command</th>
+								<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>

@@ -92,12 +92,12 @@ Route::view('supports', 'livewire.supports.index')->middleware('auth')->name('su
 
 Auth::routes();
 
-Route::get('/es', function () {
+Route::get('/locate/es', function () {
     session(['locale' => 'es']);
     return redirect()->back();
 })->name('language.switch.es');
 
-Route::get('/en', function () {
+Route::get('/locate/en', function () {
     session(['locale' => 'en']);
     return redirect()->back();
 })->name('language.switch.en');

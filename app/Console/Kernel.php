@@ -13,7 +13,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('ban:delete-expired')->everyMinute();// elimina los baneos cada hr
+        $schedule->command('ban:delete-expired')->hourly();// elimina los baneos cada hr
     }
 
     /**
