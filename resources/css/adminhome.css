@@ -161,6 +161,7 @@ body.dark .sidebar-app a{
     position: relative;
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+
     
 }
 body.dark .sidebar-app .side-menu li.active{
@@ -393,8 +394,9 @@ main table {
 
 .content main{
     width: 100%;
-    padding: 36px 24px;
+    padding: 9px 3px;
     max-height: calc(100vh - 56px);
+    margin-left: -22px;
 }
 
 .content main .header{

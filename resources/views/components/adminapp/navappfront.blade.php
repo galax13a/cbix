@@ -68,7 +68,7 @@
     <!-- End of Sidebar -->
 
     <!-- Main Content -->
-    <div class="content ">
+    <div class="content" >
         <!-- Navbar -->
         <nav>
             <i class='bx bx-menu'></i>

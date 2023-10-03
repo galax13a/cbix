@@ -1,6 +1,6 @@
 @section('title', __('Admins'))
 @section('title_app', __('app.nav_dash'))
-<div class="container-fluid mb-2">
+<div class="container-fluid mb-0" >
 	<h5>{{ __('app.welcome') }} </h5>	
 
 	<x-adminapp.navdasboard/>
