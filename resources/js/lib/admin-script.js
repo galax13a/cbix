@@ -13,11 +13,21 @@ sideLinks.forEach(item => {
 
 const menuBar = document.querySelector('.content nav .bx.bx-menu');
 const sideBar = document.querySelector('.sidebar-app');
+const appMenuHomeKey = 'appmenuhome';
+// Verifica si la variable appmenuhome está en localStorage
+const appMenuHomeState = localStorage.getItem(appMenuHomeKey);
+
+// Si la variable existe en localStorage, aplica el estado guardado
+if (appMenuHomeState) {
+  sideBar.classList.toggle('close', appMenuHomeState === 'closed');
+}
 
 menuBar.addEventListener('click', () => {
-    sideBar.classList.toggle('close');
+  // Cambia el estado y guarda en localStorage
+  sideBar.classList.toggle('close');
+  const newState = sideBar.classList.contains('close') ? 'closed' : 'open';
+  localStorage.setItem(appMenuHomeKey, newState);
 });
-
 const searchBtn = document.querySelector('.content nav form .form-input button');
 const searchBtnIcon = document.querySelector('.content nav form .form-input button .bx');
 const searchForm = document.querySelector('.content nav form');
