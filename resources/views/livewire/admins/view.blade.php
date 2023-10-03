@@ -1,9 +1,11 @@
 @section('title', __('Admins'))
 @section('title_app', __('app.nav_dash'))
-<div class="container-fluid ">
-	<h1>{{ __('app.welcome') }} </h1>
-	
-	<div class="row justify-content-center d-none ">
+<div class="container-fluid mb-2">
+	<h5>{{ __('app.welcome') }} </h5>	
+
+	<x-adminapp.navdasboard/>
+
+	<div class="row justify-content-center ">
 
 			<div class="col-md-12 my-2" id="view-js-live-pages">
 			<div class="card">								

@@ -24,8 +24,16 @@ return [
     'nav_test' => 'test',
     'nav_favor' => 'favoritos',
     'nav_suport' => 'soporte',
-    'nav_logout' => 'salir',
+    'nav_logout' => 'Salir',
     'nav_cre' => 'creditos',
     'nav_settings' => 'configuracion',
- 
+    'dash_r_orders' => 'ordenes recientes',
+    'dash_remiders' => 'recordatorios',
+    'dash_user' => 'bots',
+    'dash_o_date' => 'fecha orden',
+    'dash_status' => 'estado',
+    'dash_sta_com' => 'completado',
+    'dash_sta_pen' => 'pendiente',
+    'dash_sta_pro' => 'procesando',
+    
 ];

@@ -1,16 +1,17 @@
 <div>
     <!-- Sidebar -->
     <div class="sidebar-app">
-        <a href="/dashboard" class="logo" style="margin-left:16px; ">
+        <a href="{{url('/app')}}" class="logo" style="margin-left:16px; ">
             <img id="icon-app" src="{{ asset('logo.svg') }}" width="36px" height="36px" alt="botchatur logo">
-            <div class="logo-name"><span> BOT</span>CHA🆃🆄🆁</div>
+            <div class="logo-name"><span class="mx-2">BOT</span>CHA🆃🆄🆁</div>
         </a>
+     <div class="ads-menu"></div>
         <ul class="side-menu">
             <li class="active"><a href="javascript:void(0);"><i class='bx bxs-dashboard'></i>{{ __('app.nav_dash') }} </a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-store-alt'></i>apps</a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-palette'></i>canva</a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-ghost'></i>{{ __('app.nav_guest') }}</a></li>
-            <li><a href="javascript:void(0);"><i class='bx bx-wifi'></i>test red</a></li>
+            <li><a href="app/test-speed"><i class='bx bx-wifi'></i>test red</a></li>
             <li><a href="javascript:void(0);"><i class='bx bxs-hot'></i>{{ __('app.nav_favor') }}</a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-message-square-dots'></i>{{ __('app.nav_suport') }}</a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-cog'></i>{{ __('app.nav_settings') }}</a></li>
@@ -26,6 +27,7 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
+
             </li>       
         </ul>
 
@@ -47,24 +49,21 @@
                 <span>
                     <svg width="22px" height="22px" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--twemoji" preserveAspectRatio="xMidYMid meet" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#ED2939" d="M36 27a4 4 0 0 1-4 4h-8V5h8a4 4 0 0 1 4 4v18z"></path><path fill="#002495" d="M4 5a4 4 0 0 0-4 4v18a4 4 0 0 0 4 4h8V5H4z"></path><path fill="#EEE" d="M12 5h12v26H12z"></path></g></svg>    
                 </span>
-            FR</a>
+                FR</a>
             </li>   
             <li class="nav-item">
                 <a class="nav-link" href="/locate/de">
                     <svg width="22px" height="22px" viewBox="0 -4 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_503_3849)"> <rect width="28" height="20" rx="2" fill="white"></rect> <mask id="mask0_503_3849" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20"> <rect width="28" height="20" rx="2" fill="white"></rect> </mask> <g mask="url(#mask0_503_3849)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 6.66667H28V0H0V6.66667Z" fill="#262626"></path> <g filter="url(#filter0_d_503_3849)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 13.3333H28V6.66666H0V13.3333Z" fill="#F01515"></path> </g> <g filter="url(#filter1_d_503_3849)"> <path fill-rule="evenodd" clip-rule="evenodd" d="M0 20H28V13.3333H0V20Z" fill="#FFD521"></path> </g> </g> </g> <defs> <filter id="filter0_d_503_3849" x="0" y="6.66666" width="28" height="6.66666" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix> <feOffset></feOffset> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"></feColorMatrix> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_503_3849"></feBlend> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_503_3849" result="shape"></feBlend> </filter> <filter id="filter1_d_503_3849" x="0" y="13.3333" width="28" height="6.66666" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB"> <feFlood flood-opacity="0" result="BackgroundImageFix"></feFlood> <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"></feColorMatrix> <feOffset></feOffset> <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.06 0"></feColorMatrix> <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_503_3849"></feBlend> <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_503_3849" result="shape"></feBlend> </filter> <clipPath id="clip0_503_3849"> <rect width="28" height="20" rx="2" fill="white"></rect> </clipPath> </defs> </g></svg>
-                    DE</a>
+                DE</a>
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/locate/br">
                     <svg width="22px" height="22px" viewBox="0 -4 28 28" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g clip-path="url(#clip0_503_4726)"> <rect width="28" height="20" rx="2" fill="white"></rect> <mask id="mask0_503_4726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="20"> <rect width="28" height="20" rx="2" fill="white"></rect> </mask> <g mask="url(#mask0_503_4726)"> <rect width="28" height="20" fill="#05AB41"></rect> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.53152 10.5597C3.12552 10.297 3.12552 9.70301 3.53152 9.44031L13.6377 2.90103C13.8581 2.75843 14.1416 2.75843 14.362 2.90103L24.4682 9.44031C24.8742 9.70301 24.8742 10.297 24.4682 10.5597L14.362 17.099C14.1416 17.2416 13.8581 17.2416 13.6377 17.099L3.53152 10.5597Z" fill="#FDD216"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0002 14.6666C16.5775 14.6666 18.6668 12.5773 18.6668 9.99998C18.6668 7.42265 16.5775 5.33331 14.0002 5.33331C11.4228 5.33331 9.3335 7.42265 9.3335 9.99998C9.3335 12.5773 11.4228 14.6666 14.0002 14.6666Z" fill="#053087"></path> <mask id="mask1_503_4726" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="9" y="5" width="10" height="10"> <path fill-rule="evenodd" clip-rule="evenodd" d="M14.0002 14.6666C16.5775 14.6666 18.6668 12.5773 18.6668 9.99998C18.6668 7.42265 16.5775 5.33331 14.0002 5.33331C11.4228 5.33331 9.3335 7.42265 9.3335 9.99998C9.3335 12.5773 11.4228 14.6666 14.0002 14.6666Z" fill="white"></path> </mask> <g mask="url(#mask1_503_4726)"> <path d="M8.77987 8.78021C9.51257 8.18688 11.8769 8.74895 14.084 9.33769C16.291 9.92643 18.5929 11.1604 19.179 11.8842" stroke="white" stroke-width="1.33333" stroke-linecap="square"></path> </g> </g> </g> <defs> <clipPath id="clip0_503_4726"> <rect width="28" height="20" rx="2" fill="white"></rect> </clipPath> </defs> </g></svg>
-                    BR</a>
+                BR</a>
                 </a>
             </li>
-
-        </ul>
-
-        
+        </ul>        
     </div>
     <!-- End of Sidebar -->
 
@@ -74,31 +73,33 @@
         <nav>
             <i class='bx bx-menu'></i>
             <strong class="ml-3"> @hasSection('title_app') @yield('title_app')@endif </strong>
-            <i class='bx bxs-share-alt'></i>
-            <i class='bx bx-file'></i>
+            |<span class="text-capitalize mx-3">👻 {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}</span>
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
                     <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
                 </div>
             </form>
+            
             <input type="checkbox" id="theme-toggle" hidden>
             <label for="theme-toggle" class="theme-toggle"></label>
+            <div class="modetema" id="modetema">
+                <strong>Dark</strong>
+            </div>
             <a href="#" class="notif">
                 <i class='bx bx-bell'></i>
                 <span class="count">12</span>
             </a>
             <a href="{{ url('app/profile') }}" class="profile">
-                <img src="{{ asset('/cam.svg') }}" alt="Logo">
+                <img title="Virtual Cams" width="26px" height="26px" src="{{ asset('/icons/cam.svg') }}" alt="Logo">
             </a>
         </nav>
         <!-- End of Navbar -->
         <main>
-            <div class="container-fluid bg-transparent">
+            <div class="container-fluid bg-transparent "  >
                 @yield('content')
             </div>           
-        <!--component content -->
-            <x-adminapp.navdasboard/>
+        <!--component content -->           
 
         </main>
     </div>

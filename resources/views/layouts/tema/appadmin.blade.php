@@ -9,13 +9,11 @@
 @stack('scripts-head')   
 @vite(['resources/css/adminhome.css','resources/js/adminhome.js'])    
 @livewireStyles
-
 </head>
 <body>
 <div id="app" >    
         <main class="master">
-         <x-adminapp.navappfront />    
-           
+             <x-adminapp.navappfront />               
         </main>       
 </div>
 <style>
@@ -26,7 +24,6 @@ body{
 }
 </style>
     @stack('scripts-body')
-    @livewireScripts
-    
+    @livewireScripts    
 </body>
 </html>

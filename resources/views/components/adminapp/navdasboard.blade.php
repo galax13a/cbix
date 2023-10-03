@@ -1,13 +1,40 @@
 <div>
+    
+               <!-- End of Reminders SLIDER-->
+               <div class="container-slider ">
+                
+                <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur  </h2> <mark class="text-bg-danger rounded-3"> #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 </mark>
+            </div>
+            <div class="gallery-slidercam mt-2 shadow-lg ">
+                <div class="slider-container blacky rounded-3 shadow-lg">
+                    <div class="slider">
+                        <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
+                        <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert">
+                        <img loading="lazy" src="https://picsum.photos/id/234/400/400" alt="Paris">
+                        <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
+                        <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert">
+                        <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
+                        <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert">                  
+                        <img loading="lazy" src="https://picsum.photos/id/104/400/400" alt="a dream catcher">
+                        <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
+                        <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert">
+                        <img loading="lazy" src="https://picsum.photos/id/234/400/400" alt="Paris">
+                        <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
+                        <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert"> 
+                    </div>
+                </div>
+            </div>
+    
        <!-- Insights -->
-       <div class="bodydash">
-
+       <div class="bodydash">       
+        
         <ul class="insights">
+
             <li>
                 <i class='bx bxs-balloon'></i>
                 <span class="info">
                     <h3>
-                        1,074
+                        0.0
                     </h3>
                     <p>Topics</p>
                 </span>
@@ -15,7 +42,7 @@
             <li><i class='bx bx-show-alt'></i>
                 <span class="info">
                     <h3>
-                        3,944
+                        120
                     </h3>
                     <p>Tags</p>
                 </span>
@@ -36,48 +63,69 @@
                     <p>Credits</p>
                 </span>
             </li>
+            <li>
+                <i class='bx bxs-happy-heart-eyes' ></i>
+                <span class="info">
+                    <h3>
+                       CamEditor
+                    </h3>
+                    <p>Download</p>
+                </span>
+            </li>
+            <li>
+            <i class='bx bx-credit-card-front'></i>
+                <span class="info">
+                    <h3>
+                       Bios
+                    </h3>
+                    <p>Create Profiles</p>
+                </span>
+            </li>
         </ul>
         <!-- End of Insights -->
         <div class="bottom-data">
             <div class="orders">
                 <div class="header">
                     <i class='bx bx-receipt'></i>
-                    <h3>Recent Orders</h3>
+                    <h3>{{ now()->format('F') }} | {{ __('app.dash_r_orders') }} </h3>
                     <i class='bx bx-filter'></i>
-                    <i class='bx bx-search'></i>
+                    <a href="javascript:void(0)" title="New Orden">
+                        <i class='bx bx-plus'></i>
+                    </a>
+                    
                 </div>
                 <table>
                     <thead>
                         <tr>
-                            <th>User</th>
-                            <th>Order Date</th>
-                            <th>Status</th>
+                            <th>{{ __('app.dash_user') }}</th>
+                            <th>{{ __('app.dash_o_date') }}</th>
+                            <th>{{ __('app.dash_status') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>
-                                <img src="{{ asset('/very.svg') }}">
-                                <p>John Doe</p>
+                                <i class='bx bx-ghost'></i>
+                                ~15                           
                             </td>
                             <td>14-08-2023</td>
-                            <td><span class="status completed">Completed</span></td>
+                            <td><span class="status completed">{{ __('app.dash_sta_com') }}</span></td>
                         </tr>
                         <tr>
                             <td>
-                                <img src="{{ asset('/very.svg') }}">
-                                <p>John Doe</p>
+                                <i class='bx bx-ghost'></i>
+                            ~26
                             </td>
                             <td>14-08-2023</td>
-                            <td><span class="status pending">Pending</span></td>
+                            <td><span class="status pending">{{ __('app.dash_sta_pen') }}</span></td>
                         </tr>
                         <tr>
                             <td>
-                                <img src="{{ asset('/very.svg') }}">
-                                <p>John Doe</p>
+                                <i class='bx bx-ghost'></i>
+                                ~16
                             </td>
                             <td>14-08-2023</td>
-                            <td><span class="status process">Processing</span></td>
+                            <td><span class="status process">{{ __('app.dash_sta_pro') }}</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -87,9 +135,11 @@
             <div class="reminders">
                 <div class="header">
                     <i class='bx bx-note'></i>
-                    <h3>Remiders</h3>
+                    <h3>{{ __('app.dash_remiders') }}</h3>
                     <i class='bx bx-filter'></i>
-                    <i class='bx bx-plus'></i>
+                    <a href="javascript:void(0)" title="New reminders">
+                        <i class='bx bx-plus'></i>
+                    </a>
                 </div>
                 <ul class="task-list">
                     <li class="completed">
@@ -115,7 +165,7 @@
                     </li>
                 </ul>
             </div>
-            <!-- End of Reminders-->
+     
         </div>
     </div>
 </div>

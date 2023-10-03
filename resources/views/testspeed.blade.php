@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.tema.appadmin')
 @section('title', __('Test Speed Webcam'))
 @section('content')
     <div class="container-fluid">

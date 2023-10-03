@@ -50,16 +50,19 @@ window.addEventListener('resize', () => {
 const toggler = document.getElementById('theme-toggle');
 const storedTheme = localStorage.getItem('theme');
 const iconApp = document.getElementById('icon-app');
+const modetema = document.getElementById('modetema');
 
 function applyTheme(theme) {
     if (theme === 'dark') {
         document.body.classList.add('dark');
         toggler.checked = true;
         iconApp.src = "/logo-dark.svg";
+        modetema.querySelector('strong').textContent = 'Dark';
     } else {
         document.body.classList.remove('dark');
         toggler.checked = false;
         iconApp.src = "/logo.svg";
+        modetema.querySelector('strong').textContent = 'Light';
     }
 }
 toggler.addEventListener('change', function () {

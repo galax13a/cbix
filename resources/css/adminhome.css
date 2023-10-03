@@ -14,6 +14,7 @@
     --success: #45ad4a;
     --light-success: #BBF7D0;
     --darky: #daca97;
+    --blacky: #1b1b1d;
 }
 
 *{
@@ -35,6 +36,46 @@ li{
 
 html{
     overflow-x: hidden;
+}
+
+.gallery-slidercam {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slider-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  .slider {
+    display: flex;
+    animation: slide 10s linear infinite reverse; /* Ajusta la duración según lo desees y agrega 'reverse' para invertir la dirección */
+  }
+  
+  .slider img {
+    width: 100%;
+    height: auto;
+  }
+  
+  @keyframes slide {
+    0% {
+      transform: translateX(100%); /* Iniciar desde la derecha */
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+.slider > img {
+    width: 140px;
+    height: 140px;
+}
+
+body.dark .blacky{
+    background: var(--blacky);
 }
 
 body.dark{

@@ -73,7 +73,7 @@ Route::post('/get-ai-pro', [\App\Http\Controllers\EditorjsController::class, 'ge
 Route::any('/themas/components', [\App\Http\Controllers\ThemacomponentsController::class, 'createthemacom']);
 
 
-Route::get('/test-speed', function () { // test speed
+Route::get('/app/test-speed', function () { // test speed
     return view('testspeed');
 });
 
@@ -186,7 +186,7 @@ Route::middleware(['auth', 'checkbanned'])->group(function () {
     Route::view('admin/credits-goals', 'livewire.credits_goals.index')
         ->middleware('can:admin.credits_goals')->name('admin.credits_goals');
 
-    Route::view('tests', 'livewire.tests.index')->middleware('can:admin.test');
+    Route::view('admin/test', 'livewire.tests.index')->middleware('can:admin.test');
 });
 
 
