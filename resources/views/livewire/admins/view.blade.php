@@ -2,8 +2,9 @@
 @section('title_app', __('app.nav_dash'))
 <div class="container-fluid mb-0" >
 	<div class="row">
-		<div class="col-6 text-primary"><h5>{{ __('app.welcome') }} </h5> <a href="">#New models</a> |<a href="">#Broadcast news</a> <a href="">#Latinas</a> <a href="">#Submit users</a></div>	
-		<div class="col-6 text-end"><h5><i class='bx bx-game'></i></h5></div>
+		<div class="col-12 col-md-6 text-primary"><h5>{{ __('app.welcome') }} </h5> <a href="">#New models</a> <a href="">| #Broadcast news</a> 
+			<a href="">| #Latinas</a> <a href="">| #Submit by users</a></div>	
+		<div class="col-12 col-md-6 text-end mt-2"><h5> <a href=""> <i class='bx bx-game'></i> </a></h5></div>
 	 
 	<x-adminapp.navdasboard/>
 

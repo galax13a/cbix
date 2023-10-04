@@ -1,7 +1,7 @@
 <div>
     <!-- Sidebar -->
     <div class="sidebar-app">
-        <a href="{{url('/app')}}" class="logo" style="margin-left:16px; ">
+        <a href="javascript:void(0)" class="logo" style="margin-left:16px; ">
             <img id="icon-app" src="{{ asset('logo.svg') }}" width="36px" height="36px" alt="botchatur logo">
             <div class="logo-name"><span class="mx-2">BOT</span>CHA🆃🆄🆁</div>
         </a>
@@ -17,7 +17,7 @@
             <li><a href="javascript:void(0);"><i class='bx bx-cog'></i>{{ __('app.nav_settings') }}</a></li>
         </ul>
         <ul class="side-menu">
-            <li><a href="javascript:void(0);"><i class='bx bx-message-square-dots'></i>{{ __('app.nav_suport') }}</a></li>
+            <li><a href="javascript:void(0);"><i class='bx bx-shield-alt-2'></i>{{ __('app.dash_pircing') }}</a></li>
             <li>
                 <a class="text-danger" class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

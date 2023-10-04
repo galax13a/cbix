@@ -2,21 +2,31 @@
     
                <!-- End of Reminders SLIDER-->
                <div class="row">
-                    <div class="col-8">
-                        <div class="container-slider ">                
-                            <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur  </h2> 
-                            <mark class="text-bg-danger rounded-3 shadow">
-                                 #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
-                             </mark>
-                        </div>
+                <div class="col-12 col-md-6">
+                    <div class="container-slider">                
+                        <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur</h2> 
+                        <mark class="text-bg-danger rounded-3 shadow">
+                            #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
+                        </mark>
                     </div>
-                    <div class="col-4 text-end rounded-3">
-                        <a href="#">
-                            <img class="img-fluid " width="40%" height="50%"src="{{url('images/baner260.png')}}" alt="create profile chaturbate hallowen">
-                        </a>
+                </div>
+                <div class="col-12 col-md-3">
+                    <div class="gallery" title="Bios Hallowed">
+                        <img loading="lazy" src="https://picsum.photos/id/104/400/400" alt="a dream catcher">
+                        <img loading="lazy" src="https://picsum.photos/id/1082/400/400" alt="a piano">
+                        <img loading="lazy" src="https://picsum.photos/id/158/400/400" alt="a live concert">
+                        <img loading="lazy" src="https://picsum.photos/id/234/400/400" alt="Paris">
                     </div>
-               </div>
-               
+                </div>
+                <div class="col-12 col-md-3 text-end rounded-3 shadow-sm" title="Generate Bios">
+                    <a href="javascript:void(0)">
+                        <img class="img-fluid" src="{{url('images/baner260.png')}}" alt="create profile chaturbate halloween">
+                    </a>
+                </div>
+            </div>
+            
+               <div class="container align-content-center text-center">
+
             <div class="gallery-slidercam mt-2 shadow-lg rounded-3 ">
                 <div class="slider-container blacky rounded-3">
                     <div class="slider">
@@ -36,6 +46,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     
        <!-- Insights -->
        <div class="bodydash">       
@@ -88,7 +99,7 @@
             <i class='bx bx-credit-card-front'></i>
                 <span class="info">
                     <h3>
-                       Bios
+                       CamBios
                     </h3>
                     <p>Create Profiles</p>
                 </span>
