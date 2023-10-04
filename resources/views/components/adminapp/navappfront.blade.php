@@ -7,7 +7,7 @@
         </a>
      <div class="ads-menu"></div>
         <ul class="side-menu">
-            <li class="active"><a href="javascript:void(0);"><i class='bx bxs-dashboard'></i>{{ __('app.nav_dash') }} </a></li>
+            <li class="active"><a href="{{url('/app')}}"><i class='bx bxs-dashboard'></i>{{ __('app.nav_dash') }} </a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-store-alt'></i>apps</a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-palette'></i>canva</a></li>
             <li><a href="javascript:void(0);"><i class='bx bx-ghost'></i>{{ __('app.nav_guest') }}</a></li>
@@ -73,7 +73,8 @@
         <nav>
             <i class='bx bx-menu'></i>
             <strong class="ml-3"> @hasSection('title_app') @yield('title_app')@endif </strong>
-            |<span class="text-capitalize mx-3">👻 {{ strtoupper(substr(Auth::user()->name, 0, 2)) }}</span>
+            |<span class="text-capitalize mx-3">👻 {{ Auth::user() ? strtoupper(substr(Auth::user()->name, 0, 2)) : '' }}
+            </span>
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">

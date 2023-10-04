@@ -1,13 +1,12 @@
-<div>
-    
+<div>    
                <!-- End of Reminders SLIDER-->
-               <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="container-slider">                
-                        <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur</h2> 
-                        <mark class="text-bg-danger rounded-3 shadow">
-                            #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
-                        </mark>
+     <div class="row">
+           <div class="col-12 col-md-6">
+                <div class="container-slider">                
+                     <h2><i class='bx bx-vertical-top' ></i>Top 50 Chatur</h2> 
+                      <mark class="text-bg-danger rounded-3 shadow">
+                        #Tag1 -#Tag01 -#Tag54 -#Tag5 -#Tag5 -#Tag7 -#Tag8 -#Tag9 -#Tag4 
+                       </mark>
                     </div>
                 </div>
                 <div class="col-12 col-md-3">
@@ -18,14 +17,14 @@
                         <img loading="lazy" src="https://picsum.photos/id/234/400/400" alt="Paris">
                     </div>
                 </div>
-                <div class="col-12 col-md-3 text-end rounded-3 shadow-sm" title="Generate Bios">
+                <div class="col-12 col-md-3 text-end rounded-3 " title="Generate Bios">
                     <a href="javascript:void(0)">
                         <img class="img-fluid" src="{{url('images/baner260.png')}}" alt="create profile chaturbate halloween">
                     </a>
                 </div>
             </div>
             
-               <div class="container align-content-center text-center">
+     <div class="container-fluid align-content-center text-center">
 
             <div class="gallery-slidercam mt-2 shadow-lg rounded-3 ">
                 <div class="slider-container blacky rounded-3">
@@ -49,9 +48,9 @@
         </div>
     
        <!-- Insights -->
-       <div class="bodydash">       
+       <div class=" bodydash">       
         
-        <ul class="insights">
+        <ul class="container-fluid insights">
 
             <li>
                 <i class='bx bxs-balloon'></i>

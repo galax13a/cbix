@@ -35,5 +35,6 @@ return [
     'dash_sta_com' => 'completed',
     'dash_sta_pen' => 'pending',
     'dash_sta_pro' => 'processing',
+    'dash_pircing' => 'premium'
 
 ];
