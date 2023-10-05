@@ -35,6 +35,8 @@ return [
     'dash_sta_com' => 'completado',
     'dash_sta_pen' => 'pendiente',
     'dash_sta_pro' => 'procesando',
-    'dash_pircing' => 'premium'
+    'dash_pircing' => 'premium',
+    'dash_dm' => 'dm',
+    'dash.nav_contact'=> 'contactos',
     
 ];

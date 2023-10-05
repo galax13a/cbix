@@ -74,11 +74,18 @@ html{
     }
   }
   
-  
-.gallery-slidercam {
+  /* gallery slider */
+body.dark   .gallery-slidercam {
+    border: 2px  dashed
+    #635994;
+  }
+  .gallery-slidercam {
     width: 100%;
     overflow: hidden;
     position: relative;
+    -webkit-mask: linear-gradient(90deg, rgba(0, 0, 0, 0) 10%, #000 20%, #000 80%, rgba(0, 0, 0, 0) 90%);
+    mask: linear-gradient(90deg, rgba(0, 0, 0, 0) 10%, #000 20%, #000 80%, rgba(0, 0, 0, 0) 90%);
+  
   }
   
   .slider-container {
@@ -89,7 +96,8 @@ html{
   
   .slider {
     display: flex;
-    animation: slide 26s linear infinite reverse; /* Ajusta la duración según lo desees y agrega 'reverse' para invertir la dirección */
+    animation: slide 39s linear infinite reverse;
+    animation-timing-function: linear; 
   }
   
   .slider img {
@@ -99,17 +107,18 @@ html{
   
   @keyframes slide {
     0% {
-      transform: translateX(100%); /* Iniciar desde la derecha */
+      transform: translateX(0%);
     }
     100% {
       transform: translateX(-100%);
     }
   }
-
+  
 .slider > img {
-    width: 140px;
-    height: 140px;
+    width: 260px;
+    height: 169px;
 }
+
 
 body.dark .blacky{
     background: var(--blacky);
@@ -124,14 +133,34 @@ body.dark{
 body{
     background: var(--grey);
     overflow-x: hidden;
-
 }
 
-body.dark * {   
+/* bodyyyyyyyyyyyyyyyy */
+body.dark .container * {   
     color: var(--darky);
   }
-  body.dark #icon-botchatur{
+
+body.dark #icon-botchatur{
     fill: white;
+}
+
+body.dark .logo-name{
+    color: var(--darky);
+}
+#logoapp{
+    color: #000;
+}
+body.dark #logoapp{
+    color: #faf7f7;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark h5,
+body.dark h6 {
+    color: var(--primary);
 }
 
 .sidebar-app{
@@ -501,6 +530,12 @@ main table {
     cursor: pointer;
 }
 
+.content main .insights li:hover{ 
+    background: #5507bb46;
+    box-shadow: 0 1.25rem 0.75rem rgba(0, 0, 0, 0.10);
+    
+}
+
 .content main .insights li .bx{
     width: 80px;
     height: 80px;
@@ -817,3 +852,4 @@ border: 2px solid transparent;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
   border: 2px solid #635994;
 }
+

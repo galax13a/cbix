@@ -3,26 +3,64 @@
     <div class="sidebar-app">
         <a href="javascript:void(0)" class="logo" style="margin-left:16px; ">
             <img id="icon-app" src="{{ asset('logo.svg') }}" width="36px" height="36px" alt="botchatur logo">
-            <div class="logo-name"><span class="mx-2">BOT</span>CHA🆃🆄🆁</div>
+            <span id="logoapp" class="mx-1 rounded-3 px-1 ">BOT</span><div class="logo-name">CHA🆃🆄🆁</div>
         </a>
      <div class="ads-menu"></div>
-        <ul class="side-menu">
-            <li class="active"><a href="{{url('/app')}}"><i class='bx bxs-dashboard'></i>{{ __('app.nav_dash') }} </a></li>
-            <li><a href="javascript:void(0);"><i class='bx bx-store-alt'></i>apps</a></li>
-            <li><a href="javascript:void(0);"><i class='bx bx-palette'></i>canva</a></li>
-            <li><a href="javascript:void(0);"><i class='bx bx-ghost'></i>{{ __('app.nav_guest') }}</a></li>
-            <li><a href="app/test-speed"><i class='bx bx-wifi'></i>test red</a></li>
-            <li><a href="javascript:void(0);"><i class='bx bxs-hot'></i>{{ __('app.nav_favor') }}</a></li>
-            <li><a href="javascript:void(0);"><i class='bx bx-message-square-dots'></i>{{ __('app.nav_suport') }}</a></li>
-            <li><a href="javascript:void(0);"><i class='bx bx-cog'></i>{{ __('app.nav_settings') }}</a></li>
-        </ul>
+     <ul class="side-menu">
+        <li class="{{ request()->is('app') ? 'active' : '' }}">
+            <a href="{{ url('/app') }}">
+                <i class='bx bxs-dashboard'></i>{{ __('app.nav_dash') }}
+            </a>
+        </li>
+        <li class="{{ request()->is('apps/chaturbate*') ? 'active' : '' }}">
+            <a href="{{ url('/apps/chaturbate') }}">
+                <i class='bx bx-store-alt'></i>apps
+            </a>
+        </li>
+        <li class="{{ request()->is('app/canva*') ? 'active' : '' }}">
+            <a href="{{ url('/app/canva') }}">
+                <i class='bx bx-palette'></i>canva
+            </a>
+        </li>
+        <li class="{{ request()->is('app/guests') ? 'active' : '' }}">
+            <a href="{{ url('/app/guests') }}">
+                <i class='bx bx-ghost'></i>{{ __('app.nav_guest') }}
+            </a>
+        </li>
+        <li class="{{ request()->is('app/contacts*') ? 'active' : '' }}">
+            <a href="{{ url('/app/contacts') }}">
+                <i class='bx bxs-contact'></i>{{ __('app.dash.nav_contact') }}
+            </a>
+        </li>
+        <li class="{{ request()->is('app/test-speed*') ? 'active' : '' }}">
+            <a href="{{ url('/app/test-speed') }}">
+                <i class='bx bx-wifi'></i>test red
+            </a>
+        </li>
+        <li class="{{ request()->is('app/favorites*') ? 'active' : '' }}">
+            <a href="{{ url('/app/favorites') }}">
+                <i class='bx bxs-hot'></i>{{ __('app.nav_favor') }}
+            </a>
+        </li>
+        <li class="{{ request()->is('app/support*') ? 'active' : '' }}">
+            <a href="{{ url('/app/support') }}">
+                <i class='bx bx-message-square-dots'></i>{{ __('app.nav_suport') }}
+            </a>
+        </li>
+        <li class="{{ request()->is('app/settings*') ? 'active' : '' }}">
+            <a href="{{ url('/app/settings') }}">
+                <i class='bx bx-cog'></i>{{ __('app.nav_settings') }}
+            </a>
+        </li>
+    </ul>
+    
         <ul class="side-menu">
             <li><a href="javascript:void(0);"><i class='bx bx-shield-alt-2'></i>{{ __('app.dash_pircing') }}</a></li>
             <li>
                 <a class="text-danger" class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class='bx bx-log-out-circle'></i>
-                    {{ __('app.nav_logout') }}
+                    {{ __('app.nav_logout') }} | 👻 {{ Auth::user() ? strtoupper(substr(Auth::user()->name, 0, 2)) : '' }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
@@ -73,8 +111,7 @@
         <nav>
             <i class='bx bx-menu'></i>
             <strong class="ml-3"> @hasSection('title_app') @yield('title_app')@endif </strong>
-            |<span class="text-capitalize mx-3">👻 {{ Auth::user() ? strtoupper(substr(Auth::user()->name, 0, 2)) : '' }}
-            </span>
+          
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">

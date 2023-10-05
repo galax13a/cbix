@@ -104,6 +104,12 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('app/contacts', 'livewire.app.contacts.index')->middleware('auth');
+	Route::view('admin/contacttags', 'livewire.admin.contacttags.index')->middleware('auth');
+	
+    Route::view('app/guests', 'livewire.adminguests.index')->middleware('auth');
+	Route::view('app/canva', 'livewire.admincanvas.index')->middleware('auth');
+	Route::view('apps/chaturbate', 'livewire.adminapps.index')->middleware('auth');
 	Route::view('app', 'livewire.admins.index')->middleware('auth');
 	Route::view('themas-components', 'livewire.themacoms.index')->middleware('auth');
 	Route::view('themas', 'livewire.themas.index')->middleware('auth');

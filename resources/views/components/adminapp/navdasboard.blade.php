@@ -17,7 +17,7 @@
                         <img loading="lazy" src="https://picsum.photos/id/234/400/400" alt="Paris">
                     </div>
                 </div>
-                <div class="col-12 col-md-3 text-end rounded-3 " title="Generate Bios">
+                <div class="col-12 col-md-3 text-center rounded-3 " title="Generate Bios">
                     <a href="javascript:void(0)">
                         <img class="img-fluid" src="{{url('images/baner260.png')}}" alt="create profile chaturbate halloween">
                     </a>

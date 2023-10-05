@@ -101,7 +101,7 @@ if (storedTheme) {
 // admin js
 
 window.addEventListener('notify', event => { // notificaciones y modals
-    const { type, message, OpenWin36,position = 'center-bottom' } = event.detail;
+    const { type, message, OpenWin36,position = 'center-center' } = event.detail;
     //Notiflix.Notify[type](message);
     Notiflix.Notify[type](message, {
         timeout: 3300,
