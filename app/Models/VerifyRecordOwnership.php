@@ -44,6 +44,7 @@ class VerifyRecordOwnership extends Model
             }
         } else {
             // Si no tiene la columna 'user_id', cualquier usuario puede modificar el registro
+            //aqui agregar la seguridad de un rol como root o admin 
             return true;
         }
 

@@ -24,16 +24,14 @@ class Admincontacts extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
-
-        return view('livewire.admin.contacts.view', [
-            'admincontacts' => Admincontact::with('user')->latest()
-
-                ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {     
-                    $query->where('name', 'LIKE', $keyWord)        
-                    ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(10)
-        ]);
+		return view('livewire.admin.contacts.view', [
+			'admincontacts' => Admincontact::with('user', 'admincontacttag')
+				->latest()
+				->where('user_id', auth()->id())
+				->where('name', 'LIKE', $keyWord)
+				->paginate(10)
+		]);
+		
     }
 	
     public function cancel()
@@ -96,10 +94,21 @@ class Admincontacts extends Component
             ]);
     }
 
-    public function edit($id)
+    public function edit($id=null) //editar si es seguro y pertenece el registro a usuario
     {
-        $record = Admincontact::findOrFail($id);
+        
         $this->selected_id = $id; 
+        if(!$this->selected_id){
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡Unauthorized Record Null !',
+            ]);      
+            abort(500, 'server abort ');
+       }
+       $record = Admincontact::findOrFail($this->selected_id);
+        
+       if ($record->userCanModify()) {
+                 
 		$this->name = $record-> name;
 		$this->nick_name = $record-> nick_name;
 		$this->admincontacttag_id = $record-> admincontacttag_id;
@@ -116,9 +125,16 @@ class Admincontacts extends Component
 		$this->x = $record-> x;
 		$this->discord = $record-> discord;
 		$this->other = $record-> other;
+        } else {           
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡ Unauthorized error, Registry not recovered.!',
+            ]);
+        }  
+
     }
 
-    public function update()// editar
+    public function update()// actulalizar 
     {
         if(!$this->selected_id){
             $this->dispatchBrowserEvent('notify', [
@@ -135,7 +151,7 @@ class Admincontacts extends Component
         ]);            
 
         $record = Admincontact::findOrFail($this->selected_id);
-        // Verificar si el usuario puede modificar el registro
+        
         if ($record->userCanModify()) {
 
                 if ($this->selected_id) {

@@ -104,7 +104,6 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('admin/contacts', 'livewire.admin.contacts.index')->middleware('auth');
 	
 	Route::view('app/contacts', 'livewire.admin.contacts.index')->middleware('auth');
 	Route::view('admin/contacttags', 'livewire.admin.contacttags.index')->middleware('auth');

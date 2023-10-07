@@ -12,17 +12,17 @@
 				<div class="card-body">
 						@include('livewire.admin.contacts.modals')
 				<div class="table-responsive">
-					<table class="table table-bordered table-sm">
+					<table class="table table-striped table-sm display" id="datatable">
 						<thead class="thead">
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Nick Name</th>
-								<th>Admincontacttag Id</th>
+								<th>Nick</th>
+								<th>Type</th>
 								<th>Active</th>
 								<th>Email</th>
 								<th>Birthday</th>
-								<th>Phone Code</th>
+								<th>Code</th>
 								<th>Whatsapp</th>
 								<th>Skype</th>
 								<th>Telegram</th>
@@ -32,7 +32,7 @@
 								<th>X</th>
 								<th>Discord</th>
 								<th>Other</th>
-									<th class="text-center thead">Command</th>
+								<th class="text-center thead">Cmd</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -74,4 +74,16 @@
 			</div>
 		</div>
 	</div>
+
+	<script>
+		$(document).ready(function() {
+				$('#datatable').DataTable({
+					dom: 'Bfrtip',
+					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+					responsive: true,
+					autoWidth: false,
+				});
+			});
+		</script>
+
 </div>
