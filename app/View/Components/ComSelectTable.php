@@ -9,6 +9,7 @@ class ComSelectTable extends Component
 {
     public $tableName;
     public $displayName;
+    public $display;
 
     /**
      * Create a new component instance.

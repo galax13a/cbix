@@ -13,7 +13,7 @@ class Admincontacts extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $nick_name, $email, $birthday, $phone_code, $whatsapp, $skype, $telegram, $tiktok, $facebook, $snapchat, $x, $discord, $other, $admincontacttag_id;
+    public $selected_id, $keyWord, $name, $nick_name, $admincontacttag_id, $active, $email, $birthday, $phone_code, $whatsapp, $skype, $telegram, $tiktok, $facebook, $snapchat, $x, $discord, $other;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -24,7 +24,7 @@ class Admincontacts extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.app.contacts.view', [
+        return view('livewire.admin.contacts.view', [
             'admincontacts' => Admincontact::with('user')->latest()
 
                 ->where('user_id', auth()->id())
@@ -44,6 +44,8 @@ class Admincontacts extends Component
     {		
 		$this->name = null;
 		$this->nick_name = null;
+		$this->admincontacttag_id = null;
+		$this->active = null;
 		$this->email = null;
 		$this->birthday = null;
 		$this->phone_code = null;
@@ -56,18 +58,21 @@ class Admincontacts extends Component
 		$this->x = null;
 		$this->discord = null;
 		$this->other = null;
-		$this->admincontacttag_id = null;
     }
 
     public function store()
     {
         $this->validate([
 		'name' => 'required',
+		'admincontacttag_id' => 'required',
+		'active' => 'required',
         ]);
 
         Admincontact::create([ 
 			'name' => $this-> name,
 			'nick_name' => $this-> nick_name,
+			'admincontacttag_id' => $this-> admincontacttag_id,
+			'active' => $this-> active,
 			'email' => $this-> email,
 			'birthday' => $this-> birthday,
 			'phone_code' => $this-> phone_code,
@@ -79,8 +84,7 @@ class Admincontacts extends Component
 			'snapchat' => $this-> snapchat,
 			'x' => $this-> x,
 			'discord' => $this-> discord,
-			'other' => $this-> other,
-			'admincontacttag_id' => $this-> admincontacttag_id
+			'other' => $this-> other
         ]);
         
         $this->resetInput();
@@ -97,6 +101,8 @@ class Admincontacts extends Component
         $this->selected_id = $id; 
 		$this->name = $record-> name;
 		$this->nick_name = $record-> nick_name;
+		$this->admincontacttag_id = $record-> admincontacttag_id;
+		$this->active = $record-> active;
 		$this->email = $record-> email;
 		$this->birthday = $record-> birthday;
 		$this->phone_code = $record-> phone_code;
@@ -109,13 +115,14 @@ class Admincontacts extends Component
 		$this->x = $record-> x;
 		$this->discord = $record-> discord;
 		$this->other = $record-> other;
-		$this->admincontacttag_id = $record-> admincontacttag_id;
     }
 
     public function update()
     {
         $this->validate([
 		'name' => 'required',
+		'admincontacttag_id' => 'required',
+		'active' => 'required',
         ]);
 
         if ($this->selected_id) {
@@ -123,6 +130,8 @@ class Admincontacts extends Component
             $record->update([ 
 			'name' => $this-> name,
 			'nick_name' => $this-> nick_name,
+			'admincontacttag_id' => $this-> admincontacttag_id,
+			'active' => $this-> active,
 			'email' => $this-> email,
 			'birthday' => $this-> birthday,
 			'phone_code' => $this-> phone_code,
@@ -134,8 +143,7 @@ class Admincontacts extends Component
 			'snapchat' => $this-> snapchat,
 			'x' => $this-> x,
 			'discord' => $this-> discord,
-			'other' => $this-> other,
-			'admincontacttag_id' => $this-> admincontacttag_id
+			'other' => $this-> other
             ]);
 
             $this->resetInput();

@@ -15,6 +15,8 @@ class AdmincontactFactory extends Factory
         return [
 			'name' => $this->faker->name,
 			'nick_name' => $this->faker->name,
+			'admincontacttag_id' => $this->faker->name,
+			'active' => $this->faker->name,
 			'email' => $this->faker->name,
 			'birthday' => $this->faker->name,
 			'phone_code' => $this->faker->name,
@@ -27,7 +29,6 @@ class AdmincontactFactory extends Factory
 			'x' => $this->faker->name,
 			'discord' => $this->faker->name,
 			'other' => $this->faker->name,
-			'admincontacttag_id' => $this->faker->name,
         ];
     }
 }

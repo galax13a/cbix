@@ -1,8 +1,6 @@
 <div>
-    <label class="toggle">
-        <input wire:model="active" id="active" class="theme-toggle" type="checkbox" {{ $active ? 'checked' : '' }}>
-        <div class="theme-toggle"></div>
-        <span class="toggle-label">{{ $active ? 'Active' : 'Inactive' }}</span>
-    </label>
-        
+    <div class="form-check form-switch">  
+        <input wire:model="active" id="active" class="form-check-input" type="checkbox" {{ $active ? 'checked' : '' }}>        
+        <label class="form-check-label" for="flexSwitchCheckChecked">{{ $active ? 'Active' : 'Inactive' }}</label>
+    </div>
 </div>

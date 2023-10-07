@@ -10,7 +10,7 @@
 				</div>
 				
 				<div class="card-body">
-						@include('livewire.app.contacts.modals')
+						@include('livewire.admin.contacts.modals')
 				<div class="table-responsive">
 					<table class="table table-bordered table-sm">
 						<thead class="thead">
@@ -18,6 +18,8 @@
 								<td>#</td> 
 								<th>Name</th>
 								<th>Nick Name</th>
+								<th>Admincontacttag Id</th>
+								<th>Active</th>
 								<th>Email</th>
 								<th>Birthday</th>
 								<th>Phone Code</th>
@@ -30,7 +32,6 @@
 								<th>X</th>
 								<th>Discord</th>
 								<th>Other</th>
-								<th>Admincontacttag Id</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
@@ -40,6 +41,8 @@
 								<td>{{ $loop->iteration }}</td> 
 								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
 								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
+								<td>{{ $row->admincontacttag->name }}</td>
+								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td>{{ $row->email }}</td>
 								<td>{{ $row->birthday }}</td>
 								<td>{{ $row->phone_code }}</td>
@@ -52,7 +55,6 @@
 								<td>{{ $row->x }}</td>
 								<td>{{ $row->discord }}</td>
 								<td>{{ $row->other }}</td>
-								<td>{{ $row->admincontacttag->name }}</td>
 								<td width="90">
 											<x-btncrud> 
 											<x-slot name="id_editar">{{$row->id}}</x-slot>

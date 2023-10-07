@@ -13,7 +13,7 @@ class Admincontact extends Model
 
     protected $table = 'admincontacts';
 
-    protected $fillable = ['name','nick_name','email','birthday','phone_code','whatsapp','skype','telegram','tiktok','facebook','snapchat','x','discord','other','admincontacttag_id']; // fillable2
+    protected $fillable = ['name','nick_name','admincontacttag_id','active','email','birthday','phone_code','whatsapp','skype','telegram','tiktok','facebook','snapchat','x','discord','other']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

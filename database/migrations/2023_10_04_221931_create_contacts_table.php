@@ -15,7 +15,10 @@ return new class extends Migration
             $table->id();            
             $table->string('name');
             $table->string('nick_name')->nullable();
-            $table->string('email')->nullable();
+            $table->unsignedBigInteger('admincontacttag_id');            
+            $table->foreign('admincontacttag_id')->references('id')->on('admincontacttags');    
+            $table->boolean('active');
+            $table->string('email')->default(1)->nullable();
             $table->date('birthday')->nullable();
             $table->string('phone_code')->nullable();
             $table->string('whatsapp')->nullable();           
@@ -28,8 +31,7 @@ return new class extends Migration
             $table->string('discord')->nullable();
             $table->string('other')->nullable();
             $table->foreignId('user_id')->constrained('users');
-            $table->unsignedBigInteger('admincontacttag_id')->nullable();            
-            $table->foreign('admincontacttag_id')->references('id')->on('admincontacttags');       
+   
             $table->timestamps();
         });
     }

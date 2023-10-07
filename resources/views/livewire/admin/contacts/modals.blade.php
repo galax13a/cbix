@@ -16,13 +16,23 @@
                         <label for="nick_name"></label>
                         <input wire:model.defer="nick_name" type="text" class="form-control" id="nick_name" placeholder="Nick Name">@error('nick_name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                 
+                           <label for="table"></label>
+                               <div class="form-group">
+                                <x-com-select-table table-name="admincontacttags" id="admincontacttag_id" display-name="name" />@error('admincontacttag_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                  <label for="active"></label>                  
+                          <x-com-check :active="$active" />
+                  @error('active') <span class="error text-danger">{{ $message }}</span> @enderror       
+            
+                    
                     <div class="form-group">
                         <label for="email"></label>
                         <input wire:model.defer="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="birthday"></label>
-                        <input wire:model.defer="birthday" type="text" class="form-control" id="birthday" placeholder="Birthday">@error('birthday') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model.defer="birthday" type="date" class="form-control" id="birthday" placeholder="Birthday">@error('birthday') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="phone_code"></label>
@@ -64,11 +74,6 @@
                         <label for="other"></label>
                         <input wire:model.defer="other" type="text" class="form-control" id="other" placeholder="Other">@error('other') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                 
-                           <label for="table"></label>
-                               <div class="form-group">
-                                <x-com-select-table table-name="admincontacttags" id="admincontacttag_id" display-name="name" />@error('admincontacttag_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
 
                 </form>
             </div>
@@ -99,13 +104,23 @@
                         <label for="nick_name"></label>
                         <input wire:model.defer="nick_name" type="text" class="form-control" id="nick_name" placeholder="Nick Name">@error('nick_name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
+                 
+                           <label for="table"></label>
+                               <div class="form-group">
+                                <x-com-select-table table-name="admincontacttags" id="admincontacttag_id" display-name="name" />@error('admincontacttag_id') <span class="error text-danger">{{ $message }}</span> @enderror
+                            </div>
+                  <label for="active"></label>                  
+                          <x-com-check :active="$active" />
+                  @error('active') <span class="error text-danger">{{ $message }}</span> @enderror       
+            
+                    
                     <div class="form-group">
                         <label for="email"></label>
                         <input wire:model.defer="email" type="text" class="form-control" id="email" placeholder="Email">@error('email') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="birthday"></label>
-                        <input wire:model.defer="birthday" type="text" class="form-control" id="birthday" placeholder="Birthday">@error('birthday') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <input wire:model.defer="birthday" type="date" class="form-control" id="birthday" placeholder="Birthday">@error('birthday') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="phone_code"></label>
@@ -147,11 +162,6 @@
                         <label for="other"></label>
                         <input wire:model.defer="other" type="text" class="form-control" id="other" placeholder="Other">@error('other') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                 
-                           <label for="table"></label>
-                               <div class="form-group">
-                                <x-com-select-table table-name="admincontacttags" id="admincontacttag_id" display-name="name" />@error('admincontacttag_id') <span class="error text-danger">{{ $message }}</span> @enderror
-                            </div>
 
                 </form>
             </div>
