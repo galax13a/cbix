@@ -1,10 +1,11 @@
 <?php
-
+//live user cr26
 namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Admincontact;
+
 
 class Admincontacts extends Component
 {
@@ -117,17 +118,29 @@ class Admincontacts extends Component
 		$this->other = $record-> other;
     }
 
-    public function update()
+    public function update()// editar
     {
+        if(!$this->selected_id){
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡Unauthorized Record Null !',
+            ]);
+            return false;
+       }
+
         $this->validate([
 		'name' => 'required',
 		'admincontacttag_id' => 'required',
 		'active' => 'required',
-        ]);
+        ]);            
 
-        if ($this->selected_id) {
-			$record = Admincontact::find($this->selected_id);
-            $record->update([ 
+        $record = Admincontact::findOrFail($this->selected_id);
+        // Verificar si el usuario puede modificar el registro
+        if ($record->userCanModify()) {
+
+                if ($this->selected_id) {
+                    $record = Admincontact::find($this->selected_id);
+                    $record->update([ 
 			'name' => $this-> name,
 			'nick_name' => $this-> nick_name,
 			'admincontacttag_id' => $this-> admincontacttag_id,
@@ -144,16 +157,24 @@ class Admincontacts extends Component
 			'x' => $this-> x,
 			'discord' => $this-> discord,
 			'other' => $this-> other
-            ]);
+                    ]);
 
-            $this->resetInput();
-            $this->dispatchBrowserEvent('closeModal');
-	
-             $this->dispatchBrowserEvent('notify', [
-                'type' => 'success',
-                'message' => '¡ Admincontact Successfully updated.!',
-            ]);
+                    $this->resetInput();
+                    $this->dispatchBrowserEvent('closeModal');
+            
+                    $this->dispatchBrowserEvent('notify', [
+                        'type' => 'success',
+                        'message' => '¡ Admincontact Successfully updated.!',
+                    ]);
+                }
         }
+        else {
+           // $this->resetForm();
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡ Unauthorized error, Registry not recovered.!',
+            ]);
+        }     
     }
 
     public function destroy($id)
