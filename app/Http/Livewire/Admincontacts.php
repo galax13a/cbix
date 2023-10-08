@@ -13,19 +13,25 @@ class Admincontacts extends Component
 
     use WithPagination;
 
-	protected $paginationTheme = 'bootstrap';
-  
+//	protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'tema-paginado';
+
     public $selected_id, $keyWord, $name, $nick_name, $admincontacttag_id, $active, $email, $birthday, $phone_code, $whatsapp, $skype, $telegram, $tiktok, $facebook, $snapchat, $x, $discord, $other;
 
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
-
+    public function updatedPage($value)
+    {
+        $this->dispatchBrowserEvent('pagination-changed');
+    }
+    
+    
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%'; 
-        $this->emit('updateDataTable');
+      //  $this->emit('updateDataTable');
 		return view('livewire.admin.contacts.view', [
 			'admincontacts' => Admincontact::with('user', 'admincontacttag')
 				->latest()

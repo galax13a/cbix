@@ -7,19 +7,19 @@
 					
 				<div class="card-header bg-transparent" >					
 					<x-btnmore/>					
-				</div>
-				
+				</div>				
 				<div class="card-body">
-						@include('livewire.admin.contacts.modals')
-				<div class="table-responsive">
-					<table class="table table-striped table-sm display" id="datatable">
-						<thead class="thead">
+				@include('livewire.admin.contacts.modals')
+
+				<div class="table-responsive" style="max-width: 100%; min-width:460px;" >
+					<table class="table align-middle" id="datatable">
+						<thead class="thead text-center">
 							<tr> 
-								<td>#</td> 
+								<th>#</td> 
 								<th>Name</th>
 								<th>Nick</th>
 								<th>Type</th>
-								<th>Active</th>
+								<th class="desktop-only">Active</th>
 								<th>Email</th>
 								<th>Birthday</th>
 								<th>Code</th>
@@ -35,12 +35,12 @@
 								<th class="text-center thead">Cmd</th>
 							</tr>
 						</thead>
-						<tbody>
+						<tbody class="text-center">
 							@forelse($admincontacts as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
-								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
+								<td data-record="{{ $row->id }}">{{ $row->nick_name }}</td>
 								<td>{{ $row->admincontacttag->name }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td>{{ $row->email }}</td>
@@ -68,7 +68,7 @@
 							@endforelse
 						</tbody>
 					</table>						
-					<div class="float-end">{{ $admincontacts->links() }}</div>
+					<div class="float-end">{{ $admincontacts->links('tema-paginado') }}</div>
 					
 				</div>
 			
@@ -78,49 +78,132 @@
 	</div>
 
 	<style>
-	
+		
+.table-responsive {
+    overflow-x: auto;
+}
 
+/* Estilos para dispositivos móviles (ancho de pantalla menor a 768px) */
+@media (max-width: 768px) {
+    /* Agrega estilos para ocultar las celdas en la vista móvil */
+    .table-responsive td,
+    .table-responsive th {
+        display: block;
+    }
+
+    /* Estilos para cada tarjeta de fila en dispositivos móviles */
+    .table-responsive tr {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+
+    /* Estilos para las etiquetas de columna en dispositivos móviles */
+    .table-responsive th {
+        display: none;
+    }
+}
+
+		
+
+	nav.table-responsive::before {
+    /* Anula los estilos de ::before en nav dentro de .content con clase .table-responsive */
+    content: none; /* Elimina el contenido generado por ::before */
+    width: auto; /* Restaura el ancho a su valor predeterminado */
+    height: auto; /* Restaura la altura a su valor predeterminado */
+    bottom: auto; /* Restaura la posición vertical a su valor predeterminado */
+    left: auto; /* Restaura la posición horizontal a su valor predeterminado */
+    border-radius: initial; /* Restaura el valor predeterminado del radio de borde */
+    box-shadow: none; /* Elimina la sombra del elemento ::before */
+}
+
+.table-responsive.nav {
+    /* Estilos específicos de tu barra de navegación personalizada */
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1000;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
+ ul.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+
+ ul.pagination li.page-item {
+    margin: 0 2px;
+}
+
+
+ ul.pagination li.page-item.active span.page-link {
+    background-color: purple; 
+    color: #fff; 
+    border-color: purple; 
+}
+
+
+ ul.pagination li.page-item:first-child,
+ ul.pagination li.page-item:last-child {
+    display: none;
+}
+
+
+ ul.pagination li.page-item button.page-link {
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6; 
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 5px 10px;
+}
+
+
+ ul.pagination li.page-item button.page-link:hover {
+    background-color: #007bff; 
+    color: #fff; 
+}
+
+ ul.pagination li.page-item button.page-link[rel="prev"],
+ ul.pagination li.page-item button.page-link[rel="next"] {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+ ul.pagination li.page-item.active span.page-link {
+    background-color: purple;
+    color: #fff;
+    border-color: purple;
+	padding: 8px;
+}
+
+.table-responsive nav {
+	 content: "";
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Alinea los elementos a la derecha */
+    z-index: 1000;
+    position: relative; /* Agrega posición relativa para que el contenido de la tabla no se superponga */
+    border-bottom: 1px solid #ddd; /* Agrega un borde inferior */
+}
 	</style>
 
 <script>
-    $(document).ready(function() {
-        //document.querySelector("#datatable_paginate").style.display = "none";
-		$('#datatable').DataTable({
-					dom: 'Bfrtip',
-					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-					responsive: true,
-					autoWidth: false,
-					paging: false,
-					searching: true,
-				});
-        Livewire.on('updateDataTable', function() {			
-                    setTimeout(function() {
-						$('#datatable').DataTable({
-					dom: 'Bfrtip',
-					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-					responsive: true,
-					autoWidth: false,
-					paging: false,
-					searching: true,
-				});			
-					alert('Update Data Table');
-                }, 1000); 				     
-        });
-        Livewire.hook('message.received', () => {
-            if ($.fn.DataTable.isDataTable('#datatable')) {
-				$('#datatable').DataTable().destroy();
-			}
-				$('#datatable').DataTable({
-					dom: 'Bfrtip',
-					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
-					responsive: true,
-					autoWidth: false,
-					paging: false,
-					searching: true,
-				});
-			});
-        });
 
-    </script>
+</script>
 
 </div>
