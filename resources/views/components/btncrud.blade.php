@@ -1,5 +1,5 @@
 <div>
-    <div class="btn-group btn-group-sm mt-0 shadow-sm text-end" role="group" aria-label="CRUD Button">
+    <div class="btn-group btn-group-sm mt-0 shadow-sm text-end rounded-3 p-1" role="group" aria-label="CRUD Button">
         <button 
         title="{{ __('messages.btn-crud-edit') }}" 
         type="button" class="btn btn-light"
