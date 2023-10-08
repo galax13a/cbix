@@ -56,9 +56,9 @@
 								<td>{{ $row->discord }}</td>
 								<td>{{ $row->other }}</td>
 								<td width="90">
-											<x-btncrud> 
-											<x-slot name="id_editar">{{$row->id}}</x-slot>
-										</x-btncrud>						
+								<x-btncrud>
+									<x-slot name="id_editar">{{$row->id}}</x-slot>
+								</x-btncrud>
 								</td>
 							</tr>
 							@empty
@@ -69,21 +69,58 @@
 						</tbody>
 					</table>						
 					<div class="float-end">{{ $admincontacts->links() }}</div>
-					</div>
+					
+				</div>
+			
 				</div>
 			</div>
 		</div>
 	</div>
 
-	<script>
-		$(document).ready(function() {
+	<style>
+	
+
+	</style>
+
+<script>
+    $(document).ready(function() {
+        //document.querySelector("#datatable_paginate").style.display = "none";
+		$('#datatable').DataTable({
+					dom: 'Bfrtip',
+					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+					responsive: true,
+					autoWidth: false,
+					paging: false,
+					searching: true,
+				});
+        Livewire.on('updateDataTable', function() {			
+                    setTimeout(function() {
+						$('#datatable').DataTable({
+					dom: 'Bfrtip',
+					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
+					responsive: true,
+					autoWidth: false,
+					paging: false,
+					searching: true,
+				});			
+					alert('Update Data Table');
+                }, 1000); 				     
+        });
+        Livewire.hook('message.received', () => {
+            if ($.fn.DataTable.isDataTable('#datatable')) {
+				$('#datatable').DataTable().destroy();
+			}
 				$('#datatable').DataTable({
 					dom: 'Bfrtip',
 					buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
 					responsive: true,
 					autoWidth: false,
+					paging: false,
+					searching: true,
 				});
 			});
-		</script>
+        });
+
+    </script>
 
 </div>
