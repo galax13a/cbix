@@ -6,41 +6,6 @@
 @push('scripts-body')
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {    
-    if (window.innerWidth <= 768) {
-        var rows = document.querySelectorAll('table tbody tr');
-        rows.forEach(function (row) {
-            var cells = row.querySelectorAll('td');
-            var headers = document.querySelectorAll('table th');
-            cells.forEach(function (cell, index) {
-                var label = headers[index].textContent;
-                var strongLabel = document.createElement('strong');
-                strongLabel.textContent = label + ': ';
-                cell.prepend(strongLabel);
-            });
-        });
-    }
-
-    Livewire.hook('message.sent', () => {
-     setTimeout(function() {
-        if (window.innerWidth <= 768) {
-        var rows = document.querySelectorAll('table tbody tr');
-        rows.forEach(function (row) {
-            var cells = row.querySelectorAll('td');
-            var headers = document.querySelectorAll('table th');
-            cells.forEach(function (cell, index) {
-                var label = headers[index].textContent;
-                var strongLabel = document.createElement('strong');
-                strongLabel.textContent = label + ': ';
-                cell.prepend(strongLabel);
-            });
-        });
-    }
-}, 2000); // 1000 milisegundos (1 segundo)
-       
-});
-
-});
     </script>
 
 @endpush

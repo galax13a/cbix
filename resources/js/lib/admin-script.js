@@ -1,4 +1,46 @@
 
+document.addEventListener('DOMContentLoaded', function () {
+    
+    if (window.innerWidth <= 768) {        
+        var rows = document.querySelectorAll('table tbody tr');
+        if(rows){
+            rows.forEach(function (row) {
+                var cells = row.querySelectorAll('td');
+                var headers = document.querySelectorAll('table th');
+                cells.forEach(function (cell, index) {
+                    var label = headers[index].textContent;
+                    var strongLabel = document.createElement('strong');
+                    strongLabel.textContent = label + ': ';
+                    cell.prepend(strongLabel);
+                });
+            });
+        }
+    }
+
+    Livewire.hook('message.sent', () => {
+        setTimeout(function () {
+            if (window.innerWidth <= 768) {
+                var rows = document.querySelectorAll('table tbody tr');
+                if(rows){
+                rows.forEach(function (row) {
+                    var cells = row.querySelectorAll('td');
+                    var headers = document.querySelectorAll('table th');
+                    cells.forEach(function (cell, index) {
+                        var label = headers[index].textContent;
+                        var strongLabel = document.createElement('strong');
+                        strongLabel.textContent = label + ': ';
+                        cell.prepend(strongLabel);
+                    });
+                });
+            }
+            }
+        }, 666); // 1000 milisegundos (1 segundo)
+
+    });
+    
+
+});
+
 const sideLinks = document.querySelectorAll('.sidebar-app .side-menu li a:not(.logout)');
 
 sideLinks.forEach(item => {
@@ -24,14 +66,14 @@ const appMenuHomeState = localStorage.getItem(appMenuHomeKey) || 'close';
 
 // Si la variable existe en localStorage, aplica el estado guardado
 if (appMenuHomeState) {
-  sideBar.classList.toggle('close', appMenuHomeState === 'closed');
+    sideBar.classList.toggle('close', appMenuHomeState === 'closed');
 }
 
 menuBar.addEventListener('click', () => {
-  // Cambia el estado y guarda en localStorage
-  sideBar.classList.toggle('close');
-  const newState = sideBar.classList.contains('close') ? 'closed' : 'open';
-  localStorage.setItem(appMenuHomeKey, newState);
+    // Cambia el estado y guarda en localStorage
+    sideBar.classList.toggle('close');
+    const newState = sideBar.classList.contains('close') ? 'closed' : 'open';
+    localStorage.setItem(appMenuHomeKey, newState);
 });
 
 const searchBtn = document.querySelector('.content nav form .form-input button');
@@ -84,15 +126,15 @@ function applyTheme(theme) {
 toggler.addEventListener('change', function () {
     if (this.checked) {
         localStorage.setItem('theme', 'dark');
-        applyTheme('dark'); 
+        applyTheme('dark');
     } else {
-        localStorage.setItem('theme', 'light'); 
+        localStorage.setItem('theme', 'light');
         applyTheme('light');
     }
 });
 
 if (storedTheme) {
-    applyTheme(storedTheme); 
+    applyTheme(storedTheme);
 } else {
 
     applyTheme('dark');
@@ -101,14 +143,14 @@ if (storedTheme) {
 // admin js
 
 window.addEventListener('notify', event => { // notificaciones y modals
-    const { type, message, OpenWin36,position = 'center-center' } = event.detail;
+    const { type, message, OpenWin36, position = 'center-center' } = event.detail;
     //Notiflix.Notify[type](message);
     Notiflix.Notify[type](message, {
         timeout: 3300,
         showOnlyTheLastOne: true,
         position
-      });
-    if (OpenWin36) {       
+    });
+    if (OpenWin36) {
         openModal(OpenWin36);
     }
     function openModal(Wincr36) {
@@ -195,7 +237,7 @@ window.addEventListener('loading', event => {
 
     const { type_loading, seg } = event.detail;
     /*  Loading.standard();  Loading.hourglass();  Loading.circle();  Loading.arrows();    Loading.dots();        Loading.pulse();
-    */    
+    */
     if (Notiflix.Loading[type_loading]) {
         Notiflix.Loading[type_loading]('Loading...');
         Notiflix.Loading.remove(seg);
@@ -229,7 +271,7 @@ function dispatchLoadingEvent(type_loading, seg) {
     window.dispatchEvent(event);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
 
     let addModal0 = document.querySelector('#createDataModal');
     if (addModal0) {
@@ -274,11 +316,11 @@ function openwin36(modalName) { // open close all modals
     var closeButton = document.querySelector("#btn-close-table") || document.querySelector(
         "#TableShowDataModal > div > div > div.modal-header > button");
     if (closeButton) {
-        closeButton.addEventListener('click', function() {
+        closeButton.addEventListener('click', function () {
             myModalwin32.hide();
             var elements = document.querySelectorAll('.modal-backdrop.fade.show');
 
-            elements.forEach(function(element) {
+            elements.forEach(function (element) {
                 element.remove();
             });
         });

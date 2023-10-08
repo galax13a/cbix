@@ -10,8 +10,9 @@
 				</div>				
 				<div class="card-body">
 				@include('livewire.admin.contacts.modals')
+	
 
-				<div class="table-responsive" style="max-width: 100%; min-width:460px;" >
+				<div class="table-responsive" >
 					<table class="table align-middle" id="datatable">
 						<thead class="thead text-center">
 							<tr> 
@@ -32,18 +33,18 @@
 								<th>X</th>
 								<th>Discord</th>
 								<th>Other</th>
-								<th class="text-center thead">Cmd</th>
+								<th class="text-center thead"><i class='bx bxs-id-card'></i></th>
 							</tr>
 						</thead>
-						<tbody class="text-center">
+						<tbody class="text-center ">
 							@forelse($admincontacts as $row)
-							<tr>
+							<tr class="fw-medium">
 								<td>{{ $loop->iteration }}</td> 
 								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
 								<td data-record="{{ $row->id }}">{{ $row->nick_name }}</td>
 								<td>{{ $row->admincontacttag->name }}</td>
 								<td class="text-center"><x-com-active :active="$row->active" /></td>
-								<td>{{ $row->email }}</td>
+								<td> <span class="d-none d-md-inline d-md-none">Email : </span> {{ $row->email }}</td>
 								<td>{{ $row->birthday }}</td>
 								<td>{{ $row->phone_code }}</td>
 								<td>{{ $row->whatsapp }}</td>
@@ -55,10 +56,10 @@
 								<td>{{ $row->x }}</td>
 								<td>{{ $row->discord }}</td>
 								<td>{{ $row->other }}</td>
-								<td width="90">
-								<x-btncrud>
-									<x-slot name="id_editar">{{$row->id}}</x-slot>
-								</x-btncrud>
+								<td  class="text-end">
+									<x-btncrud>
+										<x-slot name="id_editar">{{$row->id}}</x-slot>
+									</x-btncrud>
 								</td>
 							</tr>
 							@empty
@@ -78,38 +79,61 @@
 	</div>
 
 	<style>
-		
-@media (max-width: 768px) {
-   
-    .table-responsive td,
-    .table-responsive th {
-        display: block;
-    }
 
-    .table-responsive tr {
-        border: 1px solid #ddd;
-        margin-bottom: 10px;
-        padding: 10px;
-        background-color: #f9f9f9;
-    }
-
-    .table-responsive th {
-        display: none;
-    }
+/*
+ ul.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-	nav.table-responsive::before {
-    content: none; 
-    width: auto; 
-    height: auto; 
-    bottom: auto; 
-    left: auto; 
-    border-radius: initial; 
-    box-shadow: none; 
+ ul.pagination li.page-item {
+    margin: 0 2px;
+}
+ ul.pagination li.page-item.active span.page-link {
+    background-color: purple; 
+    color: #fff; 
+    border-color: purple; 
+}
+ ul.pagination li.page-item:first-child,
+ ul.pagination li.page-item:last-child {
+    display: none;
 }
 
-.table-responsive.nav {
+ ul.pagination li.page-item button.page-link {
+    color: #007bff;
+    background-color: #fff;
+    border: 1px solid #dee2e6; 
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 5px 10px;
+}
 
+ ul.pagination li.page-item button.page-link:hover {
+    background-color: #007bff; 
+    color: #fff; 
+}
+
+ ul.pagination li.page-item button.page-link[rel="prev"],
+ ul.pagination li.page-item button.page-link[rel="next"] {
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    font-size: 18px;
+    line-height: 1;
+}
+
+ ul.pagination li.page-item.active span.page-link {
+    background-color: purple;
+    color: #fff;
+    border-color: purple;
+	padding: 8px;
+}
+
+.table-responsive nav {
+	 content: "";
     height: 56px;
     background: var(--light);
     padding: 0 24px 0 0;
@@ -117,9 +141,10 @@
     align-items: center;
     justify-content: flex-end;
     z-index: 1000;
-    position: relative;
-    border-bottom: 1px solid #ddd;
+    position: relative; 
+    border-bottom: 1px solid #ddd; 
 }
+*/
 	</style>
 
 <script>
