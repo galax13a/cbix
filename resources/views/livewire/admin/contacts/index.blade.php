@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
     }
-}, 3000); 
+}, 2000); // 1000 milisegundos (1 segundo)
        
 });
 

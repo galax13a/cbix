@@ -79,6 +79,47 @@
 
 	<style>
 		
+@media (max-width: 768px) {
+   
+    .table-responsive td,
+    .table-responsive th {
+        display: block;
+    }
+
+    .table-responsive tr {
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f9f9f9;
+    }
+
+    .table-responsive th {
+        display: none;
+    }
+}
+
+	nav.table-responsive::before {
+    content: none; 
+    width: auto; 
+    height: auto; 
+    bottom: auto; 
+    left: auto; 
+    border-radius: initial; 
+    box-shadow: none; 
+}
+
+.table-responsive.nav {
+
+    height: 56px;
+    background: var(--light);
+    padding: 0 24px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1000;
+    position: relative;
+    border-bottom: 1px solid #ddd;
+}
 	</style>
 
 <script>
