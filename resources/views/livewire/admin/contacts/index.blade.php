@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     Livewire.hook('message.sent', () => {
      setTimeout(function() {
-        if (window.innerWidth <= 660) {
+        if (window.innerWidth <= 768) {
         var rows = document.querySelectorAll('table tbody tr');
         rows.forEach(function (row) {
             var cells = row.querySelectorAll('td');
