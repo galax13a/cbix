@@ -112,7 +112,7 @@
             <i class='bx bx-menu'></i>
             <strong class="ml-3"> @hasSection('title_app') @yield('title_app')@endif </strong>
           
-            <form action="#">
+            <form action="#" class="d-none">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
                     <button class="search-btn" type="submit"><i class='bx bx-search'></i></button>
@@ -124,12 +124,14 @@
             <div class="modetema" id="modetema">
                 <strong>Dark</strong>
             </div>
-            <a href="#" class="notif">
+            <a href="#" class="notif d-none" >
                 <i class='bx bx-bell'></i>
                 <span class="count">12</span>
             </a>
-            <a href="{{ url('app/profile') }}" class="profile">
-                <img title="Virtual Cams" class="mx-4" width="26px" height="26px" src="{{ asset('/icons/cam.svg') }}" alt="Logo">
+            <a href="{{ url('app/profile') }}" class="notif" >
+                <i class='bx bxs-webcam' ></i>
+                <span class="count">{{ random_int(1, 99) }}</span>
+
             </a>
         </nav>
         <!-- End of Navbar -->

@@ -4,15 +4,20 @@
 
 			<div class="col-md-12 my-2" id="view-js-live-pages">
 			<div class="card">			
-					
 				<div class="card-header bg-transparent" >					
-					<x-btnmore/>					
+					<div class="container">
+						<div class="row">
+							<div class="col-6"><x-btnmore/></div>
+							<div class="col-6 text-end"> <a target="_blank" href="{{ url('export/contacts')}}"> <i class='bx bxs-file-export' ></i> Export Contact</a></div>
+						</div>
+					</div>
+								
 				</div>				
 				<div class="card-body">
 				@include('livewire.admin.contacts.modals')
 	
-
 				<div class="table-responsive" >
+					
 					<table class="table align-middle" id="datatable">
 						<thead class="thead text-center">
 							<tr> 

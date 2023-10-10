@@ -49,6 +49,12 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+        <a href="{{ url('/admin/adminsettings') }}" class="nav-link">🟣 Adminsettings</a>
+    </li>
+						<li class="nav-item">
+        <a href="{{ url('/admin/favorites') }}" class="nav-link">🟣 Adminfavorites</a>
+    </li>
+						<li class="nav-item">
         <a href="{{ url('/admin/contacts') }}" class="nav-link">🟣 Admincontacts</a>
     </li>
 						<li class="nav-item">

@@ -32,13 +32,18 @@ class Admincontacts extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%'; 
       //  $this->emit('updateDataTable');
-		return view('livewire.admin.contacts.view', [
-			'admincontacts' => Admincontact::with('user', 'admincontacttag')
-				->latest()
-				->where('user_id', auth()->id())
-				->where('name', 'LIKE', $keyWord)
-				->paginate(3)
-		]);
+      return view('livewire.admin.contacts.view', [
+        'admincontacts' => Admincontact::with('user', 'admincontacttag')
+            ->latest()
+            ->where('user_id', auth()->id())
+            ->where(function ($query) use ($keyWord) {
+                $query->where('name', 'LIKE', $keyWord)
+                      ->orWhere('nick_name', 'LIKE', $keyWord)
+                      ->orWhere('email', 'LIKE', $keyWord);
+            })
+            ->paginate(50)
+    ]);
+    
       
 		
     }

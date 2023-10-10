@@ -5,7 +5,7 @@
              placeholder="{{ __('messages.keyword-new') }}">
         </div>
         <button id="btn-new" type="button" class="btn btn-icon shadow-md m-2" data-bs-toggle="modal" data-bs-target="#createDataModal">
-            ➕ <strong> {{ __('messages.new') }}   </strong>     
+            ➕ <strong> {{ __('messages.new') }} {{$topico}}  </strong>     
                  
         </button>       
         @if (session()->has('message'))

@@ -24,7 +24,7 @@ class Supports extends Component
     {
 		$keyWord = '%'.$this->keyWord .'%';
 
-        return view('livewire.supports.view', [
+        return view('livewire.appsupports.view', [
     'supports' => Support::latest()
         ->where(function ($query) use ($keyWord) {
             $query->where('name', 'LIKE', $keyWord)

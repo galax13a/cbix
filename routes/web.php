@@ -18,6 +18,9 @@ use Illuminate\Http\Request;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+Route::get('/export/{tabledata}', 'App\Http\Controllers\ExportTableController@exportTable')->name('export')->middleware('auth');
+
+//Route::get('/export/favorites', 'ExportTableController@exportTable')->name('export.favorites');
 
 Route::get('/google-auth/redirect', function () {
   
@@ -88,7 +91,9 @@ Route::get('/cbhrs', function () { // test speed
     return view('cbhrs');
 });
 
-Route::view('supports', 'livewire.supports.index')->middleware('auth')->name('supports');
+Route::view('admin/supports', 'livewire.admin.dashboard.supports_admin.index')
+->middleware('can:admin.supports')->name('admin.supports');
+Route::view('app/support', 'livewire.appsupports.index')->middleware('auth')->name('supports');
 
 Auth::routes();
 
@@ -104,6 +109,11 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('admin/adminsettings', 'livewire.admin.adminsettings.index')->middleware('auth');
+	Route::view('app/settings', 'livewire.admin.adminsettings.index')->middleware('auth');
+	
+	Route::view('app/favorites', 'livewire.admin.favorites.index')->middleware('auth');
+    Route::view('app/supports', 'livewire.admin.favorites.index')->middleware('auth');
 	
 	Route::view('app/contacts', 'livewire.admin.contacts.index')->middleware('auth');
 	Route::view('admin/contacttags', 'livewire.admin.contacttags.index')->middleware('auth');

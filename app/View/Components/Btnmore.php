@@ -8,6 +8,7 @@ use Illuminate\View\Component;
 
 class Btnmore extends Component
 {
+    public $topico = null;
     /**
      * Create a new component instance.
      */
