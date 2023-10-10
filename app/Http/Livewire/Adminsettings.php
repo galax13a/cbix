@@ -23,17 +23,21 @@ class Adminsettings extends Component
 
     public function render()
     {
-		$keyWord = '%'.$this->keyWord .'%';
+		     $adminsetting = Adminsetting::with('user')
+            ->latest()
+            ->where('user_id', auth()->id())
+            ->first();    
 
+        if ($adminsetting) {
+                if($this->pagemaster_id ||  $this->role_id ){
+                   
+                }else $this->edit($adminsetting->id);
+            }
+        
         return view('livewire.admin.adminsettings.view', [
-            'adminsettings' => Adminsetting::with('user')->latest()
-
-                ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {     
-                    $query->where('name', 'LIKE', $keyWord)        
-                    ->orWhere('name', 'LIKE', $keyWord); 
-                })->paginate(10)
+            'adminsettings' => $adminsetting,
         ]);
+        
     }
 	
     public function cancel()
@@ -59,6 +63,8 @@ class Adminsettings extends Component
 		'name' => 'required',
 		'country' => 'required',
 		'phone_number' => 'required',
+        'pagemaster_id' => 'required',
+        'role_id' => 'required',
         ]);
 
         Adminsetting::create([ 
