@@ -17,7 +17,9 @@
 			   
                     <div class="card">
                         <div class="card-header bg-transparent" wire:key='edit-settings'>
-                            <h2>Edit Profile</h2>
+                            
+							<div class="col-6"><h2>Edit Profile / Credits : <mark class="rounded-3 shadow"> {{$bots}} </mark> </h2></div>
+			
                         </div>
                         <div class="card-body">
 							<form>
@@ -85,7 +87,7 @@
 											@error('pagemaster_id') <span class="error text-danger">{{ $message }}</span> @enderror
 										</div>
 							 
-									   <label for="table"></label>
+									   <label for="table">Define your role on the sexcam</label>
 										   <div class="form-group">
 											<x-com-select-table table-name="roles" id="role_id" display-name="name" />@error('role_id') <span class="error text-danger">{{ $message }}</span> @enderror
 										</div>

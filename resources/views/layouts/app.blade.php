@@ -49,19 +49,20 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-        <a href="{{ url('/admin/adminsettings') }}" class="nav-link">🟣 Adminsettings</a>
+        <a href="{{ url('/admin/adminpremiums') }}" class="nav-link">🟣 Adminsettings</a>
     </li>
 						<li class="nav-item">
-        <a href="{{ url('/admin/favorites') }}" class="nav-link">🟣 Adminfavorites</a>
+        <a href="{{ url('/admin/adminsettings') }}" class="nav-link">🟣 settings</a>
     </li>
 						<li class="nav-item">
-        <a href="{{ url('/admin/contacts') }}" class="nav-link">🟣 Admincontacts</a>
+        <a href="{{ url('/admin/favorites') }}" class="nav-link">🟣 favorites</a>
     </li>
 						<li class="nav-item">
-        <a href="{{ url('/app/contacts') }}" class="nav-link">🟣 Admincontacts</a>
+        <a href="{{ url('/admin/contacts') }}" class="nav-link">🟣 contacts</a>
     </li>
+
 						<li class="nav-item">
-        <a href="{{ url('/admin/contacttags') }}" class="nav-link">🟣 Admincontacttags</a>
+        <a href="{{ url('/admin/contacttags') }}" class="nav-link">🟣 contacttags</a>
     </li>
 				                 
 						<li class="nav-item">

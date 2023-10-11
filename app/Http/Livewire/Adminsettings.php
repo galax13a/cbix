@@ -62,7 +62,7 @@ class Adminsettings extends Component
         $this->validate([
 		'name' => 'required',
 		'country' => 'required',
-		'phone_number' => 'required',
+		'phone_number' => 'required|min:6|numeric',
         'pagemaster_id' => 'required',
         'yoursex' => 'required',
         'role_id' => 'required',
@@ -74,7 +74,7 @@ class Adminsettings extends Component
 			'preferred_language' => $this-> preferred_language,
 			'country' => $this-> country,
 			'phone_number' => $this-> phone_number,
-			'bots' => $this-> bots,
+			'bots' => 25,
 			'pagemaster_id' => $this-> pagemaster_id,
 			'role_id' => $this-> role_id,
             'yoursex'=> $this-> yoursex,
@@ -134,7 +134,7 @@ class Adminsettings extends Component
         $this->validate([
 		'name' => 'required',
 		'country' => 'required',
-		'phone_number' => 'required',
+		'phone_number' => 'required|min:6|numeric',
         ]);            
 
         $record = Adminsetting::findOrFail($this->selected_id);
@@ -144,14 +144,14 @@ class Adminsettings extends Component
                 if ($this->selected_id) {
                     $record = Adminsetting::find($this->selected_id);
                     $record->update([ 
-			'name' => $this-> name,
-			'pic' => $this-> pic,
-			'preferred_language' => $this-> preferred_language,
-			'country' => $this-> country,
-			'phone_number' => $this-> phone_number,
-			'bots' => $this-> bots,
-			'pagemaster_id' => $this-> pagemaster_id,
-			'role_id' => $this-> role_id
+                    'name' => $this-> name,
+                    'pic' => $this-> pic,
+                    'preferred_language' => $this-> preferred_language,
+                    'country' => $this-> country,
+                    'phone_number' => $this-> phone_number,
+                    'bots' => $this-> bots,
+                    'pagemaster_id' => $this-> pagemaster_id,
+                    'role_id' => $this-> role_id
                     ]);
 
                     $this->resetInput();
