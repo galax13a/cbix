@@ -18,7 +18,7 @@ return new class extends Migration
             $table->enum('yoursex', ['Male', 'Female', 'Transgender', 'bi sexual', 'female gay', 'male gay', 'Genderfluid', 'Intersex', 'Gender not binary'])->nullable();
             $table->string('pic')->nullable();
             $table->string('preferred_language')->nullable()->defaultValue('en');
-            $table->string('country');
+            $table->string('country',66);
             $table->string('phone_number',33);
             $table->integer('bots')->nullable()->defaultValue(25);
             $table->unsignedBigInteger('pagemaster_id')->nullable();

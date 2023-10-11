@@ -14,7 +14,7 @@ class Adminsettings extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $pic, $preferred_language, $country, $phone_number, $bots, $pagemaster_id, $role_id;
+    public $selected_id, $keyWord, $name, $pic, $preferred_language, $country, $phone_number, $bots, $pagemaster_id, $role_id,$yoursex;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -64,6 +64,7 @@ class Adminsettings extends Component
 		'country' => 'required',
 		'phone_number' => 'required',
         'pagemaster_id' => 'required',
+        'yoursex' => 'required',
         'role_id' => 'required',
         ]);
 
@@ -75,7 +76,8 @@ class Adminsettings extends Component
 			'phone_number' => $this-> phone_number,
 			'bots' => $this-> bots,
 			'pagemaster_id' => $this-> pagemaster_id,
-			'role_id' => $this-> role_id
+			'role_id' => $this-> role_id,
+            'yoursex'=> $this-> yoursex,
         ]);
         
         $this->resetInput();
@@ -109,6 +111,7 @@ class Adminsettings extends Component
 		$this->bots = $record-> bots;
 		$this->pagemaster_id = $record-> pagemaster_id;
 		$this->role_id = $record-> role_id;
+        $this->yoursex = $record-> yoursex;
         } else {           
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'failure',

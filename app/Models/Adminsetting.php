@@ -13,7 +13,7 @@ class Adminsetting extends VerifyRecordOwnership
 
     protected $table = 'adminsettings';
 
-    protected $fillable = ['name','pic','preferred_language','country','phone_number','bots','pagemaster_id','role_id']; // fillable2
+    protected $fillable = ['name','pic','preferred_language','country','phone_number','bots','pagemaster_id','role_id','yoursex']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
