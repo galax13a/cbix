@@ -1,4 +1,4 @@
-@section('title', __('Adminsettings'))
+@section('title', __('Adminpremiums'))
 <div class="container-fluid">
 	<div class="row justify-content-center">
 
@@ -17,30 +17,28 @@
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
-								<th>Yoursex</th>
-								<th>Pic</th>
-								<th>Preferred Language</th>
-								<th>Country</th>
-								<th>Phone Number</th>
+								<th>Content</th>
+								<th>Plan</th>
+								<th>Subcription</th>
+								<th>Time</th>
 								<th>Bots</th>
-								<th>Pagemaster Id</th>
-								<th>Role Id</th>
+								<th>Linkpay</th>
+								<th>Active</th>
 									<th class="text-center thead">Command</th>
 							</tr>
 						</thead>
 						<tbody>
-							@forelse($adminsettings as $row)
+							@forelse($adminpremia as $row)
 							<tr>
 								<td>{{ $loop->iteration }}</td> 
 								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
-								<td>{{ $row->yoursex }}</td>
-								<td>{{ $row->pic }}</td>
-								<td>{{ $row->preferred_language }}</td>
-								<td>{{ $row->country }}</td>
-								<td>{{ $row->phone_number }}</td>
+								<td>{{ $row->content }}</td>
+								<td>{{ $row->plan }}</td>
+								<td>{{ $row->subcription }}</td>
+								<td>{{ $row->time }}</td>
 								<td>{{ $row->bots }}</td>
-								<td>{{ $row->pagemaster->name }}</td>
-								<td>{{ $row->role->name }}</td>
+								<td>{{ $row->linkpay }}</td>
+								<td class="text-center"><x-com-active :active="$row->active" /></td>
 								<td width="90">
 											<x-btncrud> 
 											<x-slot name="id_editar">{{$row->id}}</x-slot>
@@ -54,7 +52,7 @@
 							@endforelse
 						</tbody>
 					</table>						
-					<div class="float-end">{{ $adminsettings->links() }}</div>
+					<div class="float-end">{{ $adminpremia->links() }}</div>
 					</div>
 				</div>
 			</div>

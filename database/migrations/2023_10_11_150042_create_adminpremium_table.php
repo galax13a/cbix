@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('adminpremiums', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->enum('subcription', ['Daily', 'Monthly', 'Yearly']);
-            $table->integer('days');        
+            $table->text('content');
+            $table->enum('plan', ['free','gifts', 'premium', 'subcription']);
+            $table->enum('subcription', ['daily', 'monthly', 'yearly']);
+            $table->string('time')->default('1 day')->nullable();        
             $table->integer('bots');    //cerox infinite     
+            $table->string('linkpay')->nullable();
+            $table->boolean('active');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

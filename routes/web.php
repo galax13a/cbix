@@ -110,8 +110,8 @@ Route::get('/locate/en', function () {
 
 //Route Hooks - Do not delete//
 	Route::view('admin/adminpremiums', 'livewire.admin.adminpremiums.index')->middleware('auth');
-	Route::view('admin/adminsettings', 'livewire.admin.adminsettings.index')->middleware('auth');
-	Route::view('app/settings', 'livewire.admin.adminsettings.index')->middleware('auth');
+	
+    Route::view('app/settings', 'livewire.admin.adminsettings.index')->middleware('auth');
 	
 	Route::view('app/favorites', 'livewire.admin.favorites.index')->middleware('auth');
     Route::view('app/supports', 'livewire.admin.favorites.index')->middleware('auth');

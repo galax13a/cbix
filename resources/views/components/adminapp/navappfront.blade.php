@@ -55,7 +55,12 @@
     </ul>
     
         <ul class="side-menu">
-            <li><a href="javascript:void(0);"><i class='bx bx-shield-alt-2'></i>{{ __('app.dash_pircing') }}</a></li>
+            <li class="{{ request()->is('app/premium*') ? 'active' : '' }}">
+                <a href="{{ url('/app/premium') }}">
+                    <i class='bx bx-cog'></i>{{ __('app.dash_pircing') }}
+                </a>
+            </li>
+          
             <li>
                 <a class="text-danger" class="dropdown-item" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

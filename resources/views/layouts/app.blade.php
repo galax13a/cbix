@@ -13,20 +13,14 @@
             @yield('title')
         @endif
     </title>
-
     <!-- Fonts --> 
-
     @stack('scripts-head')
-
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
     @livewireStyles
 </head>
-
 <body>
-
-    <div id="app">
-       
+    <div id="app">       
         <nav class="navbar navbar-expand-md shadow-lg">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
@@ -49,21 +43,27 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
-        <a href="{{ url('/admin/adminpremiums') }}" class="nav-link">🟣 Adminsettings</a>
+        <a href="{{ url('/admin/adminpremiums') }}" class="nav-link">🟣 Adminpremiums</a>
     </li>
 						<li class="nav-item">
-        <a href="{{ url('/admin/adminsettings') }}" class="nav-link">🟣 settings</a>
-    </li>
-						<li class="nav-item">
-        <a href="{{ url('/admin/favorites') }}" class="nav-link">🟣 favorites</a>
-    </li>
-						<li class="nav-item">
-        <a href="{{ url('/admin/contacts') }}" class="nav-link">🟣 contacts</a>
-    </li>
+                        <a href="{{ url('/admin/adminpremiums') }}" class="nav-link">🟣 Adminpremiums</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a href="{{ url('/admin/adminpremiums') }}" class="nav-link">🟣 Adminsettings</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a href="{{ url('/admin/adminsettings') }}" class="nav-link">🟣 settings</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a href="{{ url('/admin/favorites') }}" class="nav-link">🟣 favorites</a>
+                        </li>
+                                            <li class="nav-item">
+                            <a href="{{ url('/admin/contacts') }}" class="nav-link">🟣 contacts</a>
+                        </li>
 
-						<li class="nav-item">
-        <a href="{{ url('/admin/contacttags') }}" class="nav-link">🟣 contacttags</a>
-    </li>
+                                        <li class="nav-item">
+                        <a href="{{ url('/admin/contacttags') }}" class="nav-link">🟣 contacttags</a>
+                        </li>
 				                 
 						<li class="nav-item">
                             <a href="{{ url('/themas-components') }}" class="nav-link">🟣 Themacoms</a> 
