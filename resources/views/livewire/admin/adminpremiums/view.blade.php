@@ -17,6 +17,7 @@
 							<tr> 
 								<td>#</td> 
 								<th>Name</th>
+								<th>Value</th>
 								<th>Content</th>
 								<th>Plan</th>
 								<th>Subcription</th>
@@ -30,8 +31,9 @@
 						<tbody>
 							@forelse($adminpremia as $row)
 							<tr>
-								<td>{{ $loop->iteration }}</td> 
+								<td>{{ $loop->iteration }}</td> 							
 								<td data-record="{{ $row->id }}">{{ $row->name }}</td>
+								<td>{{ $row->value }}</td>
 								<td>{{ $row->content }}</td>
 								<td>{{ $row->plan }}</td>
 								<td>{{ $row->subcription }}</td>

@@ -13,16 +13,45 @@
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="value"></label>
+                        <input wire:model.defer="value" type="number" class="form-control" id="value" placeholder="Value">
+                        @error('value') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    
+
+                    <div class="form-group">
                         <label for="content"></label>
-                        <input wire:model.defer="content" type="text" class="form-control" id="content" placeholder="Content">@error('content') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <div class="input-group mt-1 shadow-sm">
+                            <span class="input-group-text">
+                                <strong>
+                                    Content <br> Create Memnbers Cheap
+                                </strong>
+                            </span>
+                              <textarea style="min-height:190px;" class="form-control" aria-label="With textarea" id="plan" wire:model.defer="content">       
+                             </textarea>                 
+                        </div>
+                        @error('content') <span class="error text-danger">{{ $message }}</span> @enderror  
                     </div>
                     <div class="form-group">
                         <label for="plan"></label>
-                        <input wire:model.defer="plan" type="text" class="form-control" id="plan" placeholder="Plan">@error('plan') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <select class="form-select" wire:model.defer="plan">
+                            <option value="">Select Plan</option>
+                            <option value="free">Free</option>
+                            <option value="gifts">Gifts</option>
+                            <option value="premium">Premium</option>
+                            <option value="subscription">Subscription</option>
+                        </select>
+                        @error('plan') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="subcription"></label>
-                        <input wire:model.defer="subcription" type="text" class="form-control" id="subcription" placeholder="Subcription">@error('subcription') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <select class="form-select" wire:model="subcription">
+                            <option value="">Select subcription</option>
+                            <option value="daily">Daily</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                        @error('subcription') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="time"></label>
@@ -68,16 +97,42 @@
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
+                        <label for="value"></label>
+                        <input wire:model.defer="value" type="number" class="form-control" id="value" placeholder="Value">
+                        @error('value') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
                         <label for="content"></label>
-                        <input wire:model.defer="content" type="text" class="form-control" id="content" placeholder="Content">@error('content') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <div class="input-group mt-1 shadow-sm">
+                            <span class="input-group-text">
+                                <strong>
+                                    Content <br> Create Memnbers Cheap
+                                </strong>
+                            </span>
+                              <textarea style="min-height:190px;" class="form-control" aria-label="With textarea" id="plan" wire:model.defer="content">       
+                             </textarea>                 
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="plan"></label>
-                        <input wire:model.defer="plan" type="text" class="form-control" id="plan" placeholder="Plan">@error('plan') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <select class="form-select" wire:model.defer="plan">
+                            <option value="">Select Plan</option>
+                            <option value="free">Free</option>
+                            <option value="gifts">Gifts</option>
+                            <option value="premium">Premium</option>
+                            <option value="subscription">Subscription</option>
+                        </select>
+                        @error('plan') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="subcription"></label>
-                        <input wire:model.defer="subcription" type="text" class="form-control" id="subcription" placeholder="Subcription">@error('subcription') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <select class="form-select" wire:model="subcription">
+                            <option value="">Select subcription</option>
+                            <option value="daily">Daily</option>
+                            <option value="monthly">Monthly</option>
+                            <option value="yearly">Yearly</option>
+                        </select>
+                        @error('subcription') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
                         <label for="time"></label>

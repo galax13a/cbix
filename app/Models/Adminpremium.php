@@ -13,7 +13,7 @@ class Adminpremium extends VerifyRecordOwnership
 
     protected $table = 'adminpremiums';
 
-    protected $fillable = ['name','content','plan','subcription','time','bots','linkpay','active']; // fillable2
+    protected $fillable = ['name','content','plan','subcription','time','bots','linkpay','active', 'value']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

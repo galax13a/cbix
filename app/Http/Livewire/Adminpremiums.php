@@ -14,7 +14,7 @@ class Adminpremiums extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $content, $plan, $subcription, $time, $bots, $linkpay, $active;
+    public $selected_id, $keyWord, $name, $content, $plan, $subcription, $time, $bots, $linkpay, $active, $value;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -57,6 +57,7 @@ class Adminpremiums extends Component
     {
         $this->validate([
 		'name' => 'required',
+        'value' => 'required',
 		'content' => 'required',
 		'plan' => 'required',
 		'subcription' => 'required',
@@ -66,6 +67,7 @@ class Adminpremiums extends Component
 
         Adminpremium::create([ 
 			'name' => $this-> name,
+            'value' => $this-> value,
 			'content' => $this-> content,
 			'plan' => $this-> plan,
 			'subcription' => $this-> subcription,
@@ -106,6 +108,7 @@ class Adminpremiums extends Component
 		$this->bots = $record-> bots;
 		$this->linkpay = $record-> linkpay;
 		$this->active = $record-> active;
+        $this->value = $record-> value;
         } else {           
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'failure',
@@ -127,6 +130,7 @@ class Adminpremiums extends Component
 
         $this->validate([
 		'name' => 'required',
+        'value' => 'required',
 		'content' => 'required',
 		'plan' => 'required',
 		'subcription' => 'required',
@@ -141,14 +145,15 @@ class Adminpremiums extends Component
                 if ($this->selected_id) {
                     $record = Adminpremium::find($this->selected_id);
                     $record->update([ 
-			'name' => $this-> name,
-			'content' => $this-> content,
-			'plan' => $this-> plan,
-			'subcription' => $this-> subcription,
-			'time' => $this-> time,
-			'bots' => $this-> bots,
-			'linkpay' => $this-> linkpay,
-			'active' => $this-> active
+                        'name' => $this-> name,
+                        'value' => $this-> value,
+                        'content' => $this-> content,
+                        'plan' => $this-> plan,
+                        'subcription' => $this-> subcription,
+                        'time' => $this-> time,
+                        'bots' => $this-> bots,
+                        'linkpay' => $this-> linkpay,
+                        'active' => $this-> active
                     ]);
 
                     $this->resetInput();
