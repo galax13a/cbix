@@ -112,6 +112,7 @@ Route::get('/locate/en', function () {
 
     Route::view('apps/webcams', 'livewire.adminapps.index')->middleware('auth')->name('appswc');
 	Route::view('apps/cbprofile', 'livewire.admin.cbprofiles.index')->middleware('auth')->name('cbprofiles');
+    Route::view('apps/editor-chaturbate', 'livewire.admin.cbprofiles.editor')->middleware('auth')->name('cbprofileshome');
 
 	Route::view('admin/adminpremiums', 'livewire.admin.adminpremiums.index')->middleware('auth');
 	

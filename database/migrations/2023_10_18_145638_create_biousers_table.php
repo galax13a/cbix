@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('biousers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('room'); //url del sitio
             $table->text('codex');
-            $table->string('link');
-            $table->boolean('pay');
+            $table->text('bio')->nullable();
+            $table->json('data')->nullable();
+            $table->string('link');            //kink afiliado
+            $table->boolean('pay')->default(false);
+            $table->boolean('active')->default(false); // publicar bio
+            $table->string('pic');
             $table->unsignedBigInteger('user_id'); // Define la columna para la relación con users
 
             $table->foreign('user_id')

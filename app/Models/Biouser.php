@@ -13,7 +13,7 @@ class Biouser extends VerifyRecordOwnership
 
     protected $table = 'biousers';
 
-    protected $fillable = ['name','codex','link','pay']; // fillable2
+    protected $fillable = ['name','codex','link','pay','room','pic', 'active', 'data']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
