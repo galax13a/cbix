@@ -43,6 +43,12 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+        <a href="{{ url('/admin/cbprofiles') }}" class="nav-link">🟣 Biousers</a>
+    </li>
+						<li class="nav-item">
+        <a href="{{ url('/admin/cbprofile') }}" class="nav-link">🟣 Biousers</a>
+    </li>
+						<li class="nav-item">
         <a href="{{ url('/admin/adminpremiums') }}" class="nav-link">🟣 Adminpremiums</a>
     </li>
 						<li class="nav-item">

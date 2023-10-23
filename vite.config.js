@@ -5,17 +5,9 @@ import path from 'path';
 export default defineConfig({
   plugins: [
     laravel({
-      input: ['resources/css/app.css', 'resources/css/home.css', 'resources/js/home.js',
-      'resources/css/adminhome.css','resources/js/adminhome.js', 'resources/js/app.js'],
+      input: ['resources/css/app.css', 'resources/css/home.css', 'resources/css/bioprofile.css', 'resources/js/home.js',
+      'resources/css/adminhome.css','resources/js/adminhome.js', 'resources/js/app.js', 'resources/js/app-wc-profile.js'],
       refresh: true,
     }),
-  ],/*
-  resolve: {
-    alias: {
-      '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-    },
-  },
-  css: {
-    postcss: './postcss.config.js', 
-  },*/
+  ],
 });

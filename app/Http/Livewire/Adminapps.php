@@ -25,9 +25,14 @@ class Adminapps extends Component
 		$keyWord = '%'.$this->keyWord .'%';
 
         return view('livewire.adminapps.view', [
-            'adminapps' => Adminapp::latest()
-						->orWhere('name', 'LIKE', $keyWord)->paginate(10)
+            'adminapps' => Adminapp::where('active', 1)
+                                   ->where(function ($query) use ($keyWord) {
+                                       $query->orWhere('name', 'LIKE', $keyWord);
+                                   })
+                                   ->latest()
+                                   ->paginate(10)
         ]);
+        
     }
 	
     public function cancel()

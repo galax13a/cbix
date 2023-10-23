@@ -11,9 +11,9 @@ class Adminapp extends Model
 	
     public $timestamps = true;
 
-    protected $table = 'adminapps';
+    protected $table = 'apps';
 
-    protected $fillable = ['name']; // fillable2
+    protected $fillable = ['name', 'en','is_approved', 'active','target','url', 'icon', 'image', 'download_url']; // fillable2
 	 
     // booted sin users [] 
 }

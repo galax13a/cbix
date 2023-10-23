@@ -23,6 +23,12 @@ return new class extends Migration
                 ->references('id')
                 ->on('pagemasters')
                 ->onDelete('cascade'); // Esto establece la relación con la tabla pagemasters
+                $table->unsignedBigInteger('biotag_id'); // Define la columna para la relación
+                $table->foreign('biotag_id')
+                    ->references('id')
+                    ->on('biotags')
+                    ->onDelete('cascade'); // Esto establece la relación con la tabla pagemasters    
+                
             $table->timestamps();
         });
     }

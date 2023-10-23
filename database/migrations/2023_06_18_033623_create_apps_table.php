@@ -39,7 +39,7 @@ return new class extends Migration
             $table->string('version')->nullable();
             $table->enum('menu', ['front', 'admin'])->nullable()->default('admin');
             $table->string('url')->nullable();
-            $table->enum('target', ['parent', 'new'])->nullable();
+            $table->enum('target', ['parent', 'new', '_self'])->nullable();
             $table->string('icon')->nullable();
             $table->string('image')->nullable();
             $table->string('download_url')->nullable();

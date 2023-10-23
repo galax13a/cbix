@@ -95,6 +95,7 @@
                         <option selected>Choose...Target</option>
                         <option value="parent">Parent</option>
                         <option value="new">New</option>
+                        <option value="_self">_Self</option>
                     </select>
                 </div>
 

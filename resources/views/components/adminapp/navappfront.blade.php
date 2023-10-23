@@ -13,7 +13,7 @@
             </a>
         </li>
         <li class="{{ request()->is('apps/chaturbate*') ? 'active' : '' }}">
-            <a href="{{ url('/apps/chaturbate') }}">
+            <a href="{{ route('appswc') }}">
                 <i class='bx bx-store-alt'></i>apps
             </a>
         </li>

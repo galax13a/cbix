@@ -109,6 +109,10 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
+
+    Route::view('apps/webcams', 'livewire.adminapps.index')->middleware('auth')->name('appswc');
+	Route::view('apps/cbprofile', 'livewire.admin.cbprofiles.index')->middleware('auth')->name('cbprofiles');
+
 	Route::view('admin/adminpremiums', 'livewire.admin.adminpremiums.index')->middleware('auth');
 	
     Route::view('app/settings', 'livewire.admin.adminsettings.index')->middleware('auth');
@@ -121,7 +125,7 @@ Route::get('/locate/en', function () {
 	
     Route::view('app/guests', 'livewire.adminguests.index')->middleware('auth');
 	Route::view('app/canva', 'livewire.admincanvas.index')->middleware('auth');
-	Route::view('apps/chaturbate', 'livewire.adminapps.index')->middleware('auth');
+
 	Route::view('app', 'livewire.admins.index')->middleware('auth');
 	Route::view('themas-components', 'livewire.themacoms.index')->middleware('auth');
 	Route::view('themas', 'livewire.themas.index')->middleware('auth');
