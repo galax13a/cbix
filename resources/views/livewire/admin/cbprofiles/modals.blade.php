@@ -3,20 +3,28 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDataModalLabel"> New Biography</h5>
+                <h5 class="modal-title" id="createDataModalLabel"><i class='bx bxs-balloon'></i> New Biography</h5>
                 <button wire:click.prevent="cancel()" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
            <div class="modal-body">
 				<form>
                     <div class="form-group">
-                        <label for="name">Name Bio</label>
-                        <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
+                        <label for="name"> <strong> Url/CB/NickUser </strong></label>
+                        <box-icon name='right-arrow' animation='spin' ></box-icon>
+                        <input wire:model="room" type="text" class="form-control" id="room" placeholder="🔖 Url Nick Chatur-bate">@error('room') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+               <div class="container text-center mt-2">
+                <a id="playmodel" data-fram = "" href="javascript:void(0)">
+                   <img src="{{ $this->photo }}" class="img-responsive rounded-4 shadow" width="90%" alt="{{ $this->name }}" title="{{ $this->name }}">
+                </a>
+                </div>
+
+                    <div class="form-group mt-4 fs-3">
+                        <label for="name">🥳Name Bio</label>
+                        <input wire:model.defer="name" style="height: 66px; font-size: 1em: " type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label for="name">Url/CB Room Webcam</label>
-                        <input wire:model.defer="room" type="text" class="form-control" id="room" placeholder="Name">@error('room') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+              
 
                     <div class="form-group d-none">
                         <label for="codex"></label>
@@ -51,15 +59,16 @@
             </div>
             <div class="modal-body">
                 <form>
+                    <div class="form-group">
+                        <label for="name">Url/CB Room Webcam</label>
+                        <input wire:model="room" type="text" class="form-control" id="room" placeholder="Name">@error('room') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
 					<input type="hidden" wire:model="selected_id">
                     <div class="form-group">
                         <label for="name">Name Bio</label>
                         <input wire:model.defer="name" type="text" class="form-control" id="name" placeholder="Name">@error('name') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                    <div class="form-group">
-                        <label for="name">Url/CB Room Webcam</label>
-                        <input wire:model.defer="room" type="text" class="form-control" id="room" placeholder="Name">@error('room') <span class="error text-danger">{{ $message }}</span> @enderror
-                    </div>
+                 
                     <div class="form-group">
                         <label for="codex"></label>
                         <a href="#"><strong>Copy Code</strong></a>

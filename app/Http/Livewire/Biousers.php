@@ -14,7 +14,7 @@ class Biousers extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $codex, $link, $pay, $room, $pic, $data_bio;
+    public $selected_id, $keyWord, $name, $codex, $link, $pay, $room, $pic, $data_bio, $photo;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -46,19 +46,7 @@ class Biousers extends Component
 		$this->link = null;
 		$this->pay = null;
     }
-    public function updatedRoom()
-    {
-        // 1. Validar que la URL tenga el dominio 'www.perfil.com'
-        $host = parse_url($this->room, PHP_URL_HOST);
-    
-        if (!in_array($host, ['www.chaturbate.com', 'chaturbate.com'])) {
-            // Lanzar una excepción de validación
-            throw ValidationException::withMessages([
-                'room' => ['Only  www.chaturbate.com.']
-            ]);
-        }
-    
-    }
+
 
     public function fetchData($username)
 {
@@ -93,6 +81,26 @@ class Biousers extends Component
             'message' => '¡There was an error checking Chaturbate!',
         ]);
         return false;
+    }
+}
+
+public function updatedRoom()
+{
+    $host = parse_url($this->room, PHP_URL_HOST);
+    
+    if (!in_array($host, ['www.chaturbate.com', 'chaturbate.com'])) {
+        // Lanzar una excepción de validación
+        throw ValidationException::withMessages([
+            'room' => ['Only  www.chaturbate.com.']
+        ]);
+    }
+    
+    $segments = explode('/', $this->room);
+    
+    // Asegurarse de que hay al menos 4 segmentos antes de intentar acceder al índice 3
+    if (isset($segments[3])) {
+        $name = $segments[3];
+        $this->photo = "https://roomimg.stream.highwebmedia.com/riw/{$name}.jpg";
     }
 }
 
