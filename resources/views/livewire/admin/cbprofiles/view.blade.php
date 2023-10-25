@@ -22,12 +22,10 @@
                             <div wire:poll.4s class="btn btn-sm btn-info" style="margin-top:0px; margin-bottom:0px;">
                                 {{ session('message') }} </div>
                         @endif
-
-
                     </div>
                 </div>
 
-                <div class="card-body">
+                <div class="card-body" wire:key='table-bios'>
                     @include('livewire.admin.cbprofiles.modals')
                     <div class="table-responsive">
                         <table class="table table-striped table-sm" id="datatable">
@@ -99,9 +97,8 @@
 																{{ $data->spoken_languages }}<br>
 																<strong>Birthday:</strong>
 																{{ $data->birthday }}<br>
-																						<div   wire:key='room-{{ $row->id }}' class="frame">
-																																	
-																<a href="{{ $row->link }}" class="load-iframe" id="room-{{ $row->id }}" data-room = "{{ $row->link }}">Room</a>
+															<div   wire:key='model-{{ $row->id }}' class="frame">																																	
+																<a href="{{ $row->link }}" data-name="{{ $row->name }}"class="load-iframe" id="room-{{ $row->id }}" data-room="{{ $row->link }}">Room</a>
 															</div>
 															</p>
 														</div>
@@ -119,7 +116,6 @@
 							
 							@if ($row->pay === 0)<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#createDataModalLicencie">Free Bio</a> @else <a href="#">PRO Bio</a>
 							@endif
-											
 										</td>
                                         <td width="90">
 										<a href="" title="license bio wc">

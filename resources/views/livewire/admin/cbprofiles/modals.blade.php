@@ -21,7 +21,7 @@
                     </div>
                     <div class="container text-center mt-2" wire:key='img-wc'>
                         <a id="playmodel" data-fram = "" href="javascript:void(0)">
-                            <img src="{{ $this->photo }}" class="img-responsive rounded-4 shadow" width="90%"
+                            <img src="{{ $this->photo }}" class="img-responsive rounded-4 shadow" width="50%"
                                 alt="{{ $this->name }}" title="{{ $this->name }}">
                         </a>
                     </div>
@@ -87,6 +87,10 @@
             <div class="modal-body">
                 <div class="ratio ratio-21x9">
                     <iframe id="iframeContent" src="" frameborder="0">Loanding</iframe>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="button">Button</button>
+                        <button class="btn btn-primary" type="button">Button</button>
+                      </div>
                 </div>
             </div>
         </div>
