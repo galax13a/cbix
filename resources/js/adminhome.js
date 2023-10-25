@@ -9,3 +9,6 @@ window.Notiflix = Notiflix;
 import 'boxicons/dist/boxicons.js';
 
 import './lib/admin-script.js';
+
+import confetti from 'canvas-confetti';
+window.confetti = confetti;

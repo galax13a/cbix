@@ -1,6 +1,7 @@
 @section('title', __('Biousers'))
 <div class="container-fluid">
     <div class="row justify-content-center">
+	
 
         <div class="col-md-12 my-2" id="view-js-live-pages">
             <div class="card">
@@ -34,10 +35,15 @@
                                 <tr>
                                     <td>#</td>
                                     <th>Name</th>
-                                    <th>Codex</th>
+                                    <th>Code-x</th>
                                     <th>Link Room</th>
                                     <th>Pay</th>
-                                    <th class="text-center thead"><i class='bx bxs-balloon'></i></th>
+                                    <th class="text-center thead">
+										<i class='bx bxs-balloon'></i>
+										<a href="" title="unlimited licenses">
+											<i class='bx bx-happy-heart-eyes'></i>
+										</a>
+									</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -46,15 +52,18 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td data-record="{{ $row->id }}">{{ $row->name }}</td>
                                         <td>
-                                            <div class="codextheme d-none" id="codextheme">
-                                                {{ $row->codex }}
+                                            <div class="codextheme " id="codextheme" data-bio = "{{ $row->codex }}">
+                                                @if ($row->codex === 'none')
+													<a href="javascript:void(0)">Create Bio <box-icon name='code-block' animation='flashing' ></box-icon></a>
+													@else													
+													<a href="#" title="copy this code and paste it in your chatur bio"><strong id="copycodex">Copy <box-icon name='code-alt' animation='tada' ></box-icon> </strong></a>
+												@endif
                                             </div>
-                                            <strong id="copycodex"><a href="#">Copy Code</a></strong>
+                                            
                                         </td>
                                         <td>
                                       
-
-											<div class="container text-center shadow rounded-3">
+											<div class="container text-center ">
 												<div class="row">
 												  <div class="col-4">
 													<img src="{{ $row->pic }}"  class="img-responsive rounded-4 shadow"
@@ -66,8 +75,10 @@
 															$data = json_decode($row->data);
 														@endphp
 
-													<div class="card shadow rounded-3 " style="width: 18rem;">
-														<div class="card-body rounded-3">
+													<div id="card-wc" class="card shadow rounded-3 bg-dark" style="width: 18rem;">
+														<div class="card-body rounded-3" style="
+														background-image: linear-gradient( 135deg, #8b8b8b4b 10%, #7b86941a 100%);
+														">
 													 
 															<h3 class="card-subtitle mb-2 text-muted text-capitalize">
 																{{ $data->username }}</h3>
@@ -88,8 +99,10 @@
 																{{ $data->spoken_languages }}<br>
 																<strong>Birthday:</strong>
 																{{ $data->birthday }}<br>
-																																
-																<a href="{{ $row->link }}" target="new">Room</a>
+																						<div   wire:key='room-{{ $row->id }}' class="frame">
+																																	
+																<a href="{{ $row->link }}" class="load-iframe" id="room-{{ $row->id }}" data-room = "{{ $row->link }}">Room</a>
+															</div>
 															</p>
 														</div>
 													</div>
@@ -103,14 +116,28 @@
                                            
                                         </td>
                                         <td>
-											@if ($row->pay === 0)<a href="#">Free Bio</a> @else <a href="#">PRO Bio</a>
-											@endif
+							
+							@if ($row->pay === 0)<a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#createDataModalLicencie">Free Bio</a> @else <a href="#">PRO Bio</a>
+							@endif
 											
 										</td>
                                         <td width="90">
-                                            <x-btncrud>
-                                                <x-slot name="id_editar">{{ $row->id }}</x-slot>
-                                            </x-btncrud>
+										<a href="" title="license bio wc">
+											<i class='bx bx-shield-plus'></i>
+										</a>
+										<a href="" title="Stats cb">
+											<i class='bx bx-pie-chart-alt-2' ></i>
+										</a>
+										<a href="" title="Social Links">
+											<i class='bx bxl-tiktok' ></i>
+										</a>
+																	
+											<div class="ctr">
+												<x-btncrud>
+													<x-slot name="id_editar">{{ $row->id }}</x-slot>
+												</x-btncrud>	
+											</div>
+                                            
                                         </td>
                                     </tr>
                                 @empty
@@ -126,4 +153,18 @@
             </div>
         </div>
     </div>
+
+
+<style>
+
+.modal-dialog  {
+     max-width: 90%; 
+	 
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+</style>
+
 </div>

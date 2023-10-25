@@ -15,13 +15,14 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('room'); //url del sitio
-            $table->text('codex');
+            $table->string('api')->nullable()->unique();
+            $table->text('codex')->nullable();
             $table->text('bio')->nullable();
             $table->json('data')->nullable();
-            $table->string('link');            //kink afiliado
+            $table->string('link')->nullable();            //kink afiliado
             $table->boolean('pay')->default(false);
             $table->boolean('active')->default(false); // publicar bio
-            $table->string('pic');
+            $table->string('pic')->nullable();
             $table->unsignedBigInteger('user_id'); // Define la columna para la relación con users
 
             $table->foreign('user_id')

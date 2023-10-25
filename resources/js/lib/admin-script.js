@@ -1,9 +1,56 @@
 
 document.addEventListener('DOMContentLoaded', function () {
-    
-    if (window.innerWidth <= 768) {        
+
+    let modalIframe = document.getElementById('iframeContent');
+    let links = document.querySelectorAll('.load-iframe');
+
+    if (links.length > 0) {
+        links.forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                let roomLink = e.target.getAttribute('data-room');
+                modalIframe.src = roomLink;
+                let myModal = new bootstrap.Modal(document.getElementById('iframeModal'));
+                myModal.show();
+            });
+        });
+    }
+
+    window.livewire.on('show-frame', () => {
+        let modalIframe = document.getElementById('iframeContent');
+        let links = document.querySelectorAll('.load-iframe');
+
+        if (links.length > 0) {
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    let roomLink = e.target.getAttribute('data-room');
+                    modalIframe.src = roomLink;
+                    let myModal = new bootstrap.Modal(document.getElementById('iframeModal'));
+                    myModal.show();
+                });
+            });
+        }
+    });
+
+    window.livewire.on('show-confetti', () => {
+        for (let i = 0; i < 5; i++) {
+            confetti({
+                particleCount: 200,
+                startVelocity: 30,
+                spread: 360,
+                origin: {
+                    x: Math.random(),
+                    y: Math.random()
+                }
+            });
+        }
+
+    });
+
+    if (window.innerWidth <= 768) {
         var rows = document.querySelectorAll('table tbody tr');
-        if(rows){
+        if (rows) {
             rows.forEach(function (row) {
                 var cells = row.querySelectorAll('td');
                 var headers = document.querySelectorAll('table th');
@@ -21,23 +68,23 @@ document.addEventListener('DOMContentLoaded', function () {
         setTimeout(function () {
             if (window.innerWidth <= 768) {
                 var rows = document.querySelectorAll('table tbody tr');
-                if(rows){
-                rows.forEach(function (row) {
-                    var cells = row.querySelectorAll('td');
-                    var headers = document.querySelectorAll('table th');
-                    cells.forEach(function (cell, index) {
-                        var label = headers[index].textContent;
-                        var strongLabel = document.createElement('strong');
-                        strongLabel.textContent = label + ': ';
-                        cell.prepend(strongLabel);
+                if (rows) {
+                    rows.forEach(function (row) {
+                        var cells = row.querySelectorAll('td');
+                        var headers = document.querySelectorAll('table th');
+                        cells.forEach(function (cell, index) {
+                            var label = headers[index].textContent;
+                            var strongLabel = document.createElement('strong');
+                            strongLabel.textContent = label + ': ';
+                            cell.prepend(strongLabel);
+                        });
                     });
-                });
-            }
+                }
             }
         }, 666); // 1000 milisegundos (1 segundo)
 
     });
-    
+
 
 });
 

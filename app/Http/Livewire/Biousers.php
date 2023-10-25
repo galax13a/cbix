@@ -45,6 +45,8 @@ class Biousers extends Component
 		$this->codex = null;
 		$this->link = null;
 		$this->pay = null;
+        $this->room = null;
+        $this->photo = null;
     }
 
 
@@ -94,18 +96,23 @@ public function updatedRoom()
             'room' => ['Only  www.chaturbate.com.']
         ]);
     }
-    
+
     $segments = explode('/', $this->room);
     
     // Asegurarse de que hay al menos 4 segmentos antes de intentar acceder al índice 3
     if (isset($segments[3])) {
         $name = $segments[3];
-        $this->photo = "https://roomimg.stream.highwebmedia.com/riw/{$name}.jpg";
+        //$this->dispatchBrowserEvent('show-confetti');       
+        $this->photo = "https://roomimg.stream.highwebmedia.com/riw/{$name}.jpg";       
+        $this->name = $name;
+
     }
 }
 
     public function store()
     {
+        $gender = $age = $location = $current_show = $username = $is_new = $num_users = $num_followers = $spoken_languages = $display_name = $birthday = $room_subject = $tags = $is_hd = $slug = $has_password = null;
+
         $this->validate([
 		'name' => 'required',
         'room' => 'required|url',
@@ -190,6 +197,10 @@ public function updatedRoom()
                 'type' => 'success',
                 'message' => '¡ Bio  Successfully created!',
             ]);
+
+        $this->emit('show-confetti');     
+        $this->emit('show-frame');     
+        
     }
 
     public function edit($id=null) //editar si es seguro y pertenece el registro a usuario
