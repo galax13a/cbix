@@ -1,10 +1,11 @@
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    /*
     let modalIframe = document.getElementById('iframeContent');
     let links = document.querySelectorAll('.load-iframe');
     let modalTitle = document.getElementById('iframeModalLabel');
-    
+
     if (links.length > 0) {
         links.forEach(link => {
             link.addEventListener('click', function (e) {
@@ -36,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+    */
 
     window.livewire.on('show-confetti', () => {
         for (let i = 0; i < 5; i++) {

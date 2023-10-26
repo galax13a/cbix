@@ -14,7 +14,7 @@ class Biousers extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $codex, $link, $pay, $room, $pic, $data_bio, $photo;
+    public $selected_id, $keyWord, $name, $codex, $link, $pay, $room, $pic, $data_bio, $photo, $morebio, $iframevideo, $campaign;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -24,6 +24,9 @@ class Biousers extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $bioCount = Biouser::where('user_id', auth()->id())->count();
+        $this->morebio = $bioCount;
+
 
         return view('livewire.admin.cbprofiles.view', [
             'biousers' => Biouser::with('user')->latest()
@@ -47,6 +50,7 @@ class Biousers extends Component
 		$this->pay = null;
         $this->room = null;
         $this->photo = null;
+        $this->campaign  = null;
     }
 
 
@@ -84,6 +88,14 @@ class Biousers extends Component
         ]);
         return false;
     }
+}
+
+public function videoiframe($link){
+    $this->iframevideo = $link;
+    $this->dispatchBrowserEvent('notify', [
+        'type' => 'success',
+        'message' => '¡Loanding Video' . $this->name,
+    ]);
 }
 
 public function updatedRoom()
@@ -199,7 +211,7 @@ public function updatedRoom()
             ]);
 
         $this->emit('show-confetti');     
-        $this->emit('show-frame');     
+       // $this->emit('show-frame');     
         
     }
 
@@ -225,6 +237,9 @@ public function updatedRoom()
 		$this->pay = $record-> pay;
         $this->room = $record-> room;
         $this->pic = $record-> pic;
+        $this->campaign = $record-> campaign;
+
+
         } else {           
             $this->dispatchBrowserEvent('notify', [
                 'type' => 'failure',
@@ -294,8 +309,19 @@ public function updatedRoom()
 
     public function destroy($id)
     {
+        $record = Biouser::findOrFail($id);
+        
+    if ($record->userCanModify()) {
         if ($id) {
             Biouser::where('id', $id)->delete();
         }
+    }    else {
+        // $this->resetForm();
+         $this->dispatchBrowserEvent('notify', [
+             'type' => 'failure',
+             'message' => '¡ Unauthorized error, Delete not recovered.!',
+         ]);
+     }  
+
     }
 }

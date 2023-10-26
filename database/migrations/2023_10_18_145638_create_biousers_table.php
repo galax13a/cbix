@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('bio')->nullable();
             $table->json('data')->nullable();
             $table->string('link')->nullable();            //kink afiliado
+            $table->string('campaign')->nullable();
             $table->boolean('pay')->default(false);
             $table->boolean('active')->default(false); // publicar bio
             $table->string('pic')->nullable();
