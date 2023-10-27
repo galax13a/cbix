@@ -32,6 +32,9 @@ class User extends Authenticatable implements BannableInterface
         'email',
         'password',
         'google_id',
+        'premium',
+        'profiles',
+        'subscription_end',
     ];
 
     /**
@@ -59,8 +62,14 @@ class User extends Authenticatable implements BannableInterface
     }
 
     public function uploadPlan()
-{
-    return $this->belongsTo('App\Models\UploadPlan');
-}
+    {
+        return $this->belongsTo('App\Models\UploadPlan');
+    }
 
+    // En User.php
+
+    public function biousers()
+    {
+        return $this->hasMany(Biouser::class);
+    }
 }

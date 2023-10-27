@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->boolean('premium')->default(false);
-            $table->dateTime('subscription_end_date')->nullable();
+            $table->integer('profiles')->default(3);
+            $table->integer('guest')->default(100);
+            $table->dateTime('subscription_end')->nullable();
         });
     }
 
@@ -24,6 +26,7 @@ return new class extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('premium');
+            $table->dropColumn('profiles');
             $table->dropColumn('subscription_end_date');
         });
     }

@@ -9,11 +9,16 @@
                     aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                
-                @if ($this->morebio>0)
+
+
+<p>you have {{ $biousersCount }} / {{auth()->user()->profiles}} free bios to save available biousers.</p>
+
+                @if($biousersCount >= 3)
                 <p></p>
                 In the free version you can only add one profile that will be saved to modify your biography
                  <a href="{{url('/app/premium')}}">unlimited pro version</a>
+                 <br>
+                 This pro version works well for designers who work on designs requested by models, or models who have more than 2 profiles on webcam sites, it would be good to have a clearer and nicer profile so that users take into account their rules and demands, as well as your gifts, wish lists, social networks, and webcam profiles. This tool is not only for models or designers, but simply for users who want to give a different style to their profile and communication links.
                 @else
                     <form>
                         <div class="form-group">
@@ -84,6 +89,44 @@
     </div>
 </div>
 
+
+<div wire:ignore.self class="modal modal-lg fade" wire:key='genere-bio' id="GenereModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iframeModalLabel">Genere Bio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-21x9">                 
+                   <input type="text">
+                   Genero Bio de
+                    
+                   <button>Generate</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div wire:ignore.self class="modal modal-lg fade" wire:key='lice-pro' id="LiceModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iframeModalLabel">License Pro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-21x9">                 
+                   <input type="text">
+                   Licencia
+                    
+                   <button>Buy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div wire:ignore.self class="modal modal-lg fade" wire:key='popiframe' id="iframeModal" tabindex="-1" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">

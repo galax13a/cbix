@@ -18,10 +18,18 @@
                             ➕ <strong> {{ __('messages.new') }} Bio
                             </strong>
                         </button>
+                        @php
+                        $user = auth()->user();
+                        $biousersCount = $user->biousers()->count();
+                    @endphp
+                         
                         @if (session()->has('message'))
                             <div wire:poll.4s class="btn btn-sm btn-info" style="margin-top:0px; margin-bottom:0px;">
                                 {{ session('message') }} </div>
                         @endif
+                    </div>
+                    <div class="container">
+                        {{ $biousersCount }} / {{auth()->user()->profiles}} free bios 
                     </div>
                 </div>
 
@@ -34,7 +42,6 @@
                                     <td>#</td>
                                     <th>Bios</th>
                                     <th>Link Room</th>
-                                   
                                     <th class="text-center thead">
                                         <i class='bx bxs-balloon'></i>
                                         <a href="" title="unlimited licenses">
@@ -47,12 +54,13 @@
                                 @forelse($biousers as $row)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                       
+
                                         <td data-record="{{ $row->id }}">
                                             <div class="codextheme " id="codextheme" data-bio = "{{ $row->codex }}">
 
                                                 @if ($row->codex === 'none')
-                                                    <a href="javascript:void(0)">{{ $row->name }} Bio <box-icon
+                                                    <a  data-bs-toggle="modal"
+                                                    data-bs-target="#GenereModal" href="javascript:void(0)">{{ $row->name }} Bio <box-icon
                                                             name='code-block' animation='flashing'></box-icon></a>
                                                 @else
                                                     <a href="#"
@@ -84,18 +92,21 @@
                                                                 style="
 														background-image: linear-gradient( 135deg, #8b8b8b4b 10%, #7b86941a 100%);
 														">
-       <div wire:key='model-{{ $row->id }}'
-        class="frame">
-        <a href="javascript:void(0)" class="load-iframe"
-            id="room-{{ $row->id }}"
-            data-bs-toggle="modal"
-            data-bs-target="#iframeModal"
-            wire:click="videoiframe('{{ $row->link }}')"
-            data-room="{{ $row->link }}">
-            <i class='bx bxs-webcam bx-tada' ></i>
-        </a>
-    </div>
-                                                                <h3 
+                                                                <div wire:key='model-{{ $row->id }}'
+                                                                    class="frame">
+                                                                    <a href="javascript:void(0)" class="load-iframe"
+                                                                        id="room-{{ $row->id }}"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#iframeModal"
+                                                                        wire:click="videoiframe('{{ $row->link }}')"
+                                                                        data-room="{{ $row->link }}"
+                                                                        title="View Models"
+                                                                        >
+                                                                        <i class='bx bxs-webcam bx-flashing text-dark' ></i>
+                                                                    </a>
+                                                             
+                                                                </div>
+                                                                <h3
                                                                     class="card-subtitle mb-2 text-muted text-capitalize">
                                                                     {{ $data->username }}</h3>
                                                                 <p class="card-text">
@@ -115,46 +126,58 @@
                                                                     {{ $data->spoken_languages }}<br>
                                                                     <strong>Birthday:</strong>
                                                                     {{ $data->birthday }}<br>
-                                                         
+
                                                                 </p>
                                                             </div>
                                                             <div class="premium text-white">
                                                                 @if ($row->pay === 0)
-                                                                    <a href="javascript:void(0)" data-bs-toggle="modal"
-                                                                        data-bs-target="#createDataModalLicencie">Free
-                                                                        Bio</a>
+                                                                    <a href="javascript:void(0)"   data-bs-toggle="modal"
+                                                                        data-bs-target="#createDataModalLicencie">
+                                                                        Free  Bio
+                                                                    </a>
                                                                 @else
                                                                     <a href="#"><i
-                                                                            class='bx bx-shield-alt-2 bx-tada'></i> PRO
-                                                                        BIO</a>
+                                                                            class='bx bx-shield-alt-2 bx-tada'></i> 
+                                                                    PRO  BIO</a>
                                                                 @endif
+                                                        
+                                                                <a href="{{url('/bio/id/name')}}" target="_blank">
+                                                                    <i class='bx bx-webcam' ></i>
+                                                                </a>
                                                             </div>
-                                                            <div class="premium text-white bg-light rounded-3">
-                                                                <button type="button" class="btn btn-link" title="License bio wc">
+                                                            <div class="premium text-white bg-light rounded-3">                                                               
+                                                            
+
+                                                                <button type="button" class="btn btn-link"
+                                                                    title="License bio wc"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#LiceModal"
+                                                                    >
                                                                     <i class='bx bx-shield-plus'></i>
                                                                 </button>
-                                                                
-                                                                <button type="button" class="btn btn-link" title="Stats cb">
+
+                                                                <button type="button" class="btn btn-link"
+                                                                    title="Stats cb">
                                                                     <i class='bx bx-pie-chart-alt-2'></i>
                                                                 </button>
-                                                                
-                                                                <button type="button" class="btn btn-link" title="Social Links">
+
+                                                                <button type="button" class="btn btn-link"
+                                                                    title="Social Links">
                                                                     <i class='bx bxl-tiktok'></i>
                                                                 </button>
-                                                                
-                                                                <button 
-                                                                title="{{ __('messages.btn-crud-edit') }}" 
-                                                                type="button" class="btn btn-light"
-                                                                    data-bs-toggle="modal" data-bs-target="#updateDataModal" wire:click="edit({{ $row->id  }})">
-                                                                    ✅ 
-                                                                </button>                                                             
-                                                                <button 
-                                                                type="button" 
-                                                                class="btn btn-light"
-                                                                title="{{ __('messages.btn-crud-delete') }}"
-                                                                onclick="window.confirmDelete({{ $row->id }}, `confirm-delete-model`)">
-                                                                    ⛔️ 
-                                                            </button>
+
+                                                                <button title="{{ __('messages.btn-crud-edit') }}"
+                                                                    type="button" class="btn btn-light"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#updateDataModal"
+                                                                    wire:click="edit({{ $row->id }})">
+                                                                    ✅
+                                                                </button>
+                                                                <button type="button" class="btn btn-light"
+                                                                    title="{{ __('messages.btn-crud-delete') }}"
+                                                                    onclick="window.confirmDelete({{ $row->id }}, `confirm-delete-model`)">
+                                                                    ⛔️
+                                                                </button>
                                                             </div>
                                                         </div>
 
@@ -169,7 +192,7 @@
 
                                         <td width="90">
 
-                                       
+
 
                                         </td>
                                     </tr>
