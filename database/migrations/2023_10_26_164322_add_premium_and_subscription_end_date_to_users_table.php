@@ -16,6 +16,13 @@ return new class extends Migration
             $table->integer('profiles')->default(3);
             $table->integer('guest')->default(100);
             $table->dateTime('subscription_end')->nullable();
+
+            $table->unsignedBigInteger('adminpremium_id')->nullable(); 
+
+            $table->foreign('adminpremium_id')
+                ->references('id')
+                ->on('adminpremiums')
+                ->onDelete('cascade');            
         });
     }
 
@@ -27,7 +34,8 @@ return new class extends Migration
         Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('premium');
             $table->dropColumn('profiles');
-            $table->dropColumn('subscription_end_date');
+            $table->dropColumn('adminpremium_id');
+            $table->dropColumn('subscription_end');
         });
     }
 };

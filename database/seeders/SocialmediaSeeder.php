@@ -177,7 +177,14 @@ class SocialmediaSeeder extends Seeder
                 'icon' => 'none.png',          
                 'created_at' => now(),
                 'updated_at' => now(),
-            ],            
+            ], 
+                     
+            [
+                'name' => 'https://amazon.com/', 
+                'icon' => "<i class='bx bxl-amazon bx-flashing' ></i>",          
+                'created_at' => now(),
+                'updated_at' => now(),
+            ], 
             [
                 'name' => 'https://your-site.com/', 
                 'icon' => 'none.png',          

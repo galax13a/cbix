@@ -7,6 +7,8 @@ use Livewire\WithPagination;
 use App\Models\Biouser;
 use Illuminate\Validation\ValidationException; // <-- Añade esta línea
 use GuzzleHttp\Client;
+use App\Models\Adminpremium;
+
 class Biousers extends Component
 {
     protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy'];
@@ -14,12 +16,19 @@ class Biousers extends Component
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $codex, $link, $pay, $room, $pic, $data_bio, $photo, $morebio, $iframevideo, $campaign;
+    public $selected_id, $keyWord, $name, $codex, $link, $pay, $room, $pic, $data_bio, $photo, $morebio, $iframevideo, $campaign, $planEspecial, $planes,$plan_id,$selectedPlanId,$licenseContent,$nameLicence=null,$hasReadLicense = false;
 
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
+    
+public function getplanes(){
+    $this->planes = Adminpremium::where('active', 1)->get();
+    $this->planEspecial = $this->planes->where('id', 7)->first();
+    
+    $this->planes = $this->planes->where('id', '<>', 7);
+}
 
     public function render()
     {
@@ -120,6 +129,7 @@ public function updatedRoom()
 
     }
 }
+
 
     public function store()
     {

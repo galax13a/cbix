@@ -5,10 +5,14 @@
 
         <div class="col-md-12 my-2" id="view-js-live-pages">
             <div class="card">
-
+                @php
+                $user = auth()->user();
+                $biousersCount = $user->biousers()->count();
+            @endphp
                 <div class="card-header bg-transparent">
                     <div style="display: flex;  align-items: left;">
                         <div class="text-left">
+                           
                             <input wire:model='keyWord' type="text" class="form-control form-control-lg w-full"
                                 name="search" id="search" placeholder="{{ __('messages.keyword-new') }}">
                         </div>
@@ -17,20 +21,21 @@
                             data-bs-target="#createDataModal">
                             ➕ <strong> {{ __('messages.new') }} Bio
                             </strong>
-                        </button>
-                        @php
-                        $user = auth()->user();
-                        $biousersCount = $user->biousers()->count();
-                    @endphp
+                        </button>               
                          
                         @if (session()->has('message'))
                             <div wire:poll.4s class="btn btn-sm btn-info" style="margin-top:0px; margin-bottom:0px;">
                                 {{ session('message') }} </div>
                         @endif
+
+                        <small class="p-3">
+                            <strong>
+                            {{ $biousersCount }} / {{auth()->user()->profiles}} Free Bios  
+                            In this free version, you can create up to  <mark>3 profiles</mark>  for chatur and to share on your networks </strong>
+                        </small>
+
                     </div>
-                    <div class="container">
-                        {{ $biousersCount }} / {{auth()->user()->profiles}} free bios 
-                    </div>
+                
                 </div>
 
                 <div class="card-body" wire:key='table-bios'>
@@ -60,13 +65,13 @@
 
                                                 @if ($row->codex === 'none')
                                                     <a  data-bs-toggle="modal"
-                                                    data-bs-target="#GenereModal" href="javascript:void(0)">{{ $row->name }} Bio <box-icon
+                                                    data-bs-target="#GenereModal " href="javascript:void(0)">{{ $row->name }} Bio <box-icon
                                                             name='code-block' animation='flashing'></box-icon></a>
                                                 @else
                                                     <a href="#"
                                                         title="copy this code and paste it in your chatur bio"><strong
                                                             id="copycodex">Copy <box-icon name='code-alt'
-                                                                animation='tada'></box-icon> </strong></a>
+                                                            animation='tada'></box-icon> </strong></a>
                                                 @endif
                                             </div>
 
@@ -148,7 +153,9 @@
                                                             <div class="premium text-white bg-light rounded-3">                                                               
                                                             
 
-                                                                <button type="button" class="btn btn-link"
+                                                                <button type="button" 
+                                                                    wire:click="getplanes"
+                                                                    class="btn btn-link"
                                                                     title="License bio wc"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#LiceModal"
@@ -157,12 +164,18 @@
                                                                 </button>
 
                                                                 <button type="button" class="btn btn-link"
-                                                                    title="Stats cb">
+                                                                    title="Stats cb"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#StatsModal"
+                                                                    >
                                                                     <i class='bx bx-pie-chart-alt-2'></i>
                                                                 </button>
 
                                                                 <button type="button" class="btn btn-link"
-                                                                    title="Social Links">
+                                                                    title="Social Links"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#SocialModal"
+                                                                    >
                                                                     <i class='bx bxl-tiktok'></i>
                                                                 </button>
 

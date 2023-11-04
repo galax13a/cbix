@@ -11,14 +11,19 @@
             <div class="modal-body">
 
 
-<p>you have {{ $biousersCount }} / {{auth()->user()->profiles}} free bios to save available biousers.</p>
+                <p>you have {{ $biousersCount }} / {{ auth()->user()->profiles }} free bios to save available biousers.
+                </p>
 
-                @if($biousersCount >= 3)
-                <p></p>
-                In the free version you can only add one profile that will be saved to modify your biography
-                 <a href="{{url('/app/premium')}}">unlimited pro version</a>
-                 <br>
-                 This pro version works well for designers who work on designs requested by models, or models who have more than 2 profiles on webcam sites, it would be good to have a clearer and nicer profile so that users take into account their rules and demands, as well as your gifts, wish lists, social networks, and webcam profiles. This tool is not only for models or designers, but simply for users who want to give a different style to their profile and communication links.
+                @if ($biousersCount >= 3)
+                    <p></p>
+                    In the free version you can only add one profile that will be saved to modify your biography
+                    <a href="{{ url('/app/premium') }}">unlimited pro version</a>
+                    <br>
+                    This pro version works well for designers who work on designs requested by models, or models who
+                    have more than 2 profiles on webcam sites, it would be good to have a clearer and nicer profile so
+                    that users take into account their rules and demands, as well as your gifts, wish lists, social
+                    networks, and webcam profiles. This tool is not only for models or designers, but simply for users
+                    who want to give a different style to their profile and communication links.
                 @else
                     <form>
                         <div class="form-group">
@@ -74,7 +79,7 @@
                     </form>
                 @endif
             </div>
-            
+
             <div class="modal-footer">
                 <button id="btn-close" type="button" wire:click.prevent="cancel()" class="btn btn-icon shadow-lg m-2"
                     wire:loading.attr="disabled" data-bs-dismiss="modal">❌ Close</button>
@@ -90,7 +95,8 @@
 </div>
 
 
-<div wire:ignore.self class="modal modal-lg fade" wire:key='genere-bio' id="GenereModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+<div wire:ignore.self class="modal modal-lg fade" wire:key='genere-bio' id="GenereModal" data-bs-backdrop="static"
+    tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
@@ -98,18 +104,76 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="ratio ratio-21x9">                 
-                   <input type="text">
-                   Genero Bio de
-                    
-                   <button>Generate</button>
+                <div class="ratio ratio-21x9">
+                    <input type="text">
+                    Genero Bio de
+
+                    <button>Generate</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<div wire:ignore.self class="modal modal-lg fade" wire:key='lice-pro' id="LiceModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+<div wire:ignore.self class="modal modal-lg fade" wire:key='genere-stats' id="StatsModal" data-bs-backdrop="static"
+    tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iframeModalLabel">Stats Bio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                estadisticas
+            </div>
+        </div>
+    </div>
+</div>
+
+<div wire:ignore.self class="modal modal-lg fade" wire:key='popiframe' id="iframeModal" tabindex="-1"
+    data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iframeModalLabel">Room Content</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" wire:key='bton-frames'>
+                <div class="ratio ratio-21x9">
+                    @if ($this->iframevideo)
+                        <iframe id="iframeContent" src="{{ $this->iframevideo }}" frameborder="0">Loanding</iframe>
+                    @else
+                        <iframe id="iframeContent" src="" frameborder="0">Loanding</iframe>
+                    @endif
+
+                    <div class="d-grid gap-2">
+                  
+                        <a class="p-1 m-1 bg-dark shadow rounded-3" style="height: 26px;" target="_blank" href="{{ env('CB_AFILIATE') }}">More
+                            Cams</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div wire:ignore.self class="modal modal-lg fade" wire:key='genere-social' id="SocialModal"
+    data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="iframeModalLabel">Social Bio</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                social bios redes add
+            </div>
+        </div>
+    </div>
+</div>
+<div wire:ignore.self class="modal modal-lg fade" wire:key='lice-pro' id="LiceModal" data-bs-backdrop="static"
+    tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
@@ -117,39 +181,114 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div class="ratio ratio-21x9">                 
-                   <input type="text">
-                   Licencia
-                    
-                   <button>Buy</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <div>
+                    <form wire:submit.prevent="submit">
+                        <div class="mb-3">
+                            @if ($this->planEspecial)
+                                <div class="mb-3">
+                                    <input type="radio" id="planEspecial" wire:model="selectedPlanId"
+                                        value="{{ $this->planEspecial->id }}">
+                                    <label for="planEspecial">{{ $this->planEspecial->name }} -
+                                        {{ $this->planEspecial->value }}USD ~   just for this biography</label>
+                                        <hr>
+                                      
+                                </div>
+                            @endif
+                            @if (!$this->selectedPlanId)
+                                                            
+                            <label for="plan_id" class="form-label">Choose a Plan</label>
+                            <p>If you choose a monthly or annual plan you receive more than 100 profiles</p>
+                            @if ($this->planes)
+                                <select wire:model="plan_id" class="form-select" id="plan_id" required>
+                                     <option value="">Select a plan</option>
+                                    @foreach ($this->planes as $plan)
+                                        <option value="{{ $plan->id }}">{{ $plan->name }} -
+                                            {{ $plan->value }}USD</option>
+                                    @endforeach
+                                </select>
+                            @endif
 
-<div wire:ignore.self class="modal modal-lg fade" wire:key='popiframe' id="iframeModal" tabindex="-1" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="iframeModalLabel">Room Content</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="ratio ratio-21x9">                 
-                    @if ($this->iframevideo)                  
-                    <iframe id="iframeContent" src="{{$this->iframevideo}}" frameborder="0">Loanding</iframe>
-                    @else
-                    <iframe id="iframeContent" src="" frameborder="0">Loanding</iframe>
-                    @endif
-                    
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary" type="button">{{$this->iframevideo}}</button>
-                        
-                        <a class="p-2 m-2 bg-dark shadow" target="_blank" href="{{env('CB_AFILIATE')}}">More Cams</a>
-                    </div>
+                            @endif
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="content" class="form-label">License in the name of:</label>
+                            
+                            <input type="text" wire:model="nameLicence" placeholder="Your Name"class="form-control">
+                            <label for=""></label>
+                            <textarea class="form-control" id="content" rows="18" readonly>
+                                END USER LICENSE AGREEMENT
+
+                                This End User License Agreement ("Agreement") is entered into between [Botchatur] ("We" or "Licensor") and you ("User" or "Licensee") 
+                                in connection with the use of the Borchatur] Product or Service] (the "Product"). By accepting this Agreement, 
+                                you acknowledge and agree to the following terms and conditions:
+                               
+                                License in the name of  :  {{$this->nameLicence}} 
+                                1. License Grant:
+                                
+                                1.1. We grant you a limited, non-exclusive, non-transferable license to use the Product in accordance with the terms of this Agreement.
+                                
+                                1.2. You have the right to use the Product for your own personal or commercial use, as permitted by the license purchased.
+                                
+                                2. Restrictions:
+                                
+                                2.1. You do not have the right to modify, redistribute, sublicense, rent, sell or transfer the Product or any part thereof to third parties without our written consent.
+                                
+                                2.2. Use of the Product for illegal or immoral purposes is not permitted.
+                                
+                                3. Affiliate Code:
+                                
+                                3.1. If you are provided with an affiliate code in connection with the Product, you agree to use it ethically and in accordance with applicable policies and regulations.
+                                
+                                4. Updates and Support:
+                                
+                                4.1. We may provide periodic updates to the Product. Your use of the updates will be subject to the terms of this Agreement.
+                                
+                                4.2. We are not obligated to provide technical support, but may do so at our discretion.
+                                
+                                5. Responsibility:
+                                
+                                5.1. You agree that use of the Product is at your own risk.
+                                
+                                5.2. In no event will we be liable for direct, indirect, incidental, special or consequential damages arising from the use of the Product.
+                                
+                                6. Termination:
+                                
+                                6.1. This Agreement will take effect upon your acceptance of its terms and will continue until terminated.
+                                
+                                6.2. We reserve the right to terminate this Agreement in the event of your failure to comply with its terms. In the event of termination, you must stop using the Product.
+                                
+                                7. Applicable Law:
+                                
+                                7.1. This Agreement shall be governed and construed in accordance with the laws of [name of jurisdiction], without regard to its conflicts of law principles.
+                                
+                                8. Acceptance:
+                                
+                                8.1. By using the Product or clicking "I Accept" or similar action, you agree to be legally bound by the terms and conditions of this Agreement.
+                                
+                                Please read carefully and understand the terms of this Agreement before using the Product. If you do not agree to these terms, do not use the Product. If you have any questions or concerns, please contact us at [contact email].
+                                
+                                Licensee's electronic signature: ______________________________
+                                
+                                Acceptance Date: ______________________________
+                                
+                                [Botchatur]
+                                [Digital Global Dev]
+                                
+                                [botchatur360@gmail.com]
+                            </textarea>
+                        </div>
+                        <div class="form-check">
+                            <input wire:model="hasReadLicense" type="checkbox" class="form-check-input" id="hasReadLicense">
+                            <label class="form-check-label" for="hasReadLicense">I have read and accept the terms and conditions</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Buy </button>
+                    </form>
                 </div>
+
             </div>
+
+
         </div>
     </div>
 </div>
@@ -196,7 +335,7 @@
                         href="https://chaturbate.com/affiliates/" target="_blank">Link:
                         https://chaturbate.com/affiliates/</a></p>
 
-                        <img src="https://i.imgur.com/NmI2yo7.png" class="img-responsive" alt="affiliates code chaturbate">
+                <img src="https://i.imgur.com/NmI2yo7.png" class="img-responsive" alt="affiliates code chaturbate">
 
                 <br>
                 <p>
@@ -225,7 +364,8 @@
                     profiles.</p>
 
                 <p>4.2. botchatur.com strives to comply with all copyright laws and will act in accordance with the DMCA
-                    policies if valid complaints are made. Write to us at <a href="{{ url('/app/support') }}">Support ,
+                    policies if valid complaints are made. Write to us at <a href="{{ url('/app/support') }}">Support
+                        ,
                         Ticket</a>.</p>
 
                 <h2>5. License Modifications:</h2>

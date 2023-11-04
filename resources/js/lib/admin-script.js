@@ -40,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     */
 
     window.livewire.on('show-confetti', () => {
+        var audio = new Audio('/win.m4a');
+        audio.play();
         for (let i = 0; i < 5; i++) {
             confetti({
                 particleCount: 200,
