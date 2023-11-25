@@ -150,8 +150,7 @@
                                                                     <i class='bx bx-webcam' ></i>
                                                                 </a>
                                                             </div>
-                                                            <div class="premium text-white bg-light rounded-3">                                                               
-                                                            
+                                                            <div class="premium text-white bg-light rounded-3">     
 
                                                                 <button type="button" 
                                                                     wire:click="getplanes"
@@ -170,6 +169,10 @@
                                                                     >
                                                                     <i class='bx bx-pie-chart-alt-2'></i>
                                                                 </button>
+
+                                                                <a href="{{ url('/apps/chaturbate/top-hrs')}}" title='Stats Global' target="_blank">
+                                                                    <i class='bx bxs-star'></i>
+                                                                </a>
 
                                                                 <button type="button" class="btn btn-link"
                                                                     title="Social Links"
