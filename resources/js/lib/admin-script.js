@@ -1,3 +1,15 @@
+document.addEventListener('livewire:load', function() {
+    Livewire.on('messageProcessed', function() {
+        var body = document.body;               
+        body.style.height = (body.scrollHeight + 1600) + 'px';                
+        var contentModels = document.getElementById('content-models');
+        var alturaActual = contentModels.clientHeight;
+        var nuevaAltura = alturaActual + 100;
+        contentModels.style.height = body.style.height + 100 + 'px';
+        body.style.height = (body.scrollHeight + 1900) + 'px';                  
+
+    });
+});
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -55,6 +67,8 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
     });
+
+ 
 
     if (window.innerWidth <= 768) {
         var rows = document.querySelectorAll('table tbody tr');

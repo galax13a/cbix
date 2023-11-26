@@ -71,6 +71,8 @@ class Cbhrs extends Component
             $this->paginationData = $responseData; 
          //   dd($this->paginationData);
             $this->models = array_merge($this->models, $newData);
+            $this->emit('messageProcessed');
+            
         } else {
             // Manejo de errores
             $this->dispatchBrowserEvent('notify', [
