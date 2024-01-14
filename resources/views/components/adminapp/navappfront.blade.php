@@ -2,9 +2,13 @@
     <!-- Sidebar -->
     <div class="sidebar-app">
         <a href="javascript:void(0)" class="logo" style="margin-left:16px; ">
-            <img id="icon-app" src="{{ asset('logo.svg') }}" width="36px" height="36px" alt="botchatur logo">
-            <span id="logoapp" class="mx-1 rounded-3 px-1 ">BOT</span><div class="logo-name">CHA🆃🆄🆁</div>
+            <img id="icon-app" src="{{ asset('logo.svg') }}" width="39x" height="39px" alt="botchatur logo">
+            <span id="logoapp" class="mx-1 rounded-3 px-1 ">🅿🅻🅰🆈🆂</span>
+            
         </a>
+        <div class="logo-name">                
+            C͎A͎M͎</div>
+    
      <div class="ads-menu"></div>
      <ul class="side-menu">
         <li class="{{ request()->is('app') ? 'active' : '' }}">
@@ -15,6 +19,12 @@
         <li class="{{ request()->is('apps/chaturbate*') ? 'active' : '' }}">
             <a href="{{ route('appswc') }}">
                 <i class='bx bx-store-alt'></i>apps
+            </a>
+        </li>
+  
+        <li class="{{ request()->is('cams/top-models/*') ? 'active' : '' }}">
+            <a href="{{ url('/cams/top-models') }}">
+                <i class='bx bxs-star-half'></i>Topmodels
             </a>
         </li>
         <li class="{{ request()->is('app/canva*') ? 'active' : '' }}">

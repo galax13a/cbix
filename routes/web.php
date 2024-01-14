@@ -15,7 +15,7 @@ use Illuminate\Http\Request;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assigned to the "web" middleware group. Make something great! playcams
 |
 */
 Route::get('/export/{tabledata}', 'App\Http\Controllers\ExportTableController@exportTable')->name('export')->middleware('auth');
@@ -109,6 +109,7 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('/create/bios/chaturbate', 'livewire.createbios.chaturbates.index')->middleware('auth')->name('create-bio-chatur');
 
     Route::view('apps/webcams', 'livewire.adminapps.index')->middleware('auth')->name('appswc');
 	Route::view('apps/cbprofile', 'livewire.admin.cbprofiles.index')->middleware('auth')->name('cbprofiles');

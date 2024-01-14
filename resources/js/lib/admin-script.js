@@ -6,7 +6,8 @@ document.addEventListener('livewire:load', function() {
         var alturaActual = contentModels.clientHeight;
         var nuevaAltura = alturaActual + 100;
         contentModels.style.height = body.style.height + 100 + 'px';
-        body.style.height = (body.scrollHeight + 1900) + 'px';                  
+        body.style.height = (body.scrollHeight + 1900) + 'px';           
+        //alert('content load');
 
     });
 });

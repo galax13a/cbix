@@ -68,7 +68,7 @@ public function getplanes(){
     $client = new Client();
 
     // La URL de tu API
-    $url = "https://chaturbate.com/api/public/affiliates/onlinerooms/?wm=gQ4iQ&client_ip=request_ip";
+    $url = "https://chaturbate.com/api/public/affiliates/onlinerooms/?wm=gQ4iQ&client_ip=request_ip&limit=500";
 
     try {
         $response = $client->get($url);

@@ -1,54 +1,118 @@
 <div>
-    <form wire:submit.prevent="filterData">
-        <h1 class="text-center ">
-            <box-icon name='webcam' animation='flashing'></box-icon>
-            <strong>Chaturbate TOP Hours - {{ $this->region }}</strong>
-        </h1>
-        <div class="container text-center">
-            <div class="row">
-                <div class="col">
-                    <label for="region" class="form-label"><strong>Region</strong></label>
-                    <select class="form-select" wire:model.defer="region" wire:change="filterData">
-                        <option value="asia">Asia</option>
-                        <option value="europe_russia">Europe/Russia</option>
-                        <option value="northamerica">North America</option>
-                        <option value="southamerica">South America</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="col">
-                    <label for="start_date" class="form-label"><strong>Start Date</strong></label>
-                    <input type="date" class="form-control" wire:model.defer="start_date" wire:change="filterData">
-                </div>
-                <div class="col">
-                    <label for="end_date" class="form-label"><strong>Model</strong></label>
-                    <input type="input" class="form-control" wire:model.defer="modelo">
-                </div>
-                <div class="col-12 p-2 m-2">
-                    <button type="submit" class="btn btn-primary w-100">Filter</button>
+    <div class="headmodel text-start">
+
+        <form wire:submit.prevent="filterDataModel">
+            <h1 class="text-center ">
+                
+                <strong class="text-danger bg-dark   bg-opacity-75 p-2 rounded-3 shadow ">Chaturbate TOP Hours <box-icon class="text-light bg-danger rounded-4" name='webcam' animation='flashing'></box-icon> -
+                    {{ $this->region }}</strong>
+            </h1>
+            <div class="container text-center bg-dark bg-opacity-50 p-3 rounded-3 shadow-xl"  style="margin-top:-26px;">
+                <div class="row">
+                    <div class="col">
+                        <label for="region" class="form-label bg-light p-1 rounded-3"><strong>Region</strong></label>
+                        <select class="form-select" wire:model.defer="region" wire:change="filterData">
+                            <option value="asia">Asia</option>
+                            <option value="europe_russia">Europe/Russia</option>
+                            <option value="northamerica">North America</option>
+                            <option value="southamerica">South America</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label for="start_date" class="form-label bg-light p-1 rounded-3"><strong>Start
+                                Date</strong></label>
+                        <input type="date" class="form-control" wire:model.defer="start_date"
+                            wire:change="filterData">
+                    </div>
+                    <div class="col">
+                        <label for="end_date" class="form-label bg-light p-1 rounded-3"><strong>Model</strong></label>
+                        <input type="input" class="form-control" wire:model.defer="modelo" placeholder="Nick Model CB">
+                    </div>
+                    <div class="col-12 p-2 m-2">
+                        <button type="submit" class="btn btn-cb text-bg-warning w-100 bg-opacity-50">  <strong class="text-black">Filter Model </strong> </button>
+                    </div>
+
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary rounded-3 shadow ">
+                        <div class="container-fluid bg-opacity-75">
+                          <a class="navbar-brand" href="#">More Models Hrs ::: Category</a>
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                          <div class="collapse navbar-collapse" id="navbarText" wire:key='navgender'>
+                        
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0" wire:key='ulgneder'>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" wire:click="changeGender('all')"
+                                       href="#" class="{{ $this->gender === 'all' ? 'text-primary' : '' }}">All Models</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" wire:click="changeGender('f')"
+                                       title="Stats Girls" class="{{ $this->gender === 'f' ? 'text-primary' : '' }}">
+                                        Girls
+                                        <span>|</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" wire:click="changeGender('c')"
+                                       title="Stats Couple" class="{{ $this->gender === 'c' ? 'text-primary' : '' }}">
+                                        Couple
+                                        <span>|</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" wire:click="changeGender('m')"
+                                       title="Stats Mans" class="{{ $this->gender === 'm' ? 'text-primary' : '' }}">
+                                        Mans
+                                        <span>|</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" wire:click="changeGender('t')"
+                                       title="Stats Trans" class="{{ $this->gender === 't' ? 'text-primary' : '' }}">
+                                        Trans
+                                        <span>|</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    Gender: {{ $this->gender }}
+                                </li>
+                            </ul>
+                            
+                                        
+                        
+                            <span class="navbar-text">
+                             More Rooms
+                            </span>
+                          </div>
+                        </div>
+                      </nav>
+
+
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
     <div class="col-12 text-center" wire:loading wire:target="filterData">
         <strong>Loading more models...</strong>
         <br>
         <img src="{{ asset('icons/load.gif') }}" alt="" title="Loading more models...">
     </div>
 
-    <div class="row m-2 p-2" wire:init="loadModelData" wire:key='models-top' id="content-models"
-    
-       >
+    <div class="row m-2 p-2" wire:init="loadModelData" wire:key='models-top' id="content-models" style="margin-top:-126px;">
         @forelse ($this->models as $model)
-            <div class="col-md-4 col-sm-12">
-                <div class="card mb-4">
+            <div class="col-md-3 col-sm-12">
+                <div class="card mb-3">
                     <img src="{{ $model['img_local'] }}" class="card-img-top rounded-circle mx-auto mt-3 shadow"
                         alt="{{ $model['username'] }}" style="width: 150px;">
                     <div class="card-body">
                         <h5 class="card-title text-center">{{ $model['username'] }}
-
                         </h5>
-                        <strong class="card-text text-end">🟢 Time | {{ $model['hrs'] }}</strong>
+                        <strong class="card-text text-end">
+                            🟢 Time | {{ $model['hours'] > 24 ? 24 : $model['hours'] }} Hours
+                            {{ $model['minutes'] }} Minutes {{ $model['seconds'] }} Seconds
+                        </strong>
+
                         <br>
                         @if ($model['gender'] == 'f')
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -139,18 +203,26 @@
             <x-themacoms.btnup />
         @endpush
 
-        <script>
-       
-        </script>
+        <script></script>
 
         <style>
             body {
                 height: auto;
             }
+
             #content-models {
-                min-height: 9200px;
- 
-    }
+                /*min-height: 9200px;
+                */
+            }
+
+            .headmodel {
+                background-image: url("https://static-assets.highwebmedia.com/images/logo.svg");
+                background-size: cover;
+                background-position: center;
+                background-repeat: repeat;
+                z-index: -1;
+            
+            }
         </style>
 
     </div>

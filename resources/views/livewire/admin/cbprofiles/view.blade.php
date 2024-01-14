@@ -95,7 +95,7 @@
                                                             style="width: 18rem;">
                                                             <div class="card-body rounded-3"
                                                                 style="
-														background-image: linear-gradient( 135deg, #8b8b8b4b 10%, #7b86941a 100%);
+														background-image: linear-gradient( 135deg, #63cc974b 10%, #7b86941a 100%);
 														">
                                                                 <div wire:key='model-{{ $row->id }}'
                                                                     class="frame">
@@ -107,7 +107,7 @@
                                                                         data-room="{{ $row->link }}"
                                                                         title="View Models"
                                                                         >
-                                                                        <i class='bx bxs-webcam bx-flashing text-dark' ></i>
+                                                                 
                                                                     </a>
                                                              
                                                                 </div>
@@ -122,7 +122,6 @@
                                                                     {{ $data->location }}<br>
                                                                     <strong>Current Show:</strong>
                                                                     {{ $data->current_show }}<br>
-
                                                                     <strong>Number of Users:</strong>
                                                                     {{ number_format($data->num_users) }}<br>
                                                                     <strong>Number of Followers:</strong>
@@ -147,7 +146,7 @@
                                                                 @endif
                                                         
                                                                 <a href="{{url('/bio/id/name')}}" target="_blank">
-                                                                    <i class='bx bx-webcam' ></i>
+                                                                    <i class='bx bxs-webcam bx-flashing text-white' ></i>
                                                                 </a>
                                                             </div>
                                                             <div class="premium text-white bg-light rounded-3">     
@@ -170,7 +169,7 @@
                                                                     <i class='bx bx-pie-chart-alt-2'></i>
                                                                 </button>
 
-                                                                <a href="{{ url('/apps/chaturbate/top-hrs')}}" title='Stats Global' target="_blank">
+                                                                <a href="{{ route('top-hrs-cb')}}" title='Stats Global' target="_blank">
                                                                     <i class='bx bxs-star'></i>
                                                                 </a>
 
@@ -187,12 +186,12 @@
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#updateDataModal"
                                                                     wire:click="edit({{ $row->id }})">
-                                                                    ✅
+                                                                    <i class='bx bx-link-external text-primary' ></i>
                                                                 </button>
                                                                 <button type="button" class="btn btn-light"
                                                                     title="{{ __('messages.btn-crud-delete') }}"
                                                                     onclick="window.confirmDelete({{ $row->id }}, `confirm-delete-model`)">
-                                                                    ⛔️
+                                                                    <i class='bx bx-message-alt-x text-danger'></i>
                                                                 </button>
                                                             </div>
                                                         </div>
