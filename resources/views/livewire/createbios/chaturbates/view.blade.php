@@ -1,12 +1,12 @@
 @section('title', __('🤩 Create Biography Chaturbate ~ Editor Profile'))
 
-	
-	<div class="section clearfix snipcss-lO8GO container-fluid ">
+<div>
+    <div class="section clearfix snipcss-lO8GO container-fluid " id="header-logito-cb">
         <div class="logo-zone style-N5kxO" data-testid="header-logo" id="style-N5kxO">
             <a href="#" data-floatingnav="" data-paction-name="CBLogo" data-roomlist-spa-nav="">
                 <svg width="100%" height="100%">
-                    <image href="https://static-assets.highwebmedia.com/images/logo.svg?hash=3d00045f6aad" width="100%"
-                        height="100%" data-paction="CBLogo">
+                    <image href="https://static-assets.highwebmedia.com/images/logo.svg?hash=3d00045f6aad"
+                        width="100%" height="100%" data-paction="CBLogo">
                     </image>
                 </svg>
             </a>
@@ -73,7 +73,8 @@
                     </div>
                 </div>
                 <div id="dmListDropdownRoot">
-                    <div data-testid="dm-convo-list" class="dmListDropdownRoot style-5bFJQ" ts="re" id="style-5bFJQ">
+                    <div data-testid="dm-convo-list" class="dmListDropdownRoot style-5bFJQ" ts="re"
+                        id="style-5bFJQ">
                         <div class="header style-CnaOm" id="style-CnaOm">
                             <span>
                                 Direct Messages
@@ -156,8 +157,8 @@
                 </div>
                 <div id="userUpdatesMenuDropdownRoot">
                     <div class="dropdown style-ZvCSc" ts="ke" id="style-ZvCSc">
-                        <div ts="Ce" class="BaseTabsContainer userUpdatesPanel style-rh6YD" id="UserUpdatesPanel"
-                            data-testid="user-updates-panel">
+                        <div ts="Ce" class="BaseTabsContainer userUpdatesPanel style-rh6YD"
+                            id="UserUpdatesPanel" data-testid="user-updates-panel">
                             <div ts="n" id="tab-row" class="style-Zo1E9">
                                 <div ts="n" data-listener-count-click="1" data-listener-count-touchstart="1"
                                     id="updates-tab" data-testid="updates-tab" data-listener-count-mouseenter="1"
@@ -362,11 +363,11 @@
                                 <td>
                                     <div class="overflow">
                                         <strong>
-                                            <a href="/p/PlaysCam/?tab=tokens" class="tokencountlink" title="Token Count"
-                                                data-testid="token-count-link">
+                                            <a href="/p/PlaysCam/?tab=tokens" class="tokencountlink"
+                                                title="Token Count" data-testid="token-count-link">
                                                 <span class="tokencount" title="Token Count" updatable-count=""
                                                     data-testid="token-count">
-                                                    100
+                                                   150
                                                 </span>
                                                 Tokens
                                             </a>
@@ -396,8 +397,8 @@
                     onclick="
                                                    const link_name = this.innerText
                                                    window['tsExec'] &amp;&amp; tsExec(function(ts){ts.addPageAction('BlueNavBarClicked', {'link_name' : link_name}) })"
-                    data-floatingnav="" data-roomlist-spa-nav="" data-testid="home-tab" gendered-link="" ts="p"
-                    class="style-Lhg9j">
+                    data-floatingnav="" data-roomlist-spa-nav="" data-testid="home-tab" gendered-link=""
+                    ts="p" class="style-Lhg9j">
                     HOME
                 </a>
             </li>
@@ -412,8 +413,8 @@
                 </a>
             </li>
             <li ts="p" id="style-YGwUo" class="style-YGwUo">
-                <a href="/tags/" data-floatingnav="" gendered-link="" data-testid="tags-tab" ts="p" id="style-hkKoG"
-                    class="style-hkKoG">
+                <a href="/tags/" data-floatingnav="" gendered-link="" data-testid="tags-tab" ts="p"
+                    id="style-hkKoG" class="style-hkKoG">
                     TAGS
                 </a>
             </li>
@@ -438,8 +439,8 @@
                 </a>
             </li>
             <li ts="p" id="style-YYvK9" class="style-YYvK9">
-                <a id="merch" href="https://cbswag.com" target="_blank" rel="noopener noreferrer" data-floatingnav=""
-                    class="style-7ynoA">
+                <a id="merch" href="https://cbswag.com" target="_blank" rel="noopener noreferrer"
+                    data-floatingnav="" class="style-7ynoA">
                     MERCH
                 </a>
             </li>
@@ -462,7 +463,8 @@
             id="style-UCVw5">
             <div ts="n" id="style-7bXYx" class="style-7bXYx">
                 <div ts="n" id="style-85v8i" class="style-85v8i">
-                    <a ts="u" class="gender-tab tabElement active tabBorder activeRoom tabElementLink style-4Wo9X"
+                    <a ts="u"
+                        class="gender-tab tabElement active tabBorder activeRoom tabElementLink style-4Wo9X"
                         data-paction="TopTab" data-listener-count-mouseenter="1" data-listener-count-mouseleave="1"
                         title="PlaysCam's Cam" data-paction-name="ActiveRoom" id="style-4Wo9X">
                         PlaysCam's Cam
@@ -475,8 +477,8 @@
                         WOMEN
                     </a>
                     <a ts="u" class="gender-tab tabElement tabBorder inactiveRoom tabElementLink style-FS2vD"
-                        data-paction="TopTab" data-floatingnav="" href="/male-cams/" data-listener-count-mouseenter="1"
-                        data-listener-count-mouseleave="1" id="style-FS2vD">
+                        data-paction="TopTab" data-floatingnav="" href="/male-cams/"
+                        data-listener-count-mouseenter="1" data-listener-count-mouseleave="1" id="style-FS2vD">
                         MEN
                     </a>
                     <a ts="u" class="gender-tab tabElement tabBorder inactiveRoom tabElementLink style-MAS54"
@@ -485,15 +487,15 @@
                         COUPLES
                     </a>
                     <a ts="u" class="gender-tab tabElement tabBorder inactiveRoom tabElementLink style-JzcRV"
-                        data-paction="TopTab" data-floatingnav="" href="/trans-cams/" data-listener-count-mouseenter="1"
-                        data-listener-count-mouseleave="1" id="style-JzcRV">
+                        data-paction="TopTab" data-floatingnav="" href="/trans-cams/"
+                        data-listener-count-mouseenter="1" data-listener-count-mouseleave="1" id="style-JzcRV">
                         TRANS
                     </a>
                     <a ts="d"
                         class="gender-tab tabElement tabBorder inactiveRoom tabElementLink dropdown-anchor nooverlay style-PFTt6"
                         data-paction="TopTab" data-floatingnav="" data-listener-count-mouseenter="1"
-                        data-listener-count-mouseleave="1" data-listener-count-click="1" data-listener-count-keydown="1"
-                        id="style-PFTt6">
+                        data-listener-count-mouseleave="1" data-listener-count-click="1"
+                        data-listener-count-keydown="1" id="style-PFTt6">
                         . . .
                     </a>
                 </div>
@@ -565,26 +567,28 @@
                         </li>
                     </ul>
                     <div ts="n" id="style-i5rEH" class="style-i5rEH">
-                        <a ts="p" class="tabLink tabOpen nooverlay style-QUgv6" href="#" data-testid="room-tab-Bio"
-                            data-tab="bio" id="style-QUgv6">
+                        <a ts="p" class="tabLink tabOpen nooverlay style-QUgv6" href="#"
+                            data-testid="room-tab-Bio" data-tab="bio" id="style-QUgv6">
                             Bio
                         </a>
-                        <a ts="p" class="tabLink style-fmnrf" href="#" data-testid="room-tab-settings" id="style-fmnrf">
+                        <a ts="p" class="tabLink style-fmnrf" href="#" data-testid="room-tab-settings"
+                            id="style-fmnrf">
                             Settings &amp; Privacy
                         </a>
-                        <a ts="p" class="tabLink style-JQOYF" href="#" data-testid="room-tab-Contest Stats"
-                            id="style-JQOYF">
+                        <a ts="p" class="tabLink style-JQOYF" href="#"
+                            data-testid="room-tab-Contest Stats" id="style-JQOYF">
                             Contest Stats
                         </a>
-                        <a ts="p" class="tabLink style-yNf6w" href="#" data-testid="room-tab-token_stats"
-                            id="style-yNf6w">
+                        <a ts="p" class="tabLink style-yNf6w" href="#"
+                            data-testid="room-tab-token_stats" id="style-yNf6w">
                             Token Stats
                         </a>
-                        <a ts="p" class="tabLink style-1Ncij" href="#" data-testid="room-tab-Share" id="style-1Ncij">
+                        <a ts="p" class="tabLink style-1Ncij" href="#" data-testid="room-tab-Share"
+                            id="style-1Ncij">
                             Share
                         </a>
-                        <a ts="p" class="tabLink style-wKWRX" href="#" data-testid="room-tab-memberships"
-                            id="style-wKWRX">
+                        <a ts="p" class="tabLink style-wKWRX" href="#"
+                            data-testid="room-tab-memberships" id="style-wKWRX">
                             Memberships
                         </a>
                     </div>
@@ -712,16 +716,16 @@
                                             <a id="btn-create-blank" class="btn-playcams">🩵Create Bio</a>
                                             <a id="btn-import" class="btn-playcams cta">💞Import Bio</a>
                                             <a id="btn-ai" class="btn-playcams cta bg">Generate Bio AI <i
-                                               class='bx bx-message-square-detail'></i>
+                                                    class='bx bx-message-square-detail'></i>
                                             </a>
-											<button class="btn btn-primary" >Entrar</button>
+                                            <button class="btn btn-primary">Entrar</button>
 
 
-                                        </div>								
-                                  
+                                        </div>
+
                                         <div class="editor-biochaturbate" id="editor-biochaturbate">
 
-                                        </div>                            
+                                        </div>
 
                     </div>
                     </td>
@@ -749,6 +753,7 @@
                                     src="https://camo.mmcdn.com/86d4251f8576b8c7026de8299c1addc585b52c1b/68747470733a2f2f692e696d6775722e636f6d2f447566596339712e706e67"
                                     target="_blank">
                                 <br>
+								<hr>
                                 <font contenteditable="true" color="#FF0093" rel="nofollow"
                                     style="position: absolute; width: 630px; height: 50px; overflow: hidden; overflow-x: hidden; background-image: linear-gradient(to bottom right, rgba(250,198,225,0.9), rgba(250,198,225,0.8)); }; border: 2px solid #FF0093; margin: -89px 0px 0px 150px;"
                                     target="_blank"><br rel="nofollow" target="_blank">NAME HERE - XXXX TOKENS<br
@@ -789,437 +794,470 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="footer-holder snipcss-9MxLe" id="footer-holder" ts="v">
+    <div class="footercon">
+        <div class="col1" data-paction="Footer-FreeCamsByAge" gendered-category="" data-testid="age-cams">
+            <h4>
+                Free Cams by Age
+            </h4>
+            <dl>
+                <dd>
+                    <a href="/teen-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Teen Cams (18+)
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/18to21-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        18 to 21 Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/20to30-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        20 to 30 Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/30to50-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        30 to 50 Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/mature-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Mature Cams (50+)
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col2" data-paction="Footer-FreeCamsByRegion" gendered-category="" data-testid="region-cams">
+            <h4>
+                Free Cams by Region
+            </h4>
+            <dl>
+                <dd>
+                    <a href="/north-american-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        North American Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/other-region-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Other Region Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/euro-russian-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Euro Russian Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/asian-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Asian Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/south-american-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        South American Cams
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col3" data-paction="Footer-PrivateShows" gendered-category="" data-testid="private-cams">
+            <h4>
+                Available Private Shows
+            </h4>
+            <dl>
+                <dd>
+                    <a href="/6-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        6 Tokens per Minute
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/12-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        12 Tokens per Minute
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/18-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        18 Tokens per Minute
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/30-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        30+ Tokens per Minute
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/60-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        60+ Tokens per Minute
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/90-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
+                        ts="p">
+                        90+ Tokens per Minute
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col4" data-paction="Footer-FreeCamsByStatus" gendered-category="" data-testid="status-cams">
+            <h4>
+                Free Cams by Status
+            </h4>
+            <dl>
+                <dd>
+                    <a href="/spy-on-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Private Shows
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/new-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        New Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/gaming-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
+                        Gaming Cams
+                    </a>
+                </dd>
+            </dl>
+        </div>
+        <div class="col5" data-paction="Footer-FreeCams" data-testid="free-cams">
+            <h4>
+                Free Cams
+            </h4>
+            <dl>
+                <dd>
+                    <a href="/" data-floatingnav="" data-listener-count-click="1">
+                        Featured Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/female-cams/" data-floatingnav="" data-listener-count-click="1">
+                        Female Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/male-cams/" data-floatingnav="" data-listener-count-click="1">
+                        Male Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/couple-cams/" data-floatingnav="" data-listener-count-click="1">
+                        Couple Cams
+                    </a>
+                </dd>
+                <dd>
+                    <a href="/trans-cams/" data-floatingnav="" data-listener-count-click="1">
+                        Trans Cams
+                    </a>
+                </dd>
+            </dl>
+        </div>
     </div>
 
-    <div class="footer-holder snipcss-9MxLe" id="footer-holder" ts="v">
-        <div class="footercon">
-            <div class="col1" data-paction="Footer-FreeCamsByAge" gendered-category="" data-testid="age-cams">
-                <h4>
-                    Free Cams by Age
-                </h4>
-                <dl>
-                    <dd>
-                        <a href="/teen-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Teen Cams (18+)
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/18to21-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            18 to 21 Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/20to30-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            20 to 30 Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/30to50-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            30 to 50 Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/mature-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Mature Cams (50+)
-                        </a>
-                    </dd>
-                </dl>
-            </div>
-            <div class="col2" data-paction="Footer-FreeCamsByRegion" gendered-category="" data-testid="region-cams">
-                <h4>
-                    Free Cams by Region
-                </h4>
-                <dl>
-                    <dd>
-                        <a href="/north-american-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            North American Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/other-region-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Other Region Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/euro-russian-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Euro Russian Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/asian-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Asian Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/south-american-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            South American Cams
-                        </a>
-                    </dd>
-                </dl>
-            </div>
-            <div class="col3" data-paction="Footer-PrivateShows" gendered-category="" data-testid="private-cams">
-                <h4>
-                    Available Private Shows
-                </h4>
-                <dl>
-                    <dd>
-                        <a href="/6-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
-                            ts="p">
-                            6 Tokens per Minute
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/12-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
-                            ts="p">
-                            12 Tokens per Minute
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/18-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
-                            ts="p">
-                            18 Tokens per Minute
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/30-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
-                            ts="p">
-                            30+ Tokens per Minute
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/60-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
-                            ts="p">
-                            60+ Tokens per Minute
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/90-tokens-per-minute-private-cams/" data-floatingnav="" data-listener-count-click="1"
-                            ts="p">
-                            90+ Tokens per Minute
-                        </a>
-                    </dd>
-                </dl>
-            </div>
-            <div class="col4" data-paction="Footer-FreeCamsByStatus" gendered-category="" data-testid="status-cams">
-                <h4>
-                    Free Cams by Status
-                </h4>
-                <dl>
-                    <dd>
-                        <a href="/spy-on-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Private Shows
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/new-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            New Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/gaming-cams/" data-floatingnav="" data-listener-count-click="1" ts="p">
-                            Gaming Cams
-                        </a>
-                    </dd>
-                </dl>
-            </div>
-            <div class="col5" data-paction="Footer-FreeCams" data-testid="free-cams">
-                <h4>
-                    Free Cams
-                </h4>
-                <dl>
-                    <dd>
-                        <a href="/" data-floatingnav="" data-listener-count-click="1">
-                            Featured Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/female-cams/" data-floatingnav="" data-listener-count-click="1">
-                            Female Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/male-cams/" data-floatingnav="" data-listener-count-click="1">
-                            Male Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/couple-cams/" data-floatingnav="" data-listener-count-click="1">
-                            Couple Cams
-                        </a>
-                    </dd>
-                    <dd>
-                        <a href="/trans-cams/" data-floatingnav="" data-listener-count-click="1">
-                            Trans Cams
-                        </a>
-                    </dd>
-                </dl>
-            </div>
-        </div>
-
-        <div class="container text-center">
-            <ul class="nav style-omzYy" data-paction="Footer-Meta" id="style-omzYy">
-                <li>
-                    <a href="https://cbswag.com" id="cbswag" target="_blank" data-testid="cbswag">
-                        Swag
-                    </a>
-                </li>
-                <li>
-                    <a href="/terms/" data-testid="terms">
-                        Terms &amp; Conditions
-                    </a>
-                </li>
-                <li>
-                    <a href="/privacy/" data-testid="privacy">
-                        Privacy Policy
-                    </a>
-                </li>
-                <li>
-                    <a href="https://support.chaturbate.com/" data-testid="support">
-                        Support
-                    </a>
-                </li>
-                <li>
-                    <a href="https://support.chaturbate.com/hc/en-us/requests/new?ticket_form_id=5912786461332"
-                        target="_blank" rel="noopener" data-testid="dmca">
-                        DMCA / Remove Content
-                    </a>
-                </li>
-                <li>
-                    <a href="#"
-                        onclick="window['tsExec'] &amp;&amp; tsExec(function(ts){ ts.openFeedbackForm('footer') })"
-                        data-testid="feedback">
-                        Feedback
-                    </a>
-                </li>
-                <li>
-                    <a href="/security/" data-testid="security">
-                        Security Center
-                    </a>
-                </li>
-                <li>
-                    <a href="/law_enforcement/" data-testid="law-enforcement">
-                        Law Enforcement
-                    </a>
-                </li>
-                <li>
-                    <a href="/billingsupport/" data-testid="billing">
-                        Billing
-                    </a>
-                </li>
-                <li>
-                    <a href="/security/privacy/deactivate/" data-testid="disable-account">
-                        Disable Account
-                    </a>
-                </li>
-                <li>
-                    <a href="/apps/" data-testid="v1-apps">
-                        v1 Apps
-                    </a>
-                </li>
-                <li>
-                    <a href="/apps2/1/" data-testid="v2-apps">
-                        v2 Apps
-                    </a>
-                </li>
-                <li>
-                    <a href="/contest/details/" data-testid="contest">
-                        Contest
-                    </a>
-                </li>
-                <li>
-                    <a href="/affiliates/" data-testid="affiliates">
-                        Affiliates
-                    </a>
-                </li>
-                <li>
-                    <a href="/jobs/" target="_blank" rel="noopener" data-testid="jobs">
-                        Jobs
-                    </a>
-                </li>
-                <li>
-                    <a href="/sitemap/" data-testid="sitemap">
-                        Sitemap
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-
-        <ul class="langs" data-paction="Footer-Language">
+    <div class="container text-center">
+        <ul class="nav style-omzYy" data-paction="Footer-Meta" id="style-omzYy">
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-de">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="de">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Deutsch">
-                </form>
+                <a href="https://cbswag.com" id="cbswag" target="_blank" data-testid="cbswag">
+                    Swag
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-en">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="en">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="English">
-                </form>
+                <a href="/terms/" data-testid="terms">
+                    Terms &amp; Conditions
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-es">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="es">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Español">
-                </form>
+                <a href="/privacy/" data-testid="privacy">
+                    Privacy Policy
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-fr">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="fr">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Français">
-                </form>
+                <a href="https://support.chaturbate.com/" data-testid="support">
+                    Support
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-it">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="it">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Italiano">
-                </form>
+                <a href="https://support.chaturbate.com/hc/en-us/requests/new?ticket_form_id=5912786461332"
+                    target="_blank" rel="noopener" data-testid="dmca">
+                    DMCA / Remove Content
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-ja">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="ja">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="日本語">
-                </form>
+                <a href="#"
+                    onclick="window['tsExec'] &amp;&amp; tsExec(function(ts){ ts.openFeedbackForm('footer') })"
+                    data-testid="feedback">
+                    Feedback
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-ko">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="ko">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="한국어">
-                </form>
+                <a href="/security/" data-testid="security">
+                    Security Center
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-pl">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="pl">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Polski">
-                </form>
+                <a href="/law_enforcement/" data-testid="law-enforcement">
+                    Law Enforcement
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-pt">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="pt">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Português">
-                </form>
+                <a href="/billingsupport/" data-testid="billing">
+                    Billing
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-ru">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="ru">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="Русский">
-                </form>
+                <a href="/security/privacy/deactivate/" data-testid="disable-account">
+                    Disable Account
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-zh-hans">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="zh-hans">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="简体中文">
-                </form>
+                <a href="/apps/" data-testid="v1-apps">
+                    v1 Apps
+                </a>
             </li>
             <li>
-                <form target="_top" action="/set_language/" method="post" data-testid="set-lang-zh-hant">
-                    <input type="hidden" name="csrfmiddlewaretoken"
-                        value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
-                    <input type="hidden" name="language" value="zh-hant">
-                    <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
-                    <input type="submit" value="繁體中文">
-                </form>
+                <a href="/apps2/1/" data-testid="v2-apps">
+                    v2 Apps
+                </a>
             </li>
-        </ul>
-        <ul id="social-media-icons" data-paction="Footer-Social">
             <li>
-                <a href="https://twitter.com/chaturbate" data-social-type="twitter" title="Twitter" target="_blank"
-                    data-testid="twitter">
-                    <div class="twitter-icon" title="Twitter">
-                    </div>
+                <a href="/contest/details/" data-testid="contest">
+                    Contest
+                </a>
+            </li>
+            <li>
+                <a href="/affiliates/" data-testid="affiliates">
+                    Affiliates
+                </a>
+            </li>
+            <li>
+                <a href="/jobs/" target="_blank" rel="noopener" data-testid="jobs">
+                    Jobs
+                </a>
+            </li>
+            <li>
+                <a href="/sitemap/" data-testid="sitemap">
+                    Sitemap
                 </a>
             </li>
         </ul>
-        <p data-paction="Footer-Compliance">
-            <a href="/2257/" data-testid="record-keeping">
-                18 U.S.C. 2257 Record Keeping Requirements Compliance Statement
-            </a>
-        </p>
-        <div class="footer-cb-address style-g8H5n" data-paction="Footer-Compliance" data-testid="address"
-            id="style-g8H5n">
-        </div>
-        <p data-paction="Footer-Compliance" data-testid="copyright">
-            © Copyright Chaturbate.com 2011 - 2024. All Rights Reserved.
-            <br>
-            www3-ext-369b:3d00045f6aad
-        </p>
-        <p class="footer-labels style-RfB9h" data-paction="Footer-Compliance" id="style-RfB9h">
-            <img src="https://static-assets.highwebmedia.com/images/badges/safelabeling.gif?hash=3d00045f6aad"
-                title="SafeLabeling" alt="Safe label logo" data-testid="safe-labeling">
-            <a
-                href="https://www.rtalabel.org/?content=validate&amp;rating=RTA-5042-1996-1400-1577-RTA&amp;ref=chaturbate.com">
-                <img src="https://static-assets.highwebmedia.com/images/badges/88x31_RTA-5042-1996-1400-1577-RTA-W-VERIFIED.gif?hash=3d00045f6aad"
-                    title="RTALabel" alt="RTA verified logo" data-testid="rta" id="style-ePfMP" class="style-ePfMP">
-            </a>
-            <a href="https://www.asacp.org/?content=validate&amp;ql=329884767938eafe299e303fac732bdf">
-                <img src="https://static-assets.highwebmedia.com/images/badges/ApprovedASACPmember.gif?hash=3d00045f6aad"
-                    title="ASACP" alt="Approved ASACP member logo" data-testid="asacp">
-            </a>
-        </p>
+
     </div>
 
-    <div class="menu-cb" id="menuButton" draggable="true">
-        <i class='bx bxs-bug-alt text-danger bg-dark p-2  fs-1 rounded-3'></i>
-        <ul id="menuList">
-            <li id="NewItem" class="new-bios"><a href="javascript:void(0)"><i class="bx bx-book-add"></i>New</a>
-            </li>
-            <li id="codeItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-code-block"></i>Code</a>
-            </li>
-            <li id="copyItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxs-copy-alt"></i>Copy</a>
-            </li>
-            <li id="importItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-import"></i>Import</a>
-            </li>
-            <li id="cardsItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxs-id-card"></i>Cards</a>
-            </li>
-            <li id="linksItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-link-alt"></i>Links</a>
-            </li>
-            <li id="socialItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxl-tiktok"></i>
-                    Social</a></li>
-            <li id="saveItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-save"></i> Save</a></li>
-        </ul>
+
+    <ul class="langs" data-paction="Footer-Language">
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-de">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="de">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Deutsch">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-en">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="en">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="English">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-es">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="es">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Español">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-fr">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="fr">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Français">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-it">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="it">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Italiano">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-ja">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="ja">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="日本語">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-ko">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="ko">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="한국어">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-pl">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="pl">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Polski">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-pt">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="pt">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Português">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-ru">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="ru">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="Русский">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-zh-hans">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="zh-hans">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="简体中文">
+            </form>
+        </li>
+        <li>
+            <form target="_top" action="/set_language/" method="post" data-testid="set-lang-zh-hant">
+                <input type="hidden" name="csrfmiddlewaretoken"
+                    value="X6AP14zWbHhFUOYsIFSMFb6x9heEzwTt6FIeXs8hgv6IMCMeXtkujDMt5F3AqQwa">
+                <input type="hidden" name="language" value="zh-hant">
+                <input type="hidden" name="next" value="/p/PlaysCam/?tab=bio">
+                <input type="submit" value="繁體中文">
+            </form>
+        </li>
+    </ul>
+    <ul id="social-media-icons" data-paction="Footer-Social">
+        <li>
+            <a href="https://twitter.com/chaturbate" data-social-type="twitter" title="Twitter" target="_blank"
+                data-testid="twitter">
+                <div class="twitter-icon" title="Twitter">
+                </div>
+            </a>
+        </li>
+    </ul>
+    <p data-paction="Footer-Compliance">
+        <a href="/2257/" data-testid="record-keeping">
+            18 U.S.C. 2257 Record Keeping Requirements Compliance Statement
+        </a>
+    </p>
+    <div class="footer-cb-address style-g8H5n" data-paction="Footer-Compliance" data-testid="address"
+        id="style-g8H5n">
     </div>
+    <p data-paction="Footer-Compliance" data-testid="copyright">
+        © Copyright Chaturbate.com 2011 - 2024. All Rights Reserved.
+        <br>
+        www3-ext-369b:3d00045f6aad
+    </p>
+    <p class="footer-labels style-RfB9h" data-paction="Footer-Compliance" id="style-RfB9h">
+        <img src="https://static-assets.highwebmedia.com/images/badges/safelabeling.gif?hash=3d00045f6aad"
+            title="SafeLabeling" alt="Safe label logo" data-testid="safe-labeling">
+        <a
+            href="https://www.rtalabel.org/?content=validate&amp;rating=RTA-5042-1996-1400-1577-RTA&amp;ref=chaturbate.com">
+            <img src="https://static-assets.highwebmedia.com/images/badges/88x31_RTA-5042-1996-1400-1577-RTA-W-VERIFIED.gif?hash=3d00045f6aad"
+                title="RTALabel" alt="RTA verified logo" data-testid="rta" id="style-ePfMP"
+                class="style-ePfMP">
+        </a>
+        <a href="https://www.asacp.org/?content=validate&amp;ql=329884767938eafe299e303fac732bdf">
+            <img src="https://static-assets.highwebmedia.com/images/badges/ApprovedASACPmember.gif?hash=3d00045f6aad"
+                title="ASACP" alt="Approved ASACP member logo" data-testid="asacp">
+        </a>
+    </p>
+</div>
 
-	<style>
-		
-a {
-  text-decoration: none;
-}
+<div class="menu-cb" id="menuButton" draggable="true">
+    <i class='bx bxs-bug-alt text-danger bg-dark p-2  fs-1 rounded-3'></i>
+    <ul id="menuList">
+        <li id="NewItem" class="new-bios"><a href="javascript:void(0)"><i class="bx bx-book-add"></i>New</a>
+        </li>
+        <li id="codeItem" class="not-save"><a href="javascript:void(0)"><i
+                    class="bx bx-code-block"></i>Code</a>
+        </li>
+        <li id="copyItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxs-copy-alt"></i>Copy</a>
+        </li>
+        <li id="importItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-import"></i>Import</a>
+        </li>
+        <li id="cardsItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxs-id-card"></i>Cards</a>
+        </li>
+        <li id="linksItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-link-alt"></i>Links</a>
+        </li>
+        <li id="socialItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxl-tiktok"></i>
+                Social</a></li>
+        <li id="saveItem" class="not-save"><a href="javascript:void(0)"><i class="bx bx-save"></i> Save</a>
+        </li>
+    </ul>
+</div>
+<style>
+    a {
+        text-decoration: none;
+    }
 
-	</style>
+    .block-container {
+        display: none;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 20px;
+    }
+
+    /* editor css*/
+    .editor-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .cdx-block {
+        font-size: larger;
+        padding: 4px;
+    }
+
+    .ce-block--focused {
+        background-color: #e9ebecce;
+        border-radius: 6px;
+    }
+
+    .ce-block__content,
+    .ce-toolbar__content {
+        max-width: calc(990% - 26px);
+    }
+</style>
 
 </div>

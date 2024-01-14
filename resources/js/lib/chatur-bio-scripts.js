@@ -1,3 +1,14 @@
+
+import EditorJS from '@editorjs/editorjs';
+import Header from 'editorjs-header-with-alignment';
+import  Paragraph from 'editorjs-paragraph-with-alignment';
+import List from "@editorjs/list";
+
+import { Offerspecial } from './editorJS/offerspecial'; // Ajusta la ruta según sea necesario
+
+
+import {MenuStartBio} from './chatur-bio-menu';
+
 document.addEventListener('livewire:load', function() {
     Livewire.on('messageProcessed', function() {
         var body = document.body;               
@@ -7,30 +18,67 @@ document.addEventListener('livewire:load', function() {
         var nuevaAltura = alturaActual + 100;
         contentModels.style.height = body.style.height + 100 + 'px';
         body.style.height = (body.scrollHeight + 1900) + 'px';           
-        //alert('content load');
+        
 
     });
 });
 
 document.addEventListener('DOMContentLoaded', function () {
 
+    MenuStartBio(); // init menu collap
 
-    window.livewire.on('show-confetti', () => {
-        //var audio = new Audio('/win.m4a');
-        //audio.play();
-        for (let i = 0; i < 5; i++) {
-            confetti({
-                particleCount: 200,
-                startVelocity: 30,
-                spread: 360,
-                origin: {
-                    x: Math.random(),
-                    y: Math.random()
-                }
-            });
-        }
+    const editor = new EditorJS({
+        holder: 'editor-biochaturbate',
+        autofocus: false,
+        placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <--  Start creating an attractive bio for your fans 🍒🍒🍒.    
+                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🍒🍒🍒  🅑🅨 PʟᴀʏꜱCᴀᴍꜱ.ᴄᴏᴍ 🥳`,
+                        tools: {
+                            header: {
+                              class: Header,
+                              config: {                           
+                                levels: [1,2, 3, 4, 5],
+                                defaultLevel: 1,
+                              },
+                            },
+                            paragraph: {
+                                class: Paragraph,
+                                inlineToolbar: true,
+                              },                          
 
-    }); 
+                              list: {
+                                class: List,
+                                inlineToolbar: true,
+                                config: {
+                                  defaultStyle: 'unordered'
+                                }
+                              },
+
+                              offerspecial: {
+                                class: Offerspecial,
+                                inlineToolbar: true,
+                              },
+                            
+                          },
+                        });
+    
+        window.livewire.on('show-confetti', () => {
+            //var audio = new Audio('/win.m4a');
+            //audio.play();
+            for (let i = 0; i < 5; i++) {
+                confetti({
+                    particleCount: 200,
+                    startVelocity: 30,
+                    spread: 360,
+                    origin: {
+                        x: Math.random(),
+                        y: Math.random()
+                    }
+                });
+            }
+
+        }); 
+
+
 
 
 });
