@@ -29,9 +29,18 @@ export class RulesPlaycam {
         ];
     }
 
+    getRandomEmotions() {
+        const emotions = [
+            "😊", "😂", "😍", "😎", "😜", "😇", "😏", "🤔", "😢", "😠", "😱", "🥳"
+        ];
+
+        const randomIndex = Math.floor(Math.random() * emotions.length);
+        return emotions[randomIndex];
+    }
+
     render() {
-  
-        this.rulesElement = document.createElement('strong');       
+
+        this.rulesElement = document.createElement('strong');
         this.rulesElement.contentEditable = true;
 
         if (this.data.strong) {
@@ -43,53 +52,54 @@ export class RulesPlaycam {
 
 
             this.rulesElement.innerHTML = `
-        <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
-        width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;
-        background-color:#ffffff" target="_blank" id="content-rules">
-          <strong rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;
-          font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank" id="title-rule">${randomTitle}
-          
-          </strong>
-          <strong id="rulestitle2" rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
-          text-decoration:none;margin-top:20px" target="_blank">
-            ${randomContent}         
-          </strong>
-          <strong rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px" target="_blank" id="rules-playscam">            
-           
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">1</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">Don't be rude.</strong>
-            </strong>
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">2</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">Be respectful with me and my room.</strong>
-            </strong>
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">3</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">No Fisting (this is against Chaturbate rules, please dont ask)</strong>
-            </strong>
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">4</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">Cam2Cam only in Private Show.</strong>
-            </strong>
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">5</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">No means No. If I turn down a request, then respect my wishes.</strong>
-            </strong>
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">6</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">If you're a model please enjoy my room and my friends, but do so with respect and do not advertise yourself or you will be banned.</strong>
-            </strong>
-            <strong rel="nofollow" style="display:flex" target="_blank">
-                <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">7</strong>
-                <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">The most important thing is to have fun, keep the good vibes strong and contribute however/whenever you can ! I appreciate all tips!</strong>
-            </strong>
-        
-        </strong>`;
+                <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
+                width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;
+                background-color:#ffffff" target="_blank" id="content-rules">
+                <strong rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;
+                font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank" id="title-rule">
+                ${this.getRandomEmotions()} ${randomTitle}
+                
+                </strong>
+                <strong id="rulestitle2" rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
+                text-decoration:none;margin-top:20px" target="_blank">
+                    ${randomContent}         
+                </strong>
+                <strong rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px" target="_blank" id="rules-playscam">            
+                
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">1</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">Don't be rude.</strong>
+                    </strong>
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">2</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">Be respectful with me and my room.</strong>
+                    </strong>
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">3</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">No Fisting (this is against Chaturbate rules, please dont ask)</strong>
+                    </strong>
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">4</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">Cam2Cam only in Private Show.</strong>
+                    </strong>
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">5</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">No means No. If I turn down a request, then respect my wishes.</strong>
+                    </strong>
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">6</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">If you're a model please enjoy my room and my friends, but do so with respect and do not advertise yourself or you will be banned.</strong>
+                    </strong>
+                    <strong rel="nofollow" style="display:flex" target="_blank">
+                        <strong rel="nofollow" style="display:block;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">7</strong>
+                        <strong rel="nofollow" style="display:flex;flex:1;justify-content:start;align-items:center;justify-items:start;text-align:left;min-width:80px;margin-right:5px;font-family:Arial;color:#e7577c;font-weight:700;text-decoration:none;font-size:20px;font-variant:small-caps;text-transform:capitalize" target="_blank">The most important thing is to have fun, keep the good vibes strong and contribute however/whenever you can ! I appreciate all tips!</strong>
+                    </strong>
+                
+                </strong>`;
         }
 
-    this.buttonsContainer = document.createElement('div');
-    this.buttonsContainer.innerHTML = `
+        this.buttonsContainer = document.createElement('div');
+        this.buttonsContainer.innerHTML = `
     <div class="btn-group m-3" role="group" aria-label="btn">
                 <button id="addRuleButton" class="btn-new rounded-2 ">
                     <i class='bx bxs-message-alt-add fs-3'></i> Add Rule
@@ -100,22 +110,22 @@ export class RulesPlaycam {
     </div>
     `;
 
-    this.container.appendChild(this.rulesElement);
-    this.container.appendChild(this.buttonsContainer);
+        this.container.appendChild(this.rulesElement);
+        this.container.appendChild(this.buttonsContainer);
 
-    const self = this;
-    this.buttonsContainer.querySelector("#addRuleButton").onclick = function () {
-        self.addNewRule();
-    };   
+        const self = this;
+        this.buttonsContainer.querySelector("#addRuleButton").onclick = function () {
+            self.addNewRule();
+        };
 
-    this.buttonsContainer.querySelector("#changeColorButton").onclick = function () {
-        self.changeColors();
-    };
+        this.buttonsContainer.querySelector("#changeColorButton").onclick = function () {
+            self.changeColors();
+        };
 
         return this.container;
     }
 
-    
+
     addNewRule() {
 
         this.num = this.num + 1;
@@ -143,13 +153,13 @@ export class RulesPlaycam {
         const title2 = this.rulesElement.querySelector("#rulestitle2");
         title2.style.color = primaryColor;
 
-        contentElement.style.border = `3px dashed ${primaryColor}`; 
+        contentElement.style.border = `3px dashed ${primaryColor}`;
         contentElement.style.padding = '2px';
         contentElement.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
-        contentElement.style.borderRadius =  '26px';
+        contentElement.style.borderRadius = '26px';
 
         const borderglobal = this.rulesElement.querySelector("#content-rules");
-        borderglobal.style.border = `3px solid  ${primaryColor}`; 
+        borderglobal.style.border = `3px solid  ${primaryColor}`;
 
         const contentElements = contentElement.querySelectorAll("*");
         contentElements.forEach(element => {
@@ -157,11 +167,11 @@ export class RulesPlaycam {
         });
     }
 
-     getRandomColor() {
-        return '#' + Math.floor(Math.random()*16777215).toString(16);
+    getRandomColor() {
+        return '#' + Math.floor(Math.random() * 16777215).toString(16);
     }
-    
-     lightenColor(color, percent) {
+
+    lightenColor(color, percent) {
         const num = parseInt(color.slice(1), 16);
         const amt = Math.round(2.55 * percent);
         const R = (num >> 16) + amt;
@@ -170,13 +180,14 @@ export class RulesPlaycam {
         return `#${(1 << 24 | R << 16 | G << 8 | B).toString(16).slice(1)}`;
     }
 
+
     save() {
         return { strong: this.data.strong || this.rulesElement.innerHTML };
     }
 
     static get toolbox() {
         return {
-            title: 'RulesPlaycam',
+            title: 'Rules',
             icon: '<strong style="font-family: Arial, sans-serif;">R</strong>',
         };
     }

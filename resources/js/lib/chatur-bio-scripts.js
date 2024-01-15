@@ -11,6 +11,7 @@ import { Offerspecial } from './editorJS/offerspecial';
 import  BRPlaycams   from './editorJS/br-editor'; 
 import {TitlePlaycam} from './editorJS/title-playcams';
 import { RulesPlaycam } from './editorJS/rule-playcam';
+import { CopysPlaycam } from './editorJS/copyrigth-playcams';
 
 
 document.addEventListener('livewire:load', function() {
@@ -49,6 +50,12 @@ document.addEventListener('DOMContentLoaded', function () {
                                 inlineToolbar: true,
                               },                                               
 
+                              CopysPlaycam:{
+                                class: CopysPlaycam,
+                                inlineToolbar: ['bold','italic'],
+                              
+                             },
+
                               list: {
                                 class: NestedList,
                                 inlineToolbar: true,
@@ -71,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
                                 inlineToolbar: ['bold','italic'],
                               
                              },
-
+                         
                               offerspecial: {
                                 class: Offerspecial,
                                 inlineToolbar: true,
