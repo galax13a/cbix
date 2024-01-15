@@ -1,4 +1,3 @@
-// editorJS/offerspecial.js
 export class Offerspecial {
     static get toolbox() {
       return {
@@ -13,23 +12,61 @@ export class Offerspecial {
     }
   
     createColorInput(type) {
-        const rainbowColors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#8B00FF'];
-        const colorInput = document.createElement('input');
-        colorInput.type = 'color';
-        colorInput.className = `form-control form-control-color ${type} mx-auto mt-2`; // Clases de Bootstrap para centrar
-        colorInput.title = `Choose your ${type === 'background' ? 'background' : 'text'} color`;
-      
-        // Obtener un color diferente para cada tipo (background o text)
-        if (type === 'background') {
-          colorInput.value = this.data.backgroundColor || rainbowColors[0];
-        } else {
-          colorInput.value = this.data.textColor || rainbowColors[1];
-        }
-      
-        colorInput.addEventListener('input', () => this.handleColorInputChange(type));
+      const rainbowColors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#8B00FF'];
+      const colorInput = document.createElement('input');
+      colorInput.type = 'color';
+      colorInput.className = `form-control form-control-color ${type} mx-auto mt-2`;
+      colorInput.title = `Choose your ${type === 'background' ? 'background' : 'text'} color`;
+
+      if (type !== 'background' && type !== 'text') {
+        console.error('Invalid type:', type);
         return colorInput;
       }
-      
+      if (!this.isValidColor(this.data[`${type}Color`])) {
+        this.data[`${type}Color`] = rainbowColors[Math.floor(Math.random() * rainbowColors.length)];
+      }
+  
+      colorInput.value = this.data[`${type}Color`];
+  
+      colorInput.addEventListener('input', () => this.handleColorInputChange(type));
+      return colorInput;
+    }
+  
+    createColorInputs() {
+        const oldBackgroundColorInput = this.wrapper.querySelector('input[type="color"].background');
+        if (oldBackgroundColorInput) {
+          oldBackgroundColorInput.remove();
+        }
+    
+        const oldTextColorInput = this.wrapper.querySelector('input[type="color"].text');
+        if (oldTextColorInput) {
+          oldTextColorInput.remove();
+        }
+        const backgroundColorInput = this.createColorInput('background');
+        const textColorInput = this.createColorInput('text');
+    
+        this.wrapper.appendChild(backgroundColorInput);
+        this.wrapper.appendChild(textColorInput);
+      }
+    
+    renderApplyButton() {
+      const applyButton = document.createElement('button');
+      applyButton.innerText = 'Submit';
+      applyButton.className = 'btn btn-primary mt-2 shadow';
+      applyButton.addEventListener('click', () => this.applyColors());
+      return applyButton;
+    }
+  
+    applyColors() {
+      this.updateOffer();
+      this.createColorInputs();
+    }
+  
+    isValidColor(color) {
+      const isValidHexColor = /^#[0-9A-F]{6}$/i.test(color);
+      return isValidHexColor && color !== '#FF0000'; 
+    }
+  
     handleColorInputChange(type) {
       const colorInput = this.wrapper.querySelector(`input[type="color"].${type}`);
       if (colorInput) {
@@ -47,10 +84,63 @@ export class Offerspecial {
       this.updateOffer();
     }
   
+    updateOffer() {
+    
+      const contentDiv = this.wrapper.querySelector('.special-offer-content');
+      if (contentDiv) {
+        contentDiv.innerHTML = '';
+      }
+  
+      let title, description, additionalStyles;
+  
+      switch (this.data.selectedValue) {
+        case 'offer1':
+          title = 'Save 10% 🎉 Enjoy a 10% discount';
+          description = `on your purchase today! 🎁 Don't miss out – shop now for exclusive savings. 🛍️`;
+          additionalStyles = this.generateRandomStyle();
+          break;
+          case 'offer2':
+            title = 'Save 15% 🌟 Grab a 15% discount';
+            description = `on your purchase today! 🎁 Act now and explore exclusive savings. 🛍️`;
+            additionalStyles = this.generateRandomStyle();
+            break;
+            
+          case 'offer3':
+            title = 'Save 20% 💸 Score a 20% discount';
+            description = `on your purchase today! 🎁 Shop today to unlock amazing savings. 🛍️`;
+            additionalStyles = this.generateRandomStyle();
+            break;
+          
+          case 'offer4':
+            title = 'Flash Sale! 💥 Save 30%';
+            description = `for a limited time only! 🎁 Hurry and shop now to enjoy exclusive discounts. 🛍️`;
+            additionalStyles = this.generateRandomStyle();
+            break;
+          lStyles = this.generateRandomStyle();
+          break;
+        case 'offerWithShadow':
+          title = 'Offer with Shadow';
+          description = 'Save 25% on your purchase today.';
+          additionalStyles = this.generateRandomStyle() + 'box-shadow: 5px 5px 10px #888888;';
+          break;
+        default:
+          break;
+      }
+  
+      additionalStyles += `background-color: ${this.data.backgroundColor || 'initial'}; color: ${this.data.textColor || '#ff6600'};`;
+  
+      const contentHtml = this.generateOfferHtml(title, description, additionalStyles, this.data.backgroundColor);  
+   
+      if (contentDiv) {
+        contentDiv.innerHTML = contentHtml;
+      }
+    }
+  
     render() {
       this.wrapper = document.createElement('div');
   
       const selectOptions = [
+        { value: '', label: 'Select Offer' },
         { value: 'offer1', label: 'Offer 1' },
         { value: 'offer2', label: 'Offer 2' },
         { value: 'offer3', label: 'Offer 3' },
@@ -69,76 +159,17 @@ export class Offerspecial {
         this.updateOffer();
       }
   
-      // Set background color when rendering
       this.wrapper.style.backgroundColor = this.data.backgroundColor || 'initial';
-  
-      const backgroundColorInput = this.createColorInput('background');
-      const textColorInput = this.createColorInput('text');
-  
-      this.wrapper.appendChild(backgroundColorInput);
-      this.wrapper.appendChild(textColorInput);
-  
-      return this.wrapper;
-    }
-  
-    updateOffer() {
-      this.wrapper.innerHTML = '';
-  
-      let title, description, additionalStyles;
-  
-      switch (this.data.selectedValue) {
-        case 'offer1':
-          title = 'Offer 1';
-          description = 'Save 10% on your purchase today.';
-          additionalStyles = this.generateRandomStyle();
-          break;
-        case 'offer2':
-          title = 'Offer 2';
-          description = 'Save 15% on your purchase today.';
-          additionalStyles = this.generateRandomStyle();
-          break;
-        case 'offer3':
-          title = 'Offer 3';
-          description = 'Save 20% on your purchase today.';
-          additionalStyles = this.generateRandomStyle();
-          break;
-        case 'offerWithShadow':
-          title = 'Offer with Shadow';
-          description = 'Save 25% on your purchase today.';
-          additionalStyles = this.generateRandomStyle() + 'box-shadow: 5px 5px 10px #888888;';
-          break;
-        default:
-          break;
-      }
-  
-      additionalStyles += `background-color: ${this.data.backgroundColor || 'initial'}; color: ${this.data.textColor || '#ff6600'};`;
-  
       const contentDiv = document.createElement('div');
-      const offerHtml = this.generateOfferHtml(title, description, additionalStyles, this.data.backgroundColor);
-      contentDiv.innerHTML = offerHtml;
-  
-      const pElement = contentDiv.querySelector('p');
-      if (pElement) {
-        pElement.style.backgroundColor = this.data.backgroundColor || 'initial';
-        pElement.style.color = this.data.textColor || '#ff6600';
-      }
-  
-      const link = contentDiv.querySelector('a');
-      link.addEventListener('click', async (event) => {
-        event.preventDefault();
-        const userLink = await this.customPrompt('Modify Link', 'Enter the new link:');
-        if (userLink !== null) {
-          link.href = userLink;
-        }
-      });
-  
+      contentDiv.classList.add('special-offer-content');
       this.wrapper.appendChild(contentDiv);
   
-      const backgroundColorInput = this.createColorInput('background');
-      const textColorInput = this.createColorInput('text');
+      this.createColorInputs();
   
-      this.wrapper.appendChild(backgroundColorInput);
-      this.wrapper.appendChild(textColorInput);
+      const applyButton = this.renderApplyButton();
+      this.wrapper.appendChild(applyButton);
+  
+      return this.wrapper;
     }
   
     generateRandomStyle() {

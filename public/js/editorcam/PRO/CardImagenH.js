@@ -70,49 +70,46 @@ class CardBlockImagenH {
         this.container.appendChild(this.rowContainer);
         this.restoreFromData();
     }
-
     createColor(i) {
         const colorInput = document.createElement('input');
         colorInput.type = 'color';
         colorInput.className = 'form-control form-control-color';
         colorInput.id = 'exampleColorInput';
         colorInput.title = 'Choose your color';
-    
+      
         const commonColors = [
-            '#fdeebd', '#fcf6f5', '#e6f7ff', '#f0f9e8', '#fff1e6', '#fce4ec',
-            '#f0e6fc', '#e1f5fe', '#e8f5e9', '#fff9c4', '#ffe0b2', '#d1c4e9',
-            '#f3e5f5', '#f1f8e9', '#f9fbe7', '#e3f2fd', '#e0f7fa', '#e0f2f1',
-            '#e8eaf6', '#f3e5f5', '#f9fbe7', '#fff3e0', '#ffebee', '#e0f7fa',
-            '#ede7f6', '#d0d9ff'
+          '#fdeebd', '#fcf6f5', '#e6f7ff', '#f0f9e8', '#fff1e6', '#fce4ec',
+          '#f0e6fc', '#e1f5fe', '#e8f5e9', '#fff9c4', '#ffe0b2', '#d1c4e9',
+          '#f3e5f5', '#f1f8e9', '#f9fbe7', '#e3f2fd', '#e0f7fa', '#e0f2f1',
+          '#e8eaf6', '#f3e5f5', '#f9fbe7', '#fff3e0', '#ffebee', '#e0f7fa',
+          '#ede7f6', '#d0d9ff'
         ];
-        
-        if (typeof i !== 'undefined' && this.cardsData[i] && this.cardsData[i].colorcard) {
-            colorInput.value = this.cardsData[i].colorcard;
-        } else {
-            colorInput.value = commonColors[Math.floor(Math.random() * commonColors.length)];        
-        }
-    
-        colorInput.addEventListener('blur', () => {
-            if (typeof i !== 'undefined') {
-                this.cardsData[i] = this.cardsData[i] || {};
-                this.cardsData[i].colorcard = colorInput.value;
-            }
-       //     this.generateCards();
-            this.saveToData();
+      
+        colorInput.value = this.cardsData[i]?.colorcard || commonColors[Math.floor(Math.random() * commonColors.length)];
+      
+        colorInput.addEventListener('input', (event) => {
+          event.stopPropagation();
         });
-    
+      
+        colorInput.addEventListener('change', () => {
+          if (typeof i !== 'undefined') {
+            this.cardsData[i] = this.cardsData[i] || {};
+            this.cardsData[i].colorcard = colorInput.value;
+          }
+          this.saveToData();
+        });
+      
         return colorInput;
-    }
-    
-    
+      }
+      
     createColumnsSelect() {
         const input = document.createElement('input');
-        input.type = 'number'; // Crear un input numérico
-        input.className = 'form-control'; // Añadir clases de Bootstrap para el diseño
-        input.value = this.data.columns ? this.data.columns : '1'; // Valor predeterminado
+        input.type = 'number'; 
+        input.className = 'form-control'; 
+        input.value = this.data.columns ? this.data.columns : '1'; 
         input.addEventListener('blur', () => {
             if (input.value > 12) {
-                input.value = 12; // Restablecer el valor a 8 si el usuario ingresa un número mayor
+                input.value = 12;
                 let eventDetail = {
                     type: 'failure',
                     message: 'Max 12 Cards',

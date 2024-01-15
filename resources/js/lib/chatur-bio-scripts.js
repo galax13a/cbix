@@ -2,12 +2,16 @@
 import EditorJS from '@editorjs/editorjs';
 import Header from 'editorjs-header-with-alignment';
 import  Paragraph from 'editorjs-paragraph-with-alignment';
-import List from "@editorjs/list";
-
-import { Offerspecial } from './editorJS/offerspecial'; // Ajusta la ruta según sea necesario
-
+//import List from "@editorjs/list";
+import NestedList from '@editorjs/nested-list';
 
 import {MenuStartBio} from './chatur-bio-menu';
+/* libreris editor bio */ 
+import { Offerspecial } from './editorJS/offerspecial'; 
+import  BRPlaycams   from './editorJS/br-editor'; 
+import {TitlePlaycam} from './editorJS/title-playcams';
+import { RulesPlaycam } from './editorJS/rule-playcam';
+
 
 document.addEventListener('livewire:load', function() {
     Livewire.on('messageProcessed', function() {
@@ -30,28 +34,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const editor = new EditorJS({
         holder: 'editor-biochaturbate',
         autofocus: false,
-        placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <--  Start creating an attractive bio for your fans 🍒🍒🍒.    
-                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🍒🍒🍒  🅑🅨 PʟᴀʏꜱCᴀᴍꜱ.ᴄᴏᴍ 🥳`,
+        placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <-- 👌🏾  Start creating an attractive bio for your fans  🐱  
+                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🍒🍒🍒  🅑🅨 PʟᴀʏꜱCᴀᴍꜱ.ᴄᴏᴍ 🦄`,
                         tools: {
                             header: {
                               class: Header,
                               config: {                           
-                                levels: [1,2, 3, 4, 5],
+                                levels: [1,2,3],
                                 defaultLevel: 1,
                               },
                             },
                             paragraph: {
                                 class: Paragraph,
                                 inlineToolbar: true,
-                              },                          
+                              },                                               
 
                               list: {
-                                class: List,
+                                class: NestedList,
                                 inlineToolbar: true,
                                 config: {
                                   defaultStyle: 'unordered'
-                                }
+                                },
                               },
+
+                              br: {
+                                class: BRPlaycams,
+                              },
+
+                              titlePlaycams:{
+                                 class: TitlePlaycam,
+                                 inlineToolbar: true,
+                               
+                              },
+                              RulesPlaycam:{
+                                class: RulesPlaycam,
+                                inlineToolbar: ['bold'],
+                              
+                             },
 
                               offerspecial: {
                                 class: Offerspecial,
@@ -60,6 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
                             
                           },
                         });
+
+
     
         window.livewire.on('show-confetti', () => {
             //var audio = new Audio('/win.m4a');
@@ -78,13 +99,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         }); 
 
-
-
-
 });
 
 
-window.addEventListener('notify', event => { // notificaciones y modals
+window.addEventListener('notify', event => { 
     const { type, message, OpenWin36, position = 'center-center' } = event.detail;
     //Notiflix.Notify[type](message);
     Notiflix.Notify[type](message, {

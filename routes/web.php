@@ -109,7 +109,8 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
-	Route::view('/create/bios/chaturbate', 'livewire.createbios.chaturbates.index')->middleware('auth')->name('create-bio-chatur');
+
+	Route::view('/create/bios/chaturbate', 'livewire.createbios.chaturbates.index')->name('create-bio-chatur');
 
     Route::view('apps/webcams', 'livewire.adminapps.index')->middleware('auth')->name('appswc');
 	Route::view('apps/cbprofile', 'livewire.admin.cbprofiles.index')->middleware('auth')->name('cbprofiles');

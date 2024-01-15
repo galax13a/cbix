@@ -753,7 +753,7 @@
                                     src="https://camo.mmcdn.com/86d4251f8576b8c7026de8299c1addc585b52c1b/68747470733a2f2f692e696d6775722e636f6d2f447566596339712e706e67"
                                     target="_blank">
                                 <br>
-								<hr>
+								
                                 <font contenteditable="true" color="#FF0093" rel="nofollow"
                                     style="position: absolute; width: 630px; height: 50px; overflow: hidden; overflow-x: hidden; background-image: linear-gradient(to bottom right, rgba(250,198,225,0.9), rgba(250,198,225,0.8)); }; border: 2px solid #FF0093; margin: -89px 0px 0px 150px;"
                                     target="_blank"><br rel="nofollow" target="_blank">NAME HERE - XXXX TOKENS<br
@@ -1250,7 +1250,7 @@
     }
 
     .ce-block--focused {
-        background-color: #e9ebecce;
+        background-color: transparent;
         border-radius: 6px;
     }
 
@@ -1258,6 +1258,21 @@
     .ce-toolbar__content {
         max-width: calc(990% - 26px);
     }
+
+select {
+  margin-bottom: 1em;
+  padding: 0.25em;
+  border: 0;
+  border-bottom: 2px solid currentcolor;
+  font-weight: bold;
+  letter-spacing: 0.15em;
+  border-radius: 0;
+}
+select:focus, select:active {
+  outline: 0;
+  border-bottom-color: red;
+}
+
 </style>
 
 </div>

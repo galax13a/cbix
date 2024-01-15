@@ -24,6 +24,7 @@
         "@editorjs/header": "^2.8.1",
         "@editorjs/list": "^1.9.0",
         "@editorjs/marker": "^1.4.0",
+        "@editorjs/nested-list": "^1.4.2",
         "@fullhuman/postcss-purgecss": "^5.0.0",
         "alpinejs": "^3.12.1",
         "boxicons": "^2.1.4",
