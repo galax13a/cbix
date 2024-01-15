@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
                               },
                               RulesPlaycam:{
                                 class: RulesPlaycam,
-                                inlineToolbar: ['bold'],
+                                inlineToolbar: ['bold','italic'],
                               
                              },
 

@@ -14,7 +14,7 @@
     --darky: #daca97;
     --blacky: #1b1b1d;
 }
-#btn-new {
+.btn-new {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     }
@@ -29,7 +29,7 @@
     #btn-store:hover,
     #btn-update:hover,
     #btn-close:hover,
-    #btn-new:hover {
+    .btn-new:hover {
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       border: 2px solid #635994;

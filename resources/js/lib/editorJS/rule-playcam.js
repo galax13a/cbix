@@ -43,13 +43,16 @@ export class RulesPlaycam {
 
 
             this.rulesElement.innerHTML = `
-        <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;background-color:#ffffff" target="_blank" id="content-rules">
-          <strong rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank" id="title-rule">${randomTitle}
+        <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
+        width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;
+        background-color:#ffffff" target="_blank" id="content-rules">
+          <strong rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;
+          font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank" id="title-rule">${randomTitle}
           
           </strong>
-          <strong rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;text-decoration:none;margin-top:20px" target="_blank">
-            ${randomContent}
-         
+          <strong id="rulestitle2" rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
+          text-decoration:none;margin-top:20px" target="_blank">
+            ${randomContent}         
           </strong>
           <strong rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px" target="_blank" id="rules-playscam">            
            
@@ -88,10 +91,10 @@ export class RulesPlaycam {
     this.buttonsContainer = document.createElement('div');
     this.buttonsContainer.innerHTML = `
     <div class="btn-group m-3" role="group" aria-label="btn">
-                <button id="addRuleButton" class="btn btn-dark rounded-2 ">
+                <button id="addRuleButton" class="btn-new rounded-2 ">
                     <i class='bx bxs-message-alt-add fs-3'></i> Add Rule
                 </button>
-                <button id="changeColorButton" class="btn btn-dark rounded-2 ">
+                <button id="changeColorButton" class="btn-new rounded-2 ">
                     <i class='bx bxs-paint fs-3'></i> Change Color
                 </button>
     </div>
@@ -131,29 +134,33 @@ export class RulesPlaycam {
         const primaryColor = this.getRandomColor();
         const lighterColor = this.lightenColor(primaryColor, 30); // 30% lighter
 
-        // Cambia el color del título
         const titleElement = this.rulesElement.querySelector("#title-rule");
         titleElement.style.color = primaryColor;
 
         const contentElement = this.rulesElement.querySelector("#rules-playscam");
         contentElement.style.color = lighterColor;
 
-        // Itera sobre todos los elementos dentro de contentElement y cambia su color
+        const title2 = this.rulesElement.querySelector("#rulestitle2");
+        title2.style.color = primaryColor;
+
+        contentElement.style.border = `3px dashed ${primaryColor}`; 
+        contentElement.style.padding = '2px';
+        contentElement.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
+        contentElement.style.borderRadius =  '26px';
+
+        const borderglobal = this.rulesElement.querySelector("#content-rules");
+        borderglobal.style.border = `3px solid  ${primaryColor}`; 
+
         const contentElements = contentElement.querySelectorAll("*");
         contentElements.forEach(element => {
             element.style.color = this.getRandomColor();
         });
-/*
-        const linkElement = this.rulesElement.querySelector("a");
-        linkElement.style.color = this.getRandomColor();
-        */
     }
 
      getRandomColor() {
         return '#' + Math.floor(Math.random()*16777215).toString(16);
     }
     
-    // Función para hacer un color más claro
      lightenColor(color, percent) {
         const num = parseInt(color.slice(1), 16);
         const amt = Math.round(2.55 * percent);
