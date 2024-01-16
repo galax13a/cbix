@@ -452,7 +452,7 @@
             </li>
             <li class="broadcast-yourself style-mxp9v" ts="p" id="style-mxp9v">
 				
-				<a href="#" id="btn-credits"><span class="badge bg-warning p-1 text-dark m-1 fs-2">5</span> AI Credits Free </a>
+				<a href="#" id="btn-credits"><span class="badge bg-warning p-1 text-dark m-1 fs-2">0</span> AI Credits Free </a>
 				|
                 <a href="/b/PlaysCam/" data-testid="broadcast-yourself-tab" id="style-1OK6m" class="style-1OK6m">
                     BROADCAST YOURSELF
@@ -465,6 +465,8 @@
             </li>
         </ul>
     </div>
+
+	
 
     <div ts="w" class="snipcss-Rkh4o style-R9sLq" id="style-R9sLq">
         <div ts="b"

@@ -53,36 +53,46 @@ export class CopysPlaycam {
 
 
             this.rulesElement.innerHTML = `
-            <strong  id="card-strong" style="display: block; width: 99%; box-sizing: border-box; line-height: initial; margin: 0 auto; text-align: center;" target="_blank" id="content-rules" >
-                <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
+            <strong  id="strong-main" style="display: block; width: 99%; box-sizing: border-box; line-height: initial; margin: 0 auto; text-align: center;" target="_blank" 
+             >
+                <strong  id="strong-container"  rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
                     width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;
-                    background-color:#ffffff" target="_blank" id="content-rules">
-                    <strong rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;
-                    font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank" id="title-rule">
-                    ${this.getRandomEmotions()} ${randomTitle}
-                    
-                    </strong>
-                    <strong id="rulestitle2" rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
-                    text-decoration:none;margin-top:20px" target="_blank">
-                        ${randomContent}         
-                    </strong>
-                    <strong id="contenido-playcam" rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px;padding:9px;" target="_blank" >            
-                    <strong rel="nofollow" style="display:block;line-height:1.5; font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
-                    text-decoration:none;margin-top:20px; " target="_blank">
-                    All content is the copyright of Loossers. Any unauthorized use of their profile, video, pictures, or audio in any form is NOT permissible without their expressed, written consent. Any act to promote or gain profit in any manner (e.g. either monetarily or socially) from the use of their profile, video, pictures, or audio in any form is a violation of their copyright and subject to legal action. By watching their streaming or videos, or viewing their photos, you acknowledge and agree that you shall not post, upload, publish, transmit, or make available in any way the content of this page including images and/or recording streamed live video available for download. This is intended as, and presented as a live, one-time, one-view presentation only. Penalties of Copyright Infringement: By reproducing, republishing or redistributing the work of a copyright holder without permission, you will be violating or infringing the Digital Millennium Copyright Act (DMCA) and international treaty.</strong>                      
-                    <strong rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
-                        text-decoration:none;margin-top:20px" target="_blank">
-                        I appreciate your assistance in reporting my content on platforms other than Chaturbate. Please leave me a message with any relevant links so that we can work together to remove unauthorized content. Thank you.
-                        <br>
-                        <a href="http://playscam.com/report/content">Report Content</a>
-                        <a href="https://www.google.com/webmasters/tools/dmca-dashboard">Google DMCA Form</a>
-                        <a href="https://www.youtube.com/copyright_complaint_form">YouTube CR</a>
-                        <a href="https://www.facebook.com/help/contact/634636770043106">Facebook CR</a>
-                        <a href="https://help.twitter.com/forms/dmca">Twitter DMCA</a>
-                    </strong>
-                </strong>    
-                
+                    background-color:#ffffff" target="_blank" >
+                       <strong id="titles-playscam">
+                            <strong id="title-rule" rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;
+                            font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank" >
+                            ${this.getRandomEmotions()} ${randomTitle}                            
+                            </strong>
+                            <strong id="rulestitle2" rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;
+                                    font-weight:400; text-decoration:none;margin-top:20px" target="_blank">
+                                ${randomContent}         
+                            </strong>
+                        </strong>    
+                <strong id="strong-index" rel="nofollow" style="display:block;line-height:1.5; font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
+                     text-decoration:none;margin-top:20px; " target="_blank">
+                      <strong id="contenido-playcam" rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px;padding:9px;" target="_blank" >            
+                            <strong rel="nofollow" style="display:block;line-height:1.5; font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
+                                text-decoration:none;margin-top:20px; " target="_blank">
+                                All content is the copyright of Loossers. Any unauthorized use of their profile, video, pictures, or audio in any form is NOT permissible without their expressed, written consent. Any act to promote or gain profit in any manner (e.g. either monetarily or socially) from the use of their profile, video, pictures, or audio in any form is a violation of their copyright and subject to legal action. By watching their streaming or videos, or viewing their photos, you acknowledge and agree that you shall not post, upload, publish, transmit, or make available in any way the content of this page including images and/or recording streamed live video available for download. This is intended as, and presented as a live, one-time, one-view presentation only. Penalties of Copyright Infringement: By reproducing, republishing or redistributing the work of a copyright holder without permission, you will be violating or infringing the Digital Millennium Copyright Act (DMCA) and international treaty.</strong>                      
+                                  <strong rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
+                                    text-decoration:none;margin-top:20px" target="_blank">
+                                    I appreciate your assistance in reporting my content on platforms other than Chaturbate. Please leave me a message with any relevant links so that we can work together to remove unauthorized content. Thank you.
+                                <br>
+                                <a href="http://playscam.com/report/content">Report Content</a>
+                                <a href="https://www.google.com/webmasters/tools/dmca-dashboard">Google DMCA Form</a>
+                                <a href="https://www.youtube.com/copyright_complaint_form">YouTube CR</a>
+                                <a href="https://www.facebook.com/help/contact/634636770043106">Facebook CR</a>
+                                <a href="https://help.twitter.com/forms/dmca">Twitter DMCA</a>
+                           </strong>
+                      </strong>                    
+                </strong>
+
+                <strong id="strong-index-extra-playscam">
+
+                </strong>
+
             </strong>        
+
                 `;
         }
 
@@ -114,20 +124,30 @@ export class CopysPlaycam {
                     <input type="range" class="form-range" min="1" max="20" id="customRangePadding">
                 </button>
                 <button class="btn-new">
-                    <label for="customRangeMargin" class="form-label">Margin</label>
+                    <label for="customRangeMargin" class="form-label">Width</label>
                     <input type="range" class="form-range" min="26" max="98" id="customRangeMargin">
                 </button>        
                 <button id="transparencyButton" class="btn-new " title="Transparency Range">
                     <label for="customRangeTransparency" class="form-label">Transparency</label>
                     <input type="range" class="form-range" min="1" max="100" id="customRangeTransparency">
-                </button>
-                              
+                </button>                              
                 <button id="borderRadiusButton" class="btn-new ">
                     <label for="customRangeBorderRadius" class="form-label">Border-Radius</label>
-                    <input type="range" class="form-range" min="0" max="50" id="customRangeBorderRadius">                        
+                    <input type="range" class="form-range" min="0" max="90" id="customRangeBorderRadius">                        
                 </button>
+
+                <button class="btn-new">
+                    <label for="colortext" class="form-label">Titles</label>
+                    <input type="color" class="form-control form-control-color text mx-auto mt-2" id="colortext" title="Choose title your text color">
+                </button>
+            
+                <button class="btn-new">
+                    <label for="colortext" class="form-label">Content</label>
+                    <input type="color" class="form-control form-control-color text mx-auto mt-2" id="colorcontent" title="Choose  your text color">
+                </button>
+
             </div>
-            <div class="container text-center"> <h6><span class="badge bg-danger">PRO</span></h6>  </div>
+            <div class="container text-center"> <h5><span class="badge bg-danger">PRO</span></h5>  </div>
         </div>
     `;
     
@@ -172,12 +192,51 @@ export class CopysPlaycam {
             self.handleBorderRadius();
         };
 
+        const colortextInput = this.buttonsContainer.querySelector("#colortext");
+        colortextInput.addEventListener("input", () => {
+            self.handleTextColor();
+        });   
+        
+        const colorcontentInput = this.buttonsContainer.querySelector("#colorcontent");
+        colorcontentInput.addEventListener("input", () => {
+            self.handleContentColor();
+        });   
 
         return this.container;
-    }
 
+    }
+    async handleContentColor() {
+        const parentElement = this.rulesElement.querySelector("#strong-container");
+        const colorcontentInput = this.buttonsContainer.querySelector("#colorcontent");
+    
+        if (parentElement) {
+            const strongElements = parentElement.querySelectorAll("strong");
+    
+            strongElements.forEach(strongElement => {
+                console.log('cambio strong ' + colorcontentInput.value);
+                strongElement.style.color = colorcontentInput.value;
+            });
+        }
+    }
+    
+
+    async handleTextColor() { //titles strong
+        const parentElement = this.rulesElement.querySelector("#titles-playscam");
+        const colorTitlesInput = this.buttonsContainer.querySelector("#colortext");
+    
+        if (parentElement) {
+            const descendants = parentElement.querySelectorAll("*");
+    
+            descendants.forEach(descendant => {
+                console.log('cambio descendant ' + colorTitlesInput.value);
+                descendant.style.color = colorTitlesInput.value;
+            });
+        }
+    }
+    
+    
     async handleBorderRadius() {
-        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
+        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
         const rangeBorderRadiusInput = this.buttonsContainer.querySelector("#customRangeBorderRadius");
         const borderRadiusValue = rangeBorderRadiusInput.value + "px";
 
@@ -187,7 +246,7 @@ export class CopysPlaycam {
     }
 
     async handleTransparency() {
-        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
+        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
         const rangeTransparencyInput = this.buttonsContainer.querySelector("#customRangeTransparency");
         const transparencyValue = rangeTransparencyInput.value / 100;
 
@@ -198,19 +257,19 @@ export class CopysPlaycam {
     async handleRangeMarginInput() {
         const rangeInput = this.buttonsContainer.querySelector("#customRangeMargin");
         const paddingPercentage = rangeInput.value + "%";
-        const contentElement = this.rulesElement.querySelector("#card-strong");
+        const contentElement = this.rulesElement.querySelector("#strong-main");
         contentElement.style.width = paddingPercentage;
     }
 
     async handleRangePaddingInput() {
         const rangeInput = this.buttonsContainer.querySelector("#customRangePadding");
         const paddingPercentage = rangeInput.value + "%";
-        const contentElement = this.rulesElement.querySelector("#content-rules");
+        const contentElement = this.rulesElement.querySelector("#strong-container");
         contentElement.style.padding = paddingPercentage;
     }
 
     async cardImagen() {
-        const contentElement = this.rulesElement.querySelector("#content-rules");
+        const contentElement = this.rulesElement.querySelector("#strong-container");
         const existingBackgroundImageUrl = contentElement.style.backgroundImage.replace('url("', '').replace('")', '');
 
 
@@ -250,7 +309,6 @@ export class CopysPlaycam {
             contentElement.style.backgroundImage = 'none';
         }
     }
-
 
 
     async getBackgroundsForSearchTerms() {
@@ -322,10 +380,10 @@ export class CopysPlaycam {
 
     toggleShadow() {
 
-        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
+        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
 
         if (!contentElements.length) {
-            console.error("No se encontraron elementos con el id 'content-rules' o 'contenido-playcam'");
+            console.error("No se encontraron elementos con el id 'strong-container' o 'contenido-playcam'");
             return;
         }
 
@@ -351,8 +409,8 @@ export class CopysPlaycam {
 
 
     toggleBorder() {
-        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
-        const contentElement = this.rulesElement.querySelector("#content-rules");
+        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
+        const contentElement = this.rulesElement.querySelector("#strong-container");
 
 
         contentElement.style.padding = '2px';
@@ -388,14 +446,14 @@ export class CopysPlaycam {
 
         this.num = this.num + 1;
         const rulesContainer = this.rulesElement.querySelector("#contenido-playcam");
-        const subircontenido = this.rulesElement.querySelector("#content-rules");
+        const subircontenido = this.rulesElement.querySelector("#strong-container");
         const newRule = document.createElement('strong');
         newRule.setAttribute("rel", "nofollow");
         newRule.style.display = "flex";
         newRule.innerHTML = `
-        <strong rel="nofollow" style="display: flex; flex-direction: column; margin-top: 20px; color: rgb(150, 89, 83); 
+        <strong id="contenido-playcam" rel="nofollow" style="display: flex; flex-direction: column; margin-top: 20px; color: rgb(150, 89, 83); 
             border: 3px dashed rgb(73, 12, 6); padding: 2px; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; border-radius: 26px;"
-            margin-left:3px; margin-right:3px; margin-top:3px; "_blank" id="contenido-playcam">            
+            margin-left:3px; margin-right:3px; margin-top:3px; "_blank" >            
             <strong rel="nofollow" style="display: block; line-height: 1.5; font-family: Charcoal; font-size: 20px; color: rgb(235, 48, 180); 
             font-weight: 400; text-decoration: none; margin-top: 20px; margin-bottom:3px; " target="_blank">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisl felis, ultrices finibus nibh in, sollicitudin laoreet sem. Morbi a maximus diam. Integer elementum, elit in mollis dapibus, leo dui mattis lectus, id gravida magna dui blandit ante. Cras ac egestas magna, vitae efficitur nisi. Ut mi neque, sagittis bibendum ex eu, dignissim gravida tellus. Suspendisse eu purus ac diam tristique tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ut consectetur lectus, sed interdum sem. Pellentesque quis faucibus justo.
@@ -412,7 +470,7 @@ export class CopysPlaycam {
         const titleElement = this.rulesElement.querySelector("#title-rule");
         titleElement.style.color = primaryColor;
 
-        const contentElement = this.rulesElement.querySelector("#content-rules");
+        const contentElement = this.rulesElement.querySelector("#strong-container");
         contentElement.style.color = lighterColor;
 
         const title2 = this.rulesElement.querySelector("#rulestitle2");
@@ -424,7 +482,7 @@ export class CopysPlaycam {
         contentElement.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
         contentElement.style.borderRadius = '26px';
 
-        const borderglobal = this.rulesElement.querySelector("#content-rules");
+        const borderglobal = this.rulesElement.querySelector("#strong-container");
         borderglobal.style.border = `3px solid  ${primaryColor}`;
 
         this.paddingStrong();
@@ -436,7 +494,7 @@ export class CopysPlaycam {
     }
 
     paddingStrong() {
-        const contentElement = this.rulesElement.querySelector("#content-rules");
+        const contentElement = this.rulesElement.querySelector("#strong-container");
         return contentElement.style.padding = "40px"; // padinng
     }
     getRandomColor() {
