@@ -53,7 +53,7 @@ export class CopysPlaycam {
 
 
             this.rulesElement.innerHTML = `
-            <strong  id="card-strong" style="display: block; width: 98%; box-sizing: border-box; line-height: initial;" >
+            <strong  id="card-strong" style="display: block; width: 99%; box-sizing: border-box; line-height: initial; margin: 0 auto; text-align: center;" target="_blank" id="content-rules" >
                 <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
                     width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;
                     background-color:#ffffff" target="_blank" id="content-rules">
@@ -66,9 +66,10 @@ export class CopysPlaycam {
                     text-decoration:none;margin-top:20px" target="_blank">
                         ${randomContent}         
                     </strong>
-                    <strong rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px" target="_blank" id="contenido-playcam">            
-                    <strong rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;text-decoration:none;margin-top:20px" target="_blank">All content is the copyright of Loossers. Any unauthorized use of their profile, video, pictures, or audio in any form is NOT permissible without their expressed, written consent. Any act to promote or gain profit in any manner (e.g. either monetarily or socially) from the use of their profile, video, pictures, or audio in any form is a violation of their copyright and subject to legal action. By watching their streaming or videos, or viewing their photos, you acknowledge and agree that you shall not post, upload, publish, transmit, or make available in any way the content of this page including images and/or recording streamed live video available for download. This is intended as, and presented as a live, one-time, one-view presentation only. Penalties of Copyright Infringement: By reproducing, republishing or redistributing the work of a copyright holder without permission, you will be violating or infringing the Digital Millennium Copyright Act (DMCA) and international treaty.</strong>       
-                
+                    <strong id="contenido-playcam" rel="nofollow" style="display:flex;flex-direction:column;margin-top:20px;padding:9px;" target="_blank" >            
+                    <strong rel="nofollow" style="display:block;line-height:1.5; font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
+                    text-decoration:none;margin-top:20px; " target="_blank">
+                    All content is the copyright of Loossers. Any unauthorized use of their profile, video, pictures, or audio in any form is NOT permissible without their expressed, written consent. Any act to promote or gain profit in any manner (e.g. either monetarily or socially) from the use of their profile, video, pictures, or audio in any form is a violation of their copyright and subject to legal action. By watching their streaming or videos, or viewing their photos, you acknowledge and agree that you shall not post, upload, publish, transmit, or make available in any way the content of this page including images and/or recording streamed live video available for download. This is intended as, and presented as a live, one-time, one-view presentation only. Penalties of Copyright Infringement: By reproducing, republishing or redistributing the work of a copyright holder without permission, you will be violating or infringing the Digital Millennium Copyright Act (DMCA) and international treaty.</strong>                      
                     <strong rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;
                         text-decoration:none;margin-top:20px" target="_blank">
                         I appreciate your assistance in reporting my content on platforms other than Chaturbate. Please leave me a message with any relevant links so that we can work together to remove unauthorized content. Thank you.
@@ -87,33 +88,49 @@ export class CopysPlaycam {
 
         this.buttonsContainer = document.createElement('div');
         this.buttonsContainer.innerHTML = `
-                <div class="btn-group m-3 shadow-lg rounded-4 p-3" role="group" aria-label="btn">
-                            <button id="addRuleButton" class="btn-new  ">
-                                <i class='bx bxs-message-alt-add fs-3'></i> Add Content
-                            </button>
-                            <button id="changeColorButton" class="btn-new  ">
-                                <i class='bx bxs-paint fs-3'></i> Change Color
-                            </button>                           
-                            <button id="toggleShadowButton" class="btn-new  ">
-                               <i class='bx bxs-sun fs-3'></i> Toggle Shadow
-                             </button>
-                             <button id="cardImagenButton" class="btn-new ">
-                              <i class='bx bx-image fs-3'></i> Card Image
-                           </button>
-                            <button id="btn-noborder" class="btn-new ">
-                               --Border
-                            </button>
-                            <button id="btn-noborder" class="btn-new ">
-                                <label for="customRangePadding" class="form-label">Padding</label>
-                                <input type="range" class="form-range" min="1" max="20" id="customRangePadding">
-                            </button>
-                            <button id="btn-noborder" class="btn-new ">
-                                <label for="customRangeMargin" class="form-label">Range Margin</label>
-                                <input type="range" class="form-range" min="26" max="98" id="customRangeMargin">
-                            </button>                
-                          
-                </div>
+        <div class="container text-center">
+            <div class="btn-group m-3 shadow-lg rounded-4 p-3 bg-light" role="group" aria-label="btn">
+                <button id="addRuleButton" class="btn-new">
+                    <i class='bx bxs-message-alt-add fs-3'></i> Add Content
+                </button>
+                <button id="changeColorButton" class="btn-new">
+                    <i class='bx bxs-paint fs-3'></i> Change Color
+                </button>                           
+                <button id="toggleShadowButton" class="btn-new">
+                    <i class='bx bxs-sun fs-3'></i> Toggle Shadow
+                </button>
+                <button id="cardImagenButton" class="btn-new">
+                    <i class='bx bx-image fs-3'></i> Card Image
+                </button>
+                <button id="btn-noborder" class="btn-new">
+                    --Border
+                </button>
+            </div>
+
+            <div class="btn-group m-2 shadow-lg rounded-4 p-2 bg-light" role="group" aria-label="btn">
+           
+                <button class="btn-new">
+                    <label for="customRangePadding" class="form-label">Padding</label>
+                    <input type="range" class="form-range" min="1" max="20" id="customRangePadding">
+                </button>
+                <button class="btn-new">
+                    <label for="customRangeMargin" class="form-label">Margin</label>
+                    <input type="range" class="form-range" min="26" max="98" id="customRangeMargin">
+                </button>        
+                <button id="transparencyButton" class="btn-new " title="Transparency Range">
+                    <label for="customRangeTransparency" class="form-label">Transparency</label>
+                    <input type="range" class="form-range" min="1" max="100" id="customRangeTransparency">
+                </button>
+                              
+                <button id="borderRadiusButton" class="btn-new ">
+                    <label for="customRangeBorderRadius" class="form-label">Border-Radius</label>
+                    <input type="range" class="form-range" min="0" max="50" id="customRangeBorderRadius">                        
+                </button>
+            </div>
+            <div class="container text-center"> <h6><span class="badge bg-danger">PRO</span></h6>  </div>
+        </div>
     `;
+    
 
         this.container.appendChild(this.rulesElement);
         this.container.appendChild(this.buttonsContainer);
@@ -147,9 +164,37 @@ export class CopysPlaycam {
             self.handleRangeMarginInput();
         });
 
+        this.buttonsContainer.querySelector("#transparencyButton").onclick = () => {
+            self.handleTransparency();
+        };
+
+        this.buttonsContainer.querySelector("#borderRadiusButton").onclick = () => {
+            self.handleBorderRadius();
+        };
+
+
         return this.container;
     }
 
+    async handleBorderRadius() {
+        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
+        const rangeBorderRadiusInput = this.buttonsContainer.querySelector("#customRangeBorderRadius");
+        const borderRadiusValue = rangeBorderRadiusInput.value + "px";
+
+        contentElements.forEach(element => {
+            element.style.borderRadius = borderRadiusValue;
+        });
+    }
+
+    async handleTransparency() {
+        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
+        const rangeTransparencyInput = this.buttonsContainer.querySelector("#customRangeTransparency");
+        const transparencyValue = rangeTransparencyInput.value / 100;
+
+        contentElements.forEach(element => {
+            element.style.backgroundColor = `rgba(255, 255, 255, ${transparencyValue})`;
+        });
+    }
     async handleRangeMarginInput() {
         const rangeInput = this.buttonsContainer.querySelector("#customRangeMargin");
         const paddingPercentage = rangeInput.value + "%";
@@ -163,41 +208,38 @@ export class CopysPlaycam {
         const contentElement = this.rulesElement.querySelector("#content-rules");
         contentElement.style.padding = paddingPercentage;
     }
-    
+
     async cardImagen() {
         const contentElement = this.rulesElement.querySelector("#content-rules");
         const existingBackgroundImageUrl = contentElement.style.backgroundImage.replace('url("', '').replace('")', '');
-    
 
-      
+
+
         if (existingBackgroundImageUrl && existingBackgroundImageUrl !== 'none') {
             const userChoice = confirm(`Do you want to remove the existing background image?\n\nCurrent Background Image URL:\n${existingBackgroundImageUrl}`);
-            
+
             if (userChoice) {
-                // Eliminar la imagen de fondo y los estilos relacionados
                 contentElement.style.backgroundImage = 'none';
                 contentElement.style.backgroundSize = 'initial';
-                // Puedes ajustar otros estilos relacionados con la imagen de fondo aquí
                 return;
-            }else return false;
+            } else return false;
         }
 
-        if (existingBackgroundImageUrl==='none') {
-        //    return false;
+        if (existingBackgroundImageUrl === 'none') {
+            //    return false;
         }
 
         const backgroundImageUrl = existingBackgroundImageUrl || await this.getBackgroundsForSearchTerms();
         const defaultBackgroundImageUrl = 'https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg';
 
         const imageUrl = await this.customPrompt('Image URL', 'Enter the URL of the image:', backgroundImageUrl || defaultBackgroundImageUrl);
-    
+
         if (imageUrl) {
             const isImage = /\.(jpg|jpeg|png|gif|bmp)$/.test(imageUrl.toLowerCase());
-    
+
             if (isImage) {
                 contentElement.style.backgroundImage = `url(${imageUrl})`;
                 contentElement.style.backgroundSize = 'cover';
-                // Puedes ajustar otros estilos relacionados con la imagen de fondo aquí
             } else {
                 window.Notiflix.Notify.failure('Invalid image URL. Please enter a valid image URL.', {
                     position: 'center-center',
@@ -208,8 +250,8 @@ export class CopysPlaycam {
             contentElement.style.backgroundImage = 'none';
         }
     }
-    
-    
+
+
 
     async getBackgroundsForSearchTerms() {
 
