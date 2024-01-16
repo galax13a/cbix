@@ -14,6 +14,12 @@
                 THE ACT OF MASTURBATING WHILE CHATTING ONLINE
             </strong>
         </div>
+		<div class="ad style-fxWKh" id="style-fxWKh">
+			<a data-feature-show-title="Performing Together" href="https://youtu.be/eedRLlLcRTk" target="_blank" rel="noopener noreferrer" data-testid="header-ad-anchor">
+			  <img src="https://static-pub.highwebmedia.com/featureshow/skvDAtsDVSfydeu.jpeg" id="style-PDsrG" class="style-PDsrG">
+			</a>
+		  </div>
+		
         <div class="right_section">
             <div id="user_information" data-paction="UserInfoPanel" data-testid="user-info-panel" class="style-Vc7Kt">
                 <div id="user_information_header" class="user_information_header">
@@ -445,6 +451,9 @@
                 </a>
             </li>
             <li class="broadcast-yourself style-mxp9v" ts="p" id="style-mxp9v">
+				
+				<a href="#" id="btn-credits"><span class="badge bg-warning p-1 text-dark m-1 fs-2">5</span> Credits Free </a>
+				|
                 <a href="/b/PlaysCam/" data-testid="broadcast-yourself-tab" id="style-1OK6m" class="style-1OK6m">
                     BROADCAST YOURSELF
                 </a>
@@ -518,7 +527,7 @@
                                 </span>
                                 <span class="satisfactionSpan style-sNxEP" id="style-sNxEP">
                                     <span class="voteText style-hOi3Z" id="style-hOi3Z">
-                                        0
+                                        1
                                     </span>
                                     <span id="style-YTP8D" class="style-YTP8D">
                                     </span>
@@ -626,7 +635,7 @@
                                             <a href="/accounts/followers/" target="_blank"
                                                 data-testid="bio-tab-followers-value" id="style-OnlWz"
                                                 class="style-OnlWz">
-                                                999
+                                                69996
                                             </a>
                                         </div>
                                     </td>
@@ -696,11 +705,11 @@
                                         id="style-3Dkbq">
                                         <div id="style-587Is" class="style-587Is">
                                             <span id="style-PF7sT" class="style-PF7sT">
-                                                You must be
-                                                <a href="/accounts/age_verification/">
-                                                    age verified
+												Verify your profile and earn 260, free credits 🍒 + 100 bots
+                                                <a href="/accounts/age_verification/" title="verify your profile">
+                                                   submit.
                                                 </a>
-                                                to add new social media, 
+											
 												<a href="https://www.youtube.com/@playscams" target="_blank" rel="nofollow"> 
 													<i class='bx bxl-youtube text-danger fs-2'></i> Look at the tutorial, how to use this editor 👇
 												</a>

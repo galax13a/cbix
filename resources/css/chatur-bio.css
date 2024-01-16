@@ -33,6 +33,7 @@
       transform: translateY(-3px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
       border: 2px solid #635994;
+      border-radius: 9px;
     }
     .table-responsive.nav {        
         background: var(--light);
@@ -2957,3 +2958,23 @@
     border-bottom: 3px solid #f47321;
     white-space: nowrap;
 }
+
+.ad  { 
+    position: absolute; 
+    display: inline-block; 
+    margin-top: 10px; 
+    left: 370px; 
+    width: 468px; 
+    height: 60px; 
+    z-index: 10;
+} 
+
+#header .ad img { 
+    display: block;
+} 
+#style-JhLjs.style-JhLjs {  
+   display: block;  
+}  
+#style-wgFL8.style-wgFL8 {  
+   display: none;  
+}  

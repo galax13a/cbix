@@ -50,7 +50,7 @@ export class TitlePlaycam {
   
     static get toolbox() {
       return {
-        title: 'TitleBio',       
+        title: 'Title Bio',       
         icon: '<strong style="font-family: Arial, sans-serif;">T</strong>',
       };
     }

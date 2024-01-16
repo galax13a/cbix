@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
         holder: 'editor-biochaturbate',
         autofocus: false,
         placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <-- 👌🏾  Start creating an attractive bio for your fans  🐱  
-                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🍒🍒🍒  🅑🅨 PʟᴀʏꜱCᴀᴍꜱ.ᴄᴏᴍ 🦄`,
+                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🅑🅨 PʟᴀʏꜱCᴀᴍꜱ.ᴄᴏᴍ 🦄`,
                         tools: {
                             header: {
                               class: Header,
