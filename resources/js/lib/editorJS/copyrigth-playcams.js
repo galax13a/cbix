@@ -81,17 +81,22 @@ export class CopysPlaycam {
 
         this.buttonsContainer = document.createElement('div');
         this.buttonsContainer.innerHTML = `
-                <div class="btn-group m-3" role="group" aria-label="btn">
+                <div class="btn-group m-3 shadow-lg rounded-4 p-3" role="group" aria-label="btn">
                             <button id="addRuleButton" class="btn-new rounded-2 ">
                                 <i class='bx bxs-message-alt-add fs-3'></i> Add Content
                             </button>
                             <button id="changeColorButton" class="btn-new rounded-2 ">
                                 <i class='bx bxs-paint fs-3'></i> Change Color
                             </button>
-
                             <button id="btn-noborder" class="btn-new rounded-2 ">
                                 --Border
                             </button>
+                            <button id="toggleShadowButton" class="btn-new rounded-2 ">
+                            <i class='bx bxs-sun fs-3'></i> Toggle Shadow
+                           </button>
+                             <button id="cardImagenButton" class="btn-new rounded-2">
+                             <i class='bx bx-image fs-3'></i> Card Image
+                          </button>
                 </div>
     `;
 
@@ -111,9 +116,145 @@ export class CopysPlaycam {
             self.toggleBorder();
         };
 
+        this.buttonsContainer.querySelector("#toggleShadowButton").onclick = () => {
+            this.toggleShadow();
+        };
+
+        this.buttonsContainer.querySelector("#cardImagenButton").onclick = function () {
+            self.cardImagen();
+        };
+        
+
+
         return this.container;
     }
-// Añade el método toggleBorder para alternar el borde en #content-rules y #contenido-playcam
+
+async cardImagen() {
+
+
+    const contentElement = this.rulesElement.querySelector("#content-rules");
+//    const imageUrl = await this.customPrompt('Image URL', 'Enter the URL of the image:');
+const backgroundImageUrl = await this.getBackgroundsForSearchTerms();
+const defaultBackgroundImageUrl = 'https://images.pexels.com/photos/235985/pexels-photo-235985.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1';
+    const imageUrl = await this.customPrompt('Image URL', 'Enter the URL of the image:', backgroundImageUrl || defaultBackgroundImageUrl);
+
+
+    if (imageUrl) {
+       
+        const isImage = /\.(jpg|jpeg|png|gif|bmp)$/.test(imageUrl.toLowerCase());
+
+        if (isImage) {
+            contentElement.style.backgroundImage = `url(${imageUrl})`;
+            contentElement.style.backgroundSize = 'cover';
+        } else {
+            window.Notiflix.Notify.failure('Invalid image URL. Please enter a valid image URL.', {
+                position: 'center-center',
+            });
+            contentElement.style.backgroundImage = 'none';
+        }
+    } else {
+   
+        contentElement.style.backgroundImage = 'none';
+    }
+}
+
+async  getBackgroundsForSearchTerms() {
+   
+    const searchTerms = ["nature", "city", "technology", "ocean", "mountain", "space", "animals", "architecture", "food", "travel", "music", "abstract"];
+
+     const apiKey = "g5QeRCqb7WugayETsY0NWbSk5gTIzagZQtRpi7Ql7bpoofhmKyIeJhQ7";
+    async function getPexelsBackgroundImage(searchTerm) {
+        const endpoint = `https://api.pexels.com/v1/search?query=${searchTerm}&per_page=1`;
+
+        const response = await fetch(endpoint, {
+            headers: {
+                Authorization: apiKey,
+            },
+        });
+
+        const data = await response.json();
+
+        if (data.photos && data.photos.length > 0) {
+            const randomIndex = Math.floor(Math.random() * data.photos.length);
+            return data.photos[randomIndex].src.original;
+        } else {
+            console.error(`No se encontraron imágenes para el término de búsqueda: ${searchTerm}`);
+            return null;
+        }
+    }
+
+    const backgroundUrls = await Promise.all(searchTerms.map(async term => {
+        return await getPexelsBackgroundImage(term);
+    }));
+    const randomBackgroundUrl = backgroundUrls[Math.floor(Math.random() * backgroundUrls.length)];
+    console.log("URL de la imagen aleatoria:", randomBackgroundUrl);
+    return randomBackgroundUrl;
+}
+
+customPrompt(titulo, mensaje, backgroundImageUrl = null) {
+    return new Promise((resolve) => {
+        const linkText = backgroundImageUrl ? backgroundImageUrl : '👻 Link here!';
+
+        window.Notiflix.Confirm.prompt(
+            titulo,
+            mensaje,
+            linkText,
+            'Ok',
+            'Cancel',
+            async (clientAnswer) => {
+                if (clientAnswer) {
+                    const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
+                    if (urlPattern.test(clientAnswer)) {
+                        resolve(clientAnswer);
+                    } else {
+                        window.Notiflix.Notify.failure('Invalid URL. Please enter a valid URL.', {
+                            position: 'center-center',
+                        });
+                        resolve(null);
+                    }
+                } else {
+                    resolve(null);
+                }
+            },
+            () => {
+                resolve(null);
+            }
+        );
+    });
+}
+
+    
+
+    toggleShadow() {
+        
+        const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
+    
+        if (!contentElements.length) {
+            console.error("No se encontraron elementos con el id 'content-rules' o 'contenido-playcam'");
+            return;
+        }
+    
+        const boxShadowValue = contentElements[0].style.boxShadow;
+    
+        if (boxShadowValue && boxShadowValue !== 'none') {
+
+            contentElements.forEach(element => {
+                const existingStyles = element.getAttribute("style");
+                const updatedStyles = existingStyles.replace(/box-shadow[^;]*;?/g, ''); // delete boxShadow
+                element.setAttribute("style", updatedStyles);
+            });
+        } else {
+            const primaryColor = this.getRandomColor();
+            contentElements.forEach(element => {
+             
+                const existingStyles = element.getAttribute("style");
+                const updatedStyles = `${existingStyles ? existingStyles + ';' : ''} box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);`;
+                element.setAttribute("style", updatedStyles);
+            });
+        }
+    }
+    
+
 toggleBorder() {
     const contentElements = this.rulesElement.querySelectorAll("#content-rules, #contenido-playcam");
     const contentElement = this.rulesElement.querySelector("#content-rules");
@@ -134,23 +275,21 @@ toggleBorder() {
         contentElements.forEach(element => {
             element.style.border = 'none';
             contentElement.style.padding = "40px";
-            
-            
         });
     } else {
-        // Restaura el borde para todos los elementos
+    
         const primaryColor = this.getRandomColor();
         contentElements.forEach(element => {
             element.style.border = `3px solid ${primaryColor}`;
             element.style.padding = '4px';
+            contentElement.style.padding = "40px";
         
         });
     }
 }
 
 
-
-    addNewRule() {
+    addNewRule() { /* add content */ 
 
         this.num = this.num + 1;
         const rulesContainer = this.rulesElement.querySelector("#contenido-playcam");
@@ -160,11 +299,11 @@ toggleBorder() {
         newRule.style.display = "flex";
         newRule.innerHTML = `
         <strong rel="nofollow" style="display: flex; flex-direction: column; margin-top: 20px; color: rgb(150, 89, 83); 
-        border: 3px dashed rgb(73, 12, 6); padding: 2px; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; border-radius: 26px;"
-        margin-left:3px; margin-right:3px; margin-top:3px; "_blank" id="contenido-playcam">            
-        <strong rel="nofollow" style="display: block; line-height: 1.5; font-family: Charcoal; font-size: 20px; color: rgb(235, 48, 180); 
-        font-weight: 400; text-decoration: none; margin-top: 20px; margin-bottom:3px; " target="_blank">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisl felis, ultrices finibus nibh in, sollicitudin laoreet sem. Morbi a maximus diam. Integer elementum, elit in mollis dapibus, leo dui mattis lectus, id gravida magna dui blandit ante. Cras ac egestas magna, vitae efficitur nisi. Ut mi neque, sagittis bibendum ex eu, dignissim gravida tellus. Suspendisse eu purus ac diam tristique tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ut consectetur lectus, sed interdum sem. Pellentesque quis faucibus justo.
+            border: 3px dashed rgb(73, 12, 6); padding: 2px; box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px; border-radius: 26px;"
+            margin-left:3px; margin-right:3px; margin-top:3px; "_blank" id="contenido-playcam">            
+            <strong rel="nofollow" style="display: block; line-height: 1.5; font-family: Charcoal; font-size: 20px; color: rgb(235, 48, 180); 
+            font-weight: 400; text-decoration: none; margin-top: 20px; margin-bottom:3px; " target="_blank">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nisl felis, ultrices finibus nibh in, sollicitudin laoreet sem. Morbi a maximus diam. Integer elementum, elit in mollis dapibus, leo dui mattis lectus, id gravida magna dui blandit ante. Cras ac egestas magna, vitae efficitur nisi. Ut mi neque, sagittis bibendum ex eu, dignissim gravida tellus. Suspendisse eu purus ac diam tristique tristique. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus ut consectetur lectus, sed interdum sem. Pellentesque quis faucibus justo.
         </strong>      
          `;
          subircontenido.appendChild(newRule);
@@ -173,6 +312,7 @@ toggleBorder() {
     changeColors() {
         const primaryColor = this.getRandomColor();
         const lighterColor = this.lightenColor(primaryColor, 30); // 30% lighter
+        
 
         const titleElement = this.rulesElement.querySelector("#title-rule");
         titleElement.style.color = primaryColor;
@@ -185,11 +325,14 @@ toggleBorder() {
 
         contentElement.style.border = `3px dashed ${primaryColor}`;
         contentElement.style.padding = '2px';
+
         contentElement.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
         contentElement.style.borderRadius = '26px';
 
         const borderglobal = this.rulesElement.querySelector("#content-rules");
         borderglobal.style.border = `3px solid  ${primaryColor}`;
+       
+        this.paddingStrong();
 
         const contentElements = contentElement.querySelectorAll("*");
         contentElements.forEach(element => {
@@ -197,6 +340,10 @@ toggleBorder() {
         });
     }
 
+    paddingStrong(){
+            const contentElement = this.rulesElement.querySelector("#content-rules");
+            return  contentElement.style.padding = "40px"; // padinng
+    }
     getRandomColor() {
         return '#' + Math.floor(Math.random() * 16777215).toString(16);
     }
