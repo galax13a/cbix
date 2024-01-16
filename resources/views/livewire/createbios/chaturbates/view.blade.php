@@ -700,8 +700,13 @@
                                                 <a href="/accounts/age_verification/">
                                                     age verified
                                                 </a>
-                                                to add new social media
+                                                to add new social media, 
+												<a href="https://www.youtube.com/@playscams" target="_blank" rel="nofollow"> 
+													<i class='bx bxl-youtube text-danger fs-2'></i> Look at the tutorial, how to use this editor 👇
+												</a>
+												
                                             </span>
+											
                                         </div>
                                     </td>
                                 </tr>
