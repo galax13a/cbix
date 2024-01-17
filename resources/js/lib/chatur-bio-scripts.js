@@ -13,7 +13,7 @@ import {TitlePlaycam} from './editorJS/title-playcams';
 import { RulesPlaycam } from './editorJS/rule-playcam';
 import { CopysPlaycam } from './editorJS/copyrigth-playcams';
 import { CodexPlaycam } from './editorJS/code-playcam';
-
+import { CardsPlayscam } from './editorJS/playscamcards';
 
 document.addEventListener('livewire:load', function() {
     Livewire.on('messageProcessed', function() {
@@ -50,7 +50,9 @@ document.addEventListener('DOMContentLoaded', function () {
                                 class: Paragraph,
                                 inlineToolbar: true,
                               },                                               
-
+                              CardsPlayscam:{
+                                class: CardsPlayscam,
+                              },
                               CopysPlaycam:{
                                 class: CopysPlaycam,
                                 inlineToolbar: ['bold','italic'],
@@ -68,9 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
                               br: {
                                 class: BRPlaycams,
                               },
+
                               CodexPlaycam:{
                                 class: CodexPlaycam,
                               },
+                           
 
                               titlePlaycams:{
                                  class: TitlePlaycam,

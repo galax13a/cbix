@@ -1,5 +1,4 @@
 @section('title', __('🤩 Create Biography Chaturbate ~ Editor Profile'))
-
 <div>
     <div class="section clearfix snipcss-lO8GO container-fluid " id="header-logito-cb">
         <div class="logo-zone style-N5kxO" data-testid="header-logo" id="style-N5kxO">
@@ -725,6 +724,7 @@
                                     <td class="label style-RojPw" id="style-RojPw">
                                         <span data-testid="bio-tab-about-me-label">
                                             About Me:
+											@include('livewire.createbios.chaturbates.modals')
                                         </span>
                                     </td>
                                     <td class="contentText style-K2MjS" id="style-K2MjS">
@@ -739,7 +739,7 @@
 
                                         </div>
 
-                                        <div class="editor-biochaturbate" id="editor-biochaturbate">
+                                        <div class="editor-biochaturbate" id="editor-biochaturbate" wire:ignore>
 
                                         </div>
 
