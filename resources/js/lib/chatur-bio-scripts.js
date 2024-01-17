@@ -12,6 +12,7 @@ import  BRPlaycams   from './editorJS/br-editor';
 import {TitlePlaycam} from './editorJS/title-playcams';
 import { RulesPlaycam } from './editorJS/rule-playcam';
 import { CopysPlaycam } from './editorJS/copyrigth-playcams';
+import { CodexPlaycam } from './editorJS/code-playcam';
 
 
 document.addEventListener('livewire:load', function() {
@@ -66,6 +67,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
                               br: {
                                 class: BRPlaycams,
+                              },
+                              CodexPlaycam:{
+                                class: CodexPlaycam,
                               },
 
                               titlePlaycams:{

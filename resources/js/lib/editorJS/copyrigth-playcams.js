@@ -39,7 +39,7 @@ export class CopysPlaycam {
         return emotions[randomIndex];
     }
 
-    render() {
+    render(savedData) {
 
         this.rulesElement = document.createElement('strong');
         this.rulesElement.contentEditable = true;
@@ -98,8 +98,8 @@ export class CopysPlaycam {
 
         this.buttonsContainer = document.createElement('div');
         this.buttonsContainer.innerHTML = `
-        <div class="container text-center">
-            <div class="btn-group m-3 shadow-lg rounded-4 p-3 bg-light" role="group" aria-label="btn">
+        <div class="container text-center" style="margin-top:-26px;">
+            <div class="btn-group m-3  rounded-4 p-3 bg-light" role="group" aria-label="btn">
                 <button id="addRuleButton" class="btn-new">
                     <i class='bx bxs-message-alt-add fs-3'></i> Add Content
                 </button>
@@ -117,7 +117,7 @@ export class CopysPlaycam {
                 </button>
             </div>
 
-            <div class="btn-group m-2 shadow-lg rounded-4 p-2 bg-light" role="group" aria-label="btn">
+            <div class="btn-group m-2  rounded-4 p-2 bg-light" role="group" aria-label="btn">
            
                 <button class="btn-new">
                     <label for="customRangePadding" class="form-label">Padding</label>
@@ -202,6 +202,14 @@ export class CopysPlaycam {
             self.handleContentColor();
         });   
 
+        if (this.data.colortext) {
+            this.buttonsContainer.querySelector("#colortext").value = this.data.colortext;
+        }
+    
+        if (this.data.colorcontent) {
+            this.buttonsContainer.querySelector("#colorcontent").value = this.data.colorcontent;
+        }
+
         return this.container;
 
     }
@@ -225,10 +233,8 @@ export class CopysPlaycam {
         const colorTitlesInput = this.buttonsContainer.querySelector("#colortext");
     
         if (parentElement) {
-            const descendants = parentElement.querySelectorAll("*");
-    
-            descendants.forEach(descendant => {
-                console.log('cambio descendant ' + colorTitlesInput.value);
+            const descendants = parentElement.querySelectorAll("*");    
+            descendants.forEach(descendant => {             
                 descendant.style.color = colorTitlesInput.value;
             });
         }
@@ -412,7 +418,6 @@ export class CopysPlaycam {
         const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
         const contentElement = this.rulesElement.querySelector("#strong-container");
 
-
         contentElement.style.padding = '2px';
 
         if (!contentElements.length) {
@@ -510,10 +515,14 @@ export class CopysPlaycam {
         return `#${(1 << 24 | R << 16 | G << 8 | B).toString(16).slice(1)}`;
     }
 
-
     save() {
-        return { strong: this.data.strong || this.rulesElement.innerHTML };
+        return {
+            strong: this.data.strong || this.rulesElement.innerHTML,
+            colorcontent: this.buttonsContainer.querySelector("#colorcontent").value,
+            colortext: this.buttonsContainer.querySelector("#colortext").value
+        };
     }
+    
 
     static get toolbox() {
         return {
