@@ -732,7 +732,7 @@
 											
                                             @include('livewire.createbios.chaturbates.modals')
                                         </span>
-										<div class="container" class="text-left" style="margin-left :-26px;" >
+									<div class="container" class="text-left" style="margin-left :-26px;" >
 										<div class="btn-group p-0 mt-3"  role="group" aria-label="Basic outlined">
 											<button id="clearEditorButton" title="Clear Editor"class="btn btn-new fs-2">
 												<i class='bx bxs-eraser' ></i>
@@ -747,7 +747,7 @@
 												<i class='bx bx-code-block' ></i>
 											</button>										
 										  </div>	
-										</div>
+									</div>
 						
                                     </td>
                                     <td class="contentText style-K2MjS" id="style-K2MjS">
@@ -758,7 +758,6 @@
                                                     class='bx bx-message-square-detail'></i>
                                             </a>
                                             <button class="btn btn-primary">Entrar</button>
-
 
                                         </div>
 
