@@ -13,12 +13,14 @@
                 THE ACT OF MASTURBATING WHILE CHATTING ONLINE
             </strong>
         </div>
-		<div class="ad style-fxWKh" id="style-fxWKh">
-			<a data-feature-show-title="Performing Together" href="https://youtu.be/eedRLlLcRTk" target="_blank" rel="noopener noreferrer" data-testid="header-ad-anchor">
-			  <img src="https://static-pub.highwebmedia.com/featureshow/skvDAtsDVSfydeu.jpeg" id="style-PDsrG" class="style-PDsrG">
-			</a>
-		  </div>
-		
+        <div class="ad style-fxWKh" id="style-fxWKh">
+            <a data-feature-show-title="Performing Together" href="https://youtu.be/eedRLlLcRTk" target="_blank"
+                rel="noopener noreferrer" data-testid="header-ad-anchor">
+                <img src="https://static-pub.highwebmedia.com/featureshow/skvDAtsDVSfydeu.jpeg" id="style-PDsrG"
+                    class="style-PDsrG">
+            </a>
+        </div>
+
         <div class="right_section">
             <div id="user_information" data-paction="UserInfoPanel" data-testid="user-info-panel" class="style-Vc7Kt">
                 <div id="user_information_header" class="user_information_header">
@@ -372,7 +374,7 @@
                                                 title="Token Count" data-testid="token-count-link">
                                                 <span class="tokencount" title="Token Count" updatable-count=""
                                                     data-testid="token-count">
-                                                   150
+                                                    150
                                                 </span>
                                                 Tokens
                                             </a>
@@ -450,9 +452,10 @@
                 </a>
             </li>
             <li class="broadcast-yourself style-mxp9v" ts="p" id="style-mxp9v">
-				
-				<a href="#" id="btn-credits"><span class="badge bg-warning p-1 text-dark m-1 fs-2">0</span> AI Credits Free </a>
-				|
+
+                <a href="#" id="btn-credits"><span class="badge bg-warning p-1 text-dark m-1 fs-2">0</span> AI
+                    Credits Free </a>
+                |
                 <a href="/b/PlaysCam/" data-testid="broadcast-yourself-tab" id="style-1OK6m" class="style-1OK6m">
                     BROADCAST YOURSELF
                 </a>
@@ -465,7 +468,7 @@
         </ul>
     </div>
 
-	
+
 
     <div ts="w" class="snipcss-Rkh4o style-R9sLq" id="style-R9sLq">
         <div ts="b"
@@ -706,26 +709,46 @@
                                         id="style-3Dkbq">
                                         <div id="style-587Is" class="style-587Is">
                                             <span id="style-PF7sT" class="style-PF7sT">
-												Verify your profile and earn 260, free credits 🍒 + 100 bots
+                                                Verify your profile and earn 260, free credits 🍒 + 100 bots
                                                 <a href="/accounts/age_verification/" title="verify your profile">
-                                                   submit.
+                                                    submit.
                                                 </a>
-											
-												<a href="https://www.youtube.com/@playscams" target="_blank" rel="nofollow"> 
-													<i class='bx bxl-youtube text-danger fs-2'></i> Look at the tutorial, how to use this editor 👇
-												</a>
-												
+
+                                                <a href="https://www.youtube.com/@playscams" target="_blank"
+                                                    rel="nofollow">
+                                                    <i class='bx bxl-youtube text-danger fs-2'></i> Look at the
+                                                    tutorial, how to use this editor 👇
+                                                </a>
+
                                             </span>
-											
+
                                         </div>
                                     </td>
                                 </tr>
                                 <tr id="style-Q3oQ4" class="style-Q3oQ4">
                                     <td class="label style-RojPw" id="style-RojPw">
                                         <span data-testid="bio-tab-about-me-label">
-                                            About Me:
-											@include('livewire.createbios.chaturbates.modals')
+                                            About Me:											
+											
+                                            @include('livewire.createbios.chaturbates.modals')
                                         </span>
+										<div class="container" class="text-left" style="margin-left :-26px;" >
+										<div class="btn-group p-0 mt-3"  role="group" aria-label="Basic outlined">
+											<button id="clearEditorButton" title="Clear Editor"class="btn btn-new fs-2">
+												<i class='bx bxs-eraser' ></i>
+											</button>
+											<button id="saveEditorButton" title="Save Bio"class="btn btn-new  fs-2">
+												<i class='bx bx-save' ></i>
+											</button>
+											<button id="backupEditorButton" title="Backup Bio"class="btn btn-new fs-2">
+												<i class='bx bx-memory-card' ></i>
+											</button>	
+											<button id="copycodeEditorButton" title="Code My Bio"class="btn btn-new fs-2">
+												<i class='bx bx-code-block' ></i>
+											</button>										
+										  </div>	
+										</div>
+						
                                     </td>
                                     <td class="contentText style-K2MjS" id="style-K2MjS">
                                         <div id="content-bio" class=" d-none">
@@ -769,7 +792,7 @@
                                     src="https://camo.mmcdn.com/86d4251f8576b8c7026de8299c1addc585b52c1b/68747470733a2f2f692e696d6775722e636f6d2f447566596339712e706e67"
                                     target="_blank">
                                 <br>
-								
+
                                 <font contenteditable="true" color="#FF0093" rel="nofollow"
                                     style="position: absolute; width: 630px; height: 50px; overflow: hidden; overflow-x: hidden; background-image: linear-gradient(to bottom right, rgba(250,198,225,0.9), rgba(250,198,225,0.8)); }; border: 2px solid #FF0093; margin: -89px 0px 0px 150px;"
                                     target="_blank"><br rel="nofollow" target="_blank">NAME HERE - XXXX TOKENS<br
@@ -1275,20 +1298,21 @@
         max-width: calc(990% - 26px);
     }
 
-select {
-  margin-bottom: 1em;
-  padding: 0.25em;
-  border: 0;
-  border-bottom: 2px solid currentcolor;
-  font-weight: bold;
-  letter-spacing: 0.15em;
-  border-radius: 0;
-}
-select:focus, select:active {
-  outline: 0;
-  border-bottom-color: red;
-}
+    select {
+        margin-bottom: 1em;
+        padding: 0.25em;
+        border: 0;
+        border-bottom: 2px solid currentcolor;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        border-radius: 0;
+    }
 
+    select:focus,
+    select:active {
+        outline: 0;
+        border-bottom-color: red;
+    }
 </style>
 
 </div>

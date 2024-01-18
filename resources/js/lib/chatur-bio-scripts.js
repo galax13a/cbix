@@ -1,4 +1,3 @@
-
 import EditorJS from '@editorjs/editorjs';
 import Header from 'editorjs-header-with-alignment';
 import  Paragraph from 'editorjs-paragraph-with-alignment';
@@ -15,29 +14,50 @@ import { CopysPlaycam } from './editorJS/copyrigth-playcams';
 import { CodexPlaycam } from './editorJS/code-playcam';
 import { CardsPlayscam } from './editorJS/playscamcards';
 
+var isReadOnly = false;
+var editor;
+
 document.addEventListener('livewire:load', function() {
     Livewire.on('messageProcessed', function() {
-        var body = document.body;               
-        body.style.height = (body.scrollHeight + 1600) + 'px';                
-        var contentModels = document.getElementById('content-models');
-        var alturaActual = contentModels.clientHeight;
-        var nuevaAltura = alturaActual + 100;
-        contentModels.style.height = body.style.height + 100 + 'px';
-        body.style.height = (body.scrollHeight + 1900) + 'px';           
-        
-
+       console.log('Message process');
     });
 });
 
+
+async function clearEditor() {
+    Notiflix.Confirm.show(
+        'Playscam Confirm',
+        'Do you want to delete the content of the Biography?',
+        'Yes',
+        'No',
+        () => {
+            editor.clear();
+            Notiflix.Notify.success('Ready EditorThema, Clean', {
+                position: 'center-center'
+            });
+        },
+        () => {
+                //no.
+        },
+        {
+        },
+        );
+}
 document.addEventListener('DOMContentLoaded', function () {
 
     MenuStartBio(); // init menu collap
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
-    const editor = new EditorJS({
+    document.getElementById('clearEditorButton').addEventListener('click', function () {    
+        clearEditor();
+    });
+
+    
+     editor = new EditorJS({
         holder: 'editor-biochaturbate',
-        autofocus: false,
+        autofocus: isReadOnly,
         placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <-- 👌🏾  Start creating an attractive bio for your fans  🐱  
-                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🅑🅨 PʟᴀʏꜱCᴀᴍꜱ.ᴄᴏᴍ 🦄`,
+                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🅑🅨 PʟᴀʏꜱCᴀᴍ.ᴄᴏᴍ 🦄`,
                         tools: {
                             header: {
                               class: Header,
@@ -229,6 +249,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 });
+
 
 function openwin36(modalName) { // open close all modals
     var myModalwin32 = new bootstrap.Modal(document.getElementById(modalName));

@@ -2,8 +2,8 @@
 export class CardsPlayscam {
   static get toolbox() {
       return {
-          title: 'CardsPlayscam',
-          icon: '<i class="bx bx-id-card"></i>',
+          title: 'Playscam Cards',
+          icon: '<i class="bx bx-id-card fs-2"></i>',
       };
   }
 
@@ -17,7 +17,7 @@ export class CardsPlayscam {
       this.button.classList.add('btn', 'btn-primary', 'btn-block');
       this.button.textContent = 'Open Modal 🌐';
       this.button.dataset.bsToggle = 'modal';
-      this.button.dataset.bsTarget = '#createDataModal';
+      this.button.dataset.bsTarget = '#modal-cards-playscam';
 
       this.container.appendChild(this.button);
   }

@@ -1,4 +1,108 @@
+<!-- modal cards playscam -->
+<!-- resources/views/livewire/biochaturbates/view.blade.php -->
+
+<div>
+    <!-- modal cards playscam -->
+    <div class="modal fade" id="modal-cards-playscam" tabindex="-1" aria-labelledby="modal-cards-playscamLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modal-cards-playscamLabel">🦄 Playcams Store | Cards Bio Chaturbate</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    
+                    <input wire:model="keyWord" type="text" class="search-input" placeholder="Search Cards">
+
+                    <div class="container shadow rounded-3 mb-3 bg-light">
+                        <div class="btn-group rounded-4" role="group" aria-label="btn">
+                            <button id="addRuleButton" class="btn-new">
+                                <i class='bx bx-happy-beaming fs-2' ></i></i>Apps
+                            </button>
+                            <button id="changeColorButton" class="btn-new">
+                                <i class='bx bx-heading fs-2' ></i></i>Headers
+                            </button>                           
+                            <button id="toggleShadowButton" class="btn-new">
+                                <i class='bx bx-book-heart fs-2' ></i>Cards
+                            </button>
+                            <button id="cardImagenButton" class="btn-new">
+                                <i class="bx bx-image fs-2"></i> SocialMedia
+                            </button>
+                            <button id="btn-noborder" class="btn-new">
+                                <i class='bx bx-bookmark-heart fs-2' ></i>Links
+                            </button>
+                            <button id="btn-noborder" class="btn-new">
+                                <i class='bx bxs-bowl-hot fs-2' ></i>Extra
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="row" id="rows-cards-playscam">
+                        <?php
+                            $descrip = 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. ';
+                            $cards = [
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 2', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 4', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                             
+                            ];
+                        ?>
+                        @foreach ($cards as $card)
+                        <div class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
+                            <div class="row g-0">
+                              <div class="col-2">
+                                <img src="https://picsum.photos/200/150"  class="img-fluid rounded" alt="Card title">
+                              </div>
+                              <div class="col-8">
+                                <div class="card-body py-0">
+                                  <p class="text-muted mb-0">
+                                    <p class="text-muted mb-0">{{ $card['name'] }}</p>
+                                  </p>
+                             
+                                    <h5 class="card-title">{{ $card['description'] }}</h5>
+                                    <button class="btn btn-light text-center">Select Card</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                    @endforeach
+                    </div>
+
+                    <div class="card" id="biocontentcard">
+                        <div class="card-header">
+                            <h5 class="card-title"><i class='bx bxs-credit-card-front' ></i>😎 Bio Cards</h5>
+                        </div>
+                        <div class="card2">
+                            <blockquote class="bloquequote mb-4 text-center">
+                                <p>Transforma tu perfil y cautiva a tu audiencia con nuestras Bio Cards. Personalizar y exhibir
+                                    diferentes facetas de tu vida y contenido en Chaturbate, mejorando la presentación para una experiencia más atractiva.
+                                    Elaborar una biografía detallada y convincente es fundamental, ya que le permite comunicar de forma eficaz lo que ofrece.
+                                    Edite y perfeccione su perfil para destacar en varias categorías y explorar canales de promoción exclusivos para
+                                    llegar a un público más amplio. Las Tarjetas ofrecen un enfoque único y creativo para promocionar su contenido,
+                                    eliminando la necesidad de conocimientos de codificación o diseño web. Esto le permite gestionar y mejorar de manera eficiente su presencia en
+                                    Chaturbate de una manera verdaderamente creativa.</p>
+                                <p>Recuerde: una biografía bien elaborada no solo proporciona información sobre sus ofertas, sino que también crea una conexión con su audiencia.
+                                    Comparte tu historia, muestra tu singularidad y deja que tu personalidad brille. ¡Eleva tu perfil y atrae una nueva ola de seguidores!</p>
+                                <footer class="blockquote-footer"> 🥰 ¡Haz que tu perfil sea inolvidable! 🚀</pie de página>
+                           </blockquote>
+                      </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <!-- Add Modal -->
+
 <div wire:ignore.self class="modal fade" id="createDataModal" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="createDataModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -153,4 +257,11 @@
             </div>
        </div>
     </div>
+
+    <style>
+    .modal-lg {
+        --bs-modal-width: 70%;
+    }
+    </style>
+
 </div>
