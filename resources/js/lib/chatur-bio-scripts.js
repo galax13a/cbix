@@ -22,12 +22,18 @@ document.addEventListener('livewire:load', function () {
         console.log('Message process');
     });
 });
-/*
-document.addEventListener('livewire:load', function() { // load  
-    setTimeout(function() {
-    Livewire.emit('myloadjs');
-}, 600);
-*/
+
+window.addEventListener('livewire:load', function () {
+   
+    setTimeout(function () {
+        const storedData = localStorage.getItem('bio-chatu-temp');         
+            if (storedData) {
+                const parsedData = JSON.parse(storedData);            
+                editor.render(parsedData);
+            }
+    }, 1200);
+});
+
 
 async function clearEditor() {
     Notiflix.Confirm.show(
@@ -62,16 +68,18 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
 
-async function saveEditorData() {
-    try {
-        const outputData = await editor.save();
-        window.livewire.emit('savebio', JSON.stringify(outputData));
-    } catch (error) {
-        console.log('Saving Thema failed:', error);
+    async function saveEditorData() {
+        try {
+            const outputData = await editor.save();
+            const serializedData = JSON.stringify(outputData);
+            localStorage.setItem('bio-chatu-temp', serializedData);
+            window.livewire.emit('savebio', serializedData);
+        } catch (error) {
+            console.log('Saving Bio failed:', error);
+        }
     }
-}
-
-
+    
+ 
     editor = new EditorJS({
         holder: 'editor-biochaturbate',
         autofocus: isReadOnly,
