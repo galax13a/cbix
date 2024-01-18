@@ -1,4 +1,4 @@
-@section('title', __('🤩 Create Biography Chaturbate ~ Editor Profile'))
+@section('title', __('Create Biography 🤩 Chaturbate AI ~ 🦄 Editor Profile'))
 <div>
     <div class="section clearfix snipcss-lO8GO container-fluid " id="header-logito-cb">
         <div class="logo-zone style-N5kxO" data-testid="header-logo" id="style-N5kxO">
@@ -732,28 +732,42 @@
 
                                             @include('livewire.createbios.chaturbates.modals')
                                         </span>
-                                        <div class="container" class="text-left" style="margin-left :-26px;">
-                                            <div class="btn-group p-0 mt-3" role="group"
-                                                aria-label="Basic outlined">
-                                                <button id="clearEditorButton"
-                                                    title="Clear Editor"class="btn btn-new fs-2">
-                                                    <i class='bx bxs-eraser'></i>
-                                                </button>
-                                                <button id="saveEditorButton"
-                                                    title="Save Bio"class="btn btn-new  fs-2">
-                                                    <i class='bx bx-save'></i>
-                                                </button>
-                                                <button id="backupEditorButton"
-                                                    title="Backup Bio"class="btn btn-new fs-2">
-                                                    <i class='bx bx-memory-card'></i>
-                                                </button>
-                                                <button id="copycodeEditorButton"
-                                                    title="Code My Bio"class="btn btn-new fs-2">
-                                                    <i class='bx bx-code-block'></i>
-                                                </button>
-                                            </div>
-                                        </div>
-
+										<div class="container" style="margin-left:-26px;" >
+											<ul class="list-group list-group-flush mt-3">
+												<li class="list-group-item">
+													<button id="listEditorButton" title="Lists Bios" class="btn btn-new fs-3">
+														<i class='bx bx-party'></i> My Bios
+													</button>
+												</li>											
+												<li class="list-group-item">
+													<button id="saveEditorButton" title="Save Bio" class="btn btn-new fs-3">
+														<i class='bx bx-save'></i> Save Bio
+													</button>
+												</li>
+												<li class="list-group-item">
+													<button id="backupEditorButton" title="Backup Bio" class="btn btn-new fs-3">
+														<i class='bx bx-layer-plus' ></i> Backup
+													</button>
+												</li>
+												<li class="list-group-item">
+													<button id="profileEditorButton" title="Profile My Bio" class="btn btn-new fs-3">
+														<i class='bx bx-shield-plus fs-2 text-danger' ></i> Profile
+													</button>
+												</li>
+												<li class="list-group-item">
+													<button id="copycodeEditorButton" title="Code My Bio" class="btn btn-new fs-3">
+														<i class='bx bx-code-block'></i> Code
+													</button>
+												</li>
+											
+												<li class="list-group-item">
+													<button id="clearEditorButton" title="Clear Editor" class="btn btn-new fs-3">
+														<i class='bx bxs-eraser'></i> Clear</button>
+												</li>
+											</ul>
+										</div>
+										
+										
                                     </td>
                                     <td class="contentText style-K2MjS" id="style-K2MjS">
                                         <div id="content-bio" class=" d-none">
@@ -765,10 +779,10 @@
                                             <button class="btn btn-primary">Entrar</button>
 
                                         </div>
-<h2>Bio json</h2>
-<p>
-	{{$this->editorbio}}
-</p>
+														<h2>Bio json</h2>
+														<p>
+														
+														</p>
                                         <div class="editor-biochaturbate" id="editor-biochaturbate" wire:ignore>
 
                                         </div>

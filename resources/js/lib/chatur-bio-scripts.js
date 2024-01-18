@@ -20,18 +20,22 @@ var editor;
 document.addEventListener('livewire:load', function () {
     Livewire.on('messageProcessed', function () {
         console.log('Message process');
-    });
-});
-
-window.addEventListener('livewire:load', function () {
-   
+    });    
+    Notiflix.Loading.standard('Loading...',);
     setTimeout(function () {
-        const storedData = localStorage.getItem('bio-chatu-temp');         
-            if (storedData) {
-                const parsedData = JSON.parse(storedData);            
-                editor.render(parsedData);
+        
+        const storedData = localStorage.getItem('bio-chatu-temp');              
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);         
+            if (storedData.length > 55) {                             
+                   editor.render(parsedData);
+            } else {
+                   
             }
-    }, 1200);
+        }
+    }, 666);
+    Notiflix.Loading.remove();
+
 });
 
 
@@ -83,8 +87,7 @@ document.addEventListener('DOMContentLoaded', function () {
     editor = new EditorJS({
         holder: 'editor-biochaturbate',
         autofocus: isReadOnly,
-        placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <-- 👌🏾  Start creating an attractive bio for your fans  🐱  
-                        🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🅑🅨 PʟᴀʏꜱCᴀᴍ.ᴄᴏᴍ 🦄`,
+        placeholder: `--> 👉 ᴄʟɪᴄᴋ Hᴇʀᴇ <-- 👌🏾  Start creating an attractive bio for your fans 🐱   🅲🆁🅴🅰🆃🅴🍓🅱🅸🅾 🅑🅨 PʟᴀʏꜱCᴀᴍ.ᴄᴏᴍ 🦄`,
         tools: {
             header: {
                 class: Header,

@@ -17,7 +17,7 @@
                     <div class="container shadow rounded-3 mb-3 bg-light">
                         <div class="btn-group rounded-4" role="group" aria-label="btn">
                             <button id="addRuleButton" class="btn-new">
-                                <i class='bx bx-happy-beaming fs-2' ></i></i>Apps
+                                <i class='bx bx-happy-beaming fs-2' ></i></i>Bio App
                             </button>
                             <button id="changeColorButton" class="btn-new">
                                 <i class='bx bx-heading fs-2' ></i></i>Headers
@@ -78,7 +78,8 @@
                         </div>
                         <div class="card2">
                             <blockquote class="bloquequote mb-4 text-center">
-                                <p>Transforma tu perfil y cautiva a tu audiencia con nuestras Bio Cards. Personalizar y exhibir
+                                <h2>______________  <img src="https://i.imgur.com/5wANabW.png" alt="">  <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/i/d3a5a08b-4878-48af-b76b-8aff5871fc75/d9s9u4l-b3b94109-8420-40d3-b0e1-390de0aee92e.gif" alt="">  <img src="https://i.imgur.com/5wANabW.png" alt=""> ______________</h2>
+                                <p class="text-center p-2 ">Transforma tu perfil y cautiva a tu audiencia con nuestras Bio Cards. Personalizar y exhibir
                                     diferentes facetas de tu vida y contenido en Chaturbate, mejorando la presentación para una experiencia más atractiva.
                                     Elaborar una biografía detallada y convincente es fundamental, ya que le permite comunicar de forma eficaz lo que ofrece.
                                     Edite y perfeccione su perfil para destacar en varias categorías y explorar canales de promoción exclusivos para
