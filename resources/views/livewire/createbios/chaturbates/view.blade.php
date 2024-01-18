@@ -728,27 +728,32 @@
                                 <tr id="style-Q3oQ4" class="style-Q3oQ4">
                                     <td class="label style-RojPw" id="style-RojPw">
                                         <span data-testid="bio-tab-about-me-label">
-                                            About Me:											
-											
+                                            About Me:
+
                                             @include('livewire.createbios.chaturbates.modals')
                                         </span>
-									<div class="container" class="text-left" style="margin-left :-26px;" >
-										<div class="btn-group p-0 mt-3"  role="group" aria-label="Basic outlined">
-											<button id="clearEditorButton" title="Clear Editor"class="btn btn-new fs-2">
-												<i class='bx bxs-eraser' ></i>
-											</button>
-											<button id="saveEditorButton" title="Save Bio"class="btn btn-new  fs-2">
-												<i class='bx bx-save' ></i>
-											</button>
-											<button id="backupEditorButton" title="Backup Bio"class="btn btn-new fs-2">
-												<i class='bx bx-memory-card' ></i>
-											</button>	
-											<button id="copycodeEditorButton" title="Code My Bio"class="btn btn-new fs-2">
-												<i class='bx bx-code-block' ></i>
-											</button>										
-										  </div>	
-									</div>
-						
+                                        <div class="container" class="text-left" style="margin-left :-26px;">
+                                            <div class="btn-group p-0 mt-3" role="group"
+                                                aria-label="Basic outlined">
+                                                <button id="clearEditorButton"
+                                                    title="Clear Editor"class="btn btn-new fs-2">
+                                                    <i class='bx bxs-eraser'></i>
+                                                </button>
+                                                <button id="saveEditorButton"
+                                                    title="Save Bio"class="btn btn-new  fs-2">
+                                                    <i class='bx bx-save'></i>
+                                                </button>
+                                                <button id="backupEditorButton"
+                                                    title="Backup Bio"class="btn btn-new fs-2">
+                                                    <i class='bx bx-memory-card'></i>
+                                                </button>
+                                                <button id="copycodeEditorButton"
+                                                    title="Code My Bio"class="btn btn-new fs-2">
+                                                    <i class='bx bx-code-block'></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
                                     </td>
                                     <td class="contentText style-K2MjS" id="style-K2MjS">
                                         <div id="content-bio" class=" d-none">
@@ -760,7 +765,10 @@
                                             <button class="btn btn-primary">Entrar</button>
 
                                         </div>
-
+<h2>Bio json</h2>
+<p>
+	{{$this->editorbio}}
+</p>
                                         <div class="editor-biochaturbate" id="editor-biochaturbate" wire:ignore>
 
                                         </div>
