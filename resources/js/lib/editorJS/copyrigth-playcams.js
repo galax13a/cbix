@@ -3,9 +3,15 @@
 export class CopysPlaycam {
     constructor({ data, api }) {
         this.api = api;
-        this.data = { strong: data.strong || '' };
-        this.RenderContent = null;
+        //this.data = { strong: data.strong || '' };
+        this.RenderContent = null;       
         this.num = 7;
+
+        this.data = {
+            strong: data.strong || '',
+            colorcontent: data.colorcontent || '', // Agrega esta línea
+            colortext: data.colortext || '',       // Agrega esta línea
+          };
 
         this.bodyrules = document.createElement('div');
         this.container = document.createElement('div');
@@ -39,7 +45,7 @@ export class CopysPlaycam {
         return emotions[randomIndex];
     }
 
-    render(savedData) {
+    render() {
 
         this.RenderContent = document.createElement('strong');
         this.RenderContent.contentEditable = true;
@@ -181,7 +187,7 @@ export class CopysPlaycam {
             self.handleRangePaddingInput();
         });
 
-        this.buttonsContainer.querySelector("#customRangeMargin").addEventListener("input", () => {
+            this.buttonsContainer.querySelector("#customRangeMargin").addEventListener("input", () => {
             self.handleRangeMarginInput();
         });
 
@@ -211,9 +217,28 @@ export class CopysPlaycam {
             this.buttonsContainer.querySelector("#colorcontent").value = this.data.colorcontent;
         }
 
+        console.log('color '+this.data.colorcontent);
+  
         return this.container;
 
     }
+
+    save() {
+        // Limpia y codifica el HTML
+        const cleanedHTML = this.RenderContent.innerHTML.replace(/\n\s*/g, '');
+        const encodedHTML = encodeURIComponent(cleanedHTML);
+        this.data.strong = encodedHTML;
+        this.colorcontent = this.buttonsContainer.querySelector("#colorcontent").value;
+        this.colortext = this.buttonsContainer.querySelector("#colortext").value;
+    
+        return {
+          strong: this.data.strong || this.RenderContent.innerHTML,
+          colorcontent: this.colorcontent,
+          colortext: this.colortext,
+        };
+      }
+
+
     async handleContentColor() {
         const parentElement = this.RenderContent.querySelector("#strong-container");
         const colorcontentInput = this.buttonsContainer.querySelector("#colorcontent");
@@ -383,8 +408,6 @@ export class CopysPlaycam {
         });
     }
 
-
-
     toggleShadow() {
 
         const contentElements = this.RenderContent.querySelectorAll("#strong-container, #contenido-playcam");
@@ -516,18 +539,7 @@ export class CopysPlaycam {
         return `#${(1 << 24 | R << 16 | G << 8 | B).toString(16).slice(1)}`;
     }
 
-    save() {
 
-        const cleanedHTML = this.RenderContent.innerHTML.replace(/\n\s*/g, '');
-        const encodedHTML = encodeURIComponent(cleanedHTML);
-        this.data.strong = encodedHTML;  
-
-        return {
-            strong: this.data.strong || this.RenderContent.innerHTML,
-            colorcontent: this.buttonsContainer.querySelector("#colorcontent").value,
-            colortext: this.buttonsContainer.querySelector("#colortext").value
-        };
-    }
     
 
     static get toolbox() {
