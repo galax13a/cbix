@@ -734,14 +734,23 @@
                                         </span>
 										<div class="container" style="margin-left:-26px;" >
 											<ul class="list-group list-group-flush mt-3">
+
+												<li class="list-group-item">
+													<button id="profileEditorButton" title="Profile My Bio ~ unverified" class="btn btn-new fs-3">
+														<i class='bx bx-shield-plus fs-2 text-danger' ></i> Profile
+													</button>
+												</li>
+
 												<li class="list-group-item">
 													<button id="listEditorButton" title="Lists Bios" class="btn btn-new fs-3">
 														<i class='bx bx-party'></i> My Bios
 													</button>
-												</li>											
+												</li>																							
+												
+											
 												<li class="list-group-item">
-													<button id="saveEditorButton" title="Save Bio" class="btn btn-new fs-3">
-														<i class='bx bx-save'></i> Save Bio
+													<button id="copycodeEditorButton" title="Code My Bio" class="btn btn-new fs-3">
+														<i class='bx bx-code-block'></i> Code
 													</button>
 												</li>
 												<li class="list-group-item">
@@ -750,19 +759,13 @@
 													</button>
 												</li>
 												<li class="list-group-item">
-													<button id="profileEditorButton" title="Profile My Bio" class="btn btn-new fs-3">
-														<i class='bx bx-shield-plus fs-2 text-danger' ></i> Profile
-													</button>
-												</li>
-												<li class="list-group-item">
-													<button id="copycodeEditorButton" title="Code My Bio" class="btn btn-new fs-3">
-														<i class='bx bx-code-block'></i> Code
-													</button>
-												</li>
-											
-												<li class="list-group-item">
 													<button id="clearEditorButton" title="Clear Editor" class="btn btn-new fs-3">
 														<i class='bx bxs-eraser'></i> Clear</button>
+												</li>
+												<li class="list-group-item">
+													<button id="saveEditorButton" title="Save Bio" class="btn btn-new fs-3">
+														<i class='bx bx-save'></i> Save Bio
+													</button>
 												</li>
 											</ul>
 										</div>

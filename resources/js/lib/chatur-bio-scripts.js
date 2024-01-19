@@ -18,6 +18,8 @@ var isReadOnly = false;
 var editor;
 
 document.addEventListener('livewire:load', function () {
+
+
     Livewire.on('messageProcessed', function () {
         console.log('Message process');
     });    
@@ -33,7 +35,7 @@ document.addEventListener('livewire:load', function () {
                    
             }
         }
-    }, 666);
+    }, 1200);
     Notiflix.Loading.remove();
 
 });
@@ -70,19 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('saveEditorButton').addEventListener('click', function () {
         saveEditorData();
     });
-    
-
-    async function saveEditorData() {
-        try {
-            const outputData = await editor.save();
-            const serializedData = JSON.stringify(outputData);
-            localStorage.setItem('bio-chatu-temp', serializedData);
-            window.livewire.emit('savebio', serializedData);
-        } catch (error) {
-            console.log('Saving Bio failed:', error);
-        }
-    }
-    
+        
  
     editor = new EditorJS({
         holder: 'editor-biochaturbate',
@@ -144,6 +134,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         },
     });
+
+    async function saveEditorData() {
+        try {
+            const outputData = await editor.save();
+            const serializedData = JSON.stringify(outputData);
+            localStorage.setItem('bio-chatu-temp', serializedData);
+            window.livewire.emit('savebio', serializedData);
+        } catch (error) {
+            console.log('Saving Bio failed:', error);
+        }
+    }
+    
 
 
     window.livewire.on('show-confetti', () => {

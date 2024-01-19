@@ -4,7 +4,7 @@ export class CopysPlaycam {
     constructor({ data, api }) {
         this.api = api;
         this.data = { strong: data.strong || '' };
-        this.rulesElement = null;
+        this.RenderContent = null;
         this.num = 7;
 
         this.bodyrules = document.createElement('div');
@@ -41,18 +41,19 @@ export class CopysPlaycam {
 
     render(savedData) {
 
-        this.rulesElement = document.createElement('strong');
-        this.rulesElement.contentEditable = true;
+        this.RenderContent = document.createElement('strong');
+        this.RenderContent.contentEditable = true;
 
         if (this.data.strong) {
-            this.rulesElement.innerHTML = this.data.strong;
+            //this.RenderContent.innerHTML = this.data.strong;
+            this.RenderContent.innerHTML = decodeURIComponent(this.data.strong);//this.data.strong;
         } else {
             const randomIndex = Math.floor(Math.random() * this.ruleTitles.length);
             const randomTitle = this.ruleTitles[randomIndex];
             const randomContent = this.ruleContents[randomIndex];
 
 
-            this.rulesElement.innerHTML = `
+            this.RenderContent.innerHTML = `
             <strong  id="strong-main" style="display: block; width: 99%; box-sizing: border-box; line-height: initial; margin: 0 auto; text-align: center;" target="_blank" 
              >
                 <strong  id="strong-container"  rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;
@@ -152,7 +153,7 @@ export class CopysPlaycam {
     `;
     
 
-        this.container.appendChild(this.rulesElement);
+        this.container.appendChild(this.RenderContent);
         this.container.appendChild(this.buttonsContainer);
 
         const self = this;
@@ -214,7 +215,7 @@ export class CopysPlaycam {
 
     }
     async handleContentColor() {
-        const parentElement = this.rulesElement.querySelector("#strong-container");
+        const parentElement = this.RenderContent.querySelector("#strong-container");
         const colorcontentInput = this.buttonsContainer.querySelector("#colorcontent");
     
         if (parentElement) {
@@ -229,7 +230,7 @@ export class CopysPlaycam {
     
 
     async handleTextColor() { //titles strong
-        const parentElement = this.rulesElement.querySelector("#titles-playscam");
+        const parentElement = this.RenderContent.querySelector("#titles-playscam");
         const colorTitlesInput = this.buttonsContainer.querySelector("#colortext");
     
         if (parentElement) {
@@ -242,7 +243,7 @@ export class CopysPlaycam {
     
     
     async handleBorderRadius() {
-        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
+        const contentElements = this.RenderContent.querySelectorAll("#strong-container, #contenido-playcam");
         const rangeBorderRadiusInput = this.buttonsContainer.querySelector("#customRangeBorderRadius");
         const borderRadiusValue = rangeBorderRadiusInput.value + "px";
 
@@ -252,7 +253,7 @@ export class CopysPlaycam {
     }
 
     async handleTransparency() {
-        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
+        const contentElements = this.RenderContent.querySelectorAll("#strong-container, #contenido-playcam");
         const rangeTransparencyInput = this.buttonsContainer.querySelector("#customRangeTransparency");
         const transparencyValue = rangeTransparencyInput.value / 100;
 
@@ -263,19 +264,19 @@ export class CopysPlaycam {
     async handleRangeMarginInput() {
         const rangeInput = this.buttonsContainer.querySelector("#customRangeMargin");
         const paddingPercentage = rangeInput.value + "%";
-        const contentElement = this.rulesElement.querySelector("#strong-main");
+        const contentElement = this.RenderContent.querySelector("#strong-main");
         contentElement.style.width = paddingPercentage;
     }
 
     async handleRangePaddingInput() {
         const rangeInput = this.buttonsContainer.querySelector("#customRangePadding");
         const paddingPercentage = rangeInput.value + "%";
-        const contentElement = this.rulesElement.querySelector("#strong-container");
+        const contentElement = this.RenderContent.querySelector("#strong-container");
         contentElement.style.padding = paddingPercentage;
     }
 
     async cardImagen() {
-        const contentElement = this.rulesElement.querySelector("#strong-container");
+        const contentElement = this.RenderContent.querySelector("#strong-container");
         const existingBackgroundImageUrl = contentElement.style.backgroundImage.replace('url("', '').replace('")', '');
 
 
@@ -386,7 +387,7 @@ export class CopysPlaycam {
 
     toggleShadow() {
 
-        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
+        const contentElements = this.RenderContent.querySelectorAll("#strong-container, #contenido-playcam");
 
         if (!contentElements.length) {
             console.error("No se encontraron elementos con el id 'strong-container' o 'contenido-playcam'");
@@ -415,8 +416,8 @@ export class CopysPlaycam {
 
 
     toggleBorder() {
-        const contentElements = this.rulesElement.querySelectorAll("#strong-container, #contenido-playcam");
-        const contentElement = this.rulesElement.querySelector("#strong-container");
+        const contentElements = this.RenderContent.querySelectorAll("#strong-container, #contenido-playcam");
+        const contentElement = this.RenderContent.querySelector("#strong-container");
 
         contentElement.style.padding = '2px';
 
@@ -450,8 +451,8 @@ export class CopysPlaycam {
     addNewRule() { /* add content */
 
         this.num = this.num + 1;
-        const rulesContainer = this.rulesElement.querySelector("#contenido-playcam");
-        const subircontenido = this.rulesElement.querySelector("#strong-container");
+        const rulesContainer = this.RenderContent.querySelector("#contenido-playcam");
+        const subircontenido = this.RenderContent.querySelector("#strong-container");
         const newRule = document.createElement('strong');
         newRule.setAttribute("rel", "nofollow");
         newRule.style.display = "flex";
@@ -472,13 +473,13 @@ export class CopysPlaycam {
         const lighterColor = this.lightenColor(primaryColor, 30); // 30% lighter
 
 
-        const titleElement = this.rulesElement.querySelector("#title-rule");
+        const titleElement = this.RenderContent.querySelector("#title-rule");
         titleElement.style.color = primaryColor;
 
-        const contentElement = this.rulesElement.querySelector("#strong-container");
+        const contentElement = this.RenderContent.querySelector("#strong-container");
         contentElement.style.color = lighterColor;
 
-        const title2 = this.rulesElement.querySelector("#rulestitle2");
+        const title2 = this.RenderContent.querySelector("#rulestitle2");
         title2.style.color = primaryColor;
 
         contentElement.style.border = `3px dashed ${primaryColor}`;
@@ -487,7 +488,7 @@ export class CopysPlaycam {
         contentElement.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.5)';
         contentElement.style.borderRadius = '26px';
 
-        const borderglobal = this.rulesElement.querySelector("#strong-container");
+        const borderglobal = this.RenderContent.querySelector("#strong-container");
         borderglobal.style.border = `3px solid  ${primaryColor}`;
 
         this.paddingStrong();
@@ -499,7 +500,7 @@ export class CopysPlaycam {
     }
 
     paddingStrong() {
-        const contentElement = this.rulesElement.querySelector("#strong-container");
+        const contentElement = this.RenderContent.querySelector("#strong-container");
         return contentElement.style.padding = "40px"; // padinng
     }
     getRandomColor() {
@@ -516,8 +517,13 @@ export class CopysPlaycam {
     }
 
     save() {
+
+        const cleanedHTML = this.RenderContent.innerHTML.replace(/\n\s*/g, '');
+        const encodedHTML = encodeURIComponent(cleanedHTML);
+        this.data.strong = encodedHTML;  
+
         return {
-            strong: this.data.strong || this.rulesElement.innerHTML,
+            strong: this.data.strong || this.RenderContent.innerHTML,
             colorcontent: this.buttonsContainer.querySelector("#colorcontent").value,
             colortext: this.buttonsContainer.querySelector("#colortext").value
         };

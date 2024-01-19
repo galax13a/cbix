@@ -24,14 +24,13 @@ export class TitlePlaycam {
       this.titleElement.contentEditable = true;
   
       if (this.data.strong) {
-        this.titleElement.innerHTML = this.data.strong;
+        this.titleElement.innerHTML = decodeURIComponent(this.data.strong);//this.data.strong;
       } else {
         const randomIndex = Math.floor(Math.random() * this.titles.length);
         const randomTitle = this.titles[randomIndex];
         const randomContent = this.contents[randomIndex];
   
-        this.titleElement.innerHTML = `
-          <strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;background-color:#ffffff" target="_blank">
+        this.titleElement.innerHTML = `<strong rel="nofollow" style="display:block;margin-top:25px;margin-bottom:25px;text-align:center;position:relative;width:100%;box-sizing:border-box;line-height:initial;padding:25px 25px 25px 25px;border:3px solid #f63f58;border-radius:25px;background-color:#ffffff" target="_blank">
             <strong rel="nofollow" style="display:flex;flex-direction:column;line-height:initial" target="_blank">
               <strong rel="nofollow" style="display:block;font-family:Impact;color:#c2384b;font-weight:700;text-decoration:none;font-size:48px;font-variant:normal;text-transform:capitalize" target="_blank">${randomTitle}</strong>
               <strong rel="nofollow" style="display:block;line-height:1.5;font-family:Charcoal;font-size:20px;color:#f51f57;font-weight:400;text-decoration:none;margin-top:20px" target="_blank">
@@ -40,12 +39,16 @@ export class TitlePlaycam {
             </strong>
           </strong>`;
       }
-  
+     //console.log(decodeURIComponent(this.data.strong));
       return this.titleElement;
     }
-  
+
     save() {
-      return { strong: this.data.strong || this.titleElement.innerHTML };
+      const cleanedHTML = this.titleElement.innerHTML.replace(/\n\s*/g, '');
+      const encodedHTML = encodeURIComponent(cleanedHTML);
+      this.data.strong = encodedHTML ;
+    
+      return this.data;
     }
   
     static get toolbox() {

@@ -44,7 +44,9 @@ export class RulesPlaycam {
         this.rulesElement.contentEditable = true;
 
         if (this.data.strong) {
-            this.rulesElement.innerHTML = this.data.strong;
+           // this.rulesElement.innerHTML = this.data.strong;
+
+            this.rulesElement.innerHTML = decodeURIComponent(this.data.strong);//this.data.strong;
         } else {
             const randomIndex = Math.floor(Math.random() * this.ruleTitles.length);
             const randomTitle = this.ruleTitles[randomIndex];
@@ -100,15 +102,15 @@ export class RulesPlaycam {
 
         this.buttonsContainer = document.createElement('div');
         this.buttonsContainer.innerHTML = `
-    <div class="btn-group m-3" role="group" aria-label="btn">
-                <button id="addRuleButton" class="btn-new rounded-2 ">
-                    <i class='bx bxs-message-alt-add fs-3'></i> Add Rule
-                </button>
-                <button id="changeColorButton" class="btn-new rounded-2 ">
-                    <i class='bx bxs-paint fs-3'></i> Change Color
-                </button>
-    </div>
-    `;
+            <div class="btn-group m-3" role="group" aria-label="btn">
+                        <button id="addRuleButton" class="btn-new rounded-2 ">
+                            <i class='bx bxs-message-alt-add fs-3'></i> Add Rule
+                        </button>
+                        <button id="changeColorButton" class="btn-new rounded-2 ">
+                            <i class='bx bxs-paint fs-3'></i> Change Color
+                        </button>
+            </div>
+            `;
 
         this.container.appendChild(this.rulesElement);
         this.container.appendChild(this.buttonsContainer);
@@ -125,6 +127,13 @@ export class RulesPlaycam {
         return this.container;
     }
 
+    save() {
+        const cleanedHTML = this.rulesElement.innerHTML.replace(/\n\s*/g, '');
+        const encodedHTML = encodeURIComponent(cleanedHTML);
+        this.data.strong = encodedHTML;
+        return this.data;
+      //  return { strong: this.data.strong || this.rulesElement.innerHTML };
+    }
 
     addNewRule() {
 
@@ -178,11 +187,6 @@ export class RulesPlaycam {
         const G = (num >> 8 & 0x00FF) + amt;
         const B = (num & 0x0000FF) + amt;
         return `#${(1 << 24 | R << 16 | G << 8 | B).toString(16).slice(1)}`;
-    }
-
-
-    save() {
-        return { strong: this.data.strong || this.rulesElement.innerHTML };
     }
 
     static get toolbox() {
