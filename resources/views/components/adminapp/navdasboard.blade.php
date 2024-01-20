@@ -96,12 +96,14 @@
             </li>
             <li>
             <i class='bx bx-credit-card-front'></i>
-                <span class="info">
+            <a href="{{ route('create-bio-chatur') }}">
                     <h3>
-                       CamBios
+                       Chaturbate Bio
                     </h3>
                     <p>Create Profiles</p>
                 </span>
+            </a>
+            <span class="info">
             </li>
         </ul>
         <!-- End of Insights -->

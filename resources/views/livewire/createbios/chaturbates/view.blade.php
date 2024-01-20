@@ -787,8 +787,14 @@
 														
 														</p>
                                         <div class="editor-biochaturbate" id="editor-biochaturbate" wire:ignore>
-
                                         </div>
+
+										<div class="container">
+											<p> profile {{ $this->selected_id }}</p>
+											
+
+
+										</div>
 
                     </div>
                     </td>
@@ -1108,8 +1114,11 @@
             </li>
             <li>
                 <a href="/sitemap/" data-testid="sitemap">
-                    Sitemap
+                    Sitemap ~
                 </a>
+				<a id="new-bio" href="javascript:void(0)" class="" data-bs-toggle="modal" data-bs-target="#createDataModal">
+					New Bio
+				  </a>
             </li>
         </ul>
 

@@ -46,8 +46,7 @@ export class TitlePlaycam {
     save() {
       const cleanedHTML = this.titleElement.innerHTML.replace(/\n\s*/g, '');
       const encodedHTML = encodeURIComponent(cleanedHTML);
-      this.data.strong = encodedHTML ;
-    
+      this.data.strong = encodedHTML;    
       return this.data;
     }
   

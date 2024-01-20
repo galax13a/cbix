@@ -217,8 +217,6 @@ export class CopysPlaycam {
             this.buttonsContainer.querySelector("#colorcontent").value = this.data.colorcontent;
         }
 
-        console.log('color '+this.data.colorcontent);
-  
         return this.container;
 
     }

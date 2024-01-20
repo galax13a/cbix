@@ -6,7 +6,7 @@ import NestedList from '@editorjs/nested-list';
 
 import { MenuStartBio } from './chatur-bio-menu';
 /* libreris editor bio */
-import { Offerspecial } from './editorJS/offerspecial';
+
 import BRPlaycams from './editorJS/br-editor';
 import { TitlePlaycam } from './editorJS/title-playcams';
 import { RulesPlaycam } from './editorJS/rule-playcam';
@@ -19,20 +19,36 @@ var editor;
 
 document.addEventListener('livewire:load', function () {
 
-
     Livewire.on('messageProcessed', function () {
         console.log('Message process');
-    });    
+    });
+
+    Livewire.on('newprofile', function () {
+        console.log('creator new profile ready v1.0');
+        var link = document.getElementById('new-bio');
+        if (link) {
+            link.click();
+        } else {
+            console.error('Element with ID #createDataModal not found.');
+        }
+    });
+
+    Livewire.on('newpro', function () {
+        console.log('get pro ');
+    });
+
+
+
     Notiflix.Loading.standard('Loading...',);
     setTimeout(function () {
-        
-        const storedData = localStorage.getItem('bio-chatu-temp');              
+
+        const storedData = localStorage.getItem('bio-chatu-temp');
         if (storedData) {
-            const parsedData = JSON.parse(storedData);         
-            if (storedData.length > 55) {                             
-                   editor.render(parsedData);
+            const parsedData = JSON.parse(storedData);
+            if (storedData.length > 55) {
+                editor.render(parsedData);
             } else {
-                   
+
             }
         }
     }, 1200);
@@ -72,8 +88,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('saveEditorButton').addEventListener('click', function () {
         saveEditorData();
     });
-        
- 
+
     editor = new EditorJS({
         holder: 'editor-biochaturbate',
         autofocus: isReadOnly,
@@ -127,10 +142,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
             },
 
-            offerspecial: {
-                class: Offerspecial,
-                inlineToolbar: true,
-            },
 
         },
     });
@@ -145,7 +156,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Saving Bio failed:', error);
         }
     }
-    
 
 
     window.livewire.on('show-confetti', () => {

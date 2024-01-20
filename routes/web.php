@@ -116,7 +116,7 @@ Route::get('/locate/en', function () {
 	Route::view('apps/cbprofile', 'livewire.admin.cbprofiles.index')->middleware('auth')->name('cbprofiles');
     Route::view('chaturbate/top-hours', 'livewire.admin.cbprofiles.cbhrs')->name('top-hrs-cb');
 
-    Route::view('apps/editor-chaturbate', 'livewire.admin.cbprofiles.editor')->middleware('auth')->name('cbprofileshome');
+    Route::view('apps/editor-chaturbate', 'livewire.admin.cbprofiles.editor')->middleware('auth')->name('appcbprofiles');
 
 	Route::view('admin/adminpremiums', 'livewire.admin.adminpremiums.index')->middleware('auth');
 	

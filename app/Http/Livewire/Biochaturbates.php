@@ -5,20 +5,47 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Biochaturbate;
-
+use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Biochaturbates extends Component
 {
     protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'savebio'];
-
+    protected $queryString = ['mybio','selected_id', 'page' => ['except' => 1]];
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $room, $api, $codex, $bio, $data, $code, $codebackup, $share, $link, $campaign, $pay, $active, $pic;
-    public $editorbio;
+    public $editorbio, $currentLanguage, $profile, $numBios, $record,$mybio;
 
+    public function mount(Request $request)
+    {
+        $this->selected_id = $request->input('selected_id', null);
+        $this->currentLanguage = $request->input('currentLanguage', 'en');
+        $this->page = $request->input('page', 1);
 
-
+        if (auth()->user()) {
+            if ($this->selected_id > 0) {
+                       
+                try {
+                    $this->record = Biochaturbate::findOrFail($this->selected_id);
+                    //dd(($this->record));
+                } catch (ModelNotFoundException $e) {
+                    $this->mybio = 'new';
+                    $this->selected_id = null;                 
+                    //abort(404, 'Bio no fount id ' . $e);
+                }
+            }
+     
+        } else {
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => '¡user fail login.!',
+            ]);
+        }
+    
+    }
+    
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
@@ -33,30 +60,89 @@ class Biochaturbates extends Component
             ['name' => 'App 4', 'image' => 'https://picsum.photos/200/150', 'description' => 'Descripción de la App 4'],
         ];
     }
+    public function newtheme()
+    {
+        $this->mybio = 'new';
+        $this->selected_id = null;
+        $this->emit('newprofile');
+    }
 
     public function savebio($outputData)
     {
-        $this->editorbio = $outputData;
-        $this->showNotification('info', 'was saved due to the absence of blocks in the content');
+        $this->editorbio = $outputData;    
+     
+        if (auth()->check()) {
+
+            if(!$this->selected_id){
+                $this->emit('newprofile');
+                return;
+            }
+
+            $this->record = Biochaturbate::findOrFail($this->selected_id);
+            if ($this->record->userCanModify()) {
+                
+                $editorData = json_decode($this->editorbio, true);
+                // Check if the "blocks" key is empty
+                if (empty($editorData['blocks'])) {
+                    $this->showNotification('failure', 'No file was saved due to the absence of blocks in the content');
+                    return;
+                }
+
+                $this->record->code = $outputData;
+                $this->record->save();
+
+            } else {               
+                  $this->showNotification('failure', '¡Unauthorized error -> row, Registry not recovered!');
+                  return;
+            }
+            
+            $this->numBios = Biochaturbate::where('user_id', auth()->id())->count();
+
+            if ($this->numBios > 3) {            
+                $this->showNotification('failure', '¡You have reached your Bios Limit, go pro to manage multi profile!');  
+                return;
+            }else{
+                $this->emit('newpro');
+                return;
+            }            
+
+       
+        } else {
+            // El usuario no está autenticado, redirige al inicio de sesión.
+            return redirect()->route('login');
+        }
+        
+    }
+    private function checkBioLimit()
+    {
+        $numBios = Biochaturbate::where('user_id', auth()->id())->count();
+
+        if ($numBios > 3) {
+            $this->dispatchBrowserEvent('notify', [
+                'type' => 'failure',
+                'message' => 'You have reached your Bios Limit, go pro to manage multi profile',
+            ]);
+
+            return true;
+        }
+
+        return false;
     }
 
-    public function showNotification($type, $message)
-    {
-        $this->dispatchBrowserEvent('notify', ['type' => $type, 'position' => 'center-center', 'message' => $message]);
-    }
+
     public function render()
     {
         $keyWord = '%' . $this->keyWord . '%';
-
+              
         return view('livewire.createbios.chaturbates.view', [
             'biochaturbates' => Biochaturbate::with('user')->latest()
 
                 ->where('user_id', auth()->id())
                 ->where(function ($query) use ($keyWord) {
-                    $query->where('name', 'LIKE', $keyWord)
-                        ->orWhere('name', 'LIKE', $keyWord);
+                    $query->where('name', 'LIKE', $keyWord);
                 })->paginate(10)
         ]);
+      
     }
 
     public function cancel()
@@ -91,7 +177,7 @@ class Biochaturbates extends Component
             'active' => 'required',
         ]);
 
-        Biochaturbate::create([
+         Biochaturbate::create([
             'name' => $this->name,
             'room' => $this->room,
             'api' => $this->api,
@@ -208,6 +294,10 @@ class Biochaturbates extends Component
                 'message' => '¡ Unauthorized error, Registry not recovered.!',
             ]);
         }
+    }
+    public function showNotification($type, $message)
+    {
+        $this->dispatchBrowserEvent('notify', ['type' => $type, 'position' => 'center-center', 'message' => $message]);
     }
 
     public function destroy($id)
