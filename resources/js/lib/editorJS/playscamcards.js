@@ -46,7 +46,7 @@ export class CardsPlayscam {
         
         this.BtnAddWidget = document.createElement('div');
         this.BtnAddWidget.id = 'BtnAddWidget';
-        this.BtnAddWidget.className = 'container text-center  mt-2 shadow-lg p-4 rounded-4 d-flex cursor-pointer custom-cursor-on-hover';
+        this.BtnAddWidget.className = 'container text-center  mb-2 shadow-lg p-4 rounded-4 d-flex cursor-pointer custom-cursor-on-hover';
         this.BtnAddWidget.style.backdropFilter = 'blur(10px) brightness(70%)';
         this.BtnAddWidget.dataset.bsToggle = 'modal';
         this.BtnAddWidget.dataset.bsTarget = '#modal-cards-playscam';
