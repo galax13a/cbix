@@ -784,11 +784,7 @@
                                             <button class="btn btn-primary">Entrar</button>
 
                                         </div>
-														<h2>Bio json</h2>
-														<p>
-														
-														</p>
-                                        <div class="editor-biochaturbate" id="editor-biochaturbate" wire:ignore>
+												<div class="editor-biochaturbate" id="editor-biochaturbate" wire:ignore>
                                         </div>
 
 										<div class="container">

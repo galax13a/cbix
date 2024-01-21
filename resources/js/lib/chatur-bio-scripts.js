@@ -158,9 +158,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 inlineToolbar: ['bold', 'italic'],
 
             },
-
-
         },
+      
     });
 
     async function saveEditorData() {
