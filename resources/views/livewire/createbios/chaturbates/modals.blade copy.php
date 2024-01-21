@@ -1,20 +1,16 @@
 <!-- modal cards playscam -->
+<!-- resources/views/livewire/biochaturbates/view.blade.php -->
+
 <div>
+    <!-- modal cards playscam -->
     <div class="modal fade" id="modal-cards-playscam" tabindex="-1" aria-labelledby="modal-cards-playscamLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
                 <div class="modal-header">
                     <h2 class="modal-title" id="modal-cards-playscamLabel">🦄 Playcams Store | Cards Bio Chaturbate</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    @auth                    
-                    <p>Welcome, {{ auth()->user()->name }}</p>             
-                    @else
-                    <a href="{{ route('login') }}" target="_blank">Login</a>
-                    @endauth
-
                     
                     <input wire:model="keyWord" type="text" class="search-input" placeholder="Search Cards">
 
@@ -43,35 +39,37 @@
                     
                     <div class="row" id="rows-cards-playscam">
                         <?php
-                            $descrip = 'Lorem Ipsum Ipsum Ipsum';
+                            $descrip = 'Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. ';
                             $cards = [
-                                ['name' => 'App 0', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
                                 ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
                                 ['name' => 'App 2', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 3', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
                                 ['name' => 'App 4', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 5', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
+                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
                              
                             ];
                         ?>
-                       @foreach ($cards as $index => $card)
-                       <div id="card-{{ $index }}" class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
-                           <div class="row g-0">
-                               <div class="col-2">
-                                   <img src="https://picsum.photos/200/150" class="img-fluid rounded" alt="Card title">
-                               </div>
-                               <div class="col-8">
-                                   <div id="select-cards-playscam{{ $index }}" class="card-body py-0">                                    
-                                           <p class="text-muted mb-0">{{ $card['name'] }}
-                                        </p>                                 
-                                       <h5 id="card-description-{{$index}}" class="card-title">bio {{ $index }} -  {{ $card['description'] }}</h5>
-                                       <button class="btn btn-light text-center">Select Card</button>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   @endforeach
-                   
+                        @foreach ($cards as $card)
+                        <div class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
+                            <div class="row g-0">
+                              <div class="col-2">
+                                <img src="https://picsum.photos/200/150"  class="img-fluid rounded" alt="Card title">
+                              </div>
+                              <div class="col-8">
+                                <div class="card-body py-0">
+                                  <p class="text-muted mb-0">
+                                    <p class="text-muted mb-0">{{ $card['name'] }}</p>
+                                  </p>
+                             
+                                    <h5 class="card-title">{{ $card['description'] }}</h5>
+                                    <button class="btn btn-light text-center">Select Card</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          
+                    @endforeach
                     </div>
 
                     <div class="card" id="biocontentcard">
@@ -123,7 +121,42 @@
                         <label for="room"></label>
                         <input wire:model.defer="room" type="text" class="form-control" id="room" placeholder="Room">@error('room') <span class="error text-danger">{{ $message }}</span> @enderror
                     </div>
-                   
+                    <div class="form-group">
+                        <label for="api"></label>
+                        <input wire:model.defer="api" type="text" class="form-control" id="api" placeholder="Api">@error('api') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="codex"></label>
+                        <input wire:model.defer="codex" type="text" class="form-control" id="codex" placeholder="Codex">@error('codex') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="bio"></label>
+                        <input wire:model.defer="bio" type="text" class="form-control" id="bio" placeholder="Bio">@error('bio') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="data"></label>
+                        <input wire:model.defer="data" type="text" class="form-control" id="data" placeholder="Data">@error('data') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="code"></label>
+                        <input wire:model.defer="code" type="text" class="form-control" id="code" placeholder="Code">@error('code') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="codebackup"></label>
+                        <input wire:model.defer="codebackup" type="text" class="form-control" id="codebackup" placeholder="Codebackup">@error('codebackup') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="share"></label>
+                        <input wire:model.defer="share" type="text" class="form-control" id="share" placeholder="Share">@error('share') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="link"></label>
+                        <input wire:model.defer="link" type="text" class="form-control" id="link" placeholder="Link">@error('link') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="campaign"></label>
+                        <input wire:model.defer="campaign" type="text" class="form-control" id="campaign" placeholder="Campaign">@error('campaign') <span class="error text-danger">{{ $message }}</span> @enderror
+                    </div>
                     <div class="form-group">
                         <label for="pay"></label>
                         <input wire:model.defer="pay" type="text" class="form-control" id="pay" placeholder="Pay">@error('pay') <span class="error text-danger">{{ $message }}</span> @enderror

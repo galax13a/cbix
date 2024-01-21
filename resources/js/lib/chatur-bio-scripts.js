@@ -14,10 +14,26 @@ import { CopysPlaycam } from './editorJS/copyrigth-playcams';
 import { CodexPlaycam } from './editorJS/code-playcam';
 import { CardsPlayscam } from './editorJS/playscamcards';
 import './editorJS/modal-bio-app';
+
 var isReadOnly = false;
 var editor;
 
 document.addEventListener('livewire:load', function () {
+    
+    Notiflix.Loading.standard('Loading...',);
+    setTimeout(function () {
+
+        const storedData = localStorage.getItem('bio-chatu-temp');
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            if (storedData.length > 55) {
+                editor.render(parsedData);
+            } else {
+
+            }
+        }
+    }, 1200);
+    Notiflix.Loading.remove();
 
     Livewire.on('messageProcessed', function () {
         console.log('Message process');
@@ -36,46 +52,27 @@ document.addEventListener('livewire:load', function () {
     Livewire.on('newpro', function () {
         console.log('get pro ');
     });
-
-
-
-    Notiflix.Loading.standard('Loading...',);
-    setTimeout(function () {
-
-        const storedData = localStorage.getItem('bio-chatu-temp');
-        if (storedData) {
-            const parsedData = JSON.parse(storedData);
-            if (storedData.length > 55) {
-                editor.render(parsedData);
-            } else {
-
-            }
+    
+    window.livewire.on('show-confetti', () => {
+        //var audio = new Audio('/win.m4a');
+        //audio.play();
+        for (let i = 0; i < 5; i++) {
+            confetti({
+                particleCount: 200,
+                startVelocity: 30,
+                spread: 360,
+                origin: {
+                    x: Math.random(),
+                    y: Math.random()
+                }
+            });
         }
-    }, 1200);
-    Notiflix.Loading.remove();
+
+    });
+
 
 });
 
-
-async function clearEditor() {
-    Notiflix.Confirm.show(
-        'Playscam Confirm',
-        'Do you want to delete the content of the Biography?',
-        'Yes',
-        'No',
-        () => {
-            editor.clear();
-            Notiflix.Notify.success('Ready EditorThema, Clean', {
-                position: 'center-center'
-            });
-        },
-        () => {
-            //no.
-        },
-        {
-        },
-    );
-}
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -88,6 +85,26 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('saveEditorButton').addEventListener('click', function () {
         saveEditorData();
     });
+
+    async function clearEditor() {
+        Notiflix.Confirm.show(
+            'Playscam.com Confirm',
+            'Do you want to delete the content of the Biography?',
+            'Yes',
+            'No',
+            () => {
+                editor.clear();
+                Notiflix.Notify.success('Ready EditorThema, Clean', {
+                    position: 'center-center'
+                });
+            },
+            () => {
+                //no.
+            },
+            {
+            },
+        );
+    }
 
     editor = new EditorJS({
         holder: 'editor-biochaturbate',
@@ -157,23 +174,4 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-
-    window.livewire.on('show-confetti', () => {
-        //var audio = new Audio('/win.m4a');
-        //audio.play();
-        for (let i = 0; i < 5; i++) {
-            confetti({
-                particleCount: 200,
-                startVelocity: 30,
-                spread: 360,
-                origin: {
-                    x: Math.random(),
-                    y: Math.random()
-                }
-            });
-        }
-
-    });
-
 });
-

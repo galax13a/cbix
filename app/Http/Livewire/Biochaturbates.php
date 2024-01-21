@@ -90,29 +90,34 @@ class Biochaturbates extends Component
 
                 $this->record->code = $outputData;
                 $this->record->save();
+                $this->emit('show-confetti');
 
             } else {               
                   $this->showNotification('failure', '¡Unauthorized error -> row, Registry not recovered!');
                   return;
             }
             
-            $this->numBios = Biochaturbate::where('user_id', auth()->id())->count();
+            $this->numBios = $this->CheckNumBio();
 
             if ($this->numBios > 3) {            
                 $this->showNotification('failure', '¡You have reached your Bios Limit, go pro to manage multi profile!');  
                 return;
             }else{
+                $this->newtheme();
                 $this->emit('newpro');
                 return;
-            }            
-
+            }
        
-        } else {
-            // El usuario no está autenticado, redirige al inicio de sesión.
+        } else {            
             return redirect()->route('login');
         }
         
     }
+
+    public function CheckNumBio() {
+        return Biochaturbate::where('user_id', auth()->id())->count();
+    }
+
     private function checkBioLimit()
     {
         $numBios = Biochaturbate::where('user_id', auth()->id())->count();
@@ -136,7 +141,6 @@ class Biochaturbates extends Component
               
         return view('livewire.createbios.chaturbates.view', [
             'biochaturbates' => Biochaturbate::with('user')->latest()
-
                 ->where('user_id', auth()->id())
                 ->where(function ($query) use ($keyWord) {
                     $query->where('name', 'LIKE', $keyWord);

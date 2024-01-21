@@ -719,7 +719,9 @@
                                                     <i class='bx bxl-youtube text-danger fs-2'></i> Look at the
                                                     tutorial, how to use this editor 👇
                                                 </a>
-
+                                                 | 	<a id="new-bio" href="javascript:void(0)" class="border-3 rounded-4" data-bs-toggle="modal" data-bs-target="#createDataModal">
+                                                    New Bio
+                                                  </a>   
                                             </span>
 
                                         </div>
@@ -1116,9 +1118,7 @@
                 <a href="/sitemap/" data-testid="sitemap">
                     Sitemap ~
                 </a>
-				<a id="new-bio" href="javascript:void(0)" class="" data-bs-toggle="modal" data-bs-target="#createDataModal">
-					New Bio
-				  </a>
+			
             </li>
         </ul>
 
@@ -1340,7 +1340,9 @@
         letter-spacing: 0.15em;
         border-radius: 0;
     }
-
+    .ce-block i {
+    font-style: normal;
+}
     select:focus,
     select:active {
         outline: 0;
