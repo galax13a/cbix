@@ -9,6 +9,7 @@ export class CardsPlayscam {
 
     constructor({ api, data }) {
         this.api = api;
+        this.itemsrow = 0;
         
         this.imgMain = 'https://picsum.photos/900/';//'https://cdn.sanity.io/images/dalun7d8/production/407b81aadfbba767b95e679141480240d7798c48-1920x1200.jpg?q=100&quot';
       
@@ -36,7 +37,7 @@ export class CardsPlayscam {
         this.container.style.backgroundSize = 'cover';
 
 
-        this.widget_playcams = document.createElement('div');
+        this.widget_playcams = document.createElement('strong');
         this.widget_playcams.id = 'widget_playcams';
         this.widget_playcams.className = 'bg-opacity-60 mx-auto'; //bg-dark text-white 
         this.widget_playcams.style.maxWidth = '900px';
@@ -49,8 +50,8 @@ export class CardsPlayscam {
         this.BtnAddWidget.style.backdropFilter = 'blur(10px) brightness(70%)';
         this.BtnAddWidget.dataset.bsToggle = 'modal';
         this.BtnAddWidget.dataset.bsTarget = '#modal-cards-playscam';
-        this.BtnAddWidget.style.maxWidth = '290px';
-        this.BtnAddWidget.innerHTML = '<i class="bx bxs-widget bx-spin fs-1 text-white  mx-2"></i> <strong class="fs-1"> Insert Widget Here</strong>';
+        this.BtnAddWidget.style.maxWidth = '330px';
+        this.BtnAddWidget.innerHTML = '<i class="bx bxs-widget bx-spin fs-1 text-white  mx-4"></i> <strong class="fs-1 m-2"> Insert Widget Here</strong>';
 
         this.contanerMain.appendChild(this.container);
         this.container.appendChild(this.widget_playcams);         
@@ -83,6 +84,7 @@ export class CardsPlayscam {
 
     createContainer(content) {
         const newContainer = document.createElement('div');
+        console.log('nuevo strong');
         newContainer.innerHTML = content;
         return newContainer;
     }
