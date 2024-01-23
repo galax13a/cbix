@@ -44,6 +44,14 @@
                         <ul class="navbar-nav mr-auto fw-bold">
                             <!--Nav Bar Hooks - Do not delete!!-->
 						<li class="nav-item">
+        <a href="{{ url('/admin/biocompones') }}" class="nav-link">🟣 Biocompones</a>
+    </li>
+						<li class="nav-item">
+        <a href="{{ url('/admin/biocategorcompones') }}" class="nav-link">🟣 Biocategorcompones</a>
+    </li>
+			
+
+						<li class="nav-item">
                                 <a href="{{ route('create-bio-chatur') }}" class="nav-link">🟣 Biochaturbates</a>
                             </li>
 	

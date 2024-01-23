@@ -83,18 +83,10 @@ export class CardsPlayscam {
     }
 
     createContainer(content) {
-        const newContainer = document.createElement('div');
-        console.log('nuevo strong');
+        const newContainer = document.createElement('strong');
+       // console.log('nuevo strong' +newContainer);
         newContainer.innerHTML = content;
         return newContainer;
-    }
-
-    showModal() {
-        const link = document.getElementById('modal-cards-playscam');
-        if (link) {
-            link.click();
-            console.log('Modal abierto');
-        }
     }
     
 render() {

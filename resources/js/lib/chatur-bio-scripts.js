@@ -20,21 +20,6 @@ var editor;
 
 document.addEventListener('livewire:load', function () {
     
-    Notiflix.Loading.standard('Loading...',);
-    setTimeout(function () {
-
-        const storedData = localStorage.getItem('bio-chatu-temp');
-        if (storedData) {
-            const parsedData = JSON.parse(storedData);
-            if (storedData.length > 55) {
-                editor.render(parsedData);
-            } else {
-
-            }
-        }
-    }, 1200);
-    Notiflix.Loading.remove();
-
     Livewire.on('messageProcessed', function () {
         console.log('Message process');
     });
@@ -77,6 +62,20 @@ document.addEventListener('livewire:load', function () {
 document.addEventListener('DOMContentLoaded', function () {
 
     MenuStartBio(); // init menu collap
+    Notiflix.Loading.standard('Loading...',);
+    setTimeout(function () {
+
+        const storedData = localStorage.getItem('bio-chatu-temp');
+        if (storedData) {
+            const parsedData = JSON.parse(storedData);
+            if (storedData.length > 55) {
+                editor.render(parsedData);
+            } else { }
+        }
+    }, 900);
+    
+    Notiflix.Loading.remove();
+
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
 
     document.getElementById('clearEditorButton').addEventListener('click', function () {

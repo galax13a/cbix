@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prepayments', function (Blueprint $table) {
+        Schema::create('payprements', function (Blueprint $table) {
             $table->id();
             $table->decimal('amount', 10, 2)->default(0);
-            $table->integer('tokens');
+            $table->integer('tokens')->nullable()->default(0);
             $table->date('purchase_date')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->string('email');
-            $table->foreignId('adminpremium_id')->constrained();
-            $table->unsignedBigInteger('paymentoption_id')->nullable()->after('adminpremium_id');
+            $table->unsignedBigInteger('adminpremium_id')->constrained('adminpremia');
+            $table->unsignedBigInteger('paymentoption_id')->nullable();
             $table->foreign('paymentoption_id')->references('id')->on('paymentoptions');
             $table->timestamps();
         });

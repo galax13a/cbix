@@ -6,7 +6,7 @@
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">   
     <link href="{{ asset('storage/temas/cdn/bootstrap5.2/css/bootstrap.min.css') }}" rel="stylesheet" />   
      
-    <title>  Tema  </title>   
+    <title>  Thema admin  </title>   
 </head>
 
 <body>

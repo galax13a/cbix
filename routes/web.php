@@ -109,6 +109,8 @@ Route::get('/locate/en', function () {
 
 
 //Route Hooks - Do not delete//
+	Route::view('admin/biocompones', 'livewire.admin.biocompones.index')->middleware('auth');
+	Route::view('admin/biocategorcompones', 'livewire.admin.biocategorcompones.index')->middleware('auth');
 
 	Route::view('/create/bios/chaturbate', 'livewire.createbios.chaturbates.index')->name('create-bio-chatur');
 
