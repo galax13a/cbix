@@ -14,11 +14,19 @@
     --darky: #daca97;
     --blacky: #1b1b1d;
 }
+.cursor-pointer {
+    cursor: pointer;
+}
+
 .btn-new {
     transition: all 0.3s ease;
     border: 2px solid transparent;
     }
-      
+ 
+    .btn-new.active {
+                background-color: #4abace59;
+        }
+    
     #btn-store,
     #btn-close,
     #btn-update {

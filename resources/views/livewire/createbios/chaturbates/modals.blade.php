@@ -1,57 +1,66 @@
-<!-- modal cards playscam -->
 <div>
-    <div class="modal fade" id="modal-cards-playscam" tabindex="-1" aria-labelledby="modal-cards-playscamLabel" aria-hidden="true">
+    <!-- modal cards playscam -->
+    <div wire:ignore.self class="modal fade" id="modal-cards-playscam" tabindex="-1" aria-labelledby="modal-cards-playscamLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h2 class="modal-title" id="modal-cards-playscamLabel">🦄 Playcams Store | Cards Bio Chaturbate</h2>
+                    <h2 class="modal-title" id="modal-cards-playscamLabel">🦄 Playcams Store | Cards Bio Chaturbate
+                        @auth                    
+                        <p>Welcome, {{ auth()->user()->name }}</p>             
+                        @else
+                        <a href="{{ route('login') }}" target="_blank">Login</a>
+                        @endauth
+                    </h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                    @auth                    
-                    <p>Welcome, {{ auth()->user()->name }}</p>             
-                    @else
-                    <a href="{{ route('login') }}" target="_blank">Login</a>
-                    @endauth
-
-                    
+                                        
                     <input wire:model="keyWord" type="text" class="search-input" placeholder="Search Cards">
-                  icons 
-                  <i class='bx bx-pulse' ></i>
-                  <i class='bx bx-shield' ></i>
-                  <i class='bx bx-trophy' ></i>
-                  <i class='bx bx-crown' ></i>
-                  <i class='bx bx-film' ></i>
-                  <i class='bx bx-store' ></i>
-                  <i class='bx bx-heart-square' ></i>
-                  <i class='bx bx-pointer' ></i>
-                  <i class='bx bx-donate-heart' ></i>
-                  <i class='bx bx-right-indent' ></i>
-                  <i class='bx bx-image' ></i>
-                  <i class='bx bx-clipboard' ></i>
-                  <i class='bx bx-registered' ></i>
-                  <i class='bx bxs-registered' ></i>
-
-                | <i class='bx bx-navigation' ></i>
-                    <div class="container shadow rounded-3 mb-3 bg-light">
-                        <div class="btn-group rounded-4" role="group" aria-label="btn">
-                            @foreach ($this->card_categors as $category)
-                                <button id="{{ $category->id }}" class="btn-new">
-                                    {!! $category->icon !!}
-                                    {{ $category->name }}
-                                </button>
-                            @endforeach
-                        </div>
+                    <div class="container d-none">
+                        icons 
+                            <i class='bx bx-pulse' ></i>
+                            <i class='bx bx-shield' ></i>
+                            <i class='bx bx-trophy' ></i>
+                            <i class='bx bx-crown' ></i>
+                            <i class='bx bx-film' ></i>
+                            <i class='bx bx-store' ></i>
+                            <i class='bx bx-heart-square' ></i>
+                            <i class='bx bx-pointer' ></i>
+                            <i class='bx bx-donate-heart' ></i>
+                            <i class='bx bx-right-indent' ></i>
+                            <i class='bx bx-image' ></i>
+                            <i class='bx bx-clipboard' ></i>
+                            <i class='bx bx-registered' ></i>
+                            <i class='bx bxs-registered' ></i>
+                            | <i class='bx bx-navigation' ></i>
+                            
                     </div>
+                  
+                    <nav class="container shadow rounded-3 mb-3 bg-light">
+                        <ul class="nav nav-pills rounded-4 p-2">
+                            @foreach ($this->card_categors as $category)
+                                <li class="nav-item">
+                                    <button
+                                        wire:click="setCategors({{ $category->id }})"
+                                        class="nav-link btn-new {{ $category->id == $this->cards ? 'active' : '' }}"
+                                    >
+                                        {!! $category->icon !!}
+                                        {{ $category->name }}
+                                    </button>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </nav>
+                    
                     
                     
                     <div class="row" id="rows-cards-playscam">
                         @foreach ($this->card_list as $index => $card)
                             <div id="card-{{ $index }}" class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
                                 <div class="row g-0">
-                                    <div class="col-2">
-                                        <img src="{{ $card->image }}" class="img-fluid rounded" alt="Card title">
+                                    <div class="col-4">
+                                        <img src="{{ $card->img }}" class="img-fluid rounded" alt="Card title">
                                     </div>
                                     <div class="col-8">
                                         <div id="select-cards-playscam{{ $index }}" class="card-body py-0">                                    

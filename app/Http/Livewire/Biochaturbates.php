@@ -58,6 +58,10 @@ class Biochaturbates extends Component
         $this->resetPage();
     }
 
+    public function setCategors($categoryId = 1){
+        $this->cards = $categoryId;
+
+    }
     public function getCategors()
     {
             $this->card_categors = Biocategorcompone::where('active', true)->get();
@@ -65,6 +69,7 @@ class Biochaturbates extends Component
 
     public function getCards()
     {
+      
             $this->card_list = Biocompone::where('active', true)
             ->where('biocategorcompone_id', $this->cards)
             ->paginate(25);
