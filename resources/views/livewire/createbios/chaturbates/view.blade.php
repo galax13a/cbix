@@ -789,9 +789,6 @@
 
 										<div class="container">
 											<p> profile {{ $this->selected_id }}</p>
-											
-
-
 										</div>
 
                     </div>

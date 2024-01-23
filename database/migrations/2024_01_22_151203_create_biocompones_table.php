@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('img')->nullable();
             $table->text('code');
             $table->text('js')->nullable();          
+            $table->boolean('pro')->defaultValue(true);
             $table->foreignId('biocategorcompone_id')->constrained('biocategorcompones');
             $table->boolean('active')->default(false);            
             $table->timestamps();

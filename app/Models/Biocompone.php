@@ -13,7 +13,7 @@ class Biocompone extends Model
 
     protected $table = 'biocompones';
 
-    protected $fillable = ['name','img','code','js','biocategorcompone_id','active']; // fillable2
+    protected $fillable = ['name','img','code','js','biocategorcompone_id','active','pro']; // fillable2
 	
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne

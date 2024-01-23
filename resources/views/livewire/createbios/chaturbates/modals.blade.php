@@ -17,62 +17,54 @@
 
                     
                     <input wire:model="keyWord" type="text" class="search-input" placeholder="Search Cards">
+                  icons 
+                  <i class='bx bx-pulse' ></i>
+                  <i class='bx bx-shield' ></i>
+                  <i class='bx bx-trophy' ></i>
+                  <i class='bx bx-crown' ></i>
+                  <i class='bx bx-film' ></i>
+                  <i class='bx bx-store' ></i>
+                  <i class='bx bx-heart-square' ></i>
+                  <i class='bx bx-pointer' ></i>
+                  <i class='bx bx-donate-heart' ></i>
+                  <i class='bx bx-right-indent' ></i>
+                  <i class='bx bx-image' ></i>
+                  <i class='bx bx-clipboard' ></i>
+                  <i class='bx bx-registered' ></i>
+                  <i class='bx bxs-registered' ></i>
 
+                | <i class='bx bx-navigation' ></i>
                     <div class="container shadow rounded-3 mb-3 bg-light">
                         <div class="btn-group rounded-4" role="group" aria-label="btn">
-                            <button id="addRuleButton" class="btn-new">
-                                <i class='bx bx-happy-beaming fs-2' ></i></i>Bio App
-                            </button>
-                            <button id="changeColorButton" class="btn-new">
-                                <i class='bx bx-heading fs-2' ></i></i>Headers
-                            </button>                           
-                            <button id="toggleShadowButton" class="btn-new">
-                                <i class='bx bx-book-heart fs-2' ></i>Cards
-                            </button>
-                            <button id="cardImagenButton" class="btn-new">
-                                <i class="bx bx-image fs-2"></i> SocialMedia
-                            </button>
-                            <button id="btn-noborder" class="btn-new">
-                                <i class='bx bx-bookmark-heart fs-2' ></i>Links
-                            </button>
-                            <button id="btn-noborder" class="btn-new">
-                                <i class='bx bxs-bowl-hot fs-2' ></i>Extra
-                            </button>
+                            @foreach ($this->card_categors as $category)
+                                <button id="{{ $category->id }}" class="btn-new">
+                                    {!! $category->icon !!}
+                                    {{ $category->name }}
+                                </button>
+                            @endforeach
                         </div>
                     </div>
                     
+                    
                     <div class="row" id="rows-cards-playscam">
-                        <?php
-                            $descrip = 'Lorem Ipsum Ipsum Ipsum';
-                            $cards = [
-                                ['name' => 'App 0', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 2', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 3', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 4', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                                ['name' => 'App 5', 'image' => 'https://picsum.photos/200/150', 'description' => $descrip],
-                             
-                            ];
-                        ?>
-                       @foreach ($cards as $index => $card)
-                       <div id="card-{{ $index }}" class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
-                           <div class="row g-0">
-                               <div class="col-2">
-                                   <img src="https://picsum.photos/200/150" class="img-fluid rounded" alt="Card title">
-                               </div>
-                               <div class="col-8">
-                                   <div id="select-cards-playscam{{ $index }}" class="card-body py-0">                                    
-                                           <p class="text-muted mb-0">{{ $card['name'] }}
-                                        </p>                                 
-                                       <h5 id="card-description-{{$index}}" class="card-title">bio {{ $index }} -  {{ $card['description'] }}</h5>
-                                       <button class="btn btn-light text-center">Select Card</button>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                   @endforeach
-                   
+                        @foreach ($this->card_list as $index => $card)
+                            <div id="card-{{ $index }}" class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
+                                <div class="row g-0">
+                                    <div class="col-2">
+                                        <img src="{{ $card->image }}" class="img-fluid rounded" alt="Card title">
+                                    </div>
+                                    <div class="col-8">
+                                        <div id="select-cards-playscam{{ $index }}" class="card-body py-0">                                    
+                                            <p class="text-muted mb-0">{{ $card->name }}</p>                                 
+                                            <h5 id="card-description-{{$index}}" class="card-title">bio {{ $index }} -  {{ $card->description }}</h5>
+                                            <button class="btn btn-light text-center">Select Card</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
+                    
 
                     <div class="card" id="biocontentcard">
                         <div class="card-header">

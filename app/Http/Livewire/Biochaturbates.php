@@ -5,27 +5,34 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Biochaturbate;
+use App\Models\Biocategorcompone;
+use App\Models\Biocompone;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class Biochaturbates extends Component
 {
     protected $listeners = ['confirm1' => 'confirm1_model', 'confirm-delete-model' => 'destroy', 'savebio'];
-    protected $queryString = ['mybio','selected_id', 'page' => ['except' => 1]];
+    protected $queryString = ['mybio','selected_id', 'cards','page' => ['except' => 1]];
     use WithPagination;
 
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $room, $api, $codex, $bio, $data, $code, $codebackup, $share, $link, $campaign, $pay, $active, $pic;
-    public $editorbio, $currentLanguage, $profile, $numBios, $record,$mybio;
+    public $editorbio, $currentLanguage, $profile, $numBios, $record,$mybio, $biocompones, $cards;
+    
+    protected  $card_list, $card_categors; 
 
     public function mount(Request $request)
     {
         $this->selected_id = $request->input('selected_id', null);
+        $this->cards = $request->input('cards', 1);
         $this->currentLanguage = $request->input('currentLanguage', 'en');
         $this->page = $request->input('page', 1);
+        $this->card_list = collect(); 
 
         if (auth()->user()) {
             if ($this->selected_id > 0) {
+               
                        
                 try {
                     $this->record = Biochaturbate::findOrFail($this->selected_id);
@@ -45,21 +52,43 @@ class Biochaturbates extends Component
         }
     
     }
-    
+
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();
     }
 
+    public function getCategors()
+    {
+            $this->card_categors = Biocategorcompone::where('active', true)->get();
+    }
+
     public function getCards()
     {
-        return [
-            ['name' => 'App 1', 'image' => 'https://picsum.photos/200/150', 'description' => 'Descripción de la App 1'],
-            ['name' => 'App 2', 'image' => 'https://picsum.photos/200/150', 'description' => 'Descripción de la App 2'],
-            ['name' => 'App 3', 'image' => 'https://picsum.photos/200/150', 'description' => 'Descripción de la App 3'],
-            ['name' => 'App 4', 'image' => 'https://picsum.photos/200/150', 'description' => 'Descripción de la App 4'],
-        ];
+            $this->card_list = Biocompone::where('active', true)
+            ->where('biocategorcompone_id', $this->cards)
+            ->paginate(25);
     }
+    
+    public function render()
+    {
+        $keyWord = '%' . $this->keyWord . '%';
+        
+        $this->getCards();
+        $this->getCategors();
+
+       // dd($this->card_categors );
+
+        return view('livewire.createbios.chaturbates.view', [
+            'biochaturbates' => Biochaturbate::with('user')->latest()
+                ->where('user_id', auth()->id())
+                ->where(function ($query) use ($keyWord) {
+                    $query->where('name', 'LIKE', $keyWord);
+                })->paginate(10)
+        ]);
+      
+    }
+
     public function newtheme()
     {
         $this->mybio = 'new';
@@ -135,19 +164,7 @@ class Biochaturbates extends Component
     }
 
 
-    public function render()
-    {
-        $keyWord = '%' . $this->keyWord . '%';
-              
-        return view('livewire.createbios.chaturbates.view', [
-            'biochaturbates' => Biochaturbate::with('user')->latest()
-                ->where('user_id', auth()->id())
-                ->where(function ($query) use ($keyWord) {
-                    $query->where('name', 'LIKE', $keyWord);
-                })->paginate(10)
-        ]);
-      
-    }
+   
 
     public function cancel()
     {
