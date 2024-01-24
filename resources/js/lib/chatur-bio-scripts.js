@@ -25,7 +25,7 @@ document.addEventListener('livewire:load', function () {
     });
 
     Livewire.on('newprofile', function () {
-        console.log('creator new profile ready v1.0');
+      //  console.log('creator new profile ready v1.0');
         var link = document.getElementById('new-bio');
         if (link) {
             link.click();
@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function () {
     MenuStartBio(); // init menu collap
     Notiflix.Loading.standard('Loading...',);
     setTimeout(function () {
-
         const storedData = localStorage.getItem('bio-chatu-temp');
         if (storedData) {
             const parsedData = JSON.parse(storedData);
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
             } else { }
         }
     }, 900);
-    
+
     Notiflix.Loading.remove();
 
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
@@ -171,5 +170,25 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Saving Bio failed:', error);
         }
     }
+    document.getElementById('rows-cards-playscam').addEventListener('click', function (event) {     
+        const cardElement = event.target.closest('.card');    
+        if (cardElement) {
+            const inputValue = cardElement.querySelector('input').value;
+            const strongId = localStorage.getItem('setWidgh');
+            const strongElement = document.getElementById(strongId);
+            if (strongElement && inputValue) {                
+                const newContainer = document.createElement('div');
+                newContainer.id = 'noDiv';
+                newContainer.innerHTML = inputValue;
+                strongElement.appendChild(newContainer);
+                const close = document.querySelector("#modal-cards-playscam > div > div > div.modal-header > button");
+                close.click();
+            }
+        } else {
+            console.log('Error: No se encontró el elemento .card');
+        }
+    });
+    
+    
 
 });

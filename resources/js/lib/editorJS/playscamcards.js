@@ -10,14 +10,17 @@ export class CardsPlayscam {
     constructor({ api, data }) {
         this.api = api;
         this.itemsrow = 0;
-        
-        this.imgMain = 'https://picsum.photos/900/';//'https://cdn.sanity.io/images/dalun7d8/production/407b81aadfbba767b95e679141480240d7798c48-1920x1200.jpg?q=100&quot';
-      
+        this.id = this.id || Date.now();
+
+        this.id = data && data.id ? data.id : Date.now();
+        this.imgBackground = data && data.backgroundImageUrl ? data.backgroundImageUrl : 'https://camcdn.net/s/images/dalun7d8/production/5d7d17531121d5c414bbcf5d18febbf1c9b4d19a-1900x1200.jpg?q=100';
+    
         this.containerButton = document.createElement('div');
         this.contanerMain = document.createElement('div');
         this.contanerMain.id = 'contaner-main';
 
         this.container = document.createElement('strong');
+        this.container.id = this.id;
         this.container.className = 'background-container';
         this.container.style.height = '100%';
         this.container.style.minHeight = '50vh';
@@ -30,7 +33,9 @@ export class CardsPlayscam {
         this.container.style.paddingBottom = '32px';
         this.container.style.margin = '0 auto';
         this.container.style.fontWeight = '400';
-        this.container.style.backgroundImage = "url('https://camcdn.net/s/images/dalun7d8/production/5d7d17531121d5c414bbcf5d18febbf1c9b4d19a-1900x1200.jpg?q=100')";
+        
+        this.container.style.backgroundImage = `url('${this.imgBackground}')`;
+   
         this.container.style.backgroundAttachment = 'fixed';
         this.container.style.backgroundPosition = 'center';
         this.container.style.backgroundRepeat = 'repeat-x';
@@ -55,33 +60,24 @@ export class CardsPlayscam {
 
         this.contanerMain.appendChild(this.container);
         this.container.appendChild(this.widget_playcams);         
-        this.contanerMain.appendChild(this.BtnAddWidget);
+        this.contanerMain.appendChild(this.BtnAddWidget);      
         
-
-        const cards = document.querySelectorAll('.snipcss-PN4eX');
-        cards.forEach((card, index) => {
-            card.addEventListener('click', () => {
-                this.updatewidget_playcams(index);
-            });
+        this.BtnAddWidget.addEventListener('click', () => {
+            this.setWidget();
+          //  this.api.blocks.storedData[this.id] = this.save();
         });
 
+
         if (data && data.containerCard) {
-            // Si hay datos guardados, actualizar el contenido
             const decodedHTML = decodeURIComponent(data.containerCard);
             this.widget_playcams.innerHTML = decodedHTML;
         }
     }
 
-    updatewidget_playcams(index) {
-        const cardDescription = document.getElementById(`card-description-${index}`);
-        if (cardDescription) {
-            const newContent = cardDescription.innerHTML;
-           // this.widget_playcams.insertBefore(this.createContainer(newContent), this.BtnAddWidget);
-            this.widget_playcams.appendChild(this.createContainer(newContent));
-            document.querySelector("#modal-cards-playscam > div > div > div.modal-header > button").click();
-        }
+    setWidget() {
+        //Livewire.emit('recibirIdDesdeJavascript', this.id);
+        localStorage.setItem('setWidgh', this.id);
     }
-
     createContainer(content) {
         const newContainer = document.createElement('strong');
        // console.log('nuevo strong' +newContainer);
@@ -90,17 +86,18 @@ export class CardsPlayscam {
     }
     
 render() {
-    // Devolver el contenido guardado o predeterminado
     const savedHTML = this.data && this.data.containerCard ? this.api.sanitizer.decodeHTML(this.data.containerCard) : '';
     return savedHTML || this.contanerMain;
 }
 
+save() {
+    const encodedHTML = encodeURIComponent(this.container.innerHTML);
+    console.log('encode ' + encodedHTML);
+    return {
+        id: this.id,
+        backgroundImageUrl: this.imgBackground,
+        containerCard: encodedHTML || null,
+    };
 
-    save() {
-        const cleanedHTML = this.widget_playcams.innerHTML.replace(/\n\s*/g, '');
-        const encodedHTML = encodeURIComponent(cleanedHTML);
-        return {
-            containerCard: encodedHTML || null,
-        };
     }
 }

@@ -26,12 +26,7 @@ class Biocompones extends Component
 
         return view('livewire.admin.biocompones.view', [
             'biocompones' => Biocompone::latest()
-						->orWhere('name', 'LIKE', $keyWord)
-						->orWhere('img', 'LIKE', $keyWord)
-						->orWhere('code', 'LIKE', $keyWord)
-						->orWhere('js', 'LIKE', $keyWord)
-						->orWhere('biocategorcompone_id', 'LIKE', $keyWord)
-						->orWhere('active', 'LIKE', $keyWord)->paginate(10)
+						->orWhere('name', 'LIKE', $keyWord)->paginate(30)
         ]);
     }
 	

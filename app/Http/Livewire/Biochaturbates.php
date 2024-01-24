@@ -18,9 +18,13 @@ class Biochaturbates extends Component
 
     protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $room, $api, $codex, $bio, $data, $code, $codebackup, $share, $link, $campaign, $pay, $active, $pic;
-    public $editorbio, $currentLanguage, $profile, $numBios, $record,$mybio, $biocompones, $cards;
+    public $editorbio, $currentLanguage, $profile, $numBios, $record,$mybio, $biocompones, $cards, $widget_id;
     
     protected  $card_list, $card_categors; 
+
+    public function setWidgh($id){
+        $this->widget_id = $id;
+    }
 
     public function mount(Request $request)
     {
@@ -72,7 +76,7 @@ class Biochaturbates extends Component
       
             $this->card_list = Biocompone::where('active', true)
             ->where('biocategorcompone_id', $this->cards)
-            ->paginate(25);
+            ->paginate(15);
     }
     
     public function render()

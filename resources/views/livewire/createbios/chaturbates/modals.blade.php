@@ -3,14 +3,9 @@
     <div wire:ignore.self class="modal fade" id="modal-cards-playscam" tabindex="-1" aria-labelledby="modal-cards-playscamLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
-
                 <div class="modal-header">
-                    <h2 class="modal-title" id="modal-cards-playscamLabel">🦄 Playcams Store | Cards Bio Chaturbate
-                        @auth                    
-                        <p>Welcome, {{ auth()->user()->name }}</p>             
-                        @else
-                        <a href="{{ route('login') }}" target="_blank">Login</a>
-                        @endauth
+                    <h2 class="modal-title" id="modal-cards-playscamLabel">
+                        🦄 Playcams Store | Cards Bio Chaturbate
                     </h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -52,21 +47,20 @@
                             @endforeach
                         </ul>
                     </nav>
+                                        
                     
-                    
-                    
-                    <div class="row" id="rows-cards-playscam">
+                    <div class="row" id="rows-cards-playscam" wire:key='rowscards'>
                         @foreach ($this->card_list as $index => $card)
-                            <div id="card-{{ $index }}" class="card mb-3 p-3 rounded-4 shadow border-0 snipcss-PN4eX">
+                            <div id="card-{{ $index }}" class="card mb-3 p-3 rounded-4 shadow-sm border-0 snipcss-PN4eX">
                                 <div class="row g-0">
                                     <div class="col-4">
-                                        <img src="{{ $card->img }}" class="img-fluid rounded" alt="Card title">
+                                        <img src="{{ $card->img }}" class="img-fluid rounded">
                                     </div>
                                     <div class="col-8">
                                         <div id="select-cards-playscam{{ $index }}" class="card-body py-0">                                    
                                             <p class="text-muted mb-0">{{ $card->name }}</p>                                 
-                                            <h5 id="card-description-{{$index}}" class="card-title">bio {{ $index }} -  {{ $card->description }}</h5>
-                                            <button class="btn btn-light text-center">Select Card</button>
+                                            <h5 id="card-description-{{$index}}" class="card-title">bio {{ $index }} -  {{ $card->description }}</h5>                                         
+                                            <input wire:key='codeCards' id="code" type="text" value="{{ $card->code }}">
                                         </div>
                                     </div>
                                 </div>
