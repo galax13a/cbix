@@ -170,17 +170,22 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log('Saving Bio failed:', error);
         }
     }
+
     document.getElementById('rows-cards-playscam').addEventListener('click', function (event) {     
         const cardElement = event.target.closest('.card');    
         if (cardElement) {
             const inputValue = cardElement.querySelector('input').value;
             const strongId = localStorage.getItem('setWidgh');
             const strongElement = document.getElementById(strongId);
+            const widgetPlaycams = strongElement.querySelector('#widget_playcams');
+
             if (strongElement && inputValue) {                
-                const newContainer = document.createElement('div');
+                const newContainer = document.createElement('strong');
                 newContainer.id = 'noDiv';
+                //newContainer.innerHTML = '<strong>pelo 2 x 3 </strong>';//inputValue;
                 newContainer.innerHTML = inputValue;
-                strongElement.appendChild(newContainer);
+                //strongElement.appendChild(newContainer);
+                widgetPlaycams.appendChild(newContainer);
                 const close = document.querySelector("#modal-cards-playscam > div > div > div.modal-header > button");
                 close.click();
             }
