@@ -11,6 +11,7 @@ export class CardsPlayscam {
         this.itemsrow = 0;
         this.id = data && data.id ? data.id : Date.now();
         this.imgBackground = data && data.backgroundImageUrl ? data.backgroundImageUrl : 'https://camcdn.net/s/images/dalun7d8/production/5d7d17531121d5c414bbcf5d18febbf1c9b4d19a-1900x1200.jpg?q=100';
+        this.CssContainer = false;
 
         this.containerButton = document.createElement('div');
         this.contanerMain = document.createElement('div');
@@ -114,25 +115,35 @@ export class CardsPlayscam {
         }
     }
 
+   
     async changeTools_Tools_BtnFull_Widget(){
-        this.container.style.cssText = `
-        text-align: center;
-        height: auto;
-        border: none;
-        border-radius: 15px;
-        box-shadow: 0 0 15px #000;
-        background: url(https://camo.mmcdn.com/974cc49c318259d7b9fc60140b2e2aa5eddfed31/68747470733a2f2f692e706f7374696d672e63632f3153487163724a792f5265637572736f2d32322e706e67), rgb(0, 0, 0);
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;     
-        margin-top: -490px;
-        margin-right: 0px;
-        margin-left: -155px;
-        min-height: 230vh;
-    
-    `;
-        console.log("changeTools_Tools_BtnFull_Widget");
+
+        this.CssContainer = !this.CssContainer; //toggle
+
+        if(!this.CssContainer) {
+            this.container.style.cssText = `
+                    height: 100%; min-height: 50vh; max-width: 98%; min-width: 900px; display: block; position: relative; padding-top: 32px; padding-bottom: 32px; margin: 0px auto; font-weight: 400; background-image: url(&quot;https://camcdn.net/s/images/dalun7d8/production/5d7d17531121d5c414bbcf5d18febbf1c9b4d19a-1900x1200.jpg?q=100&quot;); background-attachment: fixed; background-position: center center; background-repeat: repeat-x; background-size: cover;
+            `;
+            this.container.style.backgroundImage = `url('${this.imgBackground}')`;
+        }else {
+            this.container.style.cssText = `
+            text-align: center;
+            height: auto;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 0 15px #000;
+            background: url(https://camo.mmcdn.com/974cc49c318259d7b9fc60140b2e2aa5eddfed31/68747470733a2f2f692e706f7374696d672e63632f3153487163724a792f5265637572736f2d32322e706e67), rgb(0, 0, 0);
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;     
+            margin-top: -490px;
+            margin-right: 0px;
+            margin-left: -155px;
+            min-height: 230vh;       
+        `;
+        }        
+        console.log("changeTools_Tools_BtnFull_Widget ToGgle : " + this.CssContainer);
     }
 
     changeTools_Buttons_Widget(){

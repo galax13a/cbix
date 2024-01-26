@@ -608,7 +608,7 @@
                 </div>
                 <div ts="x" class="BioContents style-WwIhF" data-testid="room-bio-tab-contents"
                     id="tabs_content_container">
-                    <a class="editbio style-hZckn" id="style-hZckn">
+                    <a class="editbio style-hZckn d-none" id="style-hZckn">
                         Edit Your Bio
                     </a>
                     <div id="style-mpJOo" class="style-mpJOo">
