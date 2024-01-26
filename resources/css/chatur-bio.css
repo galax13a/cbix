@@ -2213,10 +2213,10 @@
   #style-PF7sT.style-PF7sT {  
      font-size: 14px;  
   }  
-  #style-Q3oQ4.style-Q3oQ4 {  
+  #style-Q3oQ4.style-Q3oQ4 {    /* span */ 
      font-size: 14px;  
       font-weight: normal;  
-      line-height: 15px;  
+     /* line-height: 15px;   */ 
       vertical-align: top;  
       text-align: left;  
   }  
@@ -2227,7 +2227,7 @@
   }  
   #style-K2MjS.style-K2MjS {  
      font-size: 14px;  
-      line-height: 16px;  
+   /*   line-height: 16px;   */
       font-family: UbuntuRegular, Arial, Helvetica, sans-serif;  
   }  
   #style-5kJo3.style-5kJo3 {  

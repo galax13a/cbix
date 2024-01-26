@@ -13,6 +13,7 @@ import { RulesPlaycam } from './editorJS/rule-playcam';
 import { CopysPlaycam } from './editorJS/copyrigth-playcams';
 import { CodexPlaycam } from './editorJS/code-playcam';
 import { CardsPlayscam } from './editorJS/playscamcards';
+import { EmoticonsBlock } from './editorJS/Emotions';
 import './editorJS/modal-bio-app';
 
 var isReadOnly = false;
@@ -145,17 +146,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 class: CodexPlaycam,
             },
 
-
             titlePlaycams: {
                 class: TitlePlaycam,
                 inlineToolbar: true,
 
             },
+
             RulesPlaycam: {
                 class: RulesPlaycam,
                 inlineToolbar: ['bold', 'italic'],
 
             },
+            EmoticonsPlayscam: {
+                class: EmoticonsBlock,
+            },
+            
         },
       
     });

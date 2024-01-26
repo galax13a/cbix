@@ -611,6 +611,7 @@
                     <a class="editbio style-hZckn d-none" id="style-hZckn">
                         Edit Your Bio
                     </a>
+
                     <div id="style-mpJOo" class="style-mpJOo">
                         <table id="style-8RW6T" class="style-8RW6T">
                             <tbody>
@@ -1294,6 +1295,7 @@
     a {
         text-decoration: none;
     }
+  
 
     .block-container {
         display: none;
