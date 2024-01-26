@@ -15,6 +15,10 @@ class Biocompones extends Component
 	protected $paginationTheme = 'bootstrap';
     public $selected_id, $keyWord, $name, $img, $code, $js, $biocategorcompone_id, $active;
 
+    public function mount() {
+        $this->keyWord - null;
+    }
+
     public function updatingKeyWord() // reset pages keywork
     {
         $this->resetPage();

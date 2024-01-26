@@ -22,7 +22,7 @@
 								<th>Js</th>
 								<th>Biocategorcompone Id</th>
 								<th>Active</th>
-									<th class="text-center thead">Command</th>
+									<th class="text-center thead">CRUD</th>
 							</tr>
 						</thead>
 						<tbody>

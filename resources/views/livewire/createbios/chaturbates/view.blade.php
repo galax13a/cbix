@@ -774,9 +774,7 @@
 										
 										
                                     </td>
-                                    <td class="contentText style-K2MjS" id="style-K2MjS">
-
-                             
+                                    <td class="contentText style-K2MjS" id="style-K2MjS">                             
                                         
                                         <div id="content-bio" class=" d-none">
                                             <a id="btn-create-blank" class="btn-playcams">🩵Create Bio</a>
@@ -1274,8 +1272,9 @@
     <ul id="menuList">
         <li id="NewItem" class="new-bios"><a href="javascript:void(0)"><i class="bx bx-book-add"></i>New</a>
         </li>
-        <li id="codeItem" class="not-save"><a href="javascript:void(0)"><i
-                    class="bx bx-code-block"></i>Code</a>
+        <li id="btnsave_menuButton" class="new-bios"><a href="javascript:void(0)"><i class="bx bx-book-add"></i>Save</a>
+        </li>
+         <li id="codeItem" class="not-save"><a href="javascript:void(0)"> <i class="bx bx-code-block"></i>Code</a>
         </li>
         <li id="copyItem" class="not-save"><a href="javascript:void(0)"><i class="bx bxs-copy-alt"></i>Copy</a>
         </li>

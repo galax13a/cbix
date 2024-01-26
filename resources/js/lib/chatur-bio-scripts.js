@@ -194,6 +194,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
     
+    const SaveButtonMenu = document.querySelector("#btnsave_menuButton");
+    SaveButtonMenu.addEventListener('click', handleSaveButtonClick);
+
+    async function handleSaveButtonClick() {
+        saveEditorData();
+    }
+
+
     
 
 });

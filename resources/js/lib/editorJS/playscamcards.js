@@ -115,6 +115,23 @@ export class CardsPlayscam {
     }
 
     async changeTools_Tools_BtnFull_Widget(){
+        this.container.style.cssText = `
+        text-align: center;
+        height: auto;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 0 15px #000;
+        background: url(https://camo.mmcdn.com/974cc49c318259d7b9fc60140b2e2aa5eddfed31/68747470733a2f2f692e706f7374696d672e63632f3153487163724a792f5265637572736f2d32322e706e67), rgb(0, 0, 0);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;     
+        margin-top: -490px;
+        margin-right: 0px;
+        margin-left: -155px;
+        min-height: 230vh;
+    
+    `;
         console.log("changeTools_Tools_BtnFull_Widget");
     }
 
