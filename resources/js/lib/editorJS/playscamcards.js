@@ -45,7 +45,7 @@ export class CardsPlayscam {
 
         this.BtnAddWidget = document.createElement('div');
         this.BtnAddWidget.id = 'BtnAddWidget';
-        this.BtnAddWidget.className = 'btn btn-new mt-3 p-3';
+        this.BtnAddWidget.className = 'btn btn-new';
         this.BtnAddWidget.style.backdropFilter = 'blur(10px) brightness(90%)';
         this.BtnAddWidget.dataset.bsToggle = 'modal';
         this.BtnAddWidget.dataset.bsTarget = '#modal-cards-playscam';
@@ -54,7 +54,9 @@ export class CardsPlayscam {
 
         // container botons
         this.containerTools = document.createElement('div');
-        this.containerTools.className = 'container text-center';
+        this.containerTools.className = 'container text-center shadow-sm rounded-3 m-3';
+        this.containerTools.style.minHeight = '60px';
+        
         this.containerToolsRow = document.createElement('div');
         this.containerToolsRow.className = 'row';
         this.containerToolsCol = document.createElement('div');
@@ -63,7 +65,7 @@ export class CardsPlayscam {
         /* botton add imagen */
         this.changeImageBtn = document.createElement('button');
         this.changeImageBtn.innerHTML = '<i class="bx bx-image fs-1"></i> <strong class="fs-1 m-2 "> Change Image</strong>';
-        this.changeImageBtn.className = 'btn btn-new mt-3 p-3';
+        this.changeImageBtn.className = 'btn btn-new';
         this.changeImageBtn.addEventListener('click', () => this.changeBackgroundImage()); 
         // end btn img
         
@@ -80,17 +82,16 @@ export class CardsPlayscam {
         /* botton add imagen */
         this.Tools_Buttons_Widget = document.createElement('button');
         this.Tools_Buttons_Widget.innerHTML = `<i class='bx bxs-customize fs-1'></i><strong class="fs-1 m-2 "> Tools Rows Widget</strong>`;
-        this.Tools_Buttons_Widget.className = 'btn btn-new mt-3 p-3';
+        this.Tools_Buttons_Widget.className = 'btn btn-new';
         this.Tools_Buttons_Widget.addEventListener('click', () => this.changeTools_Buttons_Widget()); 
         // end btn img
 
         /* botton full ul */
         this.Tools_BtnFull_Widget = document.createElement('button');
         this.Tools_BtnFull_Widget.innerHTML = `<i class='bx bx-fullscreen fs-1'></i><strong class="fs-1 m-2 ">Full Bio</strong>`;
-        this.Tools_BtnFull_Widget.className = 'btn btn-new mt-3 p-3';
+        this.Tools_BtnFull_Widget.className = 'btn btn-new';
         this.Tools_BtnFull_Widget.addEventListener('click', () => this.changeTools_Tools_BtnFull_Widget()); 
-        // end btn full ul
-        
+        // end btn full ul        
 
         this.col_BtnAddWidget = this.returnCol(this.BtnAddWidget); // create col
         this.col_BtnAddImg =  this.returnCol(this.changeImageBtn);  // create btn add img
@@ -111,6 +112,10 @@ export class CardsPlayscam {
             const decodedHTML = decodeURIComponent(data.containerCard);
             this.widget_playcams.innerHTML = decodedHTML;
         }
+    }
+
+    async changeTools_Tools_BtnFull_Widget(){
+        console.log("changeTools_Tools_BtnFull_Widget");
     }
 
     changeTools_Buttons_Widget(){
