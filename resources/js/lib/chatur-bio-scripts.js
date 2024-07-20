@@ -6,7 +6,6 @@ import NestedList from '@editorjs/nested-list';
 
 import { MenuStartBio } from './chatur-bio-menu';
 /* libreris editor bio */
-
 import BRPlaycams from './editorJS/br-editor';
 import { TitlePlaycam } from './editorJS/title-playcams';
 import { RulesPlaycam } from './editorJS/rule-playcam';

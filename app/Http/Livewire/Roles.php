@@ -5,13 +5,14 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class Roles extends Component
 {
     use WithPagination;
 
 	protected $paginationTheme = 'bootstrap';
-    public $selected_id, $keyWord, $name, $guard_name;
+    public $selected_id, $keyWord, $name, $guard_name, $permisos;
 
     public function updatingKeyWord() // reset pages keywork
     {
@@ -21,6 +22,7 @@ class Roles extends Component
     public function render()
     {
 		$keyWord = '%'.$this->keyWord .'%';
+        $this->permisos = Permission::all();
 
         return view('livewire.roles.view', [
             'roles' => Role::latest()

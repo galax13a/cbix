@@ -72,7 +72,7 @@
                             @endforeach
                         </select>
                     
-                        <button wire:click="updateUserRoles">Assign Roles</button>
+                        <button wire:click="updateUserRoles">Assign Roles User</button>
                     
                         @if (session()->has('message'))
                             <div class="alert alert-success">

@@ -35,12 +35,10 @@ class Biochaturbates extends Component
         $this->card_list = collect(); 
 
         if (auth()->user()) {
-            if ($this->selected_id > 0) {
-               
+            if ($this->selected_id > 0) {              
                        
                 try {
-                    $this->record = Biochaturbate::findOrFail($this->selected_id);
-                    //dd(($this->record));
+                    $this->record = Biochaturbate::findOrFail($this->selected_id);                    
                 } catch (ModelNotFoundException $e) {
                     $this->mybio = 'new';
                     $this->selected_id = null;                 
@@ -73,8 +71,7 @@ class Biochaturbates extends Component
 
     public function getCards()
     {
-      
-            $this->card_list = Biocompone::where('active', true)
+             $this->card_list = Biocompone::where('active', true)
             ->where('biocategorcompone_id', $this->cards)
             ->paginate(15);
     }
@@ -172,8 +169,6 @@ class Biochaturbates extends Component
         return false;
     }
 
-
-   
 
     public function cancel()
     {
